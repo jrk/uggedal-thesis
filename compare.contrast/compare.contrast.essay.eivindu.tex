@@ -4,60 +4,65 @@
 
 \setcounter{secnumdepth}{-1}
 
+\title{Pointer and Trail Sharing as Methods for Social Navigation}
+
 \author{Eivind Uggedal\\
   \texttt{eivindu@ifi.uio.no}}
 
-\title{INF5550 -- Master Essay}
+\date{}
+
 
 \begin{document}
 
 \maketitle{}
 
+% TODO: REMEMBER TO USE CONCRETE EXAMPLES
+
 The aim of this essay is to compare and contrast two papers in the field of
 social navigation in the context of the web. First there will be summaries
-of the papers, highligting what I think are the most important aspects.
+of the papers, highlighting what I think are the most important aspects.
 Then I'll compare the complementary aspects and contrast the contradictory
 features of these two articles. Lastly I'll discuss my personal
-oppinions of the subject and how it all relates to the state of the modern web
+opinions of the subject and how it all relates to the state of the modern web
 infamously known as ``Web 2.0'' and finally come to a conclusion.
 
 \section{Summary of Articles}
 
 I decided to review two of the most cited papers in this field. While both of
 them are nearly a decade old they both have important insights which could be
-just as valid today as when they were written.
+just as valuable today as when they were written.
 
 \subsection{Supporting Social Navigation on the World Wide Web}
-The first article \cite{dieberger97} describes navigational behaviour on the
+The first article \cite{dieberger97} describes navigational behavior on the
 web, the state of social navigation support in the tools of that time and
 reviews two prototype systems with social navigation features.
 
 Dieberger is one of the first to compare social navigation in our concrete
-real world to activities taking part on the Internet and particularly on the
+real world to activities taking place on the Internet and particularly on the
 World Wide Web. As he points out the term social navigation was coined as the
 act when:
-``\ldots movement from one item to another is provoked as an artefact of the
+``\ldots movement from one item to another is provoked as an artifact of the
 activity of another or a group of others.'' \cite{dourish94} Dieberger builds
 on this definition and looks at the problem from a more practical standpoint.
 
-\subsubsection{Navigational Behaviour on the Web}
+\subsubsection{Navigational Behavior on the Web}
 
 The author describes examples of social navigation observable on the web where
-pointers characterized as URLs are exchanged and highlighs the superiority of
+pointers characterized as URLs are exchanged and highlights the superiority of
 such forms of navigation compared to aimlessly browsing the web. This sharing
 of pointers to resources can be done deliberately by sending such
 items trough interaction systems as e-mail both where the the receiver
-actively requested them or just passing them arround hoping that they
-will be usefull for the recepiant. One can also take a more passive approach
+actively requested them or just passing them around hoping that they
+will be useful for the recipient. One can also take a more passive approach
 where pointer pages are published on the web for everyone to benefit from in
 their search for relevant information.
 
 Users need a clear notion of structure for the available information due to
-the Internets size and inreasing growth. Diberger sees pointer collections
-shared by both individuals and corporations as Yahoo as a solution to this
+the Internets size and increasing growth. Diberger sees pointer collections
+shared by both individuals and corporations as a solution to this
 problem combined with readily available meta information of the webs
 different kinds of resources. This purely social process as the author
-describes it is important since it combats the tedious process of serching for
+describes it is important since it combats the tedious process of searching for
 information and are uncolored of commercial interests.
 
 \subsubsection{Support for Interaction on the Internet}
@@ -65,40 +70,40 @@ information and are uncolored of commercial interests.
 The majority of e-mail and newsgroup systems of the time had little support
 for distinguishing URLs from other textual content making it hard for users to
 easily share and use these elements. Chat systems offered sharing of URLs in
-real time but also these systems offered unnatural handeling of them.
+real time but also these systems offered unnatural handling of them.
 Apart from verbosely talking about the resources there was not any real
-interaction. One could not for instance point out certain parts of a document
-explains Dieberger.
+interaction present. One could not for instance point out certain parts of a
+document explains Dieberger.
 
 There is also problems with usage of URLs in our daily world. Their rather
 cryptic nature and their length makes it hard to remember them without noting
-them down. Advances are beeing made in browsers so that the protocol (HTTP)
-and sometimes the subdomain (typically \texttt{www}) and top level domain can
-be ommitted from the URL when typing them in.
+them down. Advances are being made in browsers so that the protocol (HTTP)
+and sometimes the sub-domain (typically \texttt{www}) and top level domain can
+be omitted from the URL when typing them in.
 
 Dieberger makes the case for hiding URLs from the end user based on the
 inherent problems with their format and how unnatural tools of the that time
 supported them. Users have a need to point out entities of information in an
 information system and this interaction can be made simpler and more efficient
 if they can ignore the address of the resource but share and access it trough
-a handle, a methapor wrapped around the complex URL as the author calls it.
+a handle, a metaphor wrapped around the complex URL as the author calls it.
 This handle would also need to provide easily accessible meta information
-about the resource it represents so that users can make an informed decition
-about wheter the document is worth visiting without actually visiting and
+about the resource it represents so that users can make an informed decision
+about whether the document is worth visiting without actually visiting and
 reviewing the document itself. Lastly this page handle have to be an
 integrated part of the information system it's implemented in so that it
 can function as unobtrusive as possible.
 
 Awareness of other users on the web can create opportunities for several forms
 of social interaction forms and thereby forms of social navigation. Dieberger
-means that this perception of other individuals acts as a special type of meta
-information giving feedback on where people are going, in what ammounts and
+says that this perception of other individuals acts as a special type of meta
+information giving feedback on where people are going, in what amounts and
 who they are. It's important to be aware of the privacy issues that arises
 when leveraging such information directly. By using hints about other users'
-behaviour indirectly one can follow a safer path which eliminate such
-concerns. Nevertheles the communication systems of this time presents the web
+behavior indirectly one can follow a safer path which eliminate such
+concerns. Nevertheless the communication systems of this time presents the web
 as a vast information repository where you're the only user, not visualizing a
-shared perspective where induviduals can take advantage of eachother's
+shared perspective where individuals can take advantage of each other's
 actions.
 
 \subsubsection{Examples of Social Navigation Systems}
@@ -107,8 +112,8 @@ The author uses two prototypes of information systems to highlight what he
 sees at the defining aspects of social navigation on the web. First we have
 the ``Juggler'' system, a text based real-time communication system
 with an integrated web proxy doubling as an alternative communication
-interface and historical repository. It's most evident feautres with
-regard to social navigation support include several techniques for handeling
+interface and historical repository. It's most evident features with
+regard to social navigation support include several techniques for handling
 exchange of web pointers as seamless as possible and methods of visualizing
 historical aspects of information.
 
@@ -116,17 +121,242 @@ With the extensions made to this system it was possible for users to share a
 web page they were currently viewing with the push of a single button. The
 receiver(s) would then be presented with a new browser window of that exact
 page automatically. The author concludes that this simple way for users to
-point out web pages increased the social navigation activity of users he
-surveyed even though there were some issues with the ammount of pointers
-one person could get exposed to.
+point out web pages increased the social navigation activity.
+This supports his postulation of users unwillingness to have URLs made visible
+for them.
+
+The system incorporate the idea of ``hit-counters'' on web pages
+to make visible the frequency of usage for it's various navigation paths. This
+turns the system into a \emph{history-enriched} \cite{hill94}
+environment where so called
+\emph{read wear} \cite{hill92} can be seen which points users in the direction
+of the most visited and used information entities. The textual communication
+system uses verbal descriptions to implement read wear, denoting both how often
+read-only sources are visited and also the frequency of postings for editable
+information. The author emphasizes the importance of decaying these
+representations making recent information more important than older
+information. The notion of read wear were taken even further in the web
+gateway visualizing frequency of usage trough color coding objects.
+
+An alternative system to the conventional browser bookmark list
+named ``Vortex'' is also used to highlight topics of social navigation. The
+prototypical implementation handles URLs and associated meta-data (usage
+statistics, keywords, summary etc.) as a coherent object. These objects,
+referred to as handles by the author, can also be annotated so that it's
+perceivable for the author which handles are the most important trough the
+size of it's associated icon. Even though this system was not intentionally
+made for communication and collaboration purposes such features have been
+added in the form of automatic functions for copying whole pointer objects
+into emails with their meta-information and parsing of URLs in incoming email
+into handles. Dieberger also envisions a port of the system to a more system
+independent applet platform enabling users to export their handle collections
+to a standard markup format, upload it to a central server, enabling other
+users to contribute to this shared collection.
 
 \subsection{Footprints: History-Rich Tools for Information Foraging}
 
-The second article \cite{wexelblat99} communicates
+The second article \cite{wexelblat99} communicates the authors proposed theory
+of interaction history, it's application in real world tools, and the results
+of controlled usage studies. 
 
-\section{Comparison}
+Wexelblat et al. contrasts the digital world of computers against our
+non-digital everyday world with respect to the formers lack of history. In our
+traditional world we exploit such historical information traces:
+``\ldots to guide our actions, to make choices, and to find things of
+importance or interest.'' \cite{wexelblat99}
+Objects that contain information that make such interactions possible are
+described as \emph{history-rich} according to the authors. It's important to
+note that usage of interaction history in the physical world are mostly
+achieved without any concious efford and therefore feels natural to us.
 
-Compare here.
+This apparent lack of history in our digital systems must be sorted out such
+that future users can take advantage of past users historical traces left when
+they were working on solving problems similar to the current user's. This
+should make problem solving easier and more efficient by recovering past
+findings and avoiding mistakes made in the past. Without such systems users
+have to behave like they are the first and only people using the information
+-- everyone have to start from scratch in their problem solving tasks.
+
+\subsubsection{Theoretical Interaction History Framework}
+
+Wexelblat et al. have taken earlier insights into history-rich objects and
+their usage \cite{hill92, hill94} and extended it into a theoretical framework
+consisting of six properties, all characterizing interaction history based
+systems:
+
+\begin{description}
+  \item[Proxemic versus distemic] describe how close people and places are
+    related. A \emph{proxemic} space is transparent to it's users since it's
+    signs and structures are easily comprehended. \emph{Distemic} places are on
+    the other hand opaque to it's users. Translating this to interaction
+    history systems means that a proxemic system relates well to it's users
+    and takes advantage of past interaction experiences and knowledge.
+  \item[Active versus passive] characterize the way interaction history is
+    recorded and made available. One can leave records actively (saving a
+    bookmark) or passively (a web client's history records). The latter
+    involves no
+    concious effort and is according to Wexelblat et al. therefore the desired
+    kind as users problem solving processes remains uninterrupted.
+  \item[Rate/form of change] explains how history builds up trough an
+    \emph{accretion} process as more and more interactions take place. History
+    also fades out as time goes by and more history accumulates. It's important
+    to deal with these processes so that all available information can be
+    summarized in a way that makes efficient usage and access to it possible.
+  \item[Degree of permeation] detail to what extent the interaction history is
+    part of the hisotry-rich object itself, ranging from inseparable to
+    completly separable.
+    %TODO: MABY ELABORATE ON THIS A BIT
+  \item[Personal versus social] means that history either can be social of
+    nature (a groups shared bookmark collection) or personal (bookmark
+    collection exclusive for one individual). Wexelblat et al. feels that
+    the social kind of interaction history is more valuable since most problem
+    solving tasks are collaborative in nature. The authors is stressing that
+    the main advantage of interaction history lies in the way it enables
+    newcomers to benefit from work completed in the past.
+    
+  \item[Kind of information] refers to the idea that there exists infinite
+    kinds of information history. The task that the users are trying to
+    achieve determines what kinds of information that is of importance. The
+    authors categorizes information into categories based on different uses of
+    interaction history:
+  \begin{description}
+    \item[What] was done. Helpfull if users are trying to find usefull
+      information, need reassurance or need guidance.
+    \item[Who] has done something. Crucial for sociability, authority and
+      authenticity. 
+    \item[Why] something was done. Important for knowing whether the past users
+      had similar intentions and for explanation and learning.
+    \item[How] something was done. Essential for achieving naturalness and
+      transparency.
+  \end{description}
+\end{description}
+
+\subsubsection{Interaction History on the Web}
+
+The ``Footprints'' system is described by the authors as an attempt to find
+the valuable aspects of interaction history in our real world and how one can
+capture history in digital systems for such applications. They wanted to
+validate their theoretical framework and did so by applying this theory to the
+problem of how to navigate a complex information space as the web. The system
+is an active navigational aid both visualizing interaction history
+information and also enabeles users to navigate this information. If the user
+knows what he want to find Footprints can help them find their way and
+explain what they've found.
+
+The system consists of several tools integrated into a normal web browser,
+using navigation transitions as their fundamental information for historical
+preservence. All tools are based on a navigational metaphor:
+
+\begin{description}
+  \item[Maps] are used to show traffic trough the currently visited
+    web site. Transitions from this page to other documents are visualized as
+    links between several nodes. Read wear is existant trough visualization of
+    a documents popularity as shades of different colors.
+  \item[Trails] are ``\ldots coherent sequences of nodes followed by an
+    individual'' \cite{wexelblat99}. Trails are visualized trough a path
+    interface which acts as a low level view compared to the high level nature
+    of the map interface. These trails are automatically recorded and the
+    system useses several properties to distinguish between different paths.
+    Trails are also visualized by their degree of usage, the ticker the links
+    between nodes the higher the actual usage of the trail.
+  \item[Signposts] are a way for users to comment on the interaction history
+    they are using, giving feedback to both individual pages and trails.
+\end{description}
+
+Lastly users are given information about the usage of inline links of web
+pages trough the use of textual annotations showing the percentage of users
+who followed each particular link.
+
+\subsubsection{Usage of Interaction History Tools}
+
+The Footprints application was tested in a controlled environment by
+Wexelblat et al. where several users were given the task of locating a used
+car within a given price range. One group used normal web clients while
+another group used the Footprints application.
+Their pre-test hypoteses were that this tool
+would increase the number of a alternative car dealerships found and reduce
+the number of pages visited while browsing for these. The authors also had
+ambitions of the tools ability to ease the task of locating
+information and understanding discovered information in addition to
+increasing the level of satisfaction among users.
+
+The experiment only parially supported the authors claims. No notable
+diffrences between number of alternatives between the two groups were found.
+But the group using the history-enriched system reported signifficantly lower
+values of their mean page count for completing their task.
+
+With regards to subjective responses the authors found that experienced users
+(users who knew the problem domain to some extent) could to a larger degree
+take advantage of interaction history in their browsing. Novice users on the
+other hand was actually less satisfied with using interation models than
+normal browsing methods. Wexelblat et al. explains that experienced users
+could make much better use of Footprint's representations since they had a
+clear mental model of car information and thus making the application's
+interaction history more proxemic.
+
+During this experiment the authors found three different patterns of use for
+Footprints. Some wandered down paths not used before within the system and
+therefore received little help from the system. Others started out using
+information within Footprints and took off in other directions when their
+taste in cars started to differ from past users. Lastly it was observed that
+some users started out without using information from Footprints, but when
+their browsing brought them into trails of past users they seemed to take
+advantage of their earlier work.
+
+\section{Comparison of Articles}
+
+Both articles describes how normal browsing behaviour on the web can be
+improved by means of social navigation examplified in several tools. They take
+very different approaches to include sociability in the web. Dieberger focues
+on improving patterns of social navigation that have widespread use while
+Wexelblat et al. have created tools which support navigating the web in
+entirely new ways.
+
+Dieberger describes tools where users actively shares information trough a
+social process and then actively decides wheter to use this information.
+Wexelblat et al. on the other hand emphasises on passively collecting
+information that can be used actively by other users at a later stage. The
+distinction between these two concepts can be examplified as the difference
+between asking or beeing told what direction to take in a myriad of forest
+trails and following the trail that is most worn out. In the first case the
+sender have to exlicitly tell the receiver where to go, requiring concious
+effort. This is contrasted in the last example where several users of the
+forest leave traces of their action unconciously and without no additional
+effort.
+
+The behaviour of people's structuring of the web trough making structured
+pointer pages available as described by Dieberger also applies to the
+Footprints system. When people passively creates surfing trails and then
+actively comment on both trails and individual documents they too are opposing
+structures on the web.
+
+In the Juggler system people are aware of eachother and can to a certain
+degree know their identity as opposed to the Footprints system where all users
+behaviour are merged and therefore making this an anonymous system. The
+advantage of Diebergers approach is that you by using the system can learn
+wich users to trust, using information provided by reputable users
+before unknown people. Since the Footprints system tracks every movment of
+it's users such an approach would bring forth a host of privacy issues.
+Wexelbalt et al. states that this is a deliberate trade-off, they wanted to
+focus on interaction history and not methods for personal privacy.
+
+As discussed earlier Dieberger proved his thesis that users do not want to see
+URLs while he was working on the Juggler system (extended into his work on the
+Vortex system). This same idea is implemented
+troughout the Footprints system of Wexelblat et al
+trough not explicitly stated in the article, but evident in the design
+of the system. Individual documents are denoted by their page title in all of
+Footprint's tools and the URL is only part of the browsers location bar.
+
+Usage of read- and edit-wear are apparent in both the Juggler and the
+Footprints application. Both uses colorized visualizations and textual
+representations where either is more appropriate. There seem to be diffrences
+in what colors are used for displaying read- and edit wear. It could be
+confusing for users when such presentation methods differ amongst different
+applications and would therefore be advisable to either trying to establish
+standard patterns or take advantage of conventions found in the wild, both on
+the web and in our real world. Developing broad conventions is difficult as
+diffrences among cultures also have to been taken into concideration.
 
 \section{Contrasting}
 
@@ -135,11 +365,69 @@ navigation.
 
 \section{Discussion}
 
-Discussion related to today here.
+This section will try to highlight the state of social navigation support in
+todays applications and the web in areas of pointer sharing and interaction
+history.
+
+\subsection{Dieberger}
+
+\subsection{Sharing of Pointers}
+
+Dieberger describes the various problems with URL handeling in the systems of
+that time and that this affects how likely people are to share pointers. Today
+most email clients makes URLs clickable in contrast with similar systems a
+decade ago. Note that this is when URLs are in plain text and not marked up as
+HTML anchors.
+
+% POINTER PAGES => delicious
+
+
+The pointer pages of today is del.icio.us in many ways. More socially
+oriented. Aslo ``elswhere'' pages on several blogs functions as mass-pointer
+pages.
+
+Delicious pages have more links than personal pointer pages. Yahoo et al. was
+organized hierarchical but such a system is hard to implement. Need to be
+librarian. Some pointers match several categories. The solution: folsonomy,
+tagging.
+
+Bookmark collections have been improved in some browsers. Flock and FF with
+extension integrates with del.icio.us. New firefox bookmarks in 3.0 are called
+places, uses SQLite backend. Research this more.
+
+Pointers and pointer collections are not handled as transparently as in the
+Vortex system though. Improvments have been made in the OSes (OSX, Win, Gnome,
+KDE DEs) to make links clickable and sendable by mail etc.
+
+Supposed improvments to Vortex for building pointer collections
+collaboratively is seen in collaborative tagging systems of today. ref
+article.
+
+Taking notes not supported at that time. See what various post-it like
+extensions to the web, both server side and client side trough extensions, are
+toing today and what it means.
+
+No google at the time Dieberger says that finding information is almost
+impossible. Research if search engines (spidered) was available or if only
+directories as Yahoo were. ALTAVISTA/GOOGLE WAS PARTIALLY AVAILABLE AT THIS
+TIME.
+
+Lack of meta-information on the web. We have RDF, but no widespread use.
+Microformats as a pragmatic grasroots kind of thing are taking off in some
+communities.
+
+
+\subsection{Wexelblat}
+
+Wexelblat vs Trails.app: discuss the wanted addition of a purpose part of the
+Footprints and se if it's implemented in Trails.app.
+
+Trails.app is active for the users creating trails (check this, but think so)
+but Footprints is passive (except for signpost/comment making).
 
 \section{Conclusion}
 
-Some smart conlusion.
+Some smart conclusion.
 
 \section{}
 
