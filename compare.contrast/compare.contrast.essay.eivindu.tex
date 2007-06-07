@@ -1,22 +1,16 @@
 \documentclass[12pt,a4paper]{article}
-
 \usepackage[T1]{fontenc}
-
 \setcounter{secnumdepth}{-1}
 
-\title{Pointer and Trail Sharing as Methods for Social Navigation}
-
+\title{Pointer Sharing and Interaction History
+       as Methods for Social Navigation}
 \author{Eivind Uggedal\\
-  \texttt{eivindu@ifi.uio.no}}
-
+        \texttt{eivindu@ifi.uio.no}}
 \date{}
-
 
 \begin{document}
 
 \maketitle{}
-
-% TODO: REMEMBER TO USE CONCRETE EXAMPLES
 
 The aim of this essay is to compare and contrast two papers in the field of
 social navigation in the context of the web. First there will be summaries
@@ -222,10 +216,10 @@ systems:
   \begin{description}
     \item[What] was done. Helpfull if users are trying to find usefull
       information, need reassurance or need guidance.
-    \item[Who] has done something. Crucial for sociability, authority and
+    \item[Who] has done something. Crucial for sociability, authority, and
       authenticity. 
     \item[Why] something was done. Important for knowing whether the past users
-      had similar intentions and for explanation and learning.
+      had similar intentions, for explanation, and for learning.
     \item[How] something was done. Essential for achieving naturalness and
       transparency.
   \end{description}
@@ -358,20 +352,15 @@ standard patterns or take advantage of conventions found in the wild, both on
 the web and in our real world. Developing broad conventions is difficult as
 diffrences among cultures also have to been taken into concideration.
 
-\section{Contrasting}
-
-Dieberger cites Dourish (citeme) as the originator of the term social
-navigation.
-
 \section{Discussion}
 
 This section will try to highlight the state of social navigation support in
 todays applications and the web in areas of pointer sharing and interaction
 history.
 
-\subsection{Sharing of Pointers}
+\subsection{Pointer Sharing}
 
-\subsubsection{URL Recognition}
+\subsubsection{Problems with URLs}
 
 Dieberger describes the various problems with URL handeling in the systems of
 that time and that this affects how likely people are to share pointers. Today
@@ -386,12 +375,10 @@ in Table~\ref{table:email} (p.~\pageref{table:email}).
   \begin{center}
     \begin{small}
       \begin{tabular}{l|ccc}
-        \hline
         &
         \texttt{domain.tld} &
         \texttt{www.domain.tld} &
         \texttt{http://domain.tld} \\
-        \hline
         \hline
         Google Gmail (2007-06) & $\surd$ & $\surd$ & $\surd$ \\
         Yahoo Mail (2007-06)   &         & $\surd$ & $\surd$ \\
@@ -402,7 +389,6 @@ in Table~\ref{table:email} (p.~\pageref{table:email}).
         KMail (1.7.1)          &         & $\surd$ & $\surd$ \\
         Apple Mail (2.1.1)     &         &         & $\surd$ \\
         MS Outlook (2007)      &         & $\surd$ & $\surd$ \\
-        \hline
       \end{tabular}
     \end{small}
   \end{center}
@@ -425,6 +411,12 @@ Lately quite a few web-based implementations of these protocols have also
 appered. It seems like their status when it comes to URL recognition is on
 par with email clients even though I have not completed as troughout a study
 of instant messaging clients.
+
+% Cultural change have made URLs more commonplace. Can ommit http now and
+% people understand that lowercase words with a tld prefix are URL adresses to
+% a large degree. Also increased emphasis on <nice urls> have made usage of
+% them directly more efficient and easy. To some degree, but not totally, this
+% invalidates some of Dieberger's reasoning for making URLs hidden.
 
 \subsubsection{Sending Pointers}
 
@@ -449,52 +441,54 @@ Windows Live Messenger in addition to Linux, Mozilla Firefox 2.0 and Pidgin
 
 \subsubsection{Storing Pointers}
 
-The pointer pages of today is del.icio.us in many ways. More socially
-oriented. Aslo ``elswhere'' pages on several blogs functions as mass-pointer
-pages.
+Pointer pages as Dieberger discusses have become less popular as new services
+for sharing and storing web pointers have emerged. The most popular and one of
+the most influential services in this area is in my oppinion
+Delicious\footnote{http://del.icio.us}. This service enables one to store
+bookmarks in a one click operation (in addition to an optional annotation
+phase) trough browser extensions or a \emph{bookmarklet} (a small JavaScript
+application stored within the URL of a browser bookmark). Users usually
+annotate such bookmarks with \emph{tags} -- singleworded keywords or labels of
+the document's content and purpose.
 
-Delicious pages have more links than personal pointer pages. Yahoo et al. was
-organized hierarchical but such a system is hard to implement. Need to be
-librarian. Some pointers match several categories. The solution: folsonomy,
-tagging.
+Opposed to Dieberger's notion of neatly structured pointer pages
+bookmarking services as Delicious imposes user generated taxonomy on various
+documents of the web. The accuracy of such meta-data when several people
+annotate the same resource has been proven to be quite good\cite{golder05}. It
+is my feeling that a
 
-Bookmark collections have been improved in some browsers. Flock and FF with
-extension integrates with del.icio.us. New firefox bookmarks in 3.0 are called
-places, uses SQLite backend. Research this more.
+Harnessing these efforts by a large number of individuals one can locate
+information both by browsing all
+bookmarks of a particular user or all users and bookmarks of a certain tag or
+combination of tags for either a perticular user or all users.
+Dieberger's proposed improvments to the Vortex system for enabeling
+collaberative bookmarking is now a reality with the rise of social bookmarking
+sites as Delicious.
 
-Pointers and pointer collections are not handled as transparently as in the
-Vortex system though. Improvments have been made in the OSes (OSX, Win, Gnome,
-KDE DEs) to make links clickable and sendable by mail etc.
+% Pointers and pointer collections are not handled as transparently as in the
+% Vortex system though. Improvments have been made in the OSes (OSX, Win, Gnome,
+% KDE DEs) to make links clickable and sendable by mail etc.
 
-Supposed improvments to Vortex for building pointer collections
-collaboratively is seen in collaborative tagging systems of today. ref
-article.
+% Taking notes not supported at that time. See what various post-it like
+% extensions to the web, both server side and client side trough extensions, are
+% toing today and what it means.
 
-Taking notes not supported at that time. See what various post-it like
-extensions to the web, both server side and client side trough extensions, are
-toing today and what it means.
-
-No google at the time Dieberger says that finding information is almost
-impossible. Research if search engines (spidered) was available or if only
-directories as Yahoo were. ALTAVISTA/GOOGLE WAS PARTIALLY AVAILABLE AT THIS
-TIME.
-
-Lack of meta-information on the web. We have RDF, but no widespread use.
-Microformats as a pragmatic grasroots kind of thing are taking off in some
-communities.
+% Lack of meta-information on the web. We have RDF, but no widespread use.
+% Microformats as a pragmatic grasroots kind of thing are taking off in some
+% communities.
 
 
-\subsection{Wexelblat}
+\subsection{Interaction History}
 
-Wexelblat vs Trails.app: discuss the wanted addition of a purpose part of the
-Footprints and se if it's implemented in Trails.app.
+% Wexelblat vs Trails.app: discuss the wanted addition of a purpose part of the
+% Footprints and se if it's implemented in Trails.app.
 
-Trails.app is active for the users creating trails (check this, but think so)
-but Footprints is passive (except for signpost/comment making).
+% Trails.app is active for the users creating trails (check this, but think so)
+% but Footprints is passive (except for signpost/comment making).
 
 \section{Conclusion}
 
-Some smart conclusion.
+We have seen that
 
 \section{}
 
