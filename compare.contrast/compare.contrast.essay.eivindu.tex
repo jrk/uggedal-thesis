@@ -373,11 +373,53 @@ history.
 
 \subsection{Sharing of Pointers}
 
+\subsubsection{URL Recognition}
+
 Dieberger describes the various problems with URL handeling in the systems of
 that time and that this affects how likely people are to share pointers. Today
 most email clients makes URLs clickable in contrast with similar systems a
-decade ago. Note that this is when URLs are in plain text and not marked up as
-HTML anchors.
+decade ago. I surveyed some of the most popular web-based clients and also
+clients for Microsoft Windows, Apple OS X and Linux. The results can be seen
+in Table~\ref{table:email} (p.~\pageref{table:email}).
+
+\begin{table}[h!b!p!]
+  \caption{URL Recognition Support in Email Clients}
+  \label{table:email}
+  \begin{center}
+    \begin{small}
+      \begin{tabular}{l|ccc}
+        \hline
+        &
+        \texttt{domain.tld} &
+        \texttt{www.domain.tld} &
+        \texttt{http://domain.tld} \\
+        \hline
+        \hline
+        Google Gmail (2007-06) & $\surd$ & $\surd$ & $\surd$ \\
+        Yahoo Mail (2007-06)   &         & $\surd$ & $\surd$ \\
+        MS Hotmail (2007-06)   &         &         & $\surd$ \\
+        SquirrelMail (1.4.10a) &         &         & $\surd$ \\
+        Moz Thunderbird (1.0)  &         & $\surd$ & $\surd$ \\
+        Evolution (2.0.2)      &         & $\surd$ & $\surd$ \\
+        KMail (1.7.1)          &         & $\surd$ & $\surd$ \\
+        Apple Mail (2.1.1)     &         &         & $\surd$ \\
+        MS Outlook (2007)      &         & $\surd$ & $\surd$ \\
+        \hline
+      \end{tabular}
+    \end{small}
+  \end{center}
+\end{table}
+
+Note that this is when URLs are in plain text and not marked up as
+HTML anchors. As one can see from the list all clients supported links with
+protocol (HTTP) prefix. Two thirds of the clients supported links without
+protocol prefix but with \texttt{www} prefix. The Google Gmail web-based
+client stood out from the crowd with support from all kinds of valid URLs
+without protocol prefix.
+
+Compared to the days when Dieberger wrote his article the state of automatic
+URL recognition is vastly improved even though some email clients could try to
+mimic features of state of the art clients as Google Gmail. 
 
 % POINTER PAGES => delicious
 
