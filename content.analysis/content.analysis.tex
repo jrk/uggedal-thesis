@@ -1,5 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[T1]{fontenc}
+\usepackage{lscape}
 \setcounter{secnumdepth}{-1}
 
 \title{Content Analysis}
@@ -31,6 +32,393 @@ will be carried out after having performed the low-level content inventory
 and the subsequent analysis of these findings.
 
 \section{Flickr}
+
+Flickr is a photo sharing site which are known to be on the cutting edge when
+it comes to enabling new and innovating navigational features. This subsequent
+analysis of Flickr will be carried out as a registered user. One has to be
+registered for interacting with the site in such a way that one leaves
+persistent traces even though all content is available and open for all users.
+
+\begin{landscape}
+  \begin{table}[h!b!p!]
+    \caption{Content Inventory of Flickr, Part One}
+    \label{table:content.inventory.flickr.1}
+    \begin{center}
+      \begin{tiny}
+        \tt
+        \begin{tabular}{l|l|l|l|l|p{3cm}}
+            Id &
+            Page Title &
+            Link Name &
+            Link Location &
+            URL &
+            Notes \\
+
+            \hline
+
+            0 &
+            Welcome to Flickr &
+            &
+            &
+            / &
+            \\
+
+            1 &
+            Photos from \$usr-id &
+            You &
+            Global navigation &
+            /photos/\$usr-id &
+            \\
+
+              1.1 &
+              ~\$photo-title &
+              Photo thumbnail &
+              Content area &
+              /photos/\$usr-id/\$photo-id &
+              \\
+
+                1.1.1 &
+                ~~Photos from \$usr-id &
+                \$usr-id &
+                Content (comments list) &
+                /photos/\$usr-id &
+                Same as 1.0\\
+
+                1.1.2 &
+                ~~\$set-title - a photoset on Flickr &
+                \$set-title (Set) &
+                Right sidebar &
+                /photos/\$usr-id/sets/\$set-id &
+                Same as 1.2 and 1.3.1 \\
+
+                1.1.3 &
+                ~~\$group-name Pool &
+                \$group-name (Pool) &
+                Right sidebar &
+                /groups/\$group-name/pool &
+                Same as N.N, explored there \\
+
+                1.1.4 &
+                ~~\$usr-id photos tagged with \$tag-name &
+                \$tag-name &
+                Right sidebar (tag list) &
+                /photos/\$usr-id/tags/\$tag-name &
+                \\
+
+                  1.1.4.1 &
+                  ~~~Photos tagged with \$tag-name &
+                  public photos tagged with \$tag-name &
+                  Left sidebar &
+                  /photos/tags/\$tag-name &
+                  Same as 1.4.1.1 \\
+
+                1.1.5 &
+                ~~Explore your geotagged photos on a Map &
+                (map) -> View \$usr-id map &
+                Right sidebar (details list) &
+                /photos/\$usr-id/\$photo-id/map/?view=users &
+                An inline dialog is opened from the (map) link \\
+
+                1.1.6 &
+                ~~Explore everyone's geotagged photos on a Map &
+                (map) -> see more photos here &
+                Right sidebar (details list) &
+                /photos/\$usr-id/\$photo-id/map/?view=everyone &
+                An inline dialog is opened from the (map) link \\
+
+                1.1.7 &
+                ~~Camera Finder: \$camera-model &
+                \$camera-model &
+                Right sidebar (detail list) &
+                /cameras/\$camera-make/\$camera-model &
+                Same as N.N \\
+
+                1.1.8 &
+                ~~Archive of your photos taken on \$photo-date &
+                \$camera-model &
+                Right sidebar (detail list) &
+                /photos/\$usr-id/archives/date-taken/\$photo-date &
+                Same as 1.6.1 \\
+
+              1.2 &
+              ~\$set-title - a photoset on Flickr &
+              \$set-title &
+              Left sidebar &
+              /photos/\$usr-id/sets/\$set-id &
+              Same as 1.1.2 and 1.3.1 \\
+
+              1.3 &
+              ~\$usr-id sets on Flickr &
+              Sets &
+              Local navigation &
+              /photos/\$usr-id/sets &
+              \\
+
+                1.3.1 &
+                ~~\$set-title - a photoset on Flickr &
+                \$set-title &
+                Content area &
+                /photos/\$usr-id/sets/\$set-id &
+                Same as 1.1.2 and 1.2 \\
+
+                  1.1.1.1 &
+                  ~~~\$photo-title &
+                  Photo thumbnail &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id/in/set-\$set-id &
+                  Almost same as N.N and more\\
+
+
+              1.4 &
+              ~i\$usr-id tags &
+              Tags &
+              Local navigation &
+              /photos/\$usr-id/tags &
+              \\
+
+                1.4.1 &
+                ~~\$usr-id photos tagged with \$tag-name &
+                \$tag-name &
+                Content (tag cloud) &
+                /photos/\$usr-id/tags/\$tag-name &
+                \\
+
+                  1.4.1.1 &
+                  ~~~Photos tagged with \$tag-name &
+                  public photos tagged with \$tag-name &
+                  Left sidebar &
+                  /photos/tags/\$tag-name &
+                  Same as 1.1.4.1 \\
+
+                  1.4.1.2 &
+                  ~~~\$photo-title &
+                  Photo thumbnail &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as N.N and more\\
+
+              1.5 &
+              ~Explore your geotagged photos on a Map &
+              Map &
+              Local navigation &
+              /photos/\$usr-id/map &
+              \\
+
+                1.5.1 &
+                ~~\$photo-name &
+                Photo count icon &
+                Map &
+                /photos/\$usr-id/map &
+                Inline dialog\\
+
+                  1.5.1.1 &
+                  ~~~\$usr-id photos tagged with \$tag-name &
+                  \$tag-name &
+                  Inline dialog &
+                  /photos/\$usr-id/tags/\$tag-name &
+                  Same as 1.1.3 and 1.4.1\\
+
+                  1.5.1.2 &
+                  ~\$photo-title &
+                  View photo page &
+                  Inline dialog &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+              1.6 &
+              ~Archive of all your photos on Flickr &
+              Archives &
+              Local navigation &
+              /photos/\$usr-id/map &
+              \\
+
+                1.6.1 &
+                ~~Archive of your photos taken on \$photo-date &
+                \$camera-model &
+                Content area (Taken on) &
+                /photos/\$usr-id/archives/date-taken/\$photo-date &
+                Same as 1.1.7 \\
+
+                  1.6.1.1 &
+                  ~~~\$photo-title &
+                  Photo thumbnail &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+                1.6.2 &
+                ~~Archive of your photos posted on \$photo-date &
+                \$camera-model &
+                Content area (Posted on) &
+                /photos/\$usr-id/archives/date-posted/\$photo-date &
+                Same as 1.1.7 \\
+
+                  1.6.2.1 &
+                  ~~~\$photo-title &
+                  Photo thumbnail &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+              1.7 &
+              ~\$usr-id favorite photos on Flickr &
+              Favorites &
+              Local navigation &
+              /photos/\$usr-id/favorites &
+              \\
+
+                1.7.1 &
+                ~~\$photo-title &
+                Photo thumbnail &
+                Content area &
+                /photos/\$usr-id/\$photo-id &
+                Same as 1.1 \\
+
+              1.8 &
+              ~\$usr-id most popular photos, interestingness &
+              Popular &
+              Local navigation &
+              /photos/\$usr-id/popular-interesting &
+              \\
+
+                1.8.1 &
+                ~~\$photo-title &
+                Photo thumbnail or photo title &
+                Content area &
+                /photos/\$usr-id/\$photo-id &
+                Same as 1.1 \\
+
+                1.8.2 &
+                ~~\$usr-id most popular photos, views &
+                Views &
+                Sub local navigation &
+                /photos/\$usr-id/popular-views &
+                \\
+
+                  1.8.2.1 &
+                  ~~~\$photo-title &
+                  Photo thumbnail or photo title &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+                1.8.3 &
+                ~~\$usr-id most popular photos, fovorites &
+                Views &
+                Sub local navigation &
+                /photos/\$usr-id/popular-faves &
+                \\
+
+                  1.8.3.1 &
+                  ~~~\$photo-title &
+                  Photo thumbnail or photo title &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+                1.8.2 &
+                ~~\$usr-id most popular photos, comments &
+                Comments &
+                Sub local navigation &
+                /photos/\$usr-id/popular-comments &
+                \\
+
+                  1.8.2.1 &
+                  ~~~\$photo-title &
+                  Photo thumbnail or photo title &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+          \end{tabular}
+        \rm
+      \end{tiny}
+    \end{center}
+  \end{table}
+\end{landscape}
+
+\begin{landscape}
+  \begin{table}[h!b!p!]
+    \caption{Content Inventory of Flickr, Part Two}
+    \label{table:content.inventory.flickr.2}
+    \begin{center}
+      \begin{tiny}
+        \tt
+        \begin{tabular}{l|l|l|l|l|p{3cm}}
+            Id &
+            Page Title &
+            Link Name &
+            Link Location &
+            URL &
+            Notes \\
+
+            \hline
+
+              1.9 &
+              ~\$usr-id &
+              Profile &
+              Local navigation &
+              /people/\$usr-id &
+              \\
+
+                1.9.1 &
+                Photos from \$usr-id &
+                \$usr-id &
+                Content (Groups) &
+                /photos/\$usr-id &
+                Same as 1 \\
+
+                1.9.2 &
+                \$group-name &
+                \$group-name &
+                Content (Groups) &
+                /groups/\$group-name &
+                Same as N.N, explored there \\
+
+            2 &
+            Organize your photos &
+            Organize &
+            Global navigation &
+            /photos/organize &
+            \\
+
+            3 &
+            Photos from your contacts &
+            Contacts &
+            Global navigation &
+            /photos/friends &
+            \\
+
+              3.1 &
+              ~\$photo-title &
+              Photo thumbnail &
+              Content area &
+              /photos/\$usr-id/\$photo-id &
+              Same as 1.1 \\
+
+              3.2 &
+              Photos from \$usr-id &
+              \$usr-id &
+              Content area &
+              /photos/\$usr-id &
+              Same as 1 \\
+
+            4 &
+            Groups &
+            Groups &
+            Global navigation &
+            /groups &
+            \\
+
+
+
+
+          \end{tabular}
+        \rm
+      \end{tiny}
+    \end{center}
+  \end{table}
+\end{landscape}
 
 \section{Amazon}
 
