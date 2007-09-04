@@ -39,6 +39,11 @@ analysis of Flickr will be carried out as a registered user. One has to be
 registered for interacting with the site in such a way that one leaves
 persistent traces even though all content is available and open for all users.
 
+One can follow several navigational paths for ending up on some of the pages
+identified below. In my first navigation upon a given page I've followed all
+relevant navigational paths to the end. On my second encounter of the same
+page I've noted the identifier for the first time this page was visited.
+
 \begin{landscape}
   \begin{table}[h!b!p!]
     \caption{Content Inventory of Flickr, Part One}
@@ -229,12 +234,12 @@ persistent traces even though all content is available and open for all users.
               ~Archive of all your photos on Flickr &
               Archives &
               Local navigation &
-              /photos/\$usr-id/map &
+              /photos/\$usr-id/archives &
               \\
 
                 1.6.1 &
                 ~~Archive of your photos taken on \$photo-date &
-                \$camera-model &
+                \$photo-date &
                 Content area (Taken on) &
                 /photos/\$usr-id/archives/date-taken/\$photo-date &
                 Same as 1.1.7 \\
@@ -248,7 +253,7 @@ persistent traces even though all content is available and open for all users.
 
                 1.6.2 &
                 ~~Archive of your photos posted on \$photo-date &
-                \$camera-model &
+                \$photo-date &
                 Content area (Posted on) &
                 /photos/\$usr-id/archives/date-posted/\$photo-date &
                 Same as 1.1.7 \\
@@ -656,10 +661,6 @@ persistent traces even though all content is available and open for all users.
                     /photos/tags/\$tag-name/clusters &
                     Goes back in circle to 5.6.1.2 again \\
 
-
-
-
-
           \end{tabular}
         \rm
       \end{tiny}
@@ -723,8 +724,111 @@ persistent traces even though all content is available and open for all users.
               ~Camera Finder &
               Camera finder &
               Content area &
-              /camera &
+              /cameras &
               \\
+
+                5.7.1 &
+                ~~Camera Finder: \$camera-make &
+                \$camera-make &
+                Content area &
+                /cameras/\$camera-make &
+                \\
+
+                  5.7.1.1 &
+                  ~~Camera Finder: \$camera-make: \$camera-model &
+                  \$camera-model &
+                  Content area &
+                  /cameras/\$camera-make/\$camera-model &
+                  \\
+
+                    5.7.1.1.1 &
+                    ~~~\$photo-title &
+                    Photo thumbnail &
+                    Content area &
+                    /photos/\$usr-id/\$photo-id &
+                    Same as 1.1 \\
+
+                    5.6.1.1.2 &
+                    ~~~Photos from \$usr-id &
+                    \$usr-id &
+                    Content area &
+                    /photos/\$usr-id &
+                    \\
+
+              5.8 &
+              ~Photos from everyone &
+              most recent uploads &
+              Content area &
+              /photos &
+              \\
+
+                  5.8.1 &
+                  ~~\$photo-title &
+                  Photo thumbnail &
+                  Content area &
+                  /photos/\$usr-id/\$photo-id &
+                  Same as 1.1 \\
+
+                  5.8.2 &
+                  ~~Photos from \$usr-id &
+                  \$usr-id &
+                  Content area &
+                  /photos/\$usr-id &
+                  \\
+
+
+                  5.8.3 &
+                  ~Popular Tags &
+                  Popular tags &
+                  Right sidebar &
+                  /photos/tags &
+                  Same as 5.6 \\
+
+                  5.8.4 &
+                  ~Creative Commons &
+                  Creative Commons &
+                  Right sidebar &
+                  /creativecommons &
+                  \\
+
+                    5.8.4.1 &
+                    ~~\$photo-title &
+                    Photo thumbnail &
+                    Content area &
+                    /photos/\$usr-id/\$photo-id &
+                    Same as 1.1 \\
+
+                    5.8.4.2 &
+                    ~~Photos from \$usr-id &
+                    \$usr-id &
+                    Content area &
+                    /photos/\$usr-id &
+                    \\
+
+                    5.8.4.3 &
+                    ~~Photos with Creative Commons \$license-type &
+                    See more &
+                    Content (\$license-type) &
+                    /photos/\$usr-id &
+                    \\
+
+                      5.8.4.3.1 &
+                      ~~~\$photo-title &
+                      Photo thumbnail &
+                      Content area &
+                      /photos/\$usr-id/\$photo-id &
+                      Same as 1.1 \\
+
+                      5.8.4.3.2 &
+                      ~~~Photos from \$usr-id &
+                      \$usr-id &
+                      Content area &
+                      /photos/\$usr-id &
+                      \\
+
+
+
+
 
           \end{tabular}
         \rm
