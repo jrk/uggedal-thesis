@@ -78,7 +78,7 @@ Table~\ref{table:flickr.variable.list}
 
       \hline
 
-      \$user-id &
+      \$user &
       Unique nick-name for a user \\
 
       \$photo-id &
@@ -90,36 +90,35 @@ Table~\ref{table:flickr.variable.list}
       \$set-id &
       Unique numerical identifier for a set (of photos) \\
 
-      \$Textual title of a set-title &
-      Textual title of a set \\
+      \$set-title &
+      Textual title of a set (of photos) \\
 
-      \$ &
-      change \\
+      \$tag &
+      Unique name for a tag \\
 
-      \$ &
-      change \\
+      \$group &
+      Unique textual name for a group \\
 
-      \$ &
-      change \\
+      \$camera-make &
+      Manufacturer of digital cameras \\
 
-      \$ &
-      change \\
+      \$camera-model &
+      Model number of a particular digital camera \\
 
-      \$ &
-      change \\
+      \$year-month &
+      A given year and month \\
 
-      \$ &
-      change \\
+      \$year-month-day &
+      A given year, month, and day \\
 
-      \$ &
-      change \\
+      \$topic-id &
+      Unique numerical identifier for a discussion topic \\
 
-      \$ &
-      change \\
+      \$topic-title &
+      Textual title of a discussion topic \\
 
-      \$ &
-      change \\
-
+      \$member-count &
+      Variable number of members of a group \\
 
     \end{tabular}
   \end{center}
@@ -137,7 +136,11 @@ when using content inventory as a tool for improving site architecture.
 
 In addition to the ``Page Title'' column the content inventory tables have an
 ``Id'' column where each page is assigned a unique identifier of hierarchical
-nature, a ``Link Name'' column describing the text of the link 
+nature, a ``Link Name'' column describing the text of the link that pointed to
+this particular page, a ``Link Location'' column highlighting where on the
+page the link that pointed to this page were located, a ``URL'' column
+identifying the local part of the site's URL, and lastly a ``Notes'' column
+which should be self explanatory.
 
 \begin{landscape}
   \begin{table}[h!b!p!]
@@ -164,66 +167,66 @@ nature, a ``Link Name'' column describing the text of the link
             \\
 
             1 &
-            Photos from \$user-id &
+            Photos from \$user &
             You &
             Global navigation &
-            /photos/\$user-id &
+            /photos/\$user &
             \\
 
               1.1 &
               ~\$photo-title &
               Photo thumbnail &
               Content area &
-              /photos/\$user-id/\$photo-id &
+              /photos/\$user/\$photo-id &
               \\
 
                 1.1.1 &
-                ~~Photos from \$user-id &
-                \$user-id &
+                ~~Photos from \$user &
+                \$user &
                 Content (comments list) &
-                /photos/\$user-id &
+                /photos/\$user &
                 Same as 1.0\\
 
                 1.1.2 &
                 ~~\$set-title - a photoset on Flickr &
                 \$set-title (Set) &
                 Right sidebar &
-                /photos/\$user-id/sets/\$set-id &
+                /photos/\$user/sets/\$set-id &
                 Same as 1.2 and 1.3.1 \\
 
                 1.1.3 &
-                ~~\$group-name Pool &
-                \$group-name (Pool) &
+                ~~\$group Pool &
+                \$group (Pool) &
                 Right sidebar &
-                /groups/\$group-name/pool &
+                /groups/\$group/pool &
                 Same as N.N, explored there \\
 
                 1.1.4 &
-                ~~\$user-id photos tagged with \$tag-name &
-                \$tag-name &
+                ~~\$user photos tagged with \$tag &
+                \$tag &
                 Right sidebar (tag list) &
-                /photos/\$user-id/tags/\$tag-name &
+                /photos/\$user/tags/\$tag &
                 \\
 
                   1.1.4.1 &
-                  ~~~Photos tagged with \$tag-name &
-                  public photos tagged with \$tag-name &
+                  ~~~Photos tagged with \$tag &
+                  public photos tagged with \$tag &
                   Left sidebar &
-                  /photos/tags/\$tag-name &
+                  /photos/tags/\$tag &
                   Same as 1.4.1.1 \\
 
                 1.1.5 &
                 ~~Explore your geotagged photos on a Map &
-                (map) -> View \$user-id map &
+                (map) -> View \$user map &
                 Right sidebar (details list) &
-                /photos/\$user-id/\$photo-id/map/?view=users &
+                /photos/\$user/\$photo-id/map/?view=users &
                 An inline dialog is opened from the (map) link \\
 
                 1.1.6 &
                 ~~Explore everyone's geotagged photos on a Map &
                 (map) -> see more photos here &
                 Right sidebar (details list) &
-                /photos/\$user-id/\$photo-id/map/?view=everyone &
+                /photos/\$user/\$photo-id/map/?view=everyone &
                 An inline dialog is opened from the (map) link \\
 
                 1.1.7 &
@@ -234,200 +237,200 @@ nature, a ``Link Name'' column describing the text of the link
                 Same as N.N \\
 
                 1.1.8 &
-                ~~Archive of your photos taken on \$photo-date &
+                ~~Archive of your photos taken on \$year-month-day &
                 \$camera-model &
                 Right sidebar (detail list) &
-                /photos/\$user-id/archives/date-taken/\$photo-date &
+                /photos/\$user/archives/date-taken/\$year-month-day &
                 Same as 1.6.1 \\
 
               1.2 &
               ~\$set-title - a photoset on Flickr &
               \$set-title &
               Left sidebar &
-              /photos/\$user-id/sets/\$set-id &
+              /photos/\$user/sets/\$set-id &
               Same as 1.1.2 and 1.3.1 \\
 
               1.3 &
-              ~\$user-id sets on Flickr &
+              ~\$user sets on Flickr &
               Sets &
               Local navigation &
-              /photos/\$user-id/sets &
+              /photos/\$user/sets &
               \\
 
                 1.3.1 &
                 ~~\$set-title - a photoset on Flickr &
                 \$set-title &
                 Content area &
-                /photos/\$user-id/sets/\$set-id &
+                /photos/\$user/sets/\$set-id &
                 Same as 1.1.2 and 1.2 \\
 
                   1.1.1.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id/in/set-\$set-id &
+                  /photos/\$user/\$photo-id/in/set-\$set-id &
                   Almost same as N.N and more\\
 
 
               1.4 &
-              ~i\$user-id tags &
+              ~\$user tags &
               Tags &
               Local navigation &
-              /photos/\$user-id/tags &
+              /photos/\$user/tags &
               \\
 
                 1.4.1 &
-                ~~\$user-id photos tagged with \$tag-name &
-                \$tag-name &
+                ~~\$user photos tagged with \$tag &
+                \$tag &
                 Content (tag cloud) &
-                /photos/\$user-id/tags/\$tag-name &
+                /photos/\$user/tags/\$tag &
                 \\
 
                   1.4.1.1 &
-                  ~~~Photos tagged with \$tag-name &
-                  public photos tagged with \$tag-name &
+                  ~~~Photos tagged with \$tag &
+                  public photos tagged with \$tag &
                   Left sidebar &
-                  /photos/tags/\$tag-name &
+                  /photos/tags/\$tag &
                   Same as 1.1.4.1 \\
 
                   1.4.1.2 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as N.N and more\\
 
               1.5 &
               ~Explore your geotagged photos on a Map &
               Map &
               Local navigation &
-              /photos/\$user-id/map &
+              /photos/\$user/map &
               \\
 
                 1.5.1 &
                 ~~\$photo-name &
                 Photo count icon &
                 Map &
-                /photos/\$user-id/map &
+                /photos/\$user/map &
                 Inline dialog\\
 
                   1.5.1.1 &
-                  ~~~\$user-id photos tagged with \$tag-name &
-                  \$tag-name &
+                  ~~~\$user photos tagged with \$tag &
+                  \$tag &
                   Inline dialog &
-                  /photos/\$user-id/tags/\$tag-name &
+                  /photos/\$user/tags/\$tag &
                   Same as 1.1.3 and 1.4.1\\
 
                   1.5.1.2 &
                   ~~~\$photo-title &
                   View photo page &
                   Inline dialog &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
               1.6 &
               ~Archive of all your photos on Flickr &
               Archives &
               Local navigation &
-              /photos/\$user-id/archives &
+              /photos/\$user/archives &
               \\
 
                 1.6.1 &
-                ~~Archive of your photos taken on \$photo-date &
-                \$photo-date &
+                ~~Archive of your photos taken on \$year-month &
+                \$year-month &
                 Content area (Taken on) &
-                /photos/\$user-id/archives/date-taken/\$photo-date &
+                /photos/\$user/archives/date-taken/\$year-month &
                 Same as 1.1.7 \\
 
                   1.6.1.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
                 1.6.2 &
-                ~~Archive of your photos posted on \$photo-date &
-                \$photo-date &
+                ~~Archive of your photos posted on \$year-month &
+                \$year-month &
                 Content area (Posted on) &
-                /photos/\$user-id/archives/date-posted/\$photo-date &
+                /photos/\$user/archives/date-posted/\$year-month &
                 Same as 1.1.7 \\
 
                   1.6.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
               1.7 &
-              ~\$user-id favorite photos on Flickr &
+              ~\$user favorite photos on Flickr &
               Favorites &
               Local navigation &
-              /photos/\$user-id/favorites &
+              /photos/\$user/favorites &
               \\
 
                 1.7.1 &
                 ~~\$photo-title &
                 Photo thumbnail &
                 Content area &
-                /photos/\$user-id/\$photo-id &
+                /photos/\$user/\$photo-id &
                 Same as 1.1 \\
 
               1.8 &
-              ~\$user-id most popular photos, interestingness &
+              ~\$user most popular photos, interestingness &
               Popular &
               Local navigation &
-              /photos/\$user-id/popular-interesting &
+              /photos/\$user/popular-interesting &
               \\
 
                 1.8.1 &
                 ~~\$photo-title &
                 Photo thumbnail or photo title &
                 Content area &
-                /photos/\$user-id/\$photo-id &
+                /photos/\$user/\$photo-id &
                 Same as 1.1 \\
 
                 1.8.2 &
-                ~~\$user-id most popular photos, views &
+                ~~\$user most popular photos, views &
                 Views &
                 Sub local navigation &
-                /photos/\$user-id/popular-views &
+                /photos/\$user/popular-views &
                 \\
 
                   1.8.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail or photo title &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
                 1.8.3 &
-                ~~\$user-id most popular photos, fovorites &
+                ~~\$user most popular photos, fovorites &
                 Views &
                 Sub local navigation &
-                /photos/\$user-id/popular-faves &
+                /photos/\$user/popular-faves &
                 \\
 
                   1.8.3.1 &
                   ~~~\$photo-title &
                   Photo thumbnail or photo title &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
                 1.8.2 &
-                ~~\$user-id most popular photos, comments &
+                ~~\$user most popular photos, comments &
                 Comments &
                 Sub local navigation &
-                /photos/\$user-id/popular-comments &
+                /photos/\$user/popular-comments &
                 \\
 
                   1.8.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail or photo title &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
           \end{tabular}
@@ -455,24 +458,24 @@ nature, a ``Link Name'' column describing the text of the link
             \hline
 
               1.9 &
-              ~\$user-id &
+              ~\$user &
               Profile &
               Local navigation &
-              /people/\$user-id &
+              /people/\$user &
               \\
 
                 1.9.1 &
-                ~~Photos from \$user-id &
-                \$user-id &
+                ~~Photos from \$user &
+                \$user &
                 Content (Groups) &
-                /photos/\$user-id &
+                /photos/\$user &
                 Same as 1 \\
 
                 1.9.2 &
-                ~~\$group-name &
-                \$group-name &
+                ~~\$group &
+                \$group &
                 Content (Groups) &
-                /groups/\$group-name &
+                /groups/\$group &
                 Same as 4.1, explored there \\
 
             2 &
@@ -493,14 +496,14 @@ nature, a ``Link Name'' column describing the text of the link
               ~\$photo-title &
               Photo thumbnail &
               Content area &
-              /photos/\$user-id/\$photo-id &
+              /photos/\$user/\$photo-id &
               Same as 1.1 \\
 
               3.2 &
-              ~Photos from \$user-id &
-              \$user-id &
+              ~Photos from \$user &
+              \$user &
               Content area &
-              /photos/\$user-id &
+              /photos/\$user &
               Same as 1 \\
 
             4 &
@@ -511,94 +514,94 @@ nature, a ``Link Name'' column describing the text of the link
             \\
 
               4.1 &
-              ~\$group-name &
-              \$group-name &
+              ~\$group &
+              \$group &
               Content &
-              /groups/\$group-name &
+              /groups/\$group &
               \\
 
                 4.1.1 &
-                ~~\$group-name discussion topics &
+                ~~\$group discussion topics &
                 Discussion &
                 Local navigation &
-                /groups/\$group-name/discuss &
+                /groups/\$group/discuss &
                 \\
 
                   4.1.1.1 &
-                  ~~~\$topic-name in \$group-name &
-                  \$topic-name &
+                  ~~~\$topic-title in \$group &
+                  \$topic-title &
                   Content (topic list) &
-                  /groups/\$group-name/discuss &
+                  /groups/\$group/discuss/\$topic-id &
                   \\
 
                   4.1.1.2 &
-                  ~~~Photos from \$user-id &
-                  \$user-id &
+                  ~~~Photos from \$user &
+                  \$user &
                   Content (topic list) &
-                  /photos/\$user-id &
+                  /photos/\$user &
                   \\
 
                 4.1.2 &
-                ~~\$group-name Pool &
+                ~~\$group Pool &
                 Pool &
                 Local navigation &
-                /groups/\$group-name/discuss &
+                /groups/\$group/discuss &
                 \\
 
                   4.1.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id/in/pool-\$pool-id &
+                  /photos/\$user/\$photo-id/in/pool-\$group &
                   \\
 
                   4.1.2.2 &
-                  ~~~Photos from \$user-id &
-                  \$user-id &
+                  ~~~Photos from \$user &
+                  \$user &
                   Content area &
-                  /photos/\$user-id &
+                  /photos/\$user &
                   \\
 
                 4.1.3 &
-                ~~Explore geotagged photos from \$group-name  &
+                ~~Explore geotagged photos from \$group  &
                 Pool &
                 Local navigation &
-                /groups/\$group-name/pool/map?mode=group &
+                /groups/\$group/pool/map?mode=group &
                 \\
 
                   4.1.3.1 &
                   ~~~\$photo-name &
                   Photo count icon &
                   Map &
-                  /groups/\$group-name/pool/map?mode=group &
+                  /groups/\$group/pool/map?mode=group &
                   Inline dialog\\
 
                     4.1.3.1.1 &
-                    ~~~~\$user-id photos tagged with \$tag-name &
-                    \$tag-name &
+                    ~~~~\$user photos tagged with \$tag &
+                    \$tag &
                     Inline dialog &
-                    /photos/\$user-id/tags/\$tag-name &
+                    /photos/\$user/tags/\$tag &
                     Same as 1.1.3 and 1.4.1\\
 
                     4.1.3.1.2 &
                     ~~~~~\$photo-title &
                     View photo page &
                     Inline dialog &
-                    /photos/\$user-id/\$photo-id &
+                    /photos/\$user/\$photo-id &
                     Same as 1.1 \\
 
                 4.1.3 &
-                ~~\$group-name  &
+                ~~\$group  &
                 \$member-count Members &
                 Local navigation &
                 /groups\_members.gne?id=\$group-id &
                 \\
 
                   4.1.3.1 &
-                  ~~~Photos from \$user-id &
-                  \$user-id &
+                  ~~~Photos from \$user &
+                  \$user &
                   Content area &
-                  /photos/\$user-id &
+                  /photos/\$user &
                   \\
 
 
@@ -613,14 +616,14 @@ nature, a ``Link Name'' column describing the text of the link
               ~\$photo-title &
               Photo thumbnail or \$photo-title &
               Content (highlighted photo) &
-              /photos/\$user-id/\$photo-id &
+              /photos/\$user/\$photo-id &
               Same as 1.1 \\
 
               5.2 &
-              ~Photos from \$user-id &
-              \$user-id &
+              ~Photos from \$user &
+              \$user &
               Content (highlighted photo) &
-              /photos/\$user-id &
+              /photos/\$user &
               \\
 
               5.3 &
@@ -634,35 +637,35 @@ nature, a ``Link Name'' column describing the text of the link
                 ~\$photo-title &
                 Photo thumbnail or \$photo-title &
                 Content area &
-                /photos/\$user-id/\$photo-id &
+                /photos/\$user/\$photo-id &
                 Same as 1.1 \\
 
                 5.3.2 &
-                ~Photos from \$user-id &
-                \$user-id &
+                ~Photos from \$user &
+                \$user &
                 Content area &
-                /photos/\$user-id &
+                /photos/\$user &
                 \\
 
               5.4 &
               ~Explore interesting photos from \$year-month &
               \$year-month &
               Content area &
-              /explore/interesting/\$year-date &
+              /explore/interesting/\$year-month &
               \\
 
                 5.4.1 &
                 ~~\$photo-title &
                 Photo thumbnail or \$photo-title &
                 Content area &
-                /photos/\$user-id/\$photo-id &
+                /photos/\$user/\$photo-id &
                 Same as 1.1 \\
 
                 5.4.2 &
-                ~~Photos from \$user-id &
-                \$user-id &
+                ~~Photos from \$user &
+                \$user &
                 Content area &
-                /photos/\$user-id &
+                /photos/\$user &
                 \\
 
               5.5 &
@@ -680,17 +683,17 @@ nature, a ``Link Name'' column describing the text of the link
                 Inline dialog\\
 
                   5.5.1.1 &
-                  ~~~\$user-id photos tagged with \$tag-name &
-                  \$tag-name &
+                  ~~~\$user photos tagged with \$tag &
+                  \$tag &
                   Inline dialog &
-                  /photos/\$user-id/tags/\$tag-name &
+                  /photos/\$user/tags/\$tag &
                   Same as 1.1.3 and 1.4.1\\
 
                   5.5.1.2 &
                   ~~~\$photo-title &
                   View photo page &
                   Inline dialog &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
               5.6 &
@@ -701,59 +704,59 @@ nature, a ``Link Name'' column describing the text of the link
               \\
 
                 5.6.1 &
-                ~~Photos tagged with \$tag-name &
-                \$tag-name &
+                ~~Photos tagged with \$tag &
+                \$tag &
                 Content (tag cloud) &
-                /photos/tags/\$tag-name &
+                /photos/tags/\$tag &
                 \\
 
                   5.6.1.1 &
-                  ~~~Photos tagged with \$tag-name &
+                  ~~~Photos tagged with \$tag &
                   Most interesting &
                   Left column &
-                  /photos/tags/\$tag-name/interesting &
+                  /photos/tags/\$tag/interesting &
                   \\
 
                     5.6.1.1.1 &
                     ~~~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$user-id/\$photo-id &
+                    /photos/\$user/\$photo-id &
                     Same as 1.1 \\
 
                     5.6.1.1.2 &
-                    ~~~~Photos from \$user-id &
-                    \$user-id &
+                    ~~~~Photos from \$user &
+                    \$user &
                     Content area &
-                    /photos/\$user-id &
+                    /photos/\$user &
                     \\
 
                   5.6.1.2 &
-                  ~~~Photos tagged with \$tag-name &
-                  \$tag-name clusters &
+                  ~~~Photos tagged with \$tag &
+                  \$tag clusters &
                   Left column &
-                  /photos/tags/\$tag-name/clusters &
+                  /photos/tags/\$tag/clusters &
                   \\
 
                     5.6.1.2.1 &
                     ~~~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$user-id/\$photo-id &
+                    /photos/\$user/\$photo-id &
                     Same as 1.1 \\
 
                     5.6.1.2.2 &
-                    ~~~~Photos from \$user-id &
-                    \$user-id &
+                    ~~~~Photos from \$user &
+                    \$user &
                     Content area &
-                    /photos/\$user-id &
+                    /photos/\$user &
                     \\
 
                     5.6.1.2.3 &
-                    ~~~~Photos tagged with \$tag-name &
-                    \$tag-name &
+                    ~~~~Photos tagged with \$tag &
+                    \$tag &
                     Content (cluster list) &
-                    /photos/tags/\$tag-name/clusters &
+                    /photos/tags/\$tag/clusters &
                     Goes back in circle to 5.6.1.2 again \\
 
           \end{tabular}
@@ -781,38 +784,38 @@ nature, a ``Link Name'' column describing the text of the link
             \hline
 
                     5.6.1.2.4 &
-                    ~~~Photos tagged with \$tag-name &
+                    ~~~Photos tagged with \$tag &
                     See more of this cluster\ldots &
                     Content area &
-                    /photos/tags/\$tag-name/clusters/\$cluster-name &
+                    /photos/tags/\$tag/clusters/\$tag-\$tag-\$tag &
                     \\
 
                       5.6.1.2.4.1 &
                       ~~~~\$photo-title &
                       Photo thumbnail &
                       Content area &
-                      /photos/\$user-id/\$photo-id &
+                      /photos/\$user/\$photo-id &
                       Same as 1.1 \\
 
                       5.6.1.2.4.2 &
-                      ~~~~Photos from \$user-id &
-                      \$user-id &
+                      ~~~~Photos from \$user &
+                      \$user &
                       Content area &
-                      /photos/\$user-id &
+                      /photos/\$user &
                       \\
 
                   5.6.1.3 &
                   ~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
                   5.6.1.4 &
-                  ~~Photos from \$user-id &
-                  \$user-id &
+                  ~~Photos from \$user &
+                  \$user &
                   Content area &
-                  /photos/\$user-id &
+                  /photos/\$user &
                   \\
 
               5.7 &
@@ -840,14 +843,14 @@ nature, a ``Link Name'' column describing the text of the link
                     ~~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$user-id/\$photo-id &
+                    /photos/\$user/\$photo-id &
                     Same as 1.1 \\
 
                     5.6.1.1.2 &
-                    ~~~Photos from \$user-id &
-                    \$user-id &
+                    ~~~Photos from \$user &
+                    \$user &
                     Content area &
-                    /photos/\$user-id &
+                    /photos/\$user &
                     \\
 
               5.8 &
@@ -861,14 +864,14 @@ nature, a ``Link Name'' column describing the text of the link
                   ~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$user-id/\$photo-id &
+                  /photos/\$user/\$photo-id &
                   Same as 1.1 \\
 
                   5.8.2 &
-                  ~~Photos from \$user-id &
-                  \$user-id &
+                  ~~Photos from \$user &
+                  \$user &
                   Content area &
-                  /photos/\$user-id &
+                  /photos/\$user &
                   \\
 
 
@@ -890,42 +893,42 @@ nature, a ``Link Name'' column describing the text of the link
                     ~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$user-id/\$photo-id &
+                    /photos/\$user/\$photo-id &
                     Same as 1.1 \\
 
                     5.8.4.2 &
-                    ~~Photos from \$user-id &
-                    \$user-id &
+                    ~~Photos from \$user &
+                    \$user &
                     Content area &
-                    /photos/\$user-id &
+                    /photos/\$user &
                     \\
 
                     5.8.4.3 &
                     ~~Photos with Creative Commons \$license-type &
                     See more &
                     Content (\$license-type) &
-                    /photos/\$user-id &
+                    /photos/\$user &
                     \\
 
                       5.8.4.3.1 &
                       ~~~\$photo-title &
                       Photo thumbnail &
                       Content area &
-                      /photos/\$user-id/\$photo-id &
+                      /photos/\$user/\$photo-id &
                       Same as 1.1 \\
 
                       5.8.4.3.2 &
-                      ~~~Photos from \$user-id &
-                      \$user-id &
+                      ~~~Photos from \$user &
+                      \$user &
                       Content area &
-                      /photos/\$user-id &
+                      /photos/\$user &
                       \\
 
               5.9 &
-              ~Photos tagged with \$tag-name &
-              \$tag-name &
+              ~Photos tagged with \$tag &
+              \$tag &
               Content (tag cloud) &
-              /photos/tags/\$tag-name &
+              /photos/tags/\$tag &
               Same as 5.61\\
 
 
@@ -933,77 +936,77 @@ nature, a ``Link Name'' column describing the text of the link
               ~Explore interesting photos from \$year-month-day &
               \$year-month-day &
               Content (A year ago) &
-              /explore/interesting/\$year-date-day &
+              /explore/interesting/\$year-month-day &
               \\
 
                 5.10.1 &
                 ~~\$photo-title &
                 Photo thumbnail &
                 Content area &
-                /photos/\$user-id/\$photo-id &
+                /photos/\$user/\$photo-id &
                 Same as 1.1 \\
 
                 5.10.2 &
-                ~~Photos from \$user-id &
-                \$user-id and see more photos &
+                ~~Photos from \$user &
+                \$user and see more photos &
                 Content area &
-                /photos/\$user-id &
+                /photos/\$user &
                 \\
 
                 5.10.3 &
-                ~~\$user-id &
+                ~~\$user &
                 profile &
                 Content area &
-                /people/\$user-id &
+                /people/\$user &
                 \\
 
                 5.6.1.2 &
-                ~~Photos tagged with \$tag-name &
-                \$tag-name &
+                ~~Photos tagged with \$tag &
+                \$tag &
                 Content area &
-                /photos/tags/\$tag-name/clusters &
+                /photos/tags/\$tag/clusters &
                 \\
 
               5.11 &
               ~\$photo-title &
               Photo thumbnail or \$photo-title &
               Content (A year ago) &
-              /photos/\$user-id/\$photo-id &
+              /photos/\$user/\$photo-id &
               Same as 1.1 \\
 
               5.12 &
-              ~Photos from \$user-id &
-              \$user-id &
+              ~Photos from \$user &
+              \$user &
               Content (A year ago) &
-              /photos/\$user-id &
+              /photos/\$user &
               \\
 
               5.13 &
-              ~\$user-id &
+              ~\$user &
               profile &
               Content (A year ago) &
-              /people/\$user-id &
+              /people/\$user &
               \\
 
               5.14 &
               ~\$set-title - a photoset on Flickr &
               \$set-title &
               Content (Sets) &
-              /photos/\$user-id/sets/\$set-id &
+              /photos/\$user/sets/\$set-id &
               Same as 1.1.2 and 1.2 \\
 
                 1.1.1.1 &
                 ~~\$photo-title &
                 Photo thumbnail &
                 Content area &
-                /photos/\$user-id/\$photo-id/in/set-\$set-id &
+                /photos/\$user/\$photo-id/in/set-\$set-id &
                 \\
 
               5.15 &
-              ~Photos from \$user-id &
-              \$user-id &
+              ~Photos from \$user &
+              \$user &
               Content (Sets) &
-              /photos/\$user-id &
+              /photos/\$user &
               \\
 
               5.16 &
@@ -1014,21 +1017,21 @@ nature, a ``Link Name'' column describing the text of the link
               Same as 4\\
 
               5.17 &
-              ~\$group-name &
-              \$group-name &
+              ~\$group &
+              \$group &
               Content (Groups) &
-              /groups/\$group-name &
+              /groups/\$group &
               \\
 
               5.18 &
-              ~\$group-name Pool &
+              ~\$group Pool &
               Pool &
               Local navigation &
-              /groups/\$group-name/pool &
+              /groups/\$group/pool &
               Same as 4.1.2 \\
 
               5.19 &
-              ~\$group-name  &
+              ~\$group  &
               \$member-count Members &
               Local navigation &
               /groups\_members.gne?id=\$group-id &
