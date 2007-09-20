@@ -44,10 +44,105 @@ identified below. In my first navigation upon a given page I've followed all
 relevant navigational paths to the end. On my second encounter of the same
 page I've noted the identifier for the first time this page was visited.
 
+The following content inventory detailed in
+Table~\ref{table:flickr.content.inventory.1}
+(p.~\pageref{table:flickr.content.inventory.1}),
+Table~\ref{table:flickr.content.inventory.2}
+(p.~\pageref{table:flickr.content.inventory.2}), and
+Table~\ref{table:flickr.content.inventory.3}
+(p.~\pageref{table:flickr.content.inventory.3})
+represents the state of the Flickr service as of the 20th September 2007.
+Details could very well have changed since then as
+services like these are known to have a rapid development cycle
+where changes and improvments often are imposed on the userbase at quite
+a frequent rate.
+
+When collecting data one notices that there is an enormous ammount of pages
+sharing a common structure only differing in a variable. Examples include
+the user in question for a profile page, the tag for a listing of photos
+annotated with such a tag, the date for time based history listings and so on.
+I therefore introduced several such variables prefixed with a dollar sign: \$
+\footnote{Inspired from variable usage in UNIX shell scripting}. A complete
+listing of such variables an their meaning can be found in
+Table~\ref{table:flickr.variable.list}
+(p.~\pageref{table:flickr.variable.list})
+
+\begin{table}[h!b!p!]
+  \caption{Variable Listing for Flickr}
+  \label{table:flickr.variable.list}
+  \begin{center}
+    \begin{tabular}{l|l}
+
+      Variable &
+      Description \\
+
+      \hline
+
+      \$user-id &
+      Unique nick-name for a user \\
+
+      \$photo-id &
+      Unique numerical identifier for a photo \\
+
+      \$photo-title &
+      Textual title of a photo \\
+
+      \$set-id &
+      Unique numerical identifier for a set (of photos) \\
+
+      \$Textual title of a set-title &
+      Textual title of a set \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+      \$ &
+      change \\
+
+
+    \end{tabular}
+  \end{center}
+\end{table}
+
+Most pages have both a title displayed in the browsers title-bar (using a
+html title anchor inside the head anchor) and a in page-heading (usualy inside
+a html h1 anchor). During the content inventory I took not of the most
+descriptive of these two in the following ``Page Title'' columns. There were
+occasions where one of these were lacking in properly describing the pages
+content. Since the aim of this content inventory is to get an informed picture
+of the navigational structures I simply selected the most fitting title.
+I opted to ignore noting down such inconsistencies as one probably would to
+when using content inventory as a tool for improving site architecture.
+
+In addition to the ``Page Title'' column the content inventory tables have an
+``Id'' column where each page is assigned a unique identifier of hierarchical
+nature, a ``Link Name'' column describing the text of the link 
+
 \begin{landscape}
   \begin{table}[h!b!p!]
     \caption{Content Inventory of Flickr, Part One}
-    \label{table:content.inventory.flickr.1}
+    \label{table:flickr.content.inventory.1}
     \begin{center}
       \begin{tiny}
         \tt
@@ -69,31 +164,31 @@ page I've noted the identifier for the first time this page was visited.
             \\
 
             1 &
-            Photos from \$usr-id &
+            Photos from \$user-id &
             You &
             Global navigation &
-            /photos/\$usr-id &
+            /photos/\$user-id &
             \\
 
               1.1 &
               ~\$photo-title &
               Photo thumbnail &
               Content area &
-              /photos/\$usr-id/\$photo-id &
+              /photos/\$user-id/\$photo-id &
               \\
 
                 1.1.1 &
-                ~~Photos from \$usr-id &
-                \$usr-id &
+                ~~Photos from \$user-id &
+                \$user-id &
                 Content (comments list) &
-                /photos/\$usr-id &
+                /photos/\$user-id &
                 Same as 1.0\\
 
                 1.1.2 &
                 ~~\$set-title - a photoset on Flickr &
                 \$set-title (Set) &
                 Right sidebar &
-                /photos/\$usr-id/sets/\$set-id &
+                /photos/\$user-id/sets/\$set-id &
                 Same as 1.2 and 1.3.1 \\
 
                 1.1.3 &
@@ -104,10 +199,10 @@ page I've noted the identifier for the first time this page was visited.
                 Same as N.N, explored there \\
 
                 1.1.4 &
-                ~~\$usr-id photos tagged with \$tag-name &
+                ~~\$user-id photos tagged with \$tag-name &
                 \$tag-name &
                 Right sidebar (tag list) &
-                /photos/\$usr-id/tags/\$tag-name &
+                /photos/\$user-id/tags/\$tag-name &
                 \\
 
                   1.1.4.1 &
@@ -119,16 +214,16 @@ page I've noted the identifier for the first time this page was visited.
 
                 1.1.5 &
                 ~~Explore your geotagged photos on a Map &
-                (map) -> View \$usr-id map &
+                (map) -> View \$user-id map &
                 Right sidebar (details list) &
-                /photos/\$usr-id/\$photo-id/map/?view=users &
+                /photos/\$user-id/\$photo-id/map/?view=users &
                 An inline dialog is opened from the (map) link \\
 
                 1.1.6 &
                 ~~Explore everyone's geotagged photos on a Map &
                 (map) -> see more photos here &
                 Right sidebar (details list) &
-                /photos/\$usr-id/\$photo-id/map/?view=everyone &
+                /photos/\$user-id/\$photo-id/map/?view=everyone &
                 An inline dialog is opened from the (map) link \\
 
                 1.1.7 &
@@ -142,50 +237,50 @@ page I've noted the identifier for the first time this page was visited.
                 ~~Archive of your photos taken on \$photo-date &
                 \$camera-model &
                 Right sidebar (detail list) &
-                /photos/\$usr-id/archives/date-taken/\$photo-date &
+                /photos/\$user-id/archives/date-taken/\$photo-date &
                 Same as 1.6.1 \\
 
               1.2 &
               ~\$set-title - a photoset on Flickr &
               \$set-title &
               Left sidebar &
-              /photos/\$usr-id/sets/\$set-id &
+              /photos/\$user-id/sets/\$set-id &
               Same as 1.1.2 and 1.3.1 \\
 
               1.3 &
-              ~\$usr-id sets on Flickr &
+              ~\$user-id sets on Flickr &
               Sets &
               Local navigation &
-              /photos/\$usr-id/sets &
+              /photos/\$user-id/sets &
               \\
 
                 1.3.1 &
                 ~~\$set-title - a photoset on Flickr &
                 \$set-title &
                 Content area &
-                /photos/\$usr-id/sets/\$set-id &
+                /photos/\$user-id/sets/\$set-id &
                 Same as 1.1.2 and 1.2 \\
 
                   1.1.1.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id/in/set-\$set-id &
+                  /photos/\$user-id/\$photo-id/in/set-\$set-id &
                   Almost same as N.N and more\\
 
 
               1.4 &
-              ~i\$usr-id tags &
+              ~i\$user-id tags &
               Tags &
               Local navigation &
-              /photos/\$usr-id/tags &
+              /photos/\$user-id/tags &
               \\
 
                 1.4.1 &
-                ~~\$usr-id photos tagged with \$tag-name &
+                ~~\$user-id photos tagged with \$tag-name &
                 \$tag-name &
                 Content (tag cloud) &
-                /photos/\$usr-id/tags/\$tag-name &
+                /photos/\$user-id/tags/\$tag-name &
                 \\
 
                   1.4.1.1 &
@@ -199,140 +294,140 @@ page I've noted the identifier for the first time this page was visited.
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as N.N and more\\
 
               1.5 &
               ~Explore your geotagged photos on a Map &
               Map &
               Local navigation &
-              /photos/\$usr-id/map &
+              /photos/\$user-id/map &
               \\
 
                 1.5.1 &
                 ~~\$photo-name &
                 Photo count icon &
                 Map &
-                /photos/\$usr-id/map &
+                /photos/\$user-id/map &
                 Inline dialog\\
 
                   1.5.1.1 &
-                  ~~~\$usr-id photos tagged with \$tag-name &
+                  ~~~\$user-id photos tagged with \$tag-name &
                   \$tag-name &
                   Inline dialog &
-                  /photos/\$usr-id/tags/\$tag-name &
+                  /photos/\$user-id/tags/\$tag-name &
                   Same as 1.1.3 and 1.4.1\\
 
                   1.5.1.2 &
                   ~~~\$photo-title &
                   View photo page &
                   Inline dialog &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
               1.6 &
               ~Archive of all your photos on Flickr &
               Archives &
               Local navigation &
-              /photos/\$usr-id/archives &
+              /photos/\$user-id/archives &
               \\
 
                 1.6.1 &
                 ~~Archive of your photos taken on \$photo-date &
                 \$photo-date &
                 Content area (Taken on) &
-                /photos/\$usr-id/archives/date-taken/\$photo-date &
+                /photos/\$user-id/archives/date-taken/\$photo-date &
                 Same as 1.1.7 \\
 
                   1.6.1.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
                 1.6.2 &
                 ~~Archive of your photos posted on \$photo-date &
                 \$photo-date &
                 Content area (Posted on) &
-                /photos/\$usr-id/archives/date-posted/\$photo-date &
+                /photos/\$user-id/archives/date-posted/\$photo-date &
                 Same as 1.1.7 \\
 
                   1.6.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
               1.7 &
-              ~\$usr-id favorite photos on Flickr &
+              ~\$user-id favorite photos on Flickr &
               Favorites &
               Local navigation &
-              /photos/\$usr-id/favorites &
+              /photos/\$user-id/favorites &
               \\
 
                 1.7.1 &
                 ~~\$photo-title &
                 Photo thumbnail &
                 Content area &
-                /photos/\$usr-id/\$photo-id &
+                /photos/\$user-id/\$photo-id &
                 Same as 1.1 \\
 
               1.8 &
-              ~\$usr-id most popular photos, interestingness &
+              ~\$user-id most popular photos, interestingness &
               Popular &
               Local navigation &
-              /photos/\$usr-id/popular-interesting &
+              /photos/\$user-id/popular-interesting &
               \\
 
                 1.8.1 &
                 ~~\$photo-title &
                 Photo thumbnail or photo title &
                 Content area &
-                /photos/\$usr-id/\$photo-id &
+                /photos/\$user-id/\$photo-id &
                 Same as 1.1 \\
 
                 1.8.2 &
-                ~~\$usr-id most popular photos, views &
+                ~~\$user-id most popular photos, views &
                 Views &
                 Sub local navigation &
-                /photos/\$usr-id/popular-views &
+                /photos/\$user-id/popular-views &
                 \\
 
                   1.8.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail or photo title &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
                 1.8.3 &
-                ~~\$usr-id most popular photos, fovorites &
+                ~~\$user-id most popular photos, fovorites &
                 Views &
                 Sub local navigation &
-                /photos/\$usr-id/popular-faves &
+                /photos/\$user-id/popular-faves &
                 \\
 
                   1.8.3.1 &
                   ~~~\$photo-title &
                   Photo thumbnail or photo title &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
                 1.8.2 &
-                ~~\$usr-id most popular photos, comments &
+                ~~\$user-id most popular photos, comments &
                 Comments &
                 Sub local navigation &
-                /photos/\$usr-id/popular-comments &
+                /photos/\$user-id/popular-comments &
                 \\
 
                   1.8.2.1 &
                   ~~~\$photo-title &
                   Photo thumbnail or photo title &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
           \end{tabular}
@@ -345,7 +440,7 @@ page I've noted the identifier for the first time this page was visited.
 \begin{landscape}
   \begin{table}[h!b!p!]
     \caption{Content Inventory of Flickr, Part Two}
-    \label{table:content.inventory.flickr.2}
+    \label{table:flickr.content.inventory.2}
     \begin{center}
       \begin{tiny}
         \tt
@@ -360,17 +455,17 @@ page I've noted the identifier for the first time this page was visited.
             \hline
 
               1.9 &
-              ~\$usr-id &
+              ~\$user-id &
               Profile &
               Local navigation &
-              /people/\$usr-id &
+              /people/\$user-id &
               \\
 
                 1.9.1 &
-                ~~Photos from \$usr-id &
-                \$usr-id &
+                ~~Photos from \$user-id &
+                \$user-id &
                 Content (Groups) &
-                /photos/\$usr-id &
+                /photos/\$user-id &
                 Same as 1 \\
 
                 1.9.2 &
@@ -398,14 +493,14 @@ page I've noted the identifier for the first time this page was visited.
               ~\$photo-title &
               Photo thumbnail &
               Content area &
-              /photos/\$usr-id/\$photo-id &
+              /photos/\$user-id/\$photo-id &
               Same as 1.1 \\
 
               3.2 &
-              ~Photos from \$usr-id &
-              \$usr-id &
+              ~Photos from \$user-id &
+              \$user-id &
               Content area &
-              /photos/\$usr-id &
+              /photos/\$user-id &
               Same as 1 \\
 
             4 &
@@ -437,10 +532,10 @@ page I've noted the identifier for the first time this page was visited.
                   \\
 
                   4.1.1.2 &
-                  ~~~Photos from \$usr-id &
-                  \$usr-id &
+                  ~~~Photos from \$user-id &
+                  \$user-id &
                   Content (topic list) &
-                  /photos/\$usr-id &
+                  /photos/\$user-id &
                   \\
 
                 4.1.2 &
@@ -454,14 +549,14 @@ page I've noted the identifier for the first time this page was visited.
                   ~~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id/in/pool-\$pool-id &
+                  /photos/\$user-id/\$photo-id/in/pool-\$pool-id &
                   \\
 
                   4.1.2.2 &
-                  ~~~Photos from \$usr-id &
-                  \$usr-id &
+                  ~~~Photos from \$user-id &
+                  \$user-id &
                   Content area &
-                  /photos/\$usr-id &
+                  /photos/\$user-id &
                   \\
 
                 4.1.3 &
@@ -479,17 +574,17 @@ page I've noted the identifier for the first time this page was visited.
                   Inline dialog\\
 
                     4.1.3.1.1 &
-                    ~~~~\$usr-id photos tagged with \$tag-name &
+                    ~~~~\$user-id photos tagged with \$tag-name &
                     \$tag-name &
                     Inline dialog &
-                    /photos/\$usr-id/tags/\$tag-name &
+                    /photos/\$user-id/tags/\$tag-name &
                     Same as 1.1.3 and 1.4.1\\
 
                     4.1.3.1.2 &
                     ~~~~~\$photo-title &
                     View photo page &
                     Inline dialog &
-                    /photos/\$usr-id/\$photo-id &
+                    /photos/\$user-id/\$photo-id &
                     Same as 1.1 \\
 
                 4.1.3 &
@@ -500,10 +595,10 @@ page I've noted the identifier for the first time this page was visited.
                 \\
 
                   4.1.3.1 &
-                  ~~~Photos from \$usr-id &
-                  \$usr-id &
+                  ~~~Photos from \$user-id &
+                  \$user-id &
                   Content area &
-                  /photos/\$usr-id &
+                  /photos/\$user-id &
                   \\
 
 
@@ -518,14 +613,14 @@ page I've noted the identifier for the first time this page was visited.
               ~\$photo-title &
               Photo thumbnail or \$photo-title &
               Content (highlighted photo) &
-              /photos/\$usr-id/\$photo-id &
+              /photos/\$user-id/\$photo-id &
               Same as 1.1 \\
 
               5.2 &
-              ~Photos from \$usr-id &
-              \$usr-id &
+              ~Photos from \$user-id &
+              \$user-id &
               Content (highlighted photo) &
-              /photos/\$usr-id &
+              /photos/\$user-id &
               \\
 
               5.3 &
@@ -539,14 +634,14 @@ page I've noted the identifier for the first time this page was visited.
                 ~\$photo-title &
                 Photo thumbnail or \$photo-title &
                 Content area &
-                /photos/\$usr-id/\$photo-id &
+                /photos/\$user-id/\$photo-id &
                 Same as 1.1 \\
 
                 5.3.2 &
-                ~Photos from \$usr-id &
-                \$usr-id &
+                ~Photos from \$user-id &
+                \$user-id &
                 Content area &
-                /photos/\$usr-id &
+                /photos/\$user-id &
                 \\
 
               5.4 &
@@ -557,17 +652,17 @@ page I've noted the identifier for the first time this page was visited.
               \\
 
                 5.4.1 &
-                ~\$photo-title &
+                ~~\$photo-title &
                 Photo thumbnail or \$photo-title &
                 Content area &
-                /photos/\$usr-id/\$photo-id &
+                /photos/\$user-id/\$photo-id &
                 Same as 1.1 \\
 
                 5.4.2 &
-                ~Photos from \$usr-id &
-                \$usr-id &
+                ~~Photos from \$user-id &
+                \$user-id &
                 Content area &
-                /photos/\$usr-id &
+                /photos/\$user-id &
                 \\
 
               5.5 &
@@ -585,17 +680,17 @@ page I've noted the identifier for the first time this page was visited.
                 Inline dialog\\
 
                   5.5.1.1 &
-                  ~~~\$usr-id photos tagged with \$tag-name &
+                  ~~~\$user-id photos tagged with \$tag-name &
                   \$tag-name &
                   Inline dialog &
-                  /photos/\$usr-id/tags/\$tag-name &
+                  /photos/\$user-id/tags/\$tag-name &
                   Same as 1.1.3 and 1.4.1\\
 
                   5.5.1.2 &
                   ~~~\$photo-title &
                   View photo page &
                   Inline dialog &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
               5.6 &
@@ -613,49 +708,49 @@ page I've noted the identifier for the first time this page was visited.
                 \\
 
                   5.6.1.1 &
-                  ~~Photos tagged with \$tag-name &
+                  ~~~Photos tagged with \$tag-name &
                   Most interesting &
                   Left column &
                   /photos/tags/\$tag-name/interesting &
                   \\
 
                     5.6.1.1.1 &
-                    ~~~\$photo-title &
+                    ~~~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$usr-id/\$photo-id &
+                    /photos/\$user-id/\$photo-id &
                     Same as 1.1 \\
 
                     5.6.1.1.2 &
-                    ~~~Photos from \$usr-id &
-                    \$usr-id &
+                    ~~~~Photos from \$user-id &
+                    \$user-id &
                     Content area &
-                    /photos/\$usr-id &
+                    /photos/\$user-id &
                     \\
 
                   5.6.1.2 &
-                  ~~Photos tagged with \$tag-name &
+                  ~~~Photos tagged with \$tag-name &
                   \$tag-name clusters &
                   Left column &
                   /photos/tags/\$tag-name/clusters &
                   \\
 
                     5.6.1.2.1 &
-                    ~~~\$photo-title &
+                    ~~~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$usr-id/\$photo-id &
+                    /photos/\$user-id/\$photo-id &
                     Same as 1.1 \\
 
                     5.6.1.2.2 &
-                    ~~~Photos from \$usr-id &
-                    \$usr-id &
+                    ~~~~Photos from \$user-id &
+                    \$user-id &
                     Content area &
-                    /photos/\$usr-id &
+                    /photos/\$user-id &
                     \\
 
                     5.6.1.2.3 &
-                    ~~~Photos tagged with \$tag-name &
+                    ~~~~Photos tagged with \$tag-name &
                     \$tag-name &
                     Content (cluster list) &
                     /photos/tags/\$tag-name/clusters &
@@ -671,7 +766,7 @@ page I've noted the identifier for the first time this page was visited.
 \begin{landscape}
   \begin{table}[h!b!p!]
     \caption{Content Inventory of Flickr, Part Three}
-    \label{table:content.inventory.flickr.3}
+    \label{table:flickr.content.inventory.3}
     \begin{center}
       \begin{tiny}
         \tt
@@ -696,28 +791,28 @@ page I've noted the identifier for the first time this page was visited.
                       ~~~~\$photo-title &
                       Photo thumbnail &
                       Content area &
-                      /photos/\$usr-id/\$photo-id &
+                      /photos/\$user-id/\$photo-id &
                       Same as 1.1 \\
 
                       5.6.1.2.4.2 &
-                      ~~~~Photos from \$usr-id &
-                      \$usr-id &
+                      ~~~~Photos from \$user-id &
+                      \$user-id &
                       Content area &
-                      /photos/\$usr-id &
+                      /photos/\$user-id &
                       \\
 
                   5.6.1.3 &
                   ~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
                   5.6.1.4 &
-                  ~~Photos from \$usr-id &
-                  \$usr-id &
+                  ~~Photos from \$user-id &
+                  \$user-id &
                   Content area &
-                  /photos/\$usr-id &
+                  /photos/\$user-id &
                   \\
 
               5.7 &
@@ -745,14 +840,14 @@ page I've noted the identifier for the first time this page was visited.
                     ~~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$usr-id/\$photo-id &
+                    /photos/\$user-id/\$photo-id &
                     Same as 1.1 \\
 
                     5.6.1.1.2 &
-                    ~~~Photos from \$usr-id &
-                    \$usr-id &
+                    ~~~Photos from \$user-id &
+                    \$user-id &
                     Content area &
-                    /photos/\$usr-id &
+                    /photos/\$user-id &
                     \\
 
               5.8 &
@@ -766,14 +861,14 @@ page I've noted the identifier for the first time this page was visited.
                   ~~\$photo-title &
                   Photo thumbnail &
                   Content area &
-                  /photos/\$usr-id/\$photo-id &
+                  /photos/\$user-id/\$photo-id &
                   Same as 1.1 \\
 
                   5.8.2 &
-                  ~~Photos from \$usr-id &
-                  \$usr-id &
+                  ~~Photos from \$user-id &
+                  \$user-id &
                   Content area &
-                  /photos/\$usr-id &
+                  /photos/\$user-id &
                   \\
 
 
@@ -795,40 +890,149 @@ page I've noted the identifier for the first time this page was visited.
                     ~~\$photo-title &
                     Photo thumbnail &
                     Content area &
-                    /photos/\$usr-id/\$photo-id &
+                    /photos/\$user-id/\$photo-id &
                     Same as 1.1 \\
 
                     5.8.4.2 &
-                    ~~Photos from \$usr-id &
-                    \$usr-id &
+                    ~~Photos from \$user-id &
+                    \$user-id &
                     Content area &
-                    /photos/\$usr-id &
+                    /photos/\$user-id &
                     \\
 
                     5.8.4.3 &
                     ~~Photos with Creative Commons \$license-type &
                     See more &
                     Content (\$license-type) &
-                    /photos/\$usr-id &
+                    /photos/\$user-id &
                     \\
 
                       5.8.4.3.1 &
                       ~~~\$photo-title &
                       Photo thumbnail &
                       Content area &
-                      /photos/\$usr-id/\$photo-id &
+                      /photos/\$user-id/\$photo-id &
                       Same as 1.1 \\
 
                       5.8.4.3.2 &
-                      ~~~Photos from \$usr-id &
-                      \$usr-id &
+                      ~~~Photos from \$user-id &
+                      \$user-id &
                       Content area &
-                      /photos/\$usr-id &
+                      /photos/\$user-id &
                       \\
 
+              5.9 &
+              ~Photos tagged with \$tag-name &
+              \$tag-name &
+              Content (tag cloud) &
+              /photos/tags/\$tag-name &
+              Same as 5.61\\
 
 
+              5.10 &
+              ~Explore interesting photos from \$year-month-day &
+              \$year-month-day &
+              Content (A year ago) &
+              /explore/interesting/\$year-date-day &
+              \\
 
+                5.10.1 &
+                ~~\$photo-title &
+                Photo thumbnail &
+                Content area &
+                /photos/\$user-id/\$photo-id &
+                Same as 1.1 \\
+
+                5.10.2 &
+                ~~Photos from \$user-id &
+                \$user-id and see more photos &
+                Content area &
+                /photos/\$user-id &
+                \\
+
+                5.10.3 &
+                ~~\$user-id &
+                profile &
+                Content area &
+                /people/\$user-id &
+                \\
+
+                5.6.1.2 &
+                ~~Photos tagged with \$tag-name &
+                \$tag-name &
+                Content area &
+                /photos/tags/\$tag-name/clusters &
+                \\
+
+              5.11 &
+              ~\$photo-title &
+              Photo thumbnail or \$photo-title &
+              Content (A year ago) &
+              /photos/\$user-id/\$photo-id &
+              Same as 1.1 \\
+
+              5.12 &
+              ~Photos from \$user-id &
+              \$user-id &
+              Content (A year ago) &
+              /photos/\$user-id &
+              \\
+
+              5.13 &
+              ~\$user-id &
+              profile &
+              Content (A year ago) &
+              /people/\$user-id &
+              \\
+
+              5.14 &
+              ~\$set-title - a photoset on Flickr &
+              \$set-title &
+              Content (Sets) &
+              /photos/\$user-id/sets/\$set-id &
+              Same as 1.1.2 and 1.2 \\
+
+                1.1.1.1 &
+                ~~\$photo-title &
+                Photo thumbnail &
+                Content area &
+                /photos/\$user-id/\$photo-id/in/set-\$set-id &
+                \\
+
+              5.15 &
+              ~Photos from \$user-id &
+              \$user-id &
+              Content (Sets) &
+              /photos/\$user-id &
+              \\
+
+              5.16 &
+              ~Groups &
+              loads of groups &
+              Content (Groups) &
+              /groups &
+              Same as 4\\
+
+              5.17 &
+              ~\$group-name &
+              \$group-name &
+              Content (Groups) &
+              /groups/\$group-name &
+              \\
+
+              5.18 &
+              ~\$group-name Pool &
+              Pool &
+              Local navigation &
+              /groups/\$group-name/pool &
+              Same as 4.1.2 \\
+
+              5.19 &
+              ~\$group-name  &
+              \$member-count Members &
+              Local navigation &
+              /groups\_members.gne?id=\$group-id &
+              Same as 4.1.3 \\
 
           \end{tabular}
         \rm
