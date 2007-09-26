@@ -45,6 +45,8 @@ analysis of Flickr will be carried out as a registered user. One has to be
 registered for interacting with the site in such a way that one leaves
 persistent traces even though all content is available and open for all users.
 
+\subsection{Content Inventory}
+
 One can follow several navigational paths for ending up on some of the pages
 identified below. In my first navigation upon a given page I've followed all
 relevant navigational paths to the end. On my second encounter of the same
@@ -62,7 +64,8 @@ where changes and improvments often are imposed on the userbase at quite
 a frequent rate.
 
 When collecting data one notices that there is an enormous ammount of pages
-sharing a common structure only differing in a variable. Examples include
+sharing a common structure only differing in a single or a few variables.
+Examples include
 the user in question for a profile page, the tag for a listing of photos
 annotated with such a tag, the date for time based history listings and so on.
 I therefore introduced several such variables prefixed with a dollar sign: \$
@@ -512,13 +515,154 @@ which should be self explanatory.
               Photos tagged with \var{tag} &
               /photos/tags/\var{tag}/clusters \\
 
+              5.6.1.2.4 &
+              Photos tagged with \var{tag} &
+              /photos/tags/\var{tag}/clusters/\var{tag}-\var{tag}-\var{tag} \\
+
+                5.6.1.2.4.1 &
+                \var{photo-title} &
+                /photos/\var{user}/\var{photo-id} \\
+
+                5.6.1.2.4.2 &
+                Photos from \var{user} &
+                /photos/\var{user} \\
+
+            5.6.1.3 &
+            \var{photo-title} &
+            /photos/\var{user}/\var{photo-id} \\
+
+            5.6.1.4 &
+            Photos from \var{user} &
+            /photos/\var{user} \\
+
+        5.7 &
+        Camera Finder &
+        /cameras \\
+
+          5.7.1 &
+          Camera Finder: \var{camera-make} &
+          /cameras/\var{camera-make} \\
+
+            5.7.1.1 &
+            Camera Finder: \var{camera-make}: \var{camera-model} &
+            /cameras/\var{camera-make}/\var{camera-model} \\
+
+              5.7.1.1.1 &
+              \var{photo-title} &
+              /photos/\var{user}/\var{photo-id} \\
+
+              5.6.1.1.2 &
+              Photos from \var{user} &
+              /photos/\var{user} \\
+
+        5.8 &
+        Photos from everyone &
+        /photos \\
+
+            5.8.1 &
+            \var{photo-title} &
+            /photos/\var{user}/\var{photo-id} \\
+
+            5.8.2 &
+            Photos from \var{user} &
+            /photos/\var{user} \\
+
+            5.8.3 &
+            Popular Tags &
+            /photos/tags \\
+
+            5.8.4 &
+            Creative Commons &
+            /creativecommons \\
+
+              5.8.4.1 &
+              \var{photo-title} &
+              /photos/\var{user}/\var{photo-id} \\
+
+              5.8.4.2 &
+              Photos from \var{user} &
+              /photos/\var{user} \\
+
+              5.8.4.3 &
+              Photos with Creative Commons \$license-type &
+              /photos/\var{user} \\
+
+                5.8.4.3.1 &
+                \var{photo-title} &
+                /photos/\var{user}/\var{photo-id} \\
+
+                5.8.4.3.2 &
+                Photos from \var{user} &
+                /photos/\var{user} \\
+
+        5.9 &
+        Photos tagged with \var{tag} &
+        /photos/tags/\var{tag} \\
 
 
+        5.10 &
+        Explore interesting photos from \var{date} &
+        /explore/interesting/\var{date} \\
+
+          5.10.1 &
+          \var{photo-title} &
+          /photos/\var{user}/\var{photo-id} \\
+
+          5.10.2 &
+          Photos from \var{user} &
+          /photos/\var{user} \\
+
+          5.10.3 &
+          \var{user} &
+          /people/\var{user} \\
+
+          5.6.1.2 &
+          Photos tagged with \var{tag} &
+          /photos/tags/\var{tag}/clusters \\
+
+        5.11 &
+        \var{photo-title} &
+        /photos/\var{user}/\var{photo-id} \\
+
+        5.12 &
+        Photos from \var{user} &
+        /photos/\var{user} \\
+
+        5.13 &
+        \var{user} &
+        /people/\var{user} \\
+
+        5.14 &
+        \var{set-title} - a photoset on Flickr &
+        /photos/\var{user}/sets/\var{set-id} \\
+
+          1.1.1.1 &
+          \var{photo-title} &
+          /photos/\var{user}/\var{photo-id}/in/set-\var{set-id} \\
+
+        5.15 &
+        Photos from \var{user} &
+        /photos/\var{user} \\
+
+        5.16 &
+        Groups &
+        /groups \\
+
+        5.17 &
+        \var{group} &
+        /groups/\var{group} \\
+
+        5.18 &
+        \var{group} Pool &
+        /groups/\var{group}/pool \\
+
+        5.19 &
+        \var{group}  &
+        /groups\_members.gne?id=\var{group}-id \\
 
     \end{longtable}
   \end{small}
 \end{center}
-
 
 % Long multi-page table
 \begin{center}
@@ -881,311 +1025,182 @@ which should be self explanatory.
               \var{tag} &
               Content (cluster list) \\
 
+
+              5.6.1.2.4 &
+              See more of this cluster\ldots &
+              Content area \\
+
+                5.6.1.2.4.1 &
+                Photo thumbnail &
+                Content area \\
+
+                5.6.1.2.4.2 &
+                \var{user} &
+                Content area \\
+
+            5.6.1.3 &
+            Photo thumbnail &
+            Content area \\
+
+            5.6.1.4 &
+            \var{user} &
+            Content area \\
+
+        5.7 &
+        Camera finder &
+        Content area \\
+
+          5.7.1 &
+          \var{camera-make} &
+          Content area \\
+
+            5.7.1.1 &
+            \var{camera-model} &
+            Content area \\
+
+              5.7.1.1.1 &
+              Photo thumbnail &
+              Content area \\
+
+              5.6.1.1.2 &
+              \var{user} &
+              Content area \\
+
+        5.8 &
+        most recent uploads &
+        Content area \\
+
+            5.8.1 &
+            Photo thumbnail &
+            Content area \\
+
+            5.8.2 &
+            \var{user} &
+            Content area \\
+
+            5.8.3 &
+            Popular tags &
+            Right sidebar \\
+
+            5.8.4 &
+            Creative Commons &
+            Right sidebar \\
+
+              5.8.4.1 &
+              Photo thumbnail &
+              Content area \\
+
+              5.8.4.2 &
+              \var{user} &
+              Content area \\
+
+              5.8.4.3 &
+              See more &
+              Content (\$license-type) \\
+
+                5.8.4.3.1 &
+                Photo thumbnail &
+                Content area \\
+
+                5.8.4.3.2 &
+                \var{user} &
+                Content area \\
+
+        5.9 &
+        \var{tag} &
+        Content (tag cloud) \\
+
+
+        5.10 &
+        \var{date} &
+        Content (A year ago) \\
+
+          5.10.1 &
+          Photo thumbnail &
+          Content area \\
+
+          5.10.2 &
+          \var{user} and see more photos &
+          Content area \\
+
+          5.10.3 &
+          profile &
+          Content area \\
+
+          5.6.1.2 &
+          \var{tag} &
+          Content area \\
+
+        5.11 &
+        Photo thumbnail or \var{photo-title} &
+        Content (A year ago) \\
+
+        5.12 &
+        \var{user} &
+        Content (A year ago) \\
+
+        5.13 &
+        profile &
+        Content (A year ago) \\
+
+        5.14 &
+        \var{set-title} &
+        Content (Sets) \\
+
+          1.1.1.1 &
+          Photo thumbnail &
+          Content area \\
+
+        5.15 &
+        \var{user} &
+        Content (Sets) \\
+
+        5.16 &
+        loads of groups &
+        Content (Groups) \\
+
+        5.17 &
+        \var{group} &
+        Content (Groups) \\
+
+        5.18 &
+        Pool &
+        Local navigation \\
+
+        5.19 &
+        \var{member-count} Members &
+        Local navigation \\
+
     \end{longtable}
   \end{small}
 \end{center}
 
+  \subsection{Content Mapping}
 
-
-
-
-
-
-
-%
-%
-%   OLD TABLES
-%
-%
-
-
-
-
-
-
-
-
-  \begin{table}[h!b!p!]
-    \caption{Content Inventory of Flickr, Part Three}
-    \label{table:flickr.content.inventory.3}
-    \begin{center}
-      \begin{tiny}
-        \tt
-        \begin{tabular}{r|l|l|l|l|p{3cm}}
-            Id &
-            Page Title &
-            Link Name &
-            Link Location &
-            URL &
-            Notes \\
-
-            \hline
-
-                    5.6.1.2.4 &
-                    ~~~Photos tagged with \var{tag} &
-                    See more of this cluster\ldots &
-                    Content area &
-                    /photos/tags/\var{tag}/clusters/\var{tag}-\var{tag}-\var{tag} &
-                    \\
-
-                      5.6.1.2.4.1 &
-                      ~~~~\var{photo-title} &
-                      Photo thumbnail &
-                      Content area &
-                      /photos/\var{user}/\var{photo-id} &
-                      Same as 1.1 \\
-
-                      5.6.1.2.4.2 &
-                      ~~~~Photos from \var{user} &
-                      \var{user} &
-                      Content area &
-                      /photos/\var{user} &
-                      \\
-
-                  5.6.1.3 &
-                  ~~\var{photo-title} &
-                  Photo thumbnail &
-                  Content area &
-                  /photos/\var{user}/\var{photo-id} &
-                  Same as 1.1 \\
-
-                  5.6.1.4 &
-                  ~~Photos from \var{user} &
-                  \var{user} &
-                  Content area &
-                  /photos/\var{user} &
-                  \\
-
-              5.7 &
-              ~Camera Finder &
-              Camera finder &
-              Content area &
-              /cameras &
-              \\
-
-                5.7.1 &
-                ~~Camera Finder: \var{camera-make} &
-                \var{camera-make} &
-                Content area &
-                /cameras/\var{camera-make} &
-                \\
-
-                  5.7.1.1 &
-                  ~~Camera Finder: \var{camera-make}: \var{camera-model} &
-                  \var{camera-model} &
-                  Content area &
-                  /cameras/\var{camera-make}/\var{camera-model} &
-                  \\
-
-                    5.7.1.1.1 &
-                    ~~~\var{photo-title} &
-                    Photo thumbnail &
-                    Content area &
-                    /photos/\var{user}/\var{photo-id} &
-                    Same as 1.1 \\
-
-                    5.6.1.1.2 &
-                    ~~~Photos from \var{user} &
-                    \var{user} &
-                    Content area &
-                    /photos/\var{user} &
-                    \\
-
-              5.8 &
-              ~Photos from everyone &
-              most recent uploads &
-              Content area &
-              /photos &
-              \\
-
-                  5.8.1 &
-                  ~~\var{photo-title} &
-                  Photo thumbnail &
-                  Content area &
-                  /photos/\var{user}/\var{photo-id} &
-                  Same as 1.1 \\
-
-                  5.8.2 &
-                  ~~Photos from \var{user} &
-                  \var{user} &
-                  Content area &
-                  /photos/\var{user} &
-                  \\
-
-
-                  5.8.3 &
-                  ~Popular Tags &
-                  Popular tags &
-                  Right sidebar &
-                  /photos/tags &
-                  Same as 5.6 \\
-
-                  5.8.4 &
-                  ~Creative Commons &
-                  Creative Commons &
-                  Right sidebar &
-                  /creativecommons &
-                  \\
-
-                    5.8.4.1 &
-                    ~~\var{photo-title} &
-                    Photo thumbnail &
-                    Content area &
-                    /photos/\var{user}/\var{photo-id} &
-                    Same as 1.1 \\
-
-                    5.8.4.2 &
-                    ~~Photos from \var{user} &
-                    \var{user} &
-                    Content area &
-                    /photos/\var{user} &
-                    \\
-
-                    5.8.4.3 &
-                    ~~Photos with Creative Commons \$license-type &
-                    See more &
-                    Content (\$license-type) &
-                    /photos/\var{user} &
-                    \\
-
-                      5.8.4.3.1 &
-                      ~~~\var{photo-title} &
-                      Photo thumbnail &
-                      Content area &
-                      /photos/\var{user}/\var{photo-id} &
-                      Same as 1.1 \\
-
-                      5.8.4.3.2 &
-                      ~~~Photos from \var{user} &
-                      \var{user} &
-                      Content area &
-                      /photos/\var{user} &
-                      \\
-
-              5.9 &
-              ~Photos tagged with \var{tag} &
-              \var{tag} &
-              Content (tag cloud) &
-              /photos/tags/\var{tag} &
-              Same as 5.61\\
-
-
-              5.10 &
-              ~Explore interesting photos from \var{date} &
-              \var{date} &
-              Content (A year ago) &
-              /explore/interesting/\var{date} &
-              \\
-
-                5.10.1 &
-                ~~\var{photo-title} &
-                Photo thumbnail &
-                Content area &
-                /photos/\var{user}/\var{photo-id} &
-                Same as 1.1 \\
-
-                5.10.2 &
-                ~~Photos from \var{user} &
-                \var{user} and see more photos &
-                Content area &
-                /photos/\var{user} &
-                \\
-
-                5.10.3 &
-                ~~\var{user} &
-                profile &
-                Content area &
-                /people/\var{user} &
-                \\
-
-                5.6.1.2 &
-                ~~Photos tagged with \var{tag} &
-                \var{tag} &
-                Content area &
-                /photos/tags/\var{tag}/clusters &
-                \\
-
-              5.11 &
-              ~\var{photo-title} &
-              Photo thumbnail or \var{photo-title} &
-              Content (A year ago) &
-              /photos/\var{user}/\var{photo-id} &
-              Same as 1.1 \\
-
-              5.12 &
-              ~Photos from \var{user} &
-              \var{user} &
-              Content (A year ago) &
-              /photos/\var{user} &
-              \\
-
-              5.13 &
-              ~\var{user} &
-              profile &
-              Content (A year ago) &
-              /people/\var{user} &
-              \\
-
-              5.14 &
-              ~\var{set-title} - a photoset on Flickr &
-              \var{set-title} &
-              Content (Sets) &
-              /photos/\var{user}/sets/\var{set-id} &
-              Same as 1.1.2 and 1.2 \\
-
-                1.1.1.1 &
-                ~~\var{photo-title} &
-                Photo thumbnail &
-                Content area &
-                /photos/\var{user}/\var{photo-id}/in/set-\var{set-id} &
-                \\
-
-              5.15 &
-              ~Photos from \var{user} &
-              \var{user} &
-              Content (Sets) &
-              /photos/\var{user} &
-              \\
-
-              5.16 &
-              ~Groups &
-              loads of groups &
-              Content (Groups) &
-              /groups &
-              Same as 4\\
-
-              5.17 &
-              ~\var{group} &
-              \var{group} &
-              Content (Groups) &
-              /groups/\var{group} &
-              \\
-
-              5.18 &
-              ~\var{group} Pool &
-              Pool &
-              Local navigation &
-              /groups/\var{group}/pool &
-              Same as 4.1.2 \\
-
-              5.19 &
-              ~\var{group}  &
-              \var{member-count} Members &
-              Local navigation &
-              /groups\_members.gne?id=\var{group}-id &
-              Same as 4.1.3 \\
-
-          \end{tabular}
-        \rm
-      \end{tiny}
-    \end{center}
-  \end{table}
+  \subsection{Content Analysis}
 
 \section{Amazon}
 
+  \subsection{Content Inventory}
+
+  \subsection{Content Mapping}
+
+  \subsection{Content Analysis}
+
 \section{Facebook}
+
+  \subsection{Content Inventory}
+
+  \subsection{Content Mapping}
+
+  \subsection{Content Analysis}
 
 \section{Del.icio.us}
 
+  \subsection{Content Inventory}
+
+  \subsection{Content Mapping}
+
+  \subsection{Content Analysis}
 
 \end{document}
