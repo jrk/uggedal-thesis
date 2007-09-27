@@ -1,0 +1,33 @@
+% Preamble with document settings and package importing
+\documentclass[11pt,a4paper,twoside]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo,courier,helvet}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{appendix}
+
+\include{commands}
+
+% Document metadata
+\title{Social Navigation}
+\author{Eivind Uggedal\\
+        \texttt{eivindu@ifi.uio.no}}
+
+\begin{document}
+  \frontmatter
+    \maketitle
+    \tableofcontents
+    \listoffigures
+    \listoftables
+  \mainmatter
+    \include{content.analysis}
+
+    \begin{appendix}
+      \include{content.inventory}
+    \end{appendix}
+  \backmatter
+    \bibliographystyle{apalike}
+    \bibliography{bibliography}
+\end{document}
