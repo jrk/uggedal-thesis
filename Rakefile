@@ -1,5 +1,6 @@
-SRC_DIR = File.expand_path(File.dirname(__FILE__) + '/src')
+SRC_DIR = File.expand_path(pwd + '/src')
 BASE_FILE = 'base'
+PROJECT_FILE = File.basename(pwd)
 TMP_FILES = %w(aux bbl blg log lot lof toc)
 GEN_FILES = %w(dvi ps pdf)
 
@@ -17,13 +18,11 @@ task :compile do
   end
 end
 
-task :view => 'view:dvi'
-
-namespace :view do
+namespace :compile do
 
   desc 'Compiles source files into dvi format'
   task :dvi => :compile do
-    view_file(:dvi)
+    mv_file(:dvi)
   end
 
   desc 'Compiles source files into ps format'
@@ -31,7 +30,7 @@ namespace :view do
     cd(SRC_DIR) do
       system "dvips #{BASE_FILE}"
     end
-    view_file(:ps)
+    mv_file(:ps)
   end
 
   desc 'Compiles source files into pdf format'
@@ -39,16 +38,37 @@ namespace :view do
     cd(SRC_DIR) do
       system "pdflatex #{BASE_FILE}"
     end
+    mv_file(:pdf)
+  end
+end
+
+desc 'View compiled file'
+task :view => 'view:dvi'
+
+namespace :view do
+
+  desc 'View compiled file in dvi format'
+  task :dvi => 'compile:dvi'do
+    view_file(:dvi)
+  end
+
+  desc 'View compiled file in ps format'
+  task :ps => 'compile:ps' do
+    view_file(:ps)
+  end
+
+  desc 'View compiled file in pdf format'
+  task :pdf => 'compile:pdf' do
     view_file(:pdf)
   end
 end
 
-desc 'Runs spell check on source files'
+desc 'Spell check source files'
 task :spell do
   # TODO: use ispell -t
 end
 
-desc 'Generates a statistical report'
+desc 'Generate a statistical report'
 task :report do
   # TODO: word count: total, per chapter, with and without appendix
 end
@@ -64,14 +84,16 @@ end
 
 desc "Cleans up explicitly created files (#{GEN_FILES.join(' ')})"
 task :clobber => :clean do
-  cd(SRC_DIR) do
-    GEN_FILES.each do |gen_file|
-      rm_f FileList["#{BASE_FILE}.#{gen_file}"]
-    end
+  GEN_FILES.each do |gen_file|
+    rm_f FileList["#{PROJECT_FILE}.#{gen_file}"]
   end
 end
 
 private
+  def mv_file(format)
+    mv(File.join(SRC_DIR, "#{BASE_FILE}.#{format.to_s}"),
+       File.join(pwd, "/#{PROJECT_NAME}"))
+  end
   def view_file(format)
     viewers = case format
               when :dvi
@@ -83,7 +105,7 @@ private
               end
     viewers.each do |viewer|
       if system "which #{viewer}"
-        system "#{viewer} #{File.join(SRC_DIR, BASE_FILE)}.#{format.to_s}"
+        system "#{viewer} #{PROJECT_NAME}.#{format.to_s}"
         return
       end
     end
