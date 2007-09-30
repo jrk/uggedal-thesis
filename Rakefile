@@ -70,6 +70,7 @@ end
 
 desc 'Generate a statistical report'
 task :report do
+  print_stats(FileList["#{SRC_DIR}/*.tex"])
   # TODO: word count: total, per chapter, with and without appendix
 end
 
@@ -94,6 +95,7 @@ private
     mv(File.join(SRC_DIR, "#{BASE_FILE}.#{format.to_s}"),
        File.join(pwd, "/#{PROJECT_NAME}"))
   end
+
   def view_file(format)
     viewers = case format
               when :dvi
@@ -109,4 +111,41 @@ private
         return
       end
     end
+  end
+
+  def print_stats(files)
+    print_stat_splitter
+    print_stat_header
+    print_stat_splitter
+    files.each do |file|
+      stats = {}
+      out = `wc -w #{file}`
+      stats[:total_wc] = out.to_s.split[0].to_i
+      stats[:textual_wc] = (stats[:total_wc] * 0.7).to_i
+      stats[:latex_wc] = stats[:total_wc] - stats[:textual_wc]
+      stats[:textual_percentage] = stats[:textual_wc] * 100 / stats[:total_wc]
+      print_stat_line(File.basename(file), stats)
+    end
+    print_stat_splitter
+  end
+
+  def print_stat_line(name, stats)
+    puts "| #{name.ljust(40)}" +
+         "| #{stats[:total_wc].to_s.rjust(8)}" +
+         "| #{stats[:textual_wc].to_s.rjust(8)}" +
+         "| #{stats[:latex_wc].to_s.rjust(8)}" +
+         "| #{stats[:textual_percentage].to_s.rjust(8)} |"
+  end
+
+  def print_stat_header
+    stats = {}
+    stats[:total_wc]           = 'Total'
+    stats[:textual_wc]         = 'Textual'
+    stats[:latex_wc]           = 'LaTeX'
+    stats[:textual_percentage] = 'Text %'
+    print_stat_line('Filename', stats)
+  end
+
+  def print_stat_splitter
+    puts '+' + '-'*32 + ('-'*9 + '+') * 4 + '-'*10 + '+'
   end
