@@ -7,7 +7,7 @@ task :default => :compile
 
 desc 'Compiles source files with latex and bibtex'
 task :compile do
-  FileUtils.cd(SRC_DIR) do
+  cd(SRC_DIR) do
     system "latex #{BASE_FILE}"
     system "bibtex #{BASE_FILE}"
     system "latex #{BASE_FILE}"
@@ -25,7 +25,7 @@ namespace :view do
 
   desc 'Compiles source files into ps format'
   task :ps => :compile do
-    FileUtils.cd(SRC_DIR) do
+    cd(SRC_DIR) do
       system "dvips #{BASE_FILE}"
     end
     view_file(:ps)
@@ -33,7 +33,7 @@ namespace :view do
 
   desc 'Compiles source files into pdf format'
   task :pdf => :compile do
-    FileUtils.cd(SRC_DIR) do
+    cd(SRC_DIR) do
       system "pdflatex #{BASE_FILE}"
     end
     view_file(:pdf)
@@ -52,7 +52,7 @@ end
 
 desc "Cleans up temporary files (#{TMP_FILES.join(' ')})"
 task :clean do
-  FileUtils.cd(SRC_DIR) do
+  cd(SRC_DIR) do
     TMP_FILES.each do |tmp_file|
       rm_f FileList["*.#{tmp_file}"]
     end
@@ -61,7 +61,7 @@ end
 
 desc "Cleans up explicitly created files (#{GEN_FILES.join(' ')})"
 task :clobber => :clean do
-  FileUtils.cd(SRC_DIR) do
+  cd(SRC_DIR) do
     GEN_FILES.each do |gen_file|
       rm_f FileList["#{BASE_FILE}.#{gen_file}"]
     end
