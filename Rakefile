@@ -9,7 +9,10 @@ desc 'Compiles source files with latex and bibtex'
 task :compile do
   cd(SRC_DIR) do
     system "latex #{BASE_FILE}"
-    system "bibtex #{BASE_FILE}"
+    if FileList['*.bib'].size > 0
+      system "bibtex #{BASE_FILE}"
+      system "latex #{BASE_FILE}"
+    end
     system "latex #{BASE_FILE}"
   end
 end
