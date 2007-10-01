@@ -6,7 +6,7 @@
 
 \usepackage{booktabs}
 \usepackage{longtable}
-\usepackage{appendix}
+\usepackage[titletoc,page]{appendix}
 
 \include{commands}
 
@@ -16,18 +16,18 @@
         \texttt{eivindu@ifi.uio.no}}
 
 \begin{document}
-  \frontmatter
+  %\frontmatter
     \maketitle
     \tableofcontents
     \listoffigures
     \listoftables
-  \mainmatter
+  %\mainmatter
     \include{content.analysis}
 
-    \begin{appendix}
+    \begin{appendices}
       \include{content.inventory}
-    \end{appendix}
-  \backmatter
+    \end{appendices}
+  %\backmatter
     \bibliographystyle{apalike}
     \bibliography{bibliography}
 \end{document}
