@@ -141,6 +141,24 @@ private
                                                         textual_wc) })
     print_stat_splitter
   end
+
+  def print_stat_line(name, stats)
+    puts "| #{name.ljust(30)}" +
+         "| #{stats[:full_wc].to_s.rjust(8)}" +
+         "| #{stats[:textual_wc].to_s.rjust(8)}" +
+         "| #{stats[:textual_percentage].to_s.rjust(8)} |"
+  end
+
+  def print_stat_header
+    print_stat_line('Filename', { :full_wc => 'Total',
+                                  :textual_wc => 'Textual',
+                                  :latex_wc => 'LaTeX',
+                                  :textual_percentage => 'Text %' })
+  end
+
+  def print_stat_splitter
+    puts '+' + '-'*22 + ('-'*9 + '+') * 3 + '-'*10 + '+'
+  end
   
   # Calculates full and textual word count for a given latex file.
   def calculate_word_count(file)
@@ -159,24 +177,6 @@ private
       end
     end
     [full_wc, textual_wc]
-  end
-
-  def print_stat_line(name, stats)
-    puts "| #{name.ljust(30)}" +
-         "| #{stats[:full_wc].to_s.rjust(8)}" +
-         "| #{stats[:textual_wc].to_s.rjust(8)}" +
-         "| #{stats[:textual_percentage].to_s.rjust(8)} |"
-  end
-
-  def print_stat_header
-    print_stat_line('Filename', { :full_wc => 'Total',
-                                  :textual_wc => 'Textual',
-                                  :latex_wc => 'LaTeX',
-                                  :textual_percentage => 'Text %' })
-  end
-
-  def print_stat_splitter
-    puts '+' + '-'*22 + ('-'*9 + '+') * 3 + '-'*10 + '+'
   end
 
   def to_percent(major, minor)
