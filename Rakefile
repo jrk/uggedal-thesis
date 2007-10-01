@@ -70,7 +70,7 @@ end
 
 desc 'Generate a statistical report'
 task :report do
-  print_stats(FileList["#{SRC_DIR}/*.tex"])
+  print_stats_for_files(FileList["#{SRC_DIR}/*.tex"])
   # TODO: word count: per chapter, with and without appendix
 end
 
@@ -92,11 +92,15 @@ task :clobber => :clean do
 end
 
 private
+
+  # Moves a base file in the source directory of the given format to the base
+  # directory, renaming it to use the project file name.
   def mv_file(format)
     mv(File.join(SRC_DIR, "#{BASE_FILE}.#{format.to_s}"),
        File.join(pwd, "/#{PROJECT_FILE}.#{format.to_s}"))
   end
 
+  # Opens up a compiled file of the given format in an appropriate viewer.
   def view_file(format)
     viewers = case format
               when :dvi
@@ -114,7 +118,8 @@ private
     end
   end
 
-  def print_stats(files)
+  # Prints a statistical table for the given files.
+  def print_stats_for_files(files)
     print_stat_splitter
     print_stat_header
     print_stat_splitter
@@ -122,7 +127,8 @@ private
     files.each do |file|
       stats = {}
       stats[:full_wc], stats[:textual_wc] = calculate_word_count(file)
-      stats[:textual_percentage] = stats[:textual_wc] * 100 / stats[:full_wc]
+      stats[:textual_percentage] = to_percent(stats[:full_wc],
+                                              stats[:textual_wc])
       print_stat_line(File.basename(file), stats)
       total_wc += stats[:full_wc]
       textual_wc += stats[:textual_wc]
@@ -131,10 +137,12 @@ private
     print_stat_line('Total',
                     { :full_wc => total_wc,
                       :textual_wc => textual_wc,
-                      :textual_percentage => textual_wc * 100 / total_wc })
+                      :textual_percentage => to_percent(total_wc,
+                                                        textual_wc) })
     print_stat_splitter
   end
-
+  
+  # Calculates full and textual word count for a given latex file.
   def calculate_word_count(file)
     full_wc, textual_wc = 0, 0
     File.open(file) do |f|
@@ -161,14 +169,20 @@ private
   end
 
   def print_stat_header
-    stats = {}
-    stats[:full_wc]            = 'Total'
-    stats[:textual_wc]         = 'Textual'
-    stats[:latex_wc]           = 'LaTeX'
-    stats[:textual_percentage] = 'Text %'
-    print_stat_line('Filename', stats)
+    print_stat_line('Filename', { :full_wc => 'Total',
+                                  :textual_wc => 'Textual',
+                                  :latex_wc => 'LaTeX',
+                                  :textual_percentage => 'Text %' })
   end
 
   def print_stat_splitter
     puts '+' + '-'*22 + ('-'*9 + '+') * 3 + '-'*10 + '+'
+  end
+
+  def to_percent(major, minor)
+    unless major == 0
+      (100 * minor / major).round
+    else
+      0
+    end
   end
