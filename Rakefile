@@ -71,19 +71,20 @@ end
 desc 'Generate a statistical report'
 task :report do
   print_stats(FileList["#{SRC_DIR}/*.tex"])
-  # TODO: word count: total, per chapter, with and without appendix
+  # TODO: word count: per chapter, with and without appendix
 end
 
-desc "Cleans up temporary files (#{TMP_FILES.join(' ')})"
+desc 'Cleans up temporary files in source directory'
 task :clean do
   cd(SRC_DIR) do
-    TMP_FILES.each do |tmp_file|
+    auxilary_files = TMP_FILES + GEN_FILES
+    auxilary_files.each do |tmp_file|
       rm_f FileList["*.#{tmp_file}"]
     end
   end
 end
 
-desc "Cleans up explicitly created files (#{GEN_FILES.join(' ')})"
+desc 'Cleans up explicitly created files in base directory'
 task :clobber => :clean do
   GEN_FILES.each do |gen_file|
     rm_f FileList["#{PROJECT_FILE}.#{gen_file}"]
