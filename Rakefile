@@ -1,6 +1,6 @@
 SRC_DIR = File.expand_path(pwd + '/src')
-BASE_FILE = 'base'
-PROJECT_FILE = File.basename(pwd)
+BASE_NAME = 'base'
+PROJECT_NAME = File.basename(pwd)
 TMP_FILES = %w(aux bbl blg log lot lof toc)
 GEN_FILES = %w(dvi ps pdf)
 
@@ -9,12 +9,12 @@ task :default => 'compile:dvi'
 desc 'Compiles source files with latex and bibtex'
 task :compile do
   cd(SRC_DIR) do
-    system "latex #{BASE_FILE}"
+    system "latex #{BASE_NAME}"
     if FileList['*.bib'].size > 0
-      system "bibtex #{BASE_FILE}"
-      system "latex #{BASE_FILE}"
+      system "bibtex #{BASE_NAME}"
+      system "latex #{BASE_NAME}"
     end
-    system "latex #{BASE_FILE}"
+    system "latex #{BASE_NAME}"
   end
 end
 
@@ -28,7 +28,7 @@ namespace :compile do
   desc 'Compiles source files into ps format'
   task :ps => :compile do
     cd(SRC_DIR) do
-      system "dvips #{BASE_FILE}"
+      system "dvips #{BASE_NAME}"
     end
     mv_file(:ps)
   end
@@ -36,7 +36,7 @@ namespace :compile do
   desc 'Compiles source files into pdf format'
   task :pdf => :compile do
     cd(SRC_DIR) do
-      system "pdflatex #{BASE_FILE}"
+      system "pdflatex #{BASE_NAME}"
     end
     mv_file(:pdf)
   end
@@ -70,11 +70,7 @@ end
 
 desc 'Generate a statistical report'
 task :report do
-  print_stat_splitter
-  print_stat_line('', %w(Total Textual %))
-  print_stat_splitter
-  print_stats_for_categories(input_files_lexicaly_ordered)
-  print_stat_splitter
+  print_stats
 end
 
 desc 'Cleans up temporary files in source directory'
@@ -90,7 +86,7 @@ end
 desc 'Cleans up explicitly created files in base directory'
 task :clobber => :clean do
   GEN_FILES.each do |gen_file|
-    rm_f FileList["#{PROJECT_FILE}.#{gen_file}"]
+    rm_f FileList["#{PROJECT_NAME}.#{gen_file}"]
   end
 end
 
@@ -99,8 +95,8 @@ private
   # Moves a base file in the source directory of the given format to the base
   # directory, renaming it to use the project file name.
   def mv_file(format)
-    mv(File.join(SRC_DIR, "#{BASE_FILE}.#{format.to_s}"),
-       File.join(pwd, "/#{PROJECT_FILE}.#{format.to_s}"))
+    mv(File.join(SRC_DIR, "#{BASE_NAME}.#{format.to_s}"),
+       File.join(pwd, "/#{PROJECT_NAME}.#{format.to_s}"))
   end
 
   # Opens up a compiled file of the given format in an appropriate viewer.
@@ -115,10 +111,27 @@ private
               end
     viewers.each do |viewer|
       if system "which #{viewer}"
-        system "#{viewer} #{PROJECT_FILE}.#{format.to_s}"
+        system "#{viewer} #{PROJECT_NAME}.#{format.to_s}"
         return
       end
     end
+  end
+
+  def print_stats
+    print_stat_splitter
+    print_stat_line(camelize(PROJECT_NAME), %w(Total Textual %))
+    print_stat_splitter
+    print_stats_for_categories(input_files_in_sections)
+    print_stat_splitter
+  end
+
+  def print_stat_line(name, stats)
+    puts "| #{name.ljust(30)}" +
+         stats.collect { |s| "|#{s.to_s.rjust(8)} " }.join + "|"
+  end
+
+  def print_stat_splitter
+    puts '+' + '-'*22 + ('-'*9 + '+') * 4
   end
 
   def print_stats_for_categories(categories)
@@ -128,7 +141,7 @@ private
       category_stats = [0, 0]
       category_files.each_with_index do |file, index|
         file_path = File.join(SRC_DIR, "#{file}.tex")
-        stats = word_count_for_file(file_path)
+        stats = full_and_textual_wc(file_path)
         stats << to_percent(stats[0], stats[1])
         category_stats[0] += stats[0]
         category_stats[1] += stats[1]
@@ -149,29 +162,19 @@ private
     print_stat_line('Total', total_stats)
   end
 
-  def print_stat_line(name, stats)
-    puts "| #{name.ljust(30)}" +
-         stats.collect { |s| "|#{s.to_s.rjust(8)} " }.join + "|"
-  end
+  # Finds all input files in the base source file and seperates them into
+  # sections (currently: chapters, appendices).
+  def input_files_in_sections
+    sections = { :chapters => [], :appendices => [] }
 
-  def print_stat_header
-  end
-
-  def print_stat_splitter
-    puts '+' + '-'*22 + ('-'*9 + '+') * 4
-  end
-
-  def input_files_lexicaly_ordered
-    ordered = { :chapters => [], :appendices => [] }
-
-    base_file = File.join(SRC_DIR, "#{BASE_FILE}.tex")
+    base_file = File.join(SRC_DIR, "#{BASE_NAME}.tex")
     File.open(base_file) do |file|
       section = :none
       file.each do |line|
         unless section == :none
           search = line.scan(/include\{([\w.]+)\}/)
           if search && search.first && search.first.first
-            ordered[section] << search.first.first
+            sections[section] << search.first.first
           end
         end
         case line
@@ -182,12 +185,12 @@ private
         end
       end
     end
-    ordered
+    sections
   end
  
   # Calculates full and textual word count for a given latex file.
   # Bear in mind that these conts are pragmatic estimates.
-  def word_count_for_file(file)
+  def full_and_textual_wc(file)
     full_wc, textual_wc = 0, 0
     File.open(file) do |f|
       f.each do |l|
@@ -206,11 +209,7 @@ private
   end
 
   def to_percent(major, minor)
-    unless major == 0
-      (100 * minor / major).round
-    else
-      0
-    end
+    major != 0 ? (100 * minor / major).round : 0
   end
 
   def camelize(val)
