@@ -70,7 +70,13 @@ end
 
 desc 'Generate a statistical report'
 task :report do
-  print_stats
+  print_stat_splitter
+  print_stat_line([camelize(PROJECT_NAME), 'Total', 'Textual', '%'])
+  print_stat_splitter
+  section_stats = print_stat_for_sections(input_files_in_sections)
+  print_stat_splitter
+  print_stat_totals(section_stats)
+  print_stat_splitter
 end
 
 desc 'Cleans up temporary files in source directory'
@@ -115,16 +121,6 @@ private
         return
       end
     end
-  end
-
-  def print_stats
-    print_stat_splitter
-    print_stat_line([camelize(PROJECT_NAME), 'Total', 'Textual', '%'])
-    print_stat_splitter
-    section_stats = print_stat_for_sections(input_files_in_sections)
-    print_stat_splitter
-    print_stat_totals(section_stats)
-    print_stat_splitter
   end
 
   def print_stat_line(stat_line)
