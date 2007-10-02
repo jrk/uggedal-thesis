@@ -70,8 +70,11 @@ end
 
 desc 'Generate a statistical report'
 task :report do
-  print_stats_for_files(FileList["#{SRC_DIR}/*.tex"])
-  # TODO: word count: per chapter, with and without appendix
+  print_stat_splitter
+  print_stat_line('', %w(Total Textual %))
+  print_stat_splitter
+  print_stats_for_categories(input_files_lexicaly_ordered)
+  print_stat_splitter
 end
 
 desc 'Cleans up temporary files in source directory'
@@ -118,43 +121,73 @@ private
     end
   end
 
-  # Prints a statistical table for the given files.
-  def print_stats_for_files(files)
+  def print_stats_for_categories(categories)
+    total_stats = [0, 0]
+    categories_stats = {}
+    categories.each do |category, category_files|
+      category_stats = [0, 0]
+      category_files.each_with_index do |file, index|
+        file_path = File.join(SRC_DIR, "#{file}.tex")
+        stats = word_count_for_file(file_path)
+        stats << to_percent(stats[0], stats[1])
+        category_stats[0] += stats[0]
+        category_stats[1] += stats[1]
+        print_stat_line("#{camelize(category)[0..0]}.#{index+1}: " + 
+                        camelize(file), stats)
+      end
+      category_stats << to_percent(category_stats[0], category_stats[1])
+      categories_stats[category] = category_stats
+      total_stats[0] += category_stats[0]
+      total_stats[1] += category_stats[1]
+    end
     print_stat_splitter
-    print_stat_header
-    print_stat_splitter
-
-    total_wc, textual_wc = 0, 0
-    files.each do |file|
-      stats = calculate_word_count(file)
-      stats << to_percent(stats[0], stats[1])
-      total_wc += stats[0]
-      textual_wc += stats[1]
-      print_stat_line(File.basename(file), stats)
+    categories_stats.each do |category, category_stats|
+      print_stat_line(camelize(category), category_stats)
     end
 
-    print_stat_splitter
-    total_stats = [total_wc, textual_wc, to_percent(total_wc, textual_wc)]
+    total_stats << to_percent(total_stats[0], total_stats[1])
     print_stat_line('Total', total_stats)
-    print_stat_splitter
   end
 
   def print_stat_line(name, stats)
     puts "| #{name.ljust(30)}" +
-         stats.collect { |s| "| #{s.to_s.rjust(8)}" }.join + " |"
+         stats.collect { |s| "|#{s.to_s.rjust(8)} " }.join + "|"
   end
 
   def print_stat_header
-    print_stat_line('Filename', %w(Total Textual %))
   end
 
   def print_stat_splitter
-    puts '+' + '-'*22 + ('-'*9 + '+') * 3 + '-'*10 + '+'
+    puts '+' + '-'*22 + ('-'*9 + '+') * 4
   end
-  
+
+  def input_files_lexicaly_ordered
+    ordered = { :chapters => [], :appendices => [] }
+
+    base_file = File.join(SRC_DIR, "#{BASE_FILE}.tex")
+    File.open(base_file) do |file|
+      section = :none
+      file.each do |line|
+        unless section == :none
+          search = line.scan(/include\{([\w.]+)\}/)
+          if search && search.first && search.first.first
+            ordered[section] << search.first.first
+          end
+        end
+        case line
+        when /\\mainmatter/
+          section = :chapters
+        when /\\begin\{appendices\}/
+          section = :appendices
+        end
+      end
+    end
+    ordered
+  end
+ 
   # Calculates full and textual word count for a given latex file.
   # Bear in mind that these conts are pragmatic estimates.
-  def calculate_word_count(file)
+  def word_count_for_file(file)
     full_wc, textual_wc = 0, 0
     File.open(file) do |f|
       f.each do |l|
@@ -178,4 +211,8 @@ private
     else
       0
     end
+  end
+
+  def camelize(val)
+    val.to_s.split('.').collect { |s| s[0..0].upcase + s[1..-1] }.join(' ')
   end
