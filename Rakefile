@@ -119,14 +119,18 @@ private
 
   def print_stats
     print_stat_splitter
-    print_stat_line(camelize(PROJECT_NAME), %w(Total Textual %))
+    print_stat_line([camelize(PROJECT_NAME), 'Total', 'Textual', '%'])
     print_stat_splitter
-    print_stats_for_categories(input_files_in_sections)
+    section_stats = print_stat_for_sections(input_files_in_sections)
+    print_stat_splitter
+    print_stat_totals(section_stats)
     print_stat_splitter
   end
 
-  def print_stat_line(name, stats)
-    puts "| #{name.ljust(30)}" +
+  def print_stat_line(stat_line)
+    stats = stat_line.dup
+    stats << to_percent(stats[1], stats[2]) if stats[1].instance_of? Fixnum
+    puts "| #{stats.shift.ljust(30)}" +
          stats.collect { |s| "|#{s.to_s.rjust(8)} " }.join + "|"
   end
 
@@ -134,32 +138,36 @@ private
     puts '+' + '-'*22 + ('-'*9 + '+') * 4
   end
 
-  def print_stats_for_categories(categories)
-    total_stats = [0, 0]
-    categories_stats = {}
-    categories.each do |category, category_files|
-      category_stats = [0, 0]
-      category_files.each_with_index do |file, index|
-        file_path = File.join(SRC_DIR, "#{file}.tex")
-        stats = full_and_textual_wc(file_path)
-        stats << to_percent(stats[0], stats[1])
-        category_stats[0] += stats[0]
-        category_stats[1] += stats[1]
-        print_stat_line("#{camelize(category)[0..0]}.#{index+1}: " + 
-                        camelize(file), stats)
+  def print_stat_for_sections(section_names)
+    sections = stats_for_sections(section_names)
+    sections.each_value do |section|
+      section.each do |stat|
+        print_stat_line(stat)
       end
-      category_stats << to_percent(category_stats[0], category_stats[1])
-      categories_stats[category] = category_stats
-      total_stats[0] += category_stats[0]
-      total_stats[1] += category_stats[1]
     end
-    print_stat_splitter
-    categories_stats.each do |category, category_stats|
-      print_stat_line(camelize(category), category_stats)
-    end
+  end
 
-    total_stats << to_percent(total_stats[0], total_stats[1])
-    print_stat_line('Total', total_stats)
+  def print_stat_totals(sections)
+    total_stats =  sections.collect do |name, stats|
+      [camelize(name)] + summarize_stats(stats)
+    end
+    total_stats << ['Totals'] + summarize_stats(total_stats)
+    total_stats.each do |total_stat|
+      print_stat_line(total_stat)
+    end
+  end
+
+  def stats_for_sections(sections)
+    stats = {}
+    sections.each do |name, files|
+      stats[name] = []
+      files.each_with_index do |file, index|
+        title = "#{camelize(name)[0..0]}.#{index+1}: #{camelize(file)}"
+        file_path = File.join(SRC_DIR, "#{file}.tex")
+        stats[name] << [title] + full_and_textual_wc(file_path)
+      end
+    end
+    stats
   end
 
   # Finds all input files in the base source file and seperates them into
@@ -206,6 +214,15 @@ private
       end
     end
     [full_wc, textual_wc]
+  end
+
+  def summarize_stats(stats)
+    total, textual = 0, 0
+    stats.each do |stat|
+      total += stat[1]
+      textual += stat[2]
+    end
+    [total, textual]
   end
 
   def to_percent(major, minor)
