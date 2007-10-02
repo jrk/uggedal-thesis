@@ -123,37 +123,29 @@ private
     print_stat_splitter
     print_stat_header
     print_stat_splitter
+
     total_wc, textual_wc = 0, 0
     files.each do |file|
-      stats = {}
-      stats[:full_wc], stats[:textual_wc] = calculate_word_count(file)
-      stats[:textual_percentage] = to_percent(stats[:full_wc],
-                                              stats[:textual_wc])
+      stats = calculate_word_count(file)
+      stats << to_percent(stats[0], stats[1])
+      total_wc += stats[0]
+      textual_wc += stats[1]
       print_stat_line(File.basename(file), stats)
-      total_wc += stats[:full_wc]
-      textual_wc += stats[:textual_wc]
     end
+
     print_stat_splitter
-    print_stat_line('Total',
-                    { :full_wc => total_wc,
-                      :textual_wc => textual_wc,
-                      :textual_percentage => to_percent(total_wc,
-                                                        textual_wc) })
+    total_stats = [total_wc, textual_wc, to_percent(total_wc, textual_wc)]
+    print_stat_line('Total', total_stats)
     print_stat_splitter
   end
 
   def print_stat_line(name, stats)
     puts "| #{name.ljust(30)}" +
-         "| #{stats[:full_wc].to_s.rjust(8)}" +
-         "| #{stats[:textual_wc].to_s.rjust(8)}" +
-         "| #{stats[:textual_percentage].to_s.rjust(8)} |"
+         stats.collect { |s| "| #{s.to_s.rjust(8)}" }.join + " |"
   end
 
   def print_stat_header
-    print_stat_line('Filename', { :full_wc => 'Total',
-                                  :textual_wc => 'Textual',
-                                  :latex_wc => 'LaTeX',
-                                  :textual_percentage => 'Text %' })
+    print_stat_line('Filename', %w(Total Textual %))
   end
 
   def print_stat_splitter
@@ -161,6 +153,7 @@ private
   end
   
   # Calculates full and textual word count for a given latex file.
+  # Bear in mind that these conts are pragmatic estimates.
   def calculate_word_count(file)
     full_wc, textual_wc = 0, 0
     File.open(file) do |f|
