@@ -72,6 +72,13 @@ end
 desc 'Spell check source files'
 task :spell do
   # TODO: use ispell -t
+  input_files_in_sections.each_value do |section|
+    section.each do |file|
+      file_path = File.join(SRC_DIR, "#{file}.tex")
+
+      system("ispell -t -p src/dictionary.ispell #{file_path}")
+    end
+  end
 end
 
 desc 'Generate a statistical report'
