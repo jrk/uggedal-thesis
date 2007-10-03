@@ -1,6 +1,8 @@
 SRC_DIR = File.expand_path(pwd + '/src')
 BASE_NAME = 'base'
-PROJECT_NAME = File.basename(pwd)
+FILE_REV = `hg tip`.grep(/changeset/).first.gsub(/[a-z]+:/, '').
+                                            gsub(/:\w+/, '').strip
+PROJECT_NAME = "eivindu.social.navigation.draft.r#{FILE_REV}"
 TMP_FILES = %w(aux bbl blg log lot lof toc)
 GEN_FILES = %w(dvi ps pdf)
 
@@ -71,11 +73,9 @@ end
 
 desc 'Spell check source files'
 task :spell do
-  # TODO: use ispell -t
   input_files_in_sections.each_value do |section|
     section.each do |file|
       file_path = File.join(SRC_DIR, "#{file}.tex")
-
       system("ispell -t -p src/dictionary.ispell #{file_path}")
     end
   end
