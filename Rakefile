@@ -9,12 +9,18 @@ task :default => 'compile:dvi'
 desc 'Compiles source files with latex and bibtex'
 task :compile do
   cd(SRC_DIR) do
-    system "latex #{BASE_NAME}"
-    if FileList['*.bib'].size > 0
-      system "bibtex #{BASE_NAME}"
-      system "latex #{BASE_NAME}"
+    out_file = File.join(SRC_DIR, "#{BASE_NAME}_out.tex")
+    base_file = File.join(SRC_DIR, "#{BASE_NAME}.tex")
+    File.open(out_file, 'w') do |file|
+      file.write substitute_with_scm_info(base_file)
     end
-    system "latex #{BASE_NAME}"
+
+    system "latex #{BASE_NAME}_out"
+    if FileList['*.bib'].size > 0
+      system "bibtex #{BASE_NAME}_out"
+      system "latex #{BASE_NAME}_out"
+    end
+    system "latex #{BASE_NAME}_out"
   end
 end
 
@@ -28,7 +34,7 @@ namespace :compile do
   desc 'Compiles source files into ps format'
   task :ps => :compile do
     cd(SRC_DIR) do
-      system "dvips #{BASE_NAME}"
+      system "dvips #{BASE_NAME}_out"
     end
     mv_file(:ps)
   end
@@ -36,7 +42,7 @@ namespace :compile do
   desc 'Compiles source files into pdf format'
   task :pdf => :compile do
     cd(SRC_DIR) do
-      system "pdflatex #{BASE_NAME}"
+      system "pdflatex #{BASE_NAME}_out"
     end
     mv_file(:pdf)
   end
@@ -98,11 +104,25 @@ end
 
 private
 
+  # Substitutes a placeholder comment in a given file with
+  # SCM info like revision and date.
+  def substitute_with_scm_info(file)
+    scm_info = `hg tip`
+    scm_rev = scm_info.grep(/changeset/).first.gsub(/[a-z]+:/, '').strip
+    scm_date = scm_info.grep(/date/).first.gsub(/[a-z]+:/, '').
+                                     gsub(/:\d\d \d{4} \+\d{4}/,'').strip
+    formatted_info = "SCM Revision: \\texttt{#{scm_rev}}\\\\\\ \n" +
+                     "SCM Date: \\texttt{#{scm_date}}"
+    File.read(file).gsub(/% SCM stats/, formatted_info)
+  end
+
   # Moves a base file in the source directory of the given format to the base
-  # directory, renaming it to use the project file name.
+  # directory, renaming it to use the project file name. Also deletes the
+  # temporary generated out latex file.
   def mv_file(format)
-    mv(File.join(SRC_DIR, "#{BASE_NAME}.#{format.to_s}"),
+    mv(File.join(SRC_DIR, "#{BASE_NAME}_out.#{format.to_s}"),
        File.join(pwd, "/#{PROJECT_NAME}.#{format.to_s}"))
+    rm File.join(SRC_DIR, "#{BASE_NAME}_out.tex")
   end
 
   # Opens up a compiled file of the given format in an appropriate viewer.
