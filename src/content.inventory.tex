@@ -1,13 +1,25 @@
 \chapter{Content Inventory}
 
+When gathering data in the inventory phase of content analysis the root
+document, the main portal to the site under investigation, was entered and
+identified in an inventory table with an identifier of \emph{0}. From this page
+all relevant navigational links were followed in a logical order (from top
+to bottom and left to right). Each new page entered by following such links
+was noted down in the inventory table and given an identifier based on it's
+hierarchical nature. The relevant links of such a new page
+was followed in a similar fashion. This procedure was conducted until a
+previous identified page were encountered or all the links of the current page
+in question were exhausted.
+
+The result of this exercise was tables identifying a website's various pages
+and the relationships amongst them. To better understand these relationships
+content maps based on the raw data from the inventory phase were created
+(Appendix~\ref{appendix:content.mapping},
+p.~\pageref{appendix:content.mapping}).
+
 \label{appendix:content.inventory}
 
 \section{Flickr}
-
-One can follow several navigational paths for ending up on some of the pages
-identified below. In my first navigation upon a given page I've followed all
-relevant navigational paths to the end. On my second encounter of the same
-page I've noted the identifier for the first time this page was visited.
 
 The following content inventory detailed in
 Table~\ref{table:flickr.content.inventory.1}
@@ -17,7 +29,7 @@ Table~\ref{table:flickr.content.inventory.2}
 represents the state of the Flickr service as of the 20th September 2007.
 Details could very well have changed since then as
 services like these are known to have a rapid development cycle
-where changes and 0 often are imposed on the user-base at quite
+where changes often are imposed on the user-base at quite
 a frequent rate.
 
 When collecting data one notices that there is an enormous amount of pages
@@ -25,13 +37,14 @@ sharing a common structure only differing in a single or a few variables.
 Examples include
 the user in question for a profile page, the tag for a listing of photos
 annotated with such a tag, the date for time based history listings and so on.
-I therefore introduced several such variables prefixed with a dollar sign: \$
+I therefore introduced several such variables prefixed with a dollar sign:
+\emph{\$}
 \footnote{Inspired from variable usage in UNIX shell scripting}. A complete
-listing of such variables an their meaning can be found in
+listing of such variables and their meaning can be found in
 Table~\ref{table:flickr.variable.list}
 (p.~\pageref{table:flickr.variable.list})
 
-\begin{table}[h!b!p!]
+\begin{table}
   \begin{center}
     \begin{small}
 
@@ -90,22 +103,28 @@ Table~\ref{table:flickr.variable.list}
   \end{center}
 \end{table}
 
-Most pages have both a title displayed in the browsers title-bar (using a
-HTML title anchor inside the head anchor) and a in page-heading (usually inside
-a HTML h1 anchor). During the content inventory I took not of the most
-descriptive of these two in the following ``Page Title'' columns. There were
-occasions where one of these were lacking in properly describing the pages
-content. Since the aim of this content inventory is to get an informed picture
-of the navigational structures I simply selected the most fitting title.
-I opted to ignore noting down such inconsistencies as one probably would to
-when using content inventory as a tool for improving site architecture.
+% Include this after the data has been cleaned up (use best of h1/title).
+%
+% Most pages have both a title displayed in the browsers title-bar (using a
+% HTML title anchor inside the head anchor) and a in page-heading (usually inside
+% a HTML h1 anchor). During the content inventory I took not of the most
+% descriptive of these two in the following ``Page Title'' columns. There were
+% occasions where one of these were lacking in properly describing the pages
+% content. Since the aim of this content inventory is to get an informed picture
+% of the navigational structures I simply selected the most fitting title.
+% I opted to ignore noting down such inconsistencies as one probably would to
+% when using content inventory as a tool for improving site architecture.
 
-In addition to the ``Page Title'' column the content inventory tables have an
-``Id'' column where each page is assigned a unique identifier of hierarchical
-nature, a ``Link Name'' column describing the text of the link that pointed to
-this particular page, a ``Link Location'' column highlighting where on the
-page the link that pointed to this page were located, a ``URL'' column
-identifying the local part of the site's URL.
+Data collected during the inventory phase have been split into two tables due
+to the extent of data they contain. Cross referencing is easily done since
+both tables have an ``Id'' column.
+Table~\ref{table:flickr.content.inventory.1}
+(p.~\pageref{table:flickr.content.inventory.1}) lists the page titles and
+the ``URL'' of identified pages. 
+Table~\ref{table:flickr.content.inventory.2}
+(p.~\pageref{table:flickr.content.inventory.2}) contains information about the
+the textual name (Link Name) given to the link that pointed to a certain page
+and the location (Link Location) on the page for such a link.
 
 \setlength\LTleft{0pt plus 1fill minus 1fill}
   \let\LTright\LTleft
