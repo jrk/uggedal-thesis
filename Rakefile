@@ -21,7 +21,7 @@ task :base do
 
     t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
 
-    t.scm = RakedLaTeX::ScmStats::Mercurial.new
+    t.scm =  RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
 
     t.table_of_contents = true
 
@@ -30,6 +30,9 @@ task :base do
     t.appendices = %w(content.inventory
                       content.mapping)
   end
+end
+
+task :scm do
 end
 
 module RakedLaTeX
@@ -184,9 +187,9 @@ module RakedLaTeX
           \\\\ \\\\ \\\\
           <%=@scm[:name]%> Stats
         %       end
-        %       if @scm[:rev]
+        %       if @scm[:revision]
           \\\\
-          \texttt{<%=@scm[:rev]%>}
+          \texttt{<%=@scm[:revision]%>}
         %       end
         %       if @scm[:date]
           \\\\
@@ -249,6 +252,43 @@ module RakedLaTeX
 
   module ScmStats
     class Mercurial
+
+      # The name of the Mercurial SCM system. Defaults to this class name.
+      attr_accessor :name
+
+      # The Mercurial executable. Defaults to plain `hg` if it's found on the
+      # system.
+      attr_accessor :executable
+
+      # The revision and date of the tip (Mercurial's head).
+      attr_accessor :revision, :date
+
+      def initialize()
+        @name = self.class.to_s.gsub(/\w+::/, '')
+        @executable = 'hg' if system 'which hg > /dev/null'
+
+        @revision, @date = parse_scm_stats
+
+        yield self if block_given?
+      end
+
+      def parse_scm_stats
+        return [nil, nil] unless @executable
+
+        raw_stats = `hg tip`
+        revision = raw_stats.scan(/^changeset: +(.+)/).first.first
+        date = raw_stats.scan(/^date: +(.+)/).first.first
+
+        [revision, date]
+      end
+
+      def collect_scm_stats
+        { :name => @name,
+          :revision => @revision,
+          :date => @date }
+      end
+
+
     end
   end
 end
