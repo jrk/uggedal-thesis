@@ -1,6 +1,6 @@
-task :default => :base
+task :default => :generate_base
 
-task :base do
+task :generate_base do
   RakedLaTeX::BaseTemplate.new('Draft: Social Navigation') do |t|
     t.klass = { :book => %w(11pt a4paper twoside) }
 
@@ -22,6 +22,8 @@ task :base do
     t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
 
     t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
+
+    t.preamble_extras = '\include{commands}'
 
     t.table_of_contents = true
 
@@ -96,6 +98,19 @@ module RakedLaTeX
     #
     attr_accessor :scm
 
+    # Often it's neccessary to include extra configuration, custom commands,
+    # etc in the preamble of the document. This hook enables such behaviour.
+    # Example:
+    #
+    #   '\include{my.comstom.commands}'
+    #
+    #   or
+    #
+    #   %q(\sloppy
+    #      \raggedbottom)
+    #
+    attr_accessor :preamble_extras
+
     # The documents abstract. Example:
     #
     #   %q(This document tries to answer some random research question.
@@ -167,6 +182,7 @@ module RakedLaTeX
       @title = title
       @author = nil
       @scm = {}
+      @preamble_extras = nil
       @abstract = nil
       @acknowledgments = nil
       @table_of_contents = false
@@ -235,6 +251,10 @@ module RakedLaTeX
         %     end
         }
         %   end
+        % end
+
+        % if @preamble_extras
+        <%=@preamble_extras%>
         % end
 
         % if @abstract
