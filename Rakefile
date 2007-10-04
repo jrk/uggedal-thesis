@@ -347,8 +347,6 @@ module RakedLaTeX
           :revision => @revision,
           :date => @date }
       end
-
-
     end
 
     class Subversion
@@ -388,5 +386,22 @@ module RakedLaTeX
           :date => @date }
       end
     end
+  end
+
+  # Takes care of running latex and related utilities. Gives helpful
+  # information if input files are missing and also cleans up the output of
+  # these utilities.
+  module Runner
+    #TODO: implement!
+  end
+
+  # Handles the business of compiling latex (and bibtex if needed) source
+  # files into binary formats as dvi, ps, and pdf. The latex and bibtex
+  # utilites need to be run a certain number of times so that things like
+  # table of contents, references, citations, etc become proper. This module
+  # tries to solve this issue by running the needed utilities only as many
+  # times as needed.
+  module Compiler
+    #TODO: implement!
   end
 end
