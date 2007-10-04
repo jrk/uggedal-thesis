@@ -2,7 +2,7 @@ task :default => :base
 
 task :base do
   RakedLaTeX::Template.new('Draft: Social Navigation') do |t|
-    t.document_class = { :book => %w(11pt a4paper twoside) }
+    t.klass = { :book => %w(11pt a4paper twoside) }
 
     t.packages << { :hyperref => %w(ps2pdf
                                     bookmarks=true
@@ -21,7 +21,7 @@ task :base do
 
     t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
 
-    t.scm =  RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
+    t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
 
     t.table_of_contents = true
 
@@ -33,6 +33,26 @@ task :base do
 end
 
 module RakedLaTeX
+
+  # Provides a template for a base latex file. This template can be configured
+  # quite extencively by changing many of the class' instance variables. This
+  # can easily be done with a block:
+  #
+  #   RakedLaTeX::Template.new('Dev Null and Nothingness') do |t|
+  #     t.klass = { :book => %w(12pt a4paper twoside) }
+  #
+  #     t.packages << { :fontenc => ['T1'] }
+  #     t.packages << { :natbib => [] }
+  #
+  #     t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
+  #
+  #     t.table_of_contents = true
+  #
+  #     t.main_content = %w(introduction previous.research method data findings)
+  #
+  #     t.appendices = %w(data.tables concent.forms)
+  #   end
+  #
   class Template
     require 'erb'
 
@@ -41,7 +61,7 @@ module RakedLaTeX
     #
     #   { :book => ['12pt', 'a4paper', 'twoside']
     #
-    attr_accessor :document_class
+    attr_accessor :klass
 
     # List of packages to use and their optional options. Example:
     #
@@ -132,7 +152,7 @@ module RakedLaTeX
     attr_accessor :bibliography
 
     def initialize(title=nil)
-      @document_class = { :article => [] }
+      @klass = { :article => [] }
       @packages = []
       @title = title
       @author = nil
@@ -160,7 +180,7 @@ module RakedLaTeX
 
     def template
       %q(
-        % @document_class.each do |klass, options|
+        % @klass.each do |klass, options|
         \documentclass[<%=options.join(',')%>]{<%=klass%>}
         % end
 
