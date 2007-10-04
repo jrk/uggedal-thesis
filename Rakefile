@@ -1,257 +1,254 @@
-SRC_DIR = File.expand_path(pwd + '/src')
-BASE_NAME = 'base'
-FILE_REV = `hg tip`.grep(/changeset/).first.gsub(/[a-z]+:/, '').
-                                            gsub(/:\w+/, '').strip
-PROJECT_NAME = "eivindu.social.navigation.draft.r#{FILE_REV}"
-TMP_FILES = %w(aux bbl blg log lot lof toc)
-GEN_FILES = %w(dvi ps pdf)
+task :default => :base
 
-task :default => 'compile:dvi'
+task :base do
+  RakedLaTeX::Template.new('Draft: Social Navigation') do |t|
+    t.document_class = { :book => %w(11pt a4paper twoside) }
 
-desc 'Compiles source files with latex and bibtex'
-task :compile do
-  cd(SRC_DIR) do
-    out_file = File.join(SRC_DIR, "#{BASE_NAME}_out.tex")
-    base_file = File.join(SRC_DIR, "#{BASE_NAME}.tex")
-    File.open(out_file, 'w') do |file|
-      file.write substitute_with_scm_info(base_file)
-    end
+    t.packages << { :hyperref => %w(ps2pdf
+                                    bookmarks=true
+                                    breaklinks=false
+                                    raiselinks=true
+                                    pdfborder={0 0 0}
+                                    colorlinks=false) }
+    t.packages << { :fontenc => ['T1'] }
+    t.packages << { :mathpazo => [] }
+    t.packages << { :courier => [] }
+    t.packages << { :helvet => [] }
+    t.packages << { :appendix => %w(titletoc page) }
+    t.packages << { :longtable => [] }
+    t.packages << { :booktabs => [] }
+    t.packages << { :natbib => [] }
 
-    system "latex #{BASE_NAME}_out"
-    if FileList['*.bib'].size > 0
-      system "bibtex #{BASE_NAME}_out"
-      system "latex #{BASE_NAME}_out"
-    end
-    system "latex #{BASE_NAME}_out"
+    t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
+
+    t.scm = RakedLaTeX::ScmStats::Mercurial.new
+
+    t.table_of_contents = true
+
+    t.main_content = %w(content.analysis)
+
+    t.appendices = %w(content.inventory
+                      content.mapping)
   end
 end
 
-namespace :compile do
+module RakedLaTeX
+  class Template
+    require 'erb'
 
-  desc 'Compiles source files into dvi format'
-  task :dvi => :compile do
-    mv_file(:dvi)
+    # Class of the document and it's optional options. Defaults to the
+    # article class with no options enabled. Example:
+    #
+    #   { :book => ['12pt', 'a4paper', 'twoside']
+    #
+    attr_accessor :document_class
+
+    # List of packages to use and their optional options. Example:
+    #
+    #   [ { :appendix => [:titletoc, :page] },
+    #     { :fontenc => ['T1'] },
+    #     { :longtable => [] } ]
+    #
+    attr_accessor :packages
+
+    # Title of the document. No front title will be generated if this value
+    # is empty. Examples:
+    #
+    #   'Types of Social Navigation in Modern Web Applications'
+    #
+    attr_accessor :title
+
+    # The author of the document. Example:
+    #
+    #   { :name => 'Eivind Uggedal',
+    #     :email => 'eu@redflavor.com' }
+    #
+    attr_accessor :author
+
+    # SCM information like name, revision of the tip/head/trunk and it's
+    # date. Example:
+    #
+    #   { :name => 'Mercurial',
+    #     :revision => 45,
+    #     :date => '12th of August 2005' }
+    #
+    attr_accessor :scm
+
+    # The documents abstract. Example:
+    #
+    #   %q(This document tries to answer some random research question.
+    #      This research is important and wort studying because of this and
+    #      that. The data used to illuminate this problem is /dev/null and
+    #      the method of procrastination is to analyse this naturally
+    #      occuring data. The main findings are equal to nil and their
+    #      implications in the light of other research is not known.)
+    #
+    attr_accessor :abstract
+
+    # The documents acknowledgments. Example:
+    #
+    #   %q(I would like to thank all those who refused to belive in me and
+    #      my work for all those years.)
+    #
+    attr_accessor :acknowledgments
+
+    # Wether to include a table of contents in the document. Defaults to
+    # false.
+    attr_accessor :table_of_contents
+
+    # Wether to include a list of figures in the document. Defaults to
+    # false.
+    attr_accessor :list_of_figures
+
+    # Wether to include a list of tables in the document. Defaults to
+    # false.
+    attr_accessor :list_of_tables
+
+    # List of latex files that will be included in the main matter of the
+    # document. Usually this is used to include one file per chapter of the
+    # document. The file suffix shuld be ommitted as '.tex' is always
+    # appended to these files.
+    # Example:
+    #
+    #   %w(introduction littrature methodology data conclusion)
+    #
+    attr_accessor :main_content
+
+    # List of latex files that will be included as appendices of the
+    # document. The file suffix shuld be ommitted as '.tex' is always
+    # appended to these files.
+    # Example:
+    #
+    #   %w(content.inventory content.mapping history)
+    #
+    attr_accessor :appendices
+
+    # Latex file which will be used as the bibliography and the style to use
+    # for it's listings. The file suffix should be omitted as '*.bib' is
+    # always appended to this file. Example:
+    #
+    #   { :citations => :newapa }
+    #
+    attr_accessor :bibliography
+
+    def initialize(title=nil)
+      @document_class = { :article => [] }
+      @packages = []
+      @title = title
+      @author = nil
+      @scm = {}
+      @abstract = nil
+      @acknowledgments = nil
+      @table_of_contents = false
+      @list_of_figures = false
+      @list_of_tables = false
+      @main_content = []
+      @appendices = []
+      @bibliography = {}
+
+      # TODO: create file_path attr and initialize here and rename
+      # generate_result to generate_file
+
+      yield self if block_given?
+
+      generate_result
+    end
+
+    def generate_result
+      puts ERB.new(template, 0, '%<>').run(self.send('binding'))
+    end
+
+    def template
+      %q(
+        % @document_class.each do |klass, options|
+        \documentclass[<%=options.join(',')%>]{<%=klass%>}
+        % end
+
+        % @packages.each do |package|
+        %   package.each do |name, options|
+        \usepackage[<%=options.join(',')%>]{<%=name%>}
+        %   end
+        % end
+
+        % if @title
+        \title{<%=@title%>}
+        %   if @author && @author[:name]
+        \author{%
+          <%=@author[:name]%>
+        %     if @author[:email]
+          \\\\
+          \texttt{<%=@author[:email]%>}
+        %     end
+        %     if @scm
+        %       if @scm[:name]
+          \\\\ \\\\ \\\\
+          <%=@scm[:name]%> Stats
+        %       end
+        %       if @scm[:rev]
+          \\\\
+          \texttt{<%=@scm[:rev]%>}
+        %       end
+        %       if @scm[:date]
+          \\\\
+          \texttt{<%=@scm[:date]%>}
+        %       end
+        %     end
+        }
+        %   end
+        % end
+
+        % if @abstract
+        \documentabstract{%
+          <%=@abstract%>
+        }
+        % end
+
+        % if @acknowledgments
+        \acknowledgments{%
+          <%=@acknowledgments%>
+        }
+        % end
+
+        \begin{document}
+          \frontmatter
+        % if @title
+            \maketitle
+        % end
+        % if @table_of_contents
+            \tableofcontents
+        % end
+        % if @list_of_figures
+            \listoffigures
+        % end
+        % if @list_of_tables
+            \listoftables
+        % end
+
+          \mainmatter
+        % @main_content.each do |content|
+            \include{<%=content%>}
+        % end
+
+        % if @appendices && @appendices.any?
+            \begin{appendices}
+        %   @appendices.each do |appendix|
+              \include{<%=appendix%>}
+        %   end
+            \end{appendices}
+        % end
+
+          \backmatter
+        % @bibliography.each do |file, style|
+            \bibliographystyle{<%=style%>}
+            \bibliography{file}
+        % end
+        \end{document}
+      ).gsub(/^[ ]{8}/, '')
+    end
   end
 
-  desc 'Compiles source files into ps format'
-  task :ps => :compile do
-    cd(SRC_DIR) do
-      system "dvips #{BASE_NAME}_out"
+  module ScmStats
+    class Mercurial
     end
-    mv_file(:ps)
-  end
-
-  desc 'Compiles source files into pdf format'
-  task :pdf => :compile do
-    cd(SRC_DIR) do
-      system "pdflatex #{BASE_NAME}_out"
-    end
-    mv_file(:pdf)
   end
 end
-
-desc 'View compiled file'
-task :view => 'view:dvi'
-
-namespace :view do
-
-  desc 'View compiled file in dvi format'
-  task :dvi => 'compile:dvi'do
-    view_file(:dvi)
-  end
-
-  desc 'View compiled file in ps format'
-  task :ps => 'compile:ps' do
-    view_file(:ps)
-  end
-
-  desc 'View compiled file in pdf format'
-  task :pdf => 'compile:pdf' do
-    view_file(:pdf)
-  end
-end
-
-desc 'Spell check source files'
-task :spell do
-  input_files_in_sections.each_value do |section|
-    section.each do |file|
-      file_path = File.join(SRC_DIR, "#{file}.tex")
-      system("ispell -t -p src/dictionary.ispell #{file_path}")
-    end
-  end
-end
-
-desc 'Generate a statistical report'
-task :report do
-  print_stat_splitter
-  print_stat_line([camelize(PROJECT_NAME), 'Total', 'Textual', '%'])
-  print_stat_splitter
-  section_stats = print_stat_for_sections(input_files_in_sections)
-  print_stat_splitter
-  print_stat_totals(section_stats)
-  print_stat_splitter
-end
-
-desc 'Cleans up temporary files in source directory'
-task :clean do
-  cd(SRC_DIR) do
-    auxilary_files = TMP_FILES + GEN_FILES
-    auxilary_files.each do |tmp_file|
-      rm_f FileList["*.#{tmp_file}"]
-    end
-  end
-end
-
-desc 'Cleans up explicitly created files in base directory'
-task :clobber => :clean do
-  GEN_FILES.each do |gen_file|
-    rm_f FileList["#{PROJECT_NAME}.#{gen_file}"]
-  end
-end
-
-private
-
-  # Substitutes a placeholder comment in a given file with
-  # SCM info like revision and date.
-  def substitute_with_scm_info(file)
-    scm_info = `hg tip`
-    scm_rev = scm_info.grep(/changeset/).first.gsub(/[a-z]+:/, '').strip
-    scm_date = scm_info.grep(/date/).first.gsub(/[a-z]+:/, '').
-                                     gsub(/:\d\d \d{4} \+\d{4}/,'').strip
-    formatted_info = "SCM Revision: \\texttt{#{scm_rev}}\\\\\\ \n" +
-                     "SCM Date: \\texttt{#{scm_date}}"
-    File.read(file).gsub(/% SCM stats/, formatted_info)
-  end
-
-  # Moves a base file in the source directory of the given format to the base
-  # directory, renaming it to use the project file name. Also deletes the
-  # temporary generated out latex file.
-  def mv_file(format)
-    mv(File.join(SRC_DIR, "#{BASE_NAME}_out.#{format.to_s}"),
-       File.join(pwd, "/#{PROJECT_NAME}.#{format.to_s}"))
-    rm File.join(SRC_DIR, "#{BASE_NAME}_out.tex")
-  end
-
-  # Opens up a compiled file of the given format in an appropriate viewer.
-  def view_file(format)
-    viewers = case format
-              when :dvi
-                %w(dviprog xdvi)
-              when :ps
-                %w(psprog evince acroread)
-              when :pdf
-                %w(kpdf evince acroread)
-              end
-    viewers.each do |viewer|
-      if system "which #{viewer}"
-        system "#{viewer} #{PROJECT_NAME}.#{format.to_s}"
-        return
-      end
-    end
-  end
-
-  def print_stat_line(stat_line)
-    stats = stat_line.dup
-    stats << to_percent(stats[1], stats[2]) if stats[1].instance_of? Fixnum
-    puts "| #{stats.shift.ljust(30)}" +
-         stats.collect { |s| "|#{s.to_s.rjust(8)} " }.join + "|"
-  end
-
-  def print_stat_splitter
-    puts '+' + '-'*22 + ('-'*9 + '+') * 4
-  end
-
-  def print_stat_for_sections(section_names)
-    sections = stats_for_sections(section_names)
-    sections.each_value do |section|
-      section.each do |stat|
-        print_stat_line(stat)
-      end
-    end
-  end
-
-  def print_stat_totals(sections)
-    total_stats =  sections.collect do |name, stats|
-      [camelize(name)] + summarize_stats(stats)
-    end
-    total_stats << ['Totals'] + summarize_stats(total_stats)
-    total_stats.each do |total_stat|
-      print_stat_line(total_stat)
-    end
-  end
-
-  def stats_for_sections(sections)
-    stats = {}
-    sections.each do |name, files|
-      stats[name] = []
-      files.each_with_index do |file, index|
-        title = "#{camelize(name)[0..0]}.#{index+1}: #{camelize(file)}"
-        file_path = File.join(SRC_DIR, "#{file}.tex")
-        stats[name] << [title] + full_and_textual_wc(file_path)
-      end
-    end
-    stats
-  end
-
-  # Finds all input files in the base source file and seperates them into
-  # sections (currently: chapters, appendices).
-  def input_files_in_sections
-    sections = { :chapters => [], :appendices => [] }
-
-    base_file = File.join(SRC_DIR, "#{BASE_NAME}.tex")
-    File.open(base_file) do |file|
-      section = :none
-      file.each do |line|
-        unless section == :none
-          search = line.scan(/include\{([\w.]+)\}/)
-          if search && search.first && search.first.first
-            sections[section] << search.first.first
-          end
-        end
-        case line
-        when /\\mainmatter/
-          section = :chapters
-        when /\\begin\{appendices\}/
-          section = :appendices
-        end
-      end
-    end
-    sections
-  end
- 
-  # Calculates full and textual word count for a given latex file.
-  # Bear in mind that these conts are pragmatic estimates.
-  def full_and_textual_wc(file)
-    full_wc, textual_wc = 0, 0
-    File.open(file) do |f|
-      f.each do |l|
-        full_wc += l.split.size
-        unless l.lstrip =~ /^%/         # don't count comments
-          l.gsub!(/\\\w+/, '')          # strip latex commands
-          l.gsub!(/\[[\w,]+\]/, '')     # strip latex command options
-          l.gsub!(/\{[\w,.:_-]+\}/, '') # strip latex command parameters
-          l.gsub!(/&/, '')              # strip latex column seperator
-          l.gsub!(/\\\\/, '')           # strip latex implicit line break
-          textual_wc += l.split.size
-        end
-      end
-    end
-    [full_wc, textual_wc]
-  end
-
-  def summarize_stats(stats)
-    total, textual = 0, 0
-    stats.each do |stat|
-      total += stat[1]
-      textual += stat[2]
-    end
-    [total, textual]
-  end
-
-  def to_percent(major, minor)
-    major != 0 ? (100 * minor / major).round : 0
-  end
-
-  def camelize(val)
-    val.to_s.split('.').collect { |s| s[0..0].upcase + s[1..-1] }.join(' ')
-  end
