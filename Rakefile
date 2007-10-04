@@ -32,9 +32,6 @@ task :base do
   end
 end
 
-task :scm do
-end
-
 module RakedLaTeX
   class Template
     require 'erb'
@@ -250,6 +247,9 @@ module RakedLaTeX
     end
   end
 
+  # Extracts changeset stats from various SCM systems. This info can be
+  # included in the title page of the latex document and is especially helpful
+  # when working with draft versions.
   module ScmStats
     class Mercurial
 
@@ -289,6 +289,44 @@ module RakedLaTeX
       end
 
 
+    end
+
+    class Subversion
+
+      # The name of the Subversion SCM system. Defaults to this class name.
+      attr_accessor :name
+
+      # The Subversion executable. Defaults to plain `svn` if it's found on
+      # the system.
+      attr_accessor :executable
+
+      # The revision and date of the last changed revision.
+      attr_accessor :revision, :date
+
+      def initialize()
+        @name = self.class.to_s.gsub(/\w+::/, '')
+        @executable = 'svn' if system 'which svn > /dev/null'
+
+        @revision, @date = parse_scm_stats
+
+        yield self if block_given?
+      end
+
+      def parse_scm_stats
+        return [nil, nil] unless @executable
+
+        raw_stats = `svn info`
+        revision = raw_stats.scan(/^Revision: (\d+)/).first.first
+        date = raw_stats.scan(/^Last Changed Date: (.+)/).first.first
+
+        [revision, date]
+      end
+
+      def collect_scm_stats
+        { :name => @name,
+          :revision => @revision,
+          :date => @date }
+      end
     end
   end
 end
