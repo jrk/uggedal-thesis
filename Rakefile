@@ -1,7 +1,7 @@
 task :default => :base
 
 task :base do
-  RakedLaTeX::Template.new('Draft: Social Navigation') do |t|
+  RakedLaTeX::BaseTemplate.new('Draft: Social Navigation') do |t|
     t.klass = { :book => %w(11pt a4paper twoside) }
 
     t.packages << { :hyperref => %w(ps2pdf
@@ -29,6 +29,8 @@ task :base do
 
     t.appendices = %w(content.inventory
                       content.mapping)
+
+    t.output_directory += '/src'
   end
 end
 
@@ -44,16 +46,16 @@ module RakedLaTeX
   #     t.packages << { :fontenc => ['T1'] }
   #     t.packages << { :natbib => [] }
   #
-  #     t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
+  #     t.author = { :name => 'Eivind Uggedal', :email => 'eu@redflavor.com' }
   #
   #     t.table_of_contents = true
   #
-  #     t.main_content = %w(introduction previous.research method data findings)
+  #     t.main_content = %w(introduction previous.research method data)
   #
   #     t.appendices = %w(data.tables concent.forms)
   #   end
   #
-  class Template
+  class BaseTemplate
     require 'erb'
 
     # Class of the document and it's optional options. Defaults to the
@@ -151,6 +153,14 @@ module RakedLaTeX
     #
     attr_accessor :bibliography
 
+    # Directory for outputting the latex file generated from the template.
+    # Defaults to the same directory as this file is placed in. Note that this
+    # is not the same as the current working directory (pwd).
+    attr_accessor :output_directory
+
+    # File name for the output file. Defaults to 'base.tex'.
+    attr_accessor :ouput_file
+
     def initialize(title=nil)
       @klass = { :article => [] }
       @packages = []
@@ -166,16 +176,26 @@ module RakedLaTeX
       @appendices = []
       @bibliography = {}
 
-      # TODO: create file_path attr and initialize here and rename
-      # generate_result to generate_file
+      @output_directory = File.dirname(__FILE__)
+      @output_file = 'base.tex'
 
       yield self if block_given?
-
-      generate_result
+      
+      create_output_file
     end
 
-    def generate_result
-      puts ERB.new(template, 0, '%<>').run(self.send('binding'))
+    def create_output_file
+      File.open(output_path, 'w') do |f|
+        f.puts generate_output
+      end
+    end
+
+    def output_path
+      File.join(@output_directory, @output_file)
+    end
+
+    def generate_output
+      ERB.new(template, 0, '%<>').result(self.send('binding'))
     end
 
     def template
