@@ -129,13 +129,19 @@ module RakedLaTeX
     #
     attr_accessor :bibliography
 
-    # Directory for outputting the latex file generated from the template.
+    # Directory for outputting the latex file generated from the template and
+    # where all it's dependencies should be placed. Defaults to the same
+    # directory as this file is placed in. Note that this is not the same as
+    # the current working directory (pwd).
+    attr_accessor :source_directory
+
+    # Directory for building source files into binary files.
     # Defaults to the same directory as this file is placed in. Note that this
     # is not the same as the current working directory (pwd).
-    attr_accessor :output_directory
+    attr_accessor :build_directory
 
-    # File name for the output file. Defaults to 'base.tex'.
-    attr_accessor :output_file
+    # File name for the base file. Defaults to 'base.tex'.
+    attr_accessor :base_file
 
     def initialize
       @klass = { :article => [] }
@@ -153,8 +159,9 @@ module RakedLaTeX
       @appendices = []
       @bibliography = {}
 
-      @output_directory = File.dirname(__FILE__)
-      @output_file = 'base.tex'
+      @source_directory = File.dirname(__FILE__)
+      @build_directory = File.dirname(__FILE__)
+      @base_file = 'base.tex'
 
       yield self if block_given?
     end
@@ -163,8 +170,8 @@ module RakedLaTeX
       binding
     end
 
-    def output_path
-      File.join(@output_directory, @output_file)
+    def base_path
+      File.join(@source_directory, @base_file)
     end
   end
 
@@ -204,10 +211,10 @@ module RakedLaTeX
     include RakedLaTeX::Output
 
     def create_file(config)
-      File.open(config.output_path, 'w') do |f|
+      File.open(config.base_path, 'w') do |f|
         f.puts generate(config.values)
       end
-      notice "Base file: #{config.output_file} was created from template"
+      notice "Base file: #{config.base_file} was created from template"
     end
 
     def generate(values)
@@ -311,20 +318,30 @@ module RakedLaTeX
   # included in the title page of the latex document and is especially helpful
   # when working with draft versions.
   module ScmStats
-    class Mercurial
+    class Base
 
-      # The name of the Mercurial SCM system. Defaults to this class name.
+      # The name of the SCM system. 
       attr_accessor :name
 
-      # The Mercurial executable. Defaults to plain `hg` if it's found on the
-      # system.
+      # The Mercurial executable.
       attr_accessor :executable
 
-      # The revision and date of the tip (Mercurial's head).
+      # The revision and date of the tip/head/latest changeset.
       attr_accessor :revision, :date
 
-      def initialize()
-        @name = self.class.to_s.gsub(/\w+::/, '')
+      def collect_scm_stats
+        { :name => @name,
+          :revision => @revision,
+          :date => @date }
+      end
+    end
+
+    class Mercurial < Base
+
+      def initialize
+        super
+
+        @name = 'Mercurial'
         @executable = 'hg' if system 'which hg > /dev/null'
 
         @revision, @date = parse_scm_stats
@@ -341,28 +358,14 @@ module RakedLaTeX
 
         [revision, date]
       end
-
-      def collect_scm_stats
-        { :name => @name,
-          :revision => @revision,
-          :date => @date }
-      end
     end
 
-    class Subversion
-
-      # The name of the Subversion SCM system. Defaults to this class name.
-      attr_accessor :name
-
-      # The Subversion executable. Defaults to plain `svn` if it's found on
-      # the system.
-      attr_accessor :executable
-
-      # The revision and date of the last changed revision.
-      attr_accessor :revision, :date
+    class Subversion < Base
 
       def initialize
-        @name = self.class.to_s.gsub(/\w+::/, '')
+        super
+
+        @name = 'Subversion'
         @executable = 'svn' if system 'which svn > /dev/null'
 
         @revision, @date = parse_scm_stats
@@ -379,12 +382,6 @@ module RakedLaTeX
 
         [revision, date]
       end
-
-      def collect_scm_stats
-        { :name => @name,
-          :revision => @revision,
-          :date => @date }
-      end
     end
   end
 
@@ -394,39 +391,102 @@ module RakedLaTeX
   module Runner
     class LaTeX
 
+      # The file to be run trough the latex process.
+      attr_accessor :input_file
+
       # The LaTeX executable. Defaults to plain `latex` if it's found on
       # the system.
       attr_accessor :executable
 
-      # The file to be run trough the latex process.
-      attr_accessor :input_file
-
-      def initialize(input_file)
-        @executable = 'latex' if system 'which latex > /dev/null'
+      def initialize(input_file, executable='latex')
         @input_file = input_file
+        @executable = executable if system 'which latex > /dev/null'
+
+        run
       end
 
       def run
-        system 'latex #@input_file'
+        system "latex #@input_file"
       end
+
     end
   end
 
-  # Handles the business of compiling latex (and bibtex if needed) source
+  # Handles the business of building latex (and bibtex if needed) source
   # files into binary formats as dvi, ps, and pdf. The latex and bibtex
   # utilites need to be run a certain number of times so that things like
   # table of contents, references, citations, etc become proper. This module
   # tries to solve this issue by running the needed utilities only as many
   # times as needed.
-  module Compiler
-    #TODO: implement!
+  module Builder
+    class Base
+      include RakedLaTeX::Output
+
+      # The directory where the files to be built should be located.
+      attr_accessor :source_directory
+
+      # The directory where the build should be run. This directory is
+      # created if it's not present.
+      attr_accessor :build_directory
+
+
+      def initialize(source_directory, build_directory)
+        @source_directory = source_directory
+        @build_directory = build_directory
+      end
+
+      def prepare_build_directory
+        if @build_directory
+          mkdir_p @build_directory unless File.exists? @build_directory
+          cd @build_directory do
+            copy_source_files
+            yield
+          end
+        else
+          yield
+        end
+      end
+
+      def copy_source_files
+        %w(tex bib sty).each do |file_extension|
+          FileList["#{@source_directory}/*.#{file_extension}"].each do |file|
+            cp(file,  @build_directory)
+          end
+        end
+      end
+    end
+
+    class Dvi < Base
+      def initialize(*args)
+        super
+      end
+
+      def build(base_file)
+        prepare_build_directory do
+          RakedLaTeX::Runner::LaTeX.new(base_file)
+        end
+      end
+    end
   end
 end
 
 task :default => :generate_base
 
 task :generate_base do
+  puts RakedLaTeX::BaseTemplate.new.generate(CONFIG.values)
+end
+
+task :create_base do
   RakedLaTeX::BaseTemplate.new.create_file(CONFIG)
+end
+
+task :run_latex do
+  RakedLaTeX::Runner::LaTeX.new(CONFIG.base_path)
+end
+
+task :build_dvi do
+  RakedLaTeX::Builder::Dvi.new(CONFIG.source_directory,
+                               CONFIG.build_directory).build(CONFIG.base_file)
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
@@ -461,6 +521,6 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.appendices = %w(content.inventory
                     content.mapping)
 
-  t.output_directory += '/src'
+  t.source_directory += '/src'
+  t.build_directory += '/build'
 end
-
