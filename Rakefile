@@ -1,53 +1,15 @@
-task :default => :generate_base
-
-task :generate_base do
-  RakedLaTeX::BaseTemplate.new('Draft: Social Navigation') do |t|
-    t.klass = { :book => %w(11pt a4paper twoside) }
-
-    t.packages << { :hyperref => %w(ps2pdf
-                                    bookmarks=true
-                                    breaklinks=false
-                                    raiselinks=true
-                                    pdfborder={0 0 0}
-                                    colorlinks=false) }
-    t.packages << { :fontenc => ['T1'] }
-    t.packages << { :mathpazo => [] }
-    t.packages << { :courier => [] }
-    t.packages << { :helvet => [] }
-    t.packages << { :appendix => %w(titletoc page) }
-    t.packages << { :longtable => [] }
-    t.packages << { :booktabs => [] }
-    t.packages << { :natbib => [] }
-
-    t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
-
-    t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
-
-    t.preamble_extras = '\include{commands}'
-
-    t.table_of_contents = true
-
-    t.main_content = %w(content.analysis)
-
-    t.appendices = %w(content.inventory
-                      content.mapping)
-
-    t.output_directory += '/src'
-  end
-end
-
 module RakedLaTeX
 
-  # Provides a template for a base latex file. This template can be configured
-  # quite extencively by changing many of the class' instance variables. This
-  # can easily be done with a block:
+  # Provides configuration options that can be utilized by changing many
+  # of the class' instance variables. This can easily be done with a block:
   #
-  #   RakedLaTeX::Template.new('Dev Null and Nothingness') do |t|
+  #   RakedLaTeX::Configuration.new do |t|
   #     t.klass = { :book => %w(12pt a4paper twoside) }
   #
   #     t.packages << { :fontenc => ['T1'] }
   #     t.packages << { :natbib => [] }
   #
+  #     t.title = 'Dev Null and Nothingness'
   #     t.author = { :name => 'Eivind Uggedal', :email => 'eu@redflavor.com' }
   #
   #     t.table_of_contents = true
@@ -57,8 +19,7 @@ module RakedLaTeX
   #     t.appendices = %w(data.tables concent.forms)
   #   end
   #
-  class BaseTemplate
-    require 'erb'
+  class Configuration
 
     # Class of the document and it's optional options. Defaults to the
     # article class with no options enabled. Example:
@@ -174,12 +135,12 @@ module RakedLaTeX
     attr_accessor :output_directory
 
     # File name for the output file. Defaults to 'base.tex'.
-    attr_accessor :ouput_file
+    attr_accessor :output_file
 
-    def initialize(title=nil)
+    def initialize
       @klass = { :article => [] }
       @packages = []
-      @title = title
+      @title = nil
       @author = nil
       @scm = {}
       @preamble_extras = nil
@@ -196,22 +157,61 @@ module RakedLaTeX
       @output_file = 'base.tex'
 
       yield self if block_given?
-      
-      create_output_file
     end
 
-    def create_output_file
-      File.open(output_path, 'w') do |f|
-        f.puts generate_output
-      end
+    def values
+      binding
     end
 
     def output_path
       File.join(@output_directory, @output_file)
     end
+  end
 
-    def generate_output
-      ERB.new(template, 0, '%<>').result(self.send('binding'))
+  # Handles command line output. Could be useful in the future with regards to
+  # verbosity settings and color support.
+  module Output
+    def notice(message)
+      puts message
+    end
+
+    def error(message)
+      puts "#{message}!"
+    end
+  end
+
+  # Provides a template for a base latex file. This template can be configured
+  # quite extencively by changing many of the class' instance variables. This
+  # can easily be done with a block:
+  #
+  #   RakedLaTeX::Template.new('Dev Null and Nothingness') do |t|
+  #     t.klass = { :book => %w(12pt a4paper twoside) }
+  #
+  #     t.packages << { :fontenc => ['T1'] }
+  #     t.packages << { :natbib => [] }
+  #
+  #     t.author = { :name => 'Eivind Uggedal', :email => 'eu@redflavor.com' }
+  #
+  #     t.table_of_contents = true
+  #
+  #     t.main_content = %w(introduction previous.research method data)
+  #
+  #     t.appendices = %w(data.tables concent.forms)
+  #   end
+  #
+  class BaseTemplate
+    require 'erb'
+    include RakedLaTeX::Output
+
+    def create_file(config)
+      File.open(config.output_path, 'w') do |f|
+        f.puts generate(config.values)
+      end
+      notice "Base file: #{config.output_file} was created from template"
+    end
+
+    def generate(values)
+      ERB.new(template, 0, '%<>').result(values)
     end
 
     def template
@@ -361,7 +361,7 @@ module RakedLaTeX
       # The revision and date of the last changed revision.
       attr_accessor :revision, :date
 
-      def initialize()
+      def initialize
         @name = self.class.to_s.gsub(/\w+::/, '')
         @executable = 'svn' if system 'which svn > /dev/null'
 
@@ -392,7 +392,24 @@ module RakedLaTeX
   # information if input files are missing and also cleans up the output of
   # these utilities.
   module Runner
-    #TODO: implement!
+    class LaTeX
+
+      # The LaTeX executable. Defaults to plain `latex` if it's found on
+      # the system.
+      attr_accessor :executable
+
+      # The file to be run trough the latex process.
+      attr_accessor :input_file
+
+      def initialize(input_file)
+        @executable = 'latex' if system 'which latex > /dev/null'
+        @input_file = input_file
+      end
+
+      def run
+        system 'latex #@input_file'
+      end
+    end
   end
 
   # Handles the business of compiling latex (and bibtex if needed) source
@@ -405,3 +422,45 @@ module RakedLaTeX
     #TODO: implement!
   end
 end
+
+task :default => :generate_base
+
+task :generate_base do
+  RakedLaTeX::BaseTemplate.new.create_file(CONFIG)
+end
+
+CONFIG = RakedLaTeX::Configuration.new do |t|
+  t.klass = { :book => %w(11pt a4paper twoside) }
+
+  t.packages << { :hyperref => %w(ps2pdf
+                                  bookmarks=true
+                                  breaklinks=false
+                                  raiselinks=true
+                                  pdfborder={0 0 0}
+                                  colorlinks=false) }
+  t.packages << { :fontenc => ['T1'] }
+  t.packages << { :mathpazo => [] }
+  t.packages << { :courier => [] }
+  t.packages << { :helvet => [] }
+  t.packages << { :appendix => %w(titletoc page) }
+  t.packages << { :longtable => [] }
+  t.packages << { :booktabs => [] }
+  t.packages << { :natbib => [] }
+
+  t.title = 'Draft: Social Navigtaion'
+  t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
+
+  t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
+
+  t.preamble_extras = '\include{commands}'
+
+  t.table_of_contents = true
+
+  t.main_content = %w(content.analysis)
+
+  t.appendices = %w(content.inventory
+                    content.mapping)
+
+  t.output_directory += '/src'
+end
+
