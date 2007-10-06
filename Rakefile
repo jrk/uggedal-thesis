@@ -129,6 +129,13 @@ module RakedLaTeX
     #
     attr_accessor :bibliography
 
+    # Returns a list of all latex and bibtex source files(main_content,
+    # appendices, and bibliography) with file extension (.tex and .bib).
+    def collect_source_files
+      (@main_content + @appendices).collect { |a| "#{a}.tex" } +
+        @bibliography.keys.collect { |a| "#{a}.bib" }
+    end
+
     # Directory for outputting the latex file generated from the template and
     # where all it's dependencies should be placed. Defaults to the same
     # directory as this file is placed in. Note that this is not the same as
@@ -140,8 +147,13 @@ module RakedLaTeX
     # is not the same as the current working directory (pwd).
     attr_accessor :build_directory
 
-    # File name for the base file. Defaults to 'base.tex'.
-    attr_accessor :base_file
+    # File name for the base latex file. Defaults to 'base.tex'.
+    attr_accessor :base_latex_file
+
+    # Returns the bibtex counterpart to the base latex file.
+    def base_bibtex_file
+      @base_latex_file.gsub(/\.tex$/, '.aux') if @base_latex_file
+    end
 
     def initialize
       @klass = { :article => [] }
@@ -161,7 +173,7 @@ module RakedLaTeX
 
       @source_directory = File.dirname(__FILE__)
       @build_directory = File.dirname(__FILE__)
-      @base_file = 'base.tex'
+      @base_latex_file = 'base.tex'
 
       yield self if block_given?
     end
@@ -171,7 +183,7 @@ module RakedLaTeX
     end
 
     def base_path
-      File.join(@source_directory, @base_file)
+      File.join(@source_directory, @base_latex_file)
     end
   end
 
@@ -218,7 +230,7 @@ module RakedLaTeX
       File.open(config.base_path, 'w') do |f|
         f.puts generate(config.values)
       end
-      notice "Creation completed for: #{config.base_file} in " +
+      notice "Creation completed for: #{config.base_latex_file} in " +
              "#{config.source_directory}"
     end
 
@@ -394,7 +406,7 @@ module RakedLaTeX
   # information if input files are missing and also cleans up the output of
   # these utilities.
   module Runner
-    class LaTeX
+    class Base
       include RakedLaTeX::Output
 
       # The file to be run trough the latex process.
@@ -404,9 +416,9 @@ module RakedLaTeX
       # the system.
       attr_accessor :executable
 
-      def initialize(input_file, executable='latex')
+      def initialize(input_file, executable)
         @input_file = input_file
-        @executable = executable if system 'which latex > /dev/null'
+        @executable = executable if system "which #{executable} > /dev/null"
 
         if File.exists? @input_file
           run
@@ -417,10 +429,33 @@ module RakedLaTeX
       end
 
       def run
-        system "latex #@input_file"
-        return
-        # Currently this does not work when latex awaits user input:
-        warnings = `latex #@input_file`.grep(/^(Overfull|Underfull)/)
+      end
+    end
+
+    class LaTeX < Base
+      def initialize(input_file, executable='latex')
+        super
+      end
+
+      def run
+        # TODO: Currently this does not work when latex awaits user input:
+        warnings = `latex #@input_file`.grep(/^(Overfull|Underfull|No file)/)
+        if warnings.any?
+          notice "Warnings from #@executable:"
+          warnings.each do |message|
+            warning message
+          end
+        end
+      end
+    end
+
+    class BibTeX < Base
+      def initialize(input_file, executable='bibtex')
+        super
+      end
+
+      def run
+        warnings = `bibtex #@input_file`.grep(/^I (found no|couldn't open)/)
         if warnings.any?
           notice "Warnings from #@executable:"
           warnings.each do |message|
@@ -448,22 +483,33 @@ module RakedLaTeX
       # created if it's not present.
       attr_accessor :build_directory
 
+      # List of source files that are part of the build. If such a list is
+      # present all files are verified of existence before the process
+      # proceeds.
+      attr_accessor :source_files
 
-      def initialize(source_directory, build_directory)
+
+      def initialize(source_directory, build_directory, source_files=[])
         @source_directory = source_directory
         @build_directory = build_directory
+        @source_files = source_files
+
+        @build_name = 'base'
       end
 
-      def prepare_build_directory
+      def build_directory
         if @build_directory
           mkdir_p @build_directory unless File.exists? @build_directory
           cd @build_directory do
             copy_source_files
+            return false unless source_files_present?
             yield
           end
         else
+          return false unless source_files_present?
           yield
         end
+        true
       end
 
       def copy_source_files
@@ -473,18 +519,31 @@ module RakedLaTeX
           end
         end
       end
+
+      def source_files_present?
+        @source_files.each do |file|
+          unless File.exists? file
+            error "Build of #@build_name aborted. " +
+                  "Source file: #{file} not found"
+            return false
+          end
+        end
+        true
+      end
     end
 
     class Dvi < Base
       def initialize(*args)
         super
+        @build_name = 'dvi'
       end
 
-      def build(base_file)
-        prepare_build_directory do
-          RakedLaTeX::Runner::LaTeX.new(base_file)
+      def build(base_latex_file)
+        success = build_directory do
+          RakedLaTeX::Runner::LaTeX.new(base_latex_file)
         end
-        notice "Build completed for: #{base_file} in #{@build_directory}"
+        notice "Build of #{@build_name} completed for: #{base_latex_file} " +
+               "in #{@build_directory}" if success
       end
     end
   end
@@ -504,9 +563,14 @@ task :run_latex do
   RakedLaTeX::Runner::LaTeX.new(CONFIG.base_path)
 end
 
+task :run_bibtex do
+  RakedLaTeX::Runner::BibTeX.new(CONFIG.base_bibtex_file)
+end
+
 task :build_dvi do
   RakedLaTeX::Builder::Dvi.new(CONFIG.source_directory,
-                               CONFIG.build_directory).build(CONFIG.base_file)
+     CONFIG.build_directory,
+     CONFIG.collect_source_files).build(CONFIG.base_latex_file)
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
@@ -527,7 +591,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :booktabs => [] }
   t.packages << { :natbib => [] }
 
-  t.title = 'Draft: Social Navigtaion'
+  t.title = 'Draft: Social Navigation'
   t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
 
   t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
@@ -540,6 +604,8 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
 
   t.appendices = %w(content.inventory
                     content.mapping)
+
+  t.bibliography = { :bibliography => :kluwer }
 
   t.source_directory += '/src'
   t.build_directory += '/build'
