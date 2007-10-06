@@ -182,8 +182,12 @@ module RakedLaTeX
       puts message
     end
 
+    def warning(message)
+      puts "  - #{message}"
+    end
+
     def error(message)
-      puts "#{message}!"
+      puts "  * #{message}"
     end
   end
 
@@ -214,7 +218,8 @@ module RakedLaTeX
       File.open(config.base_path, 'w') do |f|
         f.puts generate(config.values)
       end
-      notice "Base file: #{config.base_file} was created from template"
+      notice "Creation completed for: #{config.base_file} in " +
+             "#{config.source_directory}"
     end
 
     def generate(values)
@@ -390,6 +395,7 @@ module RakedLaTeX
   # these utilities.
   module Runner
     class LaTeX
+      include RakedLaTeX::Output
 
       # The file to be run trough the latex process.
       attr_accessor :input_file
@@ -402,13 +408,26 @@ module RakedLaTeX
         @input_file = input_file
         @executable = executable if system 'which latex > /dev/null'
 
-        run
+        if File.exists? @input_file
+          run
+        else
+          error "Running of #@executable aborted. " +
+                "Input file: #@input_file not found"
+        end
       end
 
       def run
         system "latex #@input_file"
+        return
+        # Currently this does not work when latex awaits user input:
+        warnings = `latex #@input_file`.grep(/^(Overfull|Underfull)/)
+        if warnings.any?
+          notice "Warnings from #@executable:"
+          warnings.each do |message|
+            warning message
+          end
+        end
       end
-
     end
   end
 
@@ -465,6 +484,7 @@ module RakedLaTeX
         prepare_build_directory do
           RakedLaTeX::Runner::LaTeX.new(base_file)
         end
+        notice "Build completed for: #{base_file} in #{@build_directory}"
       end
     end
   end
