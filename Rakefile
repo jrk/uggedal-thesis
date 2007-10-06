@@ -416,9 +416,13 @@ module RakedLaTeX
       # the system.
       attr_accessor :executable
 
+      # Contains a list of possible warnings after a run.
+      attr_accessor :warnings
+
       def initialize(input_file, executable)
         @input_file = input_file
         @executable = executable if system "which #{executable} > /dev/null"
+        @warnings = []
 
         if File.exists? @input_file
           run
@@ -439,10 +443,10 @@ module RakedLaTeX
 
       def run
         # TODO: Currently this does not work when latex awaits user input:
-        warnings = `latex #@input_file`.grep(/^(Overfull|Underfull|No file)/)
-        if warnings.any?
+        @warnings = `latex #@input_file`.grep(/^(Overfull|Underfull|No file)/)
+        if @warnings.any?
           notice "Warnings from #@executable:"
-          warnings.each do |message|
+          @warnings.each do |message|
             warning message
           end
         end
@@ -455,10 +459,10 @@ module RakedLaTeX
       end
 
       def run
-        warnings = `bibtex #@input_file`.grep(/^I (found no|couldn't open)/)
-        if warnings.any?
+        @warnings = `bibtex #@input_file`.grep(/^I (found no|couldn't open)/)
+        if @warnings.any?
           notice "Warnings from #@executable:"
-          warnings.each do |message|
+          @warnings.each do |message|
             warning message
           end
         end
@@ -540,7 +544,10 @@ module RakedLaTeX
 
       def build(base_latex_file)
         success = build_directory do
-          RakedLaTeX::Runner::LaTeX.new(base_latex_file)
+          first = RakedLaTeX::Runner::LaTeX.new(base_latex_file)
+          if first.warnings.join =~ /No file .+\.(aux|toc)/
+            second = RakedLaTeX::Runner::LaTeX.new(base_latex_file)
+          end
         end
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
                "in #{@build_directory}" if success
