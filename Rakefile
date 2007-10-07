@@ -155,6 +155,11 @@ module RakedLaTeX
       @base_latex_file.gsub(/\.tex$/, '.aux') if @base_latex_file
     end
 
+    # Returns the dvi counterpart to the base latex file.
+    def base_dvi_file
+      @base_latex_file.gsub(/\.tex$/, '.dvi') if @base_latex_file
+    end
+
     def initialize
       @klass = { :article => [] }
       @packages = []
@@ -472,6 +477,17 @@ module RakedLaTeX
         feedback
       end
     end
+
+    class DviPs < Base
+      def initialize(input_file, silent=false, executable='dvips')
+        super
+      end
+
+      def run
+        @warnings = `dvips #@input_file`
+        feedback
+      end
+    end
   end
 
   # Handles the business of building latex (and bibtex if needed) source
@@ -497,10 +513,8 @@ module RakedLaTeX
       attr_accessor :source_files
 
 
-      def initialize(source_directory, build_directory, source_files=[])
-        @source_directory = source_directory
+      def initialize(build_directory)
         @build_directory = build_directory
-        @source_files = source_files
 
         @build_name = 'base'
       end
@@ -509,15 +523,48 @@ module RakedLaTeX
         if @build_directory
           mkdir_p @build_directory unless File.exists? @build_directory
           cd @build_directory do
-            copy_source_files
-            return false unless source_files_present?
             yield
           end
         else
-          return false unless source_files_present?
           yield
         end
-        true
+      end
+    end
+
+    class Dvi < Base
+      def initialize(build_directory, source_directory, source_files=[])
+        super(build_directory)
+        @source_directory = source_directory
+        @source_files = source_files
+
+        @build_name = 'dvi'
+      end
+
+      def build(base_latex_file, base_bibtex_file=nil)
+        success = build_directory do
+          copy_source_files
+          return false unless source_files_present?
+
+          latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
+            bibtex = RakedLaTeX::Runner::BibTeX.new(base_bibtex_file, true)
+          end
+          if latex.warnings.join =~ /No file .+\.(aux|toc)/
+            latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          end
+          if latex.warnings.join =~ /There were undefined citations/
+            latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          end
+          latex.silent = false
+          latex.feedback
+          if bibtex
+            bibtex.silent = false
+            bibtex.feedback
+          end
+          true
+        end
+        notice "Build of #{@build_name} completed for: #{base_latex_file} " +
+               "in #{@build_directory}" if success
       end
 
       def copy_source_files
@@ -540,32 +587,17 @@ module RakedLaTeX
       end
     end
 
-    class Dvi < Base
+    class Ps < Base
       def initialize(*args)
         super
-        @build_name = 'dvi'
+        @build_name = 'ps'
       end
 
-      def build(base_latex_file, base_bibtex_file=nil)
+      def build(base_dvi_file)
         success = build_directory do
-          latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
-          if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
-            bibtex = RakedLaTeX::Runner::BibTeX.new(base_bibtex_file, true)
-          end
-          if latex.warnings.join =~ /No file .+\.(aux|toc)/
-            latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
-          end
-          if latex.warnings.join =~ /There were undefined citations/
-            latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
-          end
-          latex.silent = false
-          latex.feedback
-          if bibtex
-            bibtex.silent = false
-            bibtex.feedback
-          end
+          dvips = RakedLaTeX::Runner::DviPs.new(base_dvi_file)
         end
-        notice "Build of #{@build_name} completed for: #{base_latex_file} " +
+        notice "Build of #{@build_name} completed for: #{base_dvi_file} " +
                "in #{@build_directory}" if success
       end
     end
@@ -591,11 +623,17 @@ task :run_bibtex do
 end
 
 task :build_dvi do
-  RakedLaTeX::Builder::Dvi.new(CONFIG.source_directory,
-     CONFIG.build_directory,
+  RakedLaTeX::Builder::Dvi.new(CONFIG.build_directory,
+     CONFIG.source_directory,
      CONFIG.collect_source_files).build(CONFIG.base_latex_file,
                                         CONFIG.base_bibtex_file)
 end
+
+task :build_ps => :build_dvi do
+  RakedLaTeX::Builder::Ps.new(CONFIG.build_directory
+                              ).build(CONFIG.base_dvi_file)
+end
+
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
   t.klass = { :book => %w(11pt a4paper twoside) }
