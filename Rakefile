@@ -456,7 +456,8 @@ module RakedLaTeX
 
       def run
         # TODO: Currently this does not work when latex awaits user input:
-        @warnings = `latex #@input_file`.grep(/^(Overfull|Underfull|No file)/)
+        messages = /^(Overfull|Underfull|No file|Package \w+ Warning:)/
+        @warnings = `latex #@input_file`.grep(messages)
         feedback
       end
     end
@@ -545,14 +546,24 @@ module RakedLaTeX
         @build_name = 'dvi'
       end
 
-      def build(base_latex_file)
+      def build(base_latex_file, base_bibtex_file=nil)
         success = build_directory do
-          run = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
-          if run.warnings.join =~ /No file .+\.(aux|toc)/
-            run = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
+            bibtex = RakedLaTeX::Runner::BibTeX.new(base_bibtex_file, true)
           end
-          run.silent = false
-          run.feedback
+          if latex.warnings.join =~ /No file .+\.(aux|toc)/
+            latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          end
+          if latex.warnings.join =~ /There were undefined citations/
+            latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          end
+          latex.silent = false
+          latex.feedback
+          if bibtex
+            bibtex.silent = false
+            bibtex.feedback
+          end
         end
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
                "in #{@build_directory}" if success
@@ -582,7 +593,8 @@ end
 task :build_dvi do
   RakedLaTeX::Builder::Dvi.new(CONFIG.source_directory,
      CONFIG.build_directory,
-     CONFIG.collect_source_files).build(CONFIG.base_latex_file)
+     CONFIG.collect_source_files).build(CONFIG.base_latex_file,
+                                        CONFIG.base_bibtex_file)
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
