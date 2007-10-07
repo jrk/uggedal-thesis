@@ -27,11 +27,33 @@
   \mainmatter
     \include{content.analysis}
 
+    \chapter{Reference Test}
+    Here is some textual citation of \citet{bush45}.
+
+    Here is a paranthesized citation of \citep{dieberger97}.
+
+    Here is some textual citation of \citet{dieberger00} and the same
+    citation with all authors' names included \citet*{dieberger00}.
+
+    Here is a textual citation of several sources
+    \citet{dourish94,golder05}.
+
+    Here is some paranthesized citation of \citet{hill92} and the same
+    citation with all authors' names included \citet*{hill92}.
+
+    Here is a paranthesized citation of several sources
+    \citep{hill94,ohalloran07}.
+
+    Here is a paranthesized citation with additional prefix text
+    \citep[online from]{places07}.
+
+    Here we just retrieve the author of a citation \citeauthor{wexelblat99}.
+
     \begin{appendices}
       \include{content.inventory}
       \include{content.mapping}
     \end{appendices}
   \backmatter
-    % Include when \cite* are used \bibliographystyle{kluwer}
-    % Include when \cite* are used \bibliography{bibliography}
+    \bibliographystyle{kluwer}
+    \bibliography{bibliography}
 \end{document}
