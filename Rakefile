@@ -412,6 +412,9 @@ module RakedLaTeX
       # The file to be run trough the latex process.
       attr_accessor :input_file
 
+      # If true no messages is sendt to standard out. Defaults to false.
+      attr_accessor :silent
+
       # The LaTeX executable. Defaults to plain `latex` if it's found on
       # the system.
       attr_accessor :executable
@@ -419,9 +422,10 @@ module RakedLaTeX
       # Contains a list of possible warnings after a run.
       attr_accessor :warnings
 
-      def initialize(input_file, executable)
+      def initialize(input_file, silent, executable)
         @input_file = input_file
         @executable = executable if system "which #{executable} > /dev/null"
+        @silent = silent
         @warnings = []
 
         if File.exists? @input_file
@@ -434,38 +438,37 @@ module RakedLaTeX
 
       def run
       end
+
+      def feedback
+        unless @warnings.empty? || @silent
+          notice "Warnings from #@executable:"
+          @warnings.each do |message|
+            warning message
+          end
+        end
+      end
     end
 
     class LaTeX < Base
-      def initialize(input_file, executable='latex')
+      def initialize(input_file, silent=false, executable='latex')
         super
       end
 
       def run
         # TODO: Currently this does not work when latex awaits user input:
         @warnings = `latex #@input_file`.grep(/^(Overfull|Underfull|No file)/)
-        if @warnings.any?
-          notice "Warnings from #@executable:"
-          @warnings.each do |message|
-            warning message
-          end
-        end
+        feedback
       end
     end
 
     class BibTeX < Base
-      def initialize(input_file, executable='bibtex')
+      def initialize(input_file, silent=false, executable='bibtex')
         super
       end
 
       def run
         @warnings = `bibtex #@input_file`.grep(/^I (found no|couldn't open)/)
-        if @warnings.any?
-          notice "Warnings from #@executable:"
-          @warnings.each do |message|
-            warning message
-          end
-        end
+        feedback
       end
     end
   end
@@ -544,10 +547,12 @@ module RakedLaTeX
 
       def build(base_latex_file)
         success = build_directory do
-          first = RakedLaTeX::Runner::LaTeX.new(base_latex_file)
-          if first.warnings.join =~ /No file .+\.(aux|toc)/
-            second = RakedLaTeX::Runner::LaTeX.new(base_latex_file)
+          run = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
+          if run.warnings.join =~ /No file .+\.(aux|toc)/
+            run = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
           end
+          run.silent = false
+          run.feedback
         end
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
                "in #{@build_directory}" if success
