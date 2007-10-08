@@ -160,6 +160,16 @@ module RakedLaTeX
       @base_latex_file.gsub(/\.tex$/, '.dvi') if @base_latex_file
     end
 
+    # Returns the ps counterpart to the base latex file.
+    def base_ps_file
+      @base_latex_file.gsub(/\.tex$/, '.ps') if @base_latex_file
+    end
+
+    # Returns the pdf counterpart to the base latex file.
+    def base_pdf_file
+      @base_latex_file.gsub(/\.tex$/, '.pdf') if @base_latex_file
+    end
+
     def initialize
       @klass = { :article => [] }
       @packages = []
@@ -462,7 +472,7 @@ module RakedLaTeX
       def run
         # TODO: Currently this does not work when latex awaits user input:
         messages = /^(Overfull|Underfull|No file|Package \w+ Warning:)/
-        @warnings = `latex #@input_file`.grep(messages)
+        @warnings = `#executable #@input_file`.grep(messages)
         feedback
       end
     end
@@ -473,7 +483,7 @@ module RakedLaTeX
       end
 
       def run
-        @warnings = `bibtex #@input_file`.grep(/^I (found no|couldn't open)/)
+        @warnings = `#@executable #@input_file`.grep(/^I (found no|couldn't open)/)
         feedback
       end
     end
@@ -484,7 +494,18 @@ module RakedLaTeX
       end
 
       def run
-        @warnings = `dvips #@input_file`
+        @warnings = `#@executable #@input_file`
+        feedback
+      end
+    end
+
+    class Ps2Dvi < Base
+      def initialize(input_file, silent=false, executable='ps2dvi')
+        super
+      end
+
+      def run
+        @warnings = `#@executable #@input_file`
         feedback
       end
     end
@@ -601,6 +622,21 @@ module RakedLaTeX
                "in #{@build_directory}" if success
       end
     end
+
+    class Pdf < Base
+      def initialize(*args)
+        super
+        @build_name = 'pdf'
+      end
+
+      def build(base_ps_file)
+        success = build_directory do
+          dvips = RakedLaTeX::Runner::Ps2Dvi.new(base_ps_file)
+        end
+        notice "Build of #{@build_name} completed for: #{base_ps_file} " +
+               "in #{@build_directory}" if success
+      end
+    end
   end
 end
 
@@ -632,6 +668,11 @@ end
 task :build_ps => :build_dvi do
   RakedLaTeX::Builder::Ps.new(CONFIG.build_directory
                               ).build(CONFIG.base_dvi_file)
+end
+
+task :build_pdf => :build_ps do
+  RakedLaTeX::Builder::Pdf.new(CONFIG.build_directory
+                               ).build(CONFIG.base_ps_file)
 end
 
 
