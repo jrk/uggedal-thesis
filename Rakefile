@@ -216,6 +216,20 @@ module RakedLaTeX
     def error(message)
       puts "  * #{message}"
     end
+
+    def disable_stdout
+      old_stdout = STDOUT.dup
+      STDOUT.reopen('/dev/null')
+      yield
+      STDOUT.reopen(old_stdout)
+    end
+
+    def disable_stderr
+      old_stderr = STDERR.dup
+      STDERR.reopen('/dev/null')
+      yield
+      STDERR.reopen(old_stderr)
+    end
   end
 
   # Provides a template for a base latex file. This template can be configured
@@ -351,6 +365,7 @@ module RakedLaTeX
   # when working with draft versions.
   module ScmStats
     class Base
+      include RakedLaTeX::Output
 
       # The name of the SCM system. 
       attr_accessor :name
@@ -374,7 +389,9 @@ module RakedLaTeX
         super
 
         @name = 'Mercurial'
-        @executable = 'hg' if system 'which hg > /dev/null'
+        disable_stdout do
+          @executable = 'hg' if system 'which hg'
+        end
 
         @revision, @date = parse_scm_stats
 
@@ -398,7 +415,9 @@ module RakedLaTeX
         super
 
         @name = 'Subversion'
-        @executable = 'svn' if system 'which svn > /dev/null'
+        disable_stdout do
+          @executable = 'svn' if system 'which svn'
+        end
 
         @revision, @date = parse_scm_stats
 
@@ -439,7 +458,9 @@ module RakedLaTeX
 
       def initialize(input_file, silent, executable)
         @input_file = input_file
-        @executable = executable if system "which #{executable} > /dev/null"
+        disable_stdout do
+          @executable = executable if system "which #{executable}"
+        end
         @silent = silent
         @warnings = []
 
@@ -472,7 +493,7 @@ module RakedLaTeX
       def run
         # TODO: Currently this does not work when latex awaits user input:
         messages = /^(Overfull|Underfull|No file|Package \w+ Warning:)/
-        @warnings = `#executable #@input_file`.grep(messages)
+        @warnings = `#@executable #@input_file`.grep(messages)
         feedback
       end
     end
@@ -494,19 +515,22 @@ module RakedLaTeX
       end
 
       def run
-        @warnings = `#@executable #@input_file`
+        disable_stderr do
+          @warnings = `#@executable #@input_file`.split("\n")
+        end
         feedback
       end
     end
 
-    class Ps2Dvi < Base
-      def initialize(input_file, silent=false, executable='ps2dvi')
+    class Ps2Pdf < Base
+      def initialize(input_file, silent=false, executable='ps2pdf')
         super
       end
 
       def run
-        @warnings = `#@executable #@input_file`
-        feedback
+        disable_stderr do
+          @warnings = `#@executable #@input_file`.split("\n")
+        end
       end
     end
   end
@@ -562,9 +586,9 @@ module RakedLaTeX
       end
 
       def build(base_latex_file, base_bibtex_file=nil)
-        success = build_directory do
+        build_directory do
           copy_source_files
-          return false unless source_files_present?
+          return unless source_files_present?
 
           latex = RakedLaTeX::Runner::LaTeX.new(base_latex_file, true)
           if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
@@ -582,10 +606,9 @@ module RakedLaTeX
             bibtex.silent = false
             bibtex.feedback
           end
-          true
         end
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
-               "in #{@build_directory}" if success
+               "in #{@build_directory}"
       end
 
       def copy_source_files
@@ -615,11 +638,11 @@ module RakedLaTeX
       end
 
       def build(base_dvi_file)
-        success = build_directory do
+        build_directory do
           dvips = RakedLaTeX::Runner::DviPs.new(base_dvi_file)
         end
         notice "Build of #{@build_name} completed for: #{base_dvi_file} " +
-               "in #{@build_directory}" if success
+               "in #{@build_directory}"
       end
     end
 
@@ -630,11 +653,11 @@ module RakedLaTeX
       end
 
       def build(base_ps_file)
-        success = build_directory do
-          dvips = RakedLaTeX::Runner::Ps2Dvi.new(base_ps_file)
+        build_directory do
+          dvips = RakedLaTeX::Runner::Ps2Pdf.new(base_ps_file)
         end
         notice "Build of #{@build_name} completed for: #{base_ps_file} " +
-               "in #{@build_directory}" if success
+               "in #{@build_directory}"
       end
     end
   end
@@ -708,7 +731,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.appendices = %w(content.inventory
                     content.mapping)
 
-  t.bibliography = { :bibliography => :kluwer }
+  t.bibliography = { :bibliography => :apalike }
 
   t.source_directory += '/src'
   t.build_directory += '/build'
