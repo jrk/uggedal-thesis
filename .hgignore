@@ -1,3 +1,6 @@
 \.swp$
 
-build/
+^src/base.tex$
+
+^build/
+^dist/
