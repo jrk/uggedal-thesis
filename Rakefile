@@ -353,7 +353,7 @@ module RakedLaTeX
           \backmatter
         % @bibliography.each do |file, style|
             \bibliographystyle{<%=style%>}
-            \bibliography{file}
+            \bibliography{<%=file%>}
         % end
         \end{document}
       ).gsub(/^[ ]{8}/, '')
@@ -586,6 +586,7 @@ module RakedLaTeX
       end
 
       def build(base_latex_file, base_bibtex_file=nil)
+        clean_build_directory
         build_directory do
           copy_source_files
           return unless source_files_present?
@@ -609,6 +610,10 @@ module RakedLaTeX
         end
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
                "in #{@build_directory}"
+      end
+
+      def clean_build_directory
+        rm_r @build_directory
       end
 
       def copy_source_files
@@ -663,39 +668,46 @@ module RakedLaTeX
   end
 end
 
-task :default => :generate_base
+task :default => 'build:dvi'
 
-task :generate_base do
-  puts RakedLaTeX::BaseTemplate.new.generate(CONFIG.values)
+task :template => 'template:display'
+
+namespace :template do
+
+  desc 'Displays a base LaTeX file.'
+  task :display do
+    puts RakedLaTeX::BaseTemplate.new.generate(CONFIG.values)
+  end
+
+  desc 'Generate a base LaTeX file in the source directory.'
+  task :generate do
+    RakedLaTeX::BaseTemplate.new.create_file(CONFIG)
+  end
 end
 
-task :create_base do
-  RakedLaTeX::BaseTemplate.new.create_file(CONFIG)
-end
+task :build => 'build:dvi'
 
-task :run_latex do
-  RakedLaTeX::Runner::LaTeX.new(CONFIG.base_path)
-end
+namespace :build do
 
-task :run_bibtex do
-  RakedLaTeX::Runner::BibTeX.new(CONFIG.base_bibtex_file)
-end
+  desc 'Builds a dvi file of the source files.'
+  task :dvi => 'template:generate' do
+    RakedLaTeX::Builder::Dvi.new(CONFIG.build_directory,
+       CONFIG.source_directory,
+       CONFIG.collect_source_files).build(CONFIG.base_latex_file,
+                                          CONFIG.base_bibtex_file)
+  end
 
-task :build_dvi do
-  RakedLaTeX::Builder::Dvi.new(CONFIG.build_directory,
-     CONFIG.source_directory,
-     CONFIG.collect_source_files).build(CONFIG.base_latex_file,
-                                        CONFIG.base_bibtex_file)
-end
+  desc 'Builds a ps file of the source files.'
+  task :ps => 'build:dvi' do
+    RakedLaTeX::Builder::Ps.new(CONFIG.build_directory
+                                ).build(CONFIG.base_dvi_file)
+  end
 
-task :build_ps => :build_dvi do
-  RakedLaTeX::Builder::Ps.new(CONFIG.build_directory
-                              ).build(CONFIG.base_dvi_file)
-end
-
-task :build_pdf => :build_ps do
-  RakedLaTeX::Builder::Pdf.new(CONFIG.build_directory
-                               ).build(CONFIG.base_ps_file)
+  desc 'Builds a pdf file of the source files.'
+  task :pdf => 'build:ps' do
+    RakedLaTeX::Builder::Pdf.new(CONFIG.build_directory
+                                 ).build(CONFIG.base_ps_file)
+  end
 end
 
 
