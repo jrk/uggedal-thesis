@@ -138,14 +138,19 @@ module RakedLaTeX
 
     # Directory for outputting the latex file generated from the template and
     # where all it's dependencies should be placed. Defaults to the same
-    # directory as this file is placed in. Note that this is not the same as
-    # the current working directory (pwd).
-    attr_accessor :source_directory
+    # dir as this file is placed in. Note that this is not the same as
+    # the current working dir (pwd).
+    attr_accessor :source_dir
 
     # Directory for building source files into binary files.
-    # Defaults to the same directory as this file is placed in. Note that this
-    # is not the same as the current working directory (pwd).
-    attr_accessor :build_directory
+    # Defaults to the same dir as this file is placed in. Note that this
+    # is not the same as the current working dir (pwd).
+    attr_accessor :build_dir
+
+    # Directory where binary files are placed after a build.
+    # Defaults to the same dir as this file is placed in. Note that this
+    # is not the same as the current working dir (pwd).
+    attr_accessor :distribution_dir
 
     # File name for the base latex file. Defaults to 'base.tex'.
     attr_accessor :base_latex_file
@@ -170,6 +175,13 @@ module RakedLaTeX
       @base_latex_file.gsub(/\.tex$/, '.pdf') if @base_latex_file
     end
 
+    # File name prefix for distributed files.
+    def distribution_name
+      to_file_name(@author[:name],
+                   @title,
+                   "r#{@scm[:revision].gsub(/:\w+/, '')}")
+    end
+
     def initialize
       @klass = { :article => [] }
       @packages = []
@@ -186,8 +198,9 @@ module RakedLaTeX
       @appendices = []
       @bibliography = {}
 
-      @source_directory = File.dirname(__FILE__)
-      @build_directory = File.dirname(__FILE__)
+      @source_dir = File.dirname(__FILE__)
+      @build_dir = File.dirname(__FILE__)
+      @distribution_dir = File.dirname(__FILE__)
       @base_latex_file = 'base.tex'
 
       yield self if block_given?
@@ -198,7 +211,13 @@ module RakedLaTeX
     end
 
     def base_path
-      File.join(@source_directory, @base_latex_file)
+      File.join(@source_dir, @base_latex_file)
+    end
+
+    def to_file_name(*names)
+      names.collect do |name|
+        name.downcase.gsub(/ /, '.').gsub(/:|-/, '')
+      end.join('.')
     end
   end
 
@@ -260,7 +279,7 @@ module RakedLaTeX
         f.puts generate(config.values)
       end
       notice "Creation completed for: #{config.base_latex_file} in " +
-             "#{config.source_directory}"
+             "#{config.source_dir}"
     end
 
     def generate(values)
@@ -545,12 +564,16 @@ module RakedLaTeX
     class Base
       include RakedLaTeX::Output
 
-      # The directory where the files to be built should be located.
-      attr_accessor :source_directory
+      # The dir where the files to be built should be located.
+      attr_accessor :source_dir
 
-      # The directory where the build should be run. This directory is
+      # The dir where the build should be run. This dir is
       # created if it's not present.
-      attr_accessor :build_directory
+      attr_accessor :build_dir
+
+      # The dir where the buildt files are placed. This dir is
+      # created if it's not present.
+      attr_accessor :distribution_dir
 
       # List of source files that are part of the build. If such a list is
       # present all files are verified of existence before the process
@@ -558,16 +581,32 @@ module RakedLaTeX
       attr_accessor :source_files
 
 
-      def initialize(build_directory)
-        @build_directory = build_directory
+      def initialize(build_dir, distribution_dir)
+        @build_dir = build_dir
+        @distribution_dir = distribution_dir
 
         @build_name = 'base'
       end
 
-      def build_directory
-        if @build_directory
-          mkdir_p @build_directory unless File.exists? @build_directory
-          cd @build_directory do
+      def build_dir
+        prepare_dir(@build_dir) do
+          yield
+        end
+      end
+
+      def distribute_file(base_file, distribution_file)
+        prepare_dir(@distribution_dir) do
+          cp(File.join(@build_dir,
+                       "#{base_file.gsub(/.\w+$/, '')}.#@build_name"),
+             File.join(@distribution_dir,
+                       "#{distribution_file}.#@build_name"))
+        end
+      end
+
+      def prepare_dir(dir)
+        if dir
+          mkdir_p dir unless File.exists? dir
+          cd dir do
             yield
           end
         else
@@ -577,17 +616,17 @@ module RakedLaTeX
     end
 
     class Dvi < Base
-      def initialize(build_directory, source_directory, source_files=[])
-        super(build_directory)
-        @source_directory = source_directory
+      def initialize(build_dir, source_dir, distribution_dir, source_files=[])
+        super(build_dir, distribution_dir)
+        @source_dir = source_dir
         @source_files = source_files
 
         @build_name = 'dvi'
       end
 
-      def build(base_latex_file, base_bibtex_file=nil)
-        clean_build_directory
-        build_directory do
+      def build(base_latex_file, base_bibtex_file=nil, distribution_name=nil)
+        clean_build_dir
+        build_dir do
           copy_source_files
           return unless source_files_present?
 
@@ -608,18 +647,19 @@ module RakedLaTeX
             bibtex.feedback
           end
         end
+        distribute_file(base_latex_file, distribution_name)
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
-               "in #{@build_directory}"
+               "in #{@build_dir}"
       end
 
-      def clean_build_directory
-        rm_r @build_directory
+      def clean_build_dir
+        rm_r @build_dir
       end
 
       def copy_source_files
         %w(tex bib sty).each do |file_extension|
-          FileList["#{@source_directory}/*.#{file_extension}"].each do |file|
-            cp(file,  @build_directory)
+          FileList["#{@source_dir}/*.#{file_extension}"].each do |file|
+            cp(file,  @build_dir)
           end
         end
       end
@@ -642,12 +682,13 @@ module RakedLaTeX
         @build_name = 'ps'
       end
 
-      def build(base_dvi_file)
-        build_directory do
+      def build(base_dvi_file, distribution_name)
+        build_dir do
           dvips = RakedLaTeX::Runner::DviPs.new(base_dvi_file)
         end
+        distribute_file(base_dvi_file, distribution_name)
         notice "Build of #{@build_name} completed for: #{base_dvi_file} " +
-               "in #{@build_directory}"
+               "in #{@build_dir}"
       end
     end
 
@@ -657,12 +698,13 @@ module RakedLaTeX
         @build_name = 'pdf'
       end
 
-      def build(base_ps_file)
-        build_directory do
+      def build(base_ps_file, distribution_name)
+        build_dir do
           dvips = RakedLaTeX::Runner::Ps2Pdf.new(base_ps_file)
         end
+        distribute_file(base_ps_file, distribution_name)
         notice "Build of #{@build_name} completed for: #{base_ps_file} " +
-               "in #{@build_directory}"
+               "in #{@build_dir}"
       end
     end
   end
@@ -677,9 +719,10 @@ namespace :template do
   desc 'Displays a base LaTeX file.'
   task :display do
     puts RakedLaTeX::BaseTemplate.new.generate(CONFIG.values)
+    puts CONFIG.distribution_name
   end
 
-  desc 'Generate a base LaTeX file in the source directory.'
+  desc 'Generate a base LaTeX file in the source dir.'
   task :generate do
     RakedLaTeX::BaseTemplate.new.create_file(CONFIG)
   end
@@ -691,22 +734,29 @@ namespace :build do
 
   desc 'Builds a dvi file of the source files.'
   task :dvi => 'template:generate' do
-    RakedLaTeX::Builder::Dvi.new(CONFIG.build_directory,
-       CONFIG.source_directory,
-       CONFIG.collect_source_files).build(CONFIG.base_latex_file,
-                                          CONFIG.base_bibtex_file)
+    RakedLaTeX::Builder::Dvi.new(CONFIG.build_dir,
+                                 CONFIG.source_dir,
+                                 CONFIG.distribution_dir,
+                                 CONFIG.collect_source_files
+                                 ).build(CONFIG.base_latex_file,
+                                         CONFIG.base_bibtex_file,
+                                         CONFIG.distribution_name)
   end
 
   desc 'Builds a ps file of the source files.'
   task :ps => 'build:dvi' do
-    RakedLaTeX::Builder::Ps.new(CONFIG.build_directory
-                                ).build(CONFIG.base_dvi_file)
+    RakedLaTeX::Builder::Ps.new(CONFIG.build_dir,
+                                CONFIG.distribution_dir
+                                ).build(CONFIG.base_dvi_file,
+                                        CONFIG.distribution_name)
   end
 
   desc 'Builds a pdf file of the source files.'
   task :pdf => 'build:ps' do
-    RakedLaTeX::Builder::Pdf.new(CONFIG.build_directory
-                                 ).build(CONFIG.base_ps_file)
+    RakedLaTeX::Builder::Pdf.new(CONFIG.build_dir,
+                                CONFIG.distribution_dir
+                                 ).build(CONFIG.base_ps_file,
+                                         CONFIG.distribution_name)
   end
 end
 
@@ -745,6 +795,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
 
   t.bibliography = { :bibliography => :apalike }
 
-  t.source_directory += '/src'
-  t.build_directory += '/build'
+  t.source_dir += '/src'
+  t.build_dir += '/build'
+  t.distribution_dir += '/dist'
 end
