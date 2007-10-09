@@ -523,7 +523,8 @@ module RakedLaTeX
       end
 
       def run
-        @warnings = `#@executable #@input_file`.grep(/^I (found no|couldn't open)/)
+        messages = /^I (found no|couldn't open)/
+        @warnings = `#@executable #@input_file`.grep(messages)
         feedback
       end
     end
@@ -535,7 +536,7 @@ module RakedLaTeX
 
       def run
         disable_stderr do
-          @warnings = `#@executable #@input_file`.split("\n")
+          @warnings = `#@executable -Ppdf #@input_file`.split("\n")
         end
         feedback
       end
@@ -653,7 +654,7 @@ module RakedLaTeX
       end
 
       def clean_build_dir
-        rm_r @build_dir
+        rm_r @build_dir if File.exists? @build_dir
       end
 
       def copy_source_files
@@ -768,7 +769,6 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
                                   bookmarks=true
                                   breaklinks=false
                                   raiselinks=true
-                                  pdfborder={0 0 0}
                                   colorlinks=false) }
   t.packages << { :fontenc => ['T1'] }
   t.packages << { :mathpazo => [] }
