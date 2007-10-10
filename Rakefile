@@ -581,7 +581,6 @@ module RakedLaTeX
       # proceeds.
       attr_accessor :source_files
 
-
       def initialize(build_dir, distribution_dir)
         @build_dir = build_dir
         @distribution_dir = distribution_dir
@@ -709,6 +708,69 @@ module RakedLaTeX
       end
     end
   end
+
+  module Viewer
+    class Base
+      include RakedLaTeX::Output
+      # The dir where distributed files are placed. 
+
+      attr_accessor :distribution_dir
+
+      # The name prefix of the distribution file. 
+      attr_accessor :distribution_name
+
+      def distribution_file
+        File.join(@distribution_dir, "#@distribution_name.#@view_name")
+      end
+
+      def initialize(distribution_dir, distribution_name)
+        @distribution_dir = distribution_dir
+        @distribution_name = distribution_name
+
+        @view_name = 'base'
+        @executables = []
+      end
+
+      def find_viewer
+        @executables.each do |executable|
+          disable_stdout do
+            return executable if system "which #{executable}"
+          end
+        end
+      end
+
+      def launch
+        return unless viewer = find_viewer
+        system "#{viewer} #{distribution_file}"
+        notice "Display of #@view_name completed for: #{distribution_name}" +
+               ".#@view_name in #{@distribution_dir}"
+      end
+    end
+
+    class Dvi < Base
+      def initialize(*args)
+        super
+        @view_name = 'dvi'
+        @executables = %w(evince kdvi xdvi)
+      end
+    end
+
+    class Ps < Base
+      def initialize(*args)
+        super
+        @view_name = 'ps'
+        @executables = %w(evince gv)
+      end
+    end
+
+    class Pdf < Base
+      def initialize(*args)
+        super
+        @view_name = 'pdf'
+        @executables = %w(evince acroread xpdf gv)
+      end
+    end
+  end
 end
 
 task :default => 'build:dvi'
@@ -761,6 +823,29 @@ namespace :build do
   end
 end
 
+
+task :view => 'view:dvi'
+
+namespace :view do
+
+  desc 'Views a distributed dvi file.'
+  task :dvi => 'build:dvi' do
+    RakedLaTeX::Viewer::Dvi.new(CONFIG.distribution_dir,
+                                CONFIG.distribution_name).launch
+  end
+
+  desc 'Views a distributed ps file.'
+  task :ps => 'build:ps' do
+    RakedLaTeX::Viewer::Ps.new(CONFIG.distribution_dir,
+                               CONFIG.distribution_name).launch
+  end
+
+  desc 'Views a distributed pdf file.'
+  task :pdf => 'build:pdf' do
+    RakedLaTeX::Viewer::Pdf.new(CONFIG.distribution_dir,
+                                CONFIG.distribution_name).launch
+  end
+end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
   t.klass = { :book => %w(11pt a4paper twoside) }
