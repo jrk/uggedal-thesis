@@ -788,7 +788,8 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
 
   t.table_of_contents = true
 
-  t.main_content = %w(content.analysis)
+  t.main_content = %w(introduction
+                      content.analysis)
 
   t.appendices = %w(content.inventory
                     content.mapping)
