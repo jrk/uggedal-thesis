@@ -872,7 +872,8 @@ end
 
 desc 'Spell checks source files.'
 task :spell do
-  RakedLaTeX::Spell.new(CONFIG.source_dir, CONFIG.collect_source_files)
+  RakedLaTeX::Spell.new(CONFIG.source_dir,
+                        CONFIG.collect_source_files.grep(/\.tex$/))
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
