@@ -12,23 +12,6 @@
 %
 % The role of the introduction, like the abstract, is to orient your readers.
 % This is best done clearly and succintly.
-%
-% This structure is frequently seen in other UiO thesises:
-% 
-%   * Motivation
-%   * Objective
-%   * Contributions
-%   * Structure of Thesis
-%
-% Some also have a methodology section in the introduction instead of a
-% seperate chapter:
-% 
-%   * Motivation
-%   * Problem Statement
-%   * Research Methodology
-%   * Scope of Thesis
-%   * Summary of Results
-%   * Thesis Outline
 
 The web is becoming increasingly more social as it's becoming more ordinary to
 take part in some sort of web community. At the same time technological
@@ -54,42 +37,95 @@ social nature. Having efficient and easy to use navigation is clearly
 essential for serving your users' intrests. As the content on the web to a
 higher degree than before are user generated it has become almost impossible
 for the creators of a given web service to design sound navigation without
-relying on your loyal users. Insteaed such structures have to be organically
+relying on their loyal users. Instead such structures have to be organically
 grown by designing navigational schemes that harness the work your user base
 is conducting as they use your service. This is the essence of social
 navigation as the first definition of the term clearly and succinctly
 captures:
 
 \begin{quote}
-In social navigation, movement from one item to another is provoked as an
-artefact of the activity of another or a group of others. \citep{dourish94} 
+``In social navigation, movement from one item to another is provoked as an
+artefact of the activity of another or a group of others.'' \citep{dourish94} 
 \end{quote}
 
-\section{Motication}
+\section{Motivation}
 
 Social navigation is a well defined term within the academic
-community and there have been several studies on it's applicabibity in context
-of the web. Most of this research took place in the early days of the
+community and there have been a handful of studies on it's applicabibity in
+context of the web. Most of this research took place in the early days of the
 web--preceding our current area of Web 2.0. As described earlier the
-increase we're seeing in web services with social aspects are bound to provide
+growth we're seeing of web services with social aspects are bound to provide
 for innovations in the space of navigation. It would therefore be interesting
 to look at some of the state-of-the-art social web services and look at what
 contributions they have made to the field of social navigation.
 
+We are currently lacking information on how one can use social navigation
+conciously in a web application design process.
 
+\section{Objective}
 
+By collecting examples of good navigational implementations in the wild,
+analyzing them, and categorize them we hope to offer a structured view of the
+field of social navigation. We offer this information in the way of a taxonomy
+of usefull social navigation techniques.
 
+Using some of the techniques established in our initial research on how social
+navigation is leveraged in real world applications we try to improve an
+existing web service. More specifically we are prototyping possible
+navigational improvments for the Norwegian Broadcasting Corporation's joint
+TV, radio, and internet project: \emph{Urørt}--a service where artists upload
+their demos and get valuable playtime on raido and TV if their products are
+judged to be of sufficient quality. Our fucus is on the projects
+web community where users can interact in a social manner in addition to
+uploading their songs.
 
-% This thesis will describe how navigation is used in a social manner in
-% modern web applications and arrive at a taxonomy of social navigation
-% techniques.
-%
-% We are lacking material on how one can use social navigation conciously in
-% the process of designing web applications for our modern web age. I will
-% try to remedy this by showing results of implementation of some of the
-% navigational techniques presented.
-%
-% The material presented will help guide design of social web applications.
-%
-% We lack collections of proven navigational design patterns that are social
-%of nature.
+Going in and making changes to an existing web services can be both an
+daunting and time consuming task. First one have to establish a trustworthy
+relationship with the creators of such a service so that they are certain
+you're not introducing bugs in their precious software. Secondly, grasping the
+code base, third party libraries and development tools of such a software
+project demands a lot of upfront effort before any real development work can
+begin. This goes against the prototypical process we intended to use while
+improving Urørt.
+
+Even though we've had an ongoing dialogue with the developers of Urørt we
+decided to create our prototype as a layer on top of their service. By using a
+scripting extension for the open source
+Firefox\footnote{Available at http://firefox.com}
+web browser we were able to make changes and additions to the way Urørt were
+presented to users who were participating in our study. We were able to create
+a backend for the additional data and behaviour our new functionality required
+with the frameworks and programming language we found to be most efficient in
+a prototypical process. This resulted in a transparent experience for our end
+users as long as they had taken the neccesary steps to set up the browser
+extension and our script.
+
+With our technical solution in place we were able to test it in practice by
+conducting ``some sort of usability study''(not decided). This leads to our
+research question:
+
+\begin{quote}
+  Research question
+\end{quote}
+
+\section{Contributions}
+
+Contributions from our research on social navigation is threefold:
+
+\begin{description}
+  \item[Informing navigational design] by giving a structured overview of
+    various navigational schemes in use today.
+  \item[Applicability of social navigation] by showing results from real
+    users' usage of social navigation designs.
+  \item[Transparent prototyping techniques] by highligting experiences from
+    making a shell of navigational designs on top of an existing web service.
+\end{description}
+
+\section{Outline}
+
+Moving on from this introductory chapter we'll take a look at\ldots before we
+finally conclude our research in the final chapter.
+
+% As we are unaware of any established technique for
+% conducting such a study on real world navigation systems we create our own
+% method as we go--fine tuning it as we learn from our experiences.

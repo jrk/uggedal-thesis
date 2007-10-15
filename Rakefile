@@ -863,6 +863,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :longtable => [] }
   t.packages << { :booktabs => [] }
   t.packages << { :natbib => [] }
+  t.packages << { :fancyhdr => [] }
 
   t.title = 'Draft: Social Navigation'
   t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
@@ -870,6 +871,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
 
   t.preamble_extras = '\include{commands}'
+  t.preamble_extras += '\include{headings}'
 
   t.table_of_contents = true
 
