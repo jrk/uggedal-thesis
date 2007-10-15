@@ -771,6 +771,29 @@ module RakedLaTeX
       end
     end
   end
+
+  class Spell
+      # The dir where the files to be spell checked should be located.
+      attr_accessor :source_dir
+
+      # List of source files that are slated for spell checking.
+      attr_accessor :source_files
+
+    def initialize(source_dir, source_files)
+      @source_dir = source_dir
+      @source_files = source_files
+
+      spell_check
+    end
+
+    def spell_check
+      dictionary_path = File.join(@source_dir, 'dictionary.ispell')
+      @source_files.each do |file|
+        file_path = File.join(@source_dir, file)
+        system "ispell -t -p #{dictionary_path} #{file_path}"
+      end
+    end
+  end
 end
 
 task :default => 'build:dvi'
@@ -845,6 +868,11 @@ namespace :view do
     RakedLaTeX::Viewer::Pdf.new(CONFIG.distribution_dir,
                                 CONFIG.distribution_name).launch
   end
+end
+
+desc 'Spell checks source files.'
+task :spell do
+  RakedLaTeX::Spell.new(CONFIG.source_dir, CONFIG.collect_source_files)
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
