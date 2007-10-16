@@ -658,7 +658,7 @@ module RakedLaTeX
       end
 
       def copy_source_files
-        %w(tex bib sty).each do |file_extension|
+        %w(tex bib sty eps).each do |file_extension|
           FileList["#{@source_dir}/*.#{file_extension}"].each do |file|
             cp(file,  @build_dir)
           end
@@ -878,7 +878,7 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :book => %w(11pt a4paper twoside draft) }
+  t.klass = { :book => %w(11pt a4paper twoside final) }
 
   t.packages << { :hyperref => %w(ps2pdf
                                   bookmarks=true
@@ -895,6 +895,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :natbib => [] }
   t.packages << { :fancyhdr => [] }
   t.packages << { :lscape => [] }
+  t.packages << { :graphicx => [] }
 
   t.title = 'Draft: Social Navigation'
   t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }

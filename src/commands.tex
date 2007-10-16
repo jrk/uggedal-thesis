@@ -1,1 +1,11 @@
 \newcommand{\var}[1]{\texttt{\${#1}}}
+
+% Title page:
+\makeatletter
+\renewcommand{\maketitle}{%
+\thispagestyle{empty}
+\begin{center}
+  \includegraphics[width=0.55\textwidth]{logo.uni.oslo.eps}
+\end{center}
+}
+\makeatother
