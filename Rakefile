@@ -373,6 +373,7 @@ module RakedLaTeX
         % @bibliography.each do |file, style|
             \bibliographystyle{<%=style%>}
             \bibliography{<%=file%>}
+            \addcontentsline{toc}{chapter}{Bibliography}
         % end
         \end{document}
       ).gsub(/^[ ]{8}/, '')
