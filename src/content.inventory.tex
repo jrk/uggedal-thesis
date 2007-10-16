@@ -2,16 +2,13 @@
 
 When gathering data in the inventory phase of content analysis the root
 document, the main portal to the site under investigation, was entered and
-identified in an inventory table with an identifier of \emph{0}. From this page
-all relevant navigational links were followed in a logical order (from top
-to bottom and left to right). Each new page entered by following such links
-was noted down in the inventory table and given an identifier based on it's
-hierarchical nature. The relevant links of such a new page
-was followed in a similar fashion. This procedure was conducted until a
-previous identified page were encountered or all the links of the current page
-in question were exhausted.
+identified in an inventory table with an identifier of \emph{0}. From this
+page all relevant navigational links were followed in a logical order (from
+top to bottom and left to right on each page). Each new page entered by
+following such links was noted down in the inventory table and given an
+identifier based on it's hierarchical nature of the navigation system.
 
-The result of this exercise was tables identifying a website's various pages
+The result of this exercise were a table identifying a website's various pages
 and the relationships amongst them. To better understand these relationships
 content maps based on the raw data from the inventory phase were created
 (Appendix~\ref{appendix:content.mapping},
@@ -22,25 +19,22 @@ p.~\pageref{appendix:content.mapping}).
 \section{Flickr}
 
 The following content inventory detailed in
-Table~\ref{table:flickr.content.inventory.1}
-(p.~\pageref{table:flickr.content.inventory.1}) and
-Table~\ref{table:flickr.content.inventory.2}
-(p.~\pageref{table:flickr.content.inventory.2})
-represents the state of the Flickr service as of the 20th September 2007.
+Table~\ref{table:flickr.content.inventory}
+(p.~\pageref{table:flickr.content.inventory})
+represents the state of the Flickr service as of the 20th of September 2007.
 Details could very well have changed since then as
 services like these are known to have a rapid development cycle
-where changes often are imposed on the user-base at quite
+where changes often are imposed on the user base at quite
 a frequent rate.
 
 When collecting data one notices that there is an enormous amount of pages
 sharing a common structure only differing in a single or a few variables.
-Examples include
-the user in question for a profile page, the tag for a listing of photos
-annotated with such a tag, the date for time based history listings and so on.
-I therefore introduced several such variables prefixed with a dollar sign:
-\emph{\$}
-\footnote{Inspired from variable usage in UNIX shell scripting}. A complete
-listing of such variables and their meaning can be found in
+Examples include the user in question for a profile page, the tag for a
+listing of photos annotated with such a tag, the date for time based history
+listings and so on. I therefore introduced several such variables prefixed
+with a dollar sign:
+\emph{\$}\footnote{Inspired from variable usage inUNIX shell scripting}.
+A complete listing of such variables and their meaning can be found in
 Table~\ref{table:flickr.variable.list}
 (p.~\pageref{table:flickr.variable.list})
 
@@ -103,6 +97,8 @@ Table~\ref{table:flickr.variable.list}
   \end{center}
 \end{table}
 
+% describe the table columns
+
 % Include this after the data has been cleaned up (use best of h1/title).
 %
 % Most pages have both a title displayed in the browsers title-bar (using a
@@ -115,16 +111,6 @@ Table~\ref{table:flickr.variable.list}
 % I opted to ignore noting down such inconsistencies as one probably would to
 % when using content inventory as a tool for improving site architecture.
 
-Data collected during the inventory phase have been split into two tables due
-to the extent of data they contain. Cross referencing is easily done since
-both tables have an ``Id'' column.
-Table~\ref{table:flickr.content.inventory.1}
-(p.~\pageref{table:flickr.content.inventory.1}) lists the page titles and
-the ``URL'' of identified pages. 
-Table~\ref{table:flickr.content.inventory.2}
-(p.~\pageref{table:flickr.content.inventory.2}) contains information about the
-the textual name (Link Name) given to the link that pointed to a certain page
-and the location (Link Location) on the page for such a link.
 
 \setlength\LTleft{0pt plus 1fill minus 1fill}
   \let\LTright\LTleft
@@ -133,25 +119,25 @@ and the location (Link Location) on the page for such a link.
 \begin{center}
   \begin{small}
     \label{table:flickr.content.inventory.1}
-    \begin{longtable}{rp{5cm}l}
-    \caption{Content Inventory of Flickr, Part One} \\
+    \begin{longtable}{rlll}
+    \caption{Content Inventory of Flickr} \\
 
   % First page header
   \toprule
-  Id & Page Title & URL \\
+  Id & Page Title & Link Name & Link Location \\
   \midrule
   \endfirsthead
 
   % Remaining pages header
   \caption[]{(continued)}\\
   \toprule
-  Id & Page Title & URL \\
+  Id & Page Title & Link Name & Link Location \\
   \midrule
   \endhead
 
   % Footer except for last page
   \midrule
-  \multicolumn{3}{l}{{Continued on Next Page\ldots}} \\
+  \multicolumn{4}{l}{{Continued on Next Page\ldots}} \\
   \endfoot
 
   % Last page footer
@@ -162,120 +148,168 @@ and the location (Link Location) on the page for such a link.
 
   0 &
   Welcome to Flickr &
-  / \\
+  &
+  \\
+  % /
 
   1 &
   Photos from \var{user} &
-  /photos/\var{user} \\
+  You &
+  Global navigation \\
+  % /photos/\var{user}
 
     1.1 &
     \var{photo-title} &
-    /photos/\var{user}/\var{photo-id} \\
+    Photo thumbnail &
+    Content area \\
+    % /photos/\var{user}/\var{photo-id}
 
       1.1.1 &
       Photos from \var{user} &
-      /photos/\var{user} \\
+      \var{user} &
+      Content (comments list) \\
+      % /photos/\var{user}
 
       1.1.2 &
       \var{set-title} - a photoset on Flickr &
-      /photos/\var{user}/sets/\var{set-id} \\
+      \var{set-title} (Set) &
+      Right sidebar \\
+      % /photos/\var{user}/sets/\var{set-id}
 
       1.1.3 &
       \var{group} Pool &
-      /groups/\var{group}/pool \\
+      \var{group} (Pool) &
+      Right sidebar \\
+      % /groups/\var{group}/pool
 
       1.1.4 &
       \var{user} photos tagged with \var{tag} &
-      /photos/\var{user}/tags/\var{tag} \\
+      \var{tag} &
+      Right sidebar (tag list) \\
+      % /photos/\var{user}/tags/\var{tag}
 
         1.1.4.1 &
         Photos tagged with \var{tag} &
-        /photos/tags/\var{tag} \\
+        public photos tagged with \var{tag} &
+        Left sidebar \\
+        % /photos/tags/\var{tag}
 
           1.1.5 &
           Explore your geotagged photos on a Map &
-          /photos/\var{user}/\var{photo-id}/map/?view=users \\
+          (map) -> View \var{user} map &
+          Right sidebar (details list) \\
+          % /photos/\var{user}/\var{photo-id}/map/?view=users
 
           1.1.6 &
           Explore everyone's geotagged photos on a Map &
-          /photos/\var{user}/\var{photo-id}/map/?view=everyone \\
+          (map) -> see more photos here &
+          Right sidebar (details list) \\
+          % /photos/\var{user}/\var{photo-id}/map/?view=everyone
 
           1.1.7 &
           Camera Finder: \var{camera-model} &
-          /cameras/\var{camera-make}/\var{camera-model} \\
+          \var{camera-model} &
+          Right sidebar (detail list) \\
+          % /cameras/\var{camera-make}/\var{camera-model}
 
           1.1.8 &
           Archive of your photos taken on \var{date} &
-          /photos/\var{user}/archives/date-taken/\var{date} \\
+          \var{camera-model} &
+          Right sidebar (detail list) \\
+          % /photos/\var{user}/archives/date-taken/\var{date}
 
         1.2 &
         \var{set-title} - a photoset on Flickr &
-        /photos/\var{user}/sets/\var{set-id} \\
+        \var{set-title} &
+        Left sidebar \\
+        % /photos/\var{user}/sets/\var{set-id}
 
         1.3 &
         \var{user} sets on Flickr &
-        /photos/\var{user}/sets \\
+        Sets &
+        Local navigation \\
+        % /photos/\var{user}/sets
 
           1.3.1 &
           \var{set-title} - a photoset on Flickr &
-          /photos/\var{user}/sets/\var{set-id} \\
+          \var{set-title} &
+          Content area \\
+          % /photos/\var{user}/sets/\var{set-id}
 
             1.1.1.1 &
             \var{photo-title} &
-            /photos/\var{user}/\var{photo-id}/in/set-\var{set-id} \\
+            Photo thumbnail &
+            Content area \\
+            % /photos/\var{user}/\var{photo-id}/in/set-\var{set-id}
 
         1.4 &
         \var{user} tags &
-        /photos/\var{user}/tags \\
+        Tags &
+        Local navigation \\
+        % /photos/\var{user}/tags \\
 
           1.4.1 &
           \var{user} photos tagged with \var{tag} &
-          /photos/\var{user}/tags/\var{tag} \\
+          \var{tag} &
+          Content (tag cloud) \\
+          % /photos/\var{user}/tags/\var{tag} \\
 
             1.4.1.1 &
             Photos tagged with \var{tag} &
-            /photos/tags/\var{tag} \\
+            public photos tagged with \var{tag} &
+            Left sidebar \\
+            % /photos/tags/\var{tag} \\
 
             1.4.1.2 &
             \var{photo-title} &
-            /photos/\var{user}/\var{photo-id} \\
+            Photo thumbnail &
+            Content area \\
+            % /photos/\var{user}/\var{photo-id} \\
 
 
         1.5 &
         Explore your geotagged photos on a Map &
-        /photos/\var{user}/map \\
+        Map &
+        Local navigation \\
+        % /photos/\var{user}/map \\
 
           1.5.1 &
           \$photo-name &
-          /photos/\var{user}/map \\
+          Photo count icon &
+          Map \\
+          % /photos/\var{user}/map \\
 
             1.5.1.1 &
             \var{user} photos tagged with \var{tag} &
-            /photos/\var{user}/tags/\var{tag} \\
+            \var{tag} &
+            In-line dialog \\
+            % /photos/\var{user}/tags/\var{tag} \\
 
             1.5.1.2 &
             \var{photo-title} &
-            /photos/\var{user}/\var{photo-id} \\
+            View photo page &
+            In-line dialog \\
+            % /photos/\var{user}/\var{photo-id} \\
 
         1.6 &
         Archive of all your photos on Flickr &
-        /photos/\var{user}/archives \\
+        % /photos/\var{user}/archives \\
 
           1.6.1 &
           Archive of your photos taken on \var{date} &
-          /photos/\var{user}/archives/date-taken/\var{date} \\
+          % /photos/\var{user}/archives/date-taken/\var{date} \\
 
             1.6.1.1 &
             \var{photo-title} &
-            /photos/\var{user}/\var{photo-id} \\
+            % /photos/\var{user}/\var{photo-id} \\
 
           1.6.2 &
           Archive of your photos posted on \var{date} &
-          /photos/\var{user}/archives/date-posted/\var{date} \\
+          % /photos/\var{user}/archives/date-posted/\var{date} \\
 
             1.6.2.1 &
             \var{photo-title} &
-            /photos/\var{user}/\var{photo-id} \\
+            % /photos/\var{user}/\var{photo-id} \\
 
         1.7 &
         \var{user} favorite photos on Flickr &
@@ -639,516 +673,6 @@ and the location (Link Location) on the page for such a link.
   \end{small}
 \end{center}
 
-% Long multi-page table
-\begin{center}
-  \begin{small}
-    \label{table:flickr.content.inventory.2}
-    \begin{longtable}{rll}
-    \caption{Content Inventory of Flickr, Part Two} \\
-
-  % First page header
-  \toprule
-  Id & Link Name & Link Location \\
-  \midrule
-  \endfirsthead
-
-  % Remaining pages header
-  \caption[]{(continued)}\\
-  \toprule
-  Id & Link Name & Link Location \\
-  \midrule
-  \endhead
-
-  % Footer except for last page
-  \midrule
-  \multicolumn{3}{l}{{Continued on Next Page\ldots}} \\
-  \endfoot
-
-  % Last page footer
-  \bottomrule
-  \endlastfoot
-
-  % Data
-
-  0 &
-  &
-  \\
-
-  1 &
-  You &
-  Global navigation \\
-
-    1.1 &
-    Photo thumbnail &
-    Content area \\
-
-      1.1.1 &
-      \var{user} &
-      Content (comments list) \\
-
-      1.1.2 &
-      \var{set-title} (Set) &
-      Right sidebar \\
-
-      1.1.3 &
-      \var{group} (Pool) &
-      Right sidebar \\
-
-      1.1.4 &
-      \var{tag} &
-      Right sidebar (tag list) \\
-
-        1.1.4.1 &
-        public photos tagged with \var{tag} &
-        Left sidebar \\
-
-          1.1.5 &
-          (map) -> View \var{user} map &
-          Right sidebar (details list) \\
-
-          1.1.6 &
-          (map) -> see more photos here &
-          Right sidebar (details list) \\
-
-          1.1.7 &
-          \var{camera-model} &
-          Right sidebar (detail list) \\
-
-          1.1.8 &
-          \var{camera-model} &
-          Right sidebar (detail list) \\
-
-        1.2 &
-        \var{set-title} &
-        Left sidebar \\
-
-        1.3 &
-        Sets &
-        Local navigation \\
-
-          1.3.1 &
-          \var{set-title} &
-          Content area \\
-
-            1.1.1.1 &
-            Photo thumbnail &
-            Content area \\
-
-
-        1.4 &
-        Tags &
-        Local navigation \\
-
-          1.4.1 &
-          \var{tag} &
-          Content (tag cloud) \\
-
-            1.4.1.1 &
-            public photos tagged with \var{tag} &
-            Left sidebar \\
-
-            1.4.1.2 &
-            Photo thumbnail &
-            Content area \\
-
-
-        1.5 &
-        Map &
-        Local navigation \\
-
-          1.5.1 &
-          Photo count icon &
-          Map \\
-
-            1.5.1.1 &
-            \var{tag} &
-            In-line dialog \\
-
-            1.5.1.2 &
-            View photo page &
-            In-line dialog \\
-
-        1.6 &
-        Archives &
-        Local navigation \\
-
-          1.6.1 &
-          \var{date} &
-          Content area (Taken on) \\
-
-            1.6.1.1 &
-            Photo thumbnail &
-            Content area \\
-
-          1.6.2 &
-          \var{date} &
-          Content area (Posted on) \\
-
-            1.6.2.1 &
-            Photo thumbnail &
-            Content area \\
-
-        1.7 &
-        Favorites &
-        Local navigation \\
-
-          1.7.1 &
-          Photo thumbnail &
-          Content area \\
-
-        1.8 &
-        Popular &
-        Local navigation \\
-
-          1.8.1 &
-          Photo thumbnail or photo title &
-          Content area \\
-
-          1.8.2 &
-          Views &
-          Sub local navigation \\
-
-            1.8.2.1 &
-            Photo thumbnail or photo title &
-            Content area \\
-
-          1.8.3 &
-          Views &
-          Sub local navigation \\
-
-            1.8.3.1 &
-            Photo thumbnail or photo title &
-            Content area \\
-
-          1.8.2 &
-          Comments &
-          Sub local navigation \\
-
-            1.8.2.1 &
-            Photo thumbnail or photo title &
-            Content area \\
-
-        1.9 &
-        Profile &
-        Local navigation \\
-
-          1.9.1 &
-          \var{user} &
-          Content (Groups) \\
-
-          1.9.2 &
-          \var{group} &
-          Content (Groups) \\
-
-      2 &
-      Organize &
-      Global navigation \\
-
-      3 &
-      Contacts &
-      Global navigation \\
-
-        3.1 &
-        Photo thumbnail &
-        Content area \\
-
-        3.2 &
-        \var{user} &
-        Content area \\
-
-      4 &
-      Groups &
-      Global navigation \\
-
-        4.1 &
-        \var{group} &
-        Content \\
-
-          4.1.1 &
-          Discussion &
-          Local navigation \\
-
-            4.1.1.1 &
-            \var{topic-title} &
-            Content (topic list) \\
-
-            4.1.1.2 &
-            \var{user} &
-            Content (topic list) \\
-
-          4.1.2 &
-          Pool &
-          Local navigation \\
-
-            4.1.2.1 &
-            Photo thumbnail &
-            Content area \\
-
-            4.1.2.2 &
-            \var{user} &
-            Content area \\
-
-          4.1.3 &
-          Pool &
-          Local navigation \\
-
-            4.1.3.1 &
-            Photo count icon &
-            Map \\
-
-              4.1.3.1.1 &
-              \var{tag} &
-              In-line dialog \\
-
-              4.1.3.1.2 &
-              View photo page &
-              In-line dialog \\
-
-          4.1.3 &
-          \var{member-count} Members &
-          Local navigation \\
-
-            4.1.3.1 &
-            \var{user} &
-            Content area \\
-
-      5 &
-      Explore &
-      Global navigation \\
-
-        5.1 &
-        Photo thumbnail or \var{photo-title} &
-        Content (highlighted photo) \\
-
-        5.2 &
-        \var{user} &
-        Content (highlighted photo) \\
-
-        5.3 &
-        last 7 days &
-        Content area \\
-
-          5.3.1 &
-          Photo thumbnail or \var{photo-title} &
-          Content area \\
-
-          5.3.2 &
-          \var{user} &
-          Content area \\
-
-        5.4 &
-        \var{date} &
-        Content area \\
-
-          5.4.1 &
-          Photo thumbnail or \var{photo-title} &
-          Content area \\
-
-          5.4.2 &
-          \var{user} &
-          Content area \\
-
-        5.5 &
-        a map of the world &
-        Content area \\
-
-          5.5.1 &
-          Photo count icon &
-          Map \\
-
-            5.5.1.1 &
-            \var{tag} &
-            In-line dialog \\
-
-            5.5.1.2 &
-            View photo page &
-            In-line dialog \\
-
-        5.6 &
-        popular tags &
-        Content area \\
-
-          5.6.1 &
-          \var{tag} &
-          Content (tag cloud) \\
-
-            5.6.1.1 &
-            Most interesting &
-            Left column \\
-
-              5.6.1.1.1 &
-              Photo thumbnail &
-              Content area \\
-
-              5.6.1.1.2 &
-              \var{user} &
-              Content area \\
-
-            5.6.1.2 &
-            \var{tag} clusters &
-            Left column \\
-
-              5.6.1.2.1 &
-              Photo thumbnail &
-              Content area \\
-
-              5.6.1.2.2 &
-              \var{user} &
-              Content area \\
-
-              5.6.1.2.3 &
-              \var{tag} &
-              Content (cluster list) \\
-
-
-              5.6.1.2.4 &
-              See more of this cluster\ldots &
-              Content area \\
-
-                5.6.1.2.4.1 &
-                Photo thumbnail &
-                Content area \\
-
-                5.6.1.2.4.2 &
-                \var{user} &
-                Content area \\
-
-            5.6.1.3 &
-            Photo thumbnail &
-            Content area \\
-
-            5.6.1.4 &
-            \var{user} &
-            Content area \\
-
-        5.7 &
-        Camera finder &
-        Content area \\
-
-          5.7.1 &
-          \var{camera-make} &
-          Content area \\
-
-            5.7.1.1 &
-            \var{camera-model} &
-            Content area \\
-
-              5.7.1.1.1 &
-              Photo thumbnail &
-              Content area \\
-
-              5.6.1.1.2 &
-              \var{user} &
-              Content area \\
-
-        5.8 &
-        most recent uploads &
-        Content area \\
-
-            5.8.1 &
-            Photo thumbnail &
-            Content area \\
-
-            5.8.2 &
-            \var{user} &
-            Content area \\
-
-            5.8.3 &
-            Popular tags &
-            Right sidebar \\
-
-            5.8.4 &
-            Creative Commons &
-            Right sidebar \\
-
-              5.8.4.1 &
-              Photo thumbnail &
-              Content area \\
-
-              5.8.4.2 &
-              \var{user} &
-              Content area \\
-
-              5.8.4.3 &
-              See more &
-              Content (\$license-type) \\
-
-                5.8.4.3.1 &
-                Photo thumbnail &
-                Content area \\
-
-                5.8.4.3.2 &
-                \var{user} &
-                Content area \\
-
-        5.9 &
-        \var{tag} &
-        Content (tag cloud) \\
-
-
-        5.10 &
-        \var{date} &
-        Content (A year ago) \\
-
-          5.10.1 &
-          Photo thumbnail &
-          Content area \\
-
-          5.10.2 &
-          \var{user} and see more photos &
-          Content area \\
-
-          5.10.3 &
-          profile &
-          Content area \\
-
-          5.6.1.2 &
-          \var{tag} &
-          Content area \\
-
-        5.11 &
-        Photo thumbnail or \var{photo-title} &
-        Content (A year ago) \\
-
-        5.12 &
-        \var{user} &
-        Content (A year ago) \\
-
-        5.13 &
-        profile &
-        Content (A year ago) \\
-
-        5.14 &
-        \var{set-title} &
-        Content (Sets) \\
-
-          1.1.1.1 &
-          Photo thumbnail &
-          Content area \\
-
-        5.15 &
-        \var{user} &
-        Content (Sets) \\
-
-        5.16 &
-        loads of groups &
-        Content (Groups) \\
-
-        5.17 &
-        \var{group} &
-        Content (Groups) \\
-
-        5.18 &
-        Pool &
-        Local navigation \\
-
-        5.19 &
-        \var{member-count} Members &
-        Local navigation \\
-
-    \end{longtable}
-  \end{small}
-\end{center}
 
 \section{Amazon}
 
