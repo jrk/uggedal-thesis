@@ -878,7 +878,7 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :book => %w(11pt a4paper twoside) }
+  t.klass = { :book => %w(11pt a4paper twoside draft) }
 
   t.packages << { :hyperref => %w(ps2pdf
                                   bookmarks=true
