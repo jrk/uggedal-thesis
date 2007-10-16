@@ -116,11 +116,11 @@ Table~\ref{table:flickr.variable.list}
   \let\LTright\LTleft
 
 % Long multi-page table
-\begin{center}
+\begin{landscape}
   \begin{small}
     \label{table:flickr.content.inventory.1}
-    \begin{longtable}{rlll}
-    \caption{Content Inventory of Flickr} \\
+    \begin{longtable}{rp{3cm}p{3cm}p{3cm}}
+      \caption{Content Inventory of Flickr} \\
 
   % First page header
   \toprule
@@ -146,719 +146,719 @@ Table~\ref{table:flickr.variable.list}
 
   % Data
 
-  0 &
-  Welcome to Flickr &
-  &
-  \\
-  % /
+0 &
+Welcome to Flickr &
+&
+\\
+% /
 
-  1 &
-  Photos from \var{user} &
-  You &
-  Global navigation \\
-  % /photos/\var{user}
+1 &
+Photos from \var{user} &
+You &
+Global navigation \\
+% /photos/\var{user}
 
-    1.1 &
+  1.1 &
+  \var{photo-title} &
+  Photo thumbnail &
+  Content area \\
+  % /photos/\var{user}/\var{photo-id}
+
+    1.1.1 &
+    Photos from \var{user} &
+    \var{user} &
+    Content (comments list) \\
+    % /photos/\var{user}
+
+    1.1.2 &
+    \var{set-title} - a photoset on Flickr &
+    \var{set-title} (Set) &
+    Right sidebar \\
+    % /photos/\var{user}/sets/\var{set-id}
+
+    1.1.3 &
+    \var{group} Pool &
+    \var{group} (Pool) &
+    Right sidebar \\
+    % /groups/\var{group}/pool
+
+    1.1.4 &
+    \var{user} photos tagged with \var{tag} &
+    \var{tag} &
+    Right sidebar (tag list) \\
+    % /photos/\var{user}/tags/\var{tag}
+
+      1.1.4.1 &
+      Photos tagged with \var{tag} &
+      public photos tagged with \var{tag} &
+      Left sidebar \\
+      % /photos/tags/\var{tag}
+
+    1.1.5 &
+    Explore your geotagged photos on a Map &
+    (map) -> View \var{user} map &
+    Right sidebar (details list) \\
+    % /photos/\var{user}/\var{photo-id}/map/?view=users
+
+    1.1.6 &
+    Explore everyone's geotagged photos on a Map &
+    (map) -> see more photos here &
+    Right sidebar (details list) \\
+    % /photos/\var{user}/\var{photo-id}/map/?view=everyone
+
+    1.1.7 &
+    Camera Finder: \var{camera-model} &
+    \var{camera-model} &
+    Right sidebar (detail list) \\
+    % /cameras/\var{camera-make}/\var{camera-model}
+
+    1.1.8 &
+    Archive of your photos taken on \var{date} &
+    \var{camera-model} &
+    Right sidebar (detail list) \\
+    % /photos/\var{user}/archives/date-taken/\var{date}
+
+  1.2 &
+  \var{set-title} - a photoset on Flickr &
+  \var{set-title} &
+  Left sidebar \\
+  % /photos/\var{user}/sets/\var{set-id}
+
+  1.3 &
+  \var{user} sets on Flickr &
+  Sets &
+  Local navigation \\
+  % /photos/\var{user}/sets
+
+    1.3.1 &
+    \var{set-title} - a photoset on Flickr &
+    \var{set-title} &
+    Content area \\
+    % /photos/\var{user}/sets/\var{set-id}
+
+      1.1.1.1 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}/in/set-\var{set-id}
+
+  1.4 &
+  \var{user} tags &
+  Tags &
+  Local navigation \\
+  % /photos/\var{user}/tags
+
+    1.4.1 &
+    \var{user} photos tagged with \var{tag} &
+    \var{tag} &
+    Content (tag cloud) \\
+    % /photos/\var{user}/tags/\var{tag}
+
+      1.4.1.1 &
+      Photos tagged with \var{tag} &
+      public photos tagged with \var{tag} &
+      Left sidebar \\
+      % /photos/tags/\var{tag}
+
+      1.4.1.2 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+
+  1.5 &
+  Explore your geotagged photos on a Map &
+  Map &
+  Local navigation \\
+  % /photos/\var{user}/map
+
+    1.5.1 &
+    \$photo-name &
+    Photo count icon &
+    Map \\
+    % /photos/\var{user}/map
+
+      1.5.1.1 &
+      \var{user} photos tagged with \var{tag} &
+      \var{tag} &
+      In-line dialog \\
+      % /photos/\var{user}/tags/\var{tag}
+
+      1.5.1.2 &
+      \var{photo-title} &
+      View photo page &
+      In-line dialog \\
+      % /photos/\var{user}/\var{photo-id}
+
+  1.6 &
+  Archive of all your photos on Flickr &
+  Archives &
+  Local navigation \\
+  % /photos/\var{user}/archives
+
+    1.6.1 &
+    Archive of your photos taken on \var{date} &
+    \var{date} &
+    Content area (Taken on) \\
+    % /photos/\var{user}/archives/date-taken/\var{date}
+
+      1.6.1.1 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+    1.6.2 &
+    Archive of your photos posted on \var{date} &
+    \var{date} &
+    Content area (Posted on) \\
+    % /photos/\var{user}/archives/date-posted/\var{date}
+
+      1.6.2.1 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+  1.7 &
+  \var{user} favorite photos on Flickr &
+  Favorites &
+  Local navigation \\
+  % /photos/\var{user}/favorites
+
+    1.7.1 &
     \var{photo-title} &
     Photo thumbnail &
     Content area \\
     % /photos/\var{user}/\var{photo-id}
 
-      1.1.1 &
+  1.8 &
+  \var{user} most popular photos, interestingness &
+  Popular &
+  Local navigation \\
+  % /photos/\var{user}/popular-interesting
+
+    1.8.1 &
+    \var{photo-title} &
+    Photo thumbnail or photo title &
+    Content area \\
+    % /photos/\var{user}/\var{photo-id}
+
+    1.8.2 &
+    \var{user} most popular photos, views &
+    Views &
+    Sub local navigation \\
+    % /photos/\var{user}/popular-views
+
+      1.8.2.1 &
+      \var{photo-title} &
+      Photo thumbnail or photo title &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+    1.8.3 &
+    \var{user} most popular photos, favorites &
+    Views &
+    Sub local navigation \\
+    % /photos/\var{user}/popular-faves
+
+      1.8.3.1 &
+      \var{photo-title} &
+      Photo thumbnail or photo title &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+    1.8.2 &
+    \var{user} most popular photos, comments &
+    Comments &
+    Sub local navigation \\
+    % /photos/\var{user}/popular-comments
+
+      1.8.2.1 &
+      \var{photo-title} &
+      Photo thumbnail or photo title &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+  1.9 &
+  \var{user} &
+  Profile &
+  Local navigation \\
+  % /people/\var{user}
+
+    1.9.1 &
+    Photos from \var{user} &
+    \var{user} &
+    Content (Groups) \\
+    % /photos/\var{user}
+
+    1.9.2 &
+    \var{group} &
+    \var{group} &
+    Content (Groups) \\
+    % /groups/\var{group}
+
+2 &
+Organize your photos &
+Organize &
+Global navigation \\
+% /photos/organize
+
+3 &
+Photos from your contacts &
+Contacts &
+Global navigation \\
+% /photos/friends
+
+  3.1 &
+  \var{photo-title} &
+  Photo thumbnail &
+  Content area \\
+  % /photos/\var{user}/\var{photo-id}
+
+  3.2 &
+  Photos from \var{user} &
+  \var{user} &
+  Content area \\
+  % /photos/\var{user}
+
+4 &
+Groups &
+Groups &
+Global navigation \\
+% /groups
+
+  4.1 &
+  \var{group} &
+  \var{group} &
+  Content \\
+  % /groups/\var{group}
+
+    4.1.1 &
+    \var{group} discussion topics &
+    Discussion &
+    Local navigation \\
+    % /groups/\var{group}/discuss
+
+      4.1.1.1 &
+      \var{topic-title} in \var{group} &
+      \var{topic-title} &
+      Content (topic list) \\
+      % /groups/\var{group}/discuss/\var{topic-id}
+
+      4.1.1.2 &
       Photos from \var{user} &
       \var{user} &
-      Content (comments list) \\
+      Content (topic list) \\
       % /photos/\var{user}
 
-      1.1.2 &
-      \var{set-title} - a photoset on Flickr &
-      \var{set-title} (Set) &
-      Right sidebar \\
-      % /photos/\var{user}/sets/\var{set-id}
+    4.1.2 &
+    \var{group} Pool &
+    Pool &
+    Local navigation \\
+    % /groups/\var{group}/discuss
 
-      1.1.3 &
-      \var{group} Pool &
-      \var{group} (Pool) &
-      Right sidebar \\
-      % /groups/\var{group}/pool
+      4.1.2.1 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}/in/pool-\var{group}
 
-      1.1.4 &
+      4.1.2.2 &
+      Photos from \var{user} &
+      \var{user} &
+      Content area \\
+      % /photos/\var{user}
+
+    4.1.3 &
+    Explore geotagged photos from \var{group}  &
+    Pool &
+    Local navigation \\
+    % /groups/\var{group}/pool/map?mode=group
+
+      4.1.3.1 &
+      \$photo-name &
+      Photo count icon &
+      Map \\
+      % /groups/\var{group}/pool/map?mode=group
+
+        4.1.3.1.1 &
+        \var{user} photos tagged with \var{tag} &
+        \var{tag} &
+        In-line dialog \\
+        % /photos/\var{user}/tags/\var{tag}
+
+        4.1.3.1.2 &
+        \var{photo-title} &
+        View photo page &
+        In-line dialog \\
+        % /photos/\var{user}/\var{photo-id}
+
+    4.1.3 &
+    \var{group}  &
+    \var{member-count} Members &
+    Local navigation \\
+    % /groups\_members.gne?id=\var{group}-id
+
+      4.1.3.1 &
+      Photos from \var{user} &
+      \var{user} &
+      Content area \\
+      % /photos/\var{user}
+
+5 &
+Explore &
+Explore &
+Global navigation \\
+% /explore
+
+  5.1 &
+  \var{photo-title} &
+  Photo thumbnail or \var{photo-title} &
+  Content (highlighted photo) \\
+  % /photos/\var{user}/\var{photo-id}
+
+  5.2 &
+  Photos from \var{user} &
+  \var{user} &
+  Content (highlighted photo) \\
+  % /photos/\var{user}
+
+  5.3 &
+  Explore interesting photos from the last 7 days &
+  last 7 days &
+  Content area \\
+  % /explore/interesting/7days
+
+    5.3.1 &
+    \var{photo-title} &
+    Photo thumbnail or \var{photo-title} &
+    Content area \\
+    % /photos/\var{user}/\var{photo-id}
+
+    5.3.2 &
+    Photos from \var{user} &
+    \var{user} &
+    Content area \\
+    % /photos/\var{user}
+
+  5.4 &
+  Explore interesting photos from \var{date} &
+  \var{date} &
+  Content area \\
+  % /explore/interesting/\var{date}
+
+    5.4.1 &
+    \var{photo-title} &
+    Photo thumbnail or \var{photo-title} &
+    Content area \\
+    % /photos/\var{user}/\var{photo-id}
+
+    5.4.2 &
+    Photos from \var{user} &
+    \var{user} &
+    Content area \\
+    % /photos/\var{user}
+
+  5.5 &
+  Explore everyones geotagged photos on a Map &
+  a map of the world &
+  Content area \\
+  % /map
+
+    5.5.1 &
+    \$photo-name &
+    Photo count icon &
+    Map \\
+    % /map
+
+      5.5.1.1 &
       \var{user} photos tagged with \var{tag} &
       \var{tag} &
-      Right sidebar (tag list) \\
+      In-line dialog \\
       % /photos/\var{user}/tags/\var{tag}
 
-        1.1.4.1 &
-        Photos tagged with \var{tag} &
-        public photos tagged with \var{tag} &
-        Left sidebar \\
-        % /photos/tags/\var{tag}
+      5.5.1.2 &
+      \var{photo-title} &
+      View photo page &
+      In-line dialog \\
+      % /photos/\var{user}/\var{photo-id}
 
-          1.1.5 &
-          Explore your geotagged photos on a Map &
-          (map) -> View \var{user} map &
-          Right sidebar (details list) \\
-          % /photos/\var{user}/\var{photo-id}/map/?view=users
+  5.6 &
+  Popular Tags &
+  popular tags &
+  Content area \\
+  % /photos/tags
 
-          1.1.6 &
-          Explore everyone's geotagged photos on a Map &
-          (map) -> see more photos here &
-          Right sidebar (details list) \\
-          % /photos/\var{user}/\var{photo-id}/map/?view=everyone
+    5.6.1 &
+    Photos tagged with \var{tag} &
+    \var{tag} &
+    Content (tag cloud) \\
+    % /photos/tags/\var{tag}
 
-          1.1.7 &
-          Camera Finder: \var{camera-model} &
-          \var{camera-model} &
-          Right sidebar (detail list) \\
-          % /cameras/\var{camera-make}/\var{camera-model}
+      5.6.1.1 &
+      Photos tagged with \var{tag} &
+      Most interesting &
+      Left column \\
+      % /photos/tags/\var{tag}/interesting
 
-          1.1.8 &
-          Archive of your photos taken on \var{date} &
-          \var{camera-model} &
-          Right sidebar (detail list) \\
-          % /photos/\var{user}/archives/date-taken/\var{date}
-
-        1.2 &
-        \var{set-title} - a photoset on Flickr &
-        \var{set-title} &
-        Left sidebar \\
-        % /photos/\var{user}/sets/\var{set-id}
-
-        1.3 &
-        \var{user} sets on Flickr &
-        Sets &
-        Local navigation \\
-        % /photos/\var{user}/sets
-
-          1.3.1 &
-          \var{set-title} - a photoset on Flickr &
-          \var{set-title} &
-          Content area \\
-          % /photos/\var{user}/sets/\var{set-id}
-
-            1.1.1.1 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}/in/set-\var{set-id}
-
-        1.4 &
-        \var{user} tags &
-        Tags &
-        Local navigation \\
-        % /photos/\var{user}/tags
-
-          1.4.1 &
-          \var{user} photos tagged with \var{tag} &
-          \var{tag} &
-          Content (tag cloud) \\
-          % /photos/\var{user}/tags/\var{tag}
-
-            1.4.1.1 &
-            Photos tagged with \var{tag} &
-            public photos tagged with \var{tag} &
-            Left sidebar \\
-            % /photos/tags/\var{tag}
-
-            1.4.1.2 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-
-        1.5 &
-        Explore your geotagged photos on a Map &
-        Map &
-        Local navigation \\
-        % /photos/\var{user}/map
-
-          1.5.1 &
-          \$photo-name &
-          Photo count icon &
-          Map \\
-          % /photos/\var{user}/map
-
-            1.5.1.1 &
-            \var{user} photos tagged with \var{tag} &
-            \var{tag} &
-            In-line dialog \\
-            % /photos/\var{user}/tags/\var{tag}
-
-            1.5.1.2 &
-            \var{photo-title} &
-            View photo page &
-            In-line dialog \\
-            % /photos/\var{user}/\var{photo-id}
-
-        1.6 &
-        Archive of all your photos on Flickr &
-        Archives &
-        Local navigation \\
-        % /photos/\var{user}/archives
-
-          1.6.1 &
-          Archive of your photos taken on \var{date} &
-          \var{date} &
-          Content area (Taken on) \\
-          % /photos/\var{user}/archives/date-taken/\var{date}
-
-            1.6.1.1 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-          1.6.2 &
-          Archive of your photos posted on \var{date} &
-          \var{date} &
-          Content area (Posted on) \\
-          % /photos/\var{user}/archives/date-posted/\var{date}
-
-            1.6.2.1 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-        1.7 &
-        \var{user} favorite photos on Flickr &
-        Favorites &
-        Local navigation \\
-        % /photos/\var{user}/favorites
-
-          1.7.1 &
-          \var{photo-title} &
-          Photo thumbnail &
-          Content area \\
-          % /photos/\var{user}/\var{photo-id}
-
-        1.8 &
-        \var{user} most popular photos, interestingness &
-        Popular &
-        Local navigation \\
-        % /photos/\var{user}/popular-interesting
-
-          1.8.1 &
-          \var{photo-title} &
-          Photo thumbnail or photo title &
-          Content area \\
-          % /photos/\var{user}/\var{photo-id}
-
-          1.8.2 &
-          \var{user} most popular photos, views &
-          Views &
-          Sub local navigation \\
-          % /photos/\var{user}/popular-views
-
-            1.8.2.1 &
-            \var{photo-title} &
-            Photo thumbnail or photo title &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-          1.8.3 &
-          \var{user} most popular photos, favorites &
-          Views &
-          Sub local navigation \\
-          % /photos/\var{user}/popular-faves
-
-            1.8.3.1 &
-            \var{photo-title} &
-            Photo thumbnail or photo title &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-          1.8.2 &
-          \var{user} most popular photos, comments &
-          Comments &
-          Sub local navigation \\
-          % /photos/\var{user}/popular-comments
-
-            1.8.2.1 &
-            \var{photo-title} &
-            Photo thumbnail or photo title &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-        1.9 &
-        \var{user} &
-        Profile &
-        Local navigation \\
-        % /people/\var{user}
-
-          1.9.1 &
-          Photos from \var{user} &
-          \var{user} &
-          Content (Groups) \\
-          % /photos/\var{user}
-
-          1.9.2 &
-          \var{group} &
-          \var{group} &
-          Content (Groups) \\
-          % /groups/\var{group}
-
-      2 &
-      Organize your photos &
-      Organize &
-      Global navigation \\
-      % /photos/organize
-
-      3 &
-      Photos from your contacts &
-      Contacts &
-      Global navigation \\
-      % /photos/friends
-
-        3.1 &
+        5.6.1.1.1 &
         \var{photo-title} &
         Photo thumbnail &
         Content area \\
         % /photos/\var{user}/\var{photo-id}
 
-        3.2 &
+        5.6.1.1.2 &
         Photos from \var{user} &
         \var{user} &
         Content area \\
         % /photos/\var{user}
 
-      4 &
-      Groups &
-      Groups &
-      Global navigation \\
-      % /groups
+      5.6.1.2 &
+      Photos tagged with \var{tag} &
+      \var{tag} clusters &
+      Left column \\
+      % /photos/tags/\var{tag}/clusters
 
-        4.1 &
-        \var{group} &
-        \var{group} &
-        Content \\
-        % /groups/\var{group}
-
-          4.1.1 &
-          \var{group} discussion topics &
-          Discussion &
-          Local navigation \\
-          % /groups/\var{group}/discuss
-
-            4.1.1.1 &
-            \var{topic-title} in \var{group} &
-            \var{topic-title} &
-            Content (topic list) \\
-            % /groups/\var{group}/discuss/\var{topic-id}
-
-            4.1.1.2 &
-            Photos from \var{user} &
-            \var{user} &
-            Content (topic list) \\
-            % /photos/\var{user}
-
-          4.1.2 &
-          \var{group} Pool &
-          Pool &
-          Local navigation \\
-          % /groups/\var{group}/discuss
-
-            4.1.2.1 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}/in/pool-\var{group}
-
-            4.1.2.2 &
-            Photos from \var{user} &
-            \var{user} &
-            Content area \\
-            % /photos/\var{user}
-
-          4.1.3 &
-          Explore geotagged photos from \var{group}  &
-          Pool &
-          Local navigation \\
-          % /groups/\var{group}/pool/map?mode=group
-
-            4.1.3.1 &
-            \$photo-name &
-            Photo count icon &
-            Map \\
-            % /groups/\var{group}/pool/map?mode=group
-
-              4.1.3.1.1 &
-              \var{user} photos tagged with \var{tag} &
-              \var{tag} &
-              In-line dialog \\
-              % /photos/\var{user}/tags/\var{tag}
-
-              4.1.3.1.2 &
-              \var{photo-title} &
-              View photo page &
-              In-line dialog \\
-              % /photos/\var{user}/\var{photo-id}
-
-          4.1.3 &
-          \var{group}  &
-          \var{member-count} Members &
-          Local navigation \\
-          % /groups\_members.gne?id=\var{group}-id
-
-            4.1.3.1 &
-            Photos from \var{user} &
-            \var{user} &
-            Content area \\
-            % /photos/\var{user}
-
-      5 &
-      Explore &
-      Explore &
-      Global navigation \\
-      % /explore
-
-        5.1 &
+        5.6.1.2.1 &
         \var{photo-title} &
-        Photo thumbnail or \var{photo-title} &
-        Content (highlighted photo) \\
+        Photo thumbnail &
+        Content area \\
         % /photos/\var{user}/\var{photo-id}
 
-        5.2 &
+        5.6.1.2.2 &
         Photos from \var{user} &
         \var{user} &
-        Content (highlighted photo) \\
+        Content area \\
         % /photos/\var{user}
 
-        5.3 &
-        Explore interesting photos from the last 7 days &
-        last 7 days &
-        Content area \\
-        % /explore/interesting/7days
-
-          5.3.1 &
-          \var{photo-title} &
-          Photo thumbnail or \var{photo-title} &
-          Content area \\
-          % /photos/\var{user}/\var{photo-id}
-
-          5.3.2 &
-          Photos from \var{user} &
-          \var{user} &
-          Content area \\
-          % /photos/\var{user}
-
-        5.4 &
-        Explore interesting photos from \var{date} &
-        \var{date} &
-        Content area \\
-        % /explore/interesting/\var{date}
-
-          5.4.1 &
-          \var{photo-title} &
-          Photo thumbnail or \var{photo-title} &
-          Content area \\
-          % /photos/\var{user}/\var{photo-id}
-
-          5.4.2 &
-          Photos from \var{user} &
-          \var{user} &
-          Content area \\
-          % /photos/\var{user}
-
-        5.5 &
-        Explore everyones geotagged photos on a Map &
-        a map of the world &
-        Content area \\
-        % /map
-
-          5.5.1 &
-          \$photo-name &
-          Photo count icon &
-          Map \\
-          % /map
-
-            5.5.1.1 &
-            \var{user} photos tagged with \var{tag} &
-            \var{tag} &
-            In-line dialog \\
-            % /photos/\var{user}/tags/\var{tag}
-
-            5.5.1.2 &
-            \var{photo-title} &
-            View photo page &
-            In-line dialog \\
-            % /photos/\var{user}/\var{photo-id}
-
-        5.6 &
-        Popular Tags &
-        popular tags &
-        Content area \\
-        % /photos/tags
-
-          5.6.1 &
-          Photos tagged with \var{tag} &
-          \var{tag} &
-          Content (tag cloud) \\
-          % /photos/tags/\var{tag}
-
-            5.6.1.1 &
-            Photos tagged with \var{tag} &
-            Most interesting &
-            Left column \\
-            % /photos/tags/\var{tag}/interesting
-
-              5.6.1.1.1 &
-              \var{photo-title} &
-              Photo thumbnail &
-              Content area \\
-              % /photos/\var{user}/\var{photo-id}
-
-              5.6.1.1.2 &
-              Photos from \var{user} &
-              \var{user} &
-              Content area \\
-              % /photos/\var{user}
-
-            5.6.1.2 &
-            Photos tagged with \var{tag} &
-            \var{tag} clusters &
-            Left column \\
-            % /photos/tags/\var{tag}/clusters
-
-              5.6.1.2.1 &
-              \var{photo-title} &
-              Photo thumbnail &
-              Content area \\
-              % /photos/\var{user}/\var{photo-id}
-
-              5.6.1.2.2 &
-              Photos from \var{user} &
-              \var{user} &
-              Content area \\
-              % /photos/\var{user}
-
-              5.6.1.2.3 &
-              Photos tagged with \var{tag} &
-              \var{tag} &
-              Content (cluster list) \\
-              % /photos/tags/\var{tag}/clusters
-
-              5.6.1.2.4 &
-              Photos tagged with \var{tag} &
-              See more of this cluster\ldots &
-              Content area \\
-              % /photos/tags/\var{tag}/clusters/\var{tag}-\var{tag}-\var{tag}
-
-                5.6.1.2.4.1 &
-                \var{photo-title} &
-                Photo thumbnail &
-                Content area \\
-                % /photos/\var{user}/\var{photo-id}
-
-                5.6.1.2.4.2 &
-                Photos from \var{user} &
-                \var{user} &
-                Content area \\
-                % /photos/\var{user}
-
-            5.6.1.3 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-            5.6.1.4 &
-            Photos from \var{user} &
-            \var{user} &
-            Content area \\
-            % /photos/\var{user}
-
-        5.7 &
-        Camera Finder &
-        Camera finder &
-        Content area \\
-        % /cameras
-
-          5.7.1 &
-          Camera Finder: \var{camera-make} &
-          \var{camera-make} &
-          Content area \\
-          % /cameras/\var{camera-make}
-
-            5.7.1.1 &
-            Camera Finder: \var{camera-make}: \var{camera-model} &
-            \var{camera-model} &
-            Content area \\
-            % /cameras/\var{camera-make}/\var{camera-model}
-
-              5.7.1.1.1 &
-              \var{photo-title} &
-              Photo thumbnail &
-              Content area \\
-              % /photos/\var{user}/\var{photo-id}
-
-              5.6.1.1.2 &
-              Photos from \var{user} &
-              \var{user} &
-              Content area \\
-              % /photos/\var{user}
-
-        5.8 &
-        Photos from everyone &
-        most recent uploads &
-        Content area \\
-        % /photos
-
-            5.8.1 &
-            \var{photo-title} &
-            Photo thumbnail &
-            Content area \\
-            % /photos/\var{user}/\var{photo-id}
-
-            5.8.2 &
-            Photos from \var{user} &
-            \var{user} &
-            Content area \\
-            % /photos/\var{user}
-
-            5.8.3 &
-            Popular Tags &
-            Popular tags &
-            Right sidebar \\
-            % /photos/tags
-
-            5.8.4 &
-            Creative Commons &
-            Creative Commons &
-            Right sidebar \\
-            % /creativecommons
-
-              5.8.4.1 &
-              \var{photo-title} &
-              Photo thumbnail &
-              Content area \\
-              % /photos/\var{user}/\var{photo-id}
-
-              5.8.4.2 &
-              Photos from \var{user} &
-              \var{user} &
-              Content area \\
-              % /photos/\var{user}
-
-              5.8.4.3 &
-              Photos with Creative Commons \$license-type &
-              See more &
-              Content (\$license-type) \\
-              % /photos/\var{user}
-
-                5.8.4.3.1 &
-                \var{photo-title} &
-                Photo thumbnail &
-                Content area \\
-                % /photos/\var{user}/\var{photo-id}
-
-                5.8.4.3.2 &
-                Photos from \var{user} &
-                \var{user} &
-                Content area \\
-                % /photos/\var{user}
-
-        5.9 &
+        5.6.1.2.3 &
         Photos tagged with \var{tag} &
         \var{tag} &
-        Content (tag cloud) \\
-        % /photos/tags/\var{tag}
+        Content (cluster list) \\
+        % /photos/tags/\var{tag}/clusters
 
+        5.6.1.2.4 &
+        Photos tagged with \var{tag} &
+        See more of this cluster\ldots &
+        Content area \\
+        % /photos/tags/\var{tag}/clusters/\var{tag}-\var{tag}-\var{tag}
 
-        5.10 &
-        Explore interesting photos from \var{date} &
-        \var{date} &
-        Content (A year ago) \\
-        % /explore/interesting/\var{date}
-
-          5.10.1 &
+          5.6.1.2.4.1 &
           \var{photo-title} &
           Photo thumbnail &
           Content area \\
           % /photos/\var{user}/\var{photo-id}
 
-          5.10.2 &
+          5.6.1.2.4.2 &
           Photos from \var{user} &
-          \var{user} and see more photos &
+          \var{user} &
           Content area \\
           % /photos/\var{user}
 
-          5.10.3 &
-          \var{user} &
-          profile &
-          Content area \\
-          % /people/\var{user}
+      5.6.1.3 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
 
-          5.10.4 &
-          Photos tagged with \var{tag} &
-          \var{tag} &
-          Content area \\
-          % /photos/tags/\var{tag}/clusters
+      5.6.1.4 &
+      Photos from \var{user} &
+      \var{user} &
+      Content area \\
+      % /photos/\var{user}
 
-        5.11 &
+  5.7 &
+  Camera Finder &
+  Camera finder &
+  Content area \\
+  % /cameras
+
+    5.7.1 &
+    Camera Finder: \var{camera-make} &
+    \var{camera-make} &
+    Content area \\
+    % /cameras/\var{camera-make}
+
+      5.7.1.1 &
+      Camera Finder: \var{camera-make}: \var{camera-model} &
+      \var{camera-model} &
+      Content area \\
+      % /cameras/\var{camera-make}/\var{camera-model}
+
+        5.7.1.1.1 &
         \var{photo-title} &
-        Photo thumbnail or \var{photo-title} &
-        Content (A year ago) \\
+        Photo thumbnail &
+        Content area \\
         % /photos/\var{user}/\var{photo-id}
 
-        5.12 &
+        5.6.1.1.2 &
         Photos from \var{user} &
         \var{user} &
-        Content (A year ago) \\
+        Content area \\
         % /photos/\var{user}
 
-        5.13 &
+  5.8 &
+  Photos from everyone &
+  most recent uploads &
+  Content area \\
+  % /photos
+
+      5.8.1 &
+      \var{photo-title} &
+      Photo thumbnail &
+      Content area \\
+      % /photos/\var{user}/\var{photo-id}
+
+      5.8.2 &
+      Photos from \var{user} &
+      \var{user} &
+      Content area \\
+      % /photos/\var{user}
+
+      5.8.3 &
+      Popular Tags &
+      Popular tags &
+      Right sidebar \\
+      % /photos/tags
+
+      5.8.4 &
+      Creative Commons &
+      Creative Commons &
+      Right sidebar \\
+      % /creativecommons
+
+        5.8.4.1 &
+        \var{photo-title} &
+        Photo thumbnail &
+        Content area \\
+        % /photos/\var{user}/\var{photo-id}
+
+        5.8.4.2 &
+        Photos from \var{user} &
         \var{user} &
-        profile &
-        Content (A year ago) \\
-        % /people/\var{user}
+        Content area \\
+        % /photos/\var{user}
 
-        5.14 &
-        \var{set-title} - a photoset on Flickr &
-        \var{set-title} &
-        Content (Sets) \\
-        % /photos/\var{user}/sets/\var{set-id}
+        5.8.4.3 &
+        Photos with Creative Commons \$license-type &
+        See more &
+        Content (\$license-type) \\
+        % /photos/\var{user}
 
-          5.14.1 &
+          5.8.4.3.1 &
           \var{photo-title} &
           Photo thumbnail &
           Content area \\
-          % /photos/\var{user}/\var{photo-id}/in/set-\var{set-id}
+          % /photos/\var{user}/\var{photo-id}
 
-        5.15 &
-        Photos from \var{user} &
-        \var{user} &
-        Content (Sets) \\
-        % /photos/\var{user}
+          5.8.4.3.2 &
+          Photos from \var{user} &
+          \var{user} &
+          Content area \\
+          % /photos/\var{user}
 
-        5.16 &
-        Groups &
-        loads of groups &
-        Content (Groups) \\
-        % /groups
+  5.9 &
+  Photos tagged with \var{tag} &
+  \var{tag} &
+  Content (tag cloud) \\
+  % /photos/tags/\var{tag}
 
-        5.17 &
-        \var{group} &
-        \var{group} &
-        Content (Groups) \\
-        % /groups/\var{group}
 
-        5.18 &
-        \var{group} Pool &
-        Pool &
-        Local navigation \\
-        % /groups/\var{group}/pool
+  5.10 &
+  Explore interesting photos from \var{date} &
+  \var{date} &
+  Content (A year ago) \\
+  % /explore/interesting/\var{date}
 
-        5.19 &
-        \var{group}  &
-        \var{member-count} Members &
-        Local navigation \\
-        % /groups\_members.gne?id=\var{group}-id
+    5.10.1 &
+    \var{photo-title} &
+    Photo thumbnail &
+    Content area \\
+    % /photos/\var{user}/\var{photo-id}
+
+    5.10.2 &
+    Photos from \var{user} &
+    \var{user} and see more photos &
+    Content area \\
+    % /photos/\var{user}
+
+    5.10.3 &
+    \var{user} &
+    profile &
+    Content area \\
+    % /people/\var{user}
+
+    5.10.4 &
+    Photos tagged with \var{tag} &
+    \var{tag} &
+    Content area \\
+    % /photos/tags/\var{tag}/clusters
+
+  5.11 &
+  \var{photo-title} &
+  Photo thumbnail or \var{photo-title} &
+  Content (A year ago) \\
+  % /photos/\var{user}/\var{photo-id}
+
+  5.12 &
+  Photos from \var{user} &
+  \var{user} &
+  Content (A year ago) \\
+  % /photos/\var{user}
+
+  5.13 &
+  \var{user} &
+  profile &
+  Content (A year ago) \\
+  % /people/\var{user}
+
+  5.14 &
+  \var{set-title} - a photoset on Flickr &
+  \var{set-title} &
+  Content (Sets) \\
+  % /photos/\var{user}/sets/\var{set-id}
+
+    5.14.1 &
+    \var{photo-title} &
+    Photo thumbnail &
+    Content area \\
+    % /photos/\var{user}/\var{photo-id}/in/set-\var{set-id}
+
+  5.15 &
+  Photos from \var{user} &
+  \var{user} &
+  Content (Sets) \\
+  % /photos/\var{user}
+
+  5.16 &
+  Groups &
+  loads of groups &
+  Content (Groups) \\
+  % /groups
+
+  5.17 &
+  \var{group} &
+  \var{group} &
+  Content (Groups) \\
+  % /groups/\var{group}
+
+  5.18 &
+  \var{group} Pool &
+  Pool &
+  Local navigation \\
+  % /groups/\var{group}/pool
+
+  5.19 &
+  \var{group}  &
+  \var{member-count} Members &
+  Local navigation \\
+  % /groups\_members.gne?id=\var{group}-id
 
     \end{longtable}
   \end{small}
-\end{center}
+\end{landscape}
 
 \section{Amazon}
 
