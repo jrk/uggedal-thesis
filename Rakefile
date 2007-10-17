@@ -896,6 +896,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :fancyhdr => [] }
   t.packages << { :lscape => [] }
   t.packages << { :graphicx => [] }
+  t.packages << { :breakurl => [] }
 
   t.title = 'Draft: Social Navigation'
   t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
