@@ -73,5 +73,6 @@
   \end{titlepage}
 }%
 
+
 % Custom commands
 \newcommand{\var}[1]{\texttt{\${#1}}}
