@@ -35,7 +35,7 @@
   \begin{titlepage}
     {\parindent 0pt%
       {\centering
-          \includegraphics[width=0.50\textwidth]{uni_oslo_seal}
+          \includegraphics[width=0.50\textwidth]{uioseal}
         \vfill
         \vfill
           \textbf{\Huge{\@title}}
