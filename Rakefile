@@ -644,7 +644,7 @@ module RakedLaTeX
       end
 
       def copy_source_files
-        %w(tex bib sty eps).each do |file_extension|
+        %w(tex bib sty cls eps).each do |file_extension|
           FileList["#{@source_dir}/*.#{file_extension}"].each do |file|
             cp(file,  @build_dir)
           end
@@ -864,33 +864,32 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :book => %w(11pt a4paper twoside final) }
+  t.klass = { :uiothesis => [] }
 
   t.packages << { :hyperref => %w(ps2pdf
                                   bookmarks=true
                                   breaklinks=false
                                   raiselinks=true
                                   colorlinks=false) }
+  t.packages << { :breakurl => [] }
+
   t.packages << { :fontenc => ['T1'] }
   t.packages << { :mathpazo => [] }
   t.packages << { :courier => [] }
   t.packages << { :helvet => [] }
+
   t.packages << { :appendix => %w(titletoc page) }
+
   t.packages << { :longtable => [] }
   t.packages << { :booktabs => [] }
-  t.packages << { :natbib => [] }
-  t.packages << { :fancyhdr => [] }
   t.packages << { :lscape => [] }
-  t.packages << { :graphicx => [] }
-  t.packages << { :breakurl => [] }
 
-  t.title = 'Draft: Social Navigation'
-  t.author = { :name => 'Eivind Uggedal', :email => 'eivindu@ifi.uio.no' }
+  t.packages << { :natbib => [] }
+
+  t.title = 'Social Navigation in Modern Web Services'
+  t.author = { :name => 'Eivind Uggedal' }
 
   t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
-
-  t.preamble_extras = '\include{commands}'
-  t.preamble_extras += '\include{headings}'
 
   t.table_of_contents = true
   t.list_of_tables = true
