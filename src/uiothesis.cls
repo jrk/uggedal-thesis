@@ -4,11 +4,26 @@
 
 
 % Default options
-\newcommand{\@@sides}{twoside}
-\newcommand{\@@ptsize}{10pt}
+\newcommand{\@@ptsize}{12pt}
 \newcommand{\@@papersize}{a4paper}
+\newcommand{\@@sides}{twoside}
 \newcommand{\@@status}{final}
 
+% Possible options
+\DeclareOption{10pt}{\renewcommand{\@@ptsize}{10pt}}
+\DeclareOption{11pt}{\renewcommand{\@@ptsize}{11pt}}
+\DeclareOption{12pt}{\renewcommand{\@@ptsize}{12pt}}
+
+\DeclareOption{letterpaper}{\renewcommand{\@@papersize}{letterpaper}}
+\DeclareOption{a4paper}{\renewcommand{\@@papersize}{a4paper}}
+
+\DeclareOption{oneside}{\renewcommand{\@@sides}{oneside}}
+\DeclareOption{twoside}{\renewcommand{\@@sides}{twoside}}
+
+\DeclareOption{draft}{\renewcommand{\@@status}{draft}}
+\DeclareOption{final}{\renewcommand{\@@status}{final}}
+
+\ProcessOptions
 
 % This class is based on the book class
 \LoadClass[\@@ptsize,\@@papersize,\@@sides,\@@status]{book}

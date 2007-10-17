@@ -864,7 +864,7 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :uiothesis => [] }
+  t.klass = { :uiothesis => %w(draft) }
 
   t.packages << { :hyperref => %w(ps2pdf
                                   bookmarks=true
