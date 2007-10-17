@@ -33,67 +33,64 @@ Examples include the user in question for a profile page, the tag for a
 listing of photos annotated with such a tag, the date for time based history
 listings and so on. I therefore introduced several such variables prefixed
 with a dollar sign:
-\emph{\$}\footnote{Inspired from variable usage inUNIX shell scripting}.
+\emph{\$}\footnote{Inspired from variable usage in UNIX shell scripting}.
 A complete listing of such variables and their meaning can be found in
 Table~\ref{table:flickr.variable.list}
 (p.~\pageref{table:flickr.variable.list})
 
 \begin{table}
+  \caption{Variable Listing for Flickr}
+  \label{table:flickr.variable.list}
+
   \begin{center}
-    \begin{small}
+    \begin{tabular}{lp{8cm}}
 
-      \caption{Variable Listing for Flickr}
-      \label{table:flickr.variable.list}
+      \toprule
+      Variable & Description \\
+      \midrule
 
-      \begin{tabular}{lp{8cm}}
+      \var{user} &
+      Unique nick-name for a user \\
 
-        \toprule
-        Variable & Description \\
-        \midrule
+      \var{photo-id} &
+      Unique numerical identifier for a photo \\
 
-        \var{user} &
-        Unique nick-name for a user \\
+      \var{photo-title} &
+      Textual title of a photo \\
 
-        \var{photo-id} &
-        Unique numerical identifier for a photo \\
+      \var{set-id} &
+      Unique numerical identifier for a set (of photos) \\
 
-        \var{photo-title} &
-        Textual title of a photo \\
+      \var{set-title} &
+      Textual title of a set (of photos) \\
 
-        \var{set-id} &
-        Unique numerical identifier for a set (of photos) \\
+      \var{tag} &
+      Unique name for a tag \\
 
-        \var{set-title} &
-        Textual title of a set (of photos) \\
+      \var{group} &
+      Unique textual name for a group \\
 
-        \var{tag} &
-        Unique name for a tag \\
+      \var{camera-make} &
+      Manufacturer of digital cameras \\
 
-        \var{group} &
-        Unique textual name for a group \\
+      \var{camera-model} &
+      Model number of a particular digital camera \\
 
-        \var{camera-make} &
-        Manufacturer of digital cameras \\
+      \var{date} &
+      A given date (year, optional month, and optional day) \\
 
-        \var{camera-model} &
-        Model number of a particular digital camera \\
+      \var{topic-id} &
+      Unique numerical identifier for a discussion topic \\
 
-        \var{date} &
-        A given date (year, optional month, and optional day) \\
+      \var{topic-title} &
+      Textual title of a discussion topic \\
 
-        \var{topic-id} &
-        Unique numerical identifier for a discussion topic \\
+      \var{member-count} &
+      Variable number of members of a group \\
 
-        \var{topic-title} &
-        Textual title of a discussion topic \\
+      \bottomrule
 
-        \var{member-count} &
-        Variable number of members of a group \\
-
-        \bottomrule
-
-      \end{tabular}
-    \end{small}
+    \end{tabular}
   \end{center}
 \end{table}
 
@@ -112,15 +109,12 @@ Table~\ref{table:flickr.variable.list}
 % when using content inventory as a tool for improving site architecture.
 
 
-\setlength\LTleft{0pt plus 1fill minus 1fill}
-  \let\LTright\LTleft
-
 % Long multi-page table
 \begin{landscape}
   \begin{footnotesize}
-    \label{table:flickr.content.inventory.1}
     \begin{longtable}{rp{7cm}ll}
-      \caption{Content Inventory of Flickr} \\
+      \caption{Content Inventory of Flickr}%
+      \label{table:flickr.content.inventory.1} \\
 
   % First page header
   \toprule

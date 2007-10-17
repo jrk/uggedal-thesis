@@ -906,6 +906,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.preamble_extras += '\include{headings}'
 
   t.table_of_contents = true
+  t.list_of_tables = true
 
   t.main_content = %w(introduction
                       content.analysis)
