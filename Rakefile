@@ -307,20 +307,6 @@ module RakedLaTeX
           \\\\
           \texttt{<%=@author[:email]%>}
         %     end
-        %     if @scm
-        %       if @scm[:name]
-          \\\\ \\\\ \\\\
-          <%=@scm[:name]%> Stats
-        %       end
-        %       if @scm[:revision]
-          \\\\
-          \texttt{<%=@scm[:revision]%>}
-        %       end
-        %       if @scm[:date]
-          \\\\
-          \texttt{<%=@scm[:date]%>}
-        %       end
-        %     end
         }
         %   end
         % end

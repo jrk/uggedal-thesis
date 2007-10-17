@@ -1,11 +1,35 @@
 \newcommand{\var}[1]{\texttt{\${#1}}}
 
+
+
 % Title page:
 \makeatletter
+
 \renewcommand{\maketitle}{%
-\thispagestyle{empty}
-\begin{center}
-  \includegraphics[width=0.55\textwidth]{seal.uni.oslo.eps}
-\end{center}
-}
+  \begin{titlepage}
+    {\parindent 0pt%
+      {\centering
+        \vfill
+          \textbf{\Huge{\@title}}
+        \vfill
+          \Large{\@author}
+        \vfill
+        \vfill
+          \includegraphics[width=0.50\textwidth]{seal.uni.oslo.eps}
+        \vfill
+        \vfill
+          \huge{Master Thesis in Informatics}
+        \vfill
+        \vfill
+          \textsc{\Large{Department of Informatics}}
+        \vfill
+          \textsc{\Large{Faculty of Mathematics and Natural Sciences}}
+        \vfill
+          \textsc{\huge{University of Oslo}}
+        \vfill
+          \Large{\today}
+      \par}% end centering
+    }% end parindent
+  \end{titlepage}
+}%
 \makeatother
