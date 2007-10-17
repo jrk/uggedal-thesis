@@ -74,5 +74,10 @@
 }%
 
 
+% Hyper references and breaking of URLs
+\RequirePackage[ps2pdf]{hyperref}
+\RequirePackage{breakurl}
+
+
 % Custom commands
 \newcommand{\var}[1]{\texttt{\${#1}}}

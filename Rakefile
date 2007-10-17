@@ -864,14 +864,7 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :uiothesis => %w(draft) }
-
-  t.packages << { :hyperref => %w(ps2pdf
-                                  bookmarks=true
-                                  breaklinks=false
-                                  raiselinks=true
-                                  colorlinks=false) }
-  t.packages << { :breakurl => [] }
+  t.klass = { :uiothesis => %w(final) }
 
   t.packages << { :fontenc => ['T1'] }
   t.packages << { :mathpazo => [] }
