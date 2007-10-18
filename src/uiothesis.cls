@@ -36,8 +36,8 @@
 
 \fancyhf{}
 \fancyhead[LE,RO]{ \thepage}
-\fancyhead[LO]{ \nouppercase{\rightmark}}
-\fancyhead[RE]{ \nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RE]{\nouppercase{\leftmark}}
 
 \renewcommand{\chaptermark}[1]%
   {\markboth{\thechapter.\ #1}{}%
