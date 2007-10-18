@@ -43,6 +43,12 @@ module RakedLaTeX
     #
     attr_accessor :title
 
+    # Sub title of the document. Examples:
+    #
+    #   'An Exploratory Study'
+    #
+    attr_accessor :sub_title
+
     # The author of the document. Example:
     #
     #   { :name => 'Eivind Uggedal',
@@ -192,6 +198,7 @@ module RakedLaTeX
       @klass = { :article => [] }
       @packages = []
       @title = nil
+      @sub_title = nil
       @author = nil
       @date = nil
       @scm = {}
@@ -307,6 +314,9 @@ module RakedLaTeX
 
         % if @title
         \title{<%=@title%>}
+        %   if @sub_title
+        \subtitle{<%=@sub_title%>}
+        %   end
         %   if @author && @author[:name]
         \author{%
           <%=@author[:name]%>
@@ -890,7 +900,8 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
 
   t.packages << { :natbib => [] }
 
-  t.title = 'Social Navigation in Modern Web Services'
+  t.title = 'Social Navigation in Modern Web Services:'
+  t.sub_title = 'Classification, Prototyping, and Applicability'
   t.author = { :name => 'Eivind Uggedal' }
   t.date = Time.now.strftime('%B %Y')
 
