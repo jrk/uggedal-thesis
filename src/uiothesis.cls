@@ -65,28 +65,43 @@
   \fi%
 }
 
+
+% Nullifies margins of text inside the environment
+\newenvironment{zeromargins}{%
+  \begin{list}{}{%
+    \setlength{\oddsidemargin}{0pt}%
+    \setlength{\evensidemargin}{0pt}%
+  }%
+  \item[]
+}{\end{list}}
+
+
 % Title page
 \RequirePackage{graphicx}
 
 \renewcommand{\maketitle}{%
   \begin{titlepage}
-    \begin{center}
-          \includegraphics[width=0.3\textwidth]{uioseal} \\
-        \vspace{2cm}
-          \textbf{\Huge{\@title}} \\
-        \vspace{1cm}
-          {\Large\@author} \\
-        \vspace{1cm}
-          Submitted in partial fulfillment of the requirements \\
-          for the degree of Master of Science \\
-        \vspace{1cm}
-          \@date \\
-        \vspace{1cm}
-          Department of Informatics \\
-          Faculty of Mathematics and Natural Sciences \\
-          University of Oslo \\
-        \vspace{5cm}
-    \end{center}
+    {\parindent 0pt%
+      \begin{zeromargins}
+        \begin{center}
+            \includegraphics[width=0.3\textwidth]{uioseal} \\
+          \vspace{2cm}
+            \textbf{\Huge{\@title}} \\
+          \vspace{1cm}
+            {\Large\@author} \\
+          \vspace{1cm}
+            Submitted in partial fulfillment of the requirements \\
+            for the degree of Master of Science \\
+          \vspace{1cm}
+            \@date \\
+          \vspace{1cm}
+            Department of Informatics \\
+            Faculty of Mathematics and Natural Sciences \\
+            University of Oslo \\
+          \vspace{5cm}
+        \end{center}
+      \end{zeromargins}
+    }%
   \end{titlepage}
 }
 
