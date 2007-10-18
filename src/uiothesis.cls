@@ -29,19 +29,41 @@
 \LoadClass[\@@ptsize,\@@papersize,\@@sides,\@@status]{book}
 
 
-% Headings
+% Headers
 \RequirePackage{fancyhdr}
 
-\pagestyle{fancyplain}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection{} #1}}
-\lhead[\fancyplain{}{\bfseries\thepage}]
-    {\fancyplain{}{\bfseries\rightmark}}
-\rhead[\fancyplain{}{\bfseries\leftmark}]
-    {\fancyplain{}{\bfseries\thepage}}
-\cfoot[]{}
-\addtolength{\headheight}{1.6pt}
+\pagestyle{fancy}
 
+\fancyhf{}
+\fancyhead[LE,RO]{ \thepage}
+\fancyhead[LO]{ \nouppercase{\rightmark}}
+\fancyhead[RE]{ \nouppercase{\leftmark}}
+
+\renewcommand{\chaptermark}[1]%
+  {\markboth{\thechapter.\ #1}{}%
+}
+\renewcommand{\sectionmark}[1]%
+  {\markright{\thesection.\ #1}{}%
+}
+
+
+% Blank doublepage clears
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+    \ifodd
+      \c@page
+    \else
+      \hbox{}
+      \thispagestyle{empty}
+      \newpage
+      \if@twocolumn
+        \hbox{}
+        \newpage
+      \fi
+    \fi
+  \fi%
+}
 
 % Title page
 \RequirePackage{graphicx}
@@ -77,6 +99,10 @@
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
 \RequirePackage{breakurl}
+
+
+% Footnotes
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 
 % Custom commands
