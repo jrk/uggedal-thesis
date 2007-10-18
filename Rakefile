@@ -50,6 +50,12 @@ module RakedLaTeX
     #
     attr_accessor :author
 
+    # The date of the document. Example:
+    #
+    #   'October 2007'
+    #
+    attr_accessor :date
+
     # SCM information like name, revision of the tip/head/trunk and it's
     # date. Example:
     #
@@ -187,6 +193,7 @@ module RakedLaTeX
       @packages = []
       @title = nil
       @author = nil
+      @date = nil
       @scm = {}
       @preamble_extras = nil
       @abstract = nil
@@ -309,6 +316,10 @@ module RakedLaTeX
         %     end
         }
         %   end
+        % end
+
+        % if @date
+        \date{<%=@date%>}
         % end
 
         % if @preamble_extras
@@ -881,6 +892,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
 
   t.title = 'Social Navigation in Modern Web Services'
   t.author = { :name => 'Eivind Uggedal' }
+  t.date = Time.now.strftime('%B %Y')
 
   t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
 
