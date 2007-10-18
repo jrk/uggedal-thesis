@@ -70,30 +70,25 @@
 
 \renewcommand{\maketitle}{%
   \begin{titlepage}
-    {\parindent 0pt%
-      {\centering
-          \includegraphics[width=0.50\textwidth]{uioseal}
-        \vfill
-        \vfill
-          \textbf{\Huge{\@title}}
-        \vfill
-          \Large{\@author}
-        \vfill
-          \large{Master Thesis in Informatics}
-        \vfill
-          \large{\today}
-        \vfill
-          \large{Department of Informatics}\\
-          \large{Faculty of Mathematics and Natural Sciences}\\
-          \large{University of Oslo}
-        \vfill
-        \vfill
-        \vfill
-        \vfill
-      \par}% end centering
-    }% end parindent
+    \begin{center}
+          \includegraphics[width=0.3\textwidth]{uioseal} \\
+        \vspace{2cm}
+          \textbf{\Huge{\@title}} \\
+        \vspace{1cm}
+          {\Large\@author} \\
+        \vspace{1cm}
+          Submitted in partial fulfillment of the requirements \\
+          for the degree of Master of Science \\
+        \vspace{1cm}
+          \@date \\
+        \vspace{1cm}
+          Department of Informatics \\
+          Faculty of Mathematics and Natural Sciences \\
+          University of Oslo \\
+        \vspace{5cm}
+    \end{center}
   \end{titlepage}
-}%
+}
 
 
 % Hyper references and breaking of URLs
