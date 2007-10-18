@@ -14,7 +14,10 @@
 % This is best done clearly and succinctly.
 
 The web is becoming increasingly more social as it's becoming more ordinary to
-take part in some sort of web community. At the same time technological
+take part in some sort of web community. 
+\citet[p.~44]{backstrom06} tells about this phenomenon:
+``The digital domain has seen a significant growth in the scale and richness
+of on-line communities \ldots''. At the same time technological
 advances and maturity have made it easy and cheap to create new communities.
 This means that we're seeing an abundance of such communities appear.
 They're all competing to establish self sufficient user bases, and if the
@@ -44,15 +47,16 @@ navigation as the first definition of the term clearly and succinctly
 captures:
 
 \begin{quote}
-``In social navigation, movement from one item to another is provoked as an
-artifact of the activity of another or a group of others.'' \citep{dourish94} 
+In social navigation, movement from one item to another is provoked as an
+artifact of the activity of another or a group of others. \citep{dourish94} 
 \end{quote}
 
 \section{Motivation}
 
-Social navigation is a well defined term within the academic
+Social navigation are as we've seen a well defined term within the academic
 community and there have been a handful of studies on it's applicability in
-context of the web. Most of this research took place in the early days of the
+context of the web \citep{dieberger97,wexelblat99}. % more studies needed
+Most of this research took place in the early days of the
 web--preceding our current area of Web 2.0. As described earlier the
 growth we're seeing of web services with social aspects are bound to provide
 for innovations in the space of navigation. It would therefore be interesting
@@ -60,7 +64,13 @@ to look at some of the state-of-the-art social web services and look at what
 contributions they have made to the field of social navigation.
 
 We are currently lacking information on how one can use social navigation
-consciously in a web application design process.
+consciously in a web application design process. Such navigational schemes
+seem to be created without guidance and many times as an afterhought.
+It appears that methods for establishing incentives for user participation
+is the focal point of web architecture design today. Even though such
+approaches can result in sound and interesting navigation it's our impression
+that a focus on solving users' navigational problems is more beneficial for
+the usability of a web service.
 
 \section{Objective}
 
@@ -68,29 +78,34 @@ By collecting examples of good navigational implementations in the wild,
 analyzing them, and categorize them we hope to offer a structured view of the
 field of social navigation. We offer this information in the way of a taxonomy
 of useful social navigation techniques.
+As we are unaware of any established technique for
+conducting such a study on real world navigation systems we create our own
+method as we go--fine tuning it as we learn from our experiences.
 
-Using some of the techniques established in our initial research on how social
-navigation is leveraged in real world applications we try to improve an
-existing web service. More specifically we are prototyping possible
+We try to improve an existing web service by using some of the techniques
+established in our initial research of how social navigation is leveraged
+in real world applications. More specifically we are prototyping possible
 navigational improvements for the Norwegian Broadcasting Corporation's joint
 TV, radio, and Internet project: \emph{Ur\o{}rt}--a service where artists upload
 their demos and get valuable playtime on radio and TV if their products are
 judged to be of sufficient quality. Our focus is on the projects
-web community where users can interact in a social manner in addition to
-uploading their songs.
+web community\footnote{Available at \url{http://nrk.no/urort}} where users can
+interact in a social manner in addition to uploading their songs.
 
-Going in and making changes to an existing web services can be both an
+Going in and making changes to an existing web service can be both an
 daunting and time consuming task. First one have to establish a trustworthy
 relationship with the creators of such a service so that they are certain
-you're not introducing bugs in their precious software. Secondly, grasping the
-code base, third party libraries and development tools of such a software
+you're not introducing bugs in their production software. Secondly, grasping the
+code base, third party libraries, and development tools of such a software
 project demands a lot of upfront effort before any real development work can
 begin. This goes against the prototypical process we intended to use while
-improving Ur\o{}rt.
+experimenting with Ur\o{}rt.
 
 Even though we've had an ongoing dialog with the developers of Ur\o{}rt we
 decided to create our prototype as a layer on top of their service. By using a
-scripting extension for the open source
+extension\footnote{Specifically Greasemonkey, an extension allowing for
+customization of presentation and behaviour of web pages. Available at
+\url{http://www.greasespot.net}} for the open source
 Firefox\footnote{Available at \url{http://firefox.com}}
 web browser we were able to make changes and additions to the way Ur\o{}rt were
 presented to users who were participating in our study. We were able to create
@@ -100,16 +115,22 @@ a prototypical process. This resulted in a transparent experience for our end
 users as long as they had taken the necessary steps to set up the browser
 extension and our script.
 
-With our technical solution in place we were able to test it in practice by
-conducting ``some sort of usability study''(not decided). This leads to our
-research question:
+With our technical solution in place we were able to test how it performed in
+practice by conducting ``some sort of user observation'' (not decided) and
+(possibly) more quantitative surverys.
 
-% Check Silverman and his pointers on research questions, hypotheses etc
-% (much info in the research proposal chapter).
+This leads to the research question we had in mind while conducting
+the tasks described above:
 
 \begin{quote}
-  Research question
+  Question here
 \end{quote}
+
+The role of this question have been to give our research direction, show where
+it's boundaries are, keep us focued, and point to the needed methods and data.
+% ref silverman p 77
+
+% hypotheses ?
 
 \section{Contributions}
 
@@ -127,9 +148,5 @@ Contributions from our research on social navigation is threefold:
 
 \section{Outline}
 
-Moving on from this introductory chapter we'll take a look at\ldots before we
+Moving on from this introductory chapter we'll take a look at \ldots before we
 finally conclude our research in the final chapter.
-
-% As we are unaware of any established technique for
-% conducting such a study on real world navigation systems we create our own
-% method as we go--fine tuning it as we learn from our experiences.
