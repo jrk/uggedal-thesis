@@ -63,25 +63,6 @@
 %}
 
 
-% Blank doublepage clears
-%\def\cleardoublepage{%
-%  \clearpage
-%  \if@twoside
-%    \ifodd
-%      \c@page
-%    \else
-%      \hbox{}
-%      \thispagestyle{empty}
-%      \newpage
-%      \if@twocolumn
-%        \hbox{}
-%        \newpage
-%      \fi
-%    \fi
-%  \fi%
-%}
-
-
 % Nullifies margins of text inside the environment
 %\newenvironment{zeromargins}{%
 %  \begin{list}{}{%
