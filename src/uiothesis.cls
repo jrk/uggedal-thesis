@@ -4,25 +4,40 @@
 
 
 % Default options
-\newcommand{\@@ptsize}{12pt}
 \newcommand{\@@papersize}{a4paper}
+\newcommand{\@@ptsize}{10pt}
 \newcommand{\@@sides}{twoside}
+\newcommand{\@@columns}{onecolumn}
+\newcommand{\@@openwhere}{openright}
 \newcommand{\@@status}{final}
 
 % Possible options
+\DeclareOption{letterpaper}{\renewcommand{\@@papersize}{letterpaper}}
+\DeclareOption{a4paper}{\renewcommand{\@@papersize}{a4paper}}
+\DeclareOption{ebook}{\renewcommand{\@@papersize}{ebook}}
+\DeclareOption{9pt}{\renewcommand{\@@ptsize}{9pt}}
 \DeclareOption{10pt}{\renewcommand{\@@ptsize}{10pt}}
 \DeclareOption{11pt}{\renewcommand{\@@ptsize}{11pt}}
 \DeclareOption{12pt}{\renewcommand{\@@ptsize}{12pt}}
-\DeclareOption{letterpaper}{\renewcommand{\@@papersize}{letterpaper}}
-\DeclareOption{a4paper}{\renewcommand{\@@papersize}{a4paper}}
+\DeclareOption{17pt}{\renewcommand{\@@ptsize}{17pt}}
 \DeclareOption{oneside}{\renewcommand{\@@sides}{oneside}}
 \DeclareOption{twoside}{\renewcommand{\@@sides}{twoside}}
+\DeclareOption{onecolumn}{\renewcommand{\@@columns}{onecolumn}}
+\DeclareOption{twocolumn}{\renewcommand{\@@columns}{twocolumn}}
+\DeclareOption{openright}{\renewcommand{\@@openwhere}{openright}}
+\DeclareOption{openleft}{\renewcommand{\@@openwhere}{openleft}}
+\DeclareOption{openany}{\renewcommand{\@@openwhere}{openany}}
 \DeclareOption{draft}{\renewcommand{\@@status}{draft}}
 \DeclareOption{final}{\renewcommand{\@@status}{final}}
 \ProcessOptions
 
 % This class is based on the memoir class
-\LoadClass[\@@ptsize,\@@papersize,\@@sides,\@@status]{memoir}
+\LoadClass[\@@papersize,%
+           \@@ptsize,%
+           \@@sides,%
+           \@@columns,%
+           \@@openwhere,%
+           \@@status]{memoir}
 
 % Internal variables
 \newcommand{\@subtitle}{}
