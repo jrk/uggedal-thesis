@@ -665,7 +665,7 @@ module RakedLaTeX
       end
 
       def copy_source_files
-        %w(tex bib sty cls eps).each do |file_extension|
+        %w(tex bib sty cls eps jpg).each do |file_extension|
           FileList["#{@source_dir}/*.#{file_extension}"].each do |file|
             cp(file,  @build_dir)
           end
@@ -908,6 +908,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.scm = RakedLaTeX::ScmStats::Mercurial.new.collect_scm_stats
 
   t.table_of_contents = true
+  t.list_of_figures = true
   t.list_of_tables = true
 
   t.main_content = %w(introduction
