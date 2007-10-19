@@ -380,7 +380,6 @@ module RakedLaTeX
         % @bibliography.each do |file, style|
             \bibliographystyle{<%=style%>}
             \bibliography{<%=file%>}
-            \addcontentsline{toc}{chapter}{Bibliography}
         % end
         \end{document}
       ).gsub(/^[ ]{8}/, '')
@@ -665,7 +664,7 @@ module RakedLaTeX
       end
 
       def copy_source_files
-        %w(tex bib sty cls eps jpg).each do |file_extension|
+        %w(tex bib sty cls clo eps jpg).each do |file_extension|
           FileList["#{@source_dir}/*.#{file_extension}"].each do |file|
             cp(file,  @build_dir)
           end
@@ -892,7 +891,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :courier => [] }
   t.packages << { :helvet => [] }
 
-  t.packages << { :appendix => %w(titletoc page) }
+  #t.packages << { :appendix => %w(titletoc page) }
 
   t.packages << { :longtable => [] }
   t.packages << { :booktabs => [] }

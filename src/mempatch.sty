@@ -1,0 +1,3074 @@
+%%
+%% This is file `mempatch.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% mempatch.dtx  (with options: `patch')
+%% 
+%%   Author: Peter Wilson (Herries Press) herries dot press at earthlink dot net
+%%   Copyright 2001 --- 2007 Peter R. Wilson
+%% 
+%%   This work may be distributed and/or modified under the
+%%   conditions of the LaTeX Project Public License, either
+%%   version 1.3 of this license or (at your option) any
+%%   later version.
+%%   The latest version of the license is in
+%%      http://www.latex-project.org/lppl.txt
+%%   and version 1.3 or later is part of all distributions of
+%%   LaTeX version 2003/06/01 or later.
+%% 
+%%   This work has the LPPL maintenance status "author-maintained".
+%% 
+%%   This work consists of the files listed in the README file.
+%% 
+\ProvidesFile{mempatch.sty}[2007/01/22 v4.8 Patches for memoir class v1.618]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   Version 4.0 was released simultaneously with version 1.618 of memoir.
+%%% By definition there were no patches.
+%%% Most of the subsequent additions are noted in the Addendum.
+%%%
+%%%   Version 4.3 introduces the \reparticle macro which is not in the
+%%% Addendum.
+%%%
+%%%   Version 4.4 introduces several additional commands, in particular
+%%% the \book command provides a document division above Part. See the
+%%% code (towards the end) for details of the new commands.
+%%%
+%%%   Version 4.5 introduces commands for switching trim marks off and on
+%%% and a \DisemulatePackage macro to negate a prior \EmulatedPackage.
+%%% It also provides the functions of the pagenote package for end notes.
+%%% See the code (near the end) for details.
+%%%
+%%%   Version 4.6 fixes all known bugs and provides means of increasing
+%%% the interlinear and interparagraph spacing, adds some minor new commands,
+%%% and provides about a dozen more built-in chapterstyles.
+%%% See the code (near the end) for details.
+%%%
+%%%   Version 4.7 fixes tiny bugs introduced in version 4.6
+%%%
+%%%   Version 4.8 fixes some more little bugs.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.1 (2005/10/03 and later)
+
+%%%% Use correct number of arguments for \memsecstarinfo (2 not 3).
+\def\@ssect#1#2#3#4#5{%
+  \M@gettitle{#5}%
+  \memsecstarinfo{\m@msecn@mame}{#5}%
+  \@mem@old@ssect{#1}{#2}{#3}{#4}{#5}}
+
+%%%%%%%%%%%%
+%%%%%%%%%%%% Side captions
+%%%%%%%%%%%%
+
+\newsavebox{\m@mscap@capbox}
+\newsavebox{\m@mscap@fbox}
+
+\newdimen\sidecapsep
+  \sidecapsep=\marginparsep
+\newdimen\sidecapwidth
+  \sidecapwidth=\marginparwidth
+
+\newdimen\m@m@tempdima
+\newdimen\m@mscapraise
+
+\newdimen\sidecapraise
+  \sidecapraise \z@
+
+\newcommand*{\setsidecappos}[1]{%
+  \def\m@mscappos{#1}\def\@tempb{t}%
+  \ifx\@tempb\m@mscappos
+  \else
+    \def\@tempb{b}%
+    \ifx\@tempb\m@mscappos
+    \else
+      \def\@tempb{c}%
+      \ifx\@tempb\m@mscappos
+      \else
+        \@memerror{Argument to \string\setsidecappos\space is not t or c or b.
+                   \MessageBreak Set to c}{\@ehc}%
+        \def\m@mscappos{c}%
+      \fi
+    \fi
+  \fi}
+\setsidecappos{c}
+
+\newcommand{\sidecapmargin}[1]{%
+  \def\@tempa{#1}\def\@tempb{left}%
+    \ifx\@tempb\@tempa
+      \def\m@mscapmarg{0}%   left
+    \else
+      \def\@tempb{right}%
+      \ifx\@tempb\@tempa
+        \def\m@mscapmarg{1}%  right
+      \else
+        \def\@tempb{outer}%
+        \ifx\@tempb\@tempa
+          \def\m@mscapmarg{2}%  outer
+        \else
+          \def\@tempb{inner}%
+          \ifx\@tempb\@tempa
+            \def\m@mscapmarg{3}%  inner
+          \else
+            \@memerror{Unrecognized argument for \string\sidecapmargin}%
+                      {\@ehc}%
+            \def\m@mscapmarg{-1}% error
+          \fi
+        \fi
+      \fi
+    \fi}
+\sidecapmargin{left}
+
+\newif\ifscapmargleft
+
+\def\sidecapfloatwidth{\linewidth}
+\newdimen\m@mscapmainwidth
+
+\newdimen\m@mscaplkern
+\newcommand*{\setm@mscaplkern}{%
+  \m@mscaplkern=\sidecapwidth
+  \advance\m@mscaplkern \sidecapsep
+  \advance\m@mscaplkern \m@mscapmainwidth}
+
+\newcommand*{\sidecapstyle}{%
+%%%  \captionnamefont{\bfseries}%
+  \ifscapmargleft
+    \captionstyle{\raggedleft}%
+  \else
+    \captionstyle{\raggedright}%
+  \fi}
+
+\newcommand*{\sidecaption}{%
+  \@ifnextchar [{\@sidecaption}{\@sidecaption[]}}
+\def\@sidecaption[#1]#2{%
+  \@ifnextchar [{\@@sidecaption{#1}{#2}}{\@@sidecaption{#1}{#2}[]}}
+\def\@@sidecaption#1#2[#3]{%
+  \ifx\@empty#1\@empty
+    \def\m@mscap@fortoc{#2}%
+  \else
+    \def\m@mscap@fortoc{#1}%
+  \fi
+  \def\m@mscap@forcap{#2}%
+  \ifx\@empty#3\@empty
+    \def\m@mscaplabel{}%
+  \else
+    \def\m@mscaplabel{\@bsphack\label{#3}\@esphack}%
+  \fi
+  \m@mscapstart@fbox}
+
+\newcommand*{\m@mscapstart@fbox}{%
+  \setlength{\m@mscapmainwidth}{\sidecapfloatwidth}%
+  \setm@mscaplkern
+  \begin{lrbox}{\m@mscap@fbox}%
+    \begin{minipage}[c]{\m@mscapmainwidth}}
+\newcommand*{\m@mscapend@fbox}{%
+    \end{minipage}%
+  \end{lrbox}}
+
+\def\endsidecaption{%
+  \m@mscapend@fbox
+  \refstepcounter\@captype
+  \m@mscaplabel
+  \begin{lrbox}{\m@mscap@capbox}%
+    \begin{minipage}[c]{\sidecapwidth}%
+      \sidecapstyle
+      \@caption\@captype[\m@mscap@fortoc]{\m@mscap@forcap}
+    \end{minipage}%
+  \end{lrbox}%
+  \m@mscapopboxes}
+\newcommand*{\m@mscapopboxes}{%
+  \m@mcalcscapraise
+  \usebox{\m@mscap@fbox}\m@mscapcheckside
+  \ifscapmargleft%
+    \rlap{\kern-\m@mscaplkern
+          \raisebox{\m@mscapraise}{\usebox{\m@mscap@capbox}}}%
+  \else%
+    \rlap{\kern\sidecapsep
+          \raisebox{\m@mscapraise}{\usebox{\m@mscap@capbox}}}%
+  \fi
+  \gdef\m@mscapthisside{}}
+
+\newcommand*{\m@mcalcscapraise}{%
+  \def\@tempb{t}%
+  \ifx\m@mscappos\@tempb
+    \settoheight{\m@m@tempdima}{\strut\usebox{\m@mscap@capbox}}%
+    \settoheight{\m@mscapraise}{\usebox{\m@mscap@fbox}}%
+    \advance\m@mscapraise -\m@m@tempdima
+    \advance\m@mscapraise  0.5ex
+  \else
+    \def\@tempb{b}%
+    \ifx\m@mscappos\@tempb
+      \settodepth{\m@m@tempdima}{\usebox{\m@mscap@fbox}}%
+      \settodepth{\m@mscapraise}{\strut\usebox{\m@mscap@capbox}}%
+      \advance\m@mscapraise -\m@m@tempdima
+    \else
+      \m@mscapraise=\z@
+      \advance\m@mscapraise 0.25ex
+    \fi
+  \fi
+  \advance\m@mscapraise  \sidecapraise}
+
+\newcommand*{\m@mscapcheckside}{%
+  \if@twocolumn
+    \ifdim\hsize=\textwidth%  float*
+      \m@mscapcheckregside
+    \else
+      \if@firstcolumn
+        \scapmarglefttrue
+      \else
+        \scapmargleftfalse
+      \fi
+    \fi
+  \else
+    \m@mscapcheckregside
+  \fi
+  \m@mscapthisside}
+\newcommand*{\m@mscapcheckregside}{%
+    \if@twoside
+      \checkoddpage
+      \ifnum\m@mscapmarg<\@ne%      % left
+        \scapmarglefttrue
+      \else
+        \ifnum\m@mscapmarg=\@ne%    % right
+          \scapmargleftfalse
+        \else
+          \ifnum\m@mscapmarg=\tw@%  % outer
+            \scapmarglefttrue
+            \ifoddpage
+              \scapmargleftfalse
+            \fi
+          \else%                  % inner
+            \scapmargleftfalse
+            \ifoddpage
+              \scapmarglefttrue
+            \fi
+          \fi
+        \fi
+      \fi
+    \else%     oneside
+      \scapmarglefttrue
+      \ifnum\m@mscapmarg>\@ne
+        \ifnum\m@mscapmarg<\thr@@
+          \scapmargleftfalse
+        \fi
+      \fi
+    \fi}
+
+\newcommand*{\overridescapmargin}[1]{%
+  \def\@tempb{#1}\def\@tempa{left}%
+  \ifx\@tempa\@tempb
+    \def\m@mscapthisside{\scapmarglefttrue}%
+  \else
+    \def\@tempa{right}%
+    \ifx\@tempa\@tempb
+      \def\m@mscapthisside{\scapmargleftfalse}%
+    \else
+      \@memerror{Argument to \string\overridescapmargin\space neither
+                 left nor right}{\@ehc}%
+      \def\m@mscapthisside{}%
+    \fi
+  \fi}
+\newcommand*{\m@mscapthisside}{}
+
+\newcommand*{\sidecontcaption}{%
+  \@sidecontcaption}
+\def\@sidecontcaption#1{%
+  \@ifnextchar [{\@@sidecontcaption{#1}}{\@@sidecontcaption{#1}[]}}
+\def\@@sidecontcaption#1[#2]{%
+  \def\m@mscap@forcap{#1}%
+  \ifx\@empty#2\@empty
+    \def\m@mscaplabel{}%
+  \else
+    \def\m@mscaplabel{\@bsphack\label{#2}\@esphack}%
+  \fi
+  \m@mscapstart@fbox}
+
+\def\endsidecontcaption{%
+  \m@mscapend@fbox
+  \addtocounter{\@captype}{\m@ne}\refstepcounter\@captype
+  \m@mscaplabel
+  \begin{lrbox}{\m@mscap@capbox}%
+    \begin{minipage}[c]{\sidecapwidth}%
+      \sidecapstyle
+      \@contcaption\@captype{\m@mscap@forcap}
+    \end{minipage}%
+  \end{lrbox}%
+  \m@mscapopboxes}
+
+\newcommand*{\sidenamedlegend}{%
+  \@ifnextchar [{\@sidenamedlegend}{\@sidenamedlegend[]}}
+\def\@sidenamedlegend[#1]#2{%
+  \@@sidenamedlegend{#1}{#2}}
+\def\@@sidenamedlegend#1#2{%
+  \ifx\@empty#1\@empty
+    \def\m@mscap@fortoc{#2}%
+  \else
+    \def\m@mscap@fortoc{#1}%
+  \fi
+  \def\m@mscap@forcap{#2}%
+  \def\m@mscaplabel{}%
+  \m@mscapstart@fbox}
+
+\def\endsidenamedlegend{%
+  \m@mscapend@fbox
+  \begin{lrbox}{\m@mscap@capbox}%
+    \begin{minipage}[c]{\sidecapwidth}%
+      \sidecapstyle
+      \@legend\@captype[\m@mscap@fortoc]{\m@mscap@forcap}
+    \end{minipage}%
+  \end{lrbox}%
+  \m@mscapopboxes}
+
+\newcommand*{\sidelegend}{%
+  \@@sidelegend}
+\def\@@sidelegend#1{%
+  \def\m@mscap@forcap{#1}%
+  \m@mscapstart@fbox}
+
+\def\endsidelegend{%
+  \m@mscapend@fbox
+  \begin{lrbox}{\m@mscap@capbox}%
+    \begin{minipage}[c]{\sidecapwidth}%
+      \sidecapstyle
+      \legend{\m@mscap@forcap}
+    \end{minipage}%
+  \end{lrbox}%
+  \m@mscapopboxes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.2 (2005/11/21 and later)
+
+%%%%%%%%%%%%
+%%%%%%%%%%%% Extensions to \AtBeginDocument
+%%%%%%%%%%%%
+
+\renewcommand{\InputIfFileExists}[2]{%
+  \IfFileExists{#1}%
+    {#2\@addtofilelist{#1}\m@matbeginf{#1}%
+     \@@input \@filef@und
+     \m@matendf{#1}%
+     \killm@matf{#1}}}
+
+\newcommand{\m@matbeginf}[1]{\@ifundefined{#1-m@mfb}{}%
+  {\@nameuse{#1-m@mfb}}}
+\newcommand{\m@matendf}[1]{\@ifundefined{#1-m@mfe}{}%
+  {\@nameuse{#1-m@mfe}}}
+
+\newcommand*{\killm@matf}[1]{%
+  \@namelet{#1-m@mfb}\relax
+  \@namelet{#1-m@mfe}\relax}
+
+\newcommand{\AtBeginFile}[2]{\@ifundefined{#1-m@mfb}%
+  {\@namedef{#1-m@mfb}{#2}}%
+  {\expandafter\addtodef\csname #1-m@mfb\endcsname{}{#2}}}
+\newcommand{\AtEndFile}[2]{\@ifundefined{#1-m@mfe}%
+  {\@namedef{#1-m@mfe}{#2}}%
+  {\expandafter\addtodef\csname #1-m@mfe\endcsname{}{#2}}}
+
+\newcommand{\AtBeginPackage}[2]{%
+  \AtBeginFile{#1.\@pkgextension}{#2}}
+\newcommand{\AtEndPackage}[2]{%
+  \AtEndFile{#1.\@pkgextension}{#2}}
+\newcommand{\RequireAtEndPackage}[2]{%
+  \@ifpackageloaded{#1}{#2}%
+  {\AtEndFile{#1.\@pkgextension}{#2}}}
+
+\newcommand{\AtBeginClass}[2]{%
+  \AtBeginFile{#1.\@clsextension}{#2}}
+\newcommand{\AtEndClass}[2]{%
+  \AtEndFile{#1.\@clsextension}{#2}}
+\newcommand{\RequireAtEndClass}[2]{%
+  \@ifclassloaded{#1}{#2}%
+  {\AtEndFile{#1.\@clsextension}{#2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.3 (2005/12/13 and later)
+
+%%% Replicate the appearance of a \section in the article class
+\makechapterstyle{reparticle}{%
+  \setlength{\beforechapskip}{3.5ex \@plus 1ex \@minus .2ex}%
+  \renewcommand*{\chapterheadstart}{\vspace{\beforechapskip}}%
+  \setlength{\afterchapskip}{2.3ex \@plus .2ex}%
+  \renewcommand*{\printchaptername}{}%
+  \renewcommand*{\chapternamenum}{}%
+  \renewcommand*{\chaptitlefont}{\normalfont\Large\bfseries}%
+  \renewcommand*{\chapnumfont}{\chaptitlefont}%
+  \renewcommand*{\printchapternum}{\@hangfrom{\chapnumfont \thechapter\quad}}%
+  \renewcommand*{\afterchapternum}{}}
+
+%%% \reparticle redefines the higher level division heads fonts and spacing
+%%% to replicate the article class (but \chapter must still be used).
+%%% Use, for example like: \ifartopt \reparticle \fi
+\newcommand*{\reparticle}{%
+  \chapterstyle{reparticle}%
+  \setsecheadstyle{\large\bfseries\raggedright}%
+  \setsubsecheadstyle{\normalsize\bfseries\raggedright}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.4 (2006/01/06 and later)
+
+%%% \captiontitlefinal{<stuff>} will put <stuff> immediately at the
+%%% end of a \caption's title text and it will not appear in the
+%%% LoF/LoT/etc. For example: \captiontitlefinal{.}
+%%% (Code supplied by Frederic Connes)
+\newcommand*{\captiontitlefinal}[1]{\def\@contfinal{#1}}
+\captiontitlefinal{}
+
+\renewcommand{\@makecaption}[2]{\let\@memtempa\relax
+  \ifdim\prevdepth>-99\p@ \vskip\abovecaptionskip
+  \else \def\@memtempa{\vbox to\topskip{}}\fi
+  \let\@contfnote\footnote \renewcommand{\footnote}[2][]{}%
+  \let\@contfmark\footnotemark \renewcommand{\footnotemark}[1][]{}%
+  \sbox\@tempboxa{\@contnfont #1\@contdelim \@conttfont #2\@contfinal}%
+  \let\footnote\@contfnote
+  \let\footnotemark\@contfmark
+  \ifdim\wd\@tempboxa<\linewidth \centering\fi
+  \if@contcw
+    \centering
+    \parbox{\@contcwidth}{%
+    \ifdim\wd\@tempboxa<\@contcwidth \centering\fi
+  \fi
+  \if@conthang
+    \sbox\@tempboxa{\@contnfont #1\@contdelim}%
+    \@contpre%
+    {\@contcstyle\hangindent=\wd\@tempboxa
+     \noindent\box\@tempboxa\@memtempa \@conttfont #2\@contfinal\par}%
+  \else
+    \if@contindent
+      \@contpre%
+      {\@contnfont #1\@contdelim}\@memtempa
+      {\@contcstyle\hangindent=\@contindw
+                   \hangafter=\@ne\@conttfont #2\@contfinal\par}% <- v1.4
+    \else
+      \@contpre%
+      {\@contnfont #1\@contdelim}\@memtempa
+      {\ifdim\wd\@tempboxa<\linewidth
+         \@contcshortstyle\else \@contcstyle\fi%    <- v1.4
+       \@conttfont #2\@contfinal\par}%
+    \fi
+  \fi
+  \@contpost
+  \if@contcw
+    \par
+    }%    end of the parbox
+  \fi
+  \vskip\belowcaptionskip}
+
+%%% Use the declaration \xindyindex if you will be using the xindy program
+%%% instead of MakeIndex to process index entries. As yet, xindy will not
+%%% hyperref any entries.
+%%% (Code supplied by Frederic Connes)
+\newif\ifm@mxindy
+\m@mxindyfalse
+\newcommand*{\xindyindex}{\m@mxindytrue}
+\def\@@wrspindexhyp#1|#2|#3\\{%
+  \ifshowindexmark\@showidx{#1}\fi
+  \ifx\\#2\\%
+    \protected@write\@auxout{}%
+      {\string\@@wrindexm@m{\@idxfile}%
+        \ifm@mxindy{#1}\else{#1|hyperspindexpage(\thepage)}\fi
+      {\@nameuse{the\@sptheidx}}}%
+  \else
+    \def\Hy@temp@A{#2}%
+    \ifx\Hy@temp@A\HyInd@ParenLeft
+      \protected@write\@auxout{}%
+        {\string\@@wrindexm@m{\@idxfile}%
+         \ifm@mxindy{#1|#2}\else{#1|#2hyperspindexpage(\thepage)}\fi
+      {\@nameuse{the\@sptheidx}}}%
+    \else
+      \protected@write\@auxout{}%
+        {\string\@@wrindexm@m{\@idxfile}{#1|#2}%
+      {\@nameuse{the\@sptheidx}}}%
+    \fi
+  \fi
+  \endgroup
+  \@esphack}
+
+\renewenvironment{theindex}{%
+  \clearforchapter%             <- added
+  \if@twocolumn
+    \@restonecolfalse
+  \else
+    \@restonecoltrue
+  \fi
+  \ifonecolindex
+    \onecolumn
+    \chapter*{\indexname}
+    \preindexhook
+  \else
+    \setlength{\columnseprule}{\indexrule}%
+    \setlength{\columnsep}{\indexcolsep}%
+    \twocolumn[\@makeschapterhead{\indexname}
+               \preindexhook]%
+  \fi
+  \indexmark
+  \ifnoindexintoc\else
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\indexname}
+  \fi
+%%%  \thispagestyle{chapter}\parindent\z@ % <- changed in v4.6
+  \thispagestyle{indextitlepagestyle}\parindent\z@
+  \parskip\z@ \@plus .3\p@\relax
+  \let\item\@idxitem}%
+  {\if@restonecol\onecolumn\else\twocolumn\fi}
+
+%%% \ignorespaces fix by Aaron Rendahl to remove extraneous space
+%%% with \\>[0pt] ending a verse line
+\renewcommand*{\verselinebreak}[1][\z@]{\newline\hspace*{#1}\ignorespaces}
+
+%%% Use the \verselinenumbersleft declaration to set verse line numbers
+%%% at the left. To later return to the default of setting them at the right
+%%% use the \verselinenumbersright declaration.
+\newcommand*{\verselinenumbersright}{\def\@vstypelinenum{\@vslnumright}}
+\newcommand*{\verselinenumbersleft}{\def\@vstypelinenum{\@vslnumleft}}
+\verselinenumbersright
+
+\newcommand*{\@vslnumright}{%
+  \hfill\rlap{\kern\rightskip\kern\rightmargin%
+              \vlvnumfont\getthelinenumber{poemline}}}
+\newcommand*{\@vslnumleft}{%
+  \hfill\rlap{\kern-\textwidth\kern-\rightskip%
+              \vlvnumfont\getthelinenumber{poemline}}}
+\renewcommand*{\@vscentercr}{%
+  \ifhmode \unskip\else \@nolnerr\fi
+  \@vstypelinenum%
+  \@vsifgt{\verselinebreak}{%
+    \incr@vsline
+    \par\@ifstar{\nobreak\@vsxcentercr}{%
+      \@vsifbang{\@ifnextchar[ {\@vsicentercr}{}}{\@vsxcentercr}}}}
+
+%%% Fix for wrapped verbatims in list environments.
+\newcommand*{\raggedwrap}{%
+  \@rightskip\@flushglue
+  \rightskip\@rightskip
+  \leftskip\@totalleftmargin
+  \parindent\ragrparindent}
+\renewcommand*{\wrappingon}{%
+  \def\@xobeysp{~\discretionary{\verbatimbreakchar}%
+    {\kern\verbatimindent}{}}%
+  \def\wrapright{\raggedwrap}}
+
+%%% Use the \nopartblankpage declaration if you don't want a blank
+%%% page after a Part title page. The default is set by \partblankpage.
+\newif\ifm@mnopartnewpage
+\newcommand*{\partblankpage}{\m@mnopartnewpagefalse}
+\newcommand*{\nopartblankpage}{\m@mnopartnewpagetrue}
+
+\renewcommand*{\@endpart}{\afterpartskip
+  \ifm@mnopartnewpage
+  \else
+    \if@twoside
+      \if@openright
+        \null
+        \thispagestyle{afterpart}%
+        \newpage
+      \fi
+    \fi
+  \fi
+  \if@tempswa
+    \twocolumn
+  \fi}
+
+\renewcommand{\partnumberline}[1]{%
+  \hb@xt@\@tempdima{%
+    \cftpartname\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb\space}
+
+\aliaspagestyle{afterpart}{empty}
+\aliaspagestyle{book}{empty}
+\aliaspagestyle{afterbook}{empty}
+
+%%% The \book (and \book*) document division is one level higher than
+%%% a \cs{part}. It has the same kind of controls over its appearance in
+%%% the body of the document and in the ToC as \part has.
+\newcommand*{\book}{%
+  \@setupbook
+  \secdef\@book\@sbook}
+
+\newcommand*{\bookmark}[1]{}
+\newcounter{book} \setcounter{book}{0}
+\renewcommand*{\thebook}{\Roman{book}}
+\newcommand*{\theHbook}{\arabic{book}}
+\newcommand*{\toclevel@book}{-2}
+
+\newcommand*{\beforebookskip}{\null\vfil}
+\newcommand*{\midbookskip}{\par \vskip 2\baselineskip}
+\newcommand*{\afterbookskip}{\vfil\newpage}
+
+\newcommand*{\@setupbook}{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \thispagestyle{book}%
+  \if@twocolumn
+    \@tempswatrue
+  \else
+    \@tempswafalse
+  \fi
+  \beforebookskip}
+
+\newcommand*{\bookname}{Book}
+\newcommand*{\booknamefont}{\normalfont\huge\bfseries}
+\newcommand*{\booknumfont}{\normalfont\huge\bfseries}
+\newcommand*{\booktitlefont}{\normalfont\Huge\bfseries}
+
+\newcommand*{\printbookname}{\booknamefont \bookname}
+\newcommand*{\booknamenum}{\space}
+\newcommand*{\printbooknum}{\booknumfont \thebook}
+\newcommand{\printbooktitle}[1]{\booktitlefont #1}
+
+\newcommand*{\membookinfo}[3]{}
+\newcommand*{\membookstarinfo}[1]{}
+
+\long\def\@book[#1]#2{%
+  \M@gettitle{#1}%
+  \phantomsection
+  \ifnum\c@secnumdepth > -3\relax
+    \refstepcounter{book}%
+    \addcontentsline{toc}{book}%
+      {\protect\booknumberline{\thebook}#1}%
+    \membookinfo{\thebook}{#1}{#2}%
+  \else
+    \addcontentsline{toc}{book}{#1}%
+    \membookinfo{}{#1}{#2}%
+  \fi
+  \bookmark{#1}%
+  {\centering
+   \interlinepenalty \@M
+   \normalfont
+   \ifnum \c@secnumdepth >-3\relax
+     \printbookname \booknamenum \printbooknum
+     \midbookskip
+   \fi
+   \printbooktitle{#2}\par}%
+  \@endbook}
+
+\def\@sbook#1{%
+  \M@gettitle{#1}%
+  \phantomsection
+  \membookstarinfo{#1}%
+  {\centering
+   \interlinepenalty \@M
+   \normalfont
+   \printbooktitle{#1}\par}%
+  \@endbook}
+
+%%% Use the \nobookblankpage declaration if you don't want a blank
+%%% page after a Book title page. The default is set by \bookblankpage.
+\newif\ifm@mnobooknewpage
+\newcommand*{\bookblankpage}{\m@mnobooknewpagefalse}
+\newcommand*{\nobookblankpage}{\m@mnobooknewpagetrue}
+
+\newcommand*{\@endbook}{\afterbookskip
+  \ifm@mnobooknewpage
+  \else
+    \if@twoside
+      \if@openright
+        \null
+        \thispagestyle{afterbook}%
+        \newpage
+      \fi
+    \fi
+  \fi
+  \if@tempswa
+    \twocolumn
+  \fi}
+
+\newcommand*{\cftbookname}{}
+\newcommand*{\l@book}[2]{%
+  \ifnum\c@tocdepth >-3\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{\cftbeforebookskip}%
+    \begingroup
+      {\leftskip \cftbookindent\relax
+       \rightskip \@tocrmarg
+       \parfillskip -\rightskip
+       \parindent \cftbookindent\relax\@afterindenttrue
+       \interlinepenalty\@M
+       \leavevmode
+       \settowidth{\@tempdima}{\cftbookfont\cftbookname}%
+       \addtolength{\@tempdima}{\cftbooknumwidth}%
+       \let\@cftbsnum \cftbookpresnum
+       \let\@cftasnum \cftbookaftersnum
+       \let\@cftasnumb \cftbookaftersnumb
+       \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+       {\cftbookfont #1}%
+       \cftbookfillnum{#2}}
+      \nobreak
+      \global\@nobreaktrue
+      \everypar{\global\@nobreakfalse\everypar{}}%
+    \endgroup
+  \fi}
+\newcommand{\booknumberline}[1]{%
+  \hb@xt@\@tempdima{%
+    \cftbookname\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb\space}
+
+\newlength{\cftbeforebookskip}
+  \setlength{\cftbeforebookskip}{2.25em \@plus\p@}
+\newdimen\cftbookindent
+  \setlength{\cftbookindent}{0em}
+\newdimen\cftbooknumwidth
+  \setlength{\cftbooknumwidth}{1.5em}
+\newcommand*{\cftbookfont}{\large\bfseries}
+\newcommand*{\cftbookpresnum}{}
+\newcommand*{\cftbookaftersnum}{}
+\newcommand*{\cftbookaftersnumb}{}
+\newcommand*{\cftbookleader}{%
+  \large\bfseries\cftdotfill{\cftbookdotsep}}
+\newcommand*{\cftbookdotsep}{\cftnodots}
+\newcommand*{\cftbookpagefont}{\large\bfseries}
+\newcommand{\cftbookafterpnum}{}
+\newcommand{\cftbookfillnum}[1]{%
+  {\cftbookleader}%
+  {\hb@xt@\@pnumwidth{\hss {\cftbookpagefont #1}}}%
+  \cftbookafterpnum\par}
+
+\renewcommand*{\@setclcnt}[2]{%
+  \@tempswafalse
+  \nametest{#1}{none}%
+  \ifsamename
+    \setcounter{#2}{-10}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{book}%
+  \ifsamename
+    \setcounter{#2}{-2}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{part}%
+  \ifsamename
+    \setcounter{#2}{-1}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{chapter}%
+  \ifsamename
+    \setcounter{#2}{0}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{section}%
+  \ifsamename
+    \setcounter{#2}{1}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{subsection}%
+  \ifsamename
+    \setcounter{#2}{2}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{subsubsection}%
+  \ifsamename
+    \setcounter{#2}{3}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{paragraph}%
+  \ifsamename
+    \setcounter{#2}{4}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{subparagraph}%
+  \ifsamename
+    \setcounter{#2}{5}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{all}%
+  \ifsamename
+    \setcounter{#2}{50}%
+    \@tempswatrue
+  \fi
+  \if@tempswa\else
+    \@memerror{%
+      Unknown document division name (#1)
+    }{%
+     I'll ignore it.
+     Type \space <return> and I'll continue.\MessageBreak
+     If you haven't mistyped the name then use
+     \protect\setcounter\space instead.}%
+  \fi}
+
+\renewcommand*{\settocdepth}[1]{%
+  \@tempswafalse
+  \nametest{#1}{none}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{-10}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{book}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{-2}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{part}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{-1}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{chapter}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{0}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{section}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{1}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{subsection}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{2}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{subsubsection}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{3}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{paragraph}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{4}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{subparagraph}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{5}}%
+    \@tempswatrue
+  \fi
+  \nametest{#1}{all}%
+  \ifsamename
+    \addtocontents{toc}{\changetocdepth{50}}%
+    \@tempswatrue
+  \fi
+  \if@tempswa
+    \@ifundefined{toclevel@#1}{%
+      @memwarn{Unknown toclevel for #1}%
+    }{%
+      \setcounter{tocdepth}{\@nameuse{toclevel@#1}}%
+    }
+  \else
+    \@memerror{%
+      Unknown document division name (#1)
+    }{%
+     I'll ignore it.
+     Type \space <return> and I'll continue.}%
+  \fi}
+
+\newcommand*{\toclevel@none}{-10}
+\newcommand*{\toclevel@all}{50}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.5 (2006/02/11 and later)
+
+%%% \DisemulatePackage{pack} undoes a previous \EmulatedPackage{pack}.
+%%% For example \DisemulatePackage{index} if you need to use the index package.
+\providecommand*{\DisemulatePackage}[1]{%
+  \@namelet{ver@#1.\@pkgextension}\relax}
+
+\renewcommand{\@nameedef}[1]{%
+  \expandafter\protected@edef\csname #1\endcsname}
+
+%%% change timing of \@mainmattertrue in \@smemmain
+\renewcommand*{\@smemmain}{%
+  \ifartopt
+    \clearpage
+  \else
+    \cleardoublepage
+    \counterwithin{figure}{chapter}%
+    \counterwithin{table}{chapter}%
+  \fi
+  \@mainmattertrue
+  \setcounter{secnumdepth}{\value{maxsecnumdepth}}}
+
+\renewcommand{\@footnotetext}[1]{%
+  \reset@font\m@mold@footnotetext{#1}\m@mmf@prepare}
+
+\newif\ifm@mpn@new@chap
+  \m@mpn@new@chapfalse
+\newif\ifm@mpn@new@schap
+  \m@mpn@new@schapfalse
+
+%%% Fix for mistiming of \chaptermark with article option
+\def\@chapter[#1]#2{%
+  \m@mpn@new@chaptrue
+  \def\f@rbdy{#2}%
+  \ifx\ch@pt@c\@empty % no optional args
+    \def\f@rtoc{#2}%
+    \def\f@rhdr{#2}%
+  \else                  % at least one opt arg
+    \let\f@rtoc\ch@pt@c
+    \ifx\@empty#1\@empty
+      \let\f@rhdr\ch@pt@c
+    \else
+      \def\f@rhdr{#1}%
+    \fi
+  \fi
+  \m@m@Andfalse
+  \ifnum \c@secnumdepth >\m@ne
+    \if@mainmatter
+      \m@m@Andtrue
+    \fi
+  \fi
+  \ifm@m@And
+    \refstepcounter{chapter}%
+  \fi
+  \ifartopt
+    \@makechapterhead{#2}%
+    \@afterheading
+    \chaptermark{\f@rhdr}%
+  \else
+    \chaptermark{\f@rhdr}%
+    \insertchapterspace
+    \if@twocolumn
+      \@topnewpage[\@makechapterhead{#2}]%
+    \else
+      \@makechapterhead{#2}%
+    \fi
+    \@afterheading
+  \fi
+  \ifm@m@And
+    \ifanappendix
+      \addcontentsline{toc}{appendix}{%
+        \protect\chapternumberline{\thechapter}\f@rtoc}%
+      \memappchapinfo{\thechapter}{\f@rtoc}{\f@rhdr}{#2}%
+    \else
+      \addcontentsline{toc}{chapter}{%
+        \protect\chapternumberline{\thechapter}\f@rtoc}%
+      \memchapinfo{\thechapter}{\f@rtoc}{\f@rhdr}{#2}%
+    \fi
+  \else
+    \addcontentsline{toc}{chapter}{\f@rtoc}%
+    \ifanappendix
+      \memappchapinfo{}{\f@rtoc}{\f@rhdr}{#2}%
+    \else
+      \memchapinfo{}{\f@rtoc}{\f@rhdr}{#2}%
+    \fi
+  \fi
+  \ifheadnameref\M@gettitle{\f@rhdr}\else\M@gettitle{\f@rtoc}\fi}
+
+\renewcommand{\@schapter}[1]{%
+  \m@mpn@new@schaptrue
+  \def\f@rbdy{#1}%
+  \ifartopt
+    \@makeschapterhead{#1}%
+  \else
+    \if@twocolumn
+      \@topnewpage[\@makeschapterhead{#1}]
+    \else
+      \@makeschapterhead{#1}%
+    \fi
+  \fi
+  \@afterheading}
+\renewcommand{\@m@mschapter}[2][\@empty]{%
+  \@schapter{#2}%
+  \ifx \@empty#1
+    \def\f@rhdr{#2}%
+  \else
+    \def\f@rhdr{#1}%
+    \setcounter{secnumdepth}{-10}%
+    \chaptermark{#1}%
+    \setcounter{secnumdepth}{\value{maxsecnumdepth}}%
+  \fi
+  \ifanappendix
+    \memappchapstarinfo{\f@rhdr}{#2}%
+  \else
+    \memchapstarinfo{\f@rhdr}{#2}%
+  \fi
+  \ifheadnameref\M@gettitle{\f@rhdr}\else\M@gettitle{#2}\fi}
+
+%%%% Use \showtrimsoff and \showtrimson to switch trim marks off and on.
+%%%% If the showtrims option has not been used, these do nothing.
+\newcommand*{\showtrimsoff}{\showtrimsfalse}
+\newcommand*{\showtrimson}{\showtrimstrue}
+\renewcommand*{\mem@shipii}{%
+  \ifvoid\@cclv
+    \mem@oldshipout\box\@cclv
+  \else
+    \ifshowtrims
+      \mem@oldshipout\vbox{\trimmarks\unvbox\@cclv}%
+    \else
+      \mem@oldshipout\box\@cclv
+    \fi
+  \fi}
+
+%%%% Fix to stop \sidepars moving up or down
+\long\def\@sidepar[#1]#2{\@bsphack\strut\vadjust{%
+  \checkoddpage
+  \ifsideparswitch
+    \ifreversesidepar
+      \ifoddpage
+        \oddpagefalse
+      \else
+        \oddpagetrue
+      \fi
+    \fi
+  \else
+    \oddpagetrue
+    \ifreversesidepar
+      \oddpagefalse
+     \fi
+  \fi
+  \rlap{\kern-\parindent
+    \if@twocolumn
+      \if@firstcolumn%              put at left
+        \kern -\marginparsep \kern -\marginparwidth
+      \else%                        put at right
+        \kern \columnwidth \kern \marginparsep
+      \fi
+    \else
+      \ifoddpage%                   put at right
+        \kern \textwidth \kern \marginparsep
+      \else%                        put at left
+        \kern -\marginparsep \kern -\marginparwidth
+      \fi
+    \fi
+    \setbox0=\vtop to 0pt{%
+      \begin{minipage}[t]{\marginparwidth}%
+        \ifoddpage #2\else #1\fi%
+      \end{minipage}%
+      \vss}%
+    \vtop to 0pt{\kern\sideparvshift%  default should be 0pt
+      \kern-\dp\strutbox
+      \kern-\ht0
+      \box0 \vss}}}%
+  \@esphack}
+\setlength{\sideparvshift}{0pt}
+
+%%%% Ensure that fancybreaks close the paragraph they start
+\renewcommand{\@fbreak}[1]{\par
+  \penalty -100
+  \noindent\parbox{\linewidth}{\centering #1}%
+  \par
+  \@afterindentfalse
+  \@afterheading}
+\renewcommand{\@sfbreak}[1]{\par
+  \penalty -100
+  \noindent\parbox{\linewidth}{\centering #1}%
+  \par
+  \@afterindenttrue
+  \@afterheading}
+
+%%%% \begin{vplace}[<num>] vertically centered stuff \end{vplace}
+%%%% <num> adjusts above space wrt to below space
+\newenvironment{vplace}[1][1]{%
+  \par\vspace*{\stretch{#1}}%
+}{%
+  \vspace*{\stretch{1}}%
+  \par}
+
+%%%%
+%%%% Include the functions of the pagenote package
+%%%%
+
+\newif\ifm@mpnpageopt
+  \m@mpnpageoptfalse
+\newif\ifm@mpncontopt
+  \m@mpncontoptfalse
+\newcommand*{\notepageref}{\m@mpnpageopttrue}
+\newcommand*{\continuousnotenums}{%
+  \counterwithout{pagenote}{chapter}
+  \renewcommand{\thepagenote}{\arabic{pagenote}}}
+
+  \newcounter{pagenote}[chapter]
+\renewcommand{\thepagenote}{\arabic{pagenote}}
+\setcounter{pagenote}{0}
+\newif\ifmempagenotes
+  \mempagenotesfalse
+
+\newcommand*{\makepagenote}{%
+  \newwrite\@notefile
+  \immediate\openout\@notefile=\jobname.ent
+  \mempagenotestrue
+  \def\pagenote{\@bsphack\begingroup
+    \@sanitize
+    \m@m@wrpnote}%
+  \typeout{Writing note file \jobname.ent}%
+  \let\makepagenote\@empty}
+
+\newcommand{\immediate@protected@write}[3]{%
+  \begingroup
+  #2%
+  \let\protect\@unexpandable@protect
+  \edef\reserved@a{\immediate\write#1{#3}}%
+  \reserved@a
+  \endgroup
+  \if@nobreak\ifvmode\nobreak\fi\fi}
+
+\ifm@mpnpageopt
+  \let\m@m@pnwrite\protected@write
+\else
+  \let\m@m@pnwrite\immediate@protected@write
+\fi
+
+\newcommand*{\pnchap}{\f@rtoc}
+\newcommand*{\pnschap}{\f@rbdy}
+
+\newcommand{\m@m@wrpnote}[2][]{%
+  \refstepcounter{pagenote}%
+  \notenumintext{\thepagenote}%
+  \ifm@mpn@new@chap
+    \global\m@mpn@new@chapfalse
+    \addtonotes{\string\pagenotesubhead{\@chapapp}{\thechapter}{\pnchap}}%
+  \fi
+  \ifm@mpn@new@schap
+    \global\m@mpn@new@schapfalse
+    \addtonotes{\string\pagenotesubhead{\@chapapp}{}{\pnschap}}%
+  \fi
+  \m@m@pnwrite\@notefile{}
+    {\string\noteentry{\thepagenote}{#1}{#2}{\thepage}}%
+  \endgroup
+  \@esphack}
+
+\def\pagenote{\@bsphack\begingroup \@sanitize\m@m@pagenote}
+\newcommand{\m@m@pagenote}[2][]{\endgroup\@esphack}
+
+\newcommand*{\pagetofootnote}{%
+  \let\memsavepagenote\pagenote
+  \renewcommand{\pagenote}[2][]{\footnote{##2}}}
+\newcommand*{\foottopagenote}{%
+  \let\memsavefootnote\footnote
+  \renewcommand*{\footnote}[2][]{\pagenote{##2}}}
+
+\newcommand{\addtonotes}[1]{%
+  \ifmempagenotes
+ \IfFileExists{\jobname.ent}{\m@m@pnwrite\@notefile{}{#1}}{\mempnofilewarn}%
+\fi}
+
+\newcommand{\notenumintext}[1]{%
+  \textsuperscript{#1}}
+\newcommand{\notenuminnotes}[1]{%
+  {\normalfont #1.}\space}
+\newcommand{\noteentry}[4]{%
+  \prenoteinnotes
+  \noteidinnotes{#1}{#2}\pageinnotes{#4}\noteinnotes{#3}%
+  \postnoteinnotes}
+
+\newcommand{\idtextinnotes}[1]{%
+  [#1]\space}
+\newcommand{\noteidinnotes}[2]{%
+  \@ifmtarg{#2}{%
+    \notenuminnotes{#1}}{\idtextinnotes{#2}}}
+\newcommand{\pageinnotes}[1]{%
+  \ifm@mpnpageopt \printpageinnotes{#1}\fi}
+\newcommand*{\printpageinnotes}[1]{%
+  (\pagerefname\ #1)\space}
+\newcommand{\noteinnotes}[1]{#1}
+
+\newcommand{\prenoteinnotes}{\par\noindent}
+\newcommand{\postnoteinnotes}{\par}
+
+\providecommand*{\notesname}{Notes}
+\newcommand*{\notedivision}{\chapter{\notesname}}
+
+\newcommand*{\printpagenotes}{\@ifstar{\@sprintpagenotes}{\@printpagenotes}}
+\newcommand*{\mempnofilewarn}{%
+  \ClassWarning{memoir}{There is no .ent file}}
+
+\newcommand*{\@sprintpagenotes}{%
+  \ifmempagenotes
+  \notedivision
+\IfFileExists{\jobname.ent}{%
+  \immediate\closeout\@notefile
+  \input{\jobname.ent}%
+  \immediate\openout\@notefile=\jobname.ent%
+  }{%
+  \mempnofilewarn
+}%
+\fi}
+
+\newcommand*{\@printpagenotes}{%
+  \ifmempagenotes
+    \notedivision
+    \IfFileExists{\jobname.ent}{%
+      \immediate\closeout\@notefile
+      \input{\jobname.ent}%
+     }{%
+       \mempnofilewarn
+     }
+  \fi}
+
+\newcommand*{\pagenotesubhead}[3]{%
+  \section*{#1 #2 #3}}
+
+\EmulatedPackage{pagenote}
+
+\newcommand*{\@cftn@me}{}
+\renewcommand*{\numberline}[1]{%
+  \hb@xt@\@tempdima{\@cftn@me\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb}
+
+\renewcommand*{\newlistentry}[4][\@empty]{%
+  \@ifundefined{c@#2}{%  check & set the counter
+    \ifx \@empty#1\relax
+      \newcounter{#2}%  % added the backslash 2007/01/22 per J{\o}rgen Larsen
+    \else
+      \newcounter{#2}[#1]%
+      \expandafter\edef\csname the#2\endcsname{%
+    \expandafter\noexpand\csname the#1\endcsname.\noexpand\arabic{#2}}%
+    \fi}{}
+  \setcounter{#2}{0}
+  \@namedef{l@#2}##1##2{%
+    \ifnum \@nameuse{c@#3depth} > #4\relax
+      \vskip \@nameuse{cftbefore#2skip}%
+      {\leftskip \@nameuse{cft#2indent}\relax
+       \rightskip \@tocrmarg
+       \parfillskip -\rightskip
+       \parindent \@nameuse{cft#2indent}\relax\@afterindenttrue
+       \interlinepenalty\@M
+       \leavevmode
+       \settowidth{\@tempdima}{\@nameuse{cft#2font}\@nameuse{cft#2name}}%
+       \addtolength{\@tempdima}{\@nameuse{cft#2numwidth}}%
+\expandafter\let\expandafter\@cftbsnum\csname cft#2presnum\endcsname
+\expandafter\let\expandafter\@cftasnum\csname cft#2aftersnum\endcsname
+\expandafter\let\expandafter\@cftasnumb\csname cft#2aftersnumb\endcsname
+\expandafter\let\expandafter\@cftn@me\csname cft#2name\endcsname
+       \advance\leftskip\@tempdima \null\nobreak\hskip -\leftskip
+       {\@nameuse{cft#2font}##1}\nobreak
+       \@nameuse{cft#2fillnum}{##2}}
+     \fi
+  }% end of \l@#2
+  \expandafter\newlength\csname cftbefore#2skip\endcsname
+    \setlength{\@nameuse{cftbefore#2skip}}{\z@ \@plus .2\p@}
+  \expandafter\newlength\csname cft#2indent\endcsname
+  \expandafter\newlength\csname cft#2numwidth\endcsname
+  \ifcase #4\relax%         0 (level 1)
+    \setlength{\@nameuse{cft#2indent}}{0em}
+    \setlength{\@nameuse{cft#2numwidth}}{2.3em}
+  \or%                      1 (level 2)
+    \setlength{\@nameuse{cft#2indent}}{2.3em}
+    \setlength{\@nameuse{cft#2numwidth}}{3.2em}
+  \or%                      2 (level 3)
+    \setlength{\@nameuse{cft#2indent}}{5.5em}
+    \setlength{\@nameuse{cft#2numwidth}}{4.1em}
+  \or%                      3 (level 4)
+    \setlength{\@nameuse{cft#2indent}}{8.5em}
+    \setlength{\@nameuse{cft#2numwidth}}{5.0em}
+  \else%                    anything else
+    \setlength{\@nameuse{cft#2indent}}{10.5em}
+    \setlength{\@nameuse{cft#2numwidth}}{6.0em}
+  \fi
+  \@namedef{cft#2font}{\normalfont}
+  \@namedef{cft#2name}{}
+  \@namedef{cft#2presnum}{}
+  \@namedef{cft#2aftersnum}{}
+  \@namedef{cft#2aftersnumb}{}
+  \@namedef{cft#2dotsep}{\cftdotsep}
+  \@namedef{cft#2leader}{\normalfont\cftdotfill{\@nameuse{cft#2dotsep}}}
+  \@namedef{cft#2pagefont}{\normalfont}
+  \@namedef{cft#2afterpnum}{}
+  \@namedef{cft#2toclevel@#2}{#4}
+  \@namedef{cft#2fillnum}##1{%
+    {\@nameuse{cft#2leader}}\nobreak
+    \hb@xt@\@pnumwidth{%
+      \hfil\@nameuse{cft#2pagefont}##1}\@nameuse{cft#2afterpnum}\par}
+}% end of \newlistentry
+
+\let\cftbeforesectionskip\relax
+\let\cftsectionindent\relax
+\let\cftsectionnumwidth\relax
+\newlistentry[chapter]{section}{toc}{0}
+  \cftsetindents{section}{1.5em}{2.3em}
+\let\cftbeforesubsectionskip\relax
+\let\cftsubsectionindent\relax
+\let\cftsubsectionnumwidth\relax
+\newlistentry[section]{subsection}{toc}{1}
+  \cftsetindents{subsection}{3.8em}{3.2em}
+\let\cftbeforesubsubsectionskip\relax
+\let\cftsubsubsectionindent\relax
+\let\cftsubsubsectionnumwidth\relax
+\newlistentry[subsection]{subsubsection}{toc}{2}
+  \cftsetindents{subsubsection}{7.0em}{4.1em}
+\let\cftbeforeparagraphskip\relax
+\let\cftparagraphindent\relax
+\let\cftparagraphnumwidth\relax
+\newlistentry[subsubsection]{paragraph}{toc}{3}
+  \cftsetindents{paragraph}{10.0em}{5.0em}
+\let\cftbeforesubparagraphskip\relax
+\let\cftsubparagraphindent\relax
+\let\cftsubparagraphnumwidth\relax
+\newlistentry[paragraph]{subparagraph}{toc}{4}
+  \cftsetindents{subparagraph}{12.0em}{6.0em}
+
+\let\cftbeforefigureskip\relax
+\let\cftfigureindent\relax
+\let\cftfigurenumwidth\relax
+\newlistentry[chapter]{figure}{lof}{0}
+  \cftsetindents{figure}{0em}{2.3em}
+\let\cftbeforetableskip\relax
+\let\cfttableindent\relax
+\let\cfttablenumwidth\relax
+\newlistentry[chapter]{table}{lot}{0}
+  \cftsetindents{table}{0em}{2.3em}
+
+\renewcommand*{\setrectanglesize}[3]{%
+  \nametest{#1}{*}%
+  \ifsamename                           % H = *
+    \nametest{#2}{*}%
+    \ifsamename                         % W = *
+      \@memerror{%
+        The combination of argument values is ambiguous.\MessageBreak
+        The lengths will be set to zero}{\@ehd}
+      \setlength{\@tempdima}{0pt}%
+      \setlength{\@tempdimb}{0pt}%
+    \else                               % W
+      \nametest{#3}{*}%
+      \ifsamename                       % r = *
+        \setlength{\@tempdimb}{#2}%
+        \setlength{\@tempdima}{\@tempdimb}%
+      \else                             % r
+        \setlength{\@tempdimb}{#2}
+        \setlength{\@tempdima}{#3\@tempdimb}
+      \fi
+    \fi
+  \else                                 % H
+    \nametest{#2}{*}%
+    \ifsamename                         % W = *
+      \nametest{#3}{*}%
+      \ifsamename                       % r = *
+        \setlength{\@tempdima}{#1}%
+        \setlength{\@tempdimb}{\@tempdima}%
+      \else                             % r
+        \setlength{\@tempdima}{#1}%
+        \setlength{\@tempdimb}{#3\@tempdima}%
+      \fi
+    \else                               % W
+      \setlength{\@tempdima}{#1}%
+      \setlength{\@tempdimb}{#2}%
+    \fi
+  \fi
+}
+
+\renewcommand*{\setfillsize}[5]{%
+  \nametest{#2}{*}%
+  \ifsamename                                % C = *
+    \nametest{#3}{*}%
+    \ifsamename                              % L = *
+      \nametest{#4}{*}%
+      \ifsamename                            % R = *
+        \@memerror{%
+          The combination of argument values is ambiguous.\MessageBreak
+          The lengths will be set to zero}{\@ehd}
+        \setlength{\@tempdima}{0pt}%
+        \setlength{\@tempdimb}{0pt}%
+        \setlength{\@tempdimc}{0pt}%
+      \else                                  % R
+        \nametest{#5}{*}%
+        \ifsamename                          % r = *
+          \setlength{\@tempdimb}{#4}%
+          \setlength{\@tempdima}{\@tempdimb}%
+          \setlength{\@tempdimc}{#1}%
+          \advance\@tempdimc -\@tempdima
+          \advance\@tempdimc -\@tempdimb
+        \else                                % r
+          \setlength{\@tempdimb}{#4}%
+          \setlength{\@tempdima}{#5\@tempdimb}%
+          \setlength{\@tempdimc}{#1}%
+          \advance\@tempdimc -\@tempdima
+          \advance\@tempdimc -\@tempdimb
+        \fi
+      \fi
+    \else                                    % L
+      \nametest{#4}{*}%
+      \ifsamename                            % R = *
+        \nametest{#5}{*}%
+        \ifsamename                          % r = *
+          \setlength{\@tempdima}{#3}%
+          \setlength{\@tempdimb}{\@tempdima}%
+          \setlength{\@tempdimc}{#1}%
+          \advance\@tempdimc -\@tempdima
+          \advance\@tempdimc -\@tempdimb
+        \else                                % r
+          \setlength{\@tempdima}{#3}%
+          \setlength{\@tempdimb}{#5\@tempdima}%
+          \setlength{\@tempdimc}{#1}%
+          \advance\@tempdimc -\@tempdima
+          \advance\@tempdimc -\@tempdimb
+        \fi
+      \else                                  % R
+        \setlength{\@tempdima}{#3}%
+        \setlength{\@tempdimb}{#4}%
+        \setlength{\@tempdimc}{#1}%
+        \advance\@tempdimc -\@tempdima
+        \advance\@tempdimc -\@tempdimb
+      \fi
+    \fi
+  \else                                      % C is valued
+    \nametest{#3}{*}%
+    \ifsamename                              % L = *
+      \nametest{#4}{*}%
+      \ifsamename                            % R = *
+        \nametest{#5}{*}%
+        \ifsamename                          % r = *
+          \setlength{\@tempdimc}{#2}%
+          \setlength{\@tempdima}{#1}%
+          \advance\@tempdima -\@tempdimc
+          \@tempdima = 0.5\@tempdima
+          \@tempdimb = \@tempdima
+        \else                                % r (CODE PERHAPS FIXED)
+          \setlength{\@tempdimc}{#2}%
+          \setlength{\@tempdimb}{#1}%        % T
+          \advance\@tempdimb -\@tempdimc     % T - C
+          \@tempdima = 1000sp
+          \@tempdima = #5\@tempdima          % 1000r sp
+          \advance\@tempdima by 1000sp       % 1000(1+r)sp
+          \@tempcnta = \@tempdima            % 1000(1+r)
+          \@tempdima = \@tempdimb            % T - C
+          \divide\@tempdima by \@tempcnta    % (T-C)/1000(1+r) pts
+          \@tempdima = 1000\@tempdima        % (T-C)/(1+r)  pts = L
+          \advance\@tempdimb by -\@tempdima  % = R
+        \fi
+      \else                                  % R
+        \setlength{\@tempdimc}{#2}%
+        \setlength{\@tempdimb}{#4}%
+        \setlength{\@tempdima}{#1}%
+        \advance\@tempdima -\@tempdimc
+        \advance\@tempdima -\@tempdimb
+      \fi
+    \else                                    % L
+      \nametest{#4}{*}%
+      \ifsamename                            % R = *
+        \setlength{\@tempdimc}{#2}%
+        \setlength{\@tempdima}{#3}%
+        \setlength{\@tempdimb}{#1}%
+        \advance\@tempdimb -\@tempdimc
+        \advance\@tempdimb -\@tempdima
+      \else                                  % R
+        \@memerror{%
+          The combination of argument values is ambiguous.\MessageBreak
+          The lengths will be set to zero}{\@ehd}%
+        \setlength{\@tempdima}{0pt}%
+        \setlength{\@tempdimb}{0pt}%
+        \setlength{\@tempdimc}{#2}%
+      \fi
+    \fi
+  \fi}
+
+\newcommand*{\m@mclassicht}{%
+  \setlength{\@tempdima}{\textheight}%
+  \divide\@tempdima \baselineskip
+  \@tempcnta=\@tempdima
+  \setlength{\textheight}{\@tempcnta\baselineskip}%
+  \addtolength{\textheight}{\topskip}}
+
+\newcommand*{\m@mlinesht}{%
+  \setlength{\@tempdima}{\textheight}%
+  \advance\@tempdima -\baselineskip
+  \divide\@tempdima \baselineskip
+  \@tempcnta=\@tempdima
+  \setlength{\textheight}{\@tempcnta\baselineskip}%
+  \addtolength{\textheight}{\topskip}}
+
+\newcommand*{\m@mnearestht}{%
+  \setlength{\@tempdima}{\textheight}%
+  \advance\@tempdima -\topskip
+  \advance\@tempdima 0.5\baselineskip
+  \divide\@tempdima \baselineskip
+  \@tempcnta=\@tempdima
+  \setlength{\textheight}{\@tempcnta\baselineskip}%
+  \addtolength{\textheight}{\topskip}}
+
+\renewcommand*{\checkthelayout}[1][classic]{%
+  \@memnegtest{\trimedge}
+  \@memnegtest{\trimtop}
+  \@memznegtest{\stockwidth}
+  \@memznegtest{\paperwidth}
+  \@memznegtest{\textwidth}
+  \@memznegtest{\spinemargin}
+  \@memznegtest{\foremargin}
+  \@memznegtest{\marginparsep}
+  \@memznegtest{\marginparwidth}
+  \@memznegtest{\stockheight}
+  \@memznegtest{\paperheight}
+  \@memznegtest{\textheight}
+  \@memznegtest{\uppermargin}
+  \@memznegtest{\lowermargin}
+  \@memznegtest{\headheight}
+  \@memznegtest{\headsep}
+  \@memznegtest{\footskip}
+  \nametest{#1}{classic}%
+  \ifsamename
+    \m@mclassicht
+  \else
+    \nametest{#1}{lines}%
+    \ifsamename
+      \m@mlinesht
+    \else
+      \nametest{#1}{nearest}%
+      \ifsamename
+        \m@mnearestht
+      \else
+        \nametest{#1}{fixed}
+        \ifsamename
+        \else%                   not classic, lines, nearest, or fixed
+          \@memerror{Optional argument is not one of:\MessageBreak
+                     classic, fixed, lines, or nearest. \MessageBreak
+                     I will assume the default}%
+                    {\@ehc}%
+        \fi
+      \fi
+    \fi
+  \fi
+  \setulmargins{\uppermargin}{*}{*}
+  \@tempdimb = -1pt
+  \@tempdima=\stockwidth
+  \advance\@tempdima -\trimedge
+  \advance\@tempdima -\paperwidth
+  \ifdim\@tempdima<\@tempdimb
+    \@tempdima = -\@tempdima
+    \@memerror{\protect\paperwidth\space and/or
+                        \protect\trimedge\space
+                        are too large for \protect\stockwidth\space
+                        by \the\@tempdima}%
+                       {\@ehd}
+  \fi
+  \@tempdima = \paperwidth
+  \advance\@tempdima -\foremargin
+  \advance\@tempdima -\textwidth
+  \advance\@tempdima -\spinemargin
+  \ifdim\@tempdima<\@tempdimb
+    \@tempdima = -\@tempdima
+    \@memerror{\protect\spinemargin\space and/or
+                        \protect\textwidth\space and/or
+                        \protect\foremargin\space
+                        are too large for \protect\paperwidth\space
+                        by \the\@tempdima}%
+                       {\@ehd}
+  \fi
+  \@tempdima = \stockheight
+  \advance\@tempdima -\trimtop
+  \advance\@tempdima -\paperheight
+  \ifdim\@tempdima<\@tempdimb
+    \@tempdima = -\@tempdima
+    \@memerror{\protect\paperheight\space and/or
+                        \protect\trimtop\space
+                        are too large for \protect\stockheight\space
+                        by \the\@tempdima}%
+                       {\@ehd}
+  \fi
+  \@tempdima = \paperheight
+  \advance\@tempdima -\uppermargin
+  \advance\@tempdima -\textheight
+  \advance\@tempdima -\lowermargin
+  \ifdim\@tempdima<\@tempdimb
+    \@tempdima = -\@tempdima
+    \@memerror{\protect\uppermargin\space and/or
+                        \protect\textheight\space and/or
+                        \protect\lowermargin\space
+                        are too large for \protect\paperheight\space
+                        by \the\@tempdima}%
+                       {\@ehd}
+  \fi
+  \@tempdima = \uppermargin
+  \advance\@tempdima -\headheight
+  \advance\@tempdima -\headsep
+  \ifdim\@tempdima<\@tempdimb
+    \@tempdima = -\@tempdima
+    \@memerror{\protect\headheight\space and/or
+                        \protect\headsep\space
+                        are too large for \protect\uppermargin\space
+                        by \the\@tempdima}%
+                       {\@ehd}
+  \fi
+  \@tempdima = \lowermargin
+  \advance\@tempdima -\footskip
+  \ifdim\@tempdima<\z@
+    \@tempdima = -\@tempdima
+    \@memerror{\protect\footskip
+                        is too large for \protect\lowermargin\space
+                        by \the\@tempdima}%
+                       {\@ehd}
+  \fi
+}
+\renewcommand*{\checkandfixthelayout}[1][classic]{%
+  \checkthelayout[#1]%
+  \fixthelayout
+  \typeoutlayout}
+
+\newcommand*{\midsloppy}{%
+  \tolerance 5000%
+  \hbadness 4000%
+  \emergencystretch 1.5em%
+  \hfuzz .1\p@
+  \vfuzz\hfuzz}
+\newenvironment{midsloppypar}{\par\midsloppy}{\par}
+
+\newdimen\everylistparindent
+  \everylistparindent \z@
+\renewcommand*{\list}[2]{%
+  \ifnum \@listdepth >5\relax
+    \@toodeep
+  \else
+    \global\advance\@listdepth\@ne
+  \fi
+  \rightmargin\z@
+  \listparindent\everylistparindent
+  \itemindent\z@
+  \csname @list\romannumeral\the\@listdepth\endcsname
+  \def\@itemlabel{#1}%
+  \let\makelabel\@mklab
+  \@nmbrlistfalse
+  #2\relax
+  \@trivlist
+  \parskip\parsep
+  \parindent\listparindent
+  \advance\linewidth -\rightmargin
+  \advance\linewidth -\leftmargin
+  \advance\@totalleftmargin \leftmargin
+  \parshape \@ne \@totalleftmargin \linewidth
+  \ignorespaces}
+
+\renewcommand*{\defaultlists}{%
+  \setlength{\partopsep}{0.2\onelineskip \@plus 0.1\onelineskip
+                                         \@minus 0.1\onelineskip}%
+  \parsepi = 0.3333\onelineskip \@plus 0.1667\onelineskip \@minus \p@
+  \itemsepi = \parsepi
+  \topsepi = 0.6667\onelineskip \@plus 0.3333\onelineskip
+                                \@minus 0.2\onelineskip
+  \parsepii = 0.1667\onelineskip \@plus \p@ \@minus \p@
+  \topsepii = \parsepi
+  \topsepiii = \parsepii
+  \everylistparindent \z@}
+\defaultlists
+
+\newcommand*{\firmlists}{%
+  \@ifstar{\m@msfirmlists}{\m@mfirmlists}}
+
+\newcommand*{\m@msfirmlists}{
+  \setlength{\partopsep}{\z@ \@plus \p@ \@minus \p@}%
+  \parsepi = 0.1667\onelineskip \@plus 0.0833\onelineskip \@minus \p@
+  \itemsepi = \parsepi
+  \topsepi = \parsepi
+  \parsepii = 0.0833\onelineskip \@plus \p@ \@minus \p@
+  \topsepii = \parsepi
+  \topsepiii = \parsepii
+  \everylistparindent\z@}
+
+\newcommand*{\m@mfirmlists}{
+  \setlength{\partopsep}{0.1\onelineskip \@plus 0.05\onelineskip
+                                         \@minus 0.05\onelineskip}%
+  \parsepi = 0.1667\onelineskip \@plus 0.0833\onelineskip \@minus \p@
+  \itemsepi = \parsepi
+  \topsepi = \parsepi
+  \parsepii = 0.0833\onelineskip \@plus \p@ \@minus \p@
+  \topsepii = \parsepi
+  \topsepiii = \parsepii
+  \everylistparindent\z@}
+
+\renewcommand*{\tightlists}{%
+  \@ifstar{\m@mstightlists}{\m@mtightlists}}
+
+\newcommand*{\m@mstightlists}{%
+  \setlength{\partopsep}{\z@ \@plus \p@ \@minus \p@}%
+  \parsepi = \z@ \@plus \p@ \@minus \p@
+  \itemsepi = \parsepi
+  \topsepi = \z@ \@plus \p@ \@minus \p@
+  \parsepii = \z@ \@plus \p@ \@minus \p@
+  \topsepii = \parsepi
+  \topsepiii = \parsepii
+  \everylistparindent\parindent}
+
+\newcommand*{\m@mtightlists}{%
+  \setlength{\partopsep}{0.5\onelineskip \@plus \p@ \@minus \p@}%
+  \parsepi = \z@ \@plus \p@ \@minus \p@
+  \itemsepi = \parsepi
+  \topsepi = \z@ \@plus \p@ \@minus \p@
+  \parsepii = \z@ \@plus \p@ \@minus \p@
+  \topsepii = \parsepi
+  \topsepiii = \parsepii
+  \everylistparindent\parindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.6 (2006/11/22 and later)
+
+\EmulatedPackage{setspace}
+
+\newcommand{\setSpacing}[1]{%
+  \def\baselinestretch{#1}%
+  \@currsize}
+
+\newcommand*{\setSingleSpace}[1]{%
+  \def\m@m@singlespace{#1}}
+\setSingleSpace{1}
+
+%%% start single spacing
+\newcommand*{\SingleSpacing}{%
+  \setSpacing{\m@m@singlespace}%
+  \vskip\baselineskip% correction for coming into single spacing
+}
+\SingleSpacing
+
+%%% start `one and a half spacing', the elegant version of double spacing.
+\newcommand*{\OnehalfSpacing}{
+  \setSpacing{1.25}% default (10pt)
+  \ifcase \@ptsize \relax   % 10pt
+    \setSpacing{1.25}%
+  \or%  11pt
+    \setSpacing{1.213}%
+  \or%  12pt
+    \setSpacing{1.241}%
+  \or\or% 14pt
+    \setSpacing{1.20}%
+  \or\or\or% 17pt
+    \setSpacing{1.16}%
+  \or\or% 9pt
+    \setSpacing{1.35}%
+  \fi}
+
+%%% start double spacing, which looks terrible.
+\newcommand*{\DoubleSpacing}{
+  \setSpacing{1.667}% default (10pt)
+  \ifcase \@ptsize \relax   % 10pt
+    \setSpacing{1.667}%
+  \or%  11pt
+    \setSpacing{1.618}%
+  \or%  12pt
+    \setSpacing{1.655}%
+  \or\or% 14pt
+    \setSpacing{1.60}%
+  \or\or\or% 17pt
+    \setSpacing{1.545}%
+  \or\or% 9pt
+    \setSpacing{1.8}%
+  \fi}
+
+\renewcommand*{\@setsize}[4]{%
+  \@nomath#1%
+  \let\@currsize#1%
+  \baselineskip #2%
+  \baselineskip \baselinestretch\baselineskip
+  \parskip \baselinestretch\parskip
+  \setbox\strutbox \hbox{%
+    \vrule height.7\baselineskip
+           depth .3\baselineskip
+           width \z@}%
+  \skip\footins \baselinestretch\skip\footins
+  \normalbaselineskip\baselineskip#3#4}
+
+%%% Environment form of \SingleSpacing.
+\newenvironment{SingleSpace}{%
+  \vskip\baselineskip
+  \setSpacing{\m@m@singlespace}%
+  \vskip -\baselineskip
+}{\par}
+
+\newenvironment{SingleSpace*}{%
+  \setSpacing{\m@m@singlespace}%
+  \vskip 0.5\baselineskip
+}{\vskip -0.5\baselineskip}
+
+\newcommand*{\m@mrestore@spacing}{%
+  \par
+  \vskip \parskip
+  \vskip \baselineskip
+  \endgroup
+  \vskip -\parskip
+  \vskip -\baselineskip}
+
+%%% \begin{Spacing}{num} baselineskip is increased to num*baselineskip.
+\newenvironment{Spacing}[1]{%
+  \par
+  \begingroup
+    \setSpacing{#1}}{\m@mrestore@spacing}
+
+%%% Environment form of \OnehalfSpacing
+\newenvironment{OnehalfSpace}{%
+  \begingroup
+    \OnehalfSpacing}{\m@mrestore@spacing}
+
+%%% Environment form of \DoubleSpacing
+\newenvironment{DoubleSpace}{%
+  \begingroup
+    \DoubleSpacing}{\m@mrestore@spacing}
+
+%%% \setDisplayskipStretch{num} changes space around displays by the factor
+%%% (1+num).
+%%% \noDisplayskipStretch keeps the regular space around displays.
+\newcommand*{\memdskipstretch}{0.0}
+\newcommand*{\setDisplayskipStretch}[1]{%
+  \renewcommand*{\memdskipstretch}{#1}}
+\newcommand*{\noDisplayskipStretch}{\setDisplayskipStretch{0.0}}
+
+\newcommand*{\memdskips}{%
+  \advance\abovedisplayskip \memdskipstretch\abovedisplayskip
+  \advance\belowdisplayskip \memdskipstretch\belowdisplayskip
+  \advance\abovedisplayshortskip \memdskipstretch\abovedisplayshortskip
+  \advance\belowdisplayshortskip \memdskipstretch\belowdisplayshortskip
+}
+
+\everydisplay\expandafter{%
+  \the\everydisplay
+  \memdskips}
+
+\let\m@m@xfloat\@xfloat
+\def\@xfloat #1[#2]{%
+  \m@m@xfloat #1[#2]%
+  \def\baselinestretch{\m@m@singlespace}%
+  \normalsize}
+
+\newdimen\memPD
+%%% vminipage is like minipage but with better fore and aft spacing.
+\newenvironment{vminipage}{%
+  \par
+  \@ifnextchar[%]
+    \@ivminipage
+    {\@iiiminipage t\relax[s]}
+}{%
+  \par\global\memPD=\prevdepth
+  \endminipage
+  \par
+  \kern-\memPD%     no pagebreak allowed here
+  \hbox{\vrule depth \memPD width \z@}}
+
+ \def\@ivminipage[#1]{%
+  \@ifnextchar[%]
+    {\@iiminipage{t}}{\@iiiminipage{t}\relax[s]}}
+%%% Ensure single spacing in footnotes
+%%%
+
+\renewcommand{\@footnotetext}[1]{%
+  \insert\footins{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \@preamfntext
+  \hsize\columnwidth
+  \protected@edef\@currentlabel{%
+    \csname p@footnote\endcsname\@thefnmark
+  }%
+  \color@begingroup
+    \@makefntext{%
+      \rule\z@\footnotesep\ignorespaces{\foottextfont #1}%
+      \@finalstrut\strutbox}%
+  \color@endgroup}\m@mmf@prepare}
+
+\renewcommand{\@mpfootnotetext}[1]{%
+  \global\setbox\@mpfootins\vbox{%
+  \unvbox \@mpfootins
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote\endcsname\@thefnmark
+  }%
+  \color@begingroup
+    \@makefntext{%
+      \rule\z@\footnotesep\ignorespaces{\foottextfont #1}
+      \@finalstrut\strutbox}%
+  \color@endgroup}\m@mmf@prepare}
+
+\let\m@mold@footnotetext\@footnotetext
+\let\m@mold@mpfootnotetext\@mpfootnotetext
+
+\renewcommand{\plainfootnotes}{%
+  \let\@footnotetext\m@mold@footnotetext
+  \let\@mpfootnotetext\m@mold@mpfootnotetext}
+
+\renewcommand{\m@make@footnotetext}[1]{%
+  \@namelongdef{@footnotetext#1}##1{%
+  \insert\@nameuse{footins#1}{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \@preamfntext
+  \hsize\columnwidth
+  \protected@edef\@currentlabel{%
+    \csname p@footnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \color@begingroup
+    \@nameuse{@makefntext#1}{%
+      \rule\z@\footnotesep\ignorespaces{\@nameuse{foottextfont#1} ##1}%
+      \@finalstrut\strutbox}%
+  \color@endgroup}\m@mmf@prepare}}
+
+\renewcommand{\m@make@mpfootnotetext}[1]{%
+  \@namelongdef{@mpfootnotetext#1}##1{%
+  \global\setbox\@nameuse{@mpfootins#1}\vbox{%
+  \unvbox \@nameuse{@mpfootins#1}%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \color@begingroup
+    \@nameuse{@makefntext#1}{%
+      \rule\z@\footnotesep\ignorespaces{\@nameuse{foottextfont#1} ##1}
+      \@finalstrut\strutbox}%
+  \color@endgroup}\m@mmf@prepare}}
+
+\renewcommand{\@twocolfootnotetext}[1]{%
+  \insert\footinsv@r{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \@preamfntext
+  \protected@edef\@currentlabel{%
+    \csname p@footnote\endcsname\@thefnmark
+  }%
+  \color@begingroup
+    \@twocolfootfmt{#1}%
+  \color@endgroup}\m@mmf@prepare}
+
+\renewcommand{\@mptwocolfootnotetext}[1]{%
+  \global\setbox\@mpfootinsv@r\vbox{%
+  \unvbox \@mpfootinsv@r
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote\endcsname\@thefnmark
+  }%
+  \color@begingroup
+    \@twocolfootfmt{#1}%
+  \color@endgroup}\m@mmf@prepare}
+
+\renewcommand{\m@make@twocolfootnotetext}[1]{%
+  \@namelongdef{@twocolfootnotetext#1}##1{%
+  \insert\@nameuse{footins#1}{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \@preamfntext
+  \protected@edef\@currentlabel{%
+    \csname p@footnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \color@begingroup
+    \@nameuse{@twocolfootfmt#1}{##1}
+  \color@endgroup}\m@mmf@prepare}}
+
+\renewcommand{\m@make@mptwocolfootnotetext}[1]{%
+  \@namelongdef{@mptwocolfootnotetext#1}##1{%
+  \global\setbox\@nameuse{@mpfootins#1}\vbox{%
+  \unvbox \@nameuse{@mpfootins#1}%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \color@begingroup
+    \@nameuse{@twocolfootfmt#1}{##1}%
+  \color@endgroup}\m@mmf@prepare}}
+
+\renewcommand{\@threecolfootnotetext}[1]{%
+  \insert\footinsv@r{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \@preamfntext
+  \protected@edef\@currentlabel{%
+    \csname p@footnote\endcsname\@thefnmark
+  }%
+  \color@begingroup
+    \@threecolfootfmt{#1}%
+  \color@endgroup}\m@mmf@prepare}
+
+\renewcommand{\@mpthreecolfootnotetext}[1]{%
+  \global\setbox\@mpfootinsv@r\vbox{%
+  \unvbox \@mpfootinsv@r
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote\endcsname\@thefnmark
+  }%
+  \color@begingroup
+    \@threecolfootfmt{#1}%
+  \color@endgroup}\m@mmf@prepare}
+
+\renewcommand{\m@make@threecolfootnotetext}[1]{%
+  \@namelongdef{@threecolfootnotetext#1}##1{%
+  \insert\@nameuse{footins#1}{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \@preamfntext
+  \protected@edef\@currentlabel{%
+    \csname p@footnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \color@begingroup
+    \@nameuse{@threecolfootfmt#1}{##1}
+  \color@endgroup}\m@mmf@prepare}}
+
+\renewcommand{\m@make@mpthreecolfootnotetext}[1]{%
+  \@namelongdef{@mpthreecolfootnotetext#1}##1{%
+  \global\setbox\@nameuse{@mpfootins#1}\vbox{%
+  \unvbox \@nameuse{@mpfootins#1}%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \color@begingroup
+    \@nameuse{@threecolfootfmt#1}{##1}%
+  \color@endgroup}\m@mmf@prepare}}
+
+\renewcommand{\@parafootnotetext}[1]{%
+  \insert\footinsv@r{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \@preamfntext
+  \protected@edef\@currentlabel{%
+    \csname p@footnote\endcsname\@thefnmark
+  }%
+  \setbox0=\vbox{\hsize=\maxdimen
+  \color@begingroup
+    \noindent \@parafootfmt{#1}%
+  \color@endgroup}\m@mungebox}%
+  \m@mmf@prepare}
+
+\renewcommand{\@mpparafootnotetext}[1]{%
+  \global\setbox\@mpfootinsv@r\vbox{%
+  \unvbox \@mpfootinsv@r
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\foottextfont
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote\endcsname\@thefnmark
+  }%
+  \setbox0=\vbox{\hsize=\maxdimen
+  \color@begingroup
+    \noindent \@parafootfmt{#1}%
+  \color@endgroup}\m@mungebox}%
+  \m@mmf@prepare}
+
+\renewcommand{\m@make@parafootnotetext}[1]{%
+  \@namelongdef{@parafootnotetext#1}##1{%
+  \insert\@nameuse{footins#1}{%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \@preamfntext
+  \protected@edef\@currentlabel{%
+    \csname p@footnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \setbox0=\vbox{\hsize=\maxdimen
+  \color@begingroup
+    \noindent \@nameuse{@parafootfmt#1}{##1}
+  \color@endgroup}\m@mungebox}\m@mmf@prepare}}
+
+\renewcommand{\m@make@mpparafootnotetext}[1]{%
+  \@namelongdef{@mpparafootnotetext#1}##1{%
+  \global\setbox\@nameuse{@mpfootins#1}\vbox{%
+  \unvbox \@nameuse{@mpfootins#1}%
+  \def\baselinestretch{\m@m@singlespace}
+  \reset@font\@nameuse{foottextfont#1}%
+  \hsize\columnwidth
+  \@parboxrestore
+  \protected@edef\@currentlabel{%
+    \csname p@mpfootnote#1\endcsname\@nameuse{@thefnmark#1}%
+  }%
+  \setbox0=\vbox{\hsize=\maxdimen
+  \color@begingroup
+    \noindent \@nameuse{@parafootfmt#1}{##1}%
+  \color@endgroup}\m@mungebox}\m@mmf@prepare}}
+
+\EmulatedPackage{parskip}
+
+\newif\ifm@mnzpskip
+%%% \traditionalparskip set \parskip to 0pt.
+\newcommand*{\traditionalparskip}{%
+  \parskip \z@
+  \m@mnzpskipfalse}
+\newskip\m@mabparskip
+%%% \abnormalparskip{length} sets \parskip to length.
+\newcommand*{\abnormalparskip}[1]{%
+  \setlength{\parskip}{#1}\m@mabparskip=#1\relax
+  \m@mnzpskiptrue}
+%%% \nonzeroparskip sets \parskip to a non-zero value that might be
+%%% not too bad (any non-zero \parskip is not good).
+\newcommand*{\nonzeroparskip}{\abnormalparskip{%
+  0.5\baselineskip
+  \@plus .1\baselineskip \@minus .1\baselineskip% NTG
+%%  0.5/baselineskip \@plus 2pt% RF
+}}
+\traditionalparskip
+
+%%% Change lists to cater for non-zero \parskip.
+\newlength{\itemsepii}
+\newlength{\itemsepiii}
+\newlength{\partopsepiii}
+%%%\newskip\parsepiii
+\let\m@mold@defaultlists\defaultlists
+\renewcommand*{\defaultlists}{%
+  \m@mold@defaultlists
+  \itemsepii\parsepii
+  \itemsepiii\topsepiii
+  \partopsepiii \p@ \@plus\z@ \@minus\p@
+  \ifm@mnzpskip
+    \partopsep \p@ \@plus\z@ \@minus\p@
+    \topsepi\z@
+    \parsepi\parskip
+    \itemsepi\z@
+    \topsepii\z@
+    \parsepii\parskip
+    \itemsepii\z@
+    \topsepiii\z@
+%%    \parsepiii\parskip
+    \itemsepiii\z@
+  \fi}
+
+\let\m@mold@tightlists\tightlists
+\renewcommand*{\tightlists}{%
+  \m@mold@tightlists
+  \ifm@mnzpskip
+    \partopsep \p@ \@plus\z@ \@minus\p@
+    \topsepi\z@
+    \parsepi\parskip
+    \itemsepi\z@
+    \topsepii\z@
+    \parsepii\parskip
+    \itemsepii\z@
+    \topsepiii\z@
+%%    \parsepiii\parskip
+    \itemsepiii\z@
+    \partopsepiii\partopsep
+  \fi}
+
+\let\@listI\@listi
+\defaultlists
+\@listi
+
+\renewcommand*{\@listii}{%
+  \leftmargin\leftmarginii
+  \labelwidth\leftmarginii
+  \advance\labelwidth-\labelsep
+  \topsep\topsepii
+  \parsep\parsepii
+  \itemsep\itemsepii}
+\renewcommand*{\@listiii}{%
+  \leftmargin\leftmarginiii
+  \labelwidth\leftmarginiii
+  \advance\labelwidth-\labelsep
+  \topsep\topsepiii
+  \parsep\z@
+  \itemsep\itemsepiii
+  \partopsep\partopsepiii}
+
+\providecommand*{\verbatim}{%
+  \topsep=-0.5\parskip
+  \@verbatim
+  \frenchspacing\@vobeyspaces \@xverbatim}
+
+\providecommand*{\@minipagerestore}{%
+  \parskip=.5\baselineskip \@plus .1\baselineskip \@minus .1\baselineskip}
+\renewcommand*{\@minipagerestore}{%
+  \let\@verbfootnotetext\@verbmpfootnotetext%  for \verbfootnotein a minipage
+  \m@mdoextrafeetmini%                         footnotes in minipages
+  \ifm@mnzpskip \parskip=\m@mabparskip\fi}
+
+%%% \setsidecaps{<sep>}{<width>} sets sidecaption lengths
+\newcommand*{\setsidecaps}[2]{%
+  \setlength{\sidecapsep}{#1}\@memznegtest{\sidecapsep}%
+  \setlength{\sidecapwidth}{#2}\@memznegtest{\sidecapwidth}}
+
+\newcommand*{\m@sideb@left}{%
+  \@tempdimc \sidebarwidth
+  \advance\@tempdimc\sidebarhsep
+  \kern-\@tempdimc}
+\newcommand*{\m@sideb@right}{%
+  \@tempdimc \columnwidth%   or \hsize
+  \advance\@tempdimc\sidebarhsep
+  \kern\@tempdimc}
+
+\newlength{\sidebartopsep}
+  \setlength{\sidebartopsep}{0pt}
+\renewcommand*{\sidebarfont}{}
+\renewcommand*{\setsidebarheight}[1]{%
+  \setlength{\dimen\sideins}{#1}%
+  \advance\dimen\sideins-\topskip
+  \advance\dimen\sideins\ht\strutbox}
+
+%%% \setsidebars{hsep}{width}{vsep}{topsep}{font}{height}
+%%% A * argument means leave the setting as is.
+\newcommand*{\setsidebars}[6]{%
+  \nametest{#1}{*}\ifsamename\else
+    \setlength{\sidebarhsep}{#1}\@memznegtest{\sidebarhsep}%
+  \fi
+  \nametest{#2}{*}\ifsamename\else
+    \setlength{\sidebarwidth}{#2}\@memznegtest{\sidebarwidth}%
+  \fi
+  \nametest{#3}{*}\ifsamename\else
+    \setlength{\sidebarvsep}{#3}\@memnegtest{\sidebarvsep}%
+  \fi
+  \nametest{#4}{*}\ifsamename\else
+    \setlength{\sidebartopsep}{#4}%
+  \fi
+  \nametest{#5}{*}\ifsamename\else
+    \def\sidebarfont{#5}%
+  \fi
+  \nametest{#6}{*}\ifsamename\else
+    \setsidebarheight{#6}%
+    \ifdim\dimen\sideins>\z@\else
+      \@memerror{\protect\sidebarheight\space is zero or negative}{\@ehd}%
+    \fi
+  \fi}
+  \setsidebars{\marginparsep}%          sidebarhsep
+              {\marginparwidth}%        sidebarwidth
+              {\onelineskip}%           sidebarvsep
+              {0pt}%                    sidebartopsep
+              {\normalsize\normalfont}% sidebarfont
+              {\textheight}%            sidebarheight
+
+\renewcommand{\sidecontents}{\hbox to \z@{%
+  \if@twocolumn%                 %% put outside nearest column
+    \if@firstcolumn%             %% move to left
+      \m@sideb@left
+    \else%                       %% move to right
+      \m@sideb@right
+    \fi
+  \else%                         %% put into foremargin?
+    \ifsidebaroneside%           %% move to right
+      \m@sideb@right
+    \else%                       %% pick the margin
+      \ifcase\m@msidebar@margin%    0 to left
+        \m@sideb@left
+      \or%                          1 to right
+        \m@sideb@right
+      \or%                          2 to outer
+        \ifodd\c@page%           %% move to right
+          \m@sideb@right
+        \else%                   %% move to left
+          \m@sideb@left
+        \fi
+      \or%                          3 to inner
+        \ifodd\c@page%           %% move to left
+          \m@sideb@left
+        \else                    %% move to right
+          \m@sideb@right
+        \fi
+      \fi
+    \fi
+  \fi
+  \vtop to0pt{%
+    \normalsize\normalfont\sidebarfont % select font so we know the strut size
+    \vskip\topskip \vskip-\ht\strutbox
+    \vskip\sidebartopsep % extra vertical shift
+    \unvbox\sideins \vss}%
+  \hss
+}}
+
+\renewcommand{\sidebar}[1]{%
+  \insert\sideins{%
+    \hsize\sidebarwidth
+    \@parboxrestore
+    \sidebarform \normalsize\normalfont\sidebarfont
+    \splittopskip=\ht\strutbox
+    \splitmaxdepth=\dp\strutbox % doesn't do anything useful
+    \allowbreak
+    \prevdepth=\dp\strutbox    % supersedes a "top-strut"
+    \vskip-\parskip
+    #1%
+    \ifvmode\else
+      \unskip\@finalstrut\strutbox
+    \fi\par
+    \ifdim\prevdepth>\dp\strutbox \prevdepth=\dp\strutbox \fi
+    \ifdim\prevdepth>99\p@
+      \nobreak
+      \vskip-\prevdepth
+      \allowbreak
+      \vskip\dp\strutbox
+    \fi
+    \vskip\sidebarvsep}}
+
+\renewcommand*{\typeoutlayout}{%
+  \typeout{}
+  \typeout{******************************************************}
+  \typeout{Stock height and width:
+                 \the\stockheight\space by \the\stockwidth}
+  \typeout{Top and edge trims:
+                 \the\trimtop\space and \the\trimedge}
+  \typeout{Page height and width:
+                 \the\paperheight\space by \the\paperwidth}
+  \typeout{Text height and width:
+                 \the\textheight\space by \the\textwidth}
+  \typeout{Spine and edge margins:
+                 \the\spinemargin\space and \the\foremargin}
+  \typeout{Upper and lower margins:
+                 \the\uppermargin\space and \the\lowermargin}
+  \typeout{Headheight and headsep:
+                 \the\headheight\space and \the\headsep}
+  \typeout{Footskip:
+                 \the\footskip}
+  \typeout{Columnsep and columnseprule:
+                 \the\columnsep\space and \the\columnseprule}
+  \typeout{Marginparsep and marginparwidth:
+                 \the\marginparsep\space and \the\marginparwidth}
+  \typeout{Sidecapsep and sidecapwidth:
+                 \the\sidecapsep\space and \the\sidecapwidth}
+  \typeout{Sidebarhsep and sidebarwidth:
+                 \the\sidebarhsep\space and \the\sidebarwidth}
+  \typeout{Sidebarvsep and sidebartopsep:
+                 \the\sidebarvsep\space and \the\sidebartopsep}
+  \typeout{Sidebarheight:
+                 \the\dimen\sideins}
+  \typeout{******************************************************}
+  \typeout{}}
+
+%%% user command to set the \footnoterule
+%%% \setfootnoterule[<fill>]{<uplift>}{<width>}{<thickness>}
+\newcommand*{\setfootnoterule}[4][]{%
+  \def\footnoterule{\kern -#2\relax #1\relax
+    \hrule width #3\relax
+    \kern #2\kern-#4}}
+%%%% memoir's default setting is:
+\setfootnoterule{3pt}{0.4\columnwidth}{\normalrulethickness}
+%%%% to force footnotes to the bottom after a \raggedbottom
+%%%% \setfootnoterule[\vfill]{3pt}{0.4\columnwidth}{\normalrulethickness}
+
+%%% \sloppybottom allows an extra line on a page to save a widow.
+%%% You must increase the \topskip (by 60\% is reasonable) and this
+%%% will push the text lower on the page. Run \checkandfixthelayout
+%%% after the change. For example:
+%%% \setlength{\topskip}{1.6\topskip}
+%%% \checkandfixthelayout
+%%% \sloppybottom
+%%% ...
+\newcommand*{\sloppybottom}{%
+  \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
+  \topskip=1\topskip \@plus 0.625\topskip \@minus .95\topskip
+  \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}}
+
+%%% \m@mcalchm calculates the time of day. (Code basis from TeX for the Impatient)
+\newcommand*{\m@mcalchm}{%
+  \count0 = \time \divide \count0 by 60\relax
+  \count2 = \count0\relax%    the hour
+  \count4 = \time \multiply\count0 by 60\relax
+  \advance\count4 by -\count0\relax% the minute
+  \ifnum\count4<10 \toks1 = {0}%  make a leading zero
+  \else \toks1 = {}%
+  \fi}
+%%% punctuation, am and pm for \printtime
+\newcommand*{\hmpunct}{:}% hours minutes separator
+\newcommand*{\amname}{am}% ante meridiem
+\newcommand*{\pmname}{pm}% post meridiem
+
+%%% \printtime   prints time per 24 hour clock
+%%% \printtime*  prints time per 12 hour clock
+\newcommand*{\printtime}{%
+  \@ifstar{\m@msprtime}{\m@mprtime}}
+\newcommand*{\m@mprtime}{\begingroup
+  \m@mcalchm
+  \number\count2\hmpunct\the\toks1 \number\count4
+  \endgroup}
+\newcommand*{\m@msprtime}{\begingroup
+  \m@mcalchm
+  \def\@mpm{\pmname}%
+  \ifnum\count2<1\relax% early in the morning
+    \count2=12\relax
+    \ifnum\count4>0\relax% not midnight
+      \def\@mpm{\amname}%
+    \fi
+  \else
+    \ifnum\time<721\relax% noon or earlier
+      \def\@mpm{\amname}%
+    \else
+      \ifnum\time>779\relax% 1300 hrs or later
+        \advance\count2 by -12\relax
+      \fi
+    \fi
+  \fi
+  \number\count2\hmpunct\the\toks1 \number\count4\ \@mpm
+  \endgroup}
+
+%%% \quarkmarks generates trim marks in the style of Quark Xpress
+%%% (Code supplied by William Adams)
+%%%
+\newcommand*{\registrationColour}[1]{#1}
+\newcommand*{\quarkmarks}{%
+\renewcommand*{\tmarktl}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-36,0){\line(1,0){24}}
+    \put(0,12){\line(0,1){24}}
+    \put(3,27){\ttfamily\fontsize{8bp}{10bp}\selectfont\jobname\ \
+      \today\ \ \printtime\ \ Page \thepage}
+  \end{picture}}}
+\renewcommand*{\tmarktm}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-24,24){\line(1,0){48}}
+    \put(0,12){\line(0,1){24}}
+    \put(0,24){\oval(12,12)}
+  \end{picture}}}
+\renewcommand*{\tmarktr}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(12,0){\line(1,0){24}}
+    \put(0,12){\line(0,1){24}}
+  \end{picture}}}
+\renewcommand*{\tmarkmr}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(12,0){\line(1,0){24}}
+    \put(24,-24){\line(0,1){48}}
+    \put(24,0){\oval(12,12)}
+  \end{picture}}}
+\renewcommand*{\tmarkbr}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(12,0){\line(1,0){24}}
+    \put(0,-36){\line(0,1){24}}
+  \end{picture}}}
+\renewcommand*{\tmarkbm}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-24,-24){\line(1,0){48}}
+    \put(0,-36){\line(0,1){24}}
+    \put(0,-24){\oval(12,12)}
+  \end{picture}}}
+\renewcommand*{\tmarkbl}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-36,0){\line(1,0){24}}
+    \put(0,-36){\line(0,1){24}}
+  \end{picture}}}
+\renewcommand*{\tmarkml}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-36,0){\line(1,0){24}}
+    \put(-24,-24){\line(0,1){48}}
+    \put(-24,0){\oval(12,12)}
+  \end{picture}}}
+\renewcommand*{\trimmarks}{%
+%%  \special{papersize=\the\stockwidth,\the\stockheight}
+  {%
+  \vbox to \z@{\vskip-1in \vskip\trimtop % top of logical page
+    \hb@xt@\z@{\hskip-1in
+      \ifodd\c@page
+        \hskip\stockwidth \hskip-\trimedge \hskip-\paperwidth
+      \else
+        \if@twoside
+          \hskip\trimedge % left of logical page
+        \else
+          \hskip\stockwidth \hsip-\trimedge \hskip-\paperwidth
+        \fi
+      \fi
+      \vbox to \paperheight{%
+        \let\protect\relax %      <- v1.4 addition
+        \hb@xt@\paperwidth{\tmarktl\hfil\tmarktm\hfil\tmarktr}%
+        \vfil
+        \hb@xt@\paperwidth{\tmarkml\hfil\tmarkmr}%
+        \vfil
+        \hb@xt@\paperwidth{\tmarkbl\hfil\tmarkbm\hfil\tmarkbr}}%
+      \hss}%
+    \vss}}%
+}}
+
+%%% Remove extraneous spaces from pagestyle code
+%%%
+\renewcommand*{\makepagestyle}[1]{%
+  \@namedef{ps@#1}{%
+    \@namedef{#1@evenhead}{%
+      \@nameuse{#1evenhpl}\hb@xt@\@nameuse{#1runwidth}{\m@mhe@dreset%
+        \vbox{\hbox{%
+        \rlap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedright\@nameuse{#1eheadl}\strut}}\hfill
+              \parbox[b]{\@nameuse{#1runwidth}}{%
+          \centering\@nameuse{#1eheadc}\strut}\hfill
+        \llap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedleft\@nameuse{#1eheadr}\strut}}}%
+        \@nameuse{#1headrule}}}\@nameuse{#1evenhpr}}%
+    \@namedef{#1@oddhead}{%
+      \@nameuse{#1oddhpl}\hb@xt@\@nameuse{#1runwidth}{\m@mhe@dreset%
+        \vbox{\hbox{%
+        \rlap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedright\@nameuse{#1oheadl}\strut}}\hfill
+              \parbox[b]{\@nameuse{#1runwidth}}{%
+          \centering\@nameuse{#1oheadc}\strut}\hfill
+        \llap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedleft\@nameuse{#1oheadr}\strut}}}%
+        \@nameuse{#1headrule}}}\@nameuse{#1oddhpr}}%
+    \@namedef{#1@evenfoot}{%
+      \@nameuse{#1evenfpl}\hb@xt@\@nameuse{#1runwidth}{\m@mhe@dreset%
+        \vbox{\@nameuse{#1footrule}\hbox{%
+        \rlap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedright\@nameuse{#1efootl}\strut}}\hfill
+              \parbox[b]{\@nameuse{#1runwidth}}{%
+          \centering\@nameuse{#1efootc}\strut}\hfill
+        \llap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedleft\@nameuse{#1efootr}\strut}}}%
+        }}\@nameuse{#1evenfpr}}%
+    \@namedef{#1@oddfoot}{%
+      \@nameuse{#1oddfpl}\hb@xt@\@nameuse{#1runwidth}{\m@mhe@dreset%
+        \vbox{\@nameuse{#1footrule}\hbox{%
+        \rlap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedright\@nameuse{#1ofootl}\strut}}\hfill
+              \parbox[b]{\@nameuse{#1runwidth}}{%
+          \centering\@nameuse{#1ofootc}\strut}\hfill
+        \llap{\parbox[b]{\@nameuse{#1runwidth}}{%
+          \raggedleft\@nameuse{#1ofootr}\strut}}}%
+        }}\@nameuse{#1oddfpr}}%
+    \def\@evenhead{\@nameuse{#1@evenhead}}%
+    \def\@oddhead{\@nameuse{#1@oddhead}}%
+    \def\@evenfoot{\@nameuse{#1@evenfoot}}%
+    \def\@oddfoot{\@nameuse{#1@oddfoot}}%
+    \@nameuse{#1pshook}%
+  }%
+  \makeevenhead{#1}{}{}{}%
+  \makeoddhead{#1}{}{}{}%
+  \makeevenfoot{#1}{}{}{}%
+  \makeoddfoot{#1}{}{}{}%
+  \makerunningwidth{#1}{\textwidth}%
+  \makeheadposition{#1}{}{}{}{}%
+  \makeheadrule{#1}{\textwidth}{0pt}%
+  \makefootrule{#1}{\textwidth}{\footruleheight}{\footruleskip}%
+  \makepsmarks{#1}{}%
+}
+
+\renewcommand*{\aliaspagestyle}[2]{%
+  \@namedef{ps@#1}{\@nameuse{ps@#2}}}
+
+\renewcommand*{\copypagestyle}[2]{%
+  \makepagestyle{#1}%
+  \makeevenhead{#1}{\@nameuse{#2eheadl}}%
+               {\@nameuse{#2eheadc}}{\@nameuse{#2eheadr}}%
+  \makeoddhead{#1}{\@nameuse{#2oheadl}}%
+               {\@nameuse{#2oheadc}}{\@nameuse{#2oheadr}}%
+  \makeevenfoot{#1}{\@nameuse{#2efootl}}%
+               {\@nameuse{#2efootc}}{\@nameuse{#2efootr}}%
+  \makeoddfoot{#1}{\@nameuse{#2ofootl}}%
+              {\@nameuse{#2ofootc}}{\@nameuse{#2ofootr}}%
+  \makerunningwidth{#1}{\@nameuse{#2runwidth}}%
+  \@namedef{#1evenhpl}{\@nameuse{#2evenhpl}}%
+  \@namedef{#1oddhpl}{\@nameuse{#2oddhpl}}%
+  \@namedef{#1evenfpl}{\@nameuse{#2evenfpl}}%
+  \@namedef{#1oddfpl}{\@nameuse{#2oddfpl}}%
+  \@namedef{#1headrule}{\@nameuse{#2headrule}}%
+  \@namedef{#1footrule}{\@nameuse{#2footrule}}%
+  \makepsmarks{#1}{\@nameuse{#2pshook}}%
+}
+
+\renewcommand*{\ifonlyfloats}[2]{\if@fcolmade #1\else #2\fi}
+
+\renewcommand*{\mergepagefloatstyle}[3]{%
+  \@nameuse{ps@#3}\@nameuse{ps@#2}%
+  \@namedef{ps@#1}{%
+  \def\@evenhead{\ifonlyfloats{\@nameuse{#3@evenhead}}%
+                {\@nameuse{#2@evenhead}}}%
+  \def\@oddhead{\ifonlyfloats{\@nameuse{#3@oddhead}}%
+               {\@nameuse{#2@oddhead}}}%
+  \def\@evenfoot{\ifonlyfloats{\@nameuse{#3@evenfoot}}%
+                {\@nameuse{#2@evenfoot}}}%
+  \def\@oddfoot{\ifonlyfloats{\@nameuse{#3@oddfoot}}%
+               {\@nameuse{#2@oddfoot}}}%
+  \@namedef{#1pshook}{\@nameuse{#2pshook}}%
+}}
+\makepagestyle{empty}
+
+\makepagestyle{plain}
+  \makeevenfoot{plain}{}{\thepage}{}
+  \makeoddfoot{plain}{}{\thepage}{}
+
+\if@twoside
+  \makepagestyle{headings}
+    \makepsmarks{headings}{%
+      \let\@mkboth\markboth
+      \def\chaptermark##1{%
+        \markboth{\MakeUppercase{%
+          \ifnum \c@secnumdepth >\m@ne
+            \if@mainmatter
+              \@chapapp\ \thechapter. \ %
+            \fi
+          \fi
+          ##1}}{}}%
+      \def\tocmark{\markboth{\MakeUppercase{\contentsname}}{}}%
+      \def\lofmark{\markboth{\MakeUppercase{\listfigurename}}{}}%
+      \def\lotmark{\markboth{\MakeUppercase{\listtablename}}{}}%
+      \def\bibmark{\markboth{\MakeUppercase{\bibname}}{}}%
+      \def\indexmark{\markboth{\MakeUppercase{\indexname}}{}}%
+      \def\sectionmark##1{%
+        \markright{\MakeUppercase{%
+          \ifnum \c@secnumdepth > \z@
+            \thesection. \ %
+          \fi
+          ##1}}}%
+    }%
+    \makeevenhead{headings}{\thepage}{}{\slshape\leftmark}
+    \makeoddhead{headings}{\slshape\rightmark}{}{\thepage}
+\else
+  \makepagestyle{headings}
+    \makepsmarks{headings}{%
+      \let\@mkboth\markboth
+      \def\chaptermark##1{%
+        \markright{\MakeUppercase{%
+          \ifnum \c@secnumdepth >\m@ne
+            \if@mainmatter
+              \@chapapp\ \thechapter. \ %
+            \fi
+          \fi
+          ##1}}}%
+      \def\tocmark{\markright{\MakeUppercase{\contentsname}}}%
+      \def\lofmark{\markright{\MakeUppercase{\listfigurename}}}%
+      \def\lotmark{\markright{\MakeUppercase{\listtablename}}}%
+      \def\bibmark{\markright{\MakeUppercase{\bibname}}}%
+      \def\indexmark{\markright{\MakeUppercase{\indexname}}}%
+    }
+    \makeoddhead{headings}{\slshape\rightmark}{}{\thepage}
+\fi
+
+\makepagestyle{myheadings}
+  \makepsmarks{myheadings}{%
+    \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
+    \let\sectionmark\@gobble
+    \def\tocmark{}%
+    \def\lofmark{}%
+    \def\lotmark{}%
+    \def\bibmark{}%
+    \def\indexmark{}%
+  }
+  \makeevenhead{myheadings}{\thepage}{}{\slshape\leftmark}
+  \makeoddhead{myheadings}{\slshape\rightmark}{}{\thepage}
+
+\aliaspagestyle{chapter}{plain}
+\aliaspagestyle{part}{plain}
+\aliaspagestyle{cleared}{empty}
+
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}\thispagestyle{cleared}%
+  \newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+
+\makepagestyle{ruled}
+\makeevenfoot{ruled}{\thepage}{}{}
+\makeoddfoot{ruled}{}{}{\thepage}
+\makeheadrule{ruled}{\textwidth}{\normalrulethickness}
+\renewcommand*{\@ruledmarks}{%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{%
+    \markboth{%
+      \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+          \thechapter. \ %
+        \fi
+      \fi
+      ##1}{}}
+  \def\sectionmark##1{\markright{##1}}%
+  \def\tocmark{\markboth{\contentsname}{}}%
+  \def\lofmark{\markboth{\listfigurename}{}}%
+  \def\lotmark{\markboth{\listtablename}{}}%
+  \def\bibmark{\markboth{\bibname}{}}%
+  \def\indexmark{\markboth{\indexname}{}}%
+}
+\makepsmarks{ruled}{\@ruledmarks}
+\makeevenhead{ruled}{\scshape\leftmark}{}{}
+\makeoddhead{ruled}{}{}{\rightmark}
+
+\makepagestyle{Ruled}
+\makerunningwidth{Ruled}{1.1\textwidth}
+\makeheadposition{Ruled}{flushright}{flushleft}{flushright}{flushleft}
+\makeevenfoot{Ruled}{\thepage}{}{}
+\makeoddfoot{Ruled}{}{}{\thepage}
+\makeheadrule{Ruled}{1.1\textwidth}{\normalrulethickness}
+\makepsmarks{Ruled}{\@ruledmarks}
+\makeevenhead{Ruled}{\scshape\leftmark}{}{}
+\makeoddhead{Ruled}{}{}{\rightmark}
+
+%%%%\newlength{\headwidth}  % don't use in the patch file
+
+\makepagestyle{companion}
+\setlength{\headwidth}{\textwidth}
+  \addtolength{\headwidth}{\marginparsep}
+  \addtolength{\headwidth}{\marginparwidth}
+\makerunningwidth{companion}{\headwidth}
+\makeheadrule{companion}{\headwidth}{\normalrulethickness}
+\makeheadposition{companion}{flushright}{flushleft}{}{}
+\makepsmarks{companion}{%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{##1}{##1}}    % left mark & right marks
+  \def\sectionmark##1{\markright{%
+    \ifnum \c@secnumdepth>\z@
+      \thesection. \ %
+    \fi
+    ##1}}
+  \def\tocmark{\markboth{\contentsname}{\contentsname}}%
+  \def\lofmark{\markboth{\listfigurename}{\listfigurename}}%
+  \def\lotmark{\markboth{\listtablename}{\listtablename}}%
+  \def\bibmark{\markboth{\bibname}{\bibname}}%
+  \def\indexmark{\markboth{\indexname}{\indexname}}%
+}
+\makeevenhead{companion}{\normalfont\bfseries\thepage}{}%
+                        {\normalfont\bfseries\leftmark}
+\makeoddhead{companion}{\normalfont\bfseries\rightmark}{}%
+                       {\normalfont\bfseries\thepage}
+
+%% \subsection{Theindex}
+\aliaspagestyle{indextitlepagestyle}{chapter}
+
+%%%%%%% Fix for inconsistent chapter styles and ToC, etc style.
+\renewcommand*{\newlistof}[3]{%
+  \@namedef{ext@#2}{#2}
+  \@ifundefined{c@#2depth}{\newcounter{#2depth}}{}
+  \setcounter{#2depth}{1}
+  \@namedef{#2mark}{\markboth{#3}{#3}}
+  \@namedef{#1}{\@ifstar{\@nameuse{@star#2}}{\@nameuse{@plain#2}}}
+  \@namedef{@star#2}{%
+    \ensureonecol
+    \par
+    \begingroup
+%%%%%%%      \parindent\z@ \parskip\cftparskip
+      \@nameuse{@#2maketitle}
+      \@starttoc{#2}%
+    \endgroup
+    \restorefromonecol}
+  \@namedef{@plain#2}{%
+    \ensureonecol
+    \par
+    \begingroup
+%%%%%%%      \parindent\z@ \parskip\cftparskip
+      \@nameuse{@#2maketitle}
+      \phantomsection
+      \addcontentsline{toc}{chapter}{#3}
+\parskip\cftparskip
+      \@starttoc{#2}%
+    \endgroup
+    \restorefromonecol}
+  \@namedef{@#2maketitle}{%
+    \@nameuse{#2headstart}
+   {\parindent\z@
+%%%%%%%%    \parskip\cftparskip
+    \interlinepenalty\@M
+    \@nameuse{print#2nonum}%
+    \@nameuse{print#2title}{#3}%
+    \@nameuse{#2mark}%
+    \thispagestyle{chapter}%
+    \@nameuse{after#2title}
+   }
+    \@afterheading}
+  \@namedef{#2headstart}{\chapterheadstart}
+  \@namedef{after#2title}{\afterchaptertitle}
+  \@namedef{print#2nonum}{\printchapternonum}
+  \@namedef{print#2title}##1{\printchaptertitle{##1}}
+} % end \newlistof
+
+\renewcommand*{\@starttoc}[1]{%
+  \begingroup\makeatletter
+    \@input{\jobname.#1}%
+    \if@filesw
+      \AtEndDocument{%
+        \expandafter\newwrite\csname tf@#1\endcsname
+        \immediate\openout \csname tf@#1\endcsname \jobname.#1\relax
+      }%
+    \fi
+  \@nobreakfalse
+  \endgroup}
+
+\newlistof{tableofcontents}{toc}{\contentsname}
+\newlistof{listoffigures}{lof}{\listfigurename}
+\newlistof{listofables}{lot}{\listtablename}
+%%% remove subfigure support
+\renewcommand*{\@cftl@subfigtab}{}
+
+\makechapterstyle{default}{%
+  \setlength{\beforechapskip}{50pt}
+  \def\chapterheadstart{\vspace*{\beforechapskip}}
+  \def\chapnamefont{\normalfont\huge\bfseries}
+  \def\printchaptername{\chapnamefont \@chapapp}
+  \def\chapternamenum{\space}
+  \def\chapnumfont{\normalfont\huge\bfseries}
+  \def\printchapternum{\chapnumfont \thechapter}
+  \setlength{\midchapskip}{20pt}
+  \def\afterchapternum{\par\nobreak\vskip \midchapskip}
+  \def\printchapternonum{}
+  \def\chaptitlefont{\normalfont\Huge\bfseries}
+  \def\printchaptertitle##1{\chaptitlefont ##1}
+  \setlength{\afterchapskip}{40pt}
+  \def\afterchaptertitle{\par\nobreak\vskip \afterchapskip}}
+
+%% Stefano Bianchi, ctt 2003/12/09 `New chapter style: chapter vs chapter*'
+\makechapterstyle{bianchi}{%
+  \renewcommand*{\chapnamefont}{\normalfont\Large\sffamily\itshape}
+  \renewcommand*{\chapnumfont}{\normalfont\huge}
+  \renewcommand*{\printchaptername}{%
+    \chapnamefont\centering\@chapapp}
+  \renewcommand*{\printchapternum}{\chapnumfont \textit{\thechapter}}
+  \renewcommand*{\chaptitlefont}{\normalfont\Huge\sffamily}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \hrule\vskip\onelineskip \centering \chaptitlefont\textbf{##1}\par}
+  \renewcommand*{\afterchaptertitle}{\vskip\onelineskip \hrule\vskip
+    \afterchapskip}
+  \renewcommand*{\printchapternonum}{%
+    \vphantom{\chapnumfont \textit{9}}\afterchapternum}}
+
+\makechapterstyle{bringhurst}{%
+  \renewcommand*{\chapterheadstart}{}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{}
+  \renewcommand*{\afterchapternum}{}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \raggedright\Large\scshape\MakeLowercase{##1}}
+  \renewcommand*{\afterchaptertitle}{%
+  \vskip\onelineskip \hrule\vskip\onelineskip}}
+
+\makechapterstyle{brotherton}{%
+  \renewcommand*{\printchapternum}{\chapnumfont
+    \ifanappendix \thechapter \else \numtoName{\c@chapter}\fi}}
+
+\makechapterstyle{chappell}{%
+  \setlength{\beforechapskip}{0pt}
+  \renewcommand*{\chapnamefont}{\large\centering}
+  \renewcommand*{\chapnumfont}{\large}
+  \renewcommand*{\printchapternonum}{%
+    \vphantom{\printchaptername \chapnumfont 1}
+    \afterchapternum
+    \vskip \onelineskip \vskip -\topskip}
+  \renewcommand*{\chaptitlefont}{\Large\itshape}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \hrule\vskip\onelineskip \centering\chaptitlefont ##1}}
+
+\makechapterstyle{culver}{%
+  \chapterstyle{article}%
+%%%  \renewcommand*{\thechapter}{\Roman{chapter}}
+  \renewcommand*{\printchapternum}{% center number/title
+    \centering\chapnumfont \thechapter\space}%
+  \renewcommand*{\printchapternonum}{\centering}
+  \renewcommand*{\clearforchapter}{}% no new page
+  \aliaspagestyle{chapter}{headings}% no special pagestyle
+}
+
+\makechapterstyle{dash}{%
+  \setlength{\beforechapskip}{5\onelineskip}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\chapnumfont}{\normalfont\large}
+  \settoheight{\midchapskip}{\chapnumfont 1}
+  \renewcommand*{\printchapternum}{\centering \chapnumfont
+    \rule[0.5\midchapskip]{1em}{0.4pt} \thechapter\
+    \rule[0.5\midchapskip]{1em}{0.4pt}}
+  \renewcommand*{\afterchapternum}{\par\nobreak\vskip 0.5\onelineskip}
+  \renewcommand*{\printchapternonum}{\centering
+                 \vphantom{\chapnumfont 1}\afterchapternum}
+  \renewcommand*{\chaptitlefont}{\normalfont\Large}
+  \renewcommand*{\printchaptertitle}[1]{\centering \chaptitlefont ##1}
+  \setlength{\afterchapskip}{2.5\onelineskip}}
+
+\makechapterstyle{demo2}{%
+  \renewcommand*{\printchaptername}{\centering}
+  \renewcommand*{\printchapternum}{\chapnumfont
+     \ifanappendix \thechapter \else \numtoName{\c@chapter}\fi}
+  \renewcommand*{\chaptitlefont}{\normalfont\Huge\sffamily}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \hrule\vskip\onelineskip \raggedleft \chaptitlefont ##1}
+  \renewcommand*{\afterchaptertitle}{%
+    \vskip\onelineskip \hrule\vskip \afterchapskip}
+  \setlength{\beforechapskip}{3\baselineskip}
+  \renewcommand*{\printchapternonum}{%
+    \vphantom{\chapnumfont One}
+    \afterchapternum%
+    \vskip\topskip}
+  \setlength{\beforechapskip}{2\onelineskip}}
+
+\makechapterstyle{ell}{%
+  \renewcommand*{\chapnumfont}{\normalfont\HUGE\sffamily}
+  \renewcommand*{\chaptitlefont}{\normalfont\huge\sffamily}
+  \settowidth{\chapindent}{\chapnumfont 111}
+  \renewcommand*{\chapterheadstart}{\begingroup
+    \vspace*{\beforechapskip}%
+    \begin{adjustwidth}{}{-\chapindent}%
+    \hrulefill
+    \smash{\rule{0.4pt}{15mm}}
+    \end{adjustwidth}\endgroup}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+    \begin{adjustwidth}{}{-\chapindent}
+    \hfill
+    \raisebox{10mm}[0pt][0pt]{\chapnumfont \thechapter}%
+                              \hspace*{1em}
+    \end{adjustwidth}\vspace*{-3.0\onelineskip}}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \vskip\onelineskip
+    \raggedleft {\chaptitlefont ##1}\par\nobreak}}
+
+%% Gerardo Garcia, ctt 2002/04/12, `Fancy Headings, Chapter Headings
+\makechapterstyle{ger}{%
+  \renewcommand*{\chapterheadstart}{\vspace*{\beforechapskip}
+  \mbox{}\\\mbox{}\rule[0pt]{\textwidth}{0.4pt}\par}
+  \setlength{\midchapskip}{20pt}
+  \renewcommand*{\printchaptertitle}[1]{\chaptitlefont ##1
+    \\\mbox{}\rule[5pt]{\textwidth}{0.4pt}}}
+
+\makechapterstyle{lyhne}{%  needs graphicx package
+  \setlength{\beforechapskip}{1.5cm}
+  \setlength{\afterchapskip}{1cm}
+  \setlength{\midchapskip}{2cm}
+  \renewcommand*{\chapnamefont}{\normalfont\normalsize\scshape\raggedleft}
+  \renewcommand*{\chaptitlefont}{\normalfont\normalsize\bfseries\sffamily\raggedleft}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{\makebox[0pt][l]{\hspace{0.2em}%
+    \resizebox{!}{2ex}{\chapnamefont\bfseries\sffamily\thechapter}}}
+  \renewcommand*{\afterchapternum}{\par\hspace{1.5cm}\hrule\vspace{0.2cm}}
+ \renewcommand*{\printchapternonum}{\vphantom{\chapnamefont 1}\afterchapternum}
+  \renewcommand*{\afterchaptertitle}{\vskip 0.2cm
+    \hrule\vskip\afterchapskip}}
+
+%% posted to ctt, December 2003
+%%%% \usepackage{graphicx}
+\makechapterstyle{madsen}{%
+  \renewcommand*{\chapnamefont}{%
+    \normalfont\Large\scshape\raggedleft}
+  \renewcommand*{\chaptitlefont}{%
+    \normalfont\Huge\bfseries\sffamily\raggedleft}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+    \makebox[0pt][l]{\hspace{0.4em}
+      \resizebox{!}{4ex}{%
+        \chapnamefont\bfseries\sffamily\thechapter}
+    }%
+  }%
+  \renewcommand*{\afterchapternum}{%
+    \par\hspace{1.5cm}\hrule\vskip\midchapskip}}
+
+\newcommand*{\colorchapnum}{}
+\newcommand*{\colorchaptitle}{}
+\makechapterstyle{pedersen}{%
+  \setlength{\beforechapskip}{-20pt}
+  \setlength{\afterchapskip}{10pt}
+  \renewcommand*{\chapnamefont}{\normalfont\LARGE\itshape}
+  \renewcommand*{\chapnumfont}{\normalfont\HUGE\itshape\colorchapnum}
+  \renewcommand*{\chaptitlefont}{\normalfont\huge\itshape\colorchaptitle}
+  \renewcommand*{\afterchapternum}{}
+  \renewcommand*{\printchaptername}{}
+  \setlength{\midchapskip}{20mm}% was \numberheight
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+    \sidebar{\raisebox{0pt}[0pt][0pt]{\makebox[0pt][l]{%
+      \resizebox{!}{\midchapskip}{\chapnumfont\thechapter}}}}}
+  \renewcommand*{\printchaptertitle}[1]{\chaptitlefont ##1}
+}
+
+%% Thomas Dye's southall chapter style
+\makechapterstyle{southall}{%
+  \setlength{\afterchapskip}{5\baselineskip}
+  \setlength{\beforechapskip}{36pt}%    \headindent
+  \setlength{\midchapskip}{\textwidth}% \rightblock
+  \addtolength{\midchapskip}{-\beforechapskip}
+  \renewcommand*{\chapterheadstart}{\vspace*{2\baselineskip}}
+  \renewcommand*{\chaptitlefont}{\huge\rmfamily\raggedright}
+  \renewcommand*{\chapnumfont}{\chaptitlefont}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\afterchapternum}{}
+  \renewcommand*{\printchapternum}{%
+    \begin{minipage}[t][\baselineskip][b]{\beforechapskip}
+      {\vspace{0pt}\chapnumfont%%%\figureversion{lining}
+                   \thechapter}
+    \end{minipage}}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \hfill\begin{minipage}[t]{\midchapskip}
+      {\vspace{0pt}\chaptitlefont ##1\par}\end{minipage}}
+  \renewcommand*{\afterchaptertitle}{%
+    \par\vspace{\baselineskip}%
+    \hrulefill \par\nobreak\noindent \vskip \afterchapskip}}
+
+\makechapterstyle{thatcher}{%
+  \renewcommand*{\chapterheadstart}{}
+  \renewcommand*{\printchaptername}{%
+    \centerline{\chapnumfont{\@chapapp\ \thechapter}}}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\chapnumfont}{\normalfont\scshape\MakeLowercase}
+  \renewcommand*{\printchapternum}{}
+  \renewcommand*{\afterchapternum}{%
+    \par\centerline{\parbox{0.5in}{\hrulefill}}\par}
+  \renewcommand*{\printchapternonum}{%
+    \vphantom{\chapnumfont \@chapapp 1}\par
+    \parbox{0.5in}{}\par}
+  \renewcommand*{\chaptitlefont}{\normalfont\large}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \centering \chaptitlefont\MakeUppercase{##1}}}
+
+%% A new chapter style, that suits well for trimmed documents.
+%% We are scaling the chapter number, which most DVI viewers
+%% will not display accurately. It requires the graphicx package.
+%%%% \usepackage{graphicx}
+\makechapterstyle{veelo}{%
+   \setlength{\afterchapskip}{40pt}
+  \renewcommand*{\chapterheadstart}{\vspace*{40pt}}
+  \renewcommand*{\afterchapternum}{\par\nobreak\vskip 25pt}
+   \renewcommand*{\chapnamefont}{\normalfont\LARGE\flushright}
+   \renewcommand*{\chapnumfont}{\normalfont\HUGE}
+   \renewcommand*{\chaptitlefont}{\normalfont\HUGE\bfseries\flushright}
+   \renewcommand*{\printchaptername}{%
+     \chapnamefont\MakeUppercase{\@chapapp}}
+   \renewcommand*{\chapternamenum}{}
+  \setlength{\beforechapskip}{18mm}%  \numberheight
+  \setlength{\midchapskip}{\paperwidth}% \barlength
+  \addtolength{\midchapskip}{-\textwidth}
+  \addtolength{\midchapskip}{-\spinemargin}
+   \renewcommand*{\printchapternum}{%
+     \makebox[0pt][l]{%
+       \hspace{.8em}%
+       \resizebox{!}{\beforechapskip}{\chapnumfont \thechapter}%
+       \hspace{.8em}%
+       \rule{\midchapskip}{\beforechapskip}%
+     }%
+   }%
+   \makeoddfoot{plain}{}{}{\thepage}}
+
+\makechapterstyle{verville}{%
+  \setlength{\beforechapskip}{0pt}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\printchapternum}{%
+    \hrule \vskip 0.5\onelineskip
+    \Huge \centering \thechapter.\ }
+  \renewcommand*{\printchapternonum}{%
+    \hrule \vskip 0.5\onelineskip
+    \Huge \centering}
+  \renewcommand*{\afterchapternum}{}
+  \setlength{\midchapskip}{0pt}
+  \renewcommand*{\printchaptertitle}[1]{%
+    ##1 \par
+    \vskip 0.5\onelineskip
+   \hrule}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.7 (2006/12/23 and later)
+
+\renewcommand*{\flushleftright}{%
+  \leftskip\z@ \rightskip\z@
+  \parfillskip\@flushglue}
+\renewcommand*{\centerlastline}{%
+  \parfillskip=\z@ plus 2fil
+  \rightskip=\z@ plus -1fil
+  \leftskip\@flushglue}
+
+\renewcommand{\@epitext}[1]{%
+  \begin{minipage}{\epigraphwidth}\begin{\textflush} #1\par
+  \ifdim\epigraphrule>\z@ \@epirule \else \vspace*{1ex}\fi
+  \end{\textflush}\end{minipage}}
+\renewcommand{\@episource}[1]{%
+  \begin{minipage}{\epigraphwidth}\begin{\sourceflush} #1\par
+  \end{\sourceflush}\end{minipage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Version 4.8 (2007/01/22 and later)
+
+%%%% \abscolnamefont and \abscoltextfont are the fonts when an abstract
+%%%% is like a section in a two column document.
+\newcommand*{\abscolnamefont}{\normalfont\Large\bfseries}
+\newcommand*{\abscoltextfont}{\normalfont}
+
+\absleftindent=\leftmargin
+\abs@leftindent=\leftmargin
+\absrightindent=\leftmargin
+
+\renewcommand*{\setup@bstract}{%
+  \abs@leftindent=\absleftindent
+  \if@twocolumn
+    \if@bsonecol
+    \else
+      \abs@leftindent=\z@
+      \absrightindent=\z@
+      \renewcommand*{\abstractnamefont}{\abscolnamefont}
+      \renewcommand*{\abstracttextfont}{\abscoltextfont}
+      \renewcommand*{\absnamepos}{flushleft}
+      \setlength{\abstitleskip}{-2ex}
+    \fi
+  \fi}
+
+\endinput
+%%
+%% End of file `mempatch.sty'.
