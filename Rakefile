@@ -891,10 +891,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :courier => [] }
   t.packages << { :helvet => [] }
 
-  #t.packages << { :appendix => %w(titletoc page) }
-
   t.packages << { :graphicx => [] }
-  t.packages << { :footmisc => %w(side) }
 
   t.packages << { :longtable => [] }
   t.packages << { :booktabs => [] }
