@@ -53,7 +53,7 @@
 
 
 % Footnotes
-%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 
 % Custom commands
