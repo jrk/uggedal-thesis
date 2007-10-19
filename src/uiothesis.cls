@@ -44,16 +44,17 @@
 %   * We have a stock size of ISO A4
 %   * We have zero trimming
 %   * The measure is 28pc
-%   * The typeblock have a height/width ratio of sqrt(3)
-%   * The horizontal margins have a fore/spine ratio of sqrt(3)
+%   * The typeblock have a height/width ratio of 2
+%   * The horizontal margins are 6pc for the spine
 %   * The vertical margins have a bottom/top ratio of sqrt(2)
-\setstocksize{297mm}{210mm}
-\settrimmedsize{297mm}{210mm}{*}
-\settrims{0pt}{0pt}
+%\setstocksize{297mm}{210mm}
+%\settrimmedsize{297mm}{210mm}{*}
+%\settrims{0pt}{0pt}
 
-\settypeblocksize{*}{28pc}{1.732}
-\setlrmargins{*}{*}{1.732}
+\settypeblocksize{*}{28pc}{2}
+\setlrmargins{6pc}{*}{*}
 \setulmargins{*}{*}{1.414}
+\setmarginnotes{2pc}{10pc}{1pc}
 \checkandfixthelayout
 
 
