@@ -885,7 +885,7 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :uiothesis => %w(final) }
+  t.klass = { :uiothesis => %w(11pt final) }
 
   t.packages << { :fontenc => ['T1'] }
   t.packages << { :mathpazo => [] }
