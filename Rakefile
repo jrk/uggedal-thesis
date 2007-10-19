@@ -893,6 +893,8 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
 
   #t.packages << { :appendix => %w(titletoc page) }
 
+  t.packages << { :graphicx => [] }
+
   t.packages << { :longtable => [] }
   t.packages << { :booktabs => [] }
   t.packages << { :lscape => [] }
