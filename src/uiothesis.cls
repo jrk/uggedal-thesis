@@ -68,12 +68,9 @@
 \newcommand{\sidenote}[1]%
             {\footnotemark%
               \marginpar{\footnotesize
-              \textsuperscript{\thefootnote}#1
+              \textsuperscript{\thefootnote}\,#1
             }%
 }%
-
-% Footnote symbols
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 
 % Hyper references and breaking of URLs
