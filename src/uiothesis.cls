@@ -58,9 +58,9 @@
 %\settrims{0pt}{0pt}
 
 \settypeblocksize{*}{28pc}{2}
-\setlrmargins{6pc}{*}{*}
+\setlrmargins{5pc}{*}{*}
 \setulmargins{*}{*}{1.414}
-\setmarginnotes{2pc}{10pc}{1pc}
+\setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
 
 
