@@ -356,6 +356,8 @@ module RakedLaTeX
         % end
 
         \begin{document}
+          \chapterstyle{section}
+
           \frontmatter
         % if @title
             \maketitle
@@ -909,7 +911,7 @@ task :spell do
 end
 
 CONFIG = RakedLaTeX::Configuration.new do |t|
-  t.klass = { :uiothesis => %w(11pt) }
+  t.klass = { :uiothesis => %w(11pt draft) }
 
   t.packages << { :fontenc => ['T1'] }
   t.packages << { :mathpazo => [] }
