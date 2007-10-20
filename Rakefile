@@ -237,7 +237,7 @@ module RakedLaTeX
 
   # Handles command line output. Could be useful in the future with regards to
   # verbosity settings and color support.
-  module Output
+  module InOut
     def notice(message)
       puts message
     end
@@ -263,6 +263,13 @@ module RakedLaTeX
       yield
       STDERR.reopen(old_stderr)
     end
+
+    def disable_stdinn
+      old_stdinn = STDIN.dup
+      STDIN.reopen('/dev/null')
+      yield
+      STDIN.reopen(old_stdinn)
+    end
   end
 
   # Provides a template for a base latex file. This template can be configured
@@ -286,7 +293,7 @@ module RakedLaTeX
   #
   class BaseTemplate
     require 'erb'
-    include RakedLaTeX::Output
+    include RakedLaTeX::InOut
 
     def create_file(config)
       File.open(config.base_path, 'w') do |f|
@@ -391,7 +398,7 @@ module RakedLaTeX
   # when working with draft versions.
   module ScmStats
     class Base
-      include RakedLaTeX::Output
+      include RakedLaTeX::InOut
 
       # The name of the SCM system. 
       attr_accessor :name
@@ -467,7 +474,7 @@ module RakedLaTeX
   # these utilities.
   module Runner
     class Base
-      include RakedLaTeX::Output
+      include RakedLaTeX::InOut
 
       # The file to be run trough the latex process.
       attr_accessor :input_file
@@ -482,13 +489,16 @@ module RakedLaTeX
       # Contains a list of possible warnings after a run.
       attr_accessor :warnings
 
+      # Contains a list of possible errors after a run.
+      attr_accessor :errors
+
       def initialize(input_file, silent, executable)
         @input_file = input_file
         disable_stdout do
           @executable = executable if system "which #{executable}"
         end
         @silent = silent
-        @warnings = []
+        @errors = []
 
         if File.exists? @input_file
           run
@@ -502,10 +512,17 @@ module RakedLaTeX
       end
 
       def feedback
-        unless @warnings.empty? || @silent
+        return if @silent
+        unless @warnings.empty?
           notice "Warnings from #@executable:"
           @warnings.each do |message|
             warning message
+          end
+        end
+        unless @errors.empty?
+          notice "Errors from #@executable:"
+          @errors.each do |message|
+            error message
           end
         end
       end
@@ -517,10 +534,18 @@ module RakedLaTeX
       end
 
       def run
-        # TODO: Currently this does not work when latex awaits user input:
-        messages = /^(Overfull|Underfull|No file|Package \w+ Warning:)/
-        @warnings = `#@executable #@input_file`.grep(messages)
-        feedback
+        disable_stdinn do
+          messages = /^(Overfull|Underfull|No file|Package \w+ Warning:)/
+          run = `#@executable #@input_file`
+          @warnings = run.grep(messages)
+          lines = run.split("\n")
+          while lines.shift
+            if lines.first =~ /^!/
+              3.times { @errors << lines.shift }
+            end
+          end
+          feedback
+        end
       end
     end
 
@@ -570,7 +595,7 @@ module RakedLaTeX
   # times as needed.
   module Builder
     class Base
-      include RakedLaTeX::Output
+      include RakedLaTeX::InOut
 
       # The dir where the files to be built should be located.
       attr_accessor :source_dir
@@ -718,7 +743,7 @@ module RakedLaTeX
 
   module Viewer
     class Base
-      include RakedLaTeX::Output
+      include RakedLaTeX::InOut
       # The dir where distributed files are placed. 
 
       attr_accessor :distribution_dir
