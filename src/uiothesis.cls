@@ -31,6 +31,12 @@
 \DeclareOption{final}{\renewcommand{\@@status}{final}}
 \ProcessOptions
 
+% Internal variables
+\newcommand{\@subtitle}{}
+
+% Outside variables
+\newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
+
 % This class is based on the memoir class
 \LoadClass[\@@papersize,%
            \@@ptsize,%
@@ -58,22 +64,22 @@
 \checkandfixthelayout
 
 
-% Internal variables
-\newcommand{\@subtitle}{}
+% Sidenote
+\newcommand{\sidenote}[1]%
+            {\footnotemark%
+              \marginpar{\footnotesize
+              \textsuperscript{\thefootnote}#1
+            }%
+}%
 
-
-% Outside variables
-\newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
+% Footnote symbols
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
 \RequirePackage{memhfixc}
 \RequirePackage{breakurl}
-
-
-% Footnotes
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 
 % Custom commands
