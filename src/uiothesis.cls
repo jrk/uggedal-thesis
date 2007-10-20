@@ -65,11 +65,12 @@
 
 
 % Sidenote
-\newcommand{\sidenote}[1]%
-            {\footnotemark%
-              \marginpar{\footnotesize
-              \textsuperscript{\thefootnote}\,#1
-            }%
+\newcommand{\sidenote}[1]{%
+  \footnotemark%
+  \marginpar{%
+    \footnotesize
+    \textsuperscript{\thefootnote}\,#1
+  }%
 }%
 
 
