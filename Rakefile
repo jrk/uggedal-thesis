@@ -356,7 +356,7 @@ module RakedLaTeX
         % end
 
         \begin{document}
-          \chapterstyle{section}
+          \chapterstyle{elements}
 
           \frontmatter
         % if @title

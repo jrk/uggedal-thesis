@@ -74,6 +74,21 @@
 }%
 
 
+% Chapter headings
+\makechapterstyle{elements}{%
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\midchapskip}{0pt}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\chapternamenum}{}
+  \renewcommand{\printchapternum}{%
+    \marginpar{%
+      \vspace{90pt}
+      \scalebox{4}{\chapnumfont \thechapter}
+    }%
+  }%
+  \renewcommand{\afterchapternum}{}
+}
+
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
 \RequirePackage{memhfixc}
