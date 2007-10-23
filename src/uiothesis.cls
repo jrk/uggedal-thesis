@@ -48,7 +48,7 @@
 % Laying out the page
 \settypeblocksize{*}{28pc}{2}
 \setlrmargins{5pc}{*}{*}
-\setulmargins{*}{*}{1.414}
+\setulmargins{*}{*}{2}
 \setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
 
