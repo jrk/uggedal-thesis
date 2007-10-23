@@ -48,27 +48,9 @@
 % Laying out the page
 \settypeblocksize{*}{28pc}{2}
 \setlrmargins{5pc}{*}{*}
-\setulmargins{*}{*}{2}
+\setulmargins{*}{*}{3}
 \setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
-
-
-% Sidenote
-\newcommand{\sidenote}[1]{%
-  \footnotemark%
-  \ifodd\c@page
-    \marginpar{%
-      \raggedright \footnotesize
-      \textsuperscript{\thefootnote}\,#1
-    }%
-  \else
-    \marginpar{%
-      \raggedleft \footnotesize
-      \textsuperscript{\thefootnote}\,#1
-    }%
-  \fi
-}%
-
 
 % Bringhurst chapter style
 \makechapterstyle{bringhurst}{%
@@ -95,7 +77,6 @@
 \setsubsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\itshape}
   \setbeforesubsecskip{-\onelineskip}
   \setaftersubsecskip{\onelineskip}
-
 
 % Bringhurst page style
 \makepagestyle{bringhurst}
@@ -140,17 +121,57 @@
 \makeevenhead{bringhurst}{\bringpicl{\rightmark}}{}{}
 \makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
 
-
 % Plain headers and footers
 \makeevenfoot{plain}{\thepage}{}{}
 \makeoddfoot{plain}{}{}{\thepage}
 
+% Titlepage
+\renewcommand{\maketitle}{%
+  \begin{titlingpage}
+    \calccentering{\unitlength}
+    \begin{adjustwidth*}{\unitlength}{-\unitlength}
+      \begin{center}
+        \includegraphics[width=0.3\textwidth]{uioseal} \\
+        \vspace{2cm}
+        \textbf{\Huge{\@title}} \\
+        \vspace{0.5cm}
+        \textbf{\Large{\@subtitle}} \\
+        \vspace{1cm}
+        {\Large\@author} \\
+        \vspace{1cm}
+        Submitted in partial fulfillment of the requirements \\
+        for the degree of Master of Science \\
+        \vspace{1cm}
+        \@date \\
+        \vspace{1cm}
+        Department of Informatics \\
+        Faculty of Mathematics and Natural Sciences \\
+        University of Oslo \\
+      \end{center}
+    \end{adjustwidth*}
+  \end{titlingpage}
+}
+
+% Sidenote
+\newcommand{\sidenote}[1]{%
+  \footnotemark%
+  \ifodd\c@page
+    \marginpar{%
+      \raggedright \footnotesize
+      \textsuperscript{\thefootnote}\,#1
+    }%
+  \else
+    \marginpar{%
+      \raggedleft \footnotesize
+      \textsuperscript{\thefootnote}\,#1
+    }%
+  \fi
+}%
 
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
 \RequirePackage{memhfixc}
 \RequirePackage{breakurl}
-
 
 % Custom commands
 \newcommand{\var}[1]{\texttt{\${#1}}}
