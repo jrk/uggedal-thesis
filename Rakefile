@@ -364,12 +364,15 @@ module RakedLaTeX
             \maketitle
         % end
         % if @table_of_contents
+            \cleardoublepage
             \tableofcontents
         % end
         % if @list_of_figures
+            \cleardoublepage
             \listoffigures
         % end
         % if @list_of_tables
+            \cleardoublepage
             \listoftables
         % end
 
