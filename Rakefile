@@ -356,7 +356,8 @@ module RakedLaTeX
         % end
 
         \begin{document}
-          \chapterstyle{elements}
+          \chapterstyle{bringhurst}
+          \pagestyle{bringhurst}
 
           \frontmatter
         % if @title

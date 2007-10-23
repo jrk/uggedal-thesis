@@ -46,17 +46,6 @@
            \@@status]{memoir}
 
 % Laying out the page
-%
-%   * We have a stock size of ISO A4
-%   * We have zero trimming
-%   * The measure is 28pc
-%   * The typeblock have a height/width ratio of 2
-%   * The horizontal margins are 6pc for the spine
-%   * The vertical margins have a bottom/top ratio of sqrt(2)
-%\setstocksize{297mm}{210mm}
-%\settrimmedsize{297mm}{210mm}{*}
-%\settrims{0pt}{0pt}
-
 \settypeblocksize{*}{28pc}{2}
 \setlrmargins{5pc}{*}{*}
 \setulmargins{*}{*}{1.414}
@@ -67,17 +56,23 @@
 % Sidenote
 \newcommand{\sidenote}[1]{%
   \footnotemark%
-  \marginpar{%
-    \footnotesize
-    \textsuperscript{\thefootnote}\,#1
-  }%
+  \ifodd\c@page
+    \marginpar{%
+      \raggedright \footnotesize
+      \textsuperscript{\thefootnote}\,#1
+    }%
+  \else
+    \marginpar{%
+      \raggedleft \footnotesize
+      \textsuperscript{\thefootnote}\,#1
+    }%
+  \fi
 }%
 
 
-% Chapter headings
-\makechapterstyle{elements}{%
-  \setlength{\beforechapskip}{0pt}
-  \setlength{\midchapskip}{0pt}
+% Bringhurst chapter style
+\makechapterstyle{bringhurst}{%
+  \renewcommand{\chapterheadstart}{}
   \renewcommand{\printchaptername}{}
   \renewcommand{\chapternamenum}{}
   \renewcommand{\printchapternum}{%
@@ -87,7 +82,69 @@
     }%
   }%
   \renewcommand{\afterchapternum}{}
+  \renewcommand{\printchaptertitle}[1]{%
+    \raggedright\Large\scshape\MakeLowercase{##1}}
+  \renewcommand{\afterchaptertitle}{%
+    \vskip\onelineskip \hrule\vskip\onelineskip}
 }
+
+\setsecheadstyle{\raggedright\scshape\MakeLowercase}
+  \setbeforesecskip{-\onelineskip}
+  \setaftersecskip{\onelineskip}
+
+\setsubsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\itshape}
+  \setbeforesubsecskip{-\onelineskip}
+  \setaftersubsecskip{\onelineskip}
+
+
+% Bringhurst page style
+\makepagestyle{bringhurst}
+\makeevenfoot{bringhurst}{\thepage}{}{}
+\makeoddfoot{bringhurst}{}{}{\thepage}
+
+\newlength{\pwlayi}\setlength{\pwlayi}{0.45\textwidth}
+\newlength{\pwlayii}\setlength{\pwlayii}{0.45\pwlayi}
+\setlength{\pwlayi}{\headsep}
+\addtolength{\pwlayi}{\topskip}
+\addtolength{\pwlayi}{7.3\onelineskip}
+
+\newcommand{\bringpicr}[1]{%
+  \setlength{\unitlength}{1pt}
+  \begin{picture}(0,0)
+    \put(\strip@pt\marginparsep, -\strip@pt\pwlayi){%
+      \begin{minipage}[t]{\marginparwidth}
+         \raggedright\itshape #1
+      \end{minipage}}
+  \end{picture}
+}
+
+\setlength{\pwlayii}{\marginparsep}
+\addtolength{\pwlayii}{\marginparwidth}
+
+\newcommand{\bringpicl}[1]{%
+  \setlength{\unitlength}{1pt}
+  \begin{picture}(0,0)
+    \put(-\strip@pt\pwlayii, -\strip@pt\pwlayi){%
+      \begin{minipage}[t]{\marginparwidth}
+        \raggedleft\itshape #1
+      \end{minipage}}
+  \end{picture}
+}
+
+\makepsmarks{bringhurst}{%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{##1}{##1}}
+  \def\sectionmark##1{\markright{##1}}
+}
+
+\makeevenhead{bringhurst}{\bringpicl{\rightmark}}{}{}
+\makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
+
+
+% Plain headers and footers
+\makeevenfoot{plain}{\thepage}{}{}
+\makeoddfoot{plain}{}{}{\thepage}
+
 
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
