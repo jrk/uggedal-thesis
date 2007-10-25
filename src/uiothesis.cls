@@ -168,6 +168,11 @@
   \fi
 }%
 
+\newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
+\addtolength{\wholemargin}{\marginparpush}
+\newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}
+\addtolength{\wholewidth}{\wholemargin}
+
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
 \RequirePackage{memhfixc}
