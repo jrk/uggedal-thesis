@@ -333,6 +333,19 @@ module RakedLaTeX
         %     end
         }
         %   end
+        %   if @scm
+        \scm{%
+        %     if @scm[:name]
+          \textbf{\Large{<%=@scm[:name]%> SCM statistics}} \\\\
+        %     end
+        %     if @scm[:revision]
+          Revision: <%=@scm[:revision]%> \\\\
+        %     end
+        %     if @scm[:date]
+          Date: <%=@scm[:date]%> \\\\
+        %     end
+        }
+        %   end
         % end
 
         % if @date

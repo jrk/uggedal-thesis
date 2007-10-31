@@ -33,9 +33,11 @@
 
 % Internal variables
 \newcommand{\@subtitle}{}
+\newcommand{\@scm}{}
 
 % Outside variables
 \newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
+\newcommand{\scm}[1]{\renewcommand{\@scm}{#1}}
 
 % This class is based on the memoir class
 \LoadClass[\@@papersize,%
@@ -147,6 +149,8 @@
         Department of Informatics \\
         Faculty of Mathematics and Natural Sciences \\
         University of Oslo \\
+        \vfill
+        \@scm
       \end{center}
     \end{adjustwidth*}
   \end{titlingpage}
