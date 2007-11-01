@@ -172,6 +172,22 @@
   \fi
 }%
 
+% Sidetable
+\newcommand{\sidetable}[2]{%
+  \marginpar{%
+    \captionof{table}{#1}
+    \footnotesize #2
+  }
+}
+
+% Sidefigure
+\newcommand{\sidefigure}[2]{%
+  \marginpar{%
+    \captionof{figure}{#1}
+    \footnotesize #2
+  }
+}
+
 \newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
 \addtolength{\wholemargin}{\marginparpush}
 \newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}

@@ -940,6 +940,7 @@ CONFIG = RakedLaTeX::Configuration.new do |t|
   t.packages << { :longtable => [] }
   t.packages << { :booktabs => [] }
   t.packages << { :lscape => [] }
+  t.packages << { :caption => [] }
 
   t.packages << { :natbib => [] }
 
