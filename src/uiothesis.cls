@@ -181,10 +181,10 @@
 }
 
 % Sidefigure
-\newcommand{\sidefigure}[2]{%
+\newcommand{\sidefigure}[3]{%
   \marginpar{%
-    \captionof{figure}{#1}
-    \footnotesize #2
+    \footnotesize #3
+    \captionof{figure}[#1]{#2}
   }
 }
 

@@ -39,23 +39,14 @@ registered for interacting with the site in such a way that one leaves
 persistent traces. The site has a open nature enabling anonymous access
 to the majority of content.
 
-\sidetable{Thumbnail Usage on Flickr}{%
-  \label{table:flickr.thumbnail.usage}
-
-  \begin{tabular}{ll}
-
-    \toprule
-    Total & Social \\
-    \midrule
-
-    27 & 26 \\
-
-    \bottomrule
-
-
-  \end{tabular}
+\sidefigure{Flickr Photo Meta-data}{%
+  Photo Meta-data,
+  retrieved October 28, 2007, from
+  \url{http://flickr.com/photos/benbengraves/187609810/}.
+}{%
+  \includegraphics[width=\marginparwidth]{scrsh_flickr_photo_detail_metadata}
 }
-
+            
 Already on the welcome page (Figure~\ref{figure:scrsh.flickr.welcome},
 p.~\pageref{figure:scrsh.flickr.welcome})
 we're finding navigtion links that are social of
@@ -65,9 +56,13 @@ a detailed page for each particular photo by clicking on the respective
 thumbnail (Id 6, p.~\pageref{table:flickr.content.inventory.6})
 or the profile of the uploader by clicking on their user
 name (Id 7, p.~\pageref{table:flickr.content.inventory.7}). Such thumbnails
-with minimal meta data (the uploader) are prevelent all over Flickr as can be
-seen in
-Table~\ref{table:flickr.thumbnail.usage}.
+with minimal meta data (the uploader) are prevelent all over Flickr. Of the
+120 pages we collected in our content inventory 26 of them contained
+thumbnails. Most of these thumbnails%
+\sidenote{Apart from the few pages that only show a
+          stream of your own thumbnails--that is when you're browsing your
+          own photos by various methods.}
+are giving users incentives to navigate using social means.
 Which photos these thumbnails portray is dynamic. That is to say that other
 users' actions--uploading a photo, tagging a photo, taking a photo with a
 specific camera, collecting photos into sets, and adding photos to a certain
@@ -80,13 +75,13 @@ Figure~\ref{figure:scrsh.flickr.photo.detail}
 if we utilize one of these thumbnails for navigation.
 
 
-\begin{figure}
+\begin{figure}[b]
   \captionstyle{\raggedright}
   \centering
   \strictpagechecktrue
   \begin{adjustwidth*}{0em}{-\wholemargin}
     \begin{minipage}[t]{0.475\wholewidth}
-      \includegraphics[width=1\textwidth]{scrsh_flickr_welcome}
+      \includegraphics[width=\textwidth]{scrsh_flickr_welcome}
       \caption[Flickr Welcome Page]{%
          The Welcome Page,
          retrieved October 16, 2007, from \url{http://flickr.com/}.}
@@ -94,7 +89,7 @@ if we utilize one of these thumbnails for navigation.
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.475\wholewidth}
-      \includegraphics[width=1\textwidth]{scrsh_flickr_photo_detail}
+      \includegraphics[width=\textwidth]{scrsh_flickr_photo_detail}
       \caption[Flickr Photo Detail Page]{%
          A Photo Detail Page,
          retrieved October 26, 2007, from

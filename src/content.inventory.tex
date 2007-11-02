@@ -15,19 +15,9 @@ content maps based on the raw data from the inventory phase were created
 (Appendix~\ref{appendix:content.mapping},
 p.~\pageref{appendix:content.mapping}).
 
-
 \section{Flickr}
 
-The following content inventory detailed in
-Table~\ref{table:flickr.content.inventory}
-(p.~\pageref{table:flickr.content.inventory})
-represents the state of the Flickr service as of the 20th of September 2007.
-Details could very well have changed since then as
-services like these are known to have a rapid development cycle
-where changes often are imposed on the user base at quite
-a frequent rate.
-
-When collecting data one notices that there is an enormous amount of pages
+When collecting data one notices that there is lots of pages
 sharing a common structure only differing in a single or a few variables.
 Examples include the user in question for a profile page, the tag for a
 listing of photos annotated with such a tag, the date for time based history
@@ -39,80 +29,83 @@ Table~\ref{table:flickr.variable.list}
 (p.~\pageref{table:flickr.variable.list})
 
 \begin{table}
-  \begin{adjustwidth*}{0em}{-\wholemargin}
-    \caption{Variable Listing for Flickr}
-    \label{table:flickr.variable.list}
+  \caption{Variable Listing for Flickr}
+  \label{table:flickr.variable.list}
 
-    \begin{center}
-      \begin{tabular}{ll}
+  \begin{center}
+    \begin{tabular}{p{0.3\textwidth}p{0.6\textwidth}}
 
-        \toprule
-        Variable & Description \\
-        \midrule
+      \toprule
+      Variable & Description \\
+      \midrule
 
-        \var{user} &
-        Unique nick-name for a user \\
+      \var{user} &
+      Unique nick-name for a user \\
 
-        \var{photo-id} &
-        Unique numerical identifier for a photo \\
+      \var{photo-id} &
+      Unique numerical identifier for a photo \\
 
-        \var{photo-title} &
-        Textual title of a photo \\
+      \var{photo-title} &
+      Textual title of a photo \\
 
-        \var{set-id} &
-        Unique numerical identifier for a set (of photos) \\
+      \var{set-id} &
+      Unique numerical identifier for a set (of photos) \\
 
-        \var{set-title} &
-        Textual title of a set (of photos) \\
+      \var{set-title} &
+      Textual title of a set (of photos) \\
 
-        \var{tag} &
-        Unique name for a tag \\
+      \var{tag} &
+      Unique name for a tag \\
 
-        \var{group} &
-        Unique textual name for a group \\
+      \var{group} &
+      Unique textual name for a group \\
 
-        \var{camera-make} &
-        Manufacturer of digital cameras \\
+      \var{camera-make} &
+      Manufacturer of digital cameras \\
 
-        \var{camera-model} &
-        Model number of a particular digital camera \\
+      \var{camera-model} &
+      Model number of a particular digital camera \\
 
-        \var{date} &
-        A given date (year, optional month, and optional day) \\
+      \var{date} &
+      A given date (year, optional month, and optional day) \\
 
-        \var{topic-id} &
-        Unique numerical identifier for a discussion topic \\
+      \var{topic-id} &
+      Unique numerical identifier for a discussion topic \\
 
-        \var{topic-title} &
-        Textual title of a discussion topic \\
+      \var{topic-title} &
+      Textual title of a discussion topic \\
 
-        \var{member-count} &
-        Variable number of members of a group \\
+      \var{member-count} &
+      Variable number of members of a group \\
 
-        \var{license-type} &
-        One of several different \emph{Creative Commons} licenses \\
+      \var{license-type} &
+      One of several different \emph{Creative Commons} licenses \\
 
-        \bottomrule
+      \bottomrule
 
-      \end{tabular}
-    \end{center}
-  \end{adjustwidth*}
+    \end{tabular}
+  \end{center}
 \end{table}
 
-% describe the table columns
+The following content inventory detailed in
+Table~\ref{table:flickr.content.inventory}
+(p.~\pageref{table:flickr.content.inventory})
+represents the state of the Flickr service as of the 20th of September 2007.
+Details could very well have changed since then as
+services like these are known to have a rapid development cycle
+where changes often are imposed on the user base at quite
+a frequent rate.
 
-% Include this after the data has been cleaned up (use best of h1/title).
-%
-% Most pages have both a title displayed in the browsers title-bar (using a
-% HTML title anchor inside the head anchor) and a in page-heading (usually inside
-% a HTML h1 anchor). During the content inventory I took not of the most
-% descriptive of these two in the following ``Page Title'' columns. There were
-% occasions where one of these were lacking in properly describing the pages
-% content. Since the aim of this content inventory is to get an informed picture
-% of the navigational structures I simply selected the most fitting title.
-% I opted to ignore noting down such inconsistencies as one probably would to
-% when using content inventory as a tool for improving site architecture.
-
+The inventory table is structured with an identifier representing the
+hierarchical nature of the captured page. The page title is taken note of in
+addition to the name of the link that was used to navigate to this page and
+this link's location. Due to a slight ambiguity of title usage on Flickr
+we decided to collect the most representative sample%
+\sidenote{A choice between the \texttt{<title>} element in the \texttt{<head>}
+          of the HTML document and the \texttt{<h1>} top level heading inline
+          the \texttt{<body>} portion of the document was made.}.
+If this resulted in unsatisfactory results we created a new title using the
+best of our abilities to make it as clear and descriptive as possible.
 
 % Long multi-page table
 \begin{landscape}
@@ -264,7 +257,6 @@ Global navigation \\
       Photo thumbnail &
       Content area \\
       % /photos/\var{user}/\var{photo-id}
-
 
   1.5 &
   \var{user}'s geotagged photos on a Map &
@@ -764,7 +756,6 @@ Global navigation \\
   Content (tag cloud) \\
   % /photos/tags/\var{tag}
 
-
   5.10 &
   Interesting photos from \var{date} &
   \var{date} &
@@ -820,7 +811,7 @@ Global navigation \\
   % /photos/\var{user}/sets/\var{set-id}
 
     5.14.1 &
-    Photo detail in set: \var{photo-title} \\
+    Photo detail in set: \var{photo-title} &
     Photo thumbnail &
     Content area \\
     % /photos/\var{user}/\var{photo-id}/in/set-\var{set-id}
@@ -855,14 +846,12 @@ Global navigation \\
   Local navigation \\
   % /groups\_members.gne?id=\var{group}-id
 
-
 6 &
 \label{table:flickr.content.inventory.6}
 Photo detail: \var{photo-title} &
 Photo thumbnail &
 Content area \\
 % /photos/\var{user}/\var{photo-id}
-
 
 7 &
 \label{table:flickr.content.inventory.7}
