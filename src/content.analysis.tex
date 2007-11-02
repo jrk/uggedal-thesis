@@ -45,6 +45,7 @@ to the majority of content.
   \url{http://flickr.com/photos/benbengraves/187609810/}.
 }{%
   \includegraphics[width=\marginparwidth]{scrsh_flickr_photo_detail_metadata}
+  \label{figure:scrsh.flickr.photo.detail.metadata}
 }
             
 Already on the welcome page (Figure~\ref{figure:scrsh.flickr.welcome},
@@ -60,20 +61,32 @@ with minimal meta data (the uploader) are prevelent all over Flickr. Of the
 120 pages we collected in our content inventory 26 of them contained
 thumbnails. Most of these thumbnails%
 \sidenote{Apart from the few pages that only show a
-          stream of your own thumbnails--that is when you're browsing your
+          stream of your own thumbnails--when you're browsing your
           own photos by various methods.}
 are giving users incentives to navigate using social means.
 Which photos these thumbnails portray is dynamic. That is to say that other
 users' actions--uploading a photo, tagging a photo, taking a photo with a
 specific camera, collecting photos into sets, and adding photos to a certain
-group --are all determing the navigational choices you as a user is
+group--are all determing the navigational choices you as a user is
 presented with.
 
 We arrive on a photo detail page as in
 Figure~\ref{figure:scrsh.flickr.photo.detail}
 (p.~\pageref{figure:scrsh.flickr.photo.detail})
-if we utilize one of these thumbnails for navigation.
-
+if we utilize one of these thumbnails for navigation. In addition to comments
+on the photo we find meta-data as in 
+Figure~\ref{figure:scrsh.flickr.photo.detail.metadata}
+(p.~\pageref{figure:scrsh.flickr.photo.detail.metadata}). Of most importance
+for Flickr, and indeed what makes Flickr a folksonomy, is tags. Every
+registered user can label anyone's photos by applying such short descriptive
+tags. This collaborative process lay the ground work for other user's ability
+to easily browse photos by topic.
+Figure~\ref{figure:scrsh.flickr.tagcloud}
+(p.~\pageref{figure:scrsh.flickr.tagcloud}) examplifies how the user generated
+data trough tagging can be used as a navigational aid. A so called \emph{tag
+cloud} is used to visualize the popularity (and thereby importance) of the
+individual tags. The larger the tag title, the more frequent the tag has been
+in use.
 
 \begin{figure}[b]
   \captionstyle{\raggedright}
@@ -84,7 +97,7 @@ if we utilize one of these thumbnails for navigation.
       \includegraphics[width=\textwidth]{scrsh_flickr_welcome}
       \caption[Flickr Welcome Page]{%
          The Welcome Page,
-         retrieved October 16, 2007, from \url{http://flickr.com/}.}
+         retrieved October 16, 2007, from \url{http://flickr.com}.}
       \label{figure:scrsh.flickr.welcome}
     \end{minipage}
     \hfill
@@ -93,9 +106,22 @@ if we utilize one of these thumbnails for navigation.
       \caption[Flickr Photo Detail Page]{%
          A Photo Detail Page,
          retrieved October 26, 2007, from
-         \url{http://flickr.com/photos/benbengraves/187609810/}.}
+         \url{http://flickr.com/photos/benbengraves/187609810}.}
       \label{figure:scrsh.flickr.photo.detail}
     \end{minipage}
   \end{adjustwidth*}
   \normalcaption
 \end{figure}
+
+\begin{figure}
+  \centering
+  \strictpagechecktrue
+  \begin{adjustwidth*}{0em}{-\wholemargin}
+    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcloud}
+    \caption[Flickr Tag Cloud]{%
+       Tag Cloud,
+       retrieved November 1, 2007, from \url{http://flickr.com/explore}.}
+    \label{figure:scrsh.flickr.tagcloud}
+  \end{adjustwidth*}
+\end{figure}
+
