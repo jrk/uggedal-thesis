@@ -30,7 +30,8 @@ module Typeraker
     end
 
     def create_file
-      File.open(@config.base_path, 'w') do |f|
+      base_path = File.join(@config.source_dir, @config.base_latex_file)
+      File.open(base_path, 'w') do |f|
         f.puts generate
       end
       notice "Creation completed for: #{@config.base_latex_file} in " +

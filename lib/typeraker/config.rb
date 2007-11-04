@@ -228,10 +228,6 @@ module Typeraker
       binding
     end
 
-    def base_path
-      File.join(@source_dir, @base_latex_file)
-    end
-
     def to_file_name(*names)
       names.collect do |name|
         name.downcase.gsub(/ /, '.').gsub(/:|-/, '')
