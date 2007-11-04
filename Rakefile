@@ -8,13 +8,12 @@ namespace :template do
 
   desc 'Displays a base LaTeX file.'
   task :display do
-    puts Typeraker::BaseTemplate.new.generate(CONFIG.values)
-    puts CONFIG.distribution_name
+    puts Typeraker::BaseTemplate.new(CONFIG).generate
   end
 
   desc 'Generate a base LaTeX file in the source dir.'
   task :generate do
-    Typeraker::BaseTemplate.new.create_file(CONFIG)
+    Typeraker::BaseTemplate.new(CONFIG).create_file
   end
 end
 
@@ -115,6 +114,8 @@ CONFIG = Typeraker::Config.new do |t|
                     content.mapping)
 
   t.bibliography = { :bibliography => :apalike }
+
+  t.base_template_file = File.dirname(__FILE__) + '/base.template.erb'
 
   t.source_dir = File.dirname(__FILE__) + '/src'
   t.build_dir = File.dirname(__FILE__) + '/build'
