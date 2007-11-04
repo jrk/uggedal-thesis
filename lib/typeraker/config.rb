@@ -141,13 +141,6 @@ module Typeraker
     #
     attr_accessor :bibliography
 
-    # Returns a list of all latex and bibtex source files(main_content,
-    # appendices, and bibliography) with file extension (.tex and .bib).
-    def collect_source_files
-      (@main_content + @appendices).collect { |a| "#{a}.tex" } +
-        @bibliography.keys.collect { |a| "#{a}.bib" }
-    end
-
     # Directory for outputting the latex file generated from the template and
     # where all it's dependencies should be placed. Defaults to the same
     # dir as this file is placed in. Note that this is not the same as
@@ -169,6 +162,34 @@ module Typeraker
 
     # File name for the base latex file. Defaults to 'base.tex'.
     attr_accessor :base_latex_file
+
+
+    def initialize
+      @klass = { :article => [] }
+      @packages = []
+      @title = nil
+      @sub_title = nil
+      @author = nil
+      @date = nil
+      @scm = {}
+      @preamble_extras = nil
+      @abstract = nil
+      @acknowledgments = nil
+      @table_of_contents = false
+      @list_of_figures = false
+      @list_of_tables = false
+      @main_content = []
+      @appendices = []
+      @bibliography = {}
+
+      @source_dir = File.dirname(__FILE__)
+      @build_dir = File.dirname(__FILE__)
+      @distribution_dir = File.dirname(__FILE__)
+      @base_template_file = nil
+      @base_latex_file = 'base.tex'
+
+      yield self if block_given?
+    end
 
     # Returns the bibtex counterpart to the base latex file.
     def base_bibtex_file
@@ -197,31 +218,11 @@ module Typeraker
                    "r#{@scm[:revision].gsub(/:\w+/, '')}")
     end
 
-    def initialize
-      @klass = { :article => [] }
-      @packages = []
-      @title = nil
-      @sub_title = nil
-      @author = nil
-      @date = nil
-      @scm = {}
-      @preamble_extras = nil
-      @abstract = nil
-      @acknowledgments = nil
-      @table_of_contents = false
-      @list_of_figures = false
-      @list_of_tables = false
-      @main_content = []
-      @appendices = []
-      @bibliography = {}
-
-      @source_dir = File.dirname(__FILE__)
-      @build_dir = File.dirname(__FILE__)
-      @distribution_dir = File.dirname(__FILE__)
-      @base_template_file = nil
-      @base_latex_file = 'base.tex'
-
-      yield self if block_given?
+    # Returns a list of all latex and bibtex source files(main_content,
+    # appendices, and bibliography) with file extension (.tex and .bib).
+    def collect_source_files
+      (@main_content + @appendices).collect { |a| "#{a}.tex" } +
+        @bibliography.keys.collect { |a| "#{a}.bib" }
     end
 
     def values
