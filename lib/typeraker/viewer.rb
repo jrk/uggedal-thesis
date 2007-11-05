@@ -1,5 +1,4 @@
 module Typeraker
-
   module Viewer
     class Base
       include Typeraker::Cli
@@ -35,28 +34,8 @@ module Typeraker
       end
     end
 
-    class Dvi < Base
-      def initialize(*args)
-        super
-        @view_name = 'dvi'
-        @executables = %w(evince xdvi kdvi)
-      end
-    end
-
-    class Ps < Base
-      def initialize(*args)
-        super
-        @view_name = 'ps'
-        @executables = %w(evince gv)
-      end
-    end
-
-    class Pdf < Base
-      def initialize(*args)
-        super
-        @view_name = 'pdf'
-        @executables = %w(evince acroread xpdf gv)
-      end
+    %w(dvi ps pdf).each do
+      |f| require File.dirname(__FILE__) + "/viewer/#{f}"
     end
   end
 end
