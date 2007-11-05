@@ -20,14 +20,16 @@ module Typeraker
       def generate
         ERB.new(template, 0, '%<>').result(Typeraker.values) if template
       end
+      
+      private
 
-      def template
-        if File.exists? Typeraker.options[:template_file]
-          File.read Typeraker.options[:template_file]
-        else
-          error "Missing base template file"
+        def template
+          if File.exists? Typeraker.options[:template_file]
+            File.read Typeraker.options[:template_file]
+          else
+            error "Missing base template file"
+          end
         end
-      end
     end
   end
 end
