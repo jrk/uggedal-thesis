@@ -4,18 +4,16 @@ module Typeraker
     class Base
       include Typeraker::Cli
 
-      # The dir where distributed files are placed. 
-      attr_accessor :distribution_dir
-
       # The name prefix of the distribution file. 
       attr_accessor :distribution_name
 
       def distribution_file
-        File.join(@distribution_dir, "#@distribution_name.#@view_name")
+        File.join(Typeraker.options[:distribution_dir],
+                  "#@distribution_name.#@view_name")
       end
 
-      def initialize(distribution_dir, distribution_name)
-        @distribution_dir = distribution_dir
+      def initialize(distribution_name)
+        Typeraker.options[:distribution_dir] = distribution_dir
         @distribution_name = distribution_name
 
         @view_name = 'base'
@@ -34,7 +32,7 @@ module Typeraker
         return unless viewer = find_viewer
         system "#{viewer} #{distribution_file}"
         notice "Display of #@view_name completed for: #{distribution_name}" +
-               ".#@view_name in #{@distribution_dir}"
+               ".#@view_name in #{Typeraker.options[:distribution_dir]}"
       end
     end
 

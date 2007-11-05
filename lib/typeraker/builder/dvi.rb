@@ -1,8 +1,8 @@
 module Typeraker
   module Builder
     class Dvi < Base
-      def initialize(build_dir, source_dir, distribution_dir, source_files=[])
-        super(build_dir, distribution_dir)
+      def initialize(build_dir, source_dir, source_files=[])
+        super(build_dir)
         @source_dir = source_dir
         @source_files = source_files
 

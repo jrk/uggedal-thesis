@@ -29,7 +29,6 @@ namespace :build do
   task :dvi => 'template:generate' do
     Typeraker::Builder::Dvi.new(CONFIG.build_dir,
                                  CONFIG.source_dir,
-                                 CONFIG.distribution_dir,
                                  CONFIG.collect_source_files
                                  ).build(CONFIG.base_latex_file,
                                          CONFIG.base_bibtex_file,
@@ -38,17 +37,13 @@ namespace :build do
 
   desc 'Builds a ps file of the source files.'
   task :ps => 'build:dvi' do
-    Typeraker::Builder::Ps.new(CONFIG.build_dir,
-                                CONFIG.distribution_dir
-                                ).build(CONFIG.base_dvi_file,
+    Typeraker::Builder::Ps.new(CONFIG.build_dir).build(CONFIG.base_dvi_file,
                                         CONFIG.distribution_name)
   end
 
   desc 'Builds a pdf file of the source files.'
   task :pdf => 'build:ps' do
-    Typeraker::Builder::Pdf.new(CONFIG.build_dir,
-                                CONFIG.distribution_dir
-                                 ).build(CONFIG.base_ps_file,
+    Typeraker::Builder::Pdf.new(CONFIG.build_dir).build(CONFIG.base_ps_file,
                                          CONFIG.distribution_name)
   end
 end
@@ -60,20 +55,17 @@ namespace :view do
 
   desc 'Views a distributed dvi file.'
   task :dvi => 'build:dvi' do
-    Typeraker::Viewer::Dvi.new(CONFIG.distribution_dir,
-                                CONFIG.distribution_name).launch
+    Typeraker::Viewer::Dvi.new(CONFIG.distribution_name).launch
   end
 
   desc 'Views a distributed ps file.'
   task :ps => 'build:ps' do
-    Typeraker::Viewer::Ps.new(CONFIG.distribution_dir,
-                               CONFIG.distribution_name).launch
+    Typeraker::Viewer::Ps.new(CONFIG.distribution_name).launch
   end
 
   desc 'Views a distributed pdf file.'
   task :pdf => 'build:pdf' do
-    Typeraker::Viewer::Pdf.new(CONFIG.distribution_dir,
-                                CONFIG.distribution_name).launch
+    Typeraker::Viewer::Pdf.new(CONFIG.distribution_name).launch
   end
 end
 
@@ -123,5 +115,4 @@ CONFIG = Typeraker::Config.new do |t|
 
   t.source_dir = File.dirname(__FILE__) + '/src'
   t.build_dir = File.dirname(__FILE__) + '/build'
-  t.distribution_dir = File.dirname(__FILE__) + '/dist'
 end

@@ -17,18 +17,13 @@ module Typeraker
       # created if it's not present.
       attr_accessor :build_dir
 
-      # The dir where the buildt files are placed. This dir is
-      # created if it's not present.
-      attr_accessor :distribution_dir
-
       # List of source files that are part of the build. If such a list is
       # present all files are verified of existence before the process
       # proceeds.
       attr_accessor :source_files
 
-      def initialize(build_dir, distribution_dir)
+      def initialize(build_dir)
         @build_dir = build_dir
-        @distribution_dir = distribution_dir
 
         @build_name = 'base'
       end
@@ -41,10 +36,9 @@ module Typeraker
 
       def distribute_file(base_file, distribution_file)
         prepare_dir(Typeraker.options[:distribution_dir]) do
-        #prepare_dir(@distribution_dir) do
           cp(File.join(@build_dir,
                        "#{base_file.gsub(/.\w+$/, '')}.#@build_name"),
-             File.join(@distribution_dir,
+             File.join(Typeraker.options[:distribution_dir],
                        "#{distribution_file}.#@build_name"))
         end
       end
