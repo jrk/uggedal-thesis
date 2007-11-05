@@ -19,7 +19,7 @@ module Typeraker
   #     t.appendices = %w(data.tables concent.forms)
   #   end
   #
-  class BaseTemplate
+  class Template
     require 'erb'
     include Typeraker::Cli
 

@@ -12,12 +12,12 @@ namespace :template do
 
   desc 'Displays a base LaTeX file.'
   task :display do
-    puts Typeraker::BaseTemplate.new(CONFIG).generate
+    puts Typeraker::Template.new(CONFIG).generate
   end
 
   desc 'Generate a base LaTeX file in the source dir.'
   task :generate do
-    Typeraker::BaseTemplate.new(CONFIG).create_file
+    Typeraker::Template.new(CONFIG).create_file
   end
 end
 
