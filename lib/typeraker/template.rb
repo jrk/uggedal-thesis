@@ -39,12 +39,12 @@ module Typeraker
     end
 
     def generate
-      ERB.new(template, 0, '%<>').result(@config.values)
+      ERB.new(template, 0, '%<>').result(@config.values) if template
     end
 
     def template
-      if @config.base_template_file
-        File.read @config.base_template_file
+      if File.exists? Typeraker.options[:template_file]
+        File.read Typeraker.options[:template_file]
       else
         error "Missing base template file"
       end

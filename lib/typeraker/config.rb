@@ -141,9 +141,6 @@ module Typeraker
     #
     attr_accessor :bibliography
 
-    # Full file path for the base template file.
-    attr_accessor :base_template_file
-
     # File name for the base latex file. Defaults to 'base.tex'.
     attr_accessor :base_latex_file
 
@@ -166,7 +163,6 @@ module Typeraker
       @appendices = []
       @bibliography = {}
 
-      @base_template_file = nil
       @base_latex_file = 'base.tex'
 
       yield self if block_given?

@@ -107,6 +107,4 @@ CONFIG = Typeraker::Config.new do |t|
                     content.mapping)
 
   t.bibliography = { :bibliography => :apalike }
-
-  t.base_template_file = File.dirname(__FILE__) + '/base.template.erb'
 end
