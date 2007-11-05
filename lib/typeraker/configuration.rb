@@ -29,7 +29,7 @@ module Typeraker
         if File.exists? preference_file
           require 'yaml'
           File.open(preference_file) { |file| preferences = YAML.load(file) }
-          preferences = preferences[:template]
+          preferences = preferences[:template] if preferences[:template]
         end
         fetch_scm_info(defaults.merge(preferences))
       end

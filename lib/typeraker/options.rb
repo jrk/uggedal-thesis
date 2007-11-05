@@ -31,7 +31,7 @@ module Typeraker
         if File.exists? preference_file
           require 'yaml'
           File.open(preference_file) { |file| preferences = YAML.load(file) }
-          preferences = preferences[:typeraker]
+          preferences = preferences[:typeraker] if preferences[:typeraker]
         end
         base_file_variations(absolute_paths(defaults.merge(preferences)))
       end
