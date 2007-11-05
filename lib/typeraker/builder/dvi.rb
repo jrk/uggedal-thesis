@@ -1,9 +1,8 @@
 module Typeraker
   module Builder
     class Dvi < Base
-      def initialize(build_dir, source_dir, source_files=[])
+      def initialize(build_dir, source_files=[])
         super(build_dir)
-        @source_dir = source_dir
         @source_files = source_files
 
         @build_name = 'dvi'
@@ -42,8 +41,10 @@ module Typeraker
       end
 
       def copy_source_files
+        source_dir = Typeraker.options[:source_dir]
         %w(tex bib sty cls clo eps jpg).each do |file_extension|
-          FileList["#{@source_dir}/*.#{file_extension}"].each do |file|
+          source_dir
+          FileList["#{source_dir}/*.#{file_extension}"].each do |file|
             cp(file,  @build_dir)
           end
         end

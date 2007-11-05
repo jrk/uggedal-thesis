@@ -28,7 +28,6 @@ namespace :build do
   desc 'Builds a dvi file of the source files.'
   task :dvi => 'template:generate' do
     Typeraker::Builder::Dvi.new(CONFIG.build_dir,
-                                 CONFIG.source_dir,
                                  CONFIG.collect_source_files
                                  ).build(CONFIG.base_latex_file,
                                          CONFIG.base_bibtex_file,
@@ -71,8 +70,7 @@ end
 
 desc 'Spell checks source files.'
 task :spell do
-  Typeraker::Spell.new(CONFIG.source_dir,
-                        CONFIG.collect_source_files.grep(/\.tex$/))
+  Typeraker::Spell.new(CONFIG.collect_source_files.grep(/\.tex$/))
 end
 
 CONFIG = Typeraker::Config.new do |t|
@@ -113,6 +111,5 @@ CONFIG = Typeraker::Config.new do |t|
 
   t.base_template_file = File.dirname(__FILE__) + '/base.template.erb'
 
-  t.source_dir = File.dirname(__FILE__) + '/src'
   t.build_dir = File.dirname(__FILE__) + '/build'
 end

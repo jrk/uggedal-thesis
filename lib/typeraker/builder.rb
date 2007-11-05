@@ -10,9 +10,6 @@ module Typeraker
     class Base
       include Typeraker::Cli
 
-      # The dir where the files to be built should be located.
-      attr_accessor :source_dir
-
       # The dir where the build should be run. This dir is
       # created if it's not present.
       attr_accessor :build_dir

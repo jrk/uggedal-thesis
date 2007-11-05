@@ -9,6 +9,7 @@ module Typeraker
   autoload :Runner,   'typeraker/runner'
   autoload :Builder,  'typeraker/builder'
   autoload :Viewer,   'typeraker/viewer'
+  autoload :Spell,    'typeraker/spell'
 
   # Setting up an options accessor.
   def self.options

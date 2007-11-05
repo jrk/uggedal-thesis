@@ -141,12 +141,6 @@ module Typeraker
     #
     attr_accessor :bibliography
 
-    # Directory for outputting the latex file generated from the template and
-    # where all it's dependencies should be placed. Defaults to the same
-    # dir as this file is placed in. Note that this is not the same as
-    # the current working dir (pwd).
-    attr_accessor :source_dir
-
     # Directory for building source files into binary files.
     # Defaults to the same dir as this file is placed in. Note that this
     # is not the same as the current working dir (pwd).
@@ -177,7 +171,6 @@ module Typeraker
       @appendices = []
       @bibliography = {}
 
-      @source_dir = File.dirname(__FILE__)
       @build_dir = File.dirname(__FILE__)
       @base_template_file = nil
       @base_latex_file = 'base.tex'
