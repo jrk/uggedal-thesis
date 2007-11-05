@@ -7,7 +7,9 @@ module Typeraker
         build_dir        = 'tmp'
         distribution_dir = 'dist'
         template_file    = 'template.erb'
-        base_file_path   = source_dir + '/base'
+        base_file        = 'base'
+        spell_dir        = source_dir
+        spell_file       = 'dictionary.ispell'
 
         @defaults ||= {
           :root_dir         => root_dir,
@@ -15,8 +17,9 @@ module Typeraker
           :build_dir        => build_dir,
           :distribution_dir => distribution_dir,
           :template_file    => template_file,
-          :base_file_path   => base_file_path,
-          :base_file        => File.basename(base_file_path)
+          :base_file        => base_file,
+          :spell_dir        => spell_dir,
+          :spell_file       => spell_file
         }
       end
 
@@ -34,7 +37,12 @@ module Typeraker
       end
 
       def absolute_paths(options)
-        %w(source_dir build_dir distribution_dir template_file).each do |key|
+        relatives = %w(source_dir
+                       build_dir
+                       distribution_dir
+                       template_file
+                       spell_dir)
+        relatives.each do |key|
           options[key.to_sym] = File.join(options[:root_dir],
                                           options[key.to_sym])
         end
