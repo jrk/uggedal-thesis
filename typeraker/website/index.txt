@@ -1,4 +1,4 @@
-h1. typeraker
+h1. Type Raker
 
 h1. &#x2192; 'typeraker'
 
@@ -35,5 +35,5 @@ This code is free to use under the terms of the MIT license.
 
 h2. Contact
 
-Comments are welcome. Send an email to "FIXME full name":mailto:FIXME email via the "forum":http://groups.google.com/group/typeraker
+Comments are welcome. Send an email to "Eivind Uggedal":mailto:eu@redflavor.com via the "forum":http://groups.google.com/group/typeraker
 
