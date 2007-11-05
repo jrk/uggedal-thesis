@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/lib/typeraker'
 
 task :dev do
-  puts Typeraker.options[:root_dir]
+  puts Typeraker.options.inspect
 end
 
 task :default => 'build:dvi'

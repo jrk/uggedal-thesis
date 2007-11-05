@@ -3,10 +3,10 @@ module Typeraker
     class << self
       def defaults
         root_dir         = Dir.pwd
-        source_dir       = root_dir + '/src'
-        build_dir        = root_dir + '/tmp'
-        distribution_dir = root_dir + '/dist'
-        template_file    = root_dir + '/template.erb'
+        source_dir       = 'src'
+        build_dir        = 'tmp'
+        distribution_dir = 'dist'
+        template_file    = 'template.erb'
         base_file_path   = source_dir + '/base'
 
         @defaults ||= {
@@ -28,8 +28,17 @@ module Typeraker
         if File.exists? preference_file
           require 'yaml'
           File.open(preference_file) { |file| preferences = YAML.load(file) }
+          preferences = preferences[:typeraker]
         end
-        base_file_variations(defaults.merge(preferences))
+        base_file_variations(absolute_paths(defaults.merge(preferences)))
+      end
+
+      def absolute_paths(options)
+        %w(source_dir build_dir distribution_dir template_file).each do |key|
+          options[key.to_sym] = File.join(options[:root_dir],
+                                          options[key.to_sym])
+        end
+        options
       end
 
       def base_file_variations(options)
