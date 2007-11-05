@@ -5,7 +5,8 @@ module Typeraker
         @build_name = 'ps'
       end
 
-      def build(base_dvi_file, distribution_name)
+      def build(distribution_name)
+        base_dvi_file = Typeraker.options[:base_dvi_file]
         build_dir do
           dvips = Typeraker::Runner::DviPs.new(base_dvi_file)
         end

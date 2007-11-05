@@ -28,21 +28,17 @@ namespace :build do
   desc 'Builds a dvi file of the source files.'
   task :dvi => 'template:generate' do
     Typeraker::Builder::Dvi.new(CONFIG.collect_source_files
-                                 ).build(CONFIG.base_latex_file,
-                                         CONFIG.base_bibtex_file,
-                                         CONFIG.distribution_name)
+                                 ).build(CONFIG.distribution_name)
   end
 
   desc 'Builds a ps file of the source files.'
   task :ps => 'build:dvi' do
-    Typeraker::Builder::Ps.new.build(CONFIG.base_dvi_file,
-                                        CONFIG.distribution_name)
+    Typeraker::Builder::Ps.new.build(CONFIG.distribution_name)
   end
 
   desc 'Builds a pdf file of the source files.'
   task :pdf => 'build:ps' do
-    Typeraker::Builder::Pdf.new.build(CONFIG.base_ps_file,
-                                         CONFIG.distribution_name)
+    Typeraker::Builder::Pdf.new.build(CONFIG.distribution_name)
   end
 end
 

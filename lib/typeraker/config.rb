@@ -141,10 +141,6 @@ module Typeraker
     #
     attr_accessor :bibliography
 
-    # File name for the base latex file. Defaults to 'base.tex'.
-    attr_accessor :base_latex_file
-
-
     def initialize
       @klass = { :article => [] }
       @packages = []
@@ -163,29 +159,7 @@ module Typeraker
       @appendices = []
       @bibliography = {}
 
-      @base_latex_file = 'base.tex'
-
       yield self if block_given?
-    end
-
-    # Returns the bibtex counterpart to the base latex file.
-    def base_bibtex_file
-      @base_latex_file.gsub(/\.tex$/, '.aux') if @base_latex_file
-    end
-
-    # Returns the dvi counterpart to the base latex file.
-    def base_dvi_file
-      @base_latex_file.gsub(/\.tex$/, '.dvi') if @base_latex_file
-    end
-
-    # Returns the ps counterpart to the base latex file.
-    def base_ps_file
-      @base_latex_file.gsub(/\.tex$/, '.ps') if @base_latex_file
-    end
-
-    # Returns the pdf counterpart to the base latex file.
-    def base_pdf_file
-      @base_latex_file.gsub(/\.tex$/, '.pdf') if @base_latex_file
     end
 
     # File name prefix for distributed files.

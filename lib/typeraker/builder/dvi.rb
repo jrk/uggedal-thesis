@@ -7,8 +7,12 @@ module Typeraker
         @build_name = 'dvi'
       end
 
-      def build(base_latex_file, base_bibtex_file=nil, distribution_name=nil)
+      def build(distribution_name=nil)
         clean_build_dir
+
+        base_latex_file = Typeraker.options[:base_latex_file]
+        base_bibtex_file = Typeraker.options[:base_bibtex_file]
+
         build_dir do
           copy_source_files
           return unless source_files_present?
