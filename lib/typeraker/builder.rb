@@ -10,30 +10,24 @@ module Typeraker
     class Base
       include Typeraker::Cli
 
-      # The dir where the build should be run. This dir is
-      # created if it's not present.
-      attr_accessor :build_dir
-
       # List of source files that are part of the build. If such a list is
       # present all files are verified of existence before the process
       # proceeds.
       attr_accessor :source_files
 
-      def initialize(build_dir)
-        @build_dir = build_dir
-
+      def initialize
         @build_name = 'base'
       end
 
       def build_dir
-        prepare_dir(@build_dir) do
+        prepare_dir(Typeraker.options[:build_dir]) do
           yield
         end
       end
 
       def distribute_file(base_file, distribution_file)
         prepare_dir(Typeraker.options[:distribution_dir]) do
-          cp(File.join(@build_dir,
+          cp(File.join(Typeraker.options[:build_dir],
                        "#{base_file.gsub(/.\w+$/, '')}.#@build_name"),
              File.join(Typeraker.options[:distribution_dir],
                        "#{distribution_file}.#@build_name"))

@@ -141,11 +141,6 @@ module Typeraker
     #
     attr_accessor :bibliography
 
-    # Directory for building source files into binary files.
-    # Defaults to the same dir as this file is placed in. Note that this
-    # is not the same as the current working dir (pwd).
-    attr_accessor :build_dir
-
     # Full file path for the base template file.
     attr_accessor :base_template_file
 
@@ -171,7 +166,6 @@ module Typeraker
       @appendices = []
       @bibliography = {}
 
-      @build_dir = File.dirname(__FILE__)
       @base_template_file = nil
       @base_latex_file = 'base.tex'
 

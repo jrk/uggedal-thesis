@@ -1,8 +1,7 @@
 module Typeraker
   module Builder
     class Dvi < Base
-      def initialize(build_dir, source_files=[])
-        super(build_dir)
+      def initialize(source_files=[])
         @source_files = source_files
 
         @build_name = 'dvi'
@@ -33,11 +32,13 @@ module Typeraker
         end
         distribute_file(base_latex_file, distribution_name)
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
-               "in #{@build_dir}"
+               "in #{Typeraker.options[:build_dir]}"
       end
 
       def clean_build_dir
-        rm_r @build_dir if File.exists? @build_dir
+        if File.exists? Typeraker.options[:build_dir]
+          rm_r Typeraker.options[:build_dir]
+        end
       end
 
       def copy_source_files
@@ -45,7 +46,7 @@ module Typeraker
         %w(tex bib sty cls clo eps jpg).each do |file_extension|
           source_dir
           FileList["#{source_dir}/*.#{file_extension}"].each do |file|
-            cp(file,  @build_dir)
+            cp(file,  Typeraker.options[:build_dir])
           end
         end
       end

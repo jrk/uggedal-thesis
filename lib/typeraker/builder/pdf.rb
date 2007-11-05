@@ -2,7 +2,6 @@ module Typeraker
   module Builder
     class Pdf < Base
       def initialize(*args)
-        super
         @build_name = 'pdf'
       end
 
@@ -12,7 +11,7 @@ module Typeraker
         end
         distribute_file(base_ps_file, distribution_name)
         notice "Build of #{@build_name} completed for: #{base_ps_file} " +
-               "in #{@build_dir}"
+               "in #{Typeraker.options[:build_dir]}"
       end
     end
   end
