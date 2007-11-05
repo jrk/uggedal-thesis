@@ -59,62 +59,8 @@ module Typeraker
       end
     end
 
-    class LaTeX < Base
-      def initialize(input_file, silent=false, executable='latex')
-        super
-      end
-
-      def run
-        disable_stdinn do
-          messages = /^(Overfull|Underfull|No file|Package \w+ Warning:)/
-          run = `#@executable #@input_file`
-          @warnings = run.grep(messages)
-          lines = run.split("\n")
-          while lines.shift
-            if lines.first =~ /^!/
-              3.times { @errors << lines.shift }
-            end
-          end
-          feedback
-        end
-      end
-    end
-
-    class BibTeX < Base
-      def initialize(input_file, silent=false, executable='bibtex')
-        super
-      end
-
-      def run
-        messages = /^I (found no|couldn't open)/
-        @warnings = `#@executable #@input_file`.grep(messages)
-        feedback
-      end
-    end
-
-    class DviPs < Base
-      def initialize(input_file, silent=false, executable='dvips')
-        super
-      end
-
-      def run
-        disable_stderr do
-          @warnings = `#@executable -Ppdf #@input_file`.split("\n")
-        end
-        feedback
-      end
-    end
-
-    class Ps2Pdf < Base
-      def initialize(input_file, silent=false, executable='ps2pdf')
-        super
-      end
-
-      def run
-        disable_stderr do
-          @warnings = `#@executable #@input_file`.split("\n")
-        end
-      end
+    %w(latex bibtex dvips ps2pdf).each do
+      |f| require File.dirname(__FILE__) + "/runner/#{f}"
     end
   end
 end

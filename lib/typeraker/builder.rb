@@ -41,7 +41,10 @@ module Typeraker
           end
       end
     end
+
+    %w(dvi ps pdf).each do
+      |f| require File.dirname(__FILE__) + "/builder/#{f}"
+    end
   end
 end
 
-%w(dvi ps pdf).each { |f| require File.dirname(__FILE__) + "/builder/#{f}" }
