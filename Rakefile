@@ -1,2 +1,2 @@
 require 'rake'
-load File.dirname(__FILE__) + '/lib/tasks/typeraker.rake'
+load File.dirname(__FILE__) + '/typeraker/lib/tasks/typeraker.rake'
