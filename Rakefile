@@ -64,5 +64,5 @@ end
 
 desc 'Spell checks source files.'
 task :spell do
-  Typeraker::Spell.new(CONFIG.collect_source_files.grep(/\.tex$/))
+  Typeraker::Spell.check
 end
