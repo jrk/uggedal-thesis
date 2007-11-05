@@ -12,8 +12,8 @@ module Typeraker
                   "#@distribution_name.#@view_name")
       end
 
-      def initialize(distribution_name)
-        @distribution_name = distribution_name
+      def initialize
+        @distribution_name = Typeraker::Configuration.distribution_name
 
         @view_name = 'base'
         @executables = []
@@ -30,7 +30,7 @@ module Typeraker
       def launch
         return unless viewer = find_viewer
         system "#{viewer} #{distribution_file}"
-        notice "Display of #@view_name completed for: #{distribution_name}" +
+        notice "Display of #@view_name completed for: #{@distribution_name}" +
                ".#@view_name in #{Typeraker.options[:distribution_dir]}"
       end
     end

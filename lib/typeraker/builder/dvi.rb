@@ -1,13 +1,13 @@
 module Typeraker
   module Builder
     class Dvi < Base
-      def initialize(source_files=[])
-        @source_files = source_files
+      def initialize
+        @source_files = Typeraker::Configuration.collect_source_files
 
         @build_name = 'dvi'
       end
 
-      def build(distribution_name=nil)
+      def build
         clean_build_dir
 
         base_latex_file = Typeraker.options[:base_latex_file]
@@ -34,7 +34,7 @@ module Typeraker
             bibtex.feedback
           end
         end
-        distribute_file(base_latex_file, distribution_name)
+        distribute_file(base_latex_file)
         notice "Build of #{@build_name} completed for: #{base_latex_file} " +
                "in #{Typeraker.options[:build_dir]}"
       end

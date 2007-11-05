@@ -1,59 +1,63 @@
-% @klass.each do |klass, options|
+% config[:klass].each do |klass, options|
+%   if options
 \documentclass[<%=options.join(',')%>]{<%=klass%>}
+%   else
+\documentclass{<%=klass%>}
+%   end
 % end
 
-% @packages.each do |package|
+% config[:packages].each do |package|
 %   package.each do |name, options|
+%     if options
 \usepackage[<%=options.join(',')%>]{<%=name%>}
+%     else
+\usepackage{<%=name%>}
+%     end
 %   end
 % end
 
-% if @title
-\title{<%=@title%>}
-%   if @sub_title
-\subtitle{<%=@sub_title%>}
+% if config[:title]
+\title{<%=config[:title]%>}
+%   if config[:sub_title]
+\subtitle{<%=config[:sub_title]%>}
 %   end
-%   if @author && @author[:name]
+%   if config[:author] && config[:author][:name]
 \author{%
-  <%=@author[:name]%>
-%     if @author[:email]
+  <%=config[:author][:name]%>
+%     if config[:author][:email]
   \\
-  \texttt{<%=@author[:email]%>}
+  \texttt{<%=config[:author][:email]%>}
 %     end
 }
 %   end
-%   if @scm
+%   if config[:scm]
 \scm{%
-%     if @scm[:name]
-  \textbf{\Large{<%=@scm[:name]%> SCM statistics}} \\
+%     if config[:scm][:name]
+  \textbf{\Large{<%=config[:scm][:name]%> SCM statistics}} \\
 %     end
-%     if @scm[:revision]
-  Revision: <%=@scm[:revision]%> \\
+%     if config[:scm][:revision]
+  Revision: <%=config[:scm][:revision]%> \\
 %     end
-%     if @scm[:date]
-  Date: <%=@scm[:date]%> \\
+%     if config[:scm][:date]
+  Date: <%=config[:scm][:date]%> \\
 %     end
 }
 %   end
 % end
 
-% if @date
-\date{<%=@date%>}
+% if config[:date]
+\date{<%=config[:date]%>}
 % end
 
-% if @preamble_extras
-<%=@preamble_extras%>
-% end
-
-% if @abstract
+% if config[:abstract]
 \documentabstract{%
-  <%=@abstract%>
+  <%=config[:abstract]%>
 }
 % end
 
-% if @acknowledgments
+% if config[:acknowledgments]
 \acknowledgments{%
-  <%=@acknowledgments%>
+  <%=config[:acknowledgments]%>
 }
 % end
 
@@ -62,37 +66,37 @@
   \pagestyle{bringhurst}
 
   \frontmatter
-% if @title
+% if config[:title]
     \maketitle
 % end
-% if @table_of_contents
+% if config[:table_of_contents]
     \cleardoublepage
     \tableofcontents
 % end
-% if @list_of_figures
+% if config[:list_of_figures]
     \cleardoublepage
     \listoffigures
 % end
-% if @list_of_tables
+% if config[:list_of_tables]
     \cleardoublepage
     \listoftables
 % end
 
   \mainmatter
-% @main_content.each do |content|
+% config[:main_content].each do |content|
     \include{<%=content%>}
 % end
 
-% if @appendices && @appendices.any?
+% if config[:appendices] && config[:appendices].any?
     \begin{appendices}
-%   @appendices.each do |appendix|
+%   config[:appendices].each do |appendix|
       \include{<%=appendix%>}
 %   end
     \end{appendices}
 % end
 
   \backmatter
-% @bibliography.each do |file, style|
+% config[:bibliography].each do |file, style|
     \bibliographystyle{<%=style%>}
     \bibliography{<%=file%>}
 % end

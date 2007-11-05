@@ -25,12 +25,13 @@ module Typeraker
         end
       end
 
-      def distribute_file(base_file, distribution_file)
+      def distribute_file(base_file)
         prepare_dir(Typeraker.options[:distribution_dir]) do
           cp(File.join(Typeraker.options[:build_dir],
                        "#{base_file.gsub(/.\w+$/, '')}.#@build_name"),
              File.join(Typeraker.options[:distribution_dir],
-                       "#{distribution_file}.#@build_name"))
+                       Typeraker::Configuration.distribution_name +
+                       ".#@build_name"))
         end
       end
 

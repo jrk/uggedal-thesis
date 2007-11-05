@@ -1,3 +1,40 @@
 ---
 :typeraker:
-    :build_dir: build
+  :build_dir: build
+
+:template:
+  :klass:
+    :uiothesis:
+      - 11pt
+  :packages:
+    - :fontenc:
+      - T1
+    - :mathpazo:
+    - :courier:
+    - :helvet:
+    - :graphicx:
+    - :longtable:
+    - :booktabs:
+    - :lscape:
+    - :caption:
+    - :natbib:
+  :title:
+    Social Navigation in Modern Web Services
+  :sub_title:
+    Classification, Prototyping, and Applicability
+  :author:
+    :name:
+      Eivind Uggedal
+  :scm: Mercurial
+  :table_of_contents: true
+  :list_of_figures: true
+  :list_of_tables: true
+  :main_content:
+    - introduction
+    - content.analysis
+  :appendices:
+    - content.inventory
+    - content.mapping
+  :bibliography:
+    :bibliography:
+      :apalike

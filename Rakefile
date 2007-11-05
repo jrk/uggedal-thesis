@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/lib/typeraker'
 
 task :dev do
-  puts Typeraker.options.inspect
+  puts Typeraker.config.inspect
 end
 
 task :default => 'build:dvi'
@@ -12,12 +12,12 @@ namespace :template do
 
   desc 'Displays a base LaTeX file.'
   task :display do
-    puts Typeraker::Template.new(CONFIG).generate
+    puts Typeraker::Template.generate
   end
 
   desc 'Generate a base LaTeX file in the source dir.'
   task :generate do
-    Typeraker::Template.new(CONFIG).create_file
+    Typeraker::Template.create_file
   end
 end
 
@@ -27,18 +27,17 @@ namespace :build do
 
   desc 'Builds a dvi file of the source files.'
   task :dvi => 'template:generate' do
-    Typeraker::Builder::Dvi.new(CONFIG.collect_source_files
-                                 ).build(CONFIG.distribution_name)
+    Typeraker::Builder::Dvi.new.build
   end
 
   desc 'Builds a ps file of the source files.'
   task :ps => 'build:dvi' do
-    Typeraker::Builder::Ps.new.build(CONFIG.distribution_name)
+    Typeraker::Builder::Ps.new.build
   end
 
   desc 'Builds a pdf file of the source files.'
   task :pdf => 'build:ps' do
-    Typeraker::Builder::Pdf.new.build(CONFIG.distribution_name)
+    Typeraker::Builder::Pdf.new.build
   end
 end
 
@@ -49,58 +48,21 @@ namespace :view do
 
   desc 'Views a distributed dvi file.'
   task :dvi => 'build:dvi' do
-    Typeraker::Viewer::Dvi.new(CONFIG.distribution_name).launch
+    Typeraker::Viewer::Dvi.new.launch
   end
 
   desc 'Views a distributed ps file.'
   task :ps => 'build:ps' do
-    Typeraker::Viewer::Ps.new(CONFIG.distribution_name).launch
+    Typeraker::Viewer::Ps.new.launch
   end
 
   desc 'Views a distributed pdf file.'
   task :pdf => 'build:pdf' do
-    Typeraker::Viewer::Pdf.new(CONFIG.distribution_name).launch
+    Typeraker::Viewer::Pdf.new.launch
   end
 end
 
 desc 'Spell checks source files.'
 task :spell do
   Typeraker::Spell.new(CONFIG.collect_source_files.grep(/\.tex$/))
-end
-
-CONFIG = Typeraker::Config.new do |t|
-  t.klass = { :uiothesis => %w(11pt) }
-
-  t.packages << { :fontenc => ['T1'] }
-  t.packages << { :mathpazo => [] }
-  t.packages << { :courier => [] }
-  t.packages << { :helvet => [] }
-
-  t.packages << { :graphicx => [] }
-
-  t.packages << { :longtable => [] }
-  t.packages << { :booktabs => [] }
-  t.packages << { :lscape => [] }
-  t.packages << { :caption => [] }
-
-  t.packages << { :natbib => [] }
-
-  t.title = 'Social Navigation in Modern Web Services:'
-  t.sub_title = 'Classification, Prototyping, and Applicability'
-  t.author = { :name => 'Eivind Uggedal' }
-  t.date = Time.now.strftime('%B %Y')
-
-  t.scm = Typeraker::Scm::Mercurial.new.collect_scm_stats
-
-  t.table_of_contents = true
-  t.list_of_figures = true
-  t.list_of_tables = true
-
-  t.main_content = %w(introduction
-                      content.analysis)
-
-  t.appendices = %w(content.inventory
-                    content.mapping)
-
-  t.bibliography = { :bibliography => :apalike }
 end

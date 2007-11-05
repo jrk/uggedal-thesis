@@ -5,12 +5,12 @@ module Typeraker
         @build_name = 'pdf'
       end
 
-      def build(distribution_name)
+      def build
         base_ps_file = Typeraker.options[:base_ps_file]
         build_dir do
           dvips = Typeraker::Runner::Ps2Pdf.new(base_ps_file)
         end
-        distribute_file(base_ps_file, distribution_name)
+        distribute_file(base_ps_file)
         notice "Build of #{@build_name} completed for: #{base_ps_file} " +
                "in #{Typeraker.options[:build_dir]}"
       end
