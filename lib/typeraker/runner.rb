@@ -13,8 +13,7 @@ module Typeraker
       # If true no messages is sendt to standard out. Defaults to false.
       attr_accessor :silent
 
-      # The LaTeX executable. Defaults to plain `latex` if it's found on
-      # the system.
+      # The executable to be run.
       attr_accessor :executable
 
       # Contains a list of possible warnings after a run.

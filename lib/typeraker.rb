@@ -23,6 +23,7 @@ module Typeraker
       @@configurations ||= Typeraker::Configuration.setup
     end
 
+    # Returns binding that can be used in erb templates.
     def values
       binding
     end
