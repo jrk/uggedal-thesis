@@ -27,17 +27,17 @@ namespace :build do
 
   desc 'Builds a dvi file of the source files.'
   task :dvi => 'template:generate' do
-    Typeraker::Builder::Dvi.new.build
+    Typeraker::Builder::Dvi.build
   end
 
   desc 'Builds a ps file of the source files.'
   task :ps => 'build:dvi' do
-    Typeraker::Builder::Ps.new.build
+    Typeraker::Builder::Ps.build
   end
 
   desc 'Builds a pdf file of the source files.'
   task :pdf => 'build:ps' do
-    Typeraker::Builder::Pdf.new.build
+    Typeraker::Builder::Pdf.build
   end
 end
 
