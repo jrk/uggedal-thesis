@@ -63,6 +63,7 @@
     \marginpar{%
       \vspace{90pt}
       \scalebox{4}{\chapnumfont \thechapter}
+      \vspace{20pt}
     }%
   }%
   \renewcommand{\afterchapternum}{}
