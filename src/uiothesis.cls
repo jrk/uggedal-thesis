@@ -157,6 +157,13 @@
   \end{titlingpage}
 }
 
+% Sidenote filler
+\newcommand{\sidefill}{%
+  \marginpar{%
+    \vspace{50pt}
+  }%
+}%
+
 % Sidenote
 \newcommand{\sidenote}[1]{%
   \footnotemark%
