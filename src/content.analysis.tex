@@ -39,15 +39,6 @@ registered for interacting with the site in such a way that one leaves
 persistent traces. The site has a open nature enabling anonymous access
 to the majority of content.
 
-\sidefigure{Flickr Photo Meta-data}{%
-  Photo Meta-data,
-  retrieved October 28, 2007, from
-  \url{http://flickr.com/photos/benbengraves/187609810/}.
-}{%
-  \includegraphics[width=\marginparwidth]{scrsh_flickr_photo_detail_metadata}
-  \label{figure:scrsh.flickr.photo.detail.metadata}
-}
-
 \subsection{Thumbnails}
 
 Already on the welcome page (Figure~\ref{figure:scrsh.flickr.welcome},
@@ -61,11 +52,11 @@ or the profile of the uploader by clicking on their user
 name (Id 7, p.~\pageref{table:flickr.content.inventory.7}). Such thumbnails
 with minimal meta data (the uploader) are prevalent all over Flickr. Of the
 120 pages we collected in our content inventory 26 of them contained
-thumbnails. Most of these thumbnails%
+thumbnails. Most of these thumbnails
+are giving users incentives to navigate using social means%
 \sidenote{Apart from the few pages that only show a
           stream of your own thumbnails--when you're browsing your
-          own photos by various methods.}
-are giving users incentives to navigate using social means.
+          own photos by various methods.}.
 Which photos these thumbnails portray is dynamic. That is to say that other
 users' actions--uploading a photo, tagging a photo, taking a photo with a
 specific camera, collecting photos into sets, and adding photos to a certain
@@ -74,6 +65,17 @@ presented with.
 % maby connect this to thumbnail paper: cockburn06
 
 \subsection{Meta-data}
+
+\sidefill
+\sidefigure{Flickr Photo Meta-data}{%
+  Photo Meta-data,
+  retrieved October 28, 2007, from
+  \url{http://flickr.com/photos/benbengraves/187609810/}.
+}{%
+  \includegraphics[width=\marginparwidth]{scrsh_flickr_photo_detail_metadata}
+  \label{figure:scrsh.flickr.photo.detail.metadata}
+}
+
 We arrive on a photo detail page as in
 Figure~\ref{figure:scrsh.flickr.photo.detail}
 (p.~\pageref{figure:scrsh.flickr.photo.detail})
@@ -81,8 +83,24 @@ if we utilize one of these thumbnails for navigation. In addition to comments
 on the photo we find meta-data as in 
 Figure~\ref{figure:scrsh.flickr.photo.detail.metadata}
 (p.~\pageref{figure:scrsh.flickr.photo.detail.metadata}).
+Meta-data include the date the photo was taken, the manufacturer and the model
+of the camera that was used which are all so called Exif%
+\sidenote{Exchangeable Image File: a specification for image file format used
+in digital cameras.}
+data. Flickr utilize this data by enabeling navigation based both on the
+dates a picture was taken and by camera make and model. Say you're trying to
+find a picture from your home town on a particulary beautiful summer day. By
+using date of picture taking based navigation coupled with tags or
+geographical data (which both will be discussed shortly) you're probably
+increasing you chances of finding what you want. Camera make information could
+be useful when looking at the quality of pictures taken with certain cameras
+before purchasing one yourself.
 
 \subsection{Folksonomy}
+% most important, basis for geo i early days with geo tagging and third party
+% services (citation needed). Cite interview with co-founder about it's
+% importance and findability it provides. Write about clustering, it's
+% principles and what it provides. Cite when it was introduced.
 Of most importance
 for Flickr, and indeed what makes Flickr a folksonomy, is tags. Every
 registered user can label anyone's photos by applying such short descriptive
@@ -95,20 +113,27 @@ cloud} is used to visualize the popularity (and thereby importance) of the
 individual tags. The larger the tag title, the more frequent the tag has been
 in use.
 
+Tagging is a very flexible approach only hindered by users' imagination. In the
+early days of Flickr there was no support for geographical data. Users soon
+found a remedy for this by tagging photos with longditude and latitude
+(citation needed).
+
 % Split into these sections:
 
-\subsection{Meta-data}
-% Camera specific data. Most triggered when the user decides to use a certain
-% camera (or maby even when he buys a new camera at the store). But date based
-% data are guided by the users desire to take a photo at a particular time.
-
-\subsection{Folksonomy}
-% most important, basis for geo i early days with geo tagging and third party
-% services (citation needed). Cite interview with co-founder about it's
-% importance and findability it provides. Write about clustering, it's
-% principles and what it provides. Cite when it was introduced.
-
 \subsection{Geographical data}
+In late August 2006 Flickr introduced geotagging abilities%
+\sidenote{
+  See
+  \url{http://blog.flickr.com/en/2006/08/28/great-shot-whered-you-take-that/}
+  for the announcement}.
+By integrating
+geographical aspects from Yahoo! Maps%
+\sidenote{
+  Available at \url{http://maps.yahoo.com}.
+}
+users could now place their photos on a
+map to signify where they were captured. (TODO: finish geo description, take
+screenhot, write about the unreleased ``places'' feature).
 % Write about early geo tagging here. Write about the new places feature.
 % Write and cite when proper geo data was incorporated.
 
