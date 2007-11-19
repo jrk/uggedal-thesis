@@ -32,8 +32,24 @@ Appendix~\ref{appendix:content.mapping}
 
 \section{Flickr}
 
+\sidefigure{Flickr Photo Meta-data}{%
+  Photo Meta-data,
+  retrieved October 28, 2007, from
+  \url{http://flickr.com/photos/benbengraves/187609810/}.
+}{%
+  \includegraphics[width=\marginparwidth]{scrsh_flickr_photo_detail_metadata}
+  \label{figure:scrsh.flickr.photo.detail.metadata}
+}
+
 Flickr is a photo sharing site which are known to be on the cutting edge when
-it comes to enabling new and innovating navigational features. This subsequent
+it comes to enabling new and innovating features in it's domain. Flickr has a
+quite peculiar history as it started out as a massively multiplayer online
+game. An environment for photo sharing within the game was added in 2004 wich
+quickly became more popular than the game itself. The focus of the company was
+shifted and their new photo sharing community was bought by Yahoo! Inc. in
+March 2005 \citep[p.~257]{livingston07}.
+
+This subsequent
 analysis of Flickr will be carried out as a registered user. One has to be
 registered for interacting with the site in such a way that one leaves
 persistent traces. The site has a open nature enabling anonymous access
@@ -54,6 +70,7 @@ with minimal meta data (the uploader) are prevalent all over Flickr. Of the
 120 pages we collected in our content inventory 26 of them contained
 thumbnails. Most of these thumbnails
 are giving users incentives to navigate using social means%
+\sidefill
 \sidenote{Apart from the few pages that only show a
           stream of your own thumbnails--when you're browsing your
           own photos by various methods.}.
@@ -62,19 +79,8 @@ users' actions--uploading a photo, tagging a photo, taking a photo with a
 specific camera, collecting photos into sets, and adding photos to a certain
 group--all determine the navigational choices you as a user is
 presented with.
-% maby connect this to thumbnail paper: cockburn06
 
 \subsection{Meta-data}
-
-\sidefill
-\sidefigure{Flickr Photo Meta-data}{%
-  Photo Meta-data,
-  retrieved October 28, 2007, from
-  \url{http://flickr.com/photos/benbengraves/187609810/}.
-}{%
-  \includegraphics[width=\marginparwidth]{scrsh_flickr_photo_detail_metadata}
-  \label{figure:scrsh.flickr.photo.detail.metadata}
-}
 
 We arrive on a photo detail page as in
 Figure~\ref{figure:scrsh.flickr.photo.detail}
@@ -95,48 +101,6 @@ geographical data (which both will be discussed shortly) you're probably
 increasing you chances of finding what you want. Camera make information could
 be useful when looking at the quality of pictures taken with certain cameras
 before purchasing one yourself.
-
-\subsection{Folksonomy}
-% most important, basis for geo i early days with geo tagging and third party
-% services (citation needed). Cite interview with co-founder about it's
-% importance and findability it provides. Write about clustering, it's
-% principles and what it provides. Cite when it was introduced.
-Of most importance
-for Flickr, and indeed what makes Flickr a folksonomy, is tags. Every
-registered user can label anyone's photos by applying such short descriptive
-tags. This collaborative process lay the ground work for other user's ability
-to easily browse photos by topic.
-Figure~\ref{figure:scrsh.flickr.tagcloud}
-(p.~\pageref{figure:scrsh.flickr.tagcloud}) exemplifies how the user generated
-data trough tagging can be used as a navigational aid. A so called \emph{tag
-cloud} is used to visualize the popularity (and thereby importance) of the
-individual tags. The larger the tag title, the more frequent the tag has been
-in use.
-
-Tagging is a very flexible approach only hindered by users' imagination. In the
-early days of Flickr there was no support for geographical data. Users soon
-found a remedy for this by tagging photos with longitude and latitude
-(citation needed).
-
-% Split into these sections:
-
-\subsection{Geographical data}
-In late August 2006 Flickr introduced geotagging abilities%
-\sidenote{
-  See
-  \url{http://blog.flickr.com/en/2006/08/28/great-shot-whered-you-take-that/}
-  for the announcement}.
-By integrating
-geographical aspects from Yahoo! Maps%
-\sidenote{
-  Available at \url{http://maps.yahoo.com}.
-}
-users could now place their photos on a
-map to signify where they were captured. (TODO: finish geo description, take
-screenshot, write about the unreleased ``places'' feature).
-% Write about early geo tagging here. Write about the new places feature.
-% Write and cite when proper geo data was incorporated.
-
 
 \begin{figure}[b]
   \captionstyle{\raggedright}
@@ -163,7 +127,65 @@ screenshot, write about the unreleased ``places'' feature).
   \normalcaption
 \end{figure}
 
-\begin{figure}
+\subsection{Folksonomy}
+Of most importance
+for Flickr, and indeed what makes Flickr a folksonomy, is it's tagging
+abilities. Caterina Fake, cofounder of Flickr, explains it's importance:
+``Tagging really revolutionized the way the product behaved.''
+\citep[p.~261]{livingston07}
+All
+registered user can label anyone's photos by applying such short descriptive
+tags. This collaborative process lay the ground work for other user's ability
+to easily browse photos by topic.
+Figure~\ref{figure:scrsh.flickr.tagcloud}
+(p.~\pageref{figure:scrsh.flickr.tagcloud}) exemplifies how the user generated
+data trough tagging can be used as a navigational aid. A so called \emph{tag
+cloud} is used to visualize the popularity (and thereby importance) of the
+individual tags. The larger the tag title, the more frequent the tag has been
+applied to photographs.
+
+Tag clustering was released in the fall of 2005 \citep{butterfield05} as a way
+to easier se the relationships between seperate tags. For any given tag a
+cluster of three related tags is generated and displayed to users when they
+are browsing as seen in
+Figure~\ref{figure:scrsh.flickr.photo.detail}
+(p.~\pageref{figure:scrsh.flickr.photo.detail}). Flickr algoritmally generates
+these listings based on what tags users tend to use together for labeling a
+photo.
+
+Tagging is a very flexible approach only hindered by users' imagination. In the
+early days of Flickr there was no support for geographical data. Users soon
+found a remedy for this by tagging photos with longitude and latitude. By
+using the same technology we're using in our prototype application
+(Greasemonkey) they were able to integrate Google Maps%
+\sidenote{
+  Available at \url{http://maps.google.com}
+} in Flickr, enabeling user's to place their photos on a map and automatically
+generate geographical coordinate tags%
+\sidenote{
+  More info about the early days of \emph{geotagging} can be found on the
+  remains of the Flickr Geotagging group, available at
+  \url{flickr.com/groups/geotagging/}.
+}.
+
+\subsection{Geographical data}
+
+In late August 2006 Flickr introduced geotagging abilities
+\citep{butterfield06} by integrating mapping aspects from Yahoo! Maps%
+\sidenote{
+  Available at \url{http://maps.yahoo.com}.
+}
+Users could now place their photos on a
+map to signify where they were captured.
+% Finish description.
+% Take screenshot.
+% Write about the new places feature.
+% Write and cite when proper geo data was incorporated.
+
+\subsection{Interestingness}
+% Cite collaborative filtering. Introduced in same blog post as clustering.
+
+\begin{figure}[b]
   \centering
   \strictpagechecktrue
   \begin{adjustwidth*}{0em}{-\wholemargin}
@@ -175,3 +197,15 @@ screenshot, write about the unreleased ``places'' feature).
   \end{adjustwidth*}
 \end{figure}
 
+\begin{figure}[b]
+  \centering
+  \strictpagechecktrue
+  \begin{adjustwidth*}{0em}{-\wholemargin}
+    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcluster}
+    \caption[Flickr Tag Cluster]{%
+       Tag Cloud,
+       retrieved November 19, 2007, from
+       \url{http://flickr.com/photos/tags/navigation/clusters/}.}
+    \label{figure:scrsh.flickr.tagcluster}
+  \end{adjustwidth*}
+\end{figure}
