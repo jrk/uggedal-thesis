@@ -18,6 +18,7 @@
     - :lscape:
     - :caption:
     - :natbib:
+    - :paralist:
   :title:
     Social Navigation in Modern Web Services
   :sub_title:
@@ -31,6 +32,7 @@
   :list_of_tables: true
   :main_content:
     - introduction
+    - background
     - content.analysis
   :appendices:
     - content.inventory
