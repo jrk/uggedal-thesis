@@ -201,6 +201,15 @@
 \newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}
 \addtolength{\wholewidth}{\wholemargin}
 
+% Wholemargin
+\newenvironment{whole}{%
+  \centering
+  \strictpagechecktrue
+  \begin{adjustwidth*}{0em}{-\wholemargin}
+}{%
+  \end{adjustwidth*}
+}
+
 % Hyper references and breaking of URLs
 \RequirePackage[ps2pdf]{hyperref}
 \RequirePackage{memhfixc}
