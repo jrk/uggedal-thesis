@@ -201,7 +201,7 @@
 \newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}
 \addtolength{\wholewidth}{\wholemargin}
 
-% Wholemargin
+% Whole environment
 \newenvironment{whole}{%
   \centering
   \strictpagechecktrue
