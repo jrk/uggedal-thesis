@@ -36,7 +36,6 @@
     - content.analysis
   :appendices:
     - content.inventory
-    - content.mapping
   :bibliography:
     :bibliography:
       :apalike
