@@ -33,7 +33,10 @@
   :main_content:
     - introduction
     - background
-    - content.analysis
+    - methodology
+    - analysis
+    - discussion
+    - conclusion
   :appendices:
     - content.inventory
   :bibliography:
