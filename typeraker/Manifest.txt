@@ -9,7 +9,6 @@ lib/tasks/typeraker.rake
 lib/typeraker.rb
 lib/typeraker/builder.rb
 lib/typeraker/builder/dvi.rb
-lib/typeraker/builder/latex.rb
 lib/typeraker/builder/pdf.rb
 lib/typeraker/builder/ps.rb
 lib/typeraker/cli.rb
@@ -33,12 +32,8 @@ script/destroy
 script/generate
 script/txt2html
 setup.rb
-spec/spec.opts
-spec/spec_helper.rb
-spec/typeraker_spec.rb
 tasks/deployment.rake
 tasks/environment.rake
-tasks/rspec.rake
 tasks/website.rake
 website/index.html
 website/index.txt

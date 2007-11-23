@@ -7,13 +7,13 @@ h2. What
 
 Type Raker aims to make LaTeX authoring as plesantly as possible. It provides:
 
-  * Automated building of dvi, ps, and pdf files.
-  * Preview of dvi, ps, and pdf files.
-  * Non-verbose output from LaTeX tools.
-  * Templating possibilities.
-  * YAML based configuration of a project.
-  * Spell checking of all your documents.
-  * SCM information in your documents.
+* Automated building of dvi, ps, and pdf files.
+* Preview of dvi, ps, and pdf files.
+* Non-verbose output from LaTeX tools.
+* Templating possibilities.
+* YAML based configuration of a project.
+* Spell checking of all your documents.
+* SCM information in your documents.
 
 h2. Installing
 
@@ -21,10 +21,191 @@ h2. Installing
 
 h2. Usage
 
-  1. Create a template for your project.
-  2. Create a configuration file.
-  3. Create a rake file referencing the typeraker gem.
-  3. Run rake -T to view available tasks.
+h3. Decide on a project file layout:
+
+<pre syntax="ruby">
+src/
+src/somefile.tex
+src/anotherfile.tex
+config.yml
+Rakefile
+template.erb
+</pre>
+
+h3. Create a template for your project:
+
+<pre syntax="ruby">
+% config[:klass].each do |klass, options|
+%   if options
+\documentclass[<%=options.join(',')%>]{<%=klass%>}
+%   else
+\documentclass{<%=klass%>}
+%   end
+% end
+
+% config[:packages].each do |package|
+%   package.each do |name, options|
+%     if options
+\usepackage[<%=options.join(',')%>]{<%=name%>}
+%     else
+\usepackage{<%=name%>}
+%     end
+%   end
+% end
+
+% if config[:title]
+\title{<%=config[:title]%>}
+%   if config[:sub_title]
+\subtitle{<%=config[:sub_title]%>}
+%   end
+%   if config[:author] && config[:author][:name]
+\author{%
+  <%=config[:author][:name]%>
+%     if config[:author][:email]
+  \\
+  \texttt{<%=config[:author][:email]%>}
+%     end
+}
+%   end
+%   if config[:scm]
+\scm{%
+%     if config[:scm][:name]
+  \textbf{\Large{<%=config[:scm][:name]%> SCM statistics}} \\
+%     end
+%     if config[:scm][:revision]
+  Revision: <%=config[:scm][:revision]%> \\
+%     end
+%     if config[:scm][:date]
+  Date: <%=config[:scm][:date]%> \\
+%     end
+}
+%   end
+% end
+
+% if config[:date]
+\date{<%=config[:date]%>}
+% end
+
+% if config[:abstract]
+\documentabstract{%
+  <%=config[:abstract]%>
+}
+% end
+
+% if config[:acknowledgments]
+\acknowledgments{%
+  <%=config[:acknowledgments]%>
+}
+% end
+
+% if config[:options][:graphics_dir]
+\graphicspath{{<%=config[:options][:graphics_dir]%>/}}
+% end
+
+\begin{document}
+
+  \frontmatter
+% if config[:title]
+    \maketitle
+% end
+% if config[:table_of_contents]
+    \cleardoublepage
+    \tableofcontents
+% end
+% if config[:list_of_figures]
+    \cleardoublepage
+    \listoffigures
+% end
+% if config[:list_of_tables]
+    \cleardoublepage
+    \listoftables
+% end
+
+  \mainmatter
+% config[:main_content].each do |content|
+    \include{<%=content%>}
+% end
+
+% if config[:appendices] && config[:appendices].any?
+    \begin{appendices}
+%   config[:appendices].each do |appendix|
+      \include{<%=appendix%>}
+%   end
+    \end{appendices}
+% end
+
+  \backmatter
+% config[:bibliography].each do |file, style|
+    \bibliographystyle{<%=style%>}
+    \bibliography{<%=file%>}
+% end
+\end{document}
+</pre>
+
+h3. Create a configuration file:
+
+<pre syntax="ruby">
+---
+:typeraker:
+  :build_dir: build
+  :graphics_dir: src/figures
+
+:template:
+  :klass:
+    :book:
+      - 11pt
+  :packages:
+    - :fontenc:
+      - T1
+    - :graphicx:
+    - :natbib:
+  :title:
+    All good things
+  :sub_title:
+    Classification, Prototyping, and Applicability
+  :author:
+    :name:
+      Eivind Uggedal
+  :scm: Mercurial
+  :table_of_contents: true
+  :list_of_figures: true
+  :list_of_tables: true
+  :main_content:
+    - introduction
+    - background
+    - methodology
+    - analysis
+    - discussion
+    - conclusion
+  :appendices:
+    - datatables
+  :bibliography:
+    :bibliography:
+      :apalike
+</pre>
+
+h3. Create a rake file referencing the typeraker gem:
+
+<pre syntax="ruby">
+require 'rake'
+require 'rubygems'
+require 'fileraker'
+</pre>
+
+h3. Run rake -T to view available tasks:
+
+<pre syntax="ruby">
+rake build:dvi          # Builds a dvi file of the source files.
+rake build:pdf          # Builds a pdf file of the source files.
+rake build:ps           # Builds a ps file of the source files.
+rake spell              # Spell checks source files.
+rake template:display   # Displays a base LaTeX file.
+rake template:generate  # Generate a base LaTeX file in the source dir.
+rake view:dvi           # Views a distributed dvi file.
+rake view:pdf           # Views a distributed pdf file.
+rake view:ps            # Views a distributed ps file.
+</pre>
+
 
 h2. License
 
