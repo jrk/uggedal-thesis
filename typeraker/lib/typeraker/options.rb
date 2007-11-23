@@ -8,9 +8,10 @@ module Typeraker
         distribution_dir = 'dist'
         template_file    = 'template.erb'
         base_file        = 'base'
+        vendor_dir       = source_dir + '/vendor'
+        graphics_dir     = source_dir + '/graphics'
         spell_dir        = source_dir
         spell_file       = 'dictionary.ispell'
-        graphics_dir     = root_dir + 'graphics'
 
         @defaults ||= {
           :root_dir         => root_dir,
@@ -19,9 +20,10 @@ module Typeraker
           :distribution_dir => distribution_dir,
           :template_file    => template_file,
           :base_file        => base_file,
+          :vendor_dir       => vendor_dir,
+          :graphics_dir     => graphics_dir,
           :spell_dir        => spell_dir,
-          :spell_file       => spell_file,
-          :graphics_dir     => graphics_dir
+          :spell_file       => spell_file
         }
       end
 
@@ -43,6 +45,7 @@ module Typeraker
                        build_dir
                        distribution_dir
                        template_file
+                       vendor_dir
                        graphics_dir
                        spell_dir)
         relatives.each do |key|

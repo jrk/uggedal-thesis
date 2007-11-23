@@ -13,6 +13,7 @@ module Typeraker
 
           build_dir do
             copy_source_files
+            copy_vendor_files
             return unless source_files_present?
 
             latex = Typeraker::Runner::LaTeX.new(base_latex_file, true)
@@ -46,9 +47,15 @@ module Typeraker
           end
 
           def copy_source_files
-            source_dir = Typeraker.options[:source_dir]
-            %w(tex bib sty cls clo eps jpg).each do |file_extension|
-              source_dir
+            copy_files(Typeraker.options[:source_dir], %w(tex bib cls))
+          end
+
+          def copy_vendor_files
+            copy_files(Typeraker.options[:vendor_dir], %w(sty clo))
+          end
+
+          def copy_files(source_dir, file_extensions)
+            file_extensions.each do |file_extension|
               FileList["#{source_dir}/*.#{file_extension}"].each do |file|
                 cp(file,  Typeraker.options[:build_dir])
               end
