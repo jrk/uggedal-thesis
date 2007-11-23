@@ -61,6 +61,10 @@
 }
 % end
 
+% if config[:options][:graphics_dir]
+\graphicspath{{<%=config[:options][:graphics_dir]%>/}}
+% end
+
 \begin{document}
   \chapterstyle{bringhurst}
   \pagestyle{bringhurst}

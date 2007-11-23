@@ -17,7 +17,8 @@ module Typeraker
           :list_of_tables    => false,
           :main_content      => [],
           :appendices        => [],
-          :bibliography      => {}
+          :bibliography      => {},
+          :options           => Typeraker.options
         }
       end
 

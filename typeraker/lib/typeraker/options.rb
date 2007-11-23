@@ -10,6 +10,7 @@ module Typeraker
         base_file        = 'base'
         spell_dir        = source_dir
         spell_file       = 'dictionary.ispell'
+        graphics_dir     = root_dir + 'graphics'
 
         @defaults ||= {
           :root_dir         => root_dir,
@@ -19,7 +20,8 @@ module Typeraker
           :template_file    => template_file,
           :base_file        => base_file,
           :spell_dir        => spell_dir,
-          :spell_file       => spell_file
+          :spell_file       => spell_file,
+          :graphics_dir     => graphics_dir
         }
       end
 
@@ -41,6 +43,7 @@ module Typeraker
                        build_dir
                        distribution_dir
                        template_file
+                       graphics_dir
                        spell_dir)
         relatives.each do |key|
           options[key.to_sym] = File.join(options[:root_dir],
