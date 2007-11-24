@@ -6,18 +6,19 @@ includes content inventory/analysis.
 
 \section{Content Analysis}
 
-The term \emph{content analysis} is most often used to signify a research
-technique used in the social sciences.
+The term \emph{content analysis} is traditionally used to signify a
+qualitative research method used in the social sciences.
 \citet[p.~18]{krippendorff03} defines it as:
 ``a research technique for making replicable and valid
 inferences from texts (or other meaningful matter) to the contexts of their
-use''.
+use''. Even though such an analysis of the contents, meanings, or effects of
+communication messages have been utilized on the Web \citep{weare00} it will
+not help us understand navigational mechanisms.
 
-This is however not the use of the term we're concerned with here. We consult
-content analysis as the more pragramtic practice conducted within the field of
-\emph{information architecture}%
+We turn to content analysis as the more pragramtic practice conducted within
+the field of \emph{information architecture}%
 \sidenote{
-  \citet[p.~4]{morville06} defines information architecture as:
+  Information architecture can be explained as
   \begin{inparaenum}[(a)]
     \item the structural design of shared information environments,
     \item the combination of organization, labeling, search, and navigation
@@ -25,9 +26,11 @@ content analysis as the more pragramtic practice conducted within the field of
     \item the art and science of shaping information products and experiences
       to support usability and findability, and
     \item an emerging discipline and community of practice focused on bringing
-      principles of design and architecture to the digital landscape.
+      principles of design and architecture to the digital landscape
+      \citep[p.~4]{morville06}.
   \end{inparaenum}
-}.
+} hoping that it will help us get an better understanding of navigational
+structures.
 Content analysis is deployed as a technique by information architects for
 helping them generate a sound and well structured web site architecture.
 In it's essence a content analysis should identify the various
@@ -39,9 +42,6 @@ It consists of two phases:
 \end{inparaenum}
 \citep[pp.~241--243]{morville06}.
 
-% include elements from weare00 in the discussion of traditional content
-% analysis -> web
-
 \subsection{Inventory}
 
 A \emph{content inventory} is a technique for collecting data from web sites
@@ -49,7 +49,7 @@ in a structured manner. It's strength as a technique lies in it's ability of
 truly informing it's receipents about a web site's content. Content
 inventories are often tedious and time consuming. \citet[p.~267]{wodtke02}
 argues that every single bit of content needs to be determined while
-\citet{morville06} believes a representative sample could be sufficient.
+\citet[p.~241]{morville06} believes a representative sample is sufficient.
 
 The web sites that are interesting to look at in our research are vast and
 loaded with enourmous ammounts of user generated content. An all-inclusive
@@ -69,7 +69,25 @@ We did however eliminate the following parts of web sites:
 \end{description}
 
 In addition to eliminating certain form of web pages we synthesised abstract
-page representations by introducing variables. %finish
+page representations by introducing variables. Take for example a typical
+social networking site. There are from thousands to several millions of
+profile pages. In context of what navigational options these pages present to
+us they are all esential similar. So we could introduce a variable called
+\var{user-name}%
+\sidenote{
+  The variable notation with a dollar sign (\$) as prefix is inspired from
+  variable usage in UNIX shell scripting \citep[p.~88]{kernighan84}.
+}
+and thereby describe all potential profile pages as: ``Profile
+of \var{user-name}''.
+
+We would however have to make sure that the one page we used in our inventory
+to represen the abstract notion of a profile page was representative. To
+examplify, say that a profile page included a stream of the 10 most recent
+actions your friends had conducted. If the user of our collected profile page
+had zero friends we would lack the navigational oppertunities such a stream
+could give us in our inventory. Therefore we used only pages which provided
+all possible forms of navigation as basis for abstraction.
 
 
 \subsection{Analysis}
