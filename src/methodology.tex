@@ -46,9 +46,10 @@ It consists of two phases:
 
 A \emph{content inventory} is a technique for collecting data from web sites
 in a structured manner. It's strength as a technique lies in it's ability of
-truly informing it's recipients about a web site's content.
+truly informing it's recipients about a web site's content \citep{wodtke02}.
 
 \subsubsection{Sampling}
+\label{section:methodology.content.analysis.sampling}
 
 Content inventories are often tedious and time consuming to perform.
 \citet[p.~267]{wodtke02} argues that every single bit of content needs to be
@@ -108,6 +109,45 @@ had zero friends we would lack the navigational opportunities such a stream
 could give us in our inventory. Therefore we used only pages which provided
 all possible forms of navigation as basis for abstraction.
 
+\subsubsection{Approach}
+
+We started out on the first page that was given us when entering the web site
+under investigation. From there the web site was browsed by following all
+navigational hyperlinks in logical order (from top to bottom and left to
+right) until we had frequented the whole site bearing in mind
+our sampling constraints. We stopped browsing a particular page if it%
+\sidenote{
+  Either the exact same page or a page deemed to be the same by our
+  variable driven abstraction method.
+}
+had been previously been inventoried. During the course of this browsing
+each page was noted down in a table with the following characteristics:
+
+\begin{description}
+  \item[Identifier] of numerical and hierarchical form where page with id
+    4.3.1 is the first child of a page with id 4.3, representing it's place in
+    the navigation structure. The first page was given an id of \emph{0}, it's
+    first descendant an id of \emph{1} and so on.
+  \item[Page title] as a description of what the page contains. Some of the
+    web site's we surveyed had a slight ambiguity of title usage. In these
+    cases we decided to collect the most representative sample%
+    \sidenote{
+      A choice between the \texttt{<title>} element in the \texttt{<head>}
+      of the HTML document and the \texttt{<h1>} top level heading in-line
+      the \texttt{<body>} portion of the document was made.
+    }.
+    If this resulted in unsatisfactory results we created a new title using
+    the best of our abilities to make it as clear and descriptive as possible.
+  \item[Link name] is either the textual name or a description of the
+    contents (i.e. a graphical representation) of the hyperlink that was
+    utilized to navigate to this very page.
+  \item[Link location] as a description of the spatial position
+    (for example: global navigation, content area, right sidebar) of the
+    hyperlink used to navigate to this page.
+\end{description}
+
+The result was a table representing a web site's various pages and the
+relationships amongst them.
 
 \subsection{Analysis}
 
