@@ -7,7 +7,7 @@ module Typeraker
       puts dictionary_path
       source_files.each do |file|
         file_path = File.join(Typeraker.options[:source_dir], file)
-        system "ispell -t -p #{dictionary_path} #{file_path}"
+        system "ispell -t -x -p #{dictionary_path} #{file_path}"
       end
     end
   end
