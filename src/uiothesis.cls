@@ -73,13 +73,17 @@
     \vskip\onelineskip \hrule\vskip\onelineskip}
 }
 
-\setsecheadstyle{\raggedright\scshape\MakeLowercase}
+\setsecheadstyle{\raggedright\large\scshape\MakeLowercase}
   \setbeforesecskip{-\onelineskip}
   \setaftersecskip{\onelineskip}
 
-\setsubsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\itshape}
+\setsubsecheadstyle{\raggedright\scshape\MakeLowercase}
   \setbeforesubsecskip{-\onelineskip}
   \setaftersubsecskip{\onelineskip}
+
+\setsubsubsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\itshape}
+  \setbeforesubsubsecskip{-\onelineskip}
+  \setaftersubsubsecskip{\onelineskip}
 
 % Bringhurst page style
 \makepagestyle{bringhurst}
