@@ -187,7 +187,13 @@
 % Sidetable
 \newcommand{\sidetable}[2]{%
   \marginpar{%
-    \captionsetup{font=footnotesize}
+    \ifodd\c@page
+      \captionsetup{font=footnotesize,justification=raggedright}
+      \raggedright
+    \else
+      \captionsetup{font=footnotesize,justification=raggedleft}
+      \raggedleft
+    \fi
     \captionof{table}{#1}
     \footnotesize #2
   }
@@ -196,7 +202,13 @@
 % Sidefigure
 \newcommand{\sidefigure}[3]{%
   \marginpar{%
-    \captionsetup{font=footnotesize}
+    \ifodd\c@page
+      \captionsetup{font=footnotesize,justification=raggedright}
+      \raggedright
+    \else
+      \captionsetup{font=footnotesize,justification=raggedleft}
+      \raggedleft
+    \fi
     \footnotesize #3
     \captionof{figure}[#1]{#2}
   }
