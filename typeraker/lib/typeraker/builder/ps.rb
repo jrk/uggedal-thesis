@@ -2,15 +2,15 @@ module Typeraker
   module Builder
     class Ps < Base
       def self.build
-        @build_name = 'ps'
-        base_dvi_file = Typeraker.options[:base_dvi_file]
+        @output_format = 'pdf'
+        base_ps_file = Typeraker.options[:base_ps_file]
 
         build_dir do
-          dvips = Typeraker::Runner::DviPs.new(base_dvi_file)
+          dvips = Typeraker::Runner::Ps2Pdf.new(base_ps_file)
         end
 
-        distribute_file(base_dvi_file)
-        notice "Build of #{@build_name} completed for: #{base_dvi_file} " +
+        distribute_file(base_ps_file)
+        notice "Build of #{@output_format} completed for: #{base_ps_file} " +
                "in #{Typeraker.options[:build_dir]}"
       end
     end

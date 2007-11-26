@@ -22,10 +22,10 @@ module Typeraker
           def distribute_file(base_file)
             prepare_dir(Typeraker.options[:distribution_dir]) do
               cp(File.join(Typeraker.options[:build_dir],
-                           "#{base_file.gsub(/.\w+$/, '')}.#@build_name"),
+                           "#{base_file.gsub(/.\w+$/, '')}.#@output_format"),
                  File.join(Typeraker.options[:distribution_dir],
                            Typeraker::Configuration.distribution_name +
-                           ".#@build_name"))
+                           ".#@output_format"))
             end
           end
 
@@ -42,7 +42,7 @@ module Typeraker
       end
     end
 
-    %w(dvi ps pdf).each do
+    %w(tex dvi ps).each do
       |f| require File.dirname(__FILE__) + "/builder/#{f}"
     end
   end
