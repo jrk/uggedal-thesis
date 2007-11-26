@@ -11,17 +11,16 @@
     - :fontenc:
       - T1
     - :mathpazo:
+      - osf
     - :courier:
     - :helvet:
     - :graphicx:
     - :longtable:
-    - :booktabs:
     - :lscape:
     - :caption:
     - :natbib:
     - :paralist:
     - :ragged2e:
-    - :array:
   :title:
     Social Navigation in Modern Web Sites
   :sub_title:
