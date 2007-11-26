@@ -25,7 +25,9 @@ module Typeraker
       def initialize(input_file, silent, executable)
         @input_file = input_file
         disable_stdout do
-          @executable = executable if system "which #{executable}"
+          disable_stderr do
+            @executable = executable if system "which #{executable}"
+          end
         end
         @silent = silent
         @errors = []

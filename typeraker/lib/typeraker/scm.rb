@@ -30,7 +30,9 @@ module Typeraker
 
         @name = 'Mercurial'
         disable_stdout do
-          @executable = 'hg' if system 'which hg'
+          disable_stderr do
+            @executable = 'hg' if system 'which hg'
+          end
         end
 
         @revision, @date = parse_scm_stats
@@ -56,7 +58,9 @@ module Typeraker
 
         @name = 'Subversion'
         disable_stdout do
-          @executable = 'svn' if system 'which svn'
+          disable_stderr do
+            @executable = 'svn' if system 'which svn'
+          end
         end
 
         @revision, @date = parse_scm_stats

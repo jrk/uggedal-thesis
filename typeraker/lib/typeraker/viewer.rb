@@ -21,7 +21,9 @@ module Typeraker
       def find_viewer
         @executables.each do |executable|
           disable_stdout do
-            return executable if system "which #{executable}"
+            disable_stderr do
+              return executable if system "which #{executable}"
+            end
           end
         end
       end
