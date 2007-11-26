@@ -1,0 +1,301 @@
+%%
+%% This is file `letterspace.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% microtype.dtx  (with options: `letterspace')
+%% 
+%% ------------------------------------------------------------------------
+%% 
+%%                       The `microtype' package
+%%        An interface to the micro-typographic extensions of pdfTeX
+%%           Copyright (c) 2004--2007  R Schlicht <w.m.l@gmx.net>
+%% 
+%% This work may be distributed and/or modified under the conditions of the
+%% LaTeX Project Public License, either version 1.3c of this license or (at
+%% your option) any later version. The latest version of this license is in:
+%% http://www.latex-project.org/lppl.txt, and version 1.3c or later is part
+%% of all distributions of LaTeX version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `author-maintained'.
+%% 
+%% This work consists of the files  microtype.dtx and microtype.ins and the
+%% derived files microtype.sty and letterspace.sty.
+%% 
+%% ------------------------------------------------------------------------
+%%   This is a stand-alone version that only provides the letterspacing
+%%   commands. Do not use this package together with the `microtype' package.
+%%   Please refer to section 7 of the `microtype' documentation.
+%% ------------------------------------------------------------------------ 
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage
+  {letterspace}[2007/07/14 v1.2 Robust letterspacing (RS)]
+\newcommand*\lsstyle{}
+\newcommand\textls[2][]{}
+\def\textls#1#{}
+\newcommand*\lslig[1]{#1}
+\def\MT@MT
+  {letterspace}
+\def\MT@warning{\PackageWarning\MT@MT}
+\def\MT@warning@nl#1{\MT@warning{#1\@gobble}}
+\def\MT@pdftex@no{0}
+\ifx\normalpdftexversion\@undefined \else
+  \let\pdftexversion \normalpdftexversion
+  \let\pdftexrevision\normalpdftexrevision
+  \let\pdfoutput     \normalpdfoutput
+\fi
+\ifx\pdftexversion\@undefined \else
+  \ifx\pdftexversion\relax \else
+    \def\MT@pdftex@no{7}
+      \ifnum\pdftexversion < 140
+        \def\MT@pdftex@no{5}
+    \fi
+  \fi
+\fi
+\def\MT@clear@options{%
+  \AtEndOfPackage{\let\@unprocessedoptions\relax}%
+  \let\CurrentOption\@empty
+}
+\ifnum\MT@pdftex@no <
+    6
+  \MT@clear@options
+  \MT@warning@nl{You
+    \ifcase\MT@pdftex@no
+      don't seem to be using pdftex.\MessageBreak
+      `\MT@MT' only works with pdftex.\MessageBreak
+      Try running `pdflatex' instead of `latex'%
+    \else
+      are using a pdftex version older than
+      1.40%
+      .\MessageBreak
+      `\MT@MT' does not work with this version.\MessageBreak
+      Please install a newer version of pdftex%
+    \fi
+  }
+\endinput\fi
+\RequirePackage{keyval}[1997/11/10]
+\def\MT@tr@min{-\@m}
+\let\MT@tr@max\@m
+\let\MT@letterspace\m@ne
+\def\MT@letterspace@default{100}
+\ifx\directlua\@undefined\else
+  \MT@warning@nl
+  {`\MT@MT'
+   doesn't currently work with luatex.\MessageBreak Bye bye%
+  }
+  \MT@clear@options\expandafter\endinput
+\fi
+\def\MT@glet{\global\let}
+\def\MT@edef@n#1{\expandafter\edef\csname #1\endcsname}
+\def\MT@exp@one@n#1#2{\expandafter#1\expandafter{#2}}
+\def\MT@exp@two@c#1{\expandafter\expandafter\expandafter#1\expandafter}
+\catcode`\X=9
+  \def\MT@ifdefined@c@TF#1{%
+X   \ifdefined#1\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
+  }
+  \def\MT@ifdefined@n@T#1{%
+X   \ifcsname#1\endcsname\expandafter\@firstofone\else\expandafter\@gobble\fi
+  }
+\catcode`\X=11
+\begingroup
+\catcode`\%=12
+\catcode`\&=14
+\gdef\MT@ifempty#1{&
+  \if %#1%&
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+\endgroup
+    \def\MT@ifint#1{%
+      \ifcase\pdfmatch{^-*[0-9]+ *$}{#1}\relax
+        \expandafter\@secondoftwo
+      \else
+        \expandafter\@firstoftwo
+      \fi
+    }
+\def\MT@map@clist@n#1#2{%
+  \ifx\@empty#1\else
+    \def\MT@clist@function##1{#2}%
+    \MT@map@clist@#1,\@nil,\@nnil
+  \fi
+}
+\def\MT@map@clist@c#1{\MT@exp@one@n\MT@map@clist@n#1}
+\def\MT@map@clist@#1,{%
+  \ifx\@nil#1%
+    \expandafter\MT@clist@break
+  \fi
+  \MT@clist@function{#1}%
+  \MT@map@clist@
+}
+\let\MT@clist@function\@gobble
+\def\MT@clist@break#1\@nnil{}
+\let\MT@setup@\@empty
+\def\MT@addto@setup{\g@addto@macro\MT@setup@}
+\AtBeginDocument{\MT@setup@ \MT@glet\MT@setup@\@empty}
+\def\MT@with@package@T#1{\@ifpackageloaded{#1}\@firstofone\@gobble}
+\MT@addto@setup{%
+  \MT@with@package@T
+    {hyperref}{%
+    \pdfstringdefDisableCommands{%
+      \def\lsstyle{\pdfstringdefWarn\lsstyle}%
+      \def\textls#1#{\pdfstringdefWarn\textls}%
+    }%
+  }
+  \MT@with@package@T{soul}{%
+    \soulregister\lsstyle 0%
+    \soulregister\textls  1%
+  }
+}
+\let\MT@tracking\relax
+\def\MT@set@tr@codes{%
+  \MT@ifdefined@c@TF\MT@letterspace@\relax{\let\MT@letterspace@\MT@letterspace}%
+  \ifnum\MT@letterspace@=\z@\else
+    \MT@warn@tracking@DVI
+    \xdef\MT@lsfont{\csname\expandafter\string\font@name
+                           /\number\MT@letterspace@ ls\endcsname}%
+    \expandafter\ifx\MT@lsfont\relax
+      \MT@get@ls@basefont
+      \global\expandafter\letterspacefont\MT@lsfont\font@name\MT@letterspace@
+      \fontdimen2\MT@lsfont=\dimexpr\numexpr 1000+\MT@letterspace@\relax sp
+                                            * \fontdimen2\MT@lsfont/1000\relax
+      \tagcode\MT@lsfont`f=\m@ne
+    \fi
+    \aftergroup\MT@set@lsfont
+  \fi
+}
+\def\MT@set@lsfont{\MT@exp@two@c\let\font@name\MT@lsfont}
+\DeclareRobustCommand\lsstyle{%
+  \let\MT@tracking\MT@set@tr@codes
+  \selectfont
+  \MT@lskern=\dimexpr\MT@ifdefined@c@TF\MT@letterspace@
+                       \MT@letterspace@\MT@letterspace sp
+                    * \fontdimen6\MT@lsfont/2000\relax
+  \MT@ls@adjust
+}
+\DeclareRobustCommand\lslig[1]{%
+  \kern\MT@lskern
+  {\MT@get@ls@basefont\font@name #1}%
+  \kern\MT@lskern
+}
+\def\MT@get@ls@basefont{%
+  \escapechar\m@ne
+  \edef\MT@ls@basefont{\csname\expandafter\string\font@name @base\endcsname}%
+  \expandafter\ifx\MT@ls@basefont\relax
+    \MT@exp@two@c\MT@glet\MT@ls@basefont\font@name
+  \else
+    \MT@exp@two@c\let\font@name\MT@ls@basefont
+  \fi
+}
+\DeclareRobustCommand\textls{%
+  \hmode@bgroup
+    \@ifstar{\let\MT@ls@adjust\MT@ls@adjust@\MT@textls}%
+            {\let\MT@ls@adjust\relax        \MT@textls}%
+}
+\newcommand\MT@textls[2][]{%
+    \MT@ifempty{#1}%
+      {\let\MT@letterspace@\@undefined}%
+      {\KV@@sp@def\MT@letterspace@{#1}%
+       \MT@ls@too@large\MT@letterspace@}%
+    \lsstyle #2%
+    \MT@ls@adjust
+  \egroup
+}
+\def\MT@ls@too@large#1{%
+  \ifnum#1>\MT@tr@max
+    \MT@warning{Maximum for option `letterspace' is \number\MT@tr@max}%
+    \let#1\MT@tr@max
+  \else
+    \ifnum#1<\MT@tr@min
+      \MT@warning{Minimum for option `letterspace' is \number\MT@tr@min}%
+      \let#1\MT@tr@min
+    \fi
+  \fi
+}
+\newdimen\MT@lskern
+\let\MT@ls@adjust\relax
+\def\MT@ls@adjust@{\kern-\MT@lskern}
+\MT@addto@setup{%
+  \@ifpackageloaded{CJK}{
+    \@ifpackagelater{CJK}{2006/10/17}
+      {\def\MT@orig@pickupfont{\CJK@ifundefined\CJK@plane}} % 4.7.0
+      {\def\MT@orig@pickupfont{\@ifundefined{CJK@plane}}}
+    \g@addto@macro\MT@orig@pickupfont{%
+      {\expandafter\ifx\font@name\relax\define@newfont\fi}%
+      {\expandafter\ifx\csname\curr@fontshape/\f@size/\CJK@plane\endcsname\relax
+         \define@newfont\else\xdef\font@name
+            {\csname \curr@fontshape/\f@size/\CJK@plane\endcsname}\fi}}
+  }{
+    \def\MT@orig@pickupfont{\expandafter\ifx\font@name\relax\define@newfont\fi}
+  }
+  \ifx\pickup@font\MT@orig@pickupfont \else
+    \MT@warning@nl{%
+      Command \string\pickup@font\space is not defined as expected.%
+    }
+  \fi
+  \g@addto@macro\pickup@font{\begingroup}
+  \MT@with@package@T{trace}{\g@addto@macro\pickup@font{\conditionally@traceoff}}
+  \g@addto@macro\pickup@font{%
+      \escapechar\m@ne
+      \MT@tracking
+    \endgroup
+  }
+}
+\def\MT@optwarn@nan#1#2{%
+ \MT@warning@nl{Value `#1' for option `#2' is not a\MessageBreak number.
+                Using default value of \number\@nameuse{MT@#2@default}}%
+}
+\MT@map@clist@n{%
+    letterspace}{%
+  \define@key{MT}{#1}[\csname MT@#1@default\endcsname]{%
+    \def\@tempa{##1 }%
+    \MT@ifint\@tempa
+      {\MT@edef@n{MT@#1}{\@tempa}}%
+      {\MT@optwarn@nan{##1}{#1}}%
+  }%
+}
+\def\MT@ProcessOptionsWithKV#1{%
+  \let\@tempc\relax
+  \let\MT@temp\@empty
+  \MT@map@clist@c\@classoptionslist{%
+    \def\CurrentOption{##1}%
+    \MT@ifdefined@n@T{KV@#1@\CurrentOption}{%
+      \edef\MT@temp{\MT@temp,\CurrentOption,}%
+      \@expandtwoargs\@removeelement\CurrentOption
+        \@unusedoptionlist\@unusedoptionlist
+    }%
+  }%
+  \edef\MT@temp{%
+    \noexpand\setkeys{#1}{%
+      \MT@temp\@ptionlist{\@currname.\@currext}%
+    }%
+  }%
+  \MT@temp
+  \MT@clear@options
+}
+\MT@ProcessOptionsWithKV{MT}
+  \MT@addto@setup{%
+    \ifnum\pdfoutput<\@ne
+      \def\MT@warn@tracking@DVI{%
+        \MT@warning@nl{%
+            You are using tracking/letterspacing in DVI mode.\MessageBreak
+            This will probably not work, unless the post-\MessageBreak
+            processing program (dvips, dvipdfm(x), ...) is able\MessageBreak
+            to create the virtual fonts on the fly}%
+        \MT@glet\MT@warn@tracking@DVI\relax
+      }
+    \else
+      \let\MT@warn@tracking@DVI\relax
+    \fi
+    \ifnum\MT@letterspace=\m@ne
+      \let\MT@letterspace\MT@letterspace@default
+    \else
+      \MT@ls@too@large\MT@letterspace
+    \fi
+  }
+\endinput
+%%
+%% End of file `letterspace.sty'.

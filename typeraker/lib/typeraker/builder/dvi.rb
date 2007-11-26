@@ -57,7 +57,7 @@ module Typeraker
           end
 
           def copy_vendor_files
-            copy_files(Typeraker.options[:vendor_dir], %w(sty clo cls))
+            copy_files(Typeraker.options[:vendor_dir], %w(sty clo cls cfg))
           end
 
           def copy_files(source_dir, file_extensions)
