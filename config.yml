@@ -20,6 +20,7 @@
     - :caption:
     - :natbib:
     - :paralist:
+    - :ragged2e:
   :title:
     Social Navigation in Modern Web Sites
   :sub_title:

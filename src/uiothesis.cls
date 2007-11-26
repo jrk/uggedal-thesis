@@ -171,14 +171,15 @@
 % Sidenote
 \newcommand{\sidenote}[1]{%
   \footnotemark%
+  \strictpagechecktrue
   \ifodd\c@page
     \marginpar{%
-      \raggedright \footnotesize
+      \RaggedRight \footnotesize
       \textsuperscript{\thefootnote}\,#1
     }%
   \else
     \marginpar{%
-      \raggedleft \footnotesize
+      \RaggedLeft \footnotesize
       \textsuperscript{\thefootnote}\,#1
     }%
   \fi
@@ -187,12 +188,13 @@
 % Sidetable
 \newcommand{\sidetable}[2]{%
   \marginpar{%
+    \strictpagechecktrue
     \ifodd\c@page
       \captionsetup{font=footnotesize,justification=raggedright}
-      \raggedright
+      \RaggedRight
     \else
       \captionsetup{font=footnotesize,justification=raggedleft}
-      \raggedleft
+      \RaggedLeft
     \fi
     \captionof{table}{#1}
     \footnotesize #2
@@ -202,12 +204,13 @@
 % Sidefigure
 \newcommand{\sidefigure}[3]{%
   \marginpar{%
+    \strictpagechecktrue
     \ifodd\c@page
       \captionsetup{font=footnotesize,justification=raggedright}
-      \raggedright
+      \RaggedRight
     \else
       \captionsetup{font=footnotesize,justification=raggedleft}
-      \raggedleft
+      \RaggedLeft
     \fi
     \footnotesize #3
     \captionof{figure}[#1]{#2}
