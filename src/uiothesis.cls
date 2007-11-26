@@ -232,9 +232,14 @@
 }
 
 % Hyper references and breaking of URLs
-\RequirePackage[ps2pdf]{hyperref}
+\RequirePackage{ifpdf}
+\ifpdf
+  \RequirePackage[pdftex,plainpages=false]{hyperref}
+\else
+  \RequirePackage[ps2pdf]{hyperref}
+  \RequirePackage{breakurl}
+\fi
 \RequirePackage{memhfixc}
-\RequirePackage{breakurl}
 
 % Custom commands
 \newcommand{\var}[1]{\texttt{\${#1}}}

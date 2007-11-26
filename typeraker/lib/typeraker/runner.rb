@@ -60,7 +60,7 @@ module Typeraker
       end
     end
 
-    %w(latex bibtex dvips ps2pdf).each do
+    %w(latex bibtex dvips ps2pdf pdflatex).each do
       |f| require File.dirname(__FILE__) + "/runner/#{f}"
     end
   end

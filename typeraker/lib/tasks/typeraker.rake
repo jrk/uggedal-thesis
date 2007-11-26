@@ -39,6 +39,11 @@ namespace :build do
   task :pdf => 'build:ps' do
     Typeraker::Builder::Pdf.build
   end
+
+  desc 'Builds a pdf file directly from the source files.'
+  task :directpdf => 'template:generate' do
+    Typeraker::Builder::Dvi.build('pdf')
+  end
 end
 
 
@@ -58,6 +63,11 @@ namespace :view do
 
   desc 'Views a distributed pdf file.'
   task :pdf => 'build:pdf' do
+    Typeraker::Viewer::Pdf.new.launch
+  end
+
+  desc 'Views a directly distributed pdf file.'
+  task :directpdf => 'build:directpdf' do
     Typeraker::Viewer::Pdf.new.launch
   end
 end

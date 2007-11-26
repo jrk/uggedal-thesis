@@ -2,8 +2,8 @@ module Typeraker
   module Builder
     class Dvi < Base
       class << self
-        def build
-          @build_name = 'dvi'
+        def build(build_name = 'dvi')
+          @build_name = build_name
           @source_files = Typeraker::Configuration.collect_source_files
 
           clean_build_dir
@@ -11,20 +11,26 @@ module Typeraker
           base_latex_file = Typeraker.options[:base_latex_file]
           base_bibtex_file = Typeraker.options[:base_bibtex_file]
 
+          if build_name == 'pdf'
+            preprocessor = Typeraker::Runner::PdfLaTeX
+          else
+            preprocessor = Typeraker::Runner::LaTeX
+          end
+
           build_dir do
             copy_source_files
             copy_vendor_files
             return unless source_files_present?
 
-            latex = Typeraker::Runner::LaTeX.new(base_latex_file, true)
+            latex = preprocessor.new(base_latex_file, true)
             if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
               bibtex = Typeraker::Runner::BibTeX.new(base_bibtex_file, true)
             end
             if latex.warnings.join =~ /No file .+\.(aux|toc)/
-              latex = Typeraker::Runner::LaTeX.new(base_latex_file, true)
+              latex = preprocessor.new(base_latex_file, true)
             end
             if latex.warnings.join =~ /There were undefined citations/
-              latex = Typeraker::Runner::LaTeX.new(base_latex_file, true)
+              latex = preprocessor.new(base_latex_file, true)
             end
             latex.silent = false
             latex.feedback
