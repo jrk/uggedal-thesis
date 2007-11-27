@@ -231,7 +231,9 @@
   \end{adjustwidth*}
 }
 
-% Hyper references and breaking of URLs
+% Differences between dvips and pdflatex processors handeled here including:
+%   * Hyper references and breaking of URLs
+%   * PDF type protrusion
 \RequirePackage{ifpdf}
 \ifpdf
   \RequirePackage[pdftex,plainpages=false]{hyperref}
@@ -243,4 +245,34 @@
 \RequirePackage{memhfixc}
 
 % Custom commands
+
+% Renders a variable name with a dollar prefix in tt.
 \newcommand{\var}[1]{\texttt{\${#1}}}
+
+% Reference shorthands.
+\newcommand\figureref[1]{%
+  Figure~\ref{figure:#1}%
+}
+\newcommand\figurepageref[1]{%
+  Figure~\ref{figure:#1}%
+  (p.~\pageref{figure:#1})%
+}
+\newcommand\tableref[1]{%
+  Table~\ref{table:#1}%
+}
+\newcommand\tablepageref[1]{%
+  Table~\ref{table:#1}%
+  (p.~\pageref{table:#1})%
+}
+\newcommand\chapterref[1]{%
+  Chapter~\ref{chapter:#1}
+  (p.~\pageref{chapter:#1})%
+}
+\newcommand\sectionref[1]{%
+  Section~\ref{section:#1}
+  (p.~\pageref{section:#1})%
+}
+\newcommand\appendixref[1]{%
+  Appendix~\ref{appendix:#1}
+  (p.~\pageref{appendix:#1})%
+}
