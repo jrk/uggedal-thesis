@@ -8,12 +8,6 @@
     :uiothesis:
       - 11pt
   :packages:
-    - :fontenc:
-      - T1
-    - :mathpazo:
-      - osf
-    - :courier:
-    - :helvet:
     - :graphicx:
     - :longtable:
     - :lscape:

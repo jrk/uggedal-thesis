@@ -39,6 +39,12 @@
 \newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
 \newcommand{\scm}[1]{\renewcommand{\@scm}{#1}}
 
+% Font setup
+\RequirePackage{lmodern}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[osf]{mathpazo}
+\renewcommand\rmdefault{pplj}
+
 % This class is based on the memoir class
 \LoadClass[\@@papersize,%
            \@@ptsize,%
@@ -243,6 +249,18 @@
   \RequirePackage{breakurl}
 \fi
 \RequirePackage{memhfixc}
+
+% Coloring
+\RequirePackage{color}
+\definecolor{urlcolor}{rgb}{0,0.2,0.6}
+\hypersetup{%
+  colorlinks,
+  breaklinks,
+  linkcolor=black,
+  citecolor=black,
+  filecolor=black,
+  urlcolor=urlcolor
+}
 
 % Custom commands
 
