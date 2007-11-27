@@ -54,7 +54,7 @@
            \@@status]{memoir}
 
 % Laying out the page
-\settypeblocksize{*}{28pc}{2}
+\settypeblocksize{*}{29pc}{2}
 \setlrmargins{5pc}{*}{*}
 \setulmargins{*}{*}{3}
 \setmarginnotes{2pc}{10pc}{\baselineskip}

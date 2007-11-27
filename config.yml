@@ -6,7 +6,7 @@
 :template:
   :klass:
     :uiothesis:
-      - 11pt
+      - 12pt
   :packages:
     - :graphicx:
     - :longtable:
