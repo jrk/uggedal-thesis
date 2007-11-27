@@ -67,29 +67,23 @@
   \renewcommand{\chapternamenum}{}
   \renewcommand{\printchapternum}{%
     \marginpar{%
-      \vspace{90pt}
+      \vspace{70pt}
       \scalebox{4}{\chapnumfont \thechapter}
       \vspace{20pt}
     }%
   }%
   \renewcommand{\afterchapternum}{}
   \renewcommand{\printchaptertitle}[1]{%
-    \raggedright\Large\scshape\MakeLowercase{##1}}
+    \raggedright\huge ##1
+  }%
   \renewcommand{\afterchaptertitle}{%
-    \vskip\onelineskip \hrule\vskip\onelineskip}
+    \vskip\onelineskip \vskip\onelineskip
+  }%
 }
 
-\setsecheadstyle{\raggedright\large\scshape\MakeLowercase}
-  \setbeforesecskip{-\onelineskip}
-  \setaftersecskip{\onelineskip}
-
-\setsubsecheadstyle{\raggedright\scshape\MakeLowercase}
-  \setbeforesubsecskip{-\onelineskip}
-  \setaftersubsecskip{\onelineskip}
-
-\setsubsubsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\itshape}
-  \setbeforesubsubsecskip{-\onelineskip}
-  \setaftersubsubsecskip{\onelineskip}
+\setsecheadstyle{\raggedright\Large}
+\setsubsecheadstyle{\raggedright\large}
+\setsubsubsecheadstyle{\raggedright\itshape}
 
 % Bringhurst page style
 \makepagestyle{bringhurst}
