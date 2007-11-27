@@ -246,12 +246,14 @@
 
 % Coloring
 \RequirePackage{color}
-\definecolor{urlcolor}{rgb}{0,0.2,0.6}
+\definecolor{urlcolor}{rgb}{0.24,0.35,0.5}
+\definecolor{linkcolor}{rgb}{0.6,0.2,0.1}
+\definecolor{citecolor}{rgb}{0.35,0.45,0}
 \hypersetup{%
   colorlinks,
   breaklinks,
-  linkcolor=black,
-  citecolor=black,
+  linkcolor=linkcolor,
+  citecolor=citecolor,
   filecolor=black,
   urlcolor=urlcolor
 }
