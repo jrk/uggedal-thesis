@@ -97,14 +97,14 @@
     \calccentering{\unitlength}
     \begin{adjustwidth*}{\unitlength}{-\unitlength}
       \begin{center}
-        \null\vspace{3cm}
+        \null\vspace{1cm}
         \includegraphics[width=0.3\textwidth]{uioseal} \\
         \vspace{2cm}
-        \textbf{\Huge{\@title}} \\
+        {\Huge{\@title}} \\
         \vspace{0.5cm}
-        \textbf{\Large{\@subtitle}} \\
+        {\Large{\@subtitle}} \\
         \vspace{1cm}
-        {\Large\@author} \\
+        {\large\@author} \\
         \vspace{1cm}
         Submitted in partial fulfillment of the requirements \\
         for the degree of Master of Science \\
