@@ -81,6 +81,8 @@
   }%
 }
 
+% Section style
+
 \setsecheadstyle{\raggedright\Large}
 \setsubsecheadstyle{\raggedright\large}
 \setsubsubsecheadstyle{\raggedright\itshape}
@@ -123,13 +125,6 @@
     \end{adjustwidth*}
   \end{titlingpage}
 }
-
-% Sidenote filler
-\newcommand{\sidefill}{%
-  \marginpar{%
-    \vspace{50pt}
-  }%
-}%
 
 % Sidenote
 \newcommand{\sidenote}[1]{%
