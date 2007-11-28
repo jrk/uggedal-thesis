@@ -211,6 +211,9 @@
   urlcolor=urlcolor
 }
 
+% Url formatted with sans serif font
+\urlstyle{sf}
+
 % Custom commands
 
 % Renders a variable name with a dollar prefix in tt.
