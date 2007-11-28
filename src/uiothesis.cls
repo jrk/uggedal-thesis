@@ -89,21 +89,44 @@
   \end{titlingpage}
 }
 
-% Sidenote
-\newcommand{\sidenote}[1]{%
+% Automatic aligned sidenote
+\newcommand{\sidenote}[2]%
+  [0em]{%
   \footnotemark%
   \strictpagechecktrue
   \ifodd\c@page
     \marginpar{%
+      \vspace*{#1}
       \RaggedRight \footnotesize
-      \textsuperscript{\thefootnote}\,#1
+      \textsuperscript{\thefootnote}\,#2
     }%
   \else
     \marginpar{%
+      \vspace*{#1}
       \RaggedLeft \footnotesize
-      \textsuperscript{\thefootnote}\,#1
+      \textsuperscript{\thefootnote}\,#2
     }%
   \fi
+}%
+
+% Forced right or left aligned sidenote
+\newcommand{\oddsidenote}[2]%
+  [0em]{%
+  \footnotemark%
+  \marginpar{%
+    \vspace*{#1}
+    \RaggedRight \footnotesize
+    \textsuperscript{\thefootnote}\,#2
+  }%
+}%
+\newcommand{\evensidenote}[2]%
+  [0em]{%
+  \footnotemark%
+  \marginpar{%
+    \vspace*{#1}
+    \RaggedLeft \footnotesize
+    \textsuperscript{\thefootnote}\,#2
+  }%
 }%
 
 % Sidetable

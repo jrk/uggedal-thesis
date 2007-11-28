@@ -30,27 +30,11 @@ have grown significantly between two surveys conducted in 2005 and 2007,
 roughly 18 months apart.
 More than one third of people using blogs surveyed in 2007 contributes
 actively by writing blog articles or commenting on blog posts as can be seen in
-\tableref{blog.usage}
+\tablepageref{blog.usage}
 \citep[ch.~1, p.~6]{rosa07}.
 It has been argued that web citizens'
 familiarity with blogging laid the groundwork for the explosion we are seeing
 in user participation in web communities \citep{weiss05,beer07}.
-
-\sidetable{Blog Usage}{%
-  \label{table:blog.usage}
-  \begin{tabular}{llp{1.2cm}}
-
-    \toprule
-    Year & Total & Active \\
-         &       & of total \\
-    \midrule
-
-    2005 & 16\% & Not \\
-         &      & known \\
-    2007 & 45\% & 17\% \\
-
-  \end{tabular}
-}
 
 At the same time advances in hardware and web development tools have made it
 easier and cheaper to create new web sites. We're now seeing an
@@ -58,7 +42,7 @@ abundance of new offerings in this field.
 During the initial studies of our research we frequented
 many of the these web sites. Our impression is that
 this area of the web infamously coined \emph{Web 2.0}%
-\sidenote{%
+\sidenote[-4\baselineskip]{%
   Web 2.0 was first used as the name of a conference arranged by
   O'Reilly Media. The ``2.0'' part of the conference name was then used to
   signify the revival of interest in the web after the dot-com bubble in the
@@ -91,6 +75,22 @@ cabin deep in the woods during a hike--reliable and efficient navigational
 systems on the web is of uttermost importance when you're trying to locate a
 certain electronic object containing valuable information.
 
+\sidetable{Blog Usage}{%
+  \label{table:blog.usage}
+  \begin{tabular}{llp{1.2cm}}
+
+    \toprule
+    Year & Total & Active \\
+         &       & of total \\
+    \midrule
+
+    2005 & 16\% & Not \\
+         &      & known \\
+    2007 & 45\% & 17\% \\
+
+  \end{tabular}
+}
+
 In addition to only focusing on \emph{social navigation} we're only concerned
 which such types navigation on the Web.
 On the Web we're using hyperlinks \citep[p.~90]{nelson65} to provide users
@@ -113,16 +113,6 @@ On several occasions we encountered similar articles by the same authors
 discussing the same problems and systems. In such circumstances the collection
 of two or more articles was counted as one.
 
-Our current area of Web 2.0 in relation to navigational problems have in our
-view small coverage in academia.
-As \citet{beer07} notes: ``\ldots `internet time' now runs at at a clock speed
-several orders of magnitude faster than that of academic research''.
-We described earlier the growth we're seeing of web sites with social
-aspects and we believe that some of these provide for novel examples of social
-navigation. It would therefore be interesting to look at some of the
-state-of-the-art social web sites and look at what contributions they have
-made to the field of social navigation.
-
 \sidetable{Social Navigation in Academia}{%
   \label{table:social.navigation.academia}
   \begin{tabular}{ll}
@@ -136,6 +126,16 @@ made to the field of social navigation.
 
   \end{tabular}
 }
+
+Our current area of Web 2.0 in relation to navigational problems have in our
+view small coverage in academia.
+As \citet{beer07} notes: ``\ldots `internet time' now runs at at a clock speed
+several orders of magnitude faster than that of academic research''.
+We described earlier the growth we're seeing of web sites with social
+aspects and we believe that some of these provide for novel examples of social
+navigation. It would therefore be interesting to look at some of the
+state-of-the-art social web sites and look at what contributions they have
+made to the field of social navigation.
 
 We are currently lacking information on how one can use social navigation
 consciously in a modern web application design process. Such navigational
@@ -182,10 +182,15 @@ experimenting with Ur\o{}rt.
 Even though we've had an ongoing dialog with the developers of Ur\o{}rt we
 decided to create our prototype as a layer on top of their site. By using an
 extension%
-\sidenote{Specifically Greasemonkey, an extension allowing for
-customization of presentation and behavior of web pages. Available at
-\url{http://www.greasespot.net}} for the open source Firefox%
-\sidenote{Available at \url{http://firefox.com}}
+\evensidenote{
+  Specifically \emph{Greasemonkey}, an extension allowing for
+  customization of presentation and behavior of web pages. Available at
+  \url{http://www.greasespot.net}
+}
+for the open source Firefox%
+\evensidenote{
+  Available at \url{http://firefox.com}
+}
 web browser we were able to make changes and additions to the way Ur\o{}rt were
 presented to users who were participating in our study. We were able to create
 a back end for the additional data and behavior our new functionality required
