@@ -1,35 +1,11 @@
 % UiO LaTeX Thesis Class
-%
 \ProvidesClass{uiothesis}
+\NeedsTeXFormat{LaTeX2e}
 
-
-% Default options
-\newcommand{\@@papersize}{a4paper}
-\newcommand{\@@ptsize}{10pt}
-\newcommand{\@@sides}{twoside}
-\newcommand{\@@columns}{onecolumn}
-\newcommand{\@@openwhere}{openright}
-\newcommand{\@@status}{final}
-
-% Possible options
-\DeclareOption{letterpaper}{\renewcommand{\@@papersize}{letterpaper}}
-\DeclareOption{a4paper}{\renewcommand{\@@papersize}{a4paper}}
-\DeclareOption{ebook}{\renewcommand{\@@papersize}{ebook}}
-\DeclareOption{9pt}{\renewcommand{\@@ptsize}{9pt}}
-\DeclareOption{10pt}{\renewcommand{\@@ptsize}{10pt}}
-\DeclareOption{11pt}{\renewcommand{\@@ptsize}{11pt}}
-\DeclareOption{12pt}{\renewcommand{\@@ptsize}{12pt}}
-\DeclareOption{17pt}{\renewcommand{\@@ptsize}{17pt}}
-\DeclareOption{oneside}{\renewcommand{\@@sides}{oneside}}
-\DeclareOption{twoside}{\renewcommand{\@@sides}{twoside}}
-\DeclareOption{onecolumn}{\renewcommand{\@@columns}{onecolumn}}
-\DeclareOption{twocolumn}{\renewcommand{\@@columns}{twocolumn}}
-\DeclareOption{openright}{\renewcommand{\@@openwhere}{openright}}
-\DeclareOption{openleft}{\renewcommand{\@@openwhere}{openleft}}
-\DeclareOption{openany}{\renewcommand{\@@openwhere}{openany}}
-\DeclareOption{draft}{\renewcommand{\@@status}{draft}}
-\DeclareOption{final}{\renewcommand{\@@status}{final}}
+% Pass class options to the memoir class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
+\LoadClass{memoir}
 
 % Internal variables
 \newcommand{\@subtitle}{}
@@ -44,14 +20,6 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[osf]{mathpazo}
 \renewcommand\rmdefault{pplj}
-
-% This class is based on the memoir class
-\LoadClass[\@@papersize,%
-           \@@ptsize,%
-           \@@sides,%
-           \@@columns,%
-           \@@openwhere,%
-           \@@status]{memoir}
 
 % Laying out the page
 \settypeblocksize{*}{29pc}{1.73}
