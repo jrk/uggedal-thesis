@@ -62,13 +62,12 @@
 
 % UiO chapter style
 \makechapterstyle{uio}{%
-  \renewcommand{\chapterheadstart}{}
   \renewcommand{\printchaptername}{}
   \renewcommand{\chapternamenum}{}
   \renewcommand{\printchapternum}{%
     \marginpar{%
-      \vspace{70pt}
-      \scalebox{4}{\chapnumfont \thechapter}
+      \vspace{80pt}
+      \scalebox{5}{\huge \thechapter}
       \vspace{20pt}
     }%
   }%
@@ -76,13 +75,9 @@
   \renewcommand{\printchaptertitle}[1]{%
     \raggedright\huge ##1
   }%
-  \renewcommand{\afterchaptertitle}{%
-    \vskip\onelineskip \vskip\onelineskip
-  }%
 }
 
 % Section style
-
 \setsecheadstyle{\raggedright\Large}
 \setsubsecheadstyle{\raggedright\large}
 \setsubsubsecheadstyle{\raggedright\itshape}
