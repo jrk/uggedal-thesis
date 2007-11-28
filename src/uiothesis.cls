@@ -60,8 +60,8 @@
 \setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
 
-% Bringhurst chapter style
-\makechapterstyle{bringhurst}{%
+% UiO chapter style
+\makechapterstyle{uio}{%
   \renewcommand{\chapterheadstart}{}
   \renewcommand{\printchaptername}{}
   \renewcommand{\chapternamenum}{}
@@ -85,48 +85,10 @@
 \setsubsecheadstyle{\raggedright\large}
 \setsubsubsecheadstyle{\raggedright\itshape}
 
-% Bringhurst page style
-\makepagestyle{bringhurst}
-\makeevenfoot{bringhurst}{\thepage}{}{}
-\makeoddfoot{bringhurst}{}{}{\thepage}
-
-\newlength{\pwlayi}\setlength{\pwlayi}{0.45\textwidth}
-\newlength{\pwlayii}\setlength{\pwlayii}{0.45\pwlayi}
-\setlength{\pwlayi}{\headsep}
-\addtolength{\pwlayi}{\topskip}
-\addtolength{\pwlayi}{7.3\onelineskip}
-
-\newcommand{\bringpicr}[1]{%
-  \setlength{\unitlength}{1pt}
-  \begin{picture}(0,0)
-    \put(\strip@pt\marginparsep, -\strip@pt\pwlayi){%
-      \begin{minipage}[t]{\marginparwidth}
-         \raggedright\itshape #1
-      \end{minipage}}
-  \end{picture}
-}
-
-\setlength{\pwlayii}{\marginparsep}
-\addtolength{\pwlayii}{\marginparwidth}
-
-\newcommand{\bringpicl}[1]{%
-  \setlength{\unitlength}{1pt}
-  \begin{picture}(0,0)
-    \put(-\strip@pt\pwlayii, -\strip@pt\pwlayi){%
-      \begin{minipage}[t]{\marginparwidth}
-        \raggedleft\itshape #1
-      \end{minipage}}
-  \end{picture}
-}
-
-\makepsmarks{bringhurst}{%
-  \let\@mkboth\markboth
-  \def\chaptermark##1{\markboth{##1}{##1}}
-  \def\sectionmark##1{\markright{##1}}
-}
-
-\makeevenhead{bringhurst}{\bringpicl{\rightmark}}{}{}
-\makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
+% UiO page style
+\makepagestyle{uio}
+\makeevenfoot{uio}{\thepage}{}{}
+\makeoddfoot{uio}{}{}{\thepage}
 
 % Plain headers and footers
 \makeevenfoot{plain}{\thepage}{}{}
@@ -138,6 +100,7 @@
     \calccentering{\unitlength}
     \begin{adjustwidth*}{\unitlength}{-\unitlength}
       \begin{center}
+        \null\vspace{3cm}
         \includegraphics[width=0.3\textwidth]{uioseal} \\
         \vspace{2cm}
         \textbf{\Huge{\@title}} \\
