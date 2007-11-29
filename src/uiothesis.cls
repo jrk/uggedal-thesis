@@ -16,10 +16,14 @@
 \newcommand{\scm}[1]{\renewcommand{\@scm}{#1}}
 
 % Font setup
-\RequirePackage{lmodern}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[osf]{mathpazo}
-\renewcommand\rmdefault{pplj}
+\IfFileExists{lmodern.sty}{%
+  \RequirePackage{lmodern}
+  \RequirePackage[osf]{mathpazo}
+  \renewcommand\rmdefault{pplj}
+}{%
+  \RequirePackage{mathpazo}
+}
 
 % Laying out the page
 \settypeblocksize{*}{29pc}{1.73}
