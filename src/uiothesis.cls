@@ -102,13 +102,13 @@
     \marginpar{%
       \vspace*{#1}
       \RaggedRight \footnotesize
-      \textsuperscript{\thefootnote}\,#2
+      \textsuperscript{\thefootnote}#2
     }%
   \else
     \marginpar{%
       \vspace*{#1}
       \RaggedLeft \footnotesize
-      \textsuperscript{\thefootnote}\,#2
+      \textsuperscript{\thefootnote}#2
     }%
   \fi
 }%
@@ -120,7 +120,7 @@
   \marginpar{%
     \vspace*{#1}
     \RaggedRight \footnotesize
-    \textsuperscript{\thefootnote}\,#2
+    \textsuperscript{\thefootnote}#2
   }%
 }%
 \newcommand{\evensidenote}[2]%
@@ -129,7 +129,7 @@
   \marginpar{%
     \vspace*{#1}
     \RaggedLeft \footnotesize
-    \textsuperscript{\thefootnote}\,#2
+    \textsuperscript{\thefootnote}#2
   }%
 }%
 
