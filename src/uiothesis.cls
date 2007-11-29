@@ -26,9 +26,9 @@
 }
 
 % Laying out the page
-\settypeblocksize{*}{29pc}{1.73}
+\settypeblocksize{44\onelineskip}{29pc}{*}
 \setlrmargins{5pc}{*}{*}
-\setulmargins{*}{*}{2}
+\setulmargins{*}{*}{1.618}
 \setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
 
