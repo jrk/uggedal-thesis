@@ -34,7 +34,7 @@
 
 Before a literature search was conducted we did some preliminary thinking
 about
-\begin{inparaenum}[(a)]
+\begin{inparaenum}[(i)]
   \item the focus of our topic to get more precise results, and
   \item what literature databases would yield sufficient and accurate
     findings.
@@ -86,19 +86,90 @@ collected and studied. During this process we eliminated articles by the same
 authors where similar topics and implementations were discussed and focused on
 either the most recent or the most representative article.
 
-\section{Literature Review}
-
-First we'll concentrate on the research where social navigation is used
+First we'll briefly discuss navigation and sociality both in general terms
+and relating to the web. Then we'll concentrace on these two topics together
+by looking at the research where social navigation is used
 consciously as a concept. By this we mean the research where either social
 navigation is defined, redefined or problems relating to the concept is
-discussed with a basis in such definitions. Afterwords we'll look at topics
+discussed with a basis in such definitions.
+After our main survey of social navigation research we'll look at topics
 which we believe can be included in the discussion of social navigation or are
-closely related. Some of the research that has been conducted in the space of
+closely related.
+
+Some of the research that has been conducted in the space of
 social navigation and related areas does not share our focus on the Web.
 We still found much such research interesting in spite of their attention to
 generalized problems or specific problems in other fields than the Web.
 
-\subsection{Social Navigation}
+\section{Navigation}
+% Try to cite some classic work. First navigation systems
+% in computers, etc. Maby cite definition of ``navigate'' in dictionary.
+
+Navigation was traditionally associated with controlling a weasel at sea to
+a given destination.%
+\sidenote{
+  \emph{Navigate} is in fact derived from the two latin words \emph{navis}
+  meaning ``ship'' and \emph{agere} meaning ``to drive''.
+  \citep[p.~1200]{anderson97}
+}
+Since then it's been used to describe behaviour related to safely finding ones
+way wether one is driving a car, flying a plane or walking on foot. Maps and
+compass are often used as aids in this wayfinding. When used in context of
+computer systems navigation is essentially a methaphor of our usage of the
+word in our physical world.
+
+\subsection{Navigation on the Web}
+
+\citet{jones96} studied the navigational support provided by the Web's first
+browsers:
+\begin{inparaenum}[(i)]
+  \item loading of page by entering it's location,
+  \item loading a bookmarked page,
+  \item loading a page by using a hyperlink on the current page,
+  \item recall previously visited pages with forward and backward buttons,
+  \item recall a previously visited page by locating it in a history list, and
+  \item reloading the current page.
+\end{inparaenum}
+While modern web browsers support more forms of navigation%
+\sidenote{
+  These early browsers' history lists were not remembered between sessions. In
+  addition we're seeing browsers as Flock (available at
+  \url{http://flock.com}) with new methods of navigation integrated and also
+  an aboundance of plugins and extensions for the main stream browsers that
+  enable new possibilities for navigation.
+}
+than the eariest applications we're not concerned with those here.
+We're only interested in the navigation which are conducted within the main
+browser window (where web pages are rendered) enabled by following hyperlinks.
+
+\section{Sociality}
+% Discuss briefly sociality in general terms and in relation to computers.
+% Define social from a dictionary.
+% Sociality is defined as .. .. .. this means that .. .. ..
+
+Discussion about explicit social matters is left for scholars of the social
+sciences. We're therefore briefly introduced the term and are more concerned
+with situations where it's related to computer systems, and most importantly:
+the Web.
+
+\subsection{Sociality on the Web}
+% Discuss sociality on the web. Maby a good place for a Web 2.0 discussion.
+
+Sociality has becom an integral part of our modern web.
+\citeauthor{bernerslee07}, seen by many as the inventor of the Web,
+recently discussed the evolution from the Net (III: International
+Information Infrastructure), trough the Web (WWW: World Wide Web),
+to what he calls \emph{the Graph} (GGG: Giant Global Graph) in a
+blog post \citeyearpar{bernerslee07}. The Graph is synonymous with the
+\emph{Semantic Web} \citep{bernerslee01} and he describe it in relation to
+current trends of sociality on the Web:
+\begin{quote}
+  It's not the Social Network \emph{Sites} that are interesting--it is the
+  Social Network itself. The Social Graph. \citep{bernerslee01}
+\end{quote}
+
+
+\section{Social Navigation}
 \label{section:background.social.navigation}
 % Could we say that the ideas of social navigation was put forth by Bush?
 
@@ -125,14 +196,21 @@ opportunity for navigation based on social factors. Their second example
 is of the Tapestry \citep{goldberg92} system where electronic messages can be
 voted upon and users can use such metrics for navigating items that seem to be
 of interest. Such a technique is called \emph{collaborative filtering},
-a term which will be discussed later as a concept related to social navigation.
-Based on these two experiences \citeauthor{dourish94} argues that we possibly
-need to move away from spatial models of navigation and rather focus on
-designing explicitly with semantic and social navigational techniques.
+a term which will be discussed later as a concept related to social
+navigation. Based on these two experiences \citeauthor{dourish94} argues that
+we possibly need to move away from spatial models of navigation and rather
+focus on designing explicitly with semantic and social navigational
+techniques.
 
-\citet{dieberger97} introduced a more throughout review of social navigation on
-the Web. \citeauthor{dieberger97} builds on the ideas introduced by
+\citet{dieberger97} introduced a more throughout review of social navigation
+on the Web. \citeauthor{dieberger97} builds on the ideas introduced by
 \citeauthor{dourish94} and looks at it from a more practical standpoint when
 he describes navigational behavior on the Web in it's earlier days, the state
 of social navigation support in the tools of the time, and review two
 prototype systems with social navigation features.
+
+As our focus is on navigation in web pages only we're interested in
+\citeauthor{dieberger97}'s
+% discuss this a bit further based on my short paper
+
+% discuss wexelblat99
