@@ -54,9 +54,14 @@ module Typeraker
 
       # File name prefix for distributed files.
       def distribution_name
-        to_file_name(Typeraker.config[:author][:name],
-                     Typeraker.config[:title],
-                     "r#{Typeraker.config[:scm][:revision].gsub(/:\w+/, '')}")
+        if Typeraker.config[:scm]
+          to_file_name(Typeraker.config[:author][:name],
+              Typeraker.config[:title],
+              "r#{Typeraker.config[:scm][:revision].gsub(/:\w+/, '')}")
+        else
+          to_file_name(Typeraker.config[:author][:name],
+              Typeraker.config[:title])
+        end
       end
 
       def to_file_name(*names)
