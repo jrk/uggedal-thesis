@@ -63,6 +63,34 @@
 \makeevenfoot{plain}{\thepage}{}{}
 \makeoddfoot{plain}{}{}{\thepage}
 
+% Colophon
+\newcommand{\makecolophon}{%
+  \pagestyle{empty}
+
+  \null\vfil
+
+  \calccentering{\unitlength}
+  \begin{adjustwidth*}{\unitlength}{-\unitlength}
+    \begin{center}
+      {\Large\textsf{Colophon}}
+    \end{center}
+    \begin{center}
+      This thesis was typeset using the \LaTeX{} typesetting system
+      created by Leslie Lamport.
+      The body text is set 12/14.5pt on a 29pc measure with Palatino 
+      designed by Hermann Zapf.
+      Other fonts include Sans and Typewriter from Donald Knuth's
+      Computer Modern family.
+    \end{center}
+    \begin{center}
+      This thesis was written in American English as dictated by
+      \emph{The Elements of Style} \citep{strunk00}.
+    \end{center}
+  \end{adjustwidth*}
+
+  \vfil
+}
+
 % Titlepage
 \renewcommand{\maketitle}{%
   \begin{titlingpage}
@@ -72,9 +100,9 @@
         \null\vspace{1cm}
         \includegraphics[width=0.3\textwidth]{uioseal} \\
         \vspace{2cm}
-        {\Huge{\@title}} \\
+        {\Huge\textsf{{\@title}}} \\
         \vspace{0.5cm}
-        {\Large{\@subtitle}} \\
+        {\Large\textsf{{\@subtitle}}} \\
         \vspace{1cm}
         {\large\@author} \\
         \vspace{1cm}
@@ -90,6 +118,8 @@
         \@scm
       \end{center}
     \end{adjustwidth*}
+    \clearpage
+    \makecolophon
   \end{titlingpage}
 }
 

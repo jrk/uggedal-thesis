@@ -33,13 +33,13 @@
 %   if config[:scm]
 \scm{%
 %     if config[:scm][:name]
-  {\Large{<%=config[:scm][:name]%> SCM statistics}} \\
+  {\Large\textsf{<%=config[:scm][:name]%> SCM statistics}} \\
 %     end
 %     if config[:scm][:revision]
-  Revision: <%=config[:scm][:revision]%> \\
+  \textsf{Revision: <%=config[:scm][:revision]%>} \\
 %     end
 %     if config[:scm][:date]
-  Date: <%=config[:scm][:date]%> \\
+  \textsf{Date: <%=config[:scm][:date]%>} \\
 %     end
 }
 %   end
