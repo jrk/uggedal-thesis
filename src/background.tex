@@ -236,25 +236,41 @@ A more troughout review of social navigation on the Web was introduced
 by \citet{dieberger97}. He builds on the ideas introduced by
 \citeauthor{dourish94} and looks at it from a more practical standpoint when
 he describes navigational behavior on the Web in it's earlier days.
-\citeauthor{dieberger97} is particularly concerned with making \emph{URL}%
-\sidenote{
-  Uniform Resource Locator. URL was formerly an abbrivation of Universal
-  Resource Locator.
-}
-handeling transparent for users in different tools related to web browsers and
-the operating system itself. Web browsers handles URLs embedded as hyperlinks
-transparently so we're not going to elaborate on matters of URL handeling in
-auxilary systems here.
 
 \citeauthor{dieberger97} higlights an important aspect for making interaction
 on the Web smoother. With an ``awareness of the presence of
 other users'' \citeyearpar[p.~812]{dieberger97} one can give an indication of
-what parts of a web page that is of high demand and possibly identify the users
-accessing them.
+what parts of a web page that is of high demand and possibly identify the
+users accessing them.
 
 A summary of research on social navigation upto the beginning of this
-milennium was written by \citet{dieberger00b}. The article's interesting
-themese
+milennium was written by \citet{dieberger00b}. The article's discusses social
+navigation in different kinds of coputer systems used on the Internet. It's
+most interesting features are
+
+The most detailed definition of social navigation to our knowledge was
+completed by \citet{svensson03} in his Ph.D. thesis. To understand his
+definition we'll have to introduce his wording of the actors in a social
+navigation process:
+
+\begin{description}
+  \item[Navigator] is ``the person seeking navigational advice''
+    \citep[p.~20]{svensson03}.
+  \item[Advice provider] is a ``person or artificial agent providing
+    navigational advice to a navigator'' \citep[p.~20]{svensson03}.
+\end{description}
+
+Social navigation was then defined as:
+
+\begin{quote}
+  navigation that is conceptually understood as driven by the actions from one
+  or more advice providers. \citep[p.~20]{svensson03}
+\end{quote}
+
+Firstly, \citeauthor{svensson03} talks about navigation with is ``conceptually
+understood'' as driven by these advice providers. As long as the user believes
+his navigational choices are driven by advice providers it is social
+navigation. Secondly, 
 
 \subsection{Fundamental Categorization}
 
@@ -263,7 +279,8 @@ themese
 In his classic article \citet{dieberger97} distinguishes between an
 \emph{active} and \emph{passive} form of social navigation. This distinction
 is grounded in the nature of the exchange of information between the two
-parties involved in a social navigation process--the creator and the reader.
+parties involved in a social navigation process--the creator(s) of navigation
+cues and the navigator.
 
 \begin{description}
   \item[Passive] social navigation happens when people make available
@@ -277,13 +294,28 @@ From these quite broad characteristics of social navigation we'll continue
 with a discussion of several applications of social navigation found in
 secondary litterature.
 
-\subsection{Hyperlink Sharing}
+\subsection{Application}
+
+\subsubsection{Hyperlink Sharing}
+
+\citet{dieberger97} is particularly concerned with making \emph{URL}%
+\sidenote{
+  Uniform Resource Locator. URL was formerly an abbrivation of Universal
+  Resource Locator.
+}
+handeling transparent for users in different tools related to web browsers and
+the operating system itself. Making URLs invisible to users will in his
+oppinion enable more widespread use of social navigation trough pointer
+sharing. Web browsers handles URLs embedded as hyperlinks
+transparently so we're not going to elaborate on matters of URL handeling in
+auxilary systems here.
 
 Both \cite{dourish94} and \cite{dieberger97} observed social navigation on the
 Web when hyperlinks were shared on web pages. Creators of these pages often
 had a list of pointers to other web pages they deemed interesting enough to go
 trough the trouble of creating such a listing. By doing this they created
 an opportunity for navigation based on social factors.
+
 
 % should this be in the analysis section?
 While pointer pages still is in existance it seems that the increasing
@@ -317,24 +349,24 @@ higher quality information. Sharing a hyperlink, either on you web page or
 trough a bookmarking service, requires a councious effort. One would believe
 that people only choose to do so for information they find interesting.
 
-\subsection{Item Annotation}
+\subsubsection{Item Annotation}
 % tagging
 % articles with tagging in context of social navigation
 % lot of more discussion of tagging and mostly related to organizing
 % principles and folksonomy
 
-\subsection{Hyperlink Trails}
+\subsubsection{Hyperlink Trails}
 % bush, wexelblat99, new services, trailfire, new hoodwink.d greasemonkey
 % service
 
-\subsection{Collaborative Filtering}
+\subsubsection{Collaborative Filtering}
 % introduce earlier cited goldberg92 article and more recent work. recommender
 % systems ties into this
 
-\subsection{Visualization}
+\subsubsection{Visualization}
 % activity, usage, edit/read wear
 
-\subsection{Off the Web}
+\subsubsection{Off the Web}
 % security, mathematical models, etc
 
 \section{Building on Top of the Web}
