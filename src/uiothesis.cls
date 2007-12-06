@@ -195,6 +195,20 @@
   }
 }
 
+% Cite quote environment
+\newcommand{\@quotekey}{undefined}
+\newcommand{\@quoteopt}{undefined}
+\newenvironment{citequote}[2][]{%
+  \renewcommand{\@quoteopt}{#1}
+  \renewcommand{\@quotekey}{#2}
+  \begin{quote}
+}{%
+  \\[0.5\onelineskip]
+    \hspace*{\fill}
+    \citep[\@quoteopt]{\@quotekey}
+  \end{quote}
+}
+
 \newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
 \addtolength{\wholemargin}{\marginparpush}
 \newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}
