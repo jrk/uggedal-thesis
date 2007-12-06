@@ -1,3 +1,19 @@
+@String(jan = "January")
+@String(feb = "February")
+@String(mar = "March")
+@String(apr = "April")
+@String(may = "May")
+@String(jun = "June")
+@String(jul = "July")
+@String(aug = "August")
+@String(sep = "September")
+@String(oct = "October")
+@String(nov = "November")
+@String(dec = "December")
+
+@String(acm     = "ACM Press")
+@String(acm_adr = "New York, NY, USA")
+
 @incollection{anderson97,
   author    = {Edward W. Anderson},
   title     = {Navigation},
@@ -18,8 +34,8 @@
   title     = {Group formation in large social networks: membership, growth,
                and evolution},
   pages     = {44--54},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {2006},
 }
 
@@ -30,19 +46,22 @@
   pages     = {805--825},
   volume    = {12},
   number    = {5},
-  month     = {September},
-  url       = "http://www.socresonline.org.uk",
+  note      = {Retrieved October 27, 2007, from
+               \url{http://www.socresonline.org.uk/12/5/17.html}},
+  month     = sep,
   year      = {2007},
 }
 
 @article{bernerslee92,
-  author    = {Tim Berners-Lee and Robert Cailliau and Jean-Francois Groff
+  author    = {Tim Berners-Lee and Robert Cailliau and Jean-Fran\c{c}ois Groff
                and Bernd Pollermann},
   journal   = {Electronic Networking: Research, Applications and Policy},
   title     = {World-Wide Web: The Information Universe},
-  pages     = {74-82},
+  pages     = {74--82},
   volume    = {1},
   number    = {2},
+  publisher = {Westport},
+  address   = {Westport, CT, USA},
   year      = {1992},
 }
 
@@ -50,9 +69,11 @@
   author    = {Tim Berners-Lee and James Hendler and Ora Lassila},
   journal   = {Scientific American},
   title     = {The Semantic Web},
-  pages     = {34-43},
+  pages     = {34--43},
   volume    = {284},
   number    = {5},
+  publisher = {Scientific American, Inc.},
+  address   = {New York, NY, USA},
   year      = {2001},
 }
 
@@ -62,7 +83,7 @@
   title     = {Giant Global Graph},
   note      = {Retrieved November 26, 2007, from
                \url{http://dig.csail.mit.edu/breadcrumbs/node/215}},
-  month     = {November},
+  month     = nov,
   year      = {2007},
 }
 
@@ -70,7 +91,7 @@
   author    = {Vannevar Bush},
   title     = {As We May Think},
   journal   = {Atlantic Monthly},
-  pages     = {101-108},
+  pages     = {101--108},
   volume    = {176},
   number    = {1},
   year      = {1945},
@@ -81,8 +102,8 @@
   journal   = {Flickr Blog},
   title     = {The New New Things},
   note      = {Retrieved November 14, 2007, from
-               \url{http://blog.flickr.com/en/2005/08/01/the-new-new-things/}},
-  month     = {August},
+    \url{http://blog.flickr.com/en/2005/08/01/the-new-new-things/}},
+  month     = aug,
   year      = {2005},
 }
 
@@ -91,8 +112,8 @@
   journal   = {Flickr Blog},
   title     = {Great Shot -- Where'd You Take That?},
   note      = {Retrieved November 14, 2007, from
-               \url{http://blog.flickr.com/en/2006/08/28/great-shot-whered-you-take-that/}},
-  month     = {August},
+    \url{http://blog.flickr.com/en/2006/08/28/great-shot-whered-you-take-that/}},
+  month     = aug,
   year      = {2006},
 }
 
@@ -103,20 +124,39 @@
   pages     = {805--825},
   volume    = {46},
   number    = {6},
-  month     = {June},
+  publisher = {Academic Press, Inc.},
+  address   = {Duluth, MN, USA},
+  month     = jun,
   year      = {1997},
 }
 
-@inproceedings{dieberger00,
+@inproceedings{dieberger00a,
   author    = {Dieberger, Andreas and Lonnqvist, Peter},
   booktitle = {HYPERTEXT '00: Proceedings of the Eleventh ACM on Hypertext
                and Hypermedia},
   title     = {Visualizing Interaction History on a Collaborative Web Server},
-  pages     = {220-221},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  pages     = {220--221},
+  publisher = acm,
+  address   = acm_adr,
+  month     = may,
   year      = {2000},
 }
+
+@article{dieberger00b,
+  author    = {A. Dieberger and P. Dourish and K. H\"{o}\"{o}k and
+              P. Resnick and A. Wexelblat},
+  journal   = {interactions},
+  title     = {Social Navigation:
+               Techniques for Building More Usable Systems},
+  pages     = {36--45},
+  volume    = {7},
+  number    = {6},
+  publisher = acm,
+  address   = acm_adr,
+  month     = nov,
+  year      = {2000},
+}
+
 
 @unpublished{dourish94,
   author    = {Dourish, Paul and Chalmers, Matthew},
@@ -134,8 +174,8 @@
   pages     = {61--70},
   volume    = {35},
   number    = {12},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {1992},
 }
 
@@ -146,7 +186,7 @@
   pages     = {198--208},
   volume    = {32},
   number    = {2},
-  month     = {April},
+  month     = apr,
   year      = {2006},
 }
 
@@ -157,8 +197,8 @@
   title     = {A study of navigational support provided by two
                World Wide Web browsing applications},
   pages     = {161--169},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {1996},
 }
 
@@ -170,7 +210,7 @@
   volume    = {19},
   number    = {1},
   publisher = {The MIT Press},
-  month     = {April},
+  month     = apr,
   year      = {2003},
 }
 
@@ -181,8 +221,8 @@
                Factors in Computing Systems},
   title     = {Edit Wear and Read Wear},
   pages     = {3--9},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {1992},
 }
 
@@ -201,7 +241,7 @@
   title     = {The UNIX Programming Environment},
   publisher = {{Prentice-Hall, Inc.}},
   address   = {Englewood Cliffs, NJ, USA},
-  month     = {March},
+  month     = mar,
   year      = {1984},
 }
 
@@ -212,9 +252,9 @@
   pages     = {36--42},
   volume    = {50},
   number    = {4},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
-  month     = {April},
+  publisher = acm,
+  address   = acm_adr,
+  month     = apr,
   year      = {2007},
 }
 
@@ -224,7 +264,7 @@
   edition   = {second},
   publisher = {{Sage Publications, Inc.}},
   address   = {Thousand Oaks, CA, USA},
-  month     = {December},
+  month     = dec,
   year      = {2003},
 }
 
@@ -234,7 +274,7 @@
   title     = {Content Analysis Heuristics},
   note      = {Retrieved November 25, 2007, from
                \url{http://www.boxesandarrows.com/view/content-analysis}},
-  month     = {March},
+  month     = mar,
   year      = {2007},
 }
 
@@ -243,7 +283,7 @@
   title     = {The Computer as a Communication Device},
   pages     = {21--31},
   journal   = {Science and Technology},
-  month     = {April},
+  month     = apr,
   year      = {1968},
 }
 
@@ -252,7 +292,7 @@
   title     = {Founders at Work: Stories of Startups' Early Days},
   publisher = {{Apress}},
   address   = {Berkely, CA, USA},
-  month     = {January},
+  month     = jan,
   year      = {2007},
 }
 
@@ -273,7 +313,7 @@
   edition   = {third},
   publisher = {{O'Reilly Media}},
   address   = {Sebastopol, CA, USA},
-  month     = {November},
+  month     = nov,
   year      = {2006},
 }
 
@@ -284,8 +324,8 @@
   title     = {Complex Information Processing: A File Structure for the
                Complex, the Changing and the Indeterminate},
   pages     = {84--100},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {1965},
 }
 
@@ -295,7 +335,7 @@
                the Next Generation of Software},
   note      = {Retrieved October 12, 2007, from
                \url{http://www.oreillynet.com/lpt/a/6228}},
-  month     = {September},
+  month     = sep,
   year      = {2005},
 }
 
@@ -304,8 +344,8 @@
   journal   = {O'Reilly Radar},
   title     = {Today's Web 3.0 Nonsense Blogstorm},
   note      = {Retrieved October 12, 2007, from
-               \url{http://radar.oreilly.com/archives/2007/10/web_30_semantic_web_web_20.html}},
-  month     = {October},
+    \url{http://radar.oreilly.com/archives/2007/10/web_30_semantic_web_web_20.html}},
+  month     = oct,
   year      = {2007},
 }
 
@@ -317,7 +357,7 @@
   number    = {3},
   insititution = {OCLC Online Computer Library Center, Inc.},
   address   = {Dublin, Ohio, USA},
-  month     = {October},
+  month     = oct,
   year      = {2007},
 }
 
@@ -358,7 +398,7 @@
                Odyssey Through Your Web Site)},
   note      = {Retrieved November 25, 2007, from
                \url{http://www.adaptivepath.com/ideas/essays/archives/000040.php}},
-  month     = {June},
+  month     = jun,
   year      = {2002},
 }
 
@@ -368,7 +408,7 @@
   title     = {A Map-Based Approach to a Content Inventory},
   note      = {Retrieved October 18, 2007, from
                \url{http://www.boxesandarrows.com/view/a-map-based-approach}},
-  month     = {September},
+  month     = sep,
   year      = {2007},
 }
 
@@ -392,9 +432,9 @@
   pages     = {16--23},
   volume    = {9},
   number    = {3},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
-  month     = {April},
+  publisher = acm,
+  address   = acm_adr,
+  month     = apr,
   year      = {2005},
 }
 
@@ -404,8 +444,8 @@
                on Human factors in computing systems},
   title     = {Footprints: History-Rich Tools for Information Foraging},
   pages     = {270--277},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {1999},
 }
 
@@ -416,8 +456,8 @@
                on Human factors in computing systems},
   title     = {User performance with command, menu, and iconic interfaces},
   pages     = {185--191},
-  publisher = {ACM Press},
-  address   = {New York, NY, USA},
+  publisher = acm,
+  address   = acm_adr,
   year      = {1985},
 }
 
@@ -426,7 +466,7 @@
   title     = {Information Architecture: Blueprints for the Web},
   publisher = {{New Riders Press}},
   address   = {Indianapolis, IN, USA},
-  month     = {October},
+  month     = oct,
   year      = {2005},
 }
 

@@ -227,47 +227,69 @@ In their description of the social type they coined the term
 
 \citeauthor{dourish94} exemplifies two cases where neither location
 (spatial) nor content (semantic) is used for exploration--the social model
-is used on it's own. The first example is of home pages where the creators
-have authored a list of web pages they find interesting. Their second example
-is of the Tapestry \citep{goldberg92} system where electronic messages can be
-voted upon and users can use such metrics for navigating items that seem to be
-of interest. Such a technique is called \emph{collaborative filtering},
-a term which will be discussed later as a concept enabeling social
-navigation. Based on these two experiences \citeauthor{dourish94} argues that
-we possibly need to move away from spatial models of navigation and rather
-focus on designing explicitly with semantic and social navigational
+is used on it's own. Based on these two experiences \citeauthor{dourish94}
+argues that we possibly need to move away from spatial models of navigation
+and rather focus on designing explicitly with semantic and social navigational
 techniques.
 
-\citet{dieberger97} introduced a more throughout review of social navigation
-on the Web. \citeauthor{dieberger97} builds on the ideas introduced by
+A more troughout review of social navigation on the Web was introduced
+by \citet{dieberger97}. He builds on the ideas introduced by
 \citeauthor{dourish94} and looks at it from a more practical standpoint when
-he describes navigational behavior on the Web in it's earlier days, the state
-of social navigation support in the tools of the time, and review two
-prototype systems with social navigation features.
+he describes navigational behavior on the Web in it's earlier days.
+\citeauthor{dieberger97} is particularly concerned with making \emph{URL}%
+\sidenote{
+  Uniform Resource Locator. URL was formerly an abbrivation of Universal
+  Resource Locator.
+}
+handeling transparent for users in different tools related to web browsers and
+the operating system itself. Web browsers handles URLs embedded as hyperlinks
+transparently so we're not going to elaborate on matters of URL handeling in
+auxilary systems here.
+
+\citeauthor{dieberger97} higlights an important aspect for making interaction
+on the Web smoother. With an ``awareness of the presence of
+other users'' \citeyearpar[p.~812]{dieberger97} one can give an indication of
+what parts of a web page that is of high demand and possibly identify the users
+accessing them.
+
+A summary of research on social navigation upto the beginning of this
+milennium was written by \citet{dieberger00b}. The article's interesting
+themese
+
+\subsection{Fundamental Categorization}
 
 % discuss fundemental groupings of social navigation, explicit, implicit and
 % so on
+In his classic article \citet{dieberger97} distinguishes between an
+\emph{active} and \emph{passive} form of social navigation. This distinction
+is grounded in the nature of the exchange of information between the two
+parties involved in a social navigation process--the creator and the reader.
+
+\begin{description}
+  \item[Passive] social navigation happens when people make available
+    navigational aids that later can be used by other people.
+  \item[Active] social navigation finds place when a person either deliberatly
+    seeks out another and asks for a navigation advice or intentionally gives
+    away such navigational advice.
+\end{description}
+
+From these quite broad characteristics of social navigation we'll continue
+with a discussion of several applications of social navigation found in
+secondary litterature.
 
 \subsection{Hyperlink Sharing}
-% social bookmarking, leads to next subsection
-% delicious, lot of more, some academica related like citeulike and so on
-% stumbleupon
 
 Both \cite{dourish94} and \cite{dieberger97} observed social navigation on the
 Web when hyperlinks were shared on web pages. Creators of these pages often
 had a list of pointers to other web pages they deemed interesting enough to go
 trough the trouble of creating such a listing. By doing this they created
 an opportunity for navigation based on social factors.
-\citeauthor{dieberger97} calls this form of hyperlink sharing passive
-based on the nature of the exchange between the two parties--the creator and
-the reader. He goes on an distinguishes passive sharing from an active
-approach where a person either deliberatly seeks out another and asks for a
-pointer or intentionally gives a pointer away.
-% discuss this in relation to explicit vs implicit social navigation
 
+% should this be in the analysis section?
 While pointer pages still is in existance it seems that the increasing
-use of blogs have resulted in a new form of sharing interesting web pages,
-which often is other blogs. So called \emph{blog rolls} is a way for blog
+use of blogs (see \tablepageref{blog.usage})
+have resulted in a new form for sharing interesting web pages,
+which often is other blogs. So called \emph{blogrolls} is a way for blog
 authors to list other blogs they are reading regularly. They thereby function
 ``as a navigation tool for readers to find other authors with similar
 interests'' \citep[p.~3]{marlow07}. An example of a blogroll can be seen in
@@ -282,9 +304,18 @@ interests'' \citep[p.~3]{marlow07}. An example of a blogroll can be seen in
   \includegraphics[width=\marginparwidth]{scrsh_dailykos_blogroll}
 }
 
-% While pointer pages still is in existance, it seems to use that 
-% blog rolls is todays form of pointer pages.
+A new phenomena appered with the introduction of the \emph{del.icio.us} social
+bookmarking system. %cite, discuss further, lead in to next section.
 
+As \citet[p.~806]{dieberger97} argues the Web's growth, even at it's modest
+size of 1997 compared to it's staggering size over 10 years later, have
+implications on how easiy it is to locate information. By creating pointer
+pages, and now socially shared bookmarking services, users are imposing a
+structure on the web. By navigating these kinds of interlinked hyperlink
+collections it could be that users are getting access to more related and
+higher quality information. Sharing a hyperlink, either on you web page or
+trough a bookmarking service, requires a councious effort. One would believe
+that people only choose to do so for information they find interesting.
 
 \subsection{Item Annotation}
 % tagging
