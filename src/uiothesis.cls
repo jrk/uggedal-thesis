@@ -219,14 +219,14 @@
   Figure~\ref{figure:#1}%
 }
 \newcommand\figurepageref[1]{%
-  Figure~\ref{figure:#1}%
+  Figure~\ref{figure:#1}
   (p.~\pageref{figure:#1})%
 }
 \newcommand\tableref[1]{%
   Table~\ref{table:#1}%
 }
 \newcommand\tablepageref[1]{%
-  Table~\ref{table:#1}%
+  Table~\ref{table:#1}
   (p.~\pageref{table:#1})%
 }
 \newcommand\chapterref[1]{%
@@ -234,7 +234,7 @@
   (p.~\pageref{chapter:#1})%
 }
 \newcommand\sectionref[1]{%
-  Section~\ref{section:#1}
+  \textsection~\ref{section:#1}
   (p.~\pageref{section:#1})%
 }
 \newcommand\appendixref[1]{%
