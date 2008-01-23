@@ -245,7 +245,7 @@
   colorlinks,
   breaklinks,
   linkcolor=linkcolor,
-  citecolor=citecolor,
+  citecolor=black,
   filecolor=black,
   urlcolor=urlcolor
 }
