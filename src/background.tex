@@ -496,8 +496,24 @@ contextual interaction history cues.
 \subsubsection{Collaborative Filtering}
 % introduce earlier cited goldberg92 article and more recent work. recommender
 % systems ties into this
+% ca is often used for recommendation systems
 
-\subsubsection{Recommender Systems}
+
+\subsubsection{Populated Space}
+
+A \emph{populated space} is
+  ``an information space in which other people
+  can be encountered.'' \citep[p.~41]{dieberger00b}
+By providing online awareness users can see where other users are moving and
+spending time. In contrast to interaction history where such behavior is
+stored for later retrival a populated space only shows what others are doing
+in real-time.
+
+``Kalas'' \citep{svensson05}, a system for interacting with food receipes,
+uses the idea of populated space to enable user awareness. Kalas is also a
+recommendation system and is in our oppinion one of the best studied social
+navigation systems. We'll therefore come back to \citeauthor{svensson05}'s
+evaluations of different social navigation techniques.
 
 \subsubsection{Visualization}
 % activity, usage, edit/read wear
@@ -519,6 +535,22 @@ contextual interaction history cues.
 %                          - stay longer in the space
 %                          - relaxed
 %                          - try new features
+
+\citet{svensson05} performed a troughout evaluation of the Kalas system and
+two issues in perspective of social navigation:
+\begin{enumerate}
+  \item Will social navigation enable users to navigate more efficiently?
+  \item Do social navigation increase the perceived subjective quality of
+    a navigation process?
+\end{enumerate}
+
+Server logs were statistically mined and more in depth qualitative interviews
+were conducted. The results showed that people tended to move to the most
+populated part of system and used recommendations for helping select which
+receipes to navigate. \citeauthors{svensson05} also found that the subjects
+overall had a positive impression of the social features of the system. They
+seemed more interested in expressing themselves trough such features than
+using information from others to help their navigation process.
 
 \section{Building on Top of the Web}
 % Greasemonkey, hoodwink.d, new hoodwink.d service
