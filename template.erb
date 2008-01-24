@@ -55,12 +55,6 @@
 }
 % end
 
-% if config[:acknowledgments]
-\acknowledgments{%
-  <%=config[:acknowledgments]%>
-}
-% end
-
 % if config[:options][:graphics_dir]
 \graphicspath{{<%=config[:options][:graphics_dir]%>/}}
 % end
@@ -88,6 +82,11 @@
     \cleardoublepage
     \listoftables
 % end
+% if config[:acknowledgements]
+    \chapter{Acknowledgements}
+    <%=config[:acknowledgements]%>
+% end
+
 
   \mainmatter
 % config[:main_content].each do |content|

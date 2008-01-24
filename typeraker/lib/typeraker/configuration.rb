@@ -11,7 +11,7 @@ module Typeraker
           :date              => nil,
           :scm               => nil,
           :abstract          => nil,
-          :acknowledgments   => nil,
+          :acknowledgements   => nil,
           :table_of_contents => false,
           :list_of_figures   => false,
           :list_of_tables    => false,
