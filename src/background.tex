@@ -124,10 +124,12 @@ conceptual space in which they can navigate \citep[p.~189]{whiteside85}.
 
 Navigation is important on the Web. Without a way to efficiently and safely
 navigate one is in the danger of becoming lost. This problem was evident even
-before the Web was invented as
-  ``hypertext offers more degrees of freedom, more dimensions in which one
+before the Web was invented:
+\begin{citequote}[p.~38]{conklin87}
+  Hypertext offers more degrees of freedom, more dimensions in which one
   can move, and hence a greater potential for the user
-  to become lost or disoriented'' \citep[p.~38]{conklin87}.
+  to become lost or disoriented.
+\end{citequote}
 
 \citet{jones96} studied the navigational support provided by the Web's first
 browsers:
@@ -512,13 +514,12 @@ history increased the overall activity on the web page during a user study.
 They also learned that it's important to both provide both global and
 contextual interaction history cues.
 
-% Juggler
+% Juggler discource here, maybe
 
 \subsubsection{Collaborative Filtering}
 % introduce earlier cited goldberg92 article and more recent work. recommender
 % systems ties into this
 % ca is often used for recommendation systems
-
 
 \subsubsection{Populated Space}
 
@@ -562,11 +563,51 @@ level. \citeauthor{xu06} took the approach of displaying read-wear in real
 time, thus making the system a populated space. To make such an approach
 usefull the Wiki needs a certain ammount of users present at all times. If
 it's not frequently trafficed it would probably be better to represent
-historical read-wear as done in CoWeb \citep[p.~220]{dieberger00a}.
+historical read-wear as done in CoWeb \citep[p.~220]{dieberger00a}. Both
+contextual and global use of such social texture can be seen in
+\figureref{scrsh_coweb_contextual} and \figureref{scrsh_coweb_global}.
+
+\begin{figure}[b]
+  \captionstyle{\raggedright}
+  \begin{whole}
+    \begin{minipage}[t]{0.475\wholewidth}
+      \includegraphics[width=\textwidth]{scrsh_coweb_contextual}
+      \caption[CoWeb Contextual Cues]{%
+      CoWeb Contextual Cues,
+        retrieved January 25, 2008, from
+        \url{http://homepage.mac.com/juggle5/WORK/publications/SwikiWriteup.html}.
+      }
+      \label{figure:scrsh.coweb.contextual}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.475\wholewidth}
+      \includegraphics[width=\textwidth]{scrsh_coweb_global}
+      \caption[CoWeb Global Cues]{%
+      CoWeb Global Cues,
+        retrieved January 25, 2008, from
+        \url{http://homepage.mac.com/juggle5/WORK/publications/SwikiWriteup.html}.
+      }
+      \label{figure:scrsh.coweb.global}
+    \end{minipage}
+  \end{whole}
+  \normalcaption
+\end{figure}
 
 \subsubsection{Search}
 % social search articles and semantic web/search article
 % not that relevant as we're focusing on navigation trough browsing
+
+We've noted that it was experienced that users potentially could become lost
+or disorientated in hypertext even before the comming of the Web. It was known
+that search could be a remedy for this problem:
+
+\begin{citequote}[p.~38]{conklin87}
+  One solution to this dilemma is to apply standard database search and query
+  techniques to locating the node or nodes which the user is seeking. This is
+  usually done by using boolean operations to apply some combination of
+  keyword search, full string search, and logical predicates on other
+  attributes (such as author, time of creation, type, etc.) of nodes or links.
+\end{citequote}
 
 \subsection{Usefulness}
 % dieberger00b:
