@@ -28,9 +28,12 @@
   :list_of_figures: true
   :list_of_tables: true
   :acknowledgements:
-    I would like to thank Andreas Dieberger for allowing me
-    to freely use illustrations from one of his published
-    articles.
+    I would like to thank
+    Andreas Dieberger,
+    Peter Brusilovsky, and
+    Robert Mertens
+    for allowing me to freely use illustrations from
+    some of their published articles.
   :main_content:
     - introduction
     - background
