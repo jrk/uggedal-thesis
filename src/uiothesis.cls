@@ -201,8 +201,9 @@
 \newenvironment{citequote}[2][]{%
   \renewcommand{\@quoteopt}{#1}
   \renewcommand{\@quotekey}{#2}
-  \begin{quote}
+  \begin{quote}``\ignorespaces%
 }{%
+  \ignorespaces''
   \\[0.5\onelineskip]
     \hspace*{\fill}
     \citep[\@quoteopt]{\@quotekey}
