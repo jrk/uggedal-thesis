@@ -203,7 +203,7 @@
   \renewcommand{\@quotekey}{#2}
   \begin{quote}``\ignorespaces%
 }{%
-  \ignorespaces''
+  \unskip''
   \\[0.5\onelineskip]
     \hspace*{\fill}
     \citep[\@quoteopt]{\@quotekey}
