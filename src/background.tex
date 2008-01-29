@@ -309,6 +309,13 @@ of nature.
 \subsection{Fundamental Categorization}
 % discuss fundamental groupings of social navigation, explicit, implicit and
 % so on
+
+We'll take a look at broader characteristics of social navigation
+before we'll continue with a discussion of several technical applications of
+social navigation found in secondary academic literature.
+
+\subsubsection{Active, Direct, Passive, and Indirect Social Navigation}
+
 In his classic article \citet{dieberger97} distinguishes between an
 \emph{active} and \emph{passive} form of social navigation. This distinction
 is grounded in the nature of the exchange of information between the two
@@ -342,12 +349,33 @@ with passive social navigation which is similar to indirect social navigation.
 navigator and advice provider. \citeauthor{svensson03} on the other hand
 describes the nature of the communication between the two parties.
 
+\subsubsection{Explicit and Implicit Advice}
+
+Related to passive or indirect social navigation is the notion
+of \emph{explicit} and \emph{implicit} feedback. Though generally used to
+describe the form of feedback in so called \emph{recommender systems}%
+\sidenote{
+  Recommender systems is discussed as an application of
+  \emph{collaborative filtering} in 
+  \sectionref{background.social.navigation.applied.forms.collaborative.filtering}.
+}
+\citep[p.~82]{oard98} it can also be used more generally to distinguish how
+passive or indirect social navigation is provided by an advice provider.
+Collect such advide explicitly means that the advice provider have to use
+concious effort to do so. For instance such an advice provider can choose to
+share an interesting web site and does so by putting a hyperlink to it on his
+web page.
+
+When advice is mediated implicitly the process of doing so are transparent and
+unintrusive for the advice provider. Based on the work the advice provider
+would have done regardless of the social effects it conveys one can provide
+advice to future navigators. An example of such behaviour is recording of
+browsing history that can be computationally evaluated to provide advice for
+others as we'll return to in
+\sectionref{background.social.navigation.applied.forms.interaction.history}.
+
 % directly visible or aggregated and hidden in the interaction history of a
 % physical object or place dieberger00b
-
-From these broader characteristics of social navigation we'll continue
-with a discussion of several applications of social navigation found in
-secondary academic literature.
 
 \subsection{Applied Forms}
 
@@ -450,6 +478,7 @@ every user, not only the creator, to apply globally visible tags.
 % cite cite cite cite
 
 \subsubsection{Interaction History}
+\label{section:background.social.navigation.applied.forms.interaction.history}
 % in the wild: trail-fire, new hoodwink.d like Greasemonkey service
 % history-rich objects: hill92, hill94
 
@@ -526,9 +555,11 @@ contextual interaction history cues.
 % Juggler discource here, maybe
 
 \subsubsection{Collaborative Filtering}
-% introduce earlier cited goldberg92 article and more recent work. recommender
-% systems ties into this
+\label{section:background.social.navigation.applied.forms.collaborative.filtering}
+% introduce earlier cited goldberg92 article and more recent work.
 % ca is often used for recommendation systems
+% look at the benefits of implicit feedback in contrast to explicit feedback
+% with regard to recommendation systems as highlighted by claypool01.
 
 \subsubsection{Populated Space}
 
