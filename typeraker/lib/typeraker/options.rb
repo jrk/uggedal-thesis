@@ -4,26 +4,19 @@ module Typeraker
       def defaults
         root_dir         = Dir.pwd
         source_dir       = 'src'
-        build_dir        = 'tmp'
-        distribution_dir = 'dist'
-        template_file    = 'template.erb'
-        base_file        = 'base'
-        vendor_dir       = source_dir + '/vendor'
-        graphics_dir     = source_dir + '/graphics'
-        spell_dir        = source_dir
-        spell_file       = 'dictionary.ispell'
 
         @defaults ||= {
-          :root_dir         => root_dir,
-          :source_dir       => source_dir,
-          :build_dir        => build_dir,
-          :distribution_dir => distribution_dir,
-          :template_file    => template_file,
-          :base_file        => base_file,
-          :vendor_dir       => vendor_dir,
-          :graphics_dir     => graphics_dir,
-          :spell_dir        => spell_dir,
-          :spell_file       => spell_file
+          :root_dir          => root_dir,
+          :source_dir        => source_dir,
+          :build_dir         => 'tmp',
+          :distribution_dir  => 'dist',
+          :template_file     => 'template.erb',
+          :base_file         => 'base',
+          :vendor_dir        => source_dir + '/vendor',
+          :graphics_dir      => source_dir + '/graphics',
+          :spell_dir         => source_dir,
+          :spell_file        => 'dictionary.ispell',
+          :distribution_name => File.basename(root_dir)
         }
       end
 

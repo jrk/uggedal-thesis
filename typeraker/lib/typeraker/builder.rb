@@ -24,7 +24,7 @@ module Typeraker
               cp(File.join(Typeraker.options[:build_dir],
                            "#{base_file.gsub(/.\w+$/, '')}.#@output_format"),
                  File.join(Typeraker.options[:distribution_dir],
-                           Typeraker::Configuration.distribution_name +
+                           Typeraker.options[:distribution_name] +
                            ".#@output_format"))
             end
           end

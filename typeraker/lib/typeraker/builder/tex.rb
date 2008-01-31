@@ -4,7 +4,6 @@ module Typeraker
       class << self
         def build(output_format = 'dvi')
           @output_format = output_format
-          @source_files = Typeraker::Configuration.collect_source_files
 
           clean_build_dir
 
@@ -20,7 +19,6 @@ module Typeraker
           build_dir do
             copy_source_files
             copy_vendor_files
-            return unless source_files_present?
 
             latex = preprocessor.new(base_latex_file, true)
             if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
@@ -66,17 +64,6 @@ module Typeraker
                 cp(file,  Typeraker.options[:build_dir])
               end
             end
-          end
-
-          def source_files_present?
-            @source_files.each do |file|
-              unless File.exists? file
-                error "Build of #@output_format aborted. " +
-                      "Source file: #{file} not found"
-                return false
-              end
-            end
-            true
           end
       end
     end

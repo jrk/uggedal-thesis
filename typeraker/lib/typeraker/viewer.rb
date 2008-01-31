@@ -12,7 +12,7 @@ module Typeraker
       end
 
       def initialize
-        @distribution_name = Typeraker::Configuration.distribution_name
+        @distribution_name = Typeraker.options[:distribution_name]
 
         @view_name = 'base'
         @executables = []

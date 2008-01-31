@@ -1,0 +1,55 @@
+\documentclass[12pt,a4paper]{uiothesis}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{paralist}
+\usepackage{ragged2e}
+
+\title{Social Navigation in Modern Web Sites}
+\subtitle{Classification, Prototyping, and Applicability}
+\author{Eivind Uggedal}
+
+\graphicspath{{/home/eivindu/doc/master.thesis/src/figures/}}
+
+\begin{document}
+  \chapterstyle{uio}
+  \pagestyle{uio}
+  \maxsecnumdepth{subsubsection}
+
+  \frontmatter
+    \pagenumbering{alph}
+    \maketitle
+    \pagenumbering{roman}
+    \cleardoublepage
+    \tableofcontents
+    \cleardoublepage
+    \listoffigures
+    \cleardoublepage
+    \listoftables
+    \chapter{Acknowledgements}
+    I would like to thank
+    Andreas Dieberger,
+    Peter Brusilovsky, and
+    Robert Mertens
+    for allowing me to freely use illustrations from
+    some of their published articles.
+
+  \mainmatter
+    \include{introduction}
+    \include{background}
+    \include{methodology}
+    \include{analysis}
+    \include{discussion}
+    \include{conclusion}
+
+    \begin{appendices}
+      \include{content.inventory}
+    \end{appendices}
+
+  \backmatter
+    \bibliographystyle{apalike}
+    \bibliography{bibliography}
+\end{document}

@@ -1,32 +1,13 @@
 require File.dirname(__FILE__) + '/../typeraker'
 
-task :dev do
-  puts Typeraker.config.inspect
-end
-
 task :default => 'build:dvi'
-
-task :template => 'template:display'
-
-namespace :template do
-
-  desc 'Displays a base LaTeX file.'
-  task :display do
-    puts Typeraker::Template.generate
-  end
-
-  desc 'Generate a base LaTeX file in the source dir.'
-  task :generate do
-    Typeraker::Template.create_file
-  end
-end
 
 task :build => 'build:dvi'
 
 namespace :build do
 
   desc 'Builds a dvi file of the source files.'
-  task :dvi => 'template:generate' do
+  task :dvi do
     Typeraker::Builder::Tex.build
   end
 
@@ -45,7 +26,7 @@ namespace :build do
     end
 
     desc 'Builds a pdf file from the source files.'
-    task :pdflatex => 'template:generate' do
+    task :pdflatex do
       Typeraker::Builder::Tex.build('pdf')
     end
   end
