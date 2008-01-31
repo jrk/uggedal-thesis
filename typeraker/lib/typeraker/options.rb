@@ -1,6 +1,7 @@
 module Typeraker
   class Options
     class << self
+      include Typeraker::Cli
       def defaults
         root_dir         = Dir.pwd
         source_dir       = 'src'
@@ -36,11 +37,16 @@ module Typeraker
       private
 
         def distribution_name(root)
+          name = File.basename(root)
+          name << ".#{user_name}"
           if stats = Typeraker::Scm.stats(root)
-            "#{File.basename(root)}.r#{stats[:revision].gsub(':', '_')}"
-          else
-            File.basename(root)
+            name << ".r#{stats[:revision].gsub(':', '_')}"
           end
+          name
+        end
+
+        def user_name
+          `whoami`.strip
         end
 
         def absolute_paths(options)
