@@ -23,6 +23,14 @@ module Typeraker
       end
     end
 
+    def self.stats(dir)
+      if File.exists? File.join(dir, '.svn')
+        Typeraker::Scm::Subversion.new.collect_scm_stats
+      elsif File.exists? File.join(dir, '.hg')
+        Typeraker::Scm::Mercurial.new.collect_scm_stats
+      end
+    end
+
     %w(mercurial subversion).each do
       |f| require File.dirname(__FILE__) + "/scm/#{f}"
     end

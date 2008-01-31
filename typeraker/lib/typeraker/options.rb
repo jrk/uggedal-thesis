@@ -16,7 +16,7 @@ module Typeraker
           :graphics_dir      => source_dir + '/graphics',
           :spell_dir         => source_dir,
           :spell_file        => 'dictionary.ispell',
-          :distribution_name => File.basename(root_dir)
+          :distribution_name => distribution_name(root_dir)
         }
       end
 
@@ -33,29 +33,39 @@ module Typeraker
         base_file_variations(absolute_paths(defaults.merge(preferences)))
       end
 
-      def absolute_paths(options)
-        relatives = %w(source_dir
-                       build_dir
-                       distribution_dir
-                       template_file
-                       vendor_dir
-                       graphics_dir
-                       spell_dir)
-        relatives.each do |key|
-          options[key.to_sym] = File.join(options[:root_dir],
-                                          options[key.to_sym])
-        end
-        options
-      end
+      private
 
-      def base_file_variations(options)
-        options[:base_latex_file]  = options[:base_file] + '.tex'
-        options[:base_bibtex_file] = options[:base_file] + '.aux'
-        options[:base_dvi_file]    = options[:base_file] + '.dvi'
-        options[:base_ps_file]     = options[:base_file] + '.ps'
-        options[:base_pdf_file]    = options[:base_file] + '.pdf'
-        options
-      end
+        def distribution_name(root)
+          if stats = Typeraker::Scm.stats(root)
+            "#{File.basename(root)}.r#{stats[:revision].gsub(':', '_')}"
+          else
+            File.basename(root)
+          end
+        end
+
+        def absolute_paths(options)
+          relatives = %w(source_dir
+                         build_dir
+                         distribution_dir
+                         template_file
+                         vendor_dir
+                         graphics_dir
+                         spell_dir)
+          relatives.each do |key|
+            options[key.to_sym] = File.join(options[:root_dir],
+                                            options[key.to_sym])
+          end
+          options
+        end
+
+        def base_file_variations(options)
+          options[:base_latex_file]  = options[:base_file] + '.tex'
+          options[:base_bibtex_file] = options[:base_file] + '.aux'
+          options[:base_dvi_file]    = options[:base_file] + '.dvi'
+          options[:base_ps_file]     = options[:base_file] + '.ps'
+          options[:base_pdf_file]    = options[:base_file] + '.pdf'
+          options
+        end
     end
   end
 end
