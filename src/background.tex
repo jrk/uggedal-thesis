@@ -185,7 +185,7 @@ Information Infrastructure), trough the Web (WWW: World Wide Web),
 to what he calls \emph{the Graph} (GGG: Giant Global Graph) in a
 blog post \citeyearpar{bernerslee07}. The Graph is synonymous with the
 \emph{Semantic Web}%
-\sidenote[-8\onelineskip]{
+\sidenote[-10\onelineskip]{
   The Semantic Web is a web where data and information can be meaningful
   to computers and not just humans \citep{bernerslee01}. Although this idea
   was introduced by \citeauthor{bernerslee07} in 1994 it remains largely
@@ -201,7 +201,7 @@ current trends of sociality on the Web:
 In other terms this means that social relationships on the Web have become so
 important that they're more interesting themselves than the pages that
 represents them. While it would be very interesting to look at how
-\emph{social navigation} (to be discussed shortly) can be enabled between
+\emph{social navigation} can be enabled between
 different web pages and web services%
 \sidenote[-10\onelineskip]{
   Examples of social navigation between different web sites can be seen in
@@ -220,6 +220,8 @@ due to the time constraints a master thesis inherits.
 % self sufficient user base
 % need early adopters, not immediate benefit before the user base is sufficient
 % large. term for this, can't remember the name
+
+\todo{Discuss \emph{Web 2.0} and it's relation to sociality.}
 
 \section{Social Navigation}
 \label{section:background.social.navigation}
@@ -360,19 +362,13 @@ describes the nature of the communication between the two parties.
 \subsubsection{Explicit and Implicit Advice}
 
 Related to passive or indirect social navigation is the notion
-of \emph{explicit} and \emph{implicit} feedback. Though generally used to
-describe the form of feedback in so called \emph{recommender systems}%
-\sidenote{
-  Recommender systems is discussed as an application of
-  \emph{collaborative filtering} in 
-  \sectionref{background.social.navigation.applied.forms.collaborative.filtering}.
-}
-\citep[p.~82]{oard98} it can also be used more generally to distinguish how
+of \emph{explicit} and \emph{implicit} feedback.
+These terms can be used for distinguishing how
 passive or indirect social navigation is provided by an advice provider.
-Collect such advice explicitly means that the advice provider have to use
-conscious effort to do so. For instance such an advice provider can choose to
-share an interesting web site and does so by putting a hyperlink to it on his
-web page.
+Collecting advice given by an advice provider explicitly means that
+the advice provider have to use conscious effort to do so. For instance such
+an advice provider can choose to share an interesting web site and does so by
+putting a hyperlink to it on his web page.
 
 When advice is mediated implicitly the process of doing so are transparent and
 unintrusive for the advice provider. Based on the work the advice provider
@@ -381,6 +377,16 @@ advice to future navigators. An example of such behavior is recording of
 browsing history that can be computationally evaluated to provide advice for
 others as we'll return to in
 \sectionref{background.social.navigation.applied.forms.interaction.history}.
+
+Implicit and explicit feedback are most often used to
+describe the form of feedback in so called \emph{recommender systems}%
+\sidenote{
+  Recommender systems is discussed as an application of
+  \emph{collaborative filtering} in 
+  \sectionref{background.social.navigation.applied.forms.collaborative.filtering}.
+}
+\citep[p.~82]{oard98}.
+
 
 % directly visible or aggregated and hidden in the interaction history of a
 % physical object or place dieberger00b
@@ -422,24 +428,17 @@ authors to list other blogs they are reading regularly. They thereby function
 interests'' \citep[p.~3]{marlow07}. An example of a blogroll can be seen in
 \figureref{scrsh.dailykos.blogroll}.
 
-\sidefigure{Blogroll}{%
-  Blogroll for Daily Kos,
-  retrieved December 5, 2007, from
-  \url{http://www.dailykos.com/}.
-  \label{figure:scrsh.dailykos.blogroll}
-}{%
-  \includegraphics[width=0.9\marginparwidth]{scrsh_dailykos_blogroll}
-}
-
 A new phenomena appeared to the mainstream with the introduction of the
 \emph{del.icio.us}%
-\sidenote{
+%\sidenote{
   % fill in here
-}
-social bookmarking system. This web page made individual
+%}
+\emph{social bookmarking} system. This web page made individual
 bookmark collections globally available, making it easy to discover what other
 people takes notice of.
 %cite, discuss further, lead in to next section.
+
+\todo{Include short history of social bookmarking.}
 
 As \citet[p.~806]{dieberger97} argues the Web's growth, even at it's modest
 size of 1997 compared to it's staggering size over 10 years later, have
@@ -450,6 +449,15 @@ collections it could be that users are getting access to more related and
 higher quality information. Sharing a hyperlink, either on you web page or
 trough a bookmarking service, requires a conscious effort. One would believe
 that people only choose to do so for information they find interesting.
+
+\sidefigure{Blogroll}{%
+  Blogroll for Daily Kos,
+  retrieved December 5, 2007, from
+  \url{http://www.dailykos.com/}.
+  \label{figure:scrsh.dailykos.blogroll}
+}{%
+  \includegraphics[width=0.9\marginparwidth]{scrsh_dailykos_blogroll}
+}
 
 \subsubsection{Item Annotation}
 % tagging
@@ -485,9 +493,13 @@ content items as photos in a photo sharing site it makes more sense to allow
 every user, not only the creator, to apply globally visible tags.
 % cite cite cite cite
 
+\todo{Citations needed.}
+
+\todo{Implementations and studies needs to be discussed.}
+
 We've seen that item annotation or tagging can be used to annotate items for
 describe the information they convey. As we'll see in
-\sectionref{section:background.social.navigation.applied.forms.recommendations}
+\sectionref{background.social.navigation.applied.forms.recommendations}
 annotations can also be used for describing the quality, importance, or
 usefulness of an item and thereby potentially creating recommendations.
 
@@ -579,6 +591,8 @@ evaluations of different social navigation techniques.
 % collaborative filtering is often used for recommendation systems
 % look at the benefits of implicit feedback in contrast to explicit feedback
 % with regard to recommendation systems as highlighted by claypool01.
+
+\todo{Discuss the most important articles and implementations.}
 
 \subsubsection{Recommendations}
 \label{section:background.social.navigation.applied.forms.recommendations}
@@ -755,7 +769,7 @@ decreased the effectiveness of navigation in some instances of their
 simulations \citeyearpar[p.~365]{riedl03}.
 Interestingly it was also discovered that social navigation was more
 beneficial in environments with high uncertainty%
-\sidenote{
+\sidenote[-5\onelineskip]{
   \citeauthor{riedl03} says that the two sources of such uncertainty is
     ``arising from the correctness of the information gained in any state,
     and the potential difficulty of reaching that state to obtain

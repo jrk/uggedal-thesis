@@ -259,6 +259,9 @@
 % Renders a variable name with a dollar prefix in tt.
 \newcommand{\var}[1]{\texttt{\${#1}}}
 
+% Items to attend to.
+\newcommand{\todo}[1]{$\bigotimes$ #1 $\bigotimes$}
+
 % Reference shorthands.
 \newcommand\figureref[1]{%
   Figure~\ref{figure:#1}%
