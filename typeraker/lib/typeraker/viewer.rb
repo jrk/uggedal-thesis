@@ -4,9 +4,9 @@ module Typeraker
     # View the spesified format.
     def self.view(format)
       case format
-      when 'dvi':
+      when :dvi
         Typeraker::Viewer::Dvi.new.launch
-      when 'ps':
+      when :ps
         Typeraker::Viewer::Ps.new.launch
       else
         Typeraker::Viewer::Pdf.new.launch

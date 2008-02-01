@@ -13,9 +13,9 @@ module Typeraker
     # Build to the spesified format.
     def self.build(format)
       case format
-      when 'dvi':
+      when :dvi
         Typeraker::Builder::Tex.build
-      when 'ps':
+      when :ps
         Typeraker::Builder::Tex.build
         Typeraker::Builder::Dvi.build
       else
