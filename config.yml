@@ -1,4 +1,3 @@
 ---
-:typeraker:
-  :build_dir: build
-  :graphics_dir: src/figures
+:build_dir: build
+:graphics_dir: src/figures

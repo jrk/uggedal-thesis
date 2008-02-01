@@ -2,16 +2,16 @@ require 'optparse'
 $:.unshift File.dirname(__FILE__)
 
 module Rubbr
-  autoload :Options,       'typeraker/options'
-  autoload :VERSION,       'typeraker/version'
-  autoload :Cli,           'typeraker/cli'
-  autoload :Config,        'typeraker/config'
-  autoload :Scm,           'typeraker/scm'
-  autoload :Template,      'typeraker/template'
-  autoload :Runner,        'typeraker/runner'
-  autoload :Builder,       'typeraker/builder'
-  autoload :Viewer,        'typeraker/viewer'
-  autoload :Spell,         'typeraker/spell'
+  autoload :Options,       'rubbr/options'
+  autoload :VERSION,       'rubbr/version'
+  autoload :Cli,           'rubbr/cli'
+  autoload :Config,        'rubbr/config'
+  autoload :Scm,           'rubbr/scm'
+  autoload :Template,      'rubbr/template'
+  autoload :Runner,        'rubbr/runner'
+  autoload :Builder,       'rubbr/builder'
+  autoload :Viewer,        'rubbr/viewer'
+  autoload :Spell,         'rubbr/spell'
 
   class << self
     # Setting up an options accessor.
@@ -24,7 +24,7 @@ module Rubbr
 
       opts = OptionParser.new do |opts|
         opts.version = Rubbr::VERSION
-        opts.banner = 'Usage: typeraker [options]'
+        opts.banner = 'Usage: rubbr [options]'
 
         opts.on('-f', '--format [FORMAT]', [:dvi, :ps, :pdf],
           'Select output format (dvi, ps, pdf)') do |format|
