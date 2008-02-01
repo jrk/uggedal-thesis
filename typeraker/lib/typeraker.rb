@@ -17,10 +17,5 @@ module Typeraker
     def options
       @@options ||= Typeraker::Options.setup
     end
-
-    # Returns binding that can be used in erb templates.
-    def values
-      binding
-    end
   end
 end
