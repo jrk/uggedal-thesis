@@ -46,7 +46,7 @@ module Typeraker
 
           def clean_build_dir
             if File.exists? Typeraker.options[:build_dir]
-              rm_r Typeraker.options[:build_dir]
+              FileUtils.rm_r Typeraker.options[:build_dir]
             end
           end
 
@@ -60,8 +60,8 @@ module Typeraker
 
           def copy_files(source_dir, file_extensions)
             file_extensions.each do |file_extension|
-              FileList["#{source_dir}/*.#{file_extension}"].each do |file|
-                cp(file,  Typeraker.options[:build_dir])
+              Dir["#{source_dir}/*.#{file_extension}"].each do |file|
+                FileUtils.cp(file,  Typeraker.options[:build_dir])
               end
             end
           end

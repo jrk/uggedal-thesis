@@ -1,5 +1,18 @@
 module Typeraker
   module Viewer
+
+    # View the spesified format.
+    def self.view(format)
+      case format
+      when 'dvi':
+        Typeraker::Viewer::Dvi.new.launch
+      when 'ps':
+        Typeraker::Viewer::Ps.new.launch
+      else
+        Typeraker::Viewer::Pdf.new.launch
+      end
+    end
+
     class Base
       include Typeraker::Cli
 

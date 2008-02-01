@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module Typeraker
 
   # Handles the business of building latex (and bibtex if needed) source
@@ -7,6 +9,22 @@ module Typeraker
   # tries to solve this issue by running the needed utilities only as many
   # times as needed.
   module Builder
+
+    # Build to the spesified format.
+    def self.build(format)
+      case format
+      when 'dvi':
+        Typeraker::Builder::Tex.build
+      when 'ps':
+        Typeraker::Builder::Tex.build
+        Typeraker::Builder::Dvi.build
+      else
+        Typeraker::Builder::Tex.build
+        Typeraker::Builder::Dvi.build
+        Typeraker::Builder::Ps.build
+      end
+    end
+
     class Base
       class << self
         include Typeraker::Cli
@@ -21,7 +39,7 @@ module Typeraker
 
           def distribute_file(base_file)
             prepare_dir(Typeraker.options[:distribution_dir]) do
-              cp(File.join(Typeraker.options[:build_dir],
+              FileUtils.cp(File.join(Typeraker.options[:build_dir],
                            "#{base_file.gsub(/.\w+$/, '')}.#@output_format"),
                  File.join(Typeraker.options[:distribution_dir],
                            Typeraker.options[:distribution_name] +
@@ -31,8 +49,8 @@ module Typeraker
 
           def prepare_dir(dir)
             if dir
-              mkdir_p dir unless File.exists? dir
-              cd dir do
+              FileUtils.mkdir_p dir unless File.exists? dir
+              FileUtils.cd dir do
                 yield
               end
             else

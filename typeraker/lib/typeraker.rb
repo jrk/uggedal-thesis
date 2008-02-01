@@ -1,6 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 module Typeraker
+  autoload :Main,          'typeraker/main'
   autoload :Options,       'typeraker/options'
   autoload :Cli,           'typeraker/cli'
   autoload :Config,        'typeraker/config'
