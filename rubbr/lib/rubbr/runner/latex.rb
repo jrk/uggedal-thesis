@@ -1,4 +1,4 @@
-module Typeraker
+module Rubbr
   module Runner
     class LaTeX < Base
       def initialize(input_file, silent=false, executable='latex')

@@ -1,11 +1,11 @@
-module Typeraker
+module Rubbr
 
   # Extracts changeset stats from various SCM systems. This info can be
   # included in the title page of the latex document and is especially helpful
   # when working with draft versions.
   module Scm
     class Base
-      include Typeraker::Cli
+      include Rubbr::Cli
 
       # The name of the SCM system. 
       attr_accessor :name
@@ -25,9 +25,9 @@ module Typeraker
 
     def self.stats(dir)
       if File.exists? File.join(dir, '.svn')
-        Typeraker::Scm::Subversion.new.collect_scm_stats
+        Rubbr::Scm::Subversion.new.collect_scm_stats
       elsif File.exists? File.join(dir, '.hg')
-        Typeraker::Scm::Mercurial.new.collect_scm_stats
+        Rubbr::Scm::Mercurial.new.collect_scm_stats
       end
     end
 

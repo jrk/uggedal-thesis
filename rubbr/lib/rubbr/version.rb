@@ -1,4 +1,4 @@
-module Typeraker #:nodoc:
+module Rubbr #:nodoc:
   module VERSION #:nodoc:
     MAJOR = 0
     MINOR = 0

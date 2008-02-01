@@ -1,31 +1,31 @@
-module Typeraker
+module Rubbr
   module Viewer
 
     # View the spesified format.
     def self.view(format)
       case format
       when :dvi
-        Typeraker::Viewer::Dvi.new.launch
+        Rubbr::Viewer::Dvi.new.launch
       when :ps
-        Typeraker::Viewer::Ps.new.launch
+        Rubbr::Viewer::Ps.new.launch
       else
-        Typeraker::Viewer::Pdf.new.launch
+        Rubbr::Viewer::Pdf.new.launch
       end
     end
 
     class Base
-      include Typeraker::Cli
+      include Rubbr::Cli
 
       # The name prefix of the distribution file. 
       attr_accessor :distribution_name
 
       def distribution_file
-        File.join(Typeraker.options[:distribution_dir],
+        File.join(Rubbr.options[:distribution_dir],
                   "#@distribution_name.#@view_name")
       end
 
       def initialize
-        @distribution_name = Typeraker.options[:distribution_name]
+        @distribution_name = Rubbr.options[:distribution_name]
 
         @view_name = 'base'
         @executables = []
@@ -45,7 +45,7 @@ module Typeraker
         return unless viewer = find_viewer
         system "#{viewer} #{distribution_file}"
         notice "Display of #@view_name completed for: #{@distribution_name}" +
-               ".#@view_name in #{Typeraker.options[:distribution_dir]}"
+               ".#@view_name in #{Rubbr.options[:distribution_dir]}"
       end
     end
 

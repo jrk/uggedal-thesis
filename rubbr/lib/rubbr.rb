@@ -1,7 +1,7 @@
 require 'optparse'
 $:.unshift File.dirname(__FILE__)
 
-module Typeraker
+module Rubbr
   autoload :Options,       'typeraker/options'
   autoload :VERSION,       'typeraker/version'
   autoload :Cli,           'typeraker/cli'
@@ -16,14 +16,14 @@ module Typeraker
   class << self
     # Setting up an options accessor.
     def options
-      @@options ||= Typeraker::Options.setup
+      @@options ||= Rubbr::Options.setup
     end
 
     def run(args = ARGV)
       options = {}
 
       opts = OptionParser.new do |opts|
-        opts.version = Typeraker::VERSION
+        opts.version = Rubbr::VERSION
         opts.banner = 'Usage: typeraker [options]'
 
         opts.on('-f', '--format [FORMAT]', [:dvi, :ps, :pdf],
@@ -64,16 +64,16 @@ module Typeraker
     private
 
       def build(format)
-        Typeraker::Builder.build(format)
+        Rubbr::Builder.build(format)
       end
 
       def view(format)
         build(format)
-        Typeraker::Viewer.view(format)
+        Rubbr::Viewer.view(format)
       end
 
       def spell
-        Typeraker::Spell.check
+        Rubbr::Spell.check
       end
   end
 end

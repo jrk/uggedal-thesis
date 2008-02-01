@@ -1,4 +1,4 @@
-module Typeraker
+module Rubbr
   module Viewer
     class Pdf < Base
       def initialize(*args)

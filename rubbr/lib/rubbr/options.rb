@@ -1,7 +1,7 @@
-module Typeraker
+module Rubbr
   class Options
     class << self
-      include Typeraker::Cli
+      include Rubbr::Cli
       def defaults
         root_dir         = Dir.pwd
         source_dir       = 'src'
@@ -39,7 +39,7 @@ module Typeraker
         def distribution_name(root)
           name = File.basename(root)
           name << ".#{user_name}"
-          if stats = Typeraker::Scm.stats(root)
+          if stats = Rubbr::Scm.stats(root)
             name << ".r#{stats[:revision].gsub(':', '_')}"
           end
           name

@@ -1,11 +1,11 @@
-module Typeraker
+module Rubbr
 
   # Takes care of running latex and related utilities. Gives helpful
   # information if input files are missing and also cleans up the output of
   # these utilities.
   module Runner
     class Base
-      include Typeraker::Cli
+      include Rubbr::Cli
 
       # The file to be run trough the latex process.
       attr_accessor :input_file

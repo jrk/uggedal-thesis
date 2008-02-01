@@ -1,4 +1,4 @@
-module Typeraker
+module Rubbr
 
   # Handles command line output and input.
   module Cli

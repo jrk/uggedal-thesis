@@ -1,4 +1,4 @@
-module Typeraker
+module Rubbr
   module Runner
     class Ps2Pdf < Base
       def initialize(input_file, silent=false, executable='ps2pdf')
