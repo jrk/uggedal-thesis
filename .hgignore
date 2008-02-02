@@ -2,3 +2,5 @@
 
 ^build/
 ^dist/
+^rubbr/doc
+^rubbr/pkg

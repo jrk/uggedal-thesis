@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require File.dirname(__FILE__) + '/../lib/rubbr'
+require 'rubbr'
 
 Rubbr.run
