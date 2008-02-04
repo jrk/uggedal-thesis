@@ -4,23 +4,19 @@ rubbr
 
 == DESCRIPTION:
   
-FIX (describe your package)
-
-== FEATURES/PROBLEMS:
-  
-* FIX (list of features or problems)
+Build LaTeX documents:
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIX (list of requirements)
+Usage: rubbr [options]
+    -f, --format [FORMAT]            Select output format (dvi, ps, pdf)
+    -v, --view                       View the document
+    -s, --spell                      Spell check source files
+    -h, --help                       Show this help message
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+gem install rubbr
 
 == LICENSE:
 
