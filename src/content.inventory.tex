@@ -77,6 +77,14 @@ meaning can be found in
   \end{whole}
 \end{table}
 
+When starting the content inventory of Flickr it became apparent that the
+architects had choosen to use a \emph{RESTful} approach.
+The sites' structure was
+clearly illustrated by the hierarchy of directories represented in the URL. We
+therefore took a not of these URLs when we collected our sample data, but
+choose not to include them here because we're not convinced of their
+usefullnes in light of navigation.
+
 % Long multi-page table
 \begin{landscape}
   \begin{footnotesize}
@@ -896,10 +904,42 @@ Global navigation \\
 % /profile.php?id=\var{person-id}
 
   1.1 &
-  \var{person} &
+  My networks &
   \var{network} &
-  Person information box \\
-  % /profile.php?id=\var{user-id}
+  Person info box \\
+  % /networks/\var{network-id}\var{network}
+
+    1.1.1 &
+    Browse My Networks &
+    \var{network-count} &
+    Network info box \\
+    % /b.php?n=\var{network-id}&new
+
+      1.1.1.1 &
+      \var{person} &
+      Profile picture  &
+      Member list \\
+      % /profile.php?id=\var{person-id}
+
+      1.1.1.2 &
+      \var{person} &
+      \var{person} &
+      Member list \\
+      % /profile.php?id=\var{person-id}
+
+      1.1.1.3 &
+      \var{network} &
+      \var{network} &
+      Member list \\
+      % /networks/\var{network-id}\var{network}
+
+      1.1.1.4 &
+      \var{network} &
+      Send message &
+      Member list \\
+      % /inbox/?compose&id=\var{user-id}
+
+
 
 
 
