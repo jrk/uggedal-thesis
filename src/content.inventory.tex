@@ -877,11 +877,11 @@ can be found in
       \var{network} &
       The name of a network \\
 
-      \var{network-count} &
-      A variable number of members of a network \\
-
       \var{group} &
       The name of a group \\
+
+      \var{member-count} &
+      A variable number of members of a group or network \\
 
       \var{photo-count} &
       A variable number of photos \\
@@ -906,6 +906,15 @@ can be found in
 
       \var{event} &
       The name of an event \\
+
+      \var{guest-count} &
+      A variable number of events \\
+
+      \var{guest-count} &
+      A variable number of guest for an event \\
+
+      \var{wall-post-count} &
+      A variable number of posts on a wall \\
 
       \bottomrule
 
@@ -978,7 +987,7 @@ Global navigation \\
 
     1.1.1 &
     Browse My Networks &
-    \var{network-count} &
+    \var{member-count} &
     Network info box \\
     % /b.php?n=\var{network-id}&new
 
@@ -1373,7 +1382,7 @@ Global navigation \\
 
           1.1.3.2.1.8 &
           Event Guests &
-          \var{member-count} &
+          \var{guest-count} &
           Guests box \\
           % /s.php?k=\var{unknown-id}&id=\var{network-id}&gr=2
 
@@ -1466,6 +1475,118 @@ Global navigation \\
         \var{person} &
         Note list \\
         % /profile.php?id=\var{person-id}
+
+    1.1.4 &
+    Discussions &
+    View Discussion Board &
+    Network info box \\
+    % /board.php?uid=\var{some-id}
+
+      % same as for groups
+
+      1.1.3.1.1.8 &
+      Group Members &
+      \var{member-count} &
+      Member box \\
+      % /s.php?k=\var{unknown-id}&id=\var{network-id}&gr=2
+
+        1.1.3.1.1.8.1 &
+        \var{person} &
+        Profile picture  &
+        Member list \\
+        % /profile.php?id=\var{person-id}
+
+        1.1.3.1.1.8.2 &
+        \var{person} &
+        \var{person} &
+        Member list \\
+        % /profile.php?id=\var{person-id}
+
+
+    1.1.4 &
+    Browse My Networks &
+    \var{member-count} &
+    People in \var{network} box \\
+    % /b.php?n=\var{network-id}&new
+
+    1.1.5 &
+    \var{person} &
+    Profile picture  &
+    People in \var{network} box \\
+    Member list \\
+    % /profile.php?id=\var{person-id}
+
+    1.1.6 &
+    \var{person} &
+    \var{person} &
+    People in \var{network} box \\
+    % /profile.php?id=\var{person-id}
+
+    1.1.7 &
+    \var{event} &
+    \var{event-count} &
+    Upcoming events box \\
+    % /event.php?eid=\var{event-id}
+
+    1.1.8 &
+    \var{event} &
+    \var{event} &
+    Upcoming events box \\
+    % /event.php?eid=\var{event-id}
+
+    1.1.8 &
+    Popular Today (Posted Items) &
+    See All &
+    Network info box \\
+    % /networks/activity.php?nk=\var{network-id}&rt=0&ot=2
+
+    1.1.9 &
+    Popular Today (Groups) &
+    See All &
+    Popular in \var{network} box \\
+    % /networks/activity.php?nk=\var{network-id}&rt=0&ot=0
+
+    1.1.10 &
+    \var{group} &
+    \var{group} &
+    Popular in \var{network} box \\
+    % /group.php?gid=\var{group-id}
+
+    1.1.11 &
+    Discussions &
+    \var{discussion-count} discussion topics &
+    Discussion box \\
+    % /board.php?uid=\var{some-id}
+
+      % same as for groups
+
+    1.1.12 &
+    \var{discussion-topic} &
+    \var{discussion-topic} &
+    Discussion box \\
+    % /topic.php?id=\var{group-id}&topic=\var{topic-id}
+
+      % same as for groups
+
+    1.1.13 &
+    \var{network}'s Wall &
+    \var{wall-post-count} &
+    Wall posts box \\
+    % /wall.php?id=\var{network-id}
+
+      % same as for groups
+
+    1.1.14 &
+    \var{person} &
+    Profile picture  &
+    Wall post \\
+    % /profile.php?id=\var{person-id}
+
+    1.1.15 &
+    \var{person} &
+    \var{person} &
+    Wall post \\
+    % /profile.php?id=\var{person-id}
 
 
     \end{longtable}
