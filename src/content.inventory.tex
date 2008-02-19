@@ -916,6 +916,44 @@ can be found in
       \var{wall-post-count} &
       A variable number of posts on a wall \\
 
+      \var{classified} &
+      The name of a classified in the marketplace \\
+
+      \var{gender} &
+      The sex of a person: male, female, or unspecified \\
+
+      \var{relationship} &
+      Status of a persons relationship:
+      Single, in a relationship, engaged, married,
+      it's complicated, or in an open relationship. \\
+
+      \var{gender-interest} &
+      What gender a person is interested in: men or women. \\
+
+      \var{looking-for} &
+      What a person is looking for from other people:
+      friendship, dating, a relationship, or networking.\\
+
+      \var{birth-date} &
+      The date of a person's birth \\
+
+      \var{birth-year} &
+      The year of a person's birth \\
+
+      \var{home-town} &
+      The town a person calls home \\
+
+      \var{home-country} &
+      The country a person calls home \\
+
+      \var{political-view} &
+      A person's political view: very liberal, liberal
+      moderate, conservative, very conservative,
+      apathetic, libertarian, or other.\\
+
+      \var{religious-view} &
+      A person's religious view. \\
+
       \bottomrule
 
     \end{tabular}
@@ -1588,11 +1626,275 @@ Global navigation \\
     Wall post \\
     % /profile.php?id=\var{person-id}
 
+    1.1.16 &
+    Marketplace &
+    See All &
+    Marketplace box \\
+    % /marketplace.php?f=\var{network-id}&b=\var{some-id}
 
+      1.1.16.1 &
+      Marketplace - \var{classified} &
+      \var{classified} &
+      Classified listing \\
+      % /marketplace/listing.php?f=\var{classified-id}
 
+        1.1.16.1.1 &
+        \var{person} &
+        \var{person} &
+        Classified info \\
+        % /profile.php?id=\var{person-id}
 
+      1.1.16.2 &
+      \var{person} &
+      \var{person} &
+      Classified info \\
+      % /profile.php?id=\var{person-id}
 
+    1.1.17 &
+    Marketplace - \var{classified} &
+    \var{classified} &
+    Marketplace box \\
+    % /marketplace/listing.php?f=\var{classified-id}
 
+  1.2 &
+  Browse My networks (by gender) &
+  \var{gender} &
+  Person info box \\
+  % /b.php?k=\var{some-id}&n=\var{some-count}&sx=\var{gender-id}&o=\var{some-count}
+
+    1.2.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.2.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.2.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.3 &
+  Browse My networks (by gender interest) &
+  \var{gender-interest} &
+  Person info box \\
+  % /b.php?k=\var{some-id}&n=\var{some-count}&ii=\var{gender-interest-id}&o=\var{some-count}
+
+    1.3.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.3.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.3.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.4 &
+  Browse My networks (by relationship status) &
+  \var{relationship} &
+  Person info box \\
+  % /b.php?k=\var{some-id}&n=\var{some-count}&rl=\var{relationship-id}&o=\var{some-count}
+
+    1.4.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.4.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.4.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.5 &
+  Browse My networks (by looking for) &
+  \var{looking-for} &
+  Person info box \\
+  % /b.php?k=\var{some-id}&n=\var{some-count}&if=\var{looking-for-id}&o=\var{some-count}
+
+    1.5.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.5.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.5.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.6 &
+  Profile Search Results (by birthday) &
+  \var{birth-date} &
+  Person info box \\
+  % /s.php?adv&k=\var{some-id}&n=\var{some-count}&67=\var{birth-date}&o=\var{some-count}
+
+    1.6.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.6.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.6.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.7 &
+  Browse My networks (by birth year) &
+  \var{birth-year} &
+  Person info box \\
+  % /b.php?k=\var{some-id}&n=\var{some-count}&y1=\var{age-from}&y2=\var{age-to}&o=\var{some-count}
+
+    1.7.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.7.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.7.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.8 &
+  Profile Search Results (by home town) &
+  \var{home-town} &
+  Person info box \\
+  % /s.php?adv&k=\var{some-id}&n=\var{some-count}&c1=\var{home-town}&o=\var{some-count}
+
+    1.8.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.8.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.8.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.9 &
+  Profile Search Results (by home country) &
+  \var{home-country} &
+  Person info box \\
+  % /s.php?adv&k=\var{some-id}&n=\var{some-count}&k1=\var{home-country-id}&o=\var{some-count}
+
+    1.9.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.9.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.9.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.10 &
+  Browse My networks (by political view) &
+  \var{political-view} &
+  Person info box \\
+  % /b.php?k=\var{some-id}&n=\var{some-count}&pl=\var{political-view-id}&o=\var{some-count}
+
+    1.10.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.10.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.10.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
+
+  1.11 &
+  Profile Search Results (by religious view) &
+  \var{religious-view} &
+  Person info box \\
+  % /s.php?adv&k=\var{some-id}&n=\var{some-count}&re=\var{religious-view}&o=\var{some-count}
+
+    1.11.1 &
+    \var{person} &
+    Profile picture  &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.11.2 &
+    \var{person} &
+    \var{person} &
+    Person listing \\
+    % /profile.php?id=\var{person-id}
+
+    1.11.3 &
+    My networks &
+    \var{network} &
+    Person listing \\
+    % /networks/\var{network-id}\var{network}
 
     \end{longtable}
   \end{footnotesize}
