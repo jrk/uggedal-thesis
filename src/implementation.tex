@@ -1,0 +1,12 @@
+\chapter{Implementation}
+\label{chapter:implementation}
+
+This chapter should include design choices for my implementation. For example
+choices taken for generating as much relevant data for test users as possible
+and a computational sound method for doing so. As JavaScript in browsers are
+quite inefficient it will probably be necessary to persist data at a server
+in some sort of cache. The clients could then get this data by invoking a
+single request. The result could for instance be JSON serialized. Scraping of
+such data is probably done more efficient and safer at the server side since
+multiple XMLHttpRequests in the clients for scraping and parsing could prove
+to be quite computational expensive.
