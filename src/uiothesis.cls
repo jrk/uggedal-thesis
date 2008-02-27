@@ -84,7 +84,9 @@
     \end{center}
     \begin{center}
       This thesis was written in American English as dictated by
-      \emph{The Elements of Style} \citep{strunk00}.
+      \emph{The Elements of Style} \citep{strunk00}. Typographical
+      decisions were based on recommendations in
+      \emph{The Elements of Typographic Style} \citep{bringhurst04}.
     \end{center}
   \end{adjustwidth*}
 
