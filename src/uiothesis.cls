@@ -15,15 +15,19 @@
 \newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
 \newcommand{\scm}[1]{\renewcommand{\@scm}{#1}}
 
+% Coloring
+\RequirePackage{color}
+\definecolor{urlcolor}{rgb}{0.24,0.35,0.5}
+\definecolor{linkcolor}{rgb}{0.6,0.2,0.1}
+\definecolor{citecolor}{rgb}{0.35,0.45,0}
+\definecolor{chapnum}{gray}{0.55}
+
 % Font setup
 \RequirePackage[T1]{fontenc}
-\IfFileExists{lmodern.sty}{%
-  \RequirePackage{lmodern}
-  \RequirePackage[osf]{mathpazo}
-  \renewcommand\rmdefault{pplj}
-}{%
-  \RequirePackage{mathpazo}
-}
+\RequirePackage{lmodern}
+\RequirePackage[osf]{mathpazo}
+\renewcommand\rmdefault{pplj}
+\newfont{\chapnum}{eurb10 scaled 8000}
 
 % Laying out the page
 \settypeblocksize{44\onelineskip}{29pc}{*}
@@ -39,7 +43,7 @@
   \renewcommand{\printchapternum}{%
     \marginpar{%
       \vspace{80pt}
-      \scalebox{5}{\huge \thechapter}
+      \color{chapnum}\chapnum \thechapter
       \vspace{20pt}
     }%
   }%
@@ -126,7 +130,7 @@
 }
 
 % Automatic aligned sidenote
-\newcommand{\sidenote}[2]%
+\DeclareRobustCommand{\sidenote}[2]%
   [0em]{%
   \footnotemark%
   \strictpagechecktrue
@@ -239,11 +243,6 @@
 \fi
 \RequirePackage{memhfixc}
 
-% Coloring
-\RequirePackage{color}
-\definecolor{urlcolor}{rgb}{0.24,0.35,0.5}
-\definecolor{linkcolor}{rgb}{0.6,0.2,0.1}
-\definecolor{citecolor}{rgb}{0.35,0.45,0}
 \hypersetup{%
   colorlinks,
   breaklinks,
