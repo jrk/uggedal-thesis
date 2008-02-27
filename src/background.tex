@@ -798,6 +798,7 @@ simulated agents could reach the social media
 \citeyearpar[p.~368]{riedl03}. 
 
 \section{Building on Top of the Web}
+\label{section:building.on.top.of.the.web}
 % Greasemonkey, hoodwink.d, new hoodwink.d service
 % browser extensions related, Greasemonkey itself a extension, but
 % thinking about specialized plugins for enabling interaction on top of other
@@ -808,3 +809,30 @@ simulated agents could reach the social media
 % facebook, open social. applications on top of social network sites. installed base
 % of users and relationships already in place.
 
+Going in and making changes to an existing web site can be both an
+daunting and time consuming task. First one have to establish a trustworthy
+relationship with the creators of such a site so that they are certain
+you're not introducing bugs in their production software. Secondly, grasping
+the code base, third party libraries, and development tools of such a software
+project demands a lot of upfront effort before any real development work can
+begin. This goes against the prototypical process we intended to use while
+experimenting with Ur\o{}rt.
+
+Even though we've had an ongoing dialog with the developers of Ur\o{}rt we
+decided to create our prototype as a layer on top of their site.
+By using an
+extension%
+\sidenote{
+  Specifically \emph{Greasemonkey}, an extension allowing for
+  customization of presentation and behavior of web pages. Available at
+  \url{http://www.greasespot.net}.
+}
+for the leading open source%
+\sidenote{
+  The \emph{Firefox} web browser. Available at \url{http://firefox.com}.
+}
+web browser we were able to make changes and additions to the way Ur\o{}rt
+were presented to users who were participating in our study.
+Such an approach would hopefully result in a transparent experience for our
+end users as long as they have taken the necessary steps to set up the browser
+extension and our script.

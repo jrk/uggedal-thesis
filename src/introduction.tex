@@ -195,34 +195,10 @@ web community%
 where users can interact in a social manner in addition to uploading
 their songs.
 
-Going in and making changes to an existing web site can be both an
-daunting and time consuming task. First one have to establish a trustworthy
-relationship with the creators of such a site so that they are certain
-you're not introducing bugs in their production software. Secondly, grasping
-the code base, third party libraries, and development tools of such a software
-project demands a lot of upfront effort before any real development work can
-begin. This goes against the prototypical process we intended to use while
-experimenting with Ur\o{}rt.
-
-Even though we've had an ongoing dialog with the developers of Ur\o{}rt we
-decided to create our prototype as a layer on top of their site. By using an
-extension%
-\sidenote{
-  Specifically \emph{Greasemonkey}, an extension allowing for
-  customization of presentation and behavior of web pages. Available at
-  \url{http://www.greasespot.net}.
-}
-for the leading open source%
-\sidenote{
-  The \emph{Firefox} web browser. Available at \url{http://firefox.com}.
-}
-web browser we were able to make changes and additions to the way Ur\o{}rt
-were presented to users who were participating in our study. We were able to
-create a back end for the additional data and behavior our new functionality
-required with the frameworks and programming language we found to be most
-efficient in a prototypical process. This resulted in a transparent experience
-for our end users as long as they had taken the necessary steps to set up the
-browser extension and our script.
+We decided to build our application in an transparent manner on top of the
+web site Ur\o{}rt offered. The rationalle for such a decition can be found in
+\sectionref{building.on.top.of.the.web} and implementation details are studied
+in \chapterref{implementation}.
 
 With our technical solution in place we were able to test how it performed in
 practice by conducting ``some sort of user observation'' (not decided) and
