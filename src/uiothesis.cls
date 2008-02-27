@@ -30,7 +30,7 @@
 \newfont{\chapnum}{eurb10 scaled 8000}
 
 % Laying out the page
-\settypeblocksize{44\onelineskip}{29pc}{*}
+\settypeblocksize{44\onelineskip}{28pc}{*}
 \setlrmargins{5pc}{*}{*}
 \setulmargins{*}{*}{1.618}
 \setmarginnotes{2pc}{10pc}{\baselineskip}
@@ -207,6 +207,7 @@
 \newenvironment{citequote}[2][]{%
   \renewcommand{\@quoteopt}{#1}
   \renewcommand{\@quotekey}{#2}
+  \tolerance=2000
   \begin{quote}``\ignorespaces%
 }{%
   \unskip''
