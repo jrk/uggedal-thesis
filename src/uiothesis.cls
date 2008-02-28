@@ -49,7 +49,7 @@
   }%
   \renewcommand{\afterchapternum}{}
   \renewcommand{\printchaptertitle}[1]{%
-    \raggedright\huge ##1
+    \raggedright\huge\scshape ##1
   }%
 }
 
