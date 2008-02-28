@@ -129,6 +129,10 @@
   \end{titlingpage}
 }
 
+% Captions
+\RequirePackage{caption}
+\captionsetup[figure]{font={footnotesize,sf}}
+
 % Automatic aligned sidenote
 \DeclareRobustCommand{\sidenote}[2]%
   [0em]{%
