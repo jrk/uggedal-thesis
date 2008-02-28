@@ -67,6 +67,39 @@
 \makeevenfoot{plain}{\thepage}{}{}
 \makeoddfoot{plain}{}{}{\thepage}
 
+% Table of Contents
+\maxtocdepth{subsection}
+
+\renewcommand{\cftchapterfont}{\scshape}
+\renewcommand{\cftchapterpagefont}{\scshape}
+\renewcommand{\cftchapterpresnum}{\hspace*{-1.5em}}
+\cftsetindents{chapter}{1.5em}{0em}
+\renewcommand{\cftchapterleader}{}
+\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+
+\renewcommand{\cftsectionfont}{\small}
+\renewcommand{\cftsectionpagefont}{\small}
+\cftsetindents{section}{1.5em}{2.3em}
+\renewcommand{\cftsectionleader}{}
+\renewcommand{\cftsectionafterpnum}{\cftparfillskip}
+
+\renewcommand{\cftsubsectionfont}{\small}
+\renewcommand{\cftsubsectionpagefont}{\small}
+\cftsetindents{subsection}{3.8em}{2.8em}
+\renewcommand{\cftsubsectionleader}{}
+\renewcommand{\cftsubsectionafterpnum}{\cftparfillskip}
+
+% List of Figures/Tables
+\renewcommand{\cftfigureleader}{ }
+\renewcommand{\cftfigureafterpnum}{\cftparfillskip}
+
+\renewcommand{\cfttableleader}{ }
+\renewcommand{\cfttableafterpnum}{\cftparfillskip}
+
+% Captions
+\RequirePackage{caption}
+\captionsetup[figure]{font={footnotesize,sf}}
+
 % Colophon
 \newcommand{\makecolophon}{%
   \pagestyle{empty}
@@ -128,10 +161,6 @@
     \makecolophon
   \end{titlingpage}
 }
-
-% Captions
-\RequirePackage{caption}
-\captionsetup[figure]{font={footnotesize,sf}}
 
 % Automatic aligned sidenote
 \DeclareRobustCommand{\sidenote}[2]%
@@ -251,7 +280,7 @@
 \hypersetup{%
   colorlinks,
   breaklinks,
-  linkcolor=linkcolor,
+  linkcolor=black,
   citecolor=black,
   filecolor=black,
   urlcolor=urlcolor
