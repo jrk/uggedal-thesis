@@ -327,8 +327,20 @@
 % Phrase marker
 \newcommand{\dash}{ -- }
 
-% Variable name with a dollar prefix.
+% UNIX-style variable name.
 \newcommand{\var}[1]{\texttt{\${#1}}}
 
 % Executable name
 \newcommand{\executable}[1]{\texttt{{#1}}}
+
+% Quote
+\newcommand{\q}[1]{``#1''}
+
+% Inline quotations
+\newcommand{\prequote}[4][]{\citet[#1]{#2} #3 \q{#4}.}
+\newcommand{\openprequote}[4][]{\citet[#1]{#2} #3 \q{#4}}
+
+\newcommand{\postquote}[3][]{\q{#3} \citep[#1]{#2}.}
+\newcommand{\postquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}.}
+\newcommand{\openpostquote}[3][]{\q{#3} \citep[#1]{#2}}
+\newcommand{\openpostquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}}
