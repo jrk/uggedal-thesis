@@ -6,7 +6,7 @@ includes content inventory/analysis.
 
 \section{Content Analysis}
 
-The term \emph{content analysis} is traditionally used to signify a
+The term \term{content analysis} is traditionally used to signify a
 qualitative research method used in the social sciences.
 \prequote[p.~18]{krippendorff03}{defines it as}{%
   a research technique for making replicable and valid
@@ -17,7 +17,7 @@ communication messages also have been utilized on the Web \citep{weare00}
 it does not seem very well suited for understanding navigational mechanisms.
 
 We turn to content analysis as the more pragmatic practice conducted within
-the field of \emph{information architecture}%
+the field of \term{information architecture}%
 \sidenote{
   Information architecture can be explained as
   \begin{inparaenum}[(i)]
@@ -57,7 +57,7 @@ both our inventory and analysis process accordingly.
 
 \subsection{Inventory}
 
-A \emph{content inventory} is a technique for collecting data from web sites
+A \term{content inventory} is a technique for collecting data from web sites
 in a structured manner. It's strength as a technique lies in it's ability of
 truly informing about a web site's content \citep{wodtke02}. The process of
 actually conducting a content inventory can be equally rewarding as the
@@ -114,8 +114,8 @@ us they are all essential similar. So we could introduce a variable called
   The variable notation with a dollar sign (\$) as prefix is inspired from
   variable usage in UNIX shell scripting \citep[p.~88]{kernighan84}.
 }
-and thereby describe all potential profile pages as: ``Profile
-of \var{user-name}''.
+and thereby describe all potential profile pages as:
+\val{Profile of \var{user-name}},
 
 We would however have to make sure that the one page we used in our inventory
 to represent the abstract notion of a profile page was representative. To
@@ -143,15 +143,15 @@ each page was noted down in a table with the following characteristics:
 \begin{description}
   \item[Identifier] of numerical and hierarchical form where page with id
     4.3.1 is the first child of a page with id 4.3, representing it's place in
-    the navigation structure. The first page was given an id of \emph{0}, it's
-    first descendant an id of \emph{1} and so on.
+    the navigation structure. The first page was given an id of \val{0},
+    it's first descendant an id of \val{1} and so on.
   \item[Page title] as a description of what the page contains. Some of the
     web site's we surveyed had a slight ambiguity of title usage. In these
     cases we decided to collect the most representative sample%
     \sidenote{
-      A choice between the \texttt{<title>} element in the \texttt{<head>}
-      of the HTML document and the \texttt{<h1>} top level heading in-line
-      the \texttt{<body>} portion of the document was made.
+      A choice between the \code{<title>} element in the \code{<head>}
+      of the HTML document and the \code{<h1>} top level heading in-line
+      the \code{<body>} portion of the document was made.
     }.
     If this resulted in unsatisfactory results we created a new title using
     the best of our abilities to make it as clear and descriptive as possible.

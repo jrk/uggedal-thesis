@@ -327,14 +327,29 @@
 % Phrase marker
 \newcommand{\dash}{ -- }
 
+% Code snippet
+\newcommand{\code}[1]{\texttt{{#1}}}
+
 % UNIX-style variable name.
-\newcommand{\var}[1]{\texttt{\${#1}}}
+\newcommand{\var}[1]{\code{\${#1}}}
 
 % Executable name
-\newcommand{\executable}[1]{\texttt{{#1}}}
+\let\executable\code
 
-% Quote
+% Term (first usage)
+\newcommand{\term}[1]{\textit{{#1}}}
+
+% Title of artistic or academic work
+\let\work\term
+
+% Project name (first usage?)
+\newcommand{\project}[1]{\textsf{{#1}}}
+
+% Quotation
 \newcommand{\q}[1]{``#1''}
+
+% A value
+\let\val\q
 
 % Inline quotations
 \newcommand{\prequote}[4][]{\citet[#1]{#2} #3 \q{#4}.}
@@ -344,3 +359,9 @@
 \newcommand{\postquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}.}
 \newcommand{\openpostquote}[3][]{\q{#3} \citep[#1]{#2}}
 \newcommand{\openpostquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}}
+
+%%
+%% Constants
+%%
+
+\newcommand{\urort}{Ur\o{}rt}
