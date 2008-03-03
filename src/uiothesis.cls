@@ -289,14 +289,6 @@
 % Url formatted with sans serif font
 \urlstyle{sf}
 
-% Custom commands
-
-% Renders a variable name with a dollar prefix in tt.
-\newcommand{\var}[1]{\texttt{\${#1}}}
-
-% Phrase marker
-\newcommand{\dash}{ -- }
-
 % Items to attend to.
 \newcommand{\todo}[1]{$\bigotimes$ #1 $\bigotimes$}
 
@@ -327,3 +319,16 @@
   Appendix~\ref{appendix:#1}
   (p.~\pageref{appendix:#1})%
 }
+
+%%
+%% Declerative formatting
+%%
+
+% Phrase marker
+\newcommand{\dash}{ -- }
+
+% Variable name with a dollar prefix.
+\newcommand{\var}[1]{\texttt{\${#1}}}
+
+% Executable name
+\newcommand{\executable}[1]{\texttt{{#1}}}

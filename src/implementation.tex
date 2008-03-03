@@ -72,25 +72,35 @@ and Smalltalk%
   and manipulation'' \citep[p.~viii]{goldberg83}.
 
 }
-are surpassing IDEs in integration and interactivness.
+are surpassing IDEs in integration and interactivness even though they
+preceded them.
 
 The programming languages we've deciced to work with, JavaScript and Ruby, are
 very expressive and dynamic in their nature in addition to beeing interpreted
 instead of compiled. Our experience is that IDE usage for such languages
 stands more in the way than aid you as a programmer during your problem
 solving process.
-
+\citet{bray07} conducted a rather unscientific survey of 1000 Ruby
+programmers. Despite of the surveys shortcommings it showed that
+the majority of Ruby programmers used non-IDE editors for their
+development.
 
 The interactive experience provided by Lisp and Smalltalk implementations are
-sadly missing from JavaScript and Ruby implementations.
-
-We're not setteling on any editor though. Developer should use the tools
-that enabeles them to most efficiently and safely interact with their code
-(citation needed). The editor one chooses to use should also depend on how
-much time one has available to learn to use it efficently. Truly powerfull
-editors are charactericed with a big up-front investment in learning.
-Therefore switching editors when one have made such investments can be quite
-daunting:
+sadly missing%
+\sidenote{
+  Ruby has an interactive interpreter similar to those found in Lisp and
+  Smalltalk environments called \executable{irb}. It's not integrated into an
+  overall programming environment and therefore is mostly used for testing out
+  small ideas.
+}
+from JavaScript and Ruby implementations. This means that we're left with
+finding a good editor which enables us to focus on writing code as efficiently
+and safely as possible. Editor selection is highly a matter of preference and
+finding one that matches your work process. Powerfull editors have a
+reputation of beeing quite hard to learn. But if you get over the steap
+learning curve the benefits the editor gives you are worth it.
+\citeauthor{orenstein08} have experienced how much effort programmers can
+invest in something seemingly trivial as an editor:
 
 \begin{citequote}{orenstein08}
   If the thought of switching editors doesn't fill you with quite a bit of
