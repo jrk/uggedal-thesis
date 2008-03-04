@@ -2,10 +2,15 @@
 \ProvidesClass{uiothesis}
 \NeedsTeXFormat{LaTeX2e}
 
-% Pass class options to the memoir class
+% Based on the memoir class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
 \LoadClass{memoir}
+
+
+%%
+%% Variables
+%%
 
 % Internal variables
 \newcommand{\@subtitle}{}
@@ -15,12 +20,10 @@
 \newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
 \newcommand{\scm}[1]{\renewcommand{\@scm}{#1}}
 
-% Coloring
-\RequirePackage{color}
-\definecolor{urlcolor}{rgb}{0.24,0.35,0.5}
-\definecolor{linkcolor}{rgb}{0.6,0.2,0.1}
-\definecolor{citecolor}{rgb}{0.35,0.45,0}
-\definecolor{chapnum}{gray}{0.55}
+
+%%
+%% Global setup
+%%
 
 % Font setup
 \RequirePackage[T1]{fontenc}
@@ -36,7 +39,16 @@
 \setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
 
-% UiO chapter style
+% Coloring
+\RequirePackage{color}
+\definecolor{chapnum}{gray}{0.55}
+
+
+%%
+%% Division styles
+%%
+
+% Chapter style
 \makechapterstyle{uio}{%
   \renewcommand{\printchaptername}{}
   \renewcommand{\chapternamenum}{}
@@ -58,7 +70,12 @@
 \setsubsecheadstyle{\raggedright\large}
 \setsubsubsecheadstyle{\raggedright\itshape}
 
-% UiO page style
+
+%%
+%% Tops and tails
+%%
+
+% Page style
 \makepagestyle{uio}
 \makeevenfoot{uio}{\thepage}{}{}
 \makeoddfoot{uio}{}{}{\thepage}
@@ -66,6 +83,10 @@
 % Plain headers and footers
 \makeevenfoot{plain}{\thepage}{}{}
 \makeoddfoot{plain}{}{}{\thepage}
+
+%%
+%% Lists
+%%
 
 % Table of Contents
 \maxtocdepth{subsection}
@@ -100,67 +121,27 @@
 \RequirePackage{caption}
 \captionsetup[figure]{font={footnotesize,sf}}
 
-% Colophon
-\newcommand{\makecolophon}{%
-  \pagestyle{empty}
+% No hspace between lists
+%\tightlists
 
-  \null\vfil
+% Enumeratable list
 
-  \calccentering{\unitlength}
-  \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \begin{center}
-      {\Large\textsf{Colophon}}
-    \end{center}
-    \begin{center}
-      This thesis was typeset using the \LaTeX{} typesetting system
-      created by Leslie Lamport.
-      The body text is set 12/14.5pt on a 29pc measure with Palatino 
-      designed by Hermann Zapf.
-      Other fonts include Sans and Typewriter from Donald Knuth's
-      Computer Modern family.
-    \end{center}
-    \begin{center}
-      This thesis was written in American English as dictated by
-      \emph{The Elements of Style} \citep{strunk00}. Typographical
-      decisions were based on recommendations in
-      \emph{The Elements of Typographic Style} \citep{bringhurst04}.
-    \end{center}
-  \end{adjustwidth*}
 
-  \vfil
-}
+\newenvironment{enum}{%
+  \newcounter{lcount}
+  \begin{list}{\arabic{lcount}}{%
+    \usecounter{lcount}
+    \setlength{\parsep}{\parskip}
+    \setlength{\itemsep}{\parskip}
+    \setlength{\itemindent}{0pt}
+    \setlength{\leftmargin}{0pt}
+  }
+}{\end{list}}
 
-% Titlepage
-\renewcommand{\maketitle}{%
-  \begin{titlingpage}
-    \calccentering{\unitlength}
-    \begin{adjustwidth*}{\unitlength}{-\unitlength}
-      \begin{center}
-        \null\vspace{1cm}
-        \includegraphics[width=0.3\textwidth]{uioseal} \\
-        \vspace{2cm}
-        {\Huge\textsf{{\@title}}} \\
-        \vspace{0.5cm}
-        {\Large\textsf{{\@subtitle}}} \\
-        \vspace{1cm}
-        {\large\@author} \\
-        \vspace{1cm}
-        Submitted in partial fulfillment of the requirements \\
-        for the degree of Master of Science \\
-        \vspace{1cm}
-        \@date \\
-        \vspace{1cm}
-        Department of Informatics \\
-        Faculty of Mathematics and Natural Sciences \\
-        University of Oslo \\
-        \vfill
-        \@scm
-      \end{center}
-    \end{adjustwidth*}
-    \clearpage
-    \makecolophon
-  \end{titlingpage}
-}
+
+%%
+%% Side notes/tables/figures
+%%
 
 % Automatic aligned sidenote
 \DeclareRobustCommand{\sidenote}[2]%
@@ -234,6 +215,10 @@
   }
 }
 
+%%
+%% Environments
+%%
+
 % Cite quote environment
 \newcommand{\@quotekey}{undefined}
 \newcommand{\@quoteopt}{undefined}
@@ -264,9 +249,11 @@
   \end{adjustwidth*}
 }
 
-% Differences between dvips and pdflatex processors handeled here including:
-%   * Hyper references and breaking of URLs
-%   * PDF type protrusion
+
+%%
+%% PDF and PS specifics
+%%
+
 \RequirePackage{ifpdf}
 \ifpdf
   \RequirePackage[pdftex,plainpages=false]{hyperref}
@@ -277,22 +264,23 @@
 \fi
 \RequirePackage{memhfixc}
 
-\hypersetup{%
-  colorlinks,
-  breaklinks,
-  linkcolor=black,
-  citecolor=black,
-  filecolor=black,
-  urlcolor=urlcolor
-}
 
-% Url formatted with sans serif font
+%%
+%% Hyperlinks
+%%
+
 \urlstyle{sf}
 
-% Items to attend to.
-\newcommand{\todo}[1]{$\bigotimes$ #1 $\bigotimes$}
+\hypersetup{%
+  colorlinks=false,
+  breaklinks,
+}
 
-% Reference shorthands.
+
+%%
+%% Reference shorthands.
+%%
+
 \newcommand\figureref[1]{%
   Figure~\ref{figure:#1}%
 }
@@ -320,9 +308,13 @@
   (p.~\pageref{appendix:#1})%
 }
 
+
 %%
 %% Declerative formatting
 %%
+
+% Items to attend to
+\newcommand{\todo}[1]{$\bigotimes$ #1 $\bigotimes$}
 
 % Phrase marker
 \newcommand{\dash}{ -- }
@@ -360,8 +352,76 @@
 \newcommand{\openpostquote}[3][]{\q{#3} \citep[#1]{#2}}
 \newcommand{\openpostquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}}
 
+
 %%
 %% Constants
 %%
 
 \newcommand{\urort}{Ur\o{}rt}
+
+
+%%
+%% Front matter
+%%
+
+% Colophon
+\newcommand{\makecolophon}{%
+  \pagestyle{empty}
+
+  \null\vfil
+
+  \calccentering{\unitlength}
+  \begin{adjustwidth*}{\unitlength}{-\unitlength}
+    \begin{center}
+      {\Large\textsf{Colophon}}
+    \end{center}
+    \begin{center}
+      This thesis was typeset using the \LaTeX{} typesetting system
+      created by Leslie Lamport.
+      The body text is set 12/14.5pt on a 29pc measure with Palatino 
+      designed by Hermann Zapf.
+      Other fonts include Sans and Typewriter from Donald Knuth's
+      Computer Modern family.
+    \end{center}
+    \begin{center}
+      This thesis was written in American English as dictated by
+      \emph{The Elements of Style} \citep{strunk00}. Typographical
+      decisions were based on recommendations in
+      \emph{The Elements of Typographic Style} \citep{bringhurst04}.
+    \end{center}
+  \end{adjustwidth*}
+
+  \vfil
+}
+
+% Titlepage
+\renewcommand{\maketitle}{%
+  \begin{titlingpage}
+    \calccentering{\unitlength}
+    \begin{adjustwidth*}{\unitlength}{-\unitlength}
+      \begin{center}
+        \null\vspace{1cm}
+        \includegraphics[width=0.3\textwidth]{uioseal} \\
+        \vspace{2cm}
+        {\Huge\textsf{{\@title}}} \\
+        \vspace{0.5cm}
+        {\Large\textsf{{\@subtitle}}} \\
+        \vspace{1cm}
+        {\large\@author} \\
+        \vspace{1cm}
+        Submitted in partial fulfillment of the requirements \\
+        for the degree of Master of Science \\
+        \vspace{1cm}
+        \@date \\
+        \vspace{1cm}
+        Department of Informatics \\
+        Faculty of Mathematics and Natural Sciences \\
+        University of Oslo \\
+        \vfill
+        \@scm
+      \end{center}
+    \end{adjustwidth*}
+    \clearpage
+    \makecolophon
+  \end{titlingpage}
+}
