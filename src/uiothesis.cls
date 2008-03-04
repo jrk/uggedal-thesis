@@ -122,19 +122,30 @@
 \captionsetup[figure]{font={footnotesize,sf}}
 
 % No hspace between lists
-%\tightlists
+\tightlists
 
 % Enumeratable list
-
-
 \newenvironment{enum}{%
   \newcounter{lcount}
   \begin{list}{\arabic{lcount}}{%
     \usecounter{lcount}
     \setlength{\parsep}{\parskip}
     \setlength{\itemsep}{\parskip}
-    \setlength{\itemindent}{0pt}
     \setlength{\leftmargin}{0pt}
+    \setlength{\itemindent}{0pt}
+  }
+}{\end{list}}
+
+% Description list
+\newcommand{\itlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
+\newenvironment{desc}{%
+  \begin{list}{}{%
+    \setlength{\parsep}{\parskip}
+    \setlength{\itemsep}{\parskip}
+    \setlength{\itemindent}{0pt}
+    \setlength{\listparindent}{\parindent}
+    \setlength{\leftmargin}{\parindent}
+    \let\makelabel\itlabel
   }
 }{\end{list}}
 
