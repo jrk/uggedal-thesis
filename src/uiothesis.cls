@@ -154,6 +154,9 @@
 %% Side notes/tables/figures
 %%
 
+% The mark on the sidenote
+\newcommand{\sidemark}[1]{#1.{\:}}
+
 % Automatic aligned sidenote
 \DeclareRobustCommand{\sidenote}[2]%
   [0em]{%
@@ -163,13 +166,13 @@
     \marginpar{%
       \vspace*{#1}
       \RaggedRight \footnotesize
-      \textsuperscript{\thefootnote}#2
+      \sidemark{\thefootnote}\ignorespaces#2
     }%
   \else
     \marginpar{%
       \vspace*{#1}
       \RaggedLeft \footnotesize
-      \textsuperscript{\thefootnote}#2
+      \sidemark{\thefootnote}\ignorespaces#2
     }%
   \fi
 }%
@@ -181,7 +184,7 @@
   \marginpar{%
     \vspace*{#1}
     \RaggedRight \footnotesize
-    \textsuperscript{\thefootnote}#2
+    \sidemark{\thefootnote}\ignorespaces#2
   }%
 }%
 \newcommand{\evensidenote}[2]%
@@ -190,7 +193,7 @@
   \marginpar{%
     \vspace*{#1}
     \RaggedLeft \footnotesize
-    \textsuperscript{\thefootnote}#2
+    \sidemark{\thefootnote}\ignorespaces#2
   }%
 }%
 
@@ -236,14 +239,12 @@
 \newenvironment{citequote}[2][]{%
   \renewcommand{\@quoteopt}{#1}
   \renewcommand{\@quotekey}{#2}
-  \tolerance=2000
-  \begin{quote}``\ignorespaces%
+  \begin{adjustwidth}{0em}{0em}\itshape%
 }{%
-  \unskip''
   \\[0.5\onelineskip]
     \hspace*{\fill}
     \citep[\@quoteopt]{\@quotekey}
-  \end{quote}
+  \end{adjustwidth}
 }
 
 \newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
