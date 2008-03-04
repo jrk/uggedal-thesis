@@ -22,6 +22,8 @@ the implementation was built\dash{}the ingredients of our implementation.
 \section{Design}
 
 \section{Process}
+% Prototype, exploratory
+% TDD, BDD
 
 \section{Architecture}
 
@@ -32,15 +34,103 @@ that it's only consisting of open source software.
 We decided to use a server--client architecture so that we could move some of
 the more computationally expensive operations off the client and into a
 dedicated server. Another benefit of such an architecture is that it allows us
-to cache data globally\dash{}for all clients.
+to cache data globally\dash{}shared by all clients.
 
 \subsection{Client Side}
 
 \subsubsection{Plattform}
 
+The plattform for the clients is in essence a web browser. We are making
+changes to a web page afteral. The web browser have to be explicitly choosen
+to be one that readily supports scripting existing
+web pages\dash{}a term often called \term{user scripting}.
+The \project{Firefox}%
+\sidenote{
+  Available at \url{http://www.mozilla.com/en-US/firefox}.
+}
+web browser was the first browser providing a
+plugin for handeling such scripting of web pages and seems to have the most
+mature implementation in our view. Since Firefox also is the
+most adopted%
+\sidenote{
+  According to \citet{onestat08} Firefox was the second most used web browser
+  only surpassed by \project{Internet Explorer}.
+}
+cross-platform open source web browser the plattform choice was quite easy.
+
+Firefox's provide user scripting trough the means of the
+\project{Greasemonkey}%
+\sidenote{
+  Available at \url{http://greasespot.net}.
+}
+browser extension. Essentially all it provides is the ability for a user to
+install a script which can manipulate the contents of a web page
+in various ways using the \term{DOM}%
+\sidenote{
+  % write from js book.
+}.
+When a user have such a script for a specific web page installed it's
+instructions will be executed on the next visit to the given site, enabeling
+all kind of modifications possible in the DOM.
+
+Although we've setteled on the Firefox and Greasemonkey plattform there is a
+certain possibility that our implementation could work in other browsers
+providing user scripting. The \project{Opera} browser provides user scripting
+without any plugins%
+\sidenote{
+  For more information see
+  \url{http://www.opera.com/support/tutorials/userjs/examples}.
+},
+the \project{Safari} browser can handle user script with the
+\project{GreaseKit}%
+\sidenote{
+  Available at \url{http://8-p.info/greasekit}.
+}
+plugin. We have not tested such support for ourselves since we decided to
+focus all our efforts on one plattform.
+
 \subsubsection{Programming Language}
 
+Programming behaviour inside web browsers was first introduced by
+
+Because of this we had no say in what programming language to use on the
+client side. That is not to say that JavaScript is a poor programming
+language.
+% list it's good features, and that recently the style of js has changed. cite
+% js pro book. cite js ref book.
+% cite stewe yegge about next big lanuage
+
 \subsubsection{Framework}
+
+We decided to use a JavaScript library to make interactions with the DOM
+simpler. Lately a myriad of such frameworks have appered, but the most
+interesting ones seems to be
+\project{Prototype}%
+\sidenote{
+  Available at \url{http://www.prototypejs.org}.
+},
+\project{Yahoo! UI Library}%
+\sidenote{
+  Available at \url{http://developer.yahoo.com/yui}.
+},
+\project{MooTools}%
+\sidenote{
+  Available at \url{http://mootools.net}.
+},
+\project{MochiKit}%
+\sidenote{
+  Available at \url{http://mochikit.com}.
+}, and
+\project{jQuery}%
+\sidenote{
+  Available at \url{http://jquery.com}.
+}.
+There are other frameworks available that provide everything but the kitchen
+sink but we needed a lightweight solution.
+
+% jQuery ++ for it's css (+xpath) based selectors
+% jQuery ++ for it's size
+% jQuery ++ for it's method chaining
 
 \subsection{Server Side}
 
