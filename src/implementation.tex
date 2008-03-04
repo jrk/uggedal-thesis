@@ -21,7 +21,18 @@ the implementation was built\dash{}the ingredients of our implementation.
 
 \section{Design}
 
+\section{Process}
+
 \section{Architecture}
+
+Firstly one important aspect with the software stack used in this
+implementation\dash{}from operating system to third party libraries\dash{}is
+that it's only consisting of open source software.
+
+We decided to use a server--client architecture so that we could move some of
+the more computationally expensive operations off the client and into a
+dedicated server. Another benefit of such an architecture is that it allows us
+to cache data globally\dash{}for all clients.
 
 \subsection{Client Side}
 
@@ -39,11 +50,70 @@ the implementation was built\dash{}the ingredients of our implementation.
 
 \subsubsection{Framework}
 
-\subsection{Development Tools}
+\section{Development Tools}
 
-\subsubsection{Version Control}
+As with the implementation plattforms, languages, and third party libraries
+our first criterion for selecting development tools is freedom.
 
-\subsubsection{Editor}
+\subsection{Version Control}
+
+We've found it indispensable to use \term{version control} when writing code
+and even used it when authoring this thesis. We'll not spend time to discuss
+the merrits of version control since we feel it's benefits are major and
+using one induces almost zero overhead in your working process. Sometimes we
+feel that the use of version control can guide you when conducting complex
+tasks.
+
+There are however several different forms of version control system one can
+use. One of the most used version control implementations the last years
+in open source cicles was
+\project{Subversion}%
+\sidenote{
+  Available at \url{http://subversion.tigris.org}.
+}\dash{}a \term{centralized version control system} meaning that one central
+server holds the version controlled code repository and it's history.%
+\sidenote{
+  Developers on the client side have working copies and need to contact the
+  centralized server to get a hold of historical data and create new history.
+}
+Recently \term{decentralized version control systems} have become more popular
+amongst developers. A decentralized model means that every developer can have
+their own repository consisting of all history.%
+\sidenote{
+  You can for instance be without internet connectivity and still commit
+  changes, revert to previous versions, and handle all other tasks your
+  version control system supports.
+}
+Code is then shared either in a push or pull fashion between such individual
+repositories. This enables a much better model for collaboration.
+We favor this last model of version control and so have projects
+like \project{Linux}, \project{X}, \project{Mozilla},
+and \project{OpenSolaris}.%
+\sidenote{
+  \citeauthor{torvalds07}, author of the Linux kernel,
+  have described Subversion and centralized version control
+  as fundamentally flawed since it's supposed to be a
+  \q{\project{CVS} done right}. Since he feels CVS is flawed Subversion
+  is therefore inherently flawed \citeyearpar{torvalds07}.
+}
+
+Based on criteria of performance and current adoption there are in our view
+only two interesting decentralized version control systems:
+\project{Git}%
+\sidenote{
+  Available at \url{http://git.or.cz}.
+}
+and \project{Mercurial}%
+\sidenote{
+  Available at \url{http://www.selenic.com/mercurial}.
+}. Both are unique in that they don't track meta-data, they just track
+content and meta-data are thereby infered from the content.
+At a very high level view Mercuial have a better user interface and Git
+supports some advanced features the former don't have. We opted to used
+Mercurial for this development project since we've substantial experience in
+using it and did not need any of Git's advanced features.
+
+\subsection{Editor}
 
 A developer's main tool for authoring software is his editor. Sometimes the
 implementation language warrants a specialized editor with aids for
