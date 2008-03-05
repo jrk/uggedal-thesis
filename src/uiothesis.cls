@@ -146,11 +146,17 @@
 \newcommand{\itlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
 \newenvironment{desc}{%
   \begin{list}{}{%
+    \setlength{\topsep}{\parskip}
+    \setlength{\partopsep}{\parskip}
     \setlength{\parsep}{\parskip}
     \setlength{\itemsep}{\parskip}
     \setlength{\itemindent}{0pt}
     \setlength{\listparindent}{\parindent}
     \setlength{\leftmargin}{\parindent}
+    \setlength{\labelsep}{0.5em}
+    \setlength{\labelwidth}{\leftmargin}
+    \addtolength{\labelwidth}{-\labelsep}
+    \addtolength{\itemindent}{-\labelsep}
     \let\makelabel\itlabel
   }
 }{\end{list}}
