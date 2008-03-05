@@ -259,6 +259,12 @@
   \end{adjustwidth}
 }
 
+\renewenvironment{quote}{%
+  \begin{adjustwidth}{0em}{0em}\itshape%
+}{%
+  \end{adjustwidth}
+}
+
 \newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
 \addtolength{\wholemargin}{\marginparpush}
 \newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}
