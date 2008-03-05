@@ -245,24 +245,30 @@
 %% Environments
 %%
 
+% Full width quote environment
+\renewenvironment{quote}{%
+  \list{}{%
+    \setlength{\topsep}{\baselineskip}
+    \setlength{\partopsep}{\baselineskip}
+    \setlength{\itemindent}{0pt}
+    \setlength{\listparindent}{0pt}
+    \setlength{\leftmargin}{0pt}
+  }%
+  \itshape\item[]
+}{\endlist}
+
 % Cite quote environment
 \newcommand{\@quotekey}{undefined}
 \newcommand{\@quoteopt}{undefined}
 \newenvironment{citequote}[2][]{%
   \renewcommand{\@quoteopt}{#1}
   \renewcommand{\@quotekey}{#2}
-  \begin{adjustwidth}{0em}{0em}\itshape%
+  \begin{quote}
 }{%
   \\[0.5\onelineskip]
     \hspace*{\fill}
     \citep[\@quoteopt]{\@quotekey}
-  \end{adjustwidth}
-}
-
-\renewenvironment{quote}{%
-  \begin{adjustwidth}{0em}{0em}\itshape%
-}{%
-  \end{adjustwidth}
+  \end{quote}
 }
 
 \newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
