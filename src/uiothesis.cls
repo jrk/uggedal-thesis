@@ -346,6 +346,9 @@
 % Title of artistic or academic work
 \let\work\term
 
+% Abbreviations (mostly acronyms, but all full caps abbreviations)
+\newcommand{\abbr}[1]{\textsc{\MakeLowercase{#1}}}
+
 % Project name (first usage?)
 \newcommand{\project}[1]{\textsf{{#1}}}
 
