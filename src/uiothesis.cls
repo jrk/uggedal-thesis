@@ -31,7 +31,11 @@
 \RequirePackage[osf]{mathpazo}
 \renewcommand\rmdefault{pplj}
 \newfont{\chapnum}{eurb10 scaled 8000}
+
+% Creates an fourier ornament. Args: fontsize, lineheight, char
 \RequirePackage{fourier-orns}
+\newcommand*{\fourierOrnament}[3]{{%
+  \fontencoding{U}\fontfamily{futs}\fontsize{#1}{#2}\selectfont\char#3}}
 
 % Laying out the page
 \settypeblocksize{44\onelineskip}{28pc}{*}
@@ -43,6 +47,7 @@
 % Coloring
 \RequirePackage{color}
 \definecolor{chapnum}{gray}{0.55}
+\definecolor{ornament}{gray}{0.85}
 
 
 %%
@@ -402,6 +407,12 @@
     by \work{The Elements of Style} \citep{strunk00}.\\
     Typographical decisions were based on recommendations\\
     in \work{The Elements of Typographic Style} \citep{bringhurst04}.
+  \end{adjustwidth*}
+  
+  \vfil
+
+  \begin{adjustwidth*}{\unitlength}{-\unitlength}
+    \color{ornament}\fourierOrnament{100}{120}{97}
   \end{adjustwidth*}
 
   \vfil
