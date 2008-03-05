@@ -128,31 +128,31 @@
 \captionsetup[figure]{font={footnotesize,sf}}
 
 % Enumeratable list
-\renewenvironment{enumerate}{%
-  \newcounter{lcount}
-  \begin{list}{\arabic{lcount}}{%
-    \usecounter{lcount}
-%    \setlength{\topsep}{\parskip}
-%    \setlength{\partopsep}{\parskip}
+
+\newenvironment{enum}{%
+  \begin{list}{\arabic{enumi}}{%
+    \setlength{\topsep}{\parskip}
+    \setlength{\partopsep}{\parskip}
     \setlength{\parsep}{\parskip}
     \setlength{\itemsep}{\parskip}
     \setlength{\leftmargin}{0pt}
     \setlength{\itemindent}{0pt}
   }
 }{\end{list}}
-\let\endenumerate =\endlist
+%\let\endenum =\endlist
 
 % Itemized list
-%\newenvironment{itemizer}{%
-%  \begin{list}{}{%
-%    \setlength{\topsep}{\parskip}
-%    \setlength{\partopsep}{\parskip}
-%    \setlength{\parsep}{\parskip}
-%    \setlength{\itemsep}{\parskip}
-%    \setlength{\leftmargin}{0pt}
-%    \setlength{\itemindent}{0pt}
-%  }
-%}{\end{list}}
+\renewenvironment{itemize}{%
+  \begin{list}{}{%
+    \setlength{\topsep}{\parskip}
+    \setlength{\partopsep}{\parskip}
+    \setlength{\parsep}{\parskip}
+    \setlength{\itemsep}{\parskip}
+    \setlength{\leftmargin}{0pt}
+    \setlength{\itemindent}{0pt}
+  }
+}{\end{list}}
+\let\enditemize =\endlist
 
 % Description list
 \newcommand{\itlabel}[1]{\textbullet\hspace\labelsep\normalfont\itshape #1}
