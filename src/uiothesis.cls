@@ -123,12 +123,7 @@
 \renewcommand{\cfttableleader}{ }
 \renewcommand{\cfttableafterpnum}{\cftparfillskip}
 
-% Captions
-\RequirePackage{caption}
-\captionsetup[figure]{font={footnotesize,sf}}
-
 % Enumeratable list
-
 \newenvironment{enum}{%
   \begin{list}{\arabic{enumi}}{%
     \setlength{\topsep}{\parskip}
@@ -139,7 +134,6 @@
     \setlength{\itemindent}{0pt}
   }
 }{\end{list}}
-%\let\endenum =\endlist
 
 % Itemized list
 \renewenvironment{itemize}{%
@@ -177,6 +171,10 @@
 %%
 %% Side notes/tables/figures
 %%
+
+% Captions
+\RequirePackage{caption}
+\captionsetup[figure]{font={footnotesize,sf}}
 
 % The mark on the sidenote
 \newcommand{\sidemark}[1]{#1.{\:}}
