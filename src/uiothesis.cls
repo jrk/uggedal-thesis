@@ -132,6 +132,8 @@
   \newcounter{lcount}
   \begin{list}{\arabic{lcount}}{%
     \usecounter{lcount}
+%    \setlength{\topsep}{\parskip}
+%    \setlength{\partopsep}{\parskip}
     \setlength{\parsep}{\parskip}
     \setlength{\itemsep}{\parskip}
     \setlength{\leftmargin}{0pt}
@@ -139,8 +141,20 @@
   }
 }{\end{list}}
 
+% Itemized list
+%\newenvironment{itemizer}{%
+%  \begin{list}{}{%
+%    \setlength{\topsep}{\parskip}
+%    \setlength{\partopsep}{\parskip}
+%    \setlength{\parsep}{\parskip}
+%    \setlength{\itemsep}{\parskip}
+%    \setlength{\leftmargin}{0pt}
+%    \setlength{\itemindent}{0pt}
+%  }
+%}{\end{list}}
+
 % Description list
-\newcommand{\itlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
+\newcommand{\itlabel}[1]{\textbullet\hspace\labelsep\normalfont\itshape #1}
 \newenvironment{desc}{%
   \begin{list}{}{%
     \setlength{\topsep}{\parskip}
@@ -149,7 +163,7 @@
     \setlength{\itemsep}{\parskip}
     \setlength{\itemindent}{0pt}
     \setlength{\listparindent}{\parindent}
-    \setlength{\leftmargin}{\parindent}
+    \setlength{\leftmargin}{0pt}
     \setlength{\labelsep}{0.5em}
     \setlength{\labelwidth}{\leftmargin}
     \addtolength{\labelwidth}{-\labelsep}
