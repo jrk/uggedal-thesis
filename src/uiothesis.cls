@@ -31,6 +31,7 @@
 \RequirePackage[osf]{mathpazo}
 \renewcommand\rmdefault{pplj}
 \newfont{\chapnum}{eurb10 scaled 8000}
+\RequirePackage{fourier-orns}
 
 % Laying out the page
 \settypeblocksize{44\onelineskip}{28pc}{*}
@@ -385,25 +386,22 @@
 
   \null\vfil
 
-  \calccentering{\unitlength}
   \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \begin{center}
-      {\Large\textsf{Colophon}}
-    \end{center}
-    \begin{center}
-      This thesis was typeset using the \LaTeX{} typesetting system
-      created by Leslie Lamport.
-      The body text is set 12/14.5pt on a 29pc measure with Palatino 
-      designed by Hermann Zapf.
-      Other fonts include Sans and Typewriter from Donald Knuth's
-      Computer Modern family.
-    \end{center}
-    \begin{center}
-      This thesis was written in American English as dictated by
-      \emph{The Elements of Style} \citep{strunk00}. Typographical
-      decisions were based on recommendations in
-      \emph{The Elements of Typographic Style} \citep{bringhurst04}.
-    \end{center}
+    \raggedright
+    This thesis was typeset using the \LaTeX{} typesetting\\
+    system created by Leslie Lamport.\\
+    The body text is set 11/\the\baselineskip{} on a 28pc measure\\
+    with Palatino designed by Hermann Zapf.\\
+    Other fonts include Sans and Typewriter from\\
+    Donald Knuth's Computer Modern family.
+  \end{adjustwidth*}
+
+  \begin{adjustwidth*}{\unitlength}{-\unitlength}
+    \raggedright
+    This thesis was written in American English as dictated\\
+    by \work{The Elements of Style} \citep{strunk00}.\\
+    Typographical decisions were based on recommendations\\
+    in \work{The Elements of Typographic Style} \citep{bringhurst04}.
   \end{adjustwidth*}
 
   \vfil
@@ -423,6 +421,8 @@
         {\Large\textsf{{\@subtitle}}} \\
         \vspace{1cm}
         {\large\@author} \\
+        \vspace{1cm}
+        {\LARGE\aldineleft} \\
         \vspace{1cm}
         Submitted in partial fulfillment of the requirements \\
         for the degree of Master of Science \\
