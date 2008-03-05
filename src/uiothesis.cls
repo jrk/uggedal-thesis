@@ -128,7 +128,7 @@
 \captionsetup[figure]{font={footnotesize,sf}}
 
 % Enumeratable list
-\newenvironment{enum}{%
+\renewenvironment{enumerate}{%
   \newcounter{lcount}
   \begin{list}{\arabic{lcount}}{%
     \usecounter{lcount}
@@ -140,6 +140,7 @@
     \setlength{\itemindent}{0pt}
   }
 }{\end{list}}
+\let\endenumerate =\endlist
 
 % Itemized list
 %\newenvironment{itemizer}{%
