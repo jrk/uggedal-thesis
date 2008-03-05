@@ -127,9 +127,6 @@
 \RequirePackage{caption}
 \captionsetup[figure]{font={footnotesize,sf}}
 
-% No hspace between lists
-\tightlists
-
 % Enumeratable list
 \newenvironment{enum}{%
   \newcounter{lcount}
