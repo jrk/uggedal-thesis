@@ -126,46 +126,30 @@
 % Enumeratable list
 \newenvironment{enum}{%
   \begin{list}{\arabic{enumi}}{%
-    \setlength{\topsep}{\parskip}
-    \setlength{\partopsep}{\parskip}
+    \setlength{\topsep}{\onelineskip}
+    \setlength{\partopsep}{0pt}
     \setlength{\parsep}{\parskip}
     \setlength{\itemsep}{\parskip}
     \setlength{\leftmargin}{0pt}
     \setlength{\itemindent}{0pt}
+    \usecounter{enumi}
   }
 }{\end{list}}
 
 % Itemized list
-\renewenvironment{itemize}{%
-  \begin{list}{}{%
-    \setlength{\topsep}{\parskip}
-    \setlength{\partopsep}{\parskip}
+\newenvironment{items}{%
+  \begin{list}{\textbullet}{%
+    \setlength{\topsep}{\onelineskip}
+    \setlength{\partopsep}{0pt}
     \setlength{\parsep}{\parskip}
     \setlength{\itemsep}{\parskip}
     \setlength{\leftmargin}{0pt}
     \setlength{\itemindent}{0pt}
   }
 }{\end{list}}
-\let\enditemize =\endlist
 
-% Description list
-\newcommand{\itlabel}[1]{\textbullet\hspace\labelsep\normalfont\itshape #1}
-\newenvironment{desc}{%
-  \begin{list}{}{%
-    \setlength{\topsep}{\parskip}
-    \setlength{\partopsep}{\parskip}
-    \setlength{\parsep}{\parskip}
-    \setlength{\itemsep}{\parskip}
-    \setlength{\itemindent}{0pt}
-    \setlength{\listparindent}{\parindent}
-    \setlength{\leftmargin}{0pt}
-    \setlength{\labelsep}{0.5em}
-    \setlength{\labelwidth}{\leftmargin}
-    \addtolength{\labelwidth}{-\labelsep}
-    \addtolength{\itemindent}{-\labelsep}
-    \let\makelabel\itlabel
-  }
-}{\end{list}}
+% Definitions in lists
+\newcommand{\iterm}[1]{\item \term{#1}}
 
 
 %%
@@ -259,7 +243,7 @@
 \renewenvironment{quote}{%
   \list{}{%
     \setlength{\topsep}{\baselineskip}
-    \setlength{\partopsep}{\baselineskip}
+    \setlength{\partopsep}{0pt}
     \setlength{\itemindent}{0pt}
     \setlength{\listparindent}{0pt}
     \setlength{\leftmargin}{0pt}
