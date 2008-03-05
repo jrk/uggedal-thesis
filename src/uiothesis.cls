@@ -392,7 +392,7 @@
   \null\vfil
 
   \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \raggedright
+    \raggedright\small
     This thesis was typeset using the \LaTeX{} typesetting\\
     system created by Leslie Lamport.\\
     The body text is set 11/\the\baselineskip{} on a 28pc measure\\
@@ -402,7 +402,7 @@
   \end{adjustwidth*}
 
   \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \raggedright
+    \raggedright\small
     This thesis was written in American English as dictated\\
     by \work{The Elements of Style} \citep{strunk00}.\\
     Typographical decisions were based on recommendations\\
