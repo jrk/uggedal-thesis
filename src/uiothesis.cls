@@ -364,6 +364,9 @@
 % Title of artistic or academic work
 \let\work\term
 
+% Latin expressions
+\let\latin\term
+
 % Abbreviations (mostly acronyms, but all full caps abbreviations)
 \newcommand{\abbr}[1]{\textsc{\MakeLowercase{#1}}}
 
