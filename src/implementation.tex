@@ -21,7 +21,7 @@ the implementation was built\dash{}the ingredients of our implementation.
 
 \section{Design}
 
-% no new data. making existing data more redily available.
+% no new data. making existing data more readily available.
 
 \section{Process}
 % Prototype, exploratory
@@ -41,26 +41,26 @@ We decided to use a server--client architecture so that we could offload some
 of the more computationally expensive operations off the client and onto a
 dedicated server. Another benefit of such an architecture is that it allows us
 to cache data globally\dash{}shared by all clients. Therefore data collection
-is handeled on the server side, while data display obviously is handeled on
+is handled on the server side, while data display obviously is handled on
 the client side.
 
-Based on the design decitions we've taken we needed to figure out what parts
+Based on the design decisions we've taken we needed to figure out what parts
 our software architecture should be composed of. 
 Firstly one important aspect with the software stack used in this
 implementation\dash{}from operating system to third party libraries\dash{}is
 that it should only consisting of open source software. In our experience it's
 invaluable to have sources available for all involved software. If one
-encounters abnormal behaviour or bugs it's much easier to locate them when one
+encounters abnormal behavior or bugs it's much easier to locate them when one
 have sources available and one can trivially (depending on the complexity of
-the prolem) create a patch that sortes them out.
+the problem) create a patch that sorts them out.
 
 \subsection{Client Side}
 
-\subsubsection{Plattform}
+\subsubsection{Platform}
 \label{section:implementation.architecture.client.side.plattform}
 
-The plattform for the clients is in essence a web browser. We are making
-changes to a web page afteral. The web browser have to be explicitly choosen
+The platform for the clients is in essence a web browser. We are making
+changes to a web page after all. The web browser have to be explicitly chosen
 to be one that readily supports scripting existing
 web pages\dash{}a term often called \term{user scripting}.
 The \project{Firefox}%
@@ -68,14 +68,14 @@ The \project{Firefox}%
   Available at \url{http://www.mozilla.com/en-US/firefox}.
 }
 web browser was the first browser providing a
-plugin for handeling such scripting of web pages and seems to have the most
+plug-in for handling such scripting of web pages and seems to have the most
 mature implementation in our view. Since Firefox also is the
 most adopted%
 \sidenote{
   According to \citet{onestat08} Firefox was the second most used web browser
   only surpassed by \project{Internet Explorer}.
 }
-cross-platform open source web browser the plattform choice was quite easy.
+cross-platform open source web browser the platform choice was quite easy.
 
 Firefox provide user scripting trough the means of the
 \project{Greasemonkey}%
@@ -86,15 +86,15 @@ browser extension. Essentially all it provides is the ability for a user to
 install a script which can manipulate the contents of a web page
 in various ways using the \abbr{DOM}%
 \sidenote{
-  %%% write from js book.
+  %%% write from JavaScript book.
 }.
 When a user have such a script for a specific web page installed it's
-instructions will be executed on the next visit to the given site, enabeling
+instructions will be executed on the next visit to the given site, enabling
 all kind of modifications possible in the \abbr{DOM}. This is the ingredient
-that enables us to display new informaition trough navigational designs on the
+that enables us to display new information trough navigational designs on the
 \urort web site.
 
-Although we've setteled on the Firefox and Greasemonkey plattform there is a
+Although we've settled on the Firefox and Greasemonkey platform there is a
 certain possibility that our implementation could work in other browsers
 providing user scripting. The \project{Opera} browser provides user scripting
 without any plugins%
@@ -107,18 +107,18 @@ the \project{Safari} browser can handle user script with the
 \sidenote{
   Available at \url{http://8-p.info/greasekit}.
 }
-plugin. We have not tested such support for ourselves since we decided to
-focus all our efforts on one plattform.
+plug-in. We have not tested such support for ourselves since we decided to
+focus all our efforts on one platform.
 
 \subsubsection{Programming Language}
 
-The ability to programatically alter behaviour inside web browsers was first
+The ability to programmatically alter behavior inside web browsers was first
 introduced by \project{Netscape} in their \val{2.0} version of the web browser
 with the same name. \project{JavaScript} was first intended to be a
 lightweight scripting language for gluing together \abbr{HTML} and applets
 written in the \project{Java} programming language \citep{netscape95}. Java
 applets never took of and JavaScript soon became the \latin{de facto} standard
-for enabeling behaviour on the Web and was standardized as
+for enabling behavior on the Web and was standardized as
 \project{ECMAScript} in 1997 \citep{ecma99}.
 
 Because of this we had no say in what programming language to use on the
@@ -126,19 +126,19 @@ client side. That is not to say that JavaScript is a poor programming
 language. Contradictory to it's name, JavaScript bears few similarities to the
 Java language.%
 \sidenote{
-  The name was more of a marketing decition when Netscape teamed up
+  The name was more of a marketing decision when Netscape teamed up
   with Sun (the maker of Java) before it's initial release.
 }
-%%% write more about js features as a modern language from pro js tech.
+%%% write more about JavaScript features as a modern language from pro JavaScript tech.
 
-% list it's good features, and that recently the style of js has changed. cite
-% js pro book. cite js ref book.
-% cite stewe yegge about next big lanuage
+% list it's good features, and that recently the style of JavaScript has changed. cite
+% JavaScript pro book. cite JavaScript ref book.
+% cite Steve Yegge about next big language
 
 \subsubsection{Convenience Library}
 
 We decided to use a JavaScript library to make interactions with the DOM
-simpler. Lately a myriad of such frameworks have appered, but the most
+simpler. Lately a myriad of such frameworks have appeared, but the most
 interesting ones seems to be
 \project{Prototype},
 \project{Yahoo! UI Library} (\abbr{YUI} for short),
@@ -158,7 +158,7 @@ sink but we needed a lightweight or modular solution.
 
 As can be seen in the following table we summarized the size of the most
 current version for each library of this writing. These are not exact
-metrics\dash{}we selected not to include certain widgets and loggin facilities
+metrics\dash{}we selected not to include certain widgets and logging facilities
 in the modularized libraries\dash{}but should provide clear guidance.
 To keep a level playing feel in this comparison we did not use minified
 (removal of comments and unnecessary spaces) or packaged (compressed) versions
@@ -166,7 +166,7 @@ of the libraries. All comments and documentation was stripped with a small
 script presented in \sectionref{source.code.javascript.comment.stripper}
 since the in-line documentation and commenting varied amongst the libraries.
 
-\sidetable{JavaScript Library Comparision
+\sidetable{JavaScript Library Comparison
            \label{table:javascript.library.comparision}}{%
   
   \begin{tabular}{lr}
@@ -184,23 +184,23 @@ since the in-line documentation and commenting varied amongst the libraries.
   \end{tabular}
 }
 
-% jQuery ++ for it's css (+xpath) based selectors
+% jQuery ++ for it's CSS (+XPath) based selectors
 % jQuery ++ for it's size
 % jQuery ++ for it's method chaining
 
 \subsection{Server Side}
 
-\subsubsection{Plattform}
+\subsubsection{Platform}
 
 \subsubsection{Programming Language}
 
-When doing protoype work it's important that the programming language one uses
+When doing prototype work it's important that the programming language one uses
 is efficient to work with. This means that programmer efficiency is more
 important than computational efficiency (a language's native performance).
-Since we didden't have time to invest in learning a new language we had to do
+Since we didn't have time to invest in learning a new language we had to do
 with those we knew from before. Of those \project{Ruby}%
 \sidenote{
-  Ruby recides at \url{http://ruby-lang.org}.
+  Ruby recedes at \url{http://ruby-lang.org}.
 },
 \project{Python}%
 \sidenote{
@@ -231,21 +231,21 @@ previous server side language discussion we landed on Ruby.
 
 \subsubsection{Data Extraction Library}
 
-The core library we need is one that handels data extraction from existing
+The core library we need is one that handles data extraction from existing
 web pages, so called \abbr{HTML} \term{scraping}. While it's possible to
 handle such problems with regular expressions, this becomes tedious after a
 while. We therefore prefer a special purpose library.
 
 The major deciding factor when we selected the implementation language was
-the availability of such a library and it's usefulles. Since we've already
-revealed Ruby as our implementation language we're killing the suspence.
+the availability of such a library and it's usefulness. Since we've already
+revealed Ruby as our implementation language we're killing the suspense.
 Our data extraction library is called \project{Hpricot}%
 \sidenote{
   Hpricot can be obtained from \url{http://code.whytheluckystiff.net/hpricot}.
   A curious note: Hpricot is written by the same person who created
-  Hoodwink.d\dash{}our inspiration for a transparent protoype implementation.
+  Hoodwink.d\dash{}our inspiration for a transparent prototype implementation.
 }
-and makes \abbr{HTML} parsing almost a fun endevor in our oppinion.
+and makes \abbr{HTML} parsing almost a fun endeavor in our opinion.
 
 The Python alternative for web page scraping is \project{Beautiful Soup}.
 
@@ -255,17 +255,17 @@ implemented in Common Lisp. There exists several \term{\abbr{XML}}%
   Extensible Markup Language. General purpose markup language specification
   that enables implementors to create custom markup languages.
   \abbr{HTML} is not a subset (specified in) \abbr{XML}.
-  \term{\abbr{XHTLM}} on the other hand, a reformulated version of
+  \term{\abbr{XHTML}} on the other hand, a reformulated version of
   \abbr{HTML}, is a subset of \abbr{XML}.
 %%% cite!
 }
 libraries that could handle our tasks, but none as well integrated as
 Hpricot for Ruby.
 
-% speed, ragel based.
+% speed, Ragel based.
 % based on jquery, same CSS3/XPath style. makes it easier to learn just one
 % syntax.
-% built in fetching of html documents. not available in beautiful soup.
+% built in fetching of HTML documents. not available in beautiful soup.
 
 \subsubsection{Web Framework}
 
@@ -276,27 +276,27 @@ A web framework or rather \term{\abbr{HTTP}}%
 framework is needed to make the
 collected data available for our client.
 
-% modest needs. serve json. maby include sub sub section before this one
-% with selection of a json serializer/library.
+% modest needs. serve JSON. maybe include sub sub section before this one
+% with selection of a JSON serializer/library.
 
 
 \section{Development Tools}
 
-As with the implementation plattforms, languages, and third party libraries
+As with the implementation platforms, languages, and third party libraries
 our first criterion for selecting development tools is freedom.
 
 \subsection{Version Control}
 
 We've found it indispensable to use \term{version control} when writing code
 and even used it when authoring this thesis. We'll not spend time to discuss
-the merrits of version control since we feel it's benefits are major and
+the merits of version control since we feel it's benefits are major and
 using one induces almost zero overhead in your working process. Sometimes we
 feel that the use of version control can guide you when conducting complex
 tasks.
 
 There are however several different forms of version control system one can
 use. One of the most used version control implementations the last years
-in open source cicles was
+in open source circles was
 \project{Subversion}%
 \sidenote{
   Available at \url{http://subversion.tigris.org}.
@@ -337,8 +337,8 @@ and \project{Mercurial}%
 \sidenote{
   Available at \url{http://www.selenic.com/mercurial}.
 }. Both are unique in that they don't track meta-data, they just track
-content and meta-data are thereby infered from the content.
-At a very high level view Mercuial have a better user interface and Git
+content and meta-data are thereby inferred from the content.
+At a very high level view Mercurial have a better user interface and Git
 supports some advanced features the former don't have. We opted to used
 Mercurial for this development project since we've substantial experience in
 using it and did not need any of Git's advanced features.
@@ -347,13 +347,13 @@ using it and did not need any of Git's advanced features.
 
 A developer's main tool for authoring software is his editor. Sometimes the
 language of implementation warrants a specialized editor with aids for
-handeling cumbersome tasks specific to that language. Such an editor is often
+handling cumbersome tasks specific to that language. Such an editor is often
 called an \abbr{IDE}%
 \sidenote{
   A good example of an \abbr{IDE} (integrated development environment
   for short) is \project{Eclipse} (available at \url{http://eclipse.org}).
   It was first used for Java development but since extended with
-  plugins for handeling other programming languages and families.
+  plugins for handling other programming languages and families.
 }
 and are used most often for languages like Java and C\#.
 \citet{murphy06} found that developers mostly use an \abbr{IDE} for navigating
@@ -377,16 +377,16 @@ and Smalltalk%
     observation and manipulation}
 
 }
-are surpassing \abbr{IDE} types in integration and interactivness even though
+are surpassing \abbr{IDE} types in integration and interactiveness even though
 they preceded them.
 
 The programming languages we previously settled on, JavaScript and Ruby,
-are very expressive and dynamic in their nature in addition to beeing
+are very expressive and dynamic in their nature in addition to being
 interpreted instead of compiled. Our experience is that \abbr{IDE} usage for
 such languages stands more in the way than aid you as a programmer during
 your problem solving process.
 \citet{bray07} conducted a rather unscientific survey of 1000 Ruby
-programmers. Despite of the surveys shortcommings it showed that
+programmers. Despite of the surveys shortcomings it showed that
 the majority of Ruby programmers used non-\abbr{IDE} editors for their
 development.
 
@@ -401,15 +401,15 @@ sadly missing%
 from JavaScript and Ruby implementations. This means that we're left with
 finding a good editor which enables us to focus on writing code as efficiently
 and safely as possible. Editor selection is highly a matter of preference and
-finding one that matches your work process. Powerfull editors have a
-reputation of beeing quite hard to learn. But if you get over the steap
+finding one that matches your work process. Powerful editors have a
+reputation of being quite hard to learn. But if you get over the steep
 learning curve the benefits the editor gives you are worth it.
 \citeauthor{orenstein08} have experienced how much effort programmers can
 invest in something seemingly trivial as an editor:
 
 \begin{citequote}{orenstein08}
   If the thought of switching editors doesn't fill you with quite a bit of
-  dread, what you're using now is almost certainly underpowered, and you
+  dread, what you're using now is almost certainly under powered, and you
   definitely haven't customized it enough.
 \end{citequote}
 
