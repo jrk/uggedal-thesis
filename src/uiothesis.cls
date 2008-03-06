@@ -308,6 +308,18 @@
 
 
 %%
+%% Code listings
+%%
+
+\RequirePackage{listings}
+
+\lstset{%
+  basicstyle=\footnotesize,
+  numbers=left,
+  numberstyle=\footnotesize\textsf,
+}
+
+%%
 %% Reference shorthands.
 %%
 

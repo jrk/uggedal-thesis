@@ -1,0 +1,22 @@
+\chapter{Source Code}
+
+\section{JavaScript Comment Stripper}
+\label{section:source.code.javascript.comment.stripper}
+
+This little script was authored so that we could
+compare different JavaScript libraries.
+
+\lstset{language=Ruby}
+\begin{lstlisting}
+#!/usr/bin/env ruby
+
+js_files = Dir['*.js']
+
+pattern = /^[\s\t]?(\/\*|\*|\/\/)/
+
+js_files.each do |f|
+  File.open("#{f}.str", 'w') do |str_f| 
+    str_f.puts File.readlines(f).reject { |l| l =~ pattern }
+  end
+end
+\end{lstlisting}
