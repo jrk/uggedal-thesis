@@ -882,6 +882,26 @@ aptly named \work{Fight Club}%
 The home page of Hoodwink.d mimics the community's dedication to secrecy
 by obfuscating it's information as can be seen in
 \figureref{scrsh.hoodwinkd.obfuscation}.
+When the information on the page is viewed without obfuscation%
+\sidenote{
+  The obfuscation can be removed either by turning off CSS support
+  in your browser or viewing the page's source.
+}
+one have to be pretty technical sawy to deciper what the information 
+actually means. Simply put users have to change their hosts file
+so that it points to two imaginary domain names. Doing so they can point their
+browser to these domains and download a script (such scripts are discussed in
+\sectionref{implementation.architecture.client.side.plattform})
+that enables the functionality
+of Hoodwink.d.%
+\sidenote{
+  Oh no, we just broke the first and second rule of \work{Fight Club}!
+}
+This approach creates a barrier to enty which only allows the most
+technically inclined to enter the community\dash{}allowing for a
+high level of technicality in the community's internal discussions
+and thereby filtering out so called \term{newbies}
+(newcommers and beginners).
 
 \begin{figure}
   \centering
@@ -893,3 +913,5 @@ by obfuscating it's information as can be seen in
   \label{figure:scrsh.hoodwinkd.obfuscation}
 \end{figure}
 
+Now we finally get to the really interesting part of Hoodwink.d: the features
+it enables on top of the Web.
