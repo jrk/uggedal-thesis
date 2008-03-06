@@ -21,20 +21,38 @@ the implementation was built\dash{}the ingredients of our implementation.
 
 \section{Design}
 
+% no new data. making existing data more redily available.
+
 \section{Process}
 % Prototype, exploratory
 % TDD, BDD
 
 \section{Architecture}
 
+Our implementation basically needs to do two things:
+
+\begin{enum}
+  \item Collect existing data from various places on the \urort web site.
+  \item Display this data in existing web pages on the \urort web site in
+    a way that we hope will enhance navigation.
+\end{enum}
+
+We decided to use a server--client architecture so that we could offload some
+of the more computationally expensive operations off the client and onto a
+dedicated server. Another benefit of such an architecture is that it allows us
+to cache data globally\dash{}shared by all clients. Therefore data collection
+is handeled on the server side, while data display obviously is handeled on
+the client side.
+
+Based on the design decitions we've taken we needed to figure out what parts
+our software architecture should be composed of. 
 Firstly one important aspect with the software stack used in this
 implementation\dash{}from operating system to third party libraries\dash{}is
-that it's only consisting of open source software.
-
-We decided to use a server--client architecture so that we could move some of
-the more computationally expensive operations off the client and into a
-dedicated server. Another benefit of such an architecture is that it allows us
-to cache data globally\dash{}shared by all clients.
+that it should only consisting of open source software. In our experience it's
+invaluable to have sources available for all involved software. If one
+encounters abnormal behaviour or bugs it's much easier to locate them when one
+have sources available and one can trivially (depending on the complexity of
+the prolem) create a patch that sortes them out.
 
 \subsection{Client Side}
 
@@ -72,7 +90,9 @@ in various ways using the \abbr{DOM}%
 }.
 When a user have such a script for a specific web page installed it's
 instructions will be executed on the next visit to the given site, enabeling
-all kind of modifications possible in the \abbr{DOM}.
+all kind of modifications possible in the \abbr{DOM}. This is the ingredient
+that enables us to display new informaition trough navigational designs on the
+\urort web site.
 
 Although we've setteled on the Firefox and Greasemonkey plattform there is a
 certain possibility that our implementation could work in other browsers
@@ -115,7 +135,7 @@ Java language.%
 % js pro book. cite js ref book.
 % cite stewe yegge about next big lanuage
 
-\subsubsection{Framework}
+\subsubsection{Convenience Library}
 
 We decided to use a JavaScript library to make interactions with the DOM
 simpler. Lately a myriad of such frameworks have appered, but the most
@@ -174,7 +194,64 @@ since the in-line documentation and commenting varied amongst the libraries.
 
 \subsubsection{Programming Language}
 
-\subsubsection{Framework}
+% discussion of common lisp, python, ruby here
+% denote that we're discussing common lisp, not any lisp dialect and why
+
+As it turns out, the most important criteria for choosing the implementation
+language was it's library support. In the next section we discuss our options
+of such libraries or frameworks. Based on our findings there and the
+previous server side language discussion we landed on Ruby.
+
+\subsubsection{Data Extraction Library}
+
+The core library we need is one that handels data extraction from existing
+web pages, so called \abbr{HTML} \term{scraping}. While it's possible to
+handle such problems with regular expressions, this becomes tedious after a
+while. We therefore prefer a special purpose library.
+
+The major deciding factor when we selected the implementation language was
+the availability of such a library and it's usefulles. Since we've already
+revealed Ruby as our implementation language we're killing the suspence.
+Our data extraction library is called \project{Hpricot}%
+\sidenote{
+  Hpricot can be obtained from \url{http://code.whytheluckystiff.net/hpricot}.
+  A curious note: Hpricot is written by the same person who created
+  Hoodwink.d\dash{}our inspiration for a transparent protoype implementation.
+}
+and makes \abbr{HTML} parsing almost a fun endevor in our oppinion.
+
+The Python alternative for web page scraping is \project{Beautiful Soup}.
+
+We were not able to find any libraries specially made for \abbr{HTML} scraping
+implemented in Common Lisp. There exists several \term{\abbr{XML}}%
+\sidenote{
+  Extensible Markup Language. General purpose markup language specification
+  that enables implementors to create custom markup languages.
+  \abbr{HTML} is not a subset (specified in) \abbr{XML}.
+  \term{\abbr{XHTLM}} on the other hand, a reformulated version of
+  \abbr{HTML}, is a subset of \abbr{XML}.
+%%% cite!
+}
+libraries that could handle our tasks, but none as well integrated as
+Hpricot for Ruby.
+
+% speed, ragel based.
+% based on jquery, same CSS3/XPath style. makes it easier to learn just one
+% syntax.
+% built in fetching of html documents. not available in beautiful soup.
+
+\subsubsection{Web Framework}
+
+A web framework or rather \term{\abbr{HTTP}}%
+\sidenote{
+  Hyper Text Transfer Protocol. The data transfer p
+}
+framework is needed to make the
+collected data available for our client.
+
+% modest needs. serve json. maby include sub sub section before this one
+% with selection of a json serializer/library.
+
 
 \section{Development Tools}
 
