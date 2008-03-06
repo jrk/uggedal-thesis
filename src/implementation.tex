@@ -68,7 +68,7 @@ browser extension. Essentially all it provides is the ability for a user to
 install a script which can manipulate the contents of a web page
 in various ways using the \abbr{DOM}%
 \sidenote{
-  % write from js book.
+  %%% write from js book.
 }.
 When a user have such a script for a specific web page installed it's
 instructions will be executed on the next visit to the given site, enabeling
@@ -92,11 +92,25 @@ focus all our efforts on one plattform.
 
 \subsubsection{Programming Language}
 
-Programming behaviour inside web browsers was first introduced by
+The ability to programatically alter behaviour inside web browsers was first
+introduced by \project{Netscape} in their \val{2.0} version of the web browser
+with the same name. \project{JavaScript} was first intended to be a
+lightweight scripting language for gluing together \abbr{HTML} and applets
+written in the \project{Java} programming language \citep{netscape95}. Java
+applets never took of and JavaScript soon became the \latin{de facto} standard
+for enabeling behaviour on the Web and was standardized as
+\project{ECMAScript} in 1997 \citep{ecma99}.
 
 Because of this we had no say in what programming language to use on the
 client side. That is not to say that JavaScript is a poor programming
-language.
+language. Contradictory to it's name, JavaScript bears few similarities to the
+Java language.%
+\sidenote{
+  The name was more of a marketing decition when Netscape teamed up
+  with Sun (the maker of Java) before it's initial release.
+}
+%%% write more about js features as a modern language from pro js tech.
+
 % list it's good features, and that recently the style of js has changed. cite
 % js pro book. cite js ref book.
 % cite stewe yegge about next big lanuage
