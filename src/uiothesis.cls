@@ -316,7 +316,7 @@
 \lstset{%
   basicstyle=\footnotesize,
   numbers=left,
-  numberstyle=\footnotesize\textsf,
+  numberstyle=\footnotesize\texttt,
 }
 
 %%
