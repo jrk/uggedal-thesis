@@ -317,7 +317,7 @@
   basicstyle=\footnotesize,
   numbers=left,
   numberstyle=\footnotesize\texttt,
-  showspaces=false,
+  showstringspaces=false,
   frame=l,
   captionpos=b,
 }
