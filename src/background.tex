@@ -918,7 +918,15 @@ it enables on top of the Web. One can create a comment visible only to the
 community's members on any web page that is supported. This support is not
 dependant on the creator of the web site, but the users of Hoodwink.d needs to
 record some information of the web site (where the comments should be placed)
-to make it supported. To tie together these comments a central portal lists
+to make it supported. \figureref{scrsh.hoodwinkd.comment.source} shows an
+example of how these comments are displayed on the repository browser for
+the Hoodwink.d source code itself. This page does not natively support
+comments. Using Hoodink.d for such means is a very cheap (time wise) option
+compared to implementing such features in the repository browser.
+They are percieved as beeing part of the web page itself, even though they
+are inserted right after the page is fully loaded.
+
+To tie together these comments a central portal lists
 the most recently placed comments (as can be seen in
 \figureref{scrsh.hoodwinkd.onslaught.recent}), the most activly commented web
 sites, the most recently new supported sites, and the most active users.
@@ -932,3 +940,15 @@ sites, the most recently new supported sites, and the most active users.
   \includegraphics[width=0.9\marginparwidth]{scrsh_hoodwinkd_onslaught_recent}
 }
 
+\begin{whole}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\wholewidth]{scrsh_hoodwinkd_comment_source}
+    \caption[Hoodwink.d Comments]{
+      Comments on the repository browser of Hoodwink.d's source code,
+      retrieved March 7, 2008, from
+      \url{http://code.whytheluckystiff.net/hoodwinkd}.
+    }
+    \label{figure:scrsh.hoodwinkd.comment.source}
+  \end{figure}
+\end{whole}
