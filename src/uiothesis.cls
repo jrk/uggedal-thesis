@@ -318,6 +318,7 @@
   numbers=left,
   numberstyle=\footnotesize\texttt,
   showspaces=false,
+  frame=l,
   captionpos=b,
 }
 
