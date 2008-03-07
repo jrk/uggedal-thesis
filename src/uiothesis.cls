@@ -322,6 +322,17 @@
   captionpos=b,
 }
 
+% New float for source code
+\newcommand{\sourcecodename}{Source Code Listing}
+\newcommand{\listsourcecodename}{List of Source Code}
+\newlistof{listofsourcecode}{sc}{\listsourcecodename}
+\newfloat[chapter]{sourcecode}{sc}{\sourcecodename}
+\newfixedcaption{\fdiagcaption}{sourcecode}
+\newlistentry{sourcecode}{sc}{0}
+
+\captionsetup[sourcecode]{position=bottom,font={footnotesize,sf}}
+
+
 %%
 %% Reference shorthands.
 %%

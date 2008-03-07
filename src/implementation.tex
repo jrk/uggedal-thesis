@@ -287,21 +287,25 @@ of these examples. We are trying to find an \code{em} element with a class
 of \code{citation}, which have a \code{p} element as it's parent,
 in a \abbr{HTML} document contained in the \code{html} object.
 
-\lstset{language=Python,%
-        caption=[Parsing with Beautiful Soup]
-                \abbr{html} parsing in Python with Beautiful Soup,%
-        label=code.parsing.beautiful.soup}
+\begin{sourcecode}
+\lstset{language=Python}
 \begin{lstlisting}
   html('p').content.findNextSiblings('em', 'citation')
 \end{lstlisting}
+  \caption[Parsing with Beautiful Soup]{%
+          HTML parsing in Python with Beautiful Soup}
+  \label{sourcecode:parsing.beautiful.soup}
+\end{sourcecode}
 
-\lstset{language=Ruby,%
-        caption=[Parsing with Hpricot]%
-                \abbr{html} parsing in Ruby with Hpricot,%
-        label=code.parsing.hpricot}
+\begin{sourcecode}
+\lstset{language=Ruby}
 \begin{lstlisting}
-  html/"p > em.someclass"
+  html/'p > em.someclass'
 \end{lstlisting}
+  \caption[Parsing with Hpricot]{%
+          HTML parsing in Ruby with Hpricot}
+  \label{sourcecode:parsing.hpricot}
+\end{sourcecode}
 
 
 
