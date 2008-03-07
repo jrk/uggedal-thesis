@@ -317,6 +317,8 @@
   basicstyle=\footnotesize,
   numbers=left,
   numberstyle=\footnotesize\texttt,
+  showspaces=false,
+  captionpos=b,
 }
 
 %%
