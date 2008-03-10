@@ -248,13 +248,56 @@ for (i = 0; i < p.length; i++) {
   \abbr{DOM} Manipulation with jQuery}{%
   DOM manipulation in JavaScript with the jQuery library}
 \begin{lstlisting}
-$("p em").addClass("highlight")
+$("p em").addClass("highlight");
 \end{lstlisting}
 \end{scode}
 
-% jQuery ++ for it's CSS (+XPath) based selectors
-% jQuery ++ for it's size
-% jQuery ++ for it's method chaining
+When we compare these rather trivial problem solutions it becomes apparent
+that choosing a JavaScript library can have major impact on how easily
+implemented and understood your code will be. Four of the five libraries
+have support for selector syntax based on
+that found in\abbr{CSS}%
+\sidenote{
+  Cascading Style Sheets. A stylesheet language for describing the
+  presentation of for instance \abbr{HTML} documents.
+}.
+This is what makes the MochiKit example the most complex one, requiring the
+developer to do two queries into the \abbr{DOM} and construct two
+loop structures for iterating over the results.
+Prototype and MooTools also requires the developer to loop over a single
+result set, but the iteration is abstracted into an \code{each} function
+making the logic a bit more clearer. Yahoo! UI Library's \abbr{DOM} functions
+works on both single elements and collections of elements\dash{}eliminating
+the need for an explicit loop structure. Notice though that the library from
+Yahoo! relies heavily on namespacing\dash{}which is a good thing for
+interoperability with other libraries\dash{}but can be a bit verbose at times.
+
+Going even a bit further in clearity is the solution written with jQuery.
+Every query into the \abbr{DOM} returns a special jQuery object which means
+that one can call methods like \code{addClass} directly on this object
+regardless if the jQuery object holds a single or multiple elements.
+Also unique to jQuery is the fact that every method call returns a new jQuery
+object. This means that one can \term{chain} methods together, expressing
+succinctly and clearly what you intend to accomplish with your code. We can
+extend our initial problem and add some punctation inside our \code{em}
+element:
+
+\begin{scode}{Java}{jquery.method.chaining}{%
+  jQuery Method Chaining}{%
+  Chaining multiple methods together in jQuery}
+\begin{lstlisting}
+$("p em").addClass("highlight").append("!");
+\end{lstlisting}
+\end{scode}
+
+Based on the minimal file size jQuery showed (only outbested by MooTools) and
+it's clear and unique syntax we selected it as the JavaScript library for our
+implementation. It seems others have take jQuery and it's virtues to hart as
+many large corporations like Google, Intel, Dell, and BBC have used it in
+their public facing offerings.%
+\sidenote{
+  For a complete list see \url{http://docs.jquery.com/Sites_Using_jQuery}.
+}
 
 \subsection{Server Side}
 
