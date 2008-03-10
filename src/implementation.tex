@@ -144,12 +144,12 @@ a full-featured modern programming language
 
 \subsubsection{Convenience Library}
 
-We decided to use a JavaScript library to make interactions with the DOM
-simpler. In addition there recent JavaScript convenience libraries provide a
+We decided to use a JavaScript library to make interactions with the
+\abbr{DOM} simpler.
+In addition there recent JavaScript convenience libraries provide a
 unified interface to the browser\dash{}abstracting away inconsistencies
-between browser vendors.
-Lately a myriad of such frameworks have appeared, but the most
-interesting ones seems to be
+between browser vendors. Lately a myriad of such frameworks have appeared,
+but the most interesting ones seems to be
 \project{Prototype},
 \project{Yahoo! UI Library} (\abbr{YUI} for short),
 \project{MooTools},
@@ -194,11 +194,62 @@ since the in-line documentation and commenting varied amongst the libraries.
   \end{tabular}
 }
 
+We played arround a bit with the different libraries to get a feel for how
+they worked. What follows is a comparison of simple \abbr{DOM} manipulation
+for the different libraries. We followed the official documentation for the
+various libraries and tried to solve or problem as succinct and clearly as
+possible. We tried to add a \code{class} attribute of \val{highlight} to
+all \code{em} elements with an descendant \code{p} element: 
+
+\begin{scode}{JavaScript}{dom.manipulation.prototype}{%
+  \abbrDOM} Manipulation with Prototype}{%
+  DOM manipulation in JavaScript with the Prototype library}
+\begin{lstlisting}
+
+\end{lstlisting}
+\end{scode}
+
+\begin{scode}{JavaScript}{dom.manipulation.yui}{%
+  \abbrDOM} Manipulation with Yahoo! UI Library}{%
+  DOM manipulation in JavaScript with the Yahoo! UI library}
+\begin{lstlisting}
+
+\end{lstlisting}
+\end{scode}
+
+\begin{scode}{JavaScript}{dom.manipulation.mootools}{%
+  \abbrDOM} Manipulation with MooTools}{%
+  DOM manipulation in JavaScript with the MooTools library}
+\begin{lstlisting}
+
+\end{lstlisting}
+\end{scode}
+
+\begin{scode}{JavaScript}{dom.manipulation.mochikit}{%
+  \abbrDOM} Manipulation with MochiKit}{%
+  DOM manipulation in JavaScript with the MochiKit library}
+\begin{lstlisting}
+var p = getElementsByTagAndClassName("p");
+for (i = 0; i < p.length; i++) {
+  em = getElementsByTagAndClassName("em","*", p[i]);
+  for (j = 0; j < em.length; j++) {
+    addElementClass(em, "highlight");
+  }
+}
+\end{lstlisting}
+\end{scode}
+
+\begin{scode}{JavaScript}{dom.manipulation.jquery}{%
+  \abbrDOM} Manipulation with jQuery}{%
+  DOM manipulation in JavaScript with the jQuery library}
+\begin{lstlisting}
+$("p em").addClass("highlight")
+\end{lstlisting}
+\end{scode}
+
 % jQuery ++ for it's CSS (+XPath) based selectors
 % jQuery ++ for it's size
 % jQuery ++ for it's method chaining
-
-% show example code with listings. for instance chaining vs unchained.
 
 \subsection{Server Side}
 
