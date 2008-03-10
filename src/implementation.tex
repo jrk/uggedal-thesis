@@ -287,25 +287,21 @@ of these examples. We are trying to find an \code{em} element with a class
 of \code{citation}, which have a \code{p} element as it's parent,
 in a \abbr{HTML} document contained in the \code{html} object:
 
-\begin{sourcecode}[!h]
-\lstset{language=Python}
+\begin{scode}{Python}{parsing.beautiful.soup}{%
+  Parsing with Beautiful Soup}{%
+  HTML parsing in Python with Beautiful Soup}
 \begin{lstlisting}
-  html('p').content.findNextSiblings('em', 'citation')
+html('p').content.findNextSiblings('em', 'citation')
 \end{lstlisting}
-  \caption[Parsing with Beautiful Soup]{%
-          HTML parsing in Python with Beautiful Soup}
-  \label{sourcecode:parsing.beautiful.soup}
-\end{sourcecode}
+\end{scode}
 
-\begin{sourcecode}[!h]
-\lstset{language=Ruby}
+\begin{scode}{Ruby}{parsing.hpricot}{%
+  Parsing with Hpricot}{%
+  HTML parsing in Ruby with Hpricot}
 \begin{lstlisting}
   html/'p > em.someclass'
 \end{lstlisting}
-  \caption[Parsing with Hpricot]{%
-          HTML parsing in Ruby with Hpricot}
-  \label{sourcecode:parsing.hpricot}
-\end{sourcecode}
+\end{scode}
 
 We feel that Hpricot's syntax is much clearer than that of Beautiful Soup.
 This could be a personal preference since we've used \abbr{CSS} for a long
@@ -324,8 +320,11 @@ documents over \abbr{HTTP}%
 }.
 \executable{open-uri} is trvial to use and integrates nicely with Hpricot:
 
-\begin{sourcecode}[!h]
-\lstset{language=Ruby}
+\begin{scode}{Ruby}{fetching.openuri.parsing.hpricot}{%
+  Fetching and Parsing with Hpricot and open-uri}{%
+  Fetching a HTML document with \executable{open-uri}
+  and parsing it with Hpricot to find the first and
+  last name of a hCard Microformat}
 \begin{lstlisting}
 require 'hpricot'
 require 'open-uri'
@@ -334,12 +333,7 @@ html = Hpricot(open('http://redflavor.com'))
 (html/'address.vcard > .fn').inner_html
 # => "Eivind Uggedal"
 \end{lstlisting}
-  \caption[Fetching and Parsing with Hpricot and open-uri]{%
-          Fetching a HTML document with \executable{open-uri}
-          and parsing it with Hpricot to find the first and
-          last name of a hCard Microformat}
-  \label{sourcecode:fetching.openuri.parsing.hpricot}
-\end{sourcecode}
+\end{scode}
 
 
 \subsubsection{Web Framework}
