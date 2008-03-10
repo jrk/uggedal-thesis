@@ -351,6 +351,13 @@
   \tableref{#1}
   (p.~\pageref{table:#1})%
 }
+\newcommand\sourcecoderef[1]{%
+  Source Code Listing~\ref{sourcecode:#1}%
+}
+\newcommand\sourcecodepageref[1]{%
+  \sourcecoderef{#1}
+  (p.~\pageref{sourcecode:#1})%
+}
 \newcommand\chapterref[1]{%
   Chapter~\ref{chapter:#1}
   (p.~\pageref{chapter:#1})%
