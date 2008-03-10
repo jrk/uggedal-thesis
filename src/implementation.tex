@@ -318,8 +318,11 @@ server and client side\emph{}a cognitive advantage.
 
 Since we've selected Ruby as our development language of choice
 \executable{open-uri}, part of the standard Ruby library, is the way to fetch
-documents over \abbr{HTTP}. \executable{open-uri} is trvial to use and
-integrates nicely with Hpricot:
+documents over \abbr{HTTP}%
+\sidenote{
+  Hyper Text Transfer Protocol. The data transfer protocol for the Web.
+}.
+\executable{open-uri} is trvial to use and integrates nicely with Hpricot:
 
 \begin{sourcecode}[!h]
 \lstset{language=Ruby}
@@ -341,10 +344,7 @@ html = Hpricot(open('http://redflavor.com'))
 
 \subsubsection{Web Framework}
 
-A web framework or rather \term{\abbr{HTTP}}%
-\sidenote{
-  Hyper Text Transfer Protocol. The data transfer protocol for the Web.
-}
+A web framework or rather \abbr{HTTP}
 framework is needed to make the
 collected data available for our client.
 
