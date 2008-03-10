@@ -285,7 +285,7 @@ To get a feel for the difference between Hpricot and Beautiful Soup we tried
 them out on some trivial examples. Under you'll see the listings for one
 of these examples. We are trying to find an \code{em} element with a class
 of \code{citation}, which have a \code{p} element as it's parent,
-in a \abbr{HTML} document contained in the \code{html} object.
+in a \abbr{HTML} document contained in the \code{html} object:
 
 \begin{sourcecode}
 \lstset{language=Python}
@@ -307,15 +307,37 @@ in a \abbr{HTML} document contained in the \code{html} object.
   \label{sourcecode:parsing.hpricot}
 \end{sourcecode}
 
+We feel that Hpricot's syntax is much clearer than that of Beautiful Soup.
+This could be a personal preference since we've used \abbr{CSS} for a long
+time and Hpricot's selector syntax is based on \abbr{CSS} and Xpath, just as
+jQuery. Hpricot was in fact initially based on jQuery's selector syntax
+\citep{why06}. This means that we can use the same syntax for selectors on the
+server and client side\emph{}a cognitive advantage.
 
+\subsubsection{Data Fetching Library}
 
+Since we've selected Ruby as our development language of choice
+\executable{open-uri}, part of the standard Ruby library, is the way to fetch
+documents over \abbr{HTTP}. \executable{open-uri} is trvial to use and
+integrated nicely with Hpricot:
 
+\begin{sourcecode}
+\lstset{language=Ruby}
+\begin{lstlisting}
+require 'hpricot'
+require 'open-uri'
 
+html = Hpricot(open('http://redflavor.com'))
+(html/'address.vcard > .fn').inner_html
+# => "Eivind Uggedal"
+\end{lstlisting}
+  \caption[Fetching and Parsing with Hpricot and open-uri]{%
+          Fetching a HTML document with \executable{open-uri}
+          and parsing it with Hpricot to find the first and
+          last name of a hCard Microformat}
+  \label{sourcecode:fetching.openuri.parsing.hpricot}
+\end{sourcecode}
 
-% speed, Ragel based.
-% based on jquery, same CSS3/XPath selectors. makes it easier to learn just
-% one syntax.
-% built in fetching of HTML documents. not available in beautiful soup.
 
 \subsubsection{Web Framework}
 
