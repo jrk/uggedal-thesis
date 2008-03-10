@@ -341,14 +341,14 @@
   Figure~\ref{figure:#1}%
 }
 \newcommand\figurepageref[1]{%
-  Figure~\ref{figure:#1}
+  \figureref{#1}
   (p.~\pageref{figure:#1})%
 }
 \newcommand\tableref[1]{%
   Table~\ref{table:#1}%
 }
 \newcommand\tablepageref[1]{%
-  Table~\ref{table:#1}
+  \tableref{#1}
   (p.~\pageref{table:#1})%
 }
 \newcommand\chapterref[1]{%
