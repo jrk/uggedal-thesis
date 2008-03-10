@@ -173,7 +173,7 @@ facilities for the modularized libraries\dash{}but should provide clear
 guidance. To keep a level playing feel in this comparison we did not use
 minified (removal of comments and unnecessary spaces) or packaged (compressed)
 versions of the libraries. All comments and documentation was stripped with a
-small script presented in \sourcecodepageref{javascript.comment.stripping}
+small script presented in \sourcecodepageref{javascript.comment.sripping}
 since the in-line documentation and commenting varied amongst the libraries.
 
 \sidetable{JavaScript Library Comparison
@@ -201,32 +201,37 @@ various libraries and tried to solve or problem as succinct and clearly as
 possible. We tried to add a \code{class} attribute of \val{highlight} to
 all \code{em} elements with an descendant \code{p} element: 
 
-\begin{scode}{JavaScript}{dom.manipulation.prototype}{%
-  \abbrDOM} Manipulation with Prototype}{%
+\begin{scode}{Java}{dom.manipulation.prototype}{%
+  \abbr{DOM} Manipulation with Prototype}{%
   DOM manipulation in JavaScript with the Prototype library}
 \begin{lstlisting}
-
+getElementsBySelector("p em").each(function(em) {
+  em.addClassName("highlight");
+});
 \end{lstlisting}
 \end{scode}
 
-\begin{scode}{JavaScript}{dom.manipulation.yui}{%
-  \abbrDOM} Manipulation with Yahoo! UI Library}{%
+\begin{scode}{Java}{dom.manipulation.yui}{%
+  \abbr{DOM} Manipulation with Yahoo! UI Library}{%
   DOM manipulation in JavaScript with the Yahoo! UI library}
 \begin{lstlisting}
-
+var em = YAHOO.util.Selector.query("p em"); 
+YAHOO.util.Dom.setClass(em, "highlight);
 \end{lstlisting}
 \end{scode}
 
-\begin{scode}{JavaScript}{dom.manipulation.mootools}{%
-  \abbrDOM} Manipulation with MooTools}{%
+\begin{scode}{Java}{dom.manipulation.mootools}{%
+  \abbr{DOM} Manipulation with MooTools}{%
   DOM manipulation in JavaScript with the MooTools library}
 \begin{lstlisting}
-
+$$("p em").each(function(em){
+  em.addClass("highlight");
+});
 \end{lstlisting}
 \end{scode}
 
-\begin{scode}{JavaScript}{dom.manipulation.mochikit}{%
-  \abbrDOM} Manipulation with MochiKit}{%
+\begin{scode}{Java}{dom.manipulation.mochikit}{%
+  \abbr{DOM} Manipulation with MochiKit}{%
   DOM manipulation in JavaScript with the MochiKit library}
 \begin{lstlisting}
 var p = getElementsByTagAndClassName("p");
@@ -239,8 +244,8 @@ for (i = 0; i < p.length; i++) {
 \end{lstlisting}
 \end{scode}
 
-\begin{scode}{JavaScript}{dom.manipulation.jquery}{%
-  \abbrDOM} Manipulation with jQuery}{%
+\begin{scode}{Java}{dom.manipulation.jquery}{%
+  \abbr{DOM} Manipulation with jQuery}{%
   DOM manipulation in JavaScript with the jQuery library}
 \begin{lstlisting}
 $("p em").addClass("highlight")
