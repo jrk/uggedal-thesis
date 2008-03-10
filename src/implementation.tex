@@ -287,7 +287,7 @@ of these examples. We are trying to find an \code{em} element with a class
 of \code{citation}, which have a \code{p} element as it's parent,
 in a \abbr{HTML} document contained in the \code{html} object:
 
-\begin{sourcecode}
+\begin{sourcecode}[!h]
 \lstset{language=Python}
 \begin{lstlisting}
   html('p').content.findNextSiblings('em', 'citation')
@@ -297,7 +297,7 @@ in a \abbr{HTML} document contained in the \code{html} object:
   \label{sourcecode:parsing.beautiful.soup}
 \end{sourcecode}
 
-\begin{sourcecode}
+\begin{sourcecode}[!h]
 \lstset{language=Ruby}
 \begin{lstlisting}
   html/'p > em.someclass'
@@ -319,9 +319,9 @@ server and client side\emph{}a cognitive advantage.
 Since we've selected Ruby as our development language of choice
 \executable{open-uri}, part of the standard Ruby library, is the way to fetch
 documents over \abbr{HTTP}. \executable{open-uri} is trvial to use and
-integrated nicely with Hpricot:
+integrates nicely with Hpricot:
 
-\begin{sourcecode}
+\begin{sourcecode}[!h]
 \lstset{language=Ruby}
 \begin{lstlisting}
 require 'hpricot'
