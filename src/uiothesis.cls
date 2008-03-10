@@ -279,6 +279,22 @@
   \end{adjustwidth*}
 }
 
+% Code environment
+\newcommand{\@codelabel}{undefined}
+\newcommand{\@codeshortcaption}{undefined}
+\newcommand{\@codeverbosecaption}{undefined}
+\newenvironment{scode}[4]{%
+  \renewcommand{\@codelabel}{#2}
+  \renewcommand{\@codeshortcaption}{#3}
+  \renewcommand{\@codeverbosecaption}{#4}
+  \begin{sourcecode}[!h]
+    \lstset{language=#1}
+}{%
+    \caption[\@codeshortcaption]{\@codeverbosecaption}
+    \label{sourcecode:\@codelabel}
+  \end{sourcecode}
+}
+
 
 %%
 %% PDF and PS specifics
