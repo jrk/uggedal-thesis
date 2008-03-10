@@ -189,7 +189,7 @@ since the in-line documentation and commenting varied amongst the libraries.
   \end{tabular}
 }
 
-We played arround a bit with the different libraries to get a feel for how
+We played around a bit with the different libraries to get a feel for how
 they worked. What follows is a comparison of simple \abbr{DOM} manipulation
 for the different libraries. We followed the official documentation for the
 various libraries and tried to solve or problem as succinct and clearly as
@@ -267,14 +267,14 @@ the need for an explicit loop structure. Notice though that the library from
 Yahoo! relies heavily on namespacing\dash{}which is a good thing for
 interoperability with other libraries\dash{}but can be a bit verbose at times.
 
-Going even a bit further in clearity is the solution written with jQuery.
+Going even a bit further in clarity is the solution written with jQuery.
 Every query into the \abbr{DOM} returns a special jQuery object which means
 that one can call methods like \code{addClass} directly on this object
 regardless if the jQuery object holds a single or multiple elements.
 Also unique to jQuery is the fact that every method call returns a new jQuery
 object. This means that one can \term{chain} methods together, expressing
 succinctly and clearly what you intend to accomplish with your code. We can
-extend our initial problem and add some punctation inside our \code{em}
+extend our initial problem and add some punctuation inside our \code{em}
 element:
 
 \begin{scode}{Java}{jquery.method.chaining}{%
