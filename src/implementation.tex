@@ -437,14 +437,58 @@ html = Hpricot(open('http://redflavor.com'))
 \end{scode}
 
 
-\subsubsection{Web Framework}
+\subsubsection{JSON Web Framework}
 
 A web framework or rather \abbr{HTTP}
 framework is needed to make the
-collected data available for our client.
+collected data available for our client. Since we'll only be serving requests
+for our JavaScript based client implementation we found it sound to transfer
+this data as \abbr{JSON}%
+\sidenote{
+  % define
+}.
+Luckily for us there exists a framework for Ruby for handeling such tasks
+called \project{Halcyon}%
+\sidenote{
+  Available at \url{halcyon.rubyforge.org}.
+}.
+This framework makes the process of developing a web application for serving
+\abbr{JSON} requests quite easy. It builds on \project{Rack}%
+\sidenote{
+  Available at \url{rack.rubyforge.org}.
+},
+a web server interface that sits between a web framework and a web server. By
+using Rack we can easily swap between different web servers that support the
+protocoll mandated by Rack's interface layer.
 
-% modest needs. serve JSON. maybe include sub sub section before this one
-% with selection of a JSON serializer/library.
+% which webserver we selected, and why
+
+\subsubsection{Persistance Library}
+
+We decided to use an \abbr{ORM}%
+\sidenote{
+  % define
+}
+for abstracting our persistance handeling. With such a solution we could
+change relational database engines transparently if  neccesary. In addition
+\abbr{ORM} libraries often provide a nice interface to the database
+eliminating the need for constructing complex \abbr{SQL}%
+\sidenote{
+  % define
+}. The most popular \abbr{ORM} libraries for the Ruby language are%
+\sidenote{
+  Available at respectively
+  \url{http://rubyforge.org/projects/activerecord},
+  \url{http://datamapper.org}, and
+  \url{http://sequel.rubyforge.org}.
+}:
+
+\begin{items}
+  \iterm{ActiveRecord} %describe
+  \iterm{DataMapper} % describe
+  \iterm{Sequel} %describe
+\end{items}
+
 
 \subsection{Overall View}
 
