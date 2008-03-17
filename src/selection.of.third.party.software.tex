@@ -444,9 +444,42 @@ This framework makes the process of developing a web application for serving
 },
 a web server interface that sits between a web framework and a web server. By
 using Rack we can easily swap between different web servers that support the
-protocoll mandated by Rack's interface layer.
+protocoll mandated by Rack's interface layer. To demonstate the simplicity of
+this framework we'll show how a simple greeting application could be
+implemented. It listens for requests on the \code{/hello/} path and takes the
+directory name after this as a parameter. The parameter is then returned to
+the requestor as a greeting:
+
+\begin{scode}{Ruby}{hpricot}{%
+  Greeting with Halcyon}{%
+  A simple greeting application with Halcyon}
+\begin{lstlisting}
+class Greeter < Halcyon::Server::Base
+  route do |r|
+    r.match('/hello/:name').to(:action => 'greet')
+  end
+
+  def greet(ps)
+    ok("Hi #{ps[:name]}")
+  end
+end
+\end{lstlisting}
+\end{scode}
+
+% test this, does not currently work. The request is in JSON format. What
+% about the data?
+
+
+
+\subsubsection{Web Server}
+
+Since our web framework builds on Rack we have several web servers to select
+from.
 
 % which webserver we selected, and why
+% prototype application. load balancing not that important with
+% for instance nginx.
+
 
 \subsubsection{Persistance Library}
 
