@@ -446,30 +446,36 @@ a web server interface that sits between a web framework and a web server. By
 using Rack we can easily swap between different web servers that support the
 protocoll mandated by Rack's interface layer. To demonstate the simplicity of
 this framework we'll show how a simple greeting application could be
-implemented. It listens for requests on the \code{/hello/} path and takes the
-directory name after this as a parameter. The parameter is then returned to
-the requestor as a greeting:
+implemented:
 
-\begin{scode}{Ruby}{hpricot}{%
-  Greeting with Halcyon}{%
-  A simple greeting application with Halcyon}
+\begin{scode}{Ruby}{halycon}{%
+  Hello World with Halcyon}{%
+  A simple hello world application with Halcyon}
 \begin{lstlisting}
-class Greeter < Halcyon::Server::Base
-  route do |r|
-    r.match('/hello/:name').to(:action => 'greet')
-  end
-
-  def greet(ps)
-    ok("Hi #{ps[:name]}")
+class Hello < Halcyon::Server::Base
+  route {|r| r.match('/').to(:action => 'greet') }
+  
+  def greet
+    msg = {:interjection => 'hello',
+           :noun         => 'world',
+           :suffix       => '!'}
+    ok(msg)
   end
 end
 \end{lstlisting}
 \end{scode}
 
-% test this, does not currently work. The request is in JSON format. What
-% about the data?
+What is interesting is that the Ruby \code{msg} key/value hash is serialized
+automitically to \abbr{JSON} when a client requests this resource:
 
-
+\begin{scode}{Java}{halycon.result}{%
+  Client Result with Halcyon}{%
+  The result of a client request to the Halcyon hello world application}
+\begin{lstlisting}
+{"status":200,
+ "body":{"interjection":"hello","noun":"world","suffix":"!"}}
+\end{lstlisting}
+\end{scode}
 
 \subsubsection{Web Server}
 
