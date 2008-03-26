@@ -320,6 +320,7 @@
 \hypersetup{%
   colorlinks=false,
   breaklinks,
+  pdfborder=0 0 0,
 }
 
 
