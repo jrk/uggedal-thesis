@@ -946,6 +946,9 @@ can be found in
       \var{religious-view} &
       A person's religious view. \\
 
+      \var{album} &
+      Title of a photo album \\
+
     \end{tabular}
   \end{whole}
 \end{table}
@@ -1042,7 +1045,7 @@ Global navigation \\
       % /inbox/?compose&id=\var{user-id}
 
       1.1.1.5 &
-      \var{person} &
+      \var{person}'s Friends &
       View Friends &
       Member list \\
       % /friends/?id=\var{person-id}
@@ -1883,6 +1886,67 @@ Global navigation \\
     \var{network} &
     Person listing \\
     % /networks/\var{network-id}\var{network}
+
+  1.12 &
+  Photos of \var{person} &
+  View photos of \var{person} &
+  Left sidebar \\
+  % /photo_search.php?id=\var{person-id}
+
+  1.13 &
+  \var{person}'s Friends &
+  View \var{person}'s Friends &
+  Left sidebar sidebar \\
+  % /friends/?id=\var{person-id}
+
+  1.14 &
+  \var{person} &
+  Profile picture  &
+  Friends sidebar box \\
+  % /profile.php?id=\var{person-id}
+
+  1.15 &
+  \var{person} &
+  \var{person} &
+  Friends sidebar box \\
+  % /profile.php?id=\var{person-id}
+
+  1.16 &
+  \var{person} &
+  Profile picture  &
+  Mutual friends sidebar box \\
+  % /profile.php?id=\var{person-id}
+
+  1.17 &
+  \var{person} &
+  \var{person} &
+  Mutual friends sidebar box \\
+  % /profile.php?id=\var{person-id}
+
+  1.18 &
+  \var{person}'s Friends &
+  View \var{person}'s Friends &
+  Friends in other networks sidebar box \\
+  % /friends/?id=\var{person-id}&nk=\var{some-id}
+
+  1.19 &
+  \var{person}'s Photos -- \var{album} &
+  Album picture &
+  Photos sidebar box \\
+  % /album/?aid=\var{album-id}&id=\var{person-id}
+
+    1.19.1 &
+    \var{person}'s Photos -- \var{album} &
+    Photo thumbnail &
+    Photos list \\
+    % /photo.php?pid=\var{photo-id}&id=\var{person-id}
+
+  1.20 &
+  \var{person}'s Photos -- \var{album} &
+  \var{album} &
+  Photos sidebar box \\
+  % /album/?aid=\var{album-id}&id=\var{person-id}
+
 
     \end{longtable}
   \end{footnotesize}
