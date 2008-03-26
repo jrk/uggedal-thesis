@@ -947,7 +947,16 @@ can be found in
       A person's religious view. \\
 
       \var{album} &
-      Title of a photo album \\
+      Title of a photo album. \\
+
+      \var{album-count} &
+      A variable number of photo albums. \\
+
+      \var{page} &
+      Title of a fan page. \\
+
+      \var{fan-count} &
+      A variable number of fans of a fan page. \\
 
     \end{tabular}
   \end{whole}
@@ -1946,6 +1955,114 @@ Global navigation \\
   \var{album} &
   Photos sidebar box \\
   % /album/?aid=\var{album-id}&id=\var{person-id}
+
+  1.21 &
+  \var{page} &
+  Page picture &
+  Pages sidebar box \\
+  % /pages/\var{pages-slug}/\var{pages-id}
+
+    1.21.1 &
+    Fans of \var{page}  &
+    \var{fan-count} &
+    Supporters box \\
+    % /s.php?k=\var{unknown-id}&id=\var{page-id}
+
+      1.21.1.1 &
+      \var{person} &
+      Profile picture  &
+      Fan list \\
+      % /profile.php?id=\var{person-id}
+
+      1.21.1.2 &
+      \var{person} &
+      \var{person} &
+      Fan list \\
+      % /profile.php?id=\var{person-id}
+
+    1.21.2 &
+    Fans of \var{page}  &
+    See All &
+    Supporters box \\
+    % /s.php?k=\var{unknown-id}&id=\var{page-id}
+
+    1.21.3 &
+    \var{person} &
+    Profile picture  &
+    Supporters box \\
+    % /profile.php?id=\var{person-id}
+
+    1.21.4 &
+    \var{person} &
+    \var{person} &
+    Supporters box \\
+    % /profile.php?id=\var{person-id}
+
+    1.21.5 &
+    \var{page}'s photos &
+    \var{album-count} &
+    Photos box \\
+    % /photos.php?id=\var{page-id}&ref=pb
+
+    1.21.6 &
+    \var{page}'s photos &
+    See All &
+    Photos box \\
+    % /photos.php?id=\var{page-id}&ref=pb
+
+      1.21.6.1 &
+      \var{page}'s Photos -- \var{album} &
+      Album picture &
+      Album list \\
+      % /album/?aid=\var{album-id}&id=\var{page-id}
+
+      1.21.6.2 &
+      \var{page}'s Photos -- \var{album} &
+      \var{album} &
+      Album list \\
+      % /album/?aid=\var{album-id}&id=\var{page-id}
+
+      1.21.6.3 &
+      \var{page}'s Photos -- \var{album} &
+      View Album &
+      Album list \\
+      % /album/?aid=\var{album-id}&id=\var{page-id}
+
+    1.21.7 &
+    \var{page}'s Notes &
+    \var{note} &
+    Notes box \\
+    % /note.php?note_id=\var{note-id}&id=\var{person-id}
+
+    1.21.8 &
+    \var{page}'s Wall &
+    \var{wall-post-count} &
+    Wall posts box \\
+    % /wall.php?id=\var{page-id}
+
+    1.21.9 &
+    \var{page}'s Wall &
+    See All &
+    Wall posts box \\
+    % /wall.php?id=\var{page-id}
+
+    1.21.3 &
+    \var{person} &
+    Profile picture  &
+    Wall posts box \\
+    % /profile.php?id=\var{person-id}
+
+    1.21.4 &
+    \var{person} &
+    \var{person} &
+    Wall posts box \\
+    % /profile.php?id=\var{person-id}
+
+  1.22 &
+  \var{page} &
+  \var{page} &
+  Pages sidebar box \\
+  % /pages/\var{pages-slug}/\var{pages-id}
 
 
     \end{longtable}
