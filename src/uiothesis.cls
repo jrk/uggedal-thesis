@@ -29,6 +29,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage{MinionPro}
+\renewcommand{\scdefault}{ssc}
 \newfont{\chapnum}{eurb10 scaled 8000}
 
 % Creates an fourier ornament. Args: fontsize, lineheight, char
