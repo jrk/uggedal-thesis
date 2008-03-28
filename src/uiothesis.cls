@@ -452,25 +452,36 @@
 % Colophon
 \newcommand{\makecolophon}{%
   \pagestyle{empty}
+  \raggedright\small
 
   \null\vfil
 
   \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \raggedright\small
     This thesis was typeset using the \LaTeX{} typesetting\\
-    system created by Leslie Lamport.\\
-    The body text is set 11/\the\baselineskip{} on a 28pc measure\\
-    with Palatino designed by Hermann Zapf.\\
-    Other fonts include Sans and Typewriter from\\
-    Donald Knuth's Computer Modern family.
-  \end{adjustwidth*}
+    system originally developed by Leslie Lamport,\\
+    based on \TeX{} created by Donald Knuth.\\
 
-  \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \raggedright\small
-    This thesis was written in American English as dictated\\
-    by \work{The Elements of Style} \citep{strunk00}.\\
-    Typographical decisions were based on recommendations\\
-    in \work{The Elements of Typographic Style} \citep{bringhurst04}.
+    \bigskip
+
+    The body text is set 11/12pt on a 26pc measure with\\
+    Minion Pro designed by Robert Slimback.\\
+    This neohumanistic font was first issued by Adobe\\
+    Systems in 1989 and have since been revised.\\
+    Other fonts include Sans and Typewriter from\\
+    Donald Knuth's Computer Modern family.\\
+
+    \bigskip
+
+    This thesis was written in American English as\\ 
+    dictated in \work{The Elements of Style}\\
+    by \citet{strunk00}.\\
+    Typographical decisions were based on the\\
+    recommendations given in \work{The Elements of\\
+    Typographic Style} by \citet{bringhurst04}.\\
+    The use of sidenotes instead of footnotes and\\
+    figures spanning both the textblock and\\
+    fore-edge margin was inspired by \work{Beautiful\\
+    Evidence} by \citet{tufte06}.\\
   \end{adjustwidth*}
   
   \vfil
