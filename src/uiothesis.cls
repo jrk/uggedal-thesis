@@ -412,7 +412,7 @@
 \newcommand{\term}[1]{\textit{{#1}}}
 
 % Title of artistic or academic work
-\let\work\term
+\newcommand{\work}[1]{\textsw{{#1}}}
 
 % Latin expressions
 \let\latin\term
