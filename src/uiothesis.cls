@@ -28,8 +28,7 @@
 % Font setup
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
-\RequirePackage[osf]{mathpazo}
-\renewcommand\rmdefault{pplj}
+\RequirePackage{MinionPro}
 \newfont{\chapnum}{eurb10 scaled 8000}
 
 % Creates an fourier ornament. Args: fontsize, lineheight, char
