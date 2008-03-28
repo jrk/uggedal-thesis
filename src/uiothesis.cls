@@ -480,6 +480,12 @@
   \end{adjustwidth*}
 
   \vfil
+
+  %\normalsize
+  %\newlength{\alphlen}
+  %\settowidth{\alphlen}{abcdefghijklmnopqrstuvwxyz}
+  %The length of the alphabet is: \the\alphlen \\
+  %The beselineskip is: \the\baselineskip{} 
 }
 
 % Titlepage
