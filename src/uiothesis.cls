@@ -493,11 +493,15 @@
 
   \vfil
 
-  %\normalsize
-  %\newlength{\alphlen}
-  %\settowidth{\alphlen}{abcdefghijklmnopqrstuvwxyz}
-  %The length of the alphabet is: \the\alphlen \\
-  %The beselineskip is: \the\baselineskip{} 
+  \metainfo
+}
+
+\newcommand{\metainfo}{%
+  \normalsize
+  \newlength{\alphlen}
+  \settowidth{\alphlen}{abcdefghijklmnopqrstuvwxyz}
+  The length of the alphabet is: \the\alphlen \\
+  The beselineskip is: \the\baselineskip{} 
 }
 
 % Titlepage
