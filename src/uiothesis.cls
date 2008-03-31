@@ -303,7 +303,7 @@
 \RequirePackage{ifpdf}
 \ifpdf
   \RequirePackage[pdftex,plainpages=false]{hyperref}
-  \RequirePackage[protrusion=true,expansion=false]{microtype}
+  \RequirePackage[protrusion=true,expansion=false,final=true]{microtype}
 \else
   \RequirePackage[ps2pdf]{hyperref}
   \RequirePackage{breakurl}
