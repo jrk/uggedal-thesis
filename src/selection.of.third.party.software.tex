@@ -26,9 +26,9 @@ because of the vast availability of such software.
 \citet{deshpande08} found that the availability of open source
 code and projects had grown exponentially from January 1995 to December 2006.
 
-Lastly it's important that science is kept open so that future researchers
-easily can discuss, falsify, and improve on previous research. Software is
-often an essential part of computer science research and
+Lastly it's of importance to keep the act of conducting science open so that
+future researchers easily can discuss, falsify, and improve on previous
+research. Software is often an essential part of computer science research and
 \citet[p.~430]{kelty05} therefore argues that open source
 is a property to strive for when conducting such research.
 
@@ -252,7 +252,7 @@ the need for an explicit loop structure. Notice though that the library from
 Yahoo! relies heavily on namespacing\dash{}which is a good thing for
 interoperability with other libraries\dash{}but can be a bit verbose at times.
 
-Going even a bit further in clarity is the solution written with jQuery.
+The solution written with jQuery provides even more clarity.
 Every query into the \abbr{DOM} returns a special jQuery object which means
 that one can call methods like \code{addClass} directly on this object
 regardless if the jQuery object holds a single or multiple elements.
@@ -270,11 +270,11 @@ $("p em").addClass("highlight").append("!");
 \end{lstlisting}
 \end{scode}
 
-Based on the minimal file size jQuery showed (only outbested by MooTools) and
-it's clear and unique syntax we selected it as the JavaScript library for our
-implementation. It seems others have take jQuery and it's virtues to hart as
-many large corporations like Google, Intel, Dell, and \abbr{BBC} have used it
-in their public facing offerings.%
+Based on the minimal file size jQuery provided (only outbested by MooTools)
+and it's clear and unique syntax we decided on selecting it as the JavaScript
+library for our implementation. It seems others have take jQuery and it's
+virtues to hart as many large corporations like Google, Intel, Dell, and
+\abbr{BBC} have used it in their public facing offerings.%
 \sidenote{
   For a complete list see \url{http://docs.jquery.com/Sites_Using_jQuery}.
 }
@@ -319,8 +319,9 @@ programmer don't have to go trough a compilation process before he can see the
 results of his labor. When prototyping rapidly it's quite convenient to make
 small changes and see the results instantanously.
 
-Disussion of the virtues of different kinds of programming languages have
-been the subject of endless debate. In the end we think it comes down to
+Disussion of the virtues of different flavors and implementations of
+programming languages have been the subject of endless debate.
+In the end we think it comes down to
 personal preference and making a pragmatic choice for the tool best suited for
 the job at hand. If we had to select a programming language based on our list
 of candidates based on the languages syntax and posibilities in itself we
@@ -344,15 +345,15 @@ handle such problems with regular expressions, this becomes tedious after a
 while. We therefore prefer a special purpose library.
 
 The major deciding factor when we selected the implementation language was
-the availability of such a library and it's usefulness. Since we've already
-revealed Ruby as our implementation language we're killing the suspense.
-Our data extraction library is called \project{Hpricot}%
+the availability of such a library and it's usefulness. We've already
+revealed Ruby as our implementation language and are therefore killing the
+suspense. Our data extraction library of choice is called \project{Hpricot}%
 \sidenote{
   Hpricot can be obtained from \url{http://code.whytheluckystiff.net/hpricot}.
   A curious note: Hpricot is written by the same person who created
   Hoodwink.d\dash{}our inspiration for a transparent prototype implementation.
 }
-and makes \abbr{HTML} parsing almost a fun endeavor in our opinion.
+and makes \abbr{HTML} parsing a blissful endeavor in our opinion.
 
 The Python alternative for web page scraping is \project{Beautiful Soup}.
 We were not able to find any libraries specially made for \abbr{HTML} scraping
@@ -398,8 +399,8 @@ server and client side\emph{}a cognitive advantage.
 
 \subsubsection{Data Fetching Library}
 
-Since we've selected Ruby as our development language of choice
-\executable{open-uri}, part of the standard Ruby library, is the way to fetch
+Since we've selected Ruby as our development language of choice we used
+\executable{open-uri}, part of the standard Ruby library, for fetching
 documents over \abbr{HTTP}%
 \sidenote{
   Hyper Text Transfer Protocol. The data transfer protocol for the Web.
@@ -422,7 +423,7 @@ html = Hpricot(open('http://redflavor.com'))
 \end{scode}
 
 
-\subsubsection{JSON Web Framework}
+\subsubsection{\abbr{JSON} Web Framework}
 
 A web framework or rather \abbr{HTTP}
 framework is needed to make the
