@@ -431,18 +431,18 @@ framework is needed to make the
 collected data available for our client. Since we'll only be serving requests
 for our JavaScript based client implementation we found it sound to transfer
 this data as \abbr{JSON}%
-\sidenote{
+%\sidenote{
   % define
-}.
+%}.
 Luckily for us there exists a framework for Ruby for handeling such tasks
 called \project{Halcyon}%
 \sidenote{
-  Available at \url{halcyon.rubyforge.org}.
+  Halcyon can be found at \url{halcyon.rubyforge.org}.
 }.
 This framework makes the process of developing a web application for serving
 \abbr{JSON} requests quite easy. It builds on \project{Rack}%
 \sidenote{
-  Available at \url{rack.rubyforge.org}.
+  Rack is available at \url{rack.rubyforge.org}.
 },
 a web server interface that sits between a web framework and a web server. By
 using Rack we can easily swap between different web servers that support the
