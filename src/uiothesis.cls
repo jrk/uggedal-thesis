@@ -38,10 +38,10 @@
   \fontencoding{U}\fontfamily{futs}\fontsize{#1}{#2}\selectfont\char#3}}
 
 % Laying out the page
-\settypeblocksize{*}{26pc}{2}
+\settypeblocksize{*}{28pc}{2}
 \setlrmargins{*}{*}{4}
 \setulmargins{*}{*}{2}
-\setmarginnotes{2pc}{12pc}{\baselineskip}
+\setmarginnotes{2pc}{10pc}{\baselineskip}
 \checkandfixthelayout
 
 % Coloring
