@@ -165,7 +165,6 @@
 
 % Automatic aligned sidenote
 \DeclareRobustCommand{\sidenote}[2][0em]{%
-  \footnotemark%
   \strictpagechecktrue
   \ifodd\c@page
     \oddsidenote[#1]{#2}
@@ -175,7 +174,7 @@
 }%
 
 % Forced right or left aligned sidenote
-\newcommand{\oddsidenote}[2][0em]{%
+\DeclareRobustCommand{\oddsidenote}[2][0em]{%
   \footnotemark%
   \marginpar{%
     \vspace*{#1}
@@ -183,7 +182,7 @@
     \sidemark{\thefootnote}\ignorespaces#2
   }%
 }%
-\newcommand{\evensidenote}[2][0em]{%
+\DeclareRobustCommand{\evensidenote}[2][0em]{%
   \footnotemark%
   \marginpar{%
     \vspace*{#1}
