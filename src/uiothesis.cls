@@ -251,20 +251,6 @@
   \itshape\item[]
 }{\endlist}
 
-% Cite quote environment
-\newcommand{\@quotekey}{undefined}
-\newcommand{\@quoteopt}{undefined}
-\newenvironment{citequote}[2][]{%
-  \renewcommand{\@quoteopt}{#1}
-  \renewcommand{\@quotekey}{#2}
-  \begin{quote}
-}{%
-  \\[0.5\onelineskip]
-    \hspace*{\fill}
-    \citep[\@quoteopt]{\@quotekey}
-  \end{quote}
-}
-
 \newlength{\wholemargin}\setlength{\wholemargin}{\marginparwidth}
 \addtolength{\wholemargin}{\marginparpush}
 \newlength{\wholewidth}\setlength{\wholewidth}{\textwidth}
@@ -437,6 +423,33 @@
 \newcommand{\postquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}.}
 \newcommand{\openpostquote}[3][]{\q{#3} \citep[#1]{#2}}
 \newcommand{\openpostquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}}
+
+% Cite quote environment
+%%
+%% DEPRICATED!
+%%
+\newcommand{\@quotekey}{undefined}
+\newcommand{\@quoteopt}{undefined}
+\newenvironment{citequote}[2][]{%
+  \PackageWarningNoLine{uiothesis}{%
+    Environment "citequote" is deprecated.}
+  \renewcommand{\@quoteopt}{#1}
+  \renewcommand{\@quotekey}{#2}
+  \begin{quote}
+}{%
+  \\[0.5\onelineskip]
+    \hspace*{\fill}
+    \citep[\@quoteopt]{\@quotekey}
+  \end{quote}
+}
+
+% Full quote encironment
+\newenvironment{fullquote}[3][]{%
+  \citet[#1]{#2} #3:
+  \begin{quote}
+}{%
+  \end{quote}
+}
 
 
 %%
