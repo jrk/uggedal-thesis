@@ -39,9 +39,9 @@
 
 % Laying out the page
 \settypeblocksize{*}{28pc}{2}
-\setlrmargins{*}{*}{4}
+\setlrmargins{*}{*}{3}
 \setulmargins{*}{*}{2}
-\setmarginnotes{2pc}{10pc}{\baselineskip}
+\setmarginnotes{2pc}{12pc}{\baselineskip}
 \checkandfixthelayout
 
 % Coloring
