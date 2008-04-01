@@ -1,4 +1,4 @@
 ---
 :build_dir: build
-:graphics_dir: src/figures
+:graphics_dir: graphics
 :engine: :pdflatex
