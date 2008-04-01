@@ -464,7 +464,7 @@
 
     \bigskip
 
-    The body text is set 11/12pt on a 26pc measure with\\
+    The body text is set 12/14.5pt on a 26pc measure with\\
     Minion Pro designed by Robert Slimback.\\
     This neohumanistic font was first issued by Adobe\\
     Systems in 1989 and have since been revised.\\
@@ -493,7 +493,7 @@
 
   \vfil
 
-  \metainfo
+  %\metainfo
 }
 
 \newcommand{\metainfo}{%
