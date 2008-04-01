@@ -164,28 +164,18 @@
 \newcommand{\sidemark}[1]{#1.{\:}}
 
 % Automatic aligned sidenote
-\DeclareRobustCommand{\sidenote}[2]%
-  [0em]{%
+\DeclareRobustCommand{\sidenote}[2][0em]{%
   \footnotemark%
   \strictpagechecktrue
   \ifodd\c@page
-    \marginpar{%
-      \vspace*{#1}
-      \RaggedRight \footnotesize
-      \sidemark{\thefootnote}\ignorespaces#2
-    }%
+    \oddsidenote[#1]{#2}
   \else
-    \marginpar{%
-      \vspace*{#1}
-      \RaggedLeft \footnotesize
-      \sidemark{\thefootnote}\ignorespaces#2
-    }%
+    \evensidenote[#1]{#2}
   \fi
 }%
 
 % Forced right or left aligned sidenote
-\newcommand{\oddsidenote}[2]%
-  [0em]{%
+\newcommand{\oddsidenote}[2][0em]{%
   \footnotemark%
   \marginpar{%
     \vspace*{#1}
@@ -193,8 +183,7 @@
     \sidemark{\thefootnote}\ignorespaces#2
   }%
 }%
-\newcommand{\evensidenote}[2]%
-  [0em]{%
+\newcommand{\evensidenote}[2][0em]{%
   \footnotemark%
   \marginpar{%
     \vspace*{#1}
@@ -432,7 +421,7 @@
 \newcommand{\@quoteopt}{undefined}
 \newenvironment{citequote}[2][]{%
   \PackageWarningNoLine{uiothesis}{%
-    Environment "citequote" is deprecated.}
+    Environment "citequote" is deprecated}
   \renewcommand{\@quoteopt}{#1}
   \renewcommand{\@quotekey}{#2}
   \begin{quote}
