@@ -254,7 +254,13 @@
 
 % Captions
 \RequirePackage{caption}
-\captionsetup[figure]{font={footnotesize,sf}}
+\captionsetup[figure]{font={footnotesize,sf},%
+                      justification=RaggedRight,%
+                      singlelinecheck=false}
+\captionsetup[table]{font={footnotesize,sf},%
+                     justification=RaggedRight,%
+                     singlelinecheck=false,%
+                     position=bottom}
 
 % The mark on the sidenote
 \newcommand{\sidemark}[1]{#1.{\:}}
@@ -293,17 +299,17 @@
     \strictpagechecktrue
     \ifodd\c@page
       \captionsetup{font=footnotesize,%
-                    justification=raggedright,%
+                    justification=RaggedRight,%
                     singlelinecheck=false}
       \RaggedRight
     \else
       \captionsetup{font=footnotesize,%
-                    justification=raggedleft,%
+                    justification=RaggedLeft,%
                     singlelinecheck=false}
       \RaggedLeft
     \fi
-    \captionof{table}{#1}
     \footnotesize #2
+    \captionof{table}{#1}
   }
 }
 
@@ -312,10 +318,14 @@
   \marginpar{%
     \strictpagechecktrue
     \ifodd\c@page
-      \captionsetup{font=footnotesize,justification=raggedright}
+      \captionsetup{font=footnotesize,%
+                    justification=RaggedRight,%
+                    singlelinecheck=false}
       \RaggedRight
     \else
-      \captionsetup{font=footnotesize,justification=raggedleft}
+      \captionsetup{font=footnotesize,%
+                    justification=RaggedLeft,%
+                    singlelinecheck=false}
       \RaggedLeft
     \fi
     \footnotesize #3
