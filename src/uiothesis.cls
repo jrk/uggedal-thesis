@@ -292,10 +292,14 @@
   \marginpar{%
     \strictpagechecktrue
     \ifodd\c@page
-      \captionsetup{font=footnotesize,justification=raggedright}
+      \captionsetup{font=footnotesize,%
+                    justification=raggedright,%
+                    singlelinecheck=false}
       \RaggedRight
     \else
-      \captionsetup{font=footnotesize,justification=raggedleft}
+      \captionsetup{font=footnotesize,%
+                    justification=raggedleft,%
+                    singlelinecheck=false}
       \RaggedLeft
     \fi
     \captionof{table}{#1}
