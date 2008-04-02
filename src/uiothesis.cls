@@ -49,6 +49,10 @@
 \definecolor{chapnum}{gray}{0.55}
 \definecolor{ornament}{gray}{0.85}
 
+% No orphans
+\clubpenalty = 10000
+\widowpenalty = 10000
+
 
 %%
 %% Division styles
