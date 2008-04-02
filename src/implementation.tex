@@ -82,6 +82,21 @@ to cache data globally\dash{}shared by all clients. Therefore data collection
 is handled on the server side, while data display obviously is handled on
 the client side.
 
+\subsection{Server--Client Architecture}
+% Describe possible increased performance with server/client side from
+% literature.
+
+\subsection{Asyncronous Requests}
+
+In the traditional style of \abbr{AJAX} applications we request information on
+the client side of our prototype asyncronous. This means that requests
+handeled by the \code{XMLHttpRequest} object
+% more about asyncronous versus syncronous:
+% http://yuiblog.com/blog/2006/04/04/synchronous-v-asynchronous
+%
+% cite stamey06 about network latency, not needing to fetch a whole page,
+% AJAX request independent of HTTP requests, etc.
+
 With all the pieces in place of our third party software puzzle described in
 \chapterref{selection.of.third.party.software}
 we present a high level view of the architecture, from the client to the
