@@ -412,6 +412,10 @@
 \newcommand{\openpostquote}[3][]{\q{#3} \citep[#1]{#2}}
 \newcommand{\openpostquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}}
 
+% Double page citation
+\newcommand{\citedouble}[4]{%
+  (\citealp[#1]{#2}; \citealp[#3]{#4})%
+}
 % Cite quote environment
 %%
 %% DEPRICATED!
