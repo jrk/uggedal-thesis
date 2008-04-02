@@ -157,6 +157,98 @@
 
 
 %%
+%% Fixes to marginpar
+%%
+
+\RequirePackage{afterpage}
+\RequirePackage{mparhack}
+
+\global\newif\if@firstrun \@firstruntrue
+
+\ifx\@currbox\@undefined
+  \newbox\@currbox
+\fi
+
+\def\marginparP#1#2{%
+  % pass two arguments:
+  %  1) a label name for the marginpar (enter regular text without
+  %     spaces or numbers or funny chars)
+  %  2) the content of the marginpar
+  %
+  % This assumes that the new marginpar command (\marginparP, the
+  % "P" is for "penalty") is placed as the first item
+  % in the new paragraph and is glued
+  % to the front of the first word in the paragraph.
+  %
+  % The approach was to wrap the marginpar command in another macro
+  % and let latex compile the first time with no margin pars.  I also
+  % set a label so that I can tell on the next pass if the block went
+  % to the next page.  If so, I save a code that says to send the
+  % marginpar to the next page, else I save a different code that
+  % says to leave the marginpar alone. All subsequent compiles will
+  % use the selected placement for the marginpar.
+  %
+
+  % save some page numbers
+  \edef\MPPhere{\thepage}%
+  \edef\MPPlabel{\pageref{#1}}%
+  %
+  % Write a code to the aux file that will process in the
+  % next compile and tell me that I'm no longer in the
+  % "first run" (not in the first compile of the LaTeX
+  % document):
+  \protected@write\@auxout{}{%
+      \string\gdef\string\secondrun{1}}%
+  \@ifundefined{secondrun}{%
+    \typeout{*********** first run}%
+    % I am printing a character to leave vertical mode.
+    % When this happens, the label will stick to the text while
+    % the call to \marginparP will remain on the old page because
+    % latex is still collecting info for the prior paragraph until
+    % it hits a character or a \leavevmode command (or something
+    % like that.
+    %{.}\label{#1}%
+    \leavevmode\label{#1}%
+  }%
+  {% after first run:
+    \@firstrunfalse
+    \typeout{*** beyond first run}%
+    % this is the second run or beyond
+    \@ifundefined{thirdrun}{%
+      % this is exactly the second run, so run it exactly once:
+      \ifnum\MPPhere=\MPPlabel
+        \typeout{**** the par stayed on the original page}%
+        \marginpar{#2}%
+        \protected@write\@auxout{}{%
+        \string\gdef\string\thirdrun{1}}%code 1 for "old page"
+      \else
+        % push the margin par to the next page by redefining the macro
+        % that was defined after the first word of the line
+        \typeout{**** the par moved to the next page}%
+        \afterpage{\protect\marginpar{#2}}%
+        \protected@write\@auxout{}{%
+        \string\gdef\string\thirdrun{2}}%code 2 for "next page"
+      \fi
+   }%
+   {% else we are on the third run or beyond
+     % use the saved value in "thirdrun" to determine how to
+     % place the float
+     \typeout{*** third run or more}%
+     \ifnum2=\thirdrun
+       \afterpage{\protect\marginpar{#2}}%
+     \else
+       \marginpar{#2}
+     \fi
+     \protected@write\@auxout{}{%
+       \string\gdef\string\thirdrun{\thirdrun}}%save the code
+    }
+  }
+  % note that "\string{" writes a left parenthesis, and the "{"
+  % does not open a argument for the \string macro:
+} 
+
+
+%%
 %% Side notes/tables/figures
 %%
 
