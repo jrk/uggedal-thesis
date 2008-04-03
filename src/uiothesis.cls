@@ -659,7 +659,7 @@
         \vfill
         \@scm
     \end{centered}
-      \clearpage
-      \makecolophon
+    \clearpage
+    \makecolophon
   \end{titlingpage}
 }
