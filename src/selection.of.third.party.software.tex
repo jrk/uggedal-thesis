@@ -315,10 +315,17 @@ They are all \term{latent typed}%
 and have quite expressive syntax. This makes for concise source code.
 \citet{yegge07} argues that the worst thing that can happens to a code base is
 size which often is the result of code bloat. In addition, both Ruby, Python,
-and Common Lisp are \term{interpreted} languages. This means that the
-programmer don't have to go trough a compilation process before he can see the
-results of his labor. When prototyping rapidly it's quite convenient to make
-small changes and see the results instantanously.
+and Common Lisp are \term{interpreted} languages%
+\sidenote{
+  This is only partly true since Common Lisp implementations incrementally
+  compile code and extensions or new implementations for Python and Ruby
+  implements just-in-time compilers. In both cases the developer
+  does not need to explicitly invoke a compile process before using
+  a program, therefore resembling interpreted languages.
+}.
+This means that the programmer don't have to go trough a compilation process
+before he can see the results of his labor. When prototyping rapidly it's
+quite convenient to make small changes and see the results instantanously.
 
 Disussion of the virtues of different flavors and implementations of
 programming languages have been the subject of endless debate.
