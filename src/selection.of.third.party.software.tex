@@ -339,6 +339,20 @@ program code in Lisp is data and can be manipulated with the same constructs
 one are using on data. This makes it immensly powerfull and is the reason why
 it's survived for over 50 years \citep[p.~217]{mccarthy78}
 and been able to adopt new paradigms in programming as they've appered.
+Even though we walue programming efficiency over computational performance,
+it should be noted that Common Lisp have been described as the only performant
+dynamic language \citep{martin08} compared to statically compiled languages%
+\sidenote{
+  In \work{The Computer Language Benchmarks Game} several programming
+  languages are pitched against each other in several tests to determine
+  their computational performance. As of this writing (April 2, 20008)
+  Common Lisp is 1.8 times slower than the fastest language: C++. Python
+  and Ruby are respectively 18 and 56 times slower than the leader.
+  % cite:
+  % http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&lang=all
+}.
+
+
 
 As it turns out, the most important criteria for choosing our implementation
 language was it's library support. In the next section we discuss our options
