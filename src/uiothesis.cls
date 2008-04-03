@@ -261,6 +261,10 @@
                      justification=RaggedRight,%
                      singlelinecheck=false,%
                      position=bottom}
+\captionsetup[sourcecode]{font={footnotesize,sf},%
+                          justification=RaggedRight,%
+                          singlelinecheck=false,%
+                          position=bottom}
 
 % The mark on the sidenote
 \newcommand{\sidemark}[1]{#1.{\:}}
@@ -298,14 +302,14 @@
   \marginpar{%
     \strictpagechecktrue
     \ifodd\c@page
-      \captionsetup{font=footnotesize,%
-                    justification=RaggedRight,%
-                    singlelinecheck=false}
+     \captionsetup[table]{font={footnotesize,sf},%
+                          justification=RaggedRight,%
+                          singlelinecheck=false}
       \RaggedRight
     \else
-      \captionsetup{font=footnotesize,%
-                    justification=RaggedLeft,%
-                    singlelinecheck=false}
+       \captionsetup[table]{font={footnotesize,sf},%
+                            justification=RaggedLeft,%
+                            singlelinecheck=false}
       \RaggedLeft
     \fi
     \footnotesize #2
@@ -318,14 +322,14 @@
   \marginpar{%
     \strictpagechecktrue
     \ifodd\c@page
-      \captionsetup{font=footnotesize,%
-                    justification=RaggedRight,%
-                    singlelinecheck=false}
+      \captionsetup[figure]{font={footnotesize,sf},%
+                            justification=RaggedRight,%
+                            singlelinecheck=false}
       \RaggedRight
     \else
-      \captionsetup{font=footnotesize,%
-                    justification=RaggedLeft,%
-                    singlelinecheck=false}
+       \captionsetup[figure]{font={footnotesize,sf},%
+                             justification=RaggedLeft,%
+                             singlelinecheck=false}
       \RaggedLeft
     \fi
     \footnotesize #3
@@ -430,8 +434,6 @@
 \newfloat[chapter]{sourcecode}{sc}{\sourcecodename}
 \newfixedcaption{\fdiagcaption}{sourcecode}
 \newlistentry{sourcecode}{sc}{0}
-
-\captionsetup[sourcecode]{position=bottom,font={footnotesize,sf}}
 
 
 %%
