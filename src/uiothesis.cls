@@ -367,6 +367,17 @@
   \end{adjustwidth*}
 }
 
+\newlength{\foreminusspine}\setlength{\foreminusspine}{\foremargin}
+\addtolength{\foreminusspine}{-\spinemargin}
+
+% Centered environment
+\newenvironment{centered}{%
+  \begin{adjustwidth*}{0em}{-\foreminusspine}
+    \centering
+}{%
+  \end{adjustwidth*}
+}
+
 % Code environment
 \newcommand{\@codelabel}{undefined}
 \newcommand{\@codeshortcaption}{undefined}
@@ -622,35 +633,33 @@
 }
 
 % Titlepage
+\RequirePackage{wallpaper}
+\RequirePackage{etex} % increase registers because of the wallpaper package
 \renewcommand{\maketitle}{%
   \begin{titlingpage}
-    \calccentering{\unitlength}
-    \begin{adjustwidth*}{\unitlength}{-\unitlength}
-      \begin{center}
-        \null\vspace{1cm}
-        \includegraphics[width=0.3\textwidth]{uioseal} \\
-        \vspace{2cm}
-        {\Huge\textsf{{\@title}}} \\
-        \vspace{0.5cm}
-        {\Large\textsf{{\@subtitle}}} \\
-        \vspace{1cm}
+    \ThisLLCornerWallPaper{0.6}{uiosealbg}
+    \begin{centered}
+        \null\vspace{10pc}
+        {\Huge\textrm{{\@title}}} \\
+        \vspace{1pc}
+        {\Large\textsw{{\@subtitle}}} \\
+        \vspace{15pc}
         {\large\@author} \\
-        \vspace{1cm}
-        {\LARGE\aldineleft} \\
-        \vspace{1cm}
+        \vspace{1pc}
+        {\normalsize\aldineleft} \\
+        \vspace{1pc}
         Submitted in partial fulfillment of the requirements \\
         for the degree of Master of Science \\
-        \vspace{1cm}
+        \vspace{1pc}
         \@date \\
-        \vspace{1cm}
+        \vspace{1pc}
         Department of Informatics \\
         Faculty of Mathematics and Natural Sciences \\
         University of Oslo \\
         \vfill
         \@scm
-      \end{center}
-    \end{adjustwidth*}
-    \clearpage
-    \makecolophon
+    \end{centered}
+      \clearpage
+      \makecolophon
   \end{titlingpage}
 }
