@@ -79,16 +79,30 @@ Our implementation basically needs to do two things:
     a way that we hope will enhance navigation.
 \end{enum}
 
-We decided to use a server--client architecture so that we could offload some
+\subsection{Client-Server Model}
+% Describe possible increased performance with server/client side from
+% literature.
+A client-server model is an architecture where one is seperating a system into
+two logical parts: a client and a server \citep[p.~3]{lewandowski98}. The
+client is a \openpostquote[p.~11]{malkin96}{%
+  computer system or process that requests a service of another
+  computer system or process}
+and the server is a \postquote[p.~49]{malkin96}{%
+  provider of resources}
+They have disparate responsibilities, the client is a consumer and the
+server is a producer \citep[p.~3]{lewandowski98}. This delegation is the
+essential part of client-server computing and enables one to focus on one
+aspect of a problem as one does when adhering to the concept of
+\term{seperation of concerns} \citep[p.~61]{dijkstra74}.
+
+% benefits from article
+
+We decided to use a client-server architecture so that we could offload some
 of the more computationally expensive operations off the client and onto a
 dedicated server. Another benefit of such an architecture is that it allows us
 to cache data globally\dash{}shared by all clients. Therefore data collection
 is handled on the server side, while data display obviously is handled on
 the client side.
-
-\subsection{Server--Client Architecture}
-% Describe possible increased performance with server/client side from
-% literature.
 
 % similar architecture: nishimoto06
 
