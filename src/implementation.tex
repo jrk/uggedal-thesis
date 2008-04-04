@@ -123,7 +123,13 @@ manner we inteded when fetching data from \urort{}.
 \subsection{Asynchronous Requests}
 
 In the traditional style of \abbr{AJAX} applications we request information on
-the client side of our prototype asynchronous. This means that requests
+the client side of our prototype asynchronous%
+\sidenote{
+  While it's possible to use synchronous requests with \code{XMLHttpRequest}
+  it's strongly discouraged since the entire web browser will be locked
+  while it's waiting for a response for it's request \cite{crockford06a}.
+}.
+This means that requests
 handled by the \code{XMLHttpRequest} object
 % more about asynchronous versus synchronous:
 % http://yuiblog.com/blog/2006/04/04/synchronous-v-asynchronous
