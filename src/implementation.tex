@@ -25,7 +25,9 @@ the implementation was built\dash{}the ingredients of our implementation.
 %
 % try to say something about how less data makes choices easier
 % to make -- something a interaction feed will try to solve
-% try to cite and include anecdotes from the paradox of choice: why more is less
+%
+% try to cite and include anecdotes from
+% the paradox of choice: why more is less
 
 \section{Process}
 % Prototype, exploratory
@@ -120,20 +122,6 @@ providers. By seperating this computationally heavy part of the application
 into the server side they were able to offload the clients in a similar
 manner we inteded when fetching data from \urort{}.
 
-\subsection{Asynchronous Requests}
-
-In the traditional style of \abbr{AJAX} applications we request information on
-the client side of our prototype asynchronous%
-\sidenote{
-  While it's possible to use synchronous requests with \code{XMLHttpRequest}
-  it's strongly discouraged since the entire web browser will be locked
-  while it's waiting for a response for it's request \cite{crockford06a}.
-}.
-This means that requests
-handled by the \code{XMLHttpRequest} object
-% cite stamey06 about network latency, not needing to fetch a whole page,
-% AJAX request independent of HTTP requests, etc.
-% similar latency talk: p 9 (of pdf) in jazayeri07
 With all the pieces in place of our third party software puzzle described in
 \chapterref{selection.of.third.party.software}
 we present a high level view of the architecture, from the client to the
@@ -151,8 +139,31 @@ server, in
   \end{whole}
 \end{figure}
 
+\subsection{Caching}
 % write about the cache and what is done on a \term{cache miss}. Also give
 % reasons for \term{time to live}.
+
+\subsection{Asynchronous Requests}
+
+In the traditional style of \abbr{AJAX} applications we request information on
+the client side of our prototype asynchronous%
+\sidenote{
+  While it's possible to use synchronous requests with \code{XMLHttpRequest}
+  it's strongly discouraged since the entire web browser will be locked
+  while it's waiting for a response for it's request \cite{crockford06a}.
+}.
+This means that requests handled by the \code{XMLHttpRequest} object
+are independent of other requests the browser is making\dash{}they
+are non-blocking. This enables developers to create web pages where additional
+data is requested after the page is loaded by a normal \abbr{HTTP} request.
+This is often coupled with the ability to detect user behaviour, and contents
+are requested only when needed. \citet[pp.281--282]{stamey06} argues that
+the increased complexity (and thereby size) of todays web pages have created
+problems in percieved responsivness for users due to network latency. He
+tinks asyncronous request of small content items solves this
+problem\dash{}bringing greater interactivity to the user. Another solution
+that can be combined is to move some processing into the client with
+JavaScript \citep[p.~9]{jazayeri07}
 
 \subsection{Modularization}
 
