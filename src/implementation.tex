@@ -93,9 +93,15 @@ server is a producer \citep[p.~3]{lewandowski98}. This delegation is the
 essential part of client-server computing and enables one to focus on one
 aspect of a problem as one does when adhering to the concept of
 \term{seperation of concerns} \citep[p.~61]{dijkstra82}.
+A client-server model also enables one to scale both horizontally and
+vertically%
+\sidenote{
+  To scale horizontally entails adding more servers to a client-server
+  architecture. When one increases the resources of a single server
+  one is scaling vertically.
+},
+an impossible feat with monolitic systems \citep[pp.~7--8]{lewandowski98}.
 
-% Describe possible increased performance with server/client side from
-% literature.
 
 We therefore decided to use a client-server architecture so that we could
 offload some of the more computationally expensive operations off the client
