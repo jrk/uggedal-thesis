@@ -526,6 +526,11 @@
 % A value
 \let\val\q
 
+
+%%
+%% Quotations and citations
+%%
+
 % Inline quotations
 \newcommand{\prequote}[4][]{\citet[#1]{#2} #3 \q{#4}.}
 \newcommand{\openprequote}[4][]{\citet[#1]{#2} #3 \q{#4}}
@@ -535,35 +540,17 @@
 \newcommand{\openpostquote}[3][]{\q{#3} \citep[#1]{#2}}
 \newcommand{\openpostquoteyear}[3][]{\q{#3} \citeyearpar[#1]{#2}}
 
-% Double page citation
-\newcommand{\citedouble}[4]{%
-  (\citealp[#1]{#2}; \citealp[#3]{#4})%
-}
-% Cite quote environment
-%%
-%% DEPRICATED!
-%%
-\newcommand{\@quotekey}{undefined}
-\newcommand{\@quoteopt}{undefined}
-\newenvironment{citequote}[2][]{%
-  \PackageWarningNoLine{uiothesis}{%
-    Environment "citequote" is deprecated}
-  \renewcommand{\@quoteopt}{#1}
-  \renewcommand{\@quotekey}{#2}
-  \begin{quote}
-}{%
-  \\[0.5\onelineskip]
-    \hspace*{\fill}
-    \citep[\@quoteopt]{\@quotekey}
-  \end{quote}
-}
-
-% Full quote encironment
+% Full quote environment
 \newenvironment{fullquote}[3][]{%
   \citet[#1]{#2} #3:
   \begin{quote}
 }{%
   \end{quote}
+}
+
+% Double page citation
+\newcommand{\citedouble}[4]{%
+  (\citealp[#1]{#2}; \citealp[#3]{#4})%
 }
 
 
