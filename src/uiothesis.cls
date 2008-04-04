@@ -1,4 +1,7 @@
-% UiO LaTeX Thesis Class
+%%
+%% UiO LaTeX Thesis Class
+%%
+
 \ProvidesClass{uiothesis}
 \NeedsTeXFormat{LaTeX2e}
 
@@ -22,10 +25,9 @@
 
 
 %%
-%% Global setup
+%% Fonts
 %%
 
-% Font setup
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage{MinionPro}
@@ -37,21 +39,29 @@
 \newcommand*{\fourierOrnament}[3]{{%
   \fontencoding{U}\fontfamily{futs}\fontsize{#1}{#2}\selectfont\char#3}}
 
-% Laying out the page
+
+%%
+%% Page layout
+%%
+
 \settypeblocksize{*}{28pc}{2}
 \setlrmargins{*}{*}{3}
 \setulmargins{*}{*}{2}
 \setmarginnotes{2pc}{12pc}{\baselineskip}
 \checkandfixthelayout
 
-% Coloring
-\RequirePackage{color}
-\definecolor{chapnum}{gray}{0.55}
-\definecolor{ornament}{gray}{0.85}
-
 % No orphans
 \clubpenalty = 10000
 \widowpenalty = 10000
+
+
+%%
+%% Colors
+%%
+
+\RequirePackage{color}
+\definecolor{chapnum}{gray}{0.55}
+\definecolor{ornament}{gray}{0.85}
 
 
 %%
@@ -71,7 +81,7 @@
   }%
   \renewcommand{\afterchapternum}{}
   \renewcommand{\printchaptertitle}[1]{%
-    \raggedright\huge\scshape ##1
+    \raggedright\huge\textsw{##1}
   }%
 }
 
@@ -93,6 +103,7 @@
 % Plain headers and footers
 \makeevenfoot{plain}{\thepage}{}{}
 \makeoddfoot{plain}{}{}{\thepage}
+
 
 %%
 %% Lists
@@ -154,6 +165,24 @@
 
 % Definitions in lists
 \newcommand{\iterm}[1]{\item \term{#1}}
+
+
+%%
+%% Captions
+%%
+
+\RequirePackage{caption}
+\captionsetup[figure]{font={footnotesize,sf},%
+                      justification=RaggedRight,%
+                      singlelinecheck=false}
+\captionsetup[table]{font={footnotesize,sf},%
+                     justification=RaggedRight,%
+                     singlelinecheck=false,%
+                     position=bottom}
+\captionsetup[sourcecode]{font={footnotesize,sf},%
+                          justification=RaggedRight,%
+                          singlelinecheck=false,%
+                          position=bottom}
 
 
 %%
@@ -252,20 +281,6 @@
 %% Side notes/tables/figures
 %%
 
-% Captions
-\RequirePackage{caption}
-\captionsetup[figure]{font={footnotesize,sf},%
-                      justification=RaggedRight,%
-                      singlelinecheck=false}
-\captionsetup[table]{font={footnotesize,sf},%
-                     justification=RaggedRight,%
-                     singlelinecheck=false,%
-                     position=bottom}
-\captionsetup[sourcecode]{font={footnotesize,sf},%
-                          justification=RaggedRight,%
-                          singlelinecheck=false,%
-                          position=bottom}
-
 % The mark on the sidenote
 \newcommand{\sidemark}[1]{#1.{\:}}
 
@@ -336,6 +351,7 @@
     \captionof{figure}[#1]{#2}
   }
 }
+
 
 %%
 %% Environments
