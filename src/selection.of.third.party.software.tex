@@ -101,12 +101,25 @@ focus all our efforts on one platform.
 \subsubsection{Programming Language}
 
 The ability to programmatically alter behavior inside web browsers was first
-introduced by \project{Netscape} in their \val{2.0} version of the web browser
+introduced by \project{Netscape} in their 2.0 version of the web browser
 with the same name. \project{JavaScript} was first intended to be a
 lightweight scripting language for gluing together \abbr{HTML} and applets
-written in the \project{Java} programming language \citep{netscape95}. Java
-applets never took of and JavaScript soon became the \latin{de facto} standard
-for enabling behavior on the Web and was standardized as
+written in the \project{Java} programming language \citep{netscape95}.%
+\sidenote{
+  Sun Microsystems, the creators of Java, had negotiated with
+  Netscape about including it in their second major web browser release.
+  The development of JavaScript, then called Mocha, was already
+  underway and people inside Netscape wondered why one needed two
+  languages.
+  \postquote{eich08}{%
+    The answer was that two languages were required to serve the two
+    mostly-disjoint audiences in the programming ziggurat who most deserved
+    dedicated programming languages: the component authors, who wrote in C++
+    or (we hoped) Java; and the `scripters', amateur or pro, who would write
+    code directly embedded in HTML}
+}
+Java applets never took off and JavaScript soon became the \latin{de facto}
+standard for enabling behavior on the Web and was standardized as
 \project{ECMAScript} in 1997 \citep{ecma99}.
 
 Because of this we had no say in what programming language to use on the
@@ -115,7 +128,7 @@ language. Contradictory to it's name, JavaScript bears few similarities to the
 Java language.%
 \sidenote{
   The name was more of a marketing decision when Netscape teamed up
-  with Sun (the maker of Java) before it's initial release
+  with Sun
   \citep[p.~2]{flanagan06}.
 }
 Despite it's origins as a scripting language JavaScript is now considered
