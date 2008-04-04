@@ -102,15 +102,22 @@ vertically%
 },
 an impossible feat with monolithic systems \citep[pp.~7--8]{lewandowski98}.
 
-
 We therefore decided to use a client-server architecture so that we could
 offload some of the more computationally expensive operations off the client
 and onto a dedicated server. Another benefit of such an architecture is that
-it allows us to cache data globally\dash{}shared by all clients. Therefore
-data collection is handled on the server side, while data display obviously
-is handled on the client side.
+it allows us to cache data globally\dash{}shared by all clients. This means
+that data collection is handled on the server side, while data display
+obviously is handled on the client side.
 
-% similar architecture: nishimoto06
+\citet[p.~887--888]{nishimoto06} implemented a system for refinding places one
+have already visited on the Web. What's interesting about their system is that
+their architecture is strikingly similar to our own. They use a
+client-server model with a user-script enabled browser as their client. The
+client facilitates the users as they're navigating by supplying additional
+information alongside existing web pages. One of the ingredients in helping
+users in their browsing is suppling information from third party content
+providers. By seperating this computationally heavy part of the application
+into the server side they were able to offload the clients.
 
 \subsection{Asynchronous Requests}
 
