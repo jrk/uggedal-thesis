@@ -8,7 +8,7 @@
 % in some sort of cache. The clients could then get this data by invoking a
 % single request. The result could for instance be JSON serialized. Scraping
 % of such data is probably done more efficient and safer at the server side
-% since multiple XMLHttpRequests in the clients for scraping and parsing could
+% since multiple XMLHttpRequest in the clients for scraping and parsing could
 % prove to be quite computational expensive.
 
 As we've seen in 
@@ -23,7 +23,7 @@ the implementation was built\dash{}the ingredients of our implementation.
 
 % no new data. making existing data more readily available.
 %
-% try to say something about how less data makes coises easier
+% try to say something about how less data makes choices easier
 % to make -- something a interaction feed will try to solve
 % try to cite and include anecdotes from the paradox of choice: why more is less
 
@@ -81,7 +81,7 @@ Our implementation basically needs to do two things:
 
 \subsection{Client-Server Model}
 
-A client-server model is an architecture where one is seperating a system into
+A client-server model is an architecture where one is separating a system into
 two logical parts: a client and a server \citep[p.~3]{lewandowski98}. The
 client is a \openpostquote[p.~11]{malkin96}{%
   computer system or process that requests a service of another
@@ -92,7 +92,7 @@ They have disparate responsibilities, the client is a consumer and the
 server is a producer \citep[p.~3]{lewandowski98}. This delegation is the
 essential part of client-server computing and enables one to focus on one
 aspect of a problem as one does when adhering to the concept of
-\term{seperation of concerns} \citep[p.~61]{dijkstra82}.
+\term{separation of concerns} \citep[p.~61]{dijkstra82}.
 A client-server model also enables one to scale both horizontally and
 vertically%
 \sidenote{
@@ -100,7 +100,7 @@ vertically%
   architecture. When one increases the resources of a single server
   one is scaling vertically.
 },
-an impossible feat with monolitic systems \citep[pp.~7--8]{lewandowski98}.
+an impossible feat with monolithic systems \citep[pp.~7--8]{lewandowski98}.
 
 
 We therefore decided to use a client-server architecture so that we could
@@ -112,12 +112,12 @@ is handled on the client side.
 
 % similar architecture: nishimoto06
 
-\subsection{Asyncronous Requests}
+\subsection{Asynchronous Requests}
 
 In the traditional style of \abbr{AJAX} applications we request information on
-the client side of our prototype asyncronous. This means that requests
-handeled by the \code{XMLHttpRequest} object
-% more about asyncronous versus syncronous:
+the client side of our prototype asynchronous. This means that requests
+handled by the \code{XMLHttpRequest} object
+% more about asynchronous versus synchronous:
 % http://yuiblog.com/blog/2006/04/04/synchronous-v-asynchronous
 %
 % cite stamey06 about network latency, not needing to fetch a whole page,
