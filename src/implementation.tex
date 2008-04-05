@@ -41,7 +41,7 @@ the implementation was built\dash{}the ingredients of our implementation.
 
 A \term{prototype} is an early version of an application that are used for
 finding out more about the problem at hand and it's possible solutions
-\citep[p.~409]{sommerville07}.
+\citep[\p{409}]{sommerville07}.
 The software developed for our research on social navigation fits these
 characteristics. It's not supposed to be used after it's behavior is
 evaluated. For that it's to inefficient and relies on specific web browser
@@ -64,13 +64,13 @@ evaluated. If time permitted (sadly one has limited time and resources
 available during master thesis research) the results of such an evaluation
 could be input in a new design process and a new prototype system.
 
-As \citet[p.~114]{mcconnell04} explains prototyping can mean different things
+As \citet[\p{114}]{mcconnell04} explains prototyping can mean different things
 based on context. Often it's used to explain systems where one writes the
 least amount of code to get a solution and throw it all away when the design
 question is answered. This is not our intention. We'll try to make the system
 fully operational and make the code we author comprehensible and
 valid. More precisely we're creating a \term{high-fidelity} prototype
-\cite[p.~78]{rudd96} with a robust architecture.
+\cite[\p{78}]{rudd96} with a robust architecture.
 
 \subsection{Testing}
 
@@ -88,17 +88,17 @@ Our implementation basically needs to do two things:
 \subsection{Client-Server Model}
 
 A client-server model is an architecture where one is separating a system into
-two logical parts: a client and a server \citep[p.~3]{lewandowski98}. The
-client is a \openpostquote[p.~11]{malkin96}{%
+two logical parts: a client and a server \citep[\p{3}]{lewandowski98}. The
+client is a \openpostquote[\p{11}]{malkin96}{%
   computer system or process that requests a service of another
   computer system or process}
-and the server is a \postquote[p.~49]{malkin96}{%
+and the server is a \postquote[\p{49}]{malkin96}{%
   provider of resources}
 They have disparate responsibilities, the client is a consumer and the
-server is a producer \citep[p.~3]{lewandowski98}. This delegation is the
+server is a producer \citep[\p{3}]{lewandowski98}. This delegation is the
 essential part of client-server computing and enables one to focus on one
 aspect of a problem as one does when adhering to the concept of
-\term{separation of concerns} \citep[p.~61]{dijkstra82}.
+\term{separation of concerns} \citep[\p{61}]{dijkstra82}.
 A client-server model also enables one to scale both horizontally and
 vertically%
 \sidenote{
@@ -115,7 +115,7 @@ it allows us to cache data globally\dash{}shared by all clients. This means
 that data collection is handled on the server side, while data display
 obviously is handled on the client side.
 
-\citet[p.~887--888]{nishimoto06} implemented a system for refinding places one
+\citet[\p{887}--888]{nishimoto06} implemented a system for refinding places one
 have already visited on the Web. What's interesting about their system is that
 their architecture is strikingly similar to our own. They use a
 client-server model with a user-script enabled browser as their client. The
@@ -167,7 +167,7 @@ problems in percieved responsivness for users due to network latency. He
 tinks asyncronous request of small content items solves this
 problem\dash{}bringing greater interactivity to the user. Another solution
 that can be combined is to move some processing into the client with
-JavaScript \citep[p.~9]{jazayeri07}
+JavaScript \citep[\p{9}]{jazayeri07}
 
 \subsection{Modularization}
 
