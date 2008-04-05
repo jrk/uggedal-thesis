@@ -545,6 +545,12 @@
 %% Quotations and citations
 %%
 
+% Paragraph/page reference
+\newcommand{\para}[1]{paragraph~#1}
+\newcommand{\paras}[2]{paragraphs~#1--2}
+\newcommand{\p}[1]{p.~#1}
+\newcommand{\pp}[2]{pp.~#1--2}
+
 % Inline quotations
 \newcommand{\prequote}[4][]{\citet[#1]{#2} #3 \q{#4}.}
 \newcommand{\openprequote}[4][]{\citet[#1]{#2} #3 \q{#4}}
