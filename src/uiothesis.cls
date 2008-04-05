@@ -33,6 +33,7 @@
 \RequirePackage{MinionPro}
 \renewcommand{\scdefault}{ssc}
 \newfont{\chapnum}{eurb10 scaled 8000}
+\newcommand{\lowercaps}[1]{\textsc{\MakeLowercase{#1}}}
 
 % Creates an fourier ornament. Args: fontsize, lineheight, char
 \RequirePackage{fourier-orns}
@@ -81,7 +82,7 @@
   }%
   \renewcommand{\afterchapternum}{}
   \renewcommand{\printchaptertitle}[1]{%
-    \raggedright\huge\abbr{##1}
+    \raggedright\huge\lowercaps{##1}
   }%
 }
 
@@ -531,7 +532,7 @@
 \let\latin\term
 
 % Abbreviations (mostly acronyms, but all full caps abbreviations)
-\newcommand{\abbr}[1]{\textsc{\MakeLowercase{#1}}}
+\let\abbr\lowercaps
 
 % Project name (first usage?)
 \newcommand{\project}[1]{\textsf{{#1}}}
