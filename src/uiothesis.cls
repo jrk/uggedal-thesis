@@ -126,12 +126,6 @@
 \renewcommand{\cftsectionleader}{}
 \renewcommand{\cftsectionafterpnum}{\cftparfillskip}
 
-%\renewcommand{\cftsubsectionfont}{\small}
-%\renewcommand{\cftsubsectionpagefont}{\small}
-%\cftsetindents{subsection}{3.8em}{2.8em}
-%\renewcommand{\cftsubsectionleader}{}
-%\renewcommand{\cftsubsectionafterpnum}{\cftparfillskip}
-
 % List of Figures/Tables
 \renewcommand{\cftfigureleader}{ }
 \renewcommand{\cftfigureafterpnum}{\cftparfillskip}
