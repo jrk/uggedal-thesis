@@ -81,7 +81,7 @@
   }%
   \renewcommand{\afterchapternum}{}
   \renewcommand{\printchaptertitle}[1]{%
-    \raggedright\huge\textsw{##1}
+    \raggedright\huge\abbr{##1}
   }%
 }
 
