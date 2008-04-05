@@ -542,6 +542,9 @@
 % A value
 \let\val\q
 
+% old style &
+\newcommand{\oldand}{\textsw{\&}}
+
 
 %%
 %% Quotations and citations
