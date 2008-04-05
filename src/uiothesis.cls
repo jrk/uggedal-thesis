@@ -538,7 +538,7 @@
 \let\val\q
 
 % old style &
-\newcommand{\oldand}{\textsw{\&}}
+\newcommand{\oldand}{\textsw{\& }}
 
 
 %%
