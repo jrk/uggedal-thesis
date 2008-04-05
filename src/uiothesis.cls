@@ -111,10 +111,10 @@
 %%
 
 % Table of Contents
-\maxtocdepth{subsection}
+\maxtocdepth{section}
 
-\renewcommand{\cftchapterfont}{\scshape}
-\renewcommand{\cftchapterpagefont}{\scshape}
+\renewcommand{\cftchapterfont}{\normalsize}
+\renewcommand{\cftchapterpagefont}{\normalsize}
 \renewcommand{\cftchapterpresnum}{\hspace*{-1.5em}}
 \cftsetindents{chapter}{1.5em}{0em}
 \renewcommand{\cftchapterleader}{}
@@ -126,11 +126,11 @@
 \renewcommand{\cftsectionleader}{}
 \renewcommand{\cftsectionafterpnum}{\cftparfillskip}
 
-\renewcommand{\cftsubsectionfont}{\small}
-\renewcommand{\cftsubsectionpagefont}{\small}
-\cftsetindents{subsection}{3.8em}{2.8em}
-\renewcommand{\cftsubsectionleader}{}
-\renewcommand{\cftsubsectionafterpnum}{\cftparfillskip}
+%\renewcommand{\cftsubsectionfont}{\small}
+%\renewcommand{\cftsubsectionpagefont}{\small}
+%\cftsetindents{subsection}{3.8em}{2.8em}
+%\renewcommand{\cftsubsectionleader}{}
+%\renewcommand{\cftsubsectionafterpnum}{\cftparfillskip}
 
 % List of Figures/Tables
 \renewcommand{\cftfigureleader}{ }
