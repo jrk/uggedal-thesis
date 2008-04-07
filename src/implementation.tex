@@ -7,7 +7,7 @@
 % quite inefficient it will probably be necessary to persist data at a server
 % in some sort of cache. The clients could then get this data by invoking a
 % single request. The result could for instance be JSON serialized. Scraping
-% of such data is probably done more efficient and safer at the server side
+% of such data is probably done more efficient and safer at the server-side
 % since multiple XMLHttpRequest in the clients for scraping and parsing could
 % prove to be quite computational expensive.
 
@@ -17,7 +17,10 @@ it's possible to build applications on top of existing web sites by creating
 transparent prototype implementations. This chapter starts with an account of
 what kind of navigation system we wanted to build, goes on to describe why we
 decided on such navigational designs, and concludes with an explanation of the
-deeper technical decisions we had to make. 
+deeper technical decisions we had to make. The following chapter,
+\chapterref{selection.of.third.party.software},
+describes what kind of third party software we used for realizing the
+implementation details we describe in this chapter.
 
 
 \section{Design}
@@ -129,8 +132,8 @@ We therefore decided to use a client-server architecture so that we could
 offload some of the more computationally expensive operations off the client
 and onto a dedicated server. Another benefit of such an architecture is that
 it allows us to cache data globally\dash{}shared by all clients. This means
-that data collection is handled on the server side, while data display
-obviously is handled on the client side.
+that data collection is handled on the server-side, while data display
+obviously is handled on the client-side.
 
 \citet[\p{887}--888]{nishimoto06} implemented a system for refinding places one
 have already visited on the Web. What's interesting about their system is that
@@ -140,7 +143,7 @@ client facilitates the users as they're navigating by supplying additional
 information alongside existing web pages. One of the ingredients in helping
 users in their browsing is suppling information from third party content
 providers. By seperating this computationally heavy part of the application
-into the server side they were able to offload the clients in a similar
+into the server-side they were able to offload the clients in a similar
 manner we inteded when fetching data from \urort{}.
 
 \subsection{Caching}
@@ -150,7 +153,7 @@ manner we inteded when fetching data from \urort{}.
 \subsection{Asynchronous Requests}
 
 In the traditional style of \abbr{AJAX} applications we request information on
-the client side of our prototype asynchronous%
+the client-side of our prototype asynchronous%
 \sidenote{
   While it's possible to use synchronous requests with \code{XMLHttpRequest}
   it's strongly discouraged since the entire web browser will be locked
@@ -170,6 +173,8 @@ that can be combined is to move some processing into the client with
 JavaScript \citep[\p{9}]{jazayeri07}
 
 \subsection{Modularization}
+
+Both our client-side and server-side 
 
 % ruby modules, classes, separate files and directories
 % maybe MVC: reenskaug79
