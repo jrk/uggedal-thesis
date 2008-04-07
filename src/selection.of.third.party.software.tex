@@ -42,7 +42,24 @@ Based on the design and architectural decisions made in
 \chapterref{implementation} we'll now go on to make more fine-grained choices
 of what specific third party software components to utilize in our prototype
 application. We've decided to harness some of the seemingly best freely
-available software components in this software stack.
+available software components in this software stack. The issue of such code
+reuse was introduced by \citet[\pp{138}{142}]{mcilroy68} when he voiced a need
+for the software industry to become industrialized. His proposed technique for
+enabeling mass-production of software is to offer components\dash{}faimiles of
+program routines that can be used for any given job. These components should
+be created in a way so that they can fit together as building blocks. The
+developer should be able to treat these components as \term{black boxes}%
+\sidenote{
+  In the field of electronics black boxes are used to describe electronic
+  circuts with a fixed set of terminals where one is deliberatly ignoring
+  the itnernals of the circut. Only the external properties of the circut
+  given by the electronic properties of it's terminals are emphasized
+  \citep[\p{171}]{wilson79}. Paralelling with computer science we can think of
+  a component, module, object, or routine (electornic circut) as beeing a
+  black box when we're only concerned by it's input and output characteristics
+  trough it's interface (terminals).
+}.
+
 
 \subsection{Client Side}
 
