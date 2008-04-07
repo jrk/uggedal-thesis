@@ -2,3 +2,4 @@
 :build_dir: build
 :graphics_dir: graphics
 :engine: :pdflatex
+:color: true
