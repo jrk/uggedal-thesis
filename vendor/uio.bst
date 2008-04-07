@@ -1030,7 +1030,7 @@ FUNCTION {name.or.dash}
    oldname empty$
      { s 'oldname := s }
      { s oldname =
-         { "\mbox{---\kern-.12em---}" }
+         { "\mbox{---\kern-.11em---\kern-.11em---}" }
          { s 'oldname := s }
        if$
      }
