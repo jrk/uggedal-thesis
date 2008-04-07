@@ -1,5 +1,6 @@
 ---
 :build_dir: build
 :graphics_dir: graphics
+:vendor_dir: vendor
 :engine: :pdflatex
 :color: true
