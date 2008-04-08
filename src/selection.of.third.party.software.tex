@@ -60,11 +60,8 @@ The developer should be able to treat these components as \term{black boxes}%
   trough it's interface (terminals).
 }.
 
-After \term{object-oriented programming}%
-%\sidenote{
-% explain, maybe cite Smalltalk history paper
-%}
-became the most popular programming paradigm%
+After object-oriented programming became the most popular
+programming paradigm%
 \sidenote{
   According to \abbr{TIOBE}'s list of of
   how popular different programming languages are (based on the number of
@@ -148,7 +145,7 @@ cross-browser diffrences\dash{}both in potential bugs and programmatic
 interfaces.
 
 \subsubsection{Programming Language}
-\label{section:implementation.architecture.client.side.programming.language}
+\label{section:selection.stack.client.language}
 
 The ability to programmatically alter behavior inside web browsers was first
 introduced by \project{Netscape} in their 2.0 version of the web browser
@@ -183,7 +180,7 @@ Java language.%
 }
 Despite it's origins as a scripting language JavaScript is now considered
 a full-featured modern programming language
-\citedouble{p.~2}{flanagan06}{p.~3}{resig06}.
+\citedouble{p.~2}{flanagan06}{p.~3}{resig06} including object-orientation.
 
 \subsubsection{Convenience Library}
 
@@ -348,6 +345,7 @@ virtues to hart as many large corporations like Google, Intel, Dell, and
 \subsubsection{Platform}
 
 \subsubsection{Programming Language}
+\label{section:selection.stack.server.language}
 
 When doing prototype work it's important that the programming language one
 uses is efficient to work with. This means that programmer efficiency is more
@@ -369,6 +367,9 @@ with those we knew from before. Of those \project{Ruby}%
   at \url{http://common-lisp.net}.
 }
 were the ones with language features that fitted our development process.
+All these languages supports multiple programming-paradigms though Common
+Lisp is most functional of nature  while Python and Ruby are more
+inclined towards object-orientation.
 
 They are all \term{latent typed}%
 \sidenote{
