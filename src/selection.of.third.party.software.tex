@@ -587,14 +587,19 @@ from.
 
 We decided to use an \abbr{ORM}%
 \sidenote{
-  \abbr{ORM}, an acronym for object-relational mapper or mapping, is
+  \abbr{ORM}, an acronym for object-relational mapping, is
   \postquote[\p{889}]{linskey07}{%
     the technique of converting records in a relational database into
     object instances in an object-oriented programming environment}
+  This is possible since \postquote[\p{2}]{marshall07}{%
+    relational databases can be represented reasonably in object-based code if
+    you simply think of database tables as classes, table rows as objects, and
+    table fields as object attributes}
+
 }
-for abstracting our persistance handeling. With such a solution we could
-change relational database engines transparently if  neccesary. In addition
-\abbr{ORM} libraries often provide a nice interface to the database
+library for abstracting our persistance handeling. With such a solution we
+could change relational database engines transparently if  neccesary. In
+addition \abbr{ORM} libraries often provide a nice interface to the database
 eliminating the need for constructing complex \abbr{SQL}.%
 \sidenote{
    \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
