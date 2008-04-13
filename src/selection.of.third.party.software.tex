@@ -582,44 +582,10 @@ from.
 % prototype application. load balancing not that important with
 % for instance nginx.
 
-
-\subsubsection{Persistance Library}
-
-We decided to use an \abbr{ORM}%
-\sidenote{
-  \abbr{ORM}, an acronym for object-relational mapping, is
-  \postquote[\p{889}]{linskey07}{%
-    the technique of converting records in a relational database into
-    object instances in an object-oriented programming environment}
-  This is possible since \postquote[\p{2}]{marshall07}{%
-    relational databases can be represented reasonably in object-based code if
-    you simply think of database tables as classes, table rows as objects, and
-    table fields as object attributes}
-
-}
-library for abstracting our persistance handeling. With such a solution we
-could change relational database engines transparently if  neccesary. In
-addition \abbr{ORM} libraries often provide a nice interface to the database
-eliminating the need for constructing complex \abbr{SQL}.%
-\sidenote{
-   \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
-   query language, now the \latin{de facto} language for interacting
-   with relational databases, invented by 
-   \citet[\p{250}]{chamberlin74}.
-}.
-The most popular \abbr{ORM} libraries for the Ruby language are%
-\evensidenote{
-  Available at respectively
-  \url{http://rubyforge.org/projects/activerecord},
-  \url{http://datamapper.org}, and
-  \url{http://sequel.rubyforge.org}.
-}:
-
-\begin{items}
-  \iterm{ActiveRecord} %describe
-  \iterm{DataMapper} % describe
-  \iterm{Sequel} %describe
-\end{items}
+\subsubsection{Cache Library}
+\label{section:selection.stack.server.cache}
+% memcached with memcache-client
+% List other alternatives. memcached is a memory cache.
 
 \subsection{Overview of Client \oldand Server Components}
 

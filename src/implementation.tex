@@ -149,9 +149,62 @@ providers. By seperating this computationally heavy part of the application
 into the server-side they were able to offload the clients in a similar
 manner we inteded when fetching data from \urort{}.
 
+\subsection{Persistence}
+In the planning stages of our implementation and it's early development we
+decided to store all information retrieved from the \urort{} web site
+in a relational database. We did some study into selecting the best
+\abbr{ORM}%
+\sidenote{
+  \abbr{ORM}, an acronym for object-relational mapping, is
+  \postquote[\p{889}]{linskey07}{%
+    the technique of converting records in a relational database into
+    object instances in an object-oriented programming environment}
+  This is possible since \postquote[\p{2}]{marshall07}{%
+    relational databases can be represented reasonably in object-based code if
+    you simply think of database tables as classes, table rows as objects, and
+    table fields as object attributes}
+
+}
+for connecting our application to the underlying database. We had this nice
+model where the underlying relational database engine was abstracted away
+and interaction to this database was done with a clear and explicative
+\abbr{DSL}%
+\sidenote{
+  \abbr{DSL} or domain-specific languages are programming languages shaped
+  for a specific domain. By doing so one can offer more expressiveness in a
+  limited application domain. This results in better usability
+  and increased productivity within the limited domain compared to
+  using a general-purpose programming language \citep[\p{317}]{mernik05}.
+},
+eliminating the need for constructing complex \abbr{SQL}.%
+\sidenote{
+  \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
+  query language, now the \latin{de facto} language for interacting
+  with relational databases, invented by 
+  \citet[\p{250}]{chamberlin74}.
+}.
+
+Then we had a sudden realization when coding on the part of our application
+that retrieved information from the external \urort{} web site, pushed it into
+our relational database, and made our data available in a structured manner
+trough our \abbr{ORM} layer. It was not critical if we lost some or the
+entirety of this data. We could just retrieve it again from our external
+source. And since the data had to be keept up to date by retrieving the data
+from our source within certain intervals we saw no need to make it available
+in a relational database. We were not trying to persist data, but rather
+keeping a cache of what we had retrieved.
+
+
 \subsection{Caching}
 % write about the cache and what is done on a \term{cache miss}. Also give
 % reasons for \term{time to live}.
+As described we came to the realization that no persistent data was needed
+in our implementation.
+% maybe user prefs? could be stored as cookies
+We therefore sat out to find the best cache solution for our needs as detailed
+in \sectionref{selection.stack.server.cache}.
+% write more about details of implementation, cache terms, our settings,
+% and custom cacheable object we implemented.
 
 \subsection{Asynchronous Requests}
 
