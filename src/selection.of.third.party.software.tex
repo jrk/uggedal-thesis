@@ -581,6 +581,19 @@ from.
 % which webserver we selected, and why (mongrel, thin)
 % prototype application. load balancing not that important with
 % for instance nginx.
+%
+% from merb author talk:
+% mongrel wins when you have varying response times. More than 2-3 seconds
+% or your making blocking calls to other web services. Other threads
+% can be scheduled and you can still accept new connections and run.
+% The event driven (ebb, evented mongrel, thin) are much faster,since they
+% don't have the overhead of threading, as long as your requests are
+% very short.
+% The event driven servers will fall apart for long running requests as
+% one blocking call can block the event loop which means that no other
+% sockets gets accepted and no other connections get processed. So there
+% is a big tradeoff. Nice to support all these kinds of models trough
+% rack.
 
 \subsubsection{Cache Library}
 \label{section:selection.stack.server.cache}
