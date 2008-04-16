@@ -36,7 +36,7 @@ implementation details we describe in this chapter.
 % try to cite and include anecdotes from
 % the paradox of choice: why more is less
 %
-% You know you?ve achieved perfection in design, not when you have nothing
+% You know you've achieved perfection in design, not when you have nothing
 % more to add, but when you have nothing more to take away.
 %   -- Antoine de Saint Exupery (The Little Prince)
 
@@ -89,7 +89,7 @@ depending how large the test population is. Having a crashing or
 non-functioning application during such testing could prove to be costly.
 
 We're therefore creating a prototype to demonstrate our ability (or inability)
-to develope software. This is not our sole reason, and probably not the most
+to develop software. This is not our sole reason, and probably not the most
 important. As \citet[\p{292}]{mayhew90} describes prototyping is not
 successful if one have not learned something during the process about what one
 set out to investigate at the outset. We want to investigate navigational
@@ -143,16 +143,16 @@ it allows us to cache data globally\dash{}shared by all clients. This means
 that data collection is handled on the server-side, while data display
 obviously is handled on the client-side.
 
-\citet[\p{887}--888]{nishimoto06} implemented a system for refinding places one
+\citet[\p{887}--888]{nishimoto06} implemented a system for re-finding places one
 have already visited on the Web. What's interesting about their system is that
 their architecture is strikingly similar to our own. They use a
 client-server model with a user-script enabled browser as their client. The
 client facilitates the users as they're navigating by supplying additional
 information alongside existing web pages. One of the ingredients in helping
 users in their browsing is suppling information from third party content
-providers. By seperating this computationally heavy part of the application
+providers. By separating this computationally heavy part of the application
 into the server-side they were able to offload the clients in a similar
-manner we inteded when fetching data from \urort{}.
+manner we intended when fetching data from \urort{}.
 
 \subsection{Persistence}
 In the planning stages of our implementation and it's early development we
@@ -194,7 +194,7 @@ that retrieved information from the external \urort{} web site, pushed it into
 our relational database, and made our data available in a structured manner
 trough our \abbr{ORM} layer. It was not critical if we lost some or the
 entirety of this data. We could just retrieve it again from our external
-source. And since the data had to be keept up to date by retrieving the data
+source. And since the data had to be kept up to date by retrieving the data
 from our source within certain intervals we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
 keeping a cache of what we had retrieved.
@@ -205,7 +205,7 @@ keeping a cache of what we had retrieved.
 % reasons for \term{time to live}.
 As described we came to the realization that no persistent data was needed
 in our implementation.
-% maybe user prefs? could be stored as cookies
+% maybe user preferences? could be stored as cookies
 We therefore sat out to find the best cache solution for our needs as detailed
 in \sectionref{selection.stack.server.cache}.
 % write more about details of implementation, cache terms, our settings,
@@ -224,11 +224,11 @@ This means that requests handled by the \code{XMLHttpRequest} object
 are independent of other requests the browser is making\dash{}they
 are non-blocking. This enables developers to create web pages where additional
 data is requested after the page is loaded by a normal \abbr{HTTP} request.
-This is often coupled with the ability to detect user behaviour, and contents
+This is often coupled with the ability to detect user behavior, and contents
 are requested only when needed. \citet[pp.281--282]{stamey06} argues that
 the increased complexity (and thereby size) of todays web pages have created
-problems in percieved responsivness for users due to network latency. He
-tinks asyncronous request of small content items solves this
+problems in perceived responsiveness for users due to network latency. He
+thinks asynchronous request of small content items solves this
 problem\dash{}bringing greater interactivity to the user. Another solution
 that can be combined is to move some processing into the client with
 JavaScript \citep[\p{9}]{jazayeri07}
@@ -246,8 +246,8 @@ Both our client-side and server-side programming languages are as we'll see in
   and finding \postquote[p{514}]{kay96}{%
     a more flexible version of assignment, and then try to
     eliminate it altogether}
-  The essence of object-orientation lies in the fundemental concepts of
-  abstraction, classes, encapsulation, inheretance, object, message passing,
+  The essence of object-orientation lies in the fundamental concepts of
+  abstraction, classes, encapsulation, inheritance, object, message passing,
   methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
 }.
 
@@ -270,8 +270,8 @@ Both our client-side and server-side programming languages are as we'll see in
 %
 % rake task for concatenating together javascript source in /ext/
 % maybe fetch jQuery from net with open-uri
-% have a version constant for eaesy fetching of required jQuery
+% have a version constant for easy fetching of required jQuery
 
 \section{Performance}
 % we did not design the application with performance in mind.
-% cite donald knuth Structured Programming with GO TO Statements
+% cite Donald Knuth Structured Programming with GO TO Statements
