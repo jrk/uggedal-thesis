@@ -578,26 +578,96 @@ automitically to \abbr{JSON} when a client requests this resource:
 \subsubsection{Web Server}
 
 Since our web framework builds on Rack we have several web servers to select
-from.
+from. The most prominent alternatives of Ruby servers are%
+\sidenote{
+  These serers can be found at respectively
+  \url{http://webrick.org},
+  \url{http://fastcgi.com},
+  \url{http://mongrel.rubyforge.org}.
+  \url{http://swiftiply.swiftcore.org/mongrel.html},
+  \url{http://code.macournoyer.com/thin}, and
+  \url{http://ebb.rubyforge.org}.
+}:
 
-% which webserver we selected, and why (mongrel, thin)
-% prototype application. load balancing not that important with
-% for instance nginx.
-%
-% from merb author talk:
-% mongrel wins when you have varying response times. More than 2-3 seconds
-% or your making blocking calls to other web services. Other threads
-% can be scheduled and you can still accept new connections and run.
-% The event driven (ebb, evented mongrel, thin) are much faster,since they
-% don't have the overhead of threading, as long as your requests are
-% very short.
-% The event driven servers will fall apart for long running requests as
-% one blocking call can block the event loop which means that no other
-% sockets gets accepted and no other connections get processed. So there
-% is a big tradeoff. Nice to support all these kinds of models trough
-% rack.
-% In general mongrel is still the best option for a general purpose
-% application.
+\begin{items}
+  \iterm{Webrick} is the original Ruby web server included in all recent
+    versions of the Ruby environment. Because of its simplicity it has
+    been widely used when developingweb applications. Unfortunately it's
+    painstakingly slow compared to the other alternatives.
+  \iterm{FastCGI} was the de facto way of running Ruby web applications
+    for production systems before Mongrel, the following alternative,
+    was released. It's basically an improvment over the well known
+    \abbr{CGI} model. Contrasted to it's ancestor the processes
+    of FastCGI are persistent and are reused when handeling requests
+    \citep{openmarket96}.
+  \iterm{Mongrel} was introduced as a faster alternative to Webrick.
+    One of the distinguishing factors of the library is that it
+    handles each request in it's own thread\dash{}enabeling it to
+    handle many concurrent requests. The project is now very mature
+    and can be concidered as the most stable Ruby web server.
+  \iterm{Evented Mongrel} is a fork of Mongrel which uses
+    an event loop in the way of the Reactor pattern
+    \citep[\p{529}]{schmidt95}
+    instead of using threading to handle multiple concurrent requests.
+    The requests are therefore handeled sequentially.
+  \iterm{Thin} is a fork of Evented Mongrel, promising even better
+    performance than the original Mongrel. It's an sequential
+    server which includes various
+    convenience functions for easily starting, stopping, and managing
+    a wide array of Thin servers.
+  \iterm{Ebb} is the newest kid on the block and are proving to be
+    faster than it's predecessors. It's entrirely written in C
+    and uses C libraries in contrast to Mongrel and the Mongrel forks
+    which are only partly written in C with Ruby libraries.
+    It supports both sequential and threaded processing of requests.
+    This project is fairly new and it's not recommended to utelize it
+    in production yet.
+\end{items}
+
+As we've seen the Ruby web server offerings are many and it can be quite hard
+to find out the best option. We first and foremost wanted a stable solution
+with decent performance. This eliminated Ebb in spite of its promising
+performance characteristics. Webrick and FastCGI is fairly outdated and leaves
+something to be desired in the performance department. Thin seems to have
+taken over the space Evented Mongrel used to occupy in the Ruby server world
+because of it's ease of use and improved performance.
+
+This leaves us with two choices: Thin and Mongrel. The most distinguishing
+feature between them is that Thin processes requests sequentially and Mongrel
+processes them in threads, enabeling concurrent processing. Wether
+sequential or concurrent processing is best depends on your application.
+In general a concurrent model wins when you have varying response times.
+If for instance one request takes several seconds to process all other
+requests to you application have to wait until the first request have
+finished processing when one are using a sequential model. For a concurrent
+model the first request can be processed in it's own thread while new requests
+can be accepted and processed in their own threads.
+
+Why then not use a concurrent model all the time? The drawback with a
+cuncurrent model is that creating threads is costly and introduces some
+overhead\dash{}resulting in longer response times. If your application
+only have fairly short response times you can take advantage of a
+sequential model where the time to process a response will be lower compared
+to a scenario where one have to create a new thread for each request.
+
+\citet{zygmuntowicz08} recommends using Mongrel, the concurrent server,
+for general purpose applications. He goes on to say that the treshold
+for wether one should use a sequential server is response times that
+are no longer than 2--3 seconds. Seeing as our application could very
+well fall outside this treshold for some requests%
+\sidenote{
+  When the data the user is requesting can not be found in the cache
+  we have to retrieve the data from \urort{} and perform calculations
+  on it. This can be quite time consuming and could very well exceed
+  the 2--3 second treshold \citeauthor{zygmuntowicz08} recommends
+  to use as guidance in server selection.
+}
+we followed the recommendations from \citeauthor{zygmuntowicz08} an opted
+to use Mongrel as our Ruby web server. By doing so we're on the safe side
+and can deliver simultaneous requests even if one of the requests are taking
+overly long to process. In addition we believe the overhead of using a
+concurrent model with threading would not introduce to much delay in
+response time for average timed requests compared to a sequential model.
 
 \subsubsection{Cache Library}
 \label{section:selection.stack.server.cache}
