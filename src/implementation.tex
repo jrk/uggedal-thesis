@@ -113,6 +113,181 @@ Our implementation basically needs to do two things:
     a way that we hope will enhance navigation.
 \end{enum}
 
+\subsection{Extending an Established Web Site}
+
+As we've described earlier in this chapter we're creating a prototype
+application. Inspired by solutions in the Hoodwink.d community we set
+out to implement our system on top of already established web pages as
+described in \sectionref{building.on.top.of.the.web}.
+
+\citet{laird07} makes a case for using the means of such a browser
+extension\dash{}Greasemonkey\dash{} and custom scripts for
+realizing projects that without such technology would
+never have come to existence. As he describe there is a sweet spot where such
+an approach really shines. He therefore created a framework for determining
+if a given project embodies the factors that would make this kind of an
+implementation a particularly suitable solution. What follows is a recitiation
+of his selection factors and how our project adheres to these.
+
+\subsubsection{Do you have access to the source code of the web application?}
+
+When the source code of the target web site is available it would proably
+be easier to just change that. The case is made for using Greasemonkey when
+the source code is not available. Since we don't have access to the internals
+of \urort{} we see this factor as favorable for Greasemonkey in our project.
+
+\subsubsection{If the application is under your control and source code is
+  available, is updating the application a risky endeavour?}
+
+This factor does not apply to our implementation since we obviously did not
+create \urort{} ourselves. Had we done that we could have used
+Greasemonkey for adding new features without putting the existing web
+site in danger as it would be externalized from the original implementation.
+
+\subsubsection{How critical is the feature to be added?}
+
+If the web site is not functional or complete without the new feature
+it is advisable to defer from using Greasemonkey. The reson is the
+difficulty of ensuring that all users have the extension installed
+and the newest version of the custom script. Since we will be able
+to ensure that our test users have the right extension and scripts
+installed this is of no concern to us. In addition \urort{} is
+functioning fine without our feature enhancement which makes
+Greasemonkey a sound technical solution for our means regarding this factor.
+
+
+\subsubsection{Is Firefox available for the potential users, and does it
+  work with the target application?}
+
+The Firefox web browser should be available to install on most plaforms
+and we can report that it works fine on the target web site.
+
+\subsubsection{To what degree are the target users computer literate?}
+
+Installing a web browser, an extension for it, and finally a custom script
+can be a bit complicated for certain users. We have to expect the
+test users to be a selection of our general population and some could
+therefore have trouble with achieving such a setup. On this aspect
+a soultion that alters the original application would work better
+since users are not required to change their computing environment.
+We hope to partly solve this problem with providing clear instrucitons
+for how users can configure their environments to support custom
+Greasemonkey scripts.
+
+\subsubsection{What size is the user population that needs the new feature?}
+
+This factor is based around the fact that server applications can be more
+easily updated since they seldom require intervention by the user. It's
+much harder to ensure that client applications like Greasemonkey are
+kept up-to-date by it's users. It's argued that such an approach works
+better for smaller populations and one should therefore keep users
+of custom Greasemonkey scripts to a minimum.
+
+Since we're not forseeing the use of our implementation outside user
+testing the application does not have to be keept up to date. In addition
+we're anticipating a fairly limited user base due to our test setting.
+Greasemonkey should therefore not put any hinderance in place for
+our implementation in relation to this factor.
+
+\subsubsection{Is the application exposed to the public internet?}
+
+This factor relates to the previous about keeping the user base limited.
+In addition to limiting the size of your user population it's also
+important to know them\dash{}know who your users are\dash{}so that
+one more easily can support them if need be. Since our application
+only will be available to test users we see no disatvantage to
+using Greasemonkey in this regard.
+
+\subsubsection{How often is the page structure in the web application
+  changing?}
+
+Since implementations based arround Greasemonkey often is dependent on the
+underlying web site and it's structure it's important that this remains
+stable while the implementation is in use. While we in our project
+will have a fairly small window in time of use we've been concerned
+that changes could break our implementation. This is especially true
+for our data collection implementation which relies very much on the structure
+of the \urort{} web site.
+
+We see to possible solutions for this problematic aspect of Greasemonkey
+implementations. Firsty communication between the developers of
+\urort{} and us about upcoming changes would allow us to anticipate
+them and handle them gracefully when they arrive. Secondly one could
+introduce a meta structure in the web site by using agreed-upon
+class names of certain \abbr{HTML} elements in the style of
+what \term{microformats}%
+\sidenote{
+  Microformats are a set of simple and open data formats for better
+  structuring of web content. All microformats adheres to the
+  principles of solving a specific problem, starting as simply as
+  possible, beeing designed for humans first\dash{}mashines second,
+  reusing elements from already established standards (and especially
+  usage of class names in \abbr{HTML} elements), beeing
+  modular and embeddable, and encouraging decentralized development,
+  content, and services \citep[\p{7}]{allsopp07}.
+}
+are trying to achieve.
+% disuss this further here or another place
+
+\subsubsection{Does the application manage or expose sensitive information?}
+
+Because of the architecure of Greasemonkey, scripts written for the extension
+can be vulnerable to attacks if the developer is not carefull. It's
+therefore not adviceable to use Greasemonkey for highly sensitive web sites.
+This is not a concern for our project as all the information handeled by our
+application can be found publicly and be viewed by all on the \urort{}
+web site.
+
+\subsubsection{Does the new feature require many changes to the existing web
+  application?}
+
+Using Greasemonkey to enhance and alter existing web pages is not as straight
+forward as altering the source of the web page. Therefore massive changes to
+an existing web site is best handeled directly in the source code leaving
+Greasemonkey to be best when only smaller alterations and addition are needed.
+
+The changes we propose to introduce in the \urort{} web site is not earth
+shattering in scope and size. We therefore believe and hope our implementation
+can be implemented without too much additional effort with Greasemonkey.
+
+\subsubsection{Does the target web application already have JavaScript code
+  that mutates the page?}
+
+This factor tries to capture the fact that the behaviour implemented with
+custom Greasemonkey scripts are run before any additional behaviour
+implemented in the web site itself. It's therefore hard to manipulate
+a web site that mutates over time.
+
+In our project we seem to be quite fortunate as we're only planning on adding
+behaviour to the \urort{} web site, not changing any existing behaviour.
+Therefore we don't have to concern ourselves with some of the dynamically
+already present on \urort{}.
+
+\subsubsection{Does the feature require communication with a server in a
+  different network domain than the web application?}
+
+Standard web pages can asynchronously retrieve information trough using
+JavaScript and the \code{XmlHttpRequest} object. To enforce a certain
+level of security browsers does not allow such requests to retrieve
+information from other domains than what the request was sent from.
+This limitation is eliminated in Greasemonkey scripts as one can request
+information from other domains trough a similar asynchronous request object
+existing in the extension.
+
+This feature is vital for our project. As we'll see in the next section we're
+dependent on requesting information from a resource that we ourself have
+control over from the custom Greasemonkey script. This resource is hovever
+not hosted in the domain that \urort{} is operating witin. Without
+cross-domain requests in Greasemonkey our implementation would be infeasible.
+
+Based on how our project positioned itself with regard to the important
+factors for the feasability of using Greasemonkey
+according to \citet{laird07}, we have to say that we
+don't see any major objections for doing so.
+We believe the benefits of a prototype implementation
+based on Greasemonkey outweighs the disadvantages with such a technical
+solution.
+
 \subsection{Client-Server Model}
 
 A client-server model is an architecture where one is separating a system into
