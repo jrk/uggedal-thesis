@@ -550,6 +550,8 @@
 \newcommand{\paras}[2]{paragraphs~#1--2}
 \newcommand{\p}[1]{p.~#1}
 \newcommand{\pp}[2]{pp.~#1--2}
+\newcommand{\chap}[1]{chapter~#1}
+\newcommand{\chaps}[2]{chapters~#1--#2}
 
 % Inline quotations
 \newcommand{\prequote}[4][]{\citet[#1]{#2} #3 \q{#4}.}
@@ -568,6 +570,14 @@
   \end{quote}
 }
 
+% Full quotation environment
+\newenvironment{fullquotation}[3][]{%
+  \citet[#1]{#2} #3:
+  \vspace{\baselineskip}
+  \itshape\noindent
+}{%
+  \vspace{\baselineskip}
+}
 % Double page citation
 \newcommand{\citedouble}[4]{%
   (\citealp[#1]{#2}; \citealp[#3]{#4})%
