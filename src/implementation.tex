@@ -71,8 +71,6 @@ means \citep{whitman69}.
 %   -- Antoine de Saint Exupery (The Little Prince)
 
 \section{Process}
-% Prototype, exploratory
-% TDD, BDD
 
 \subsection{Prototyping}
 
@@ -127,11 +125,38 @@ designs an the prototype is with such a focus nearly a means to an end.
 
 \subsection{Testing}
 
-% Wilson Bilkovich in The Rails Way:
-% Writing applications without tests makes you a bad person,
-% incapable of love.
-%
-% Good BDD vs TDD discussion: http://dannorth.net/introducing-bdd/
+Wilson Bilkovich argued strongly about the importance of testing in
+\work{The Rails Way} by
+\begin{fullquote}[\p{551}]{fernandez07}{}
+  Writing applications without tests makes you a bad person,
+  incapable of love.
+\end{fullquote}
+
+While we would not voice our support of testing applications as strongly,
+we have experienced benefits with using automated testing for verifying
+that our application functions as it's supposed to do as code is added
+and changed. \term{Test-driven development} is a development technique
+where one writes an automated test for a non-existent feature or
+improvment before one actually implement the feature itself\dash{}development
+is literally driven by tests.
+% refer to test driven development by example, kent beck
+
+\term{Behaviour-driven development} is a response to the test-driven
+development approach introduced by \citeauthor{north06} for shifting the focus
+from writing tests to writing specifications of behaviour
+\citep{north06}. By writing specifications one is able to
+more clearly describe the intent of an application than when one
+are writing traditional tests.
+% write about sahir-whort from
+% http://blog.daveastels.com/files/BDD_Intro.pdf
+
+We are convinced of the benefits of behaviour-driven development based on
+earlier development projects and are therefore developing our
+prototype application with such a development process. Having specifications
+that can be automatically run to check how our application conforms to our
+expectations is very valuable. This is especially so when we're working
+with \urort{} as an external data source since we don't have controll over
+the stability of it's structure.
 
 \section{Architecture}
 
