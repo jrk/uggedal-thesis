@@ -49,7 +49,7 @@ similar to that practiced by
   when a body has been stripped down to its nakedness.
 \end{fullquotation}
 
-This philosoply is closely related to minimalism, a movement where the
+This philosophy is closely related to minimalism, a movement where the
 infamous architect Mies van der Rohe popularized the concept of
 \q{less is more}\dash{}achieving the maximum effect with the minimum of
 means \citep{whitman69}.
@@ -137,25 +137,25 @@ we have experienced benefits with using automated testing for verifying
 that our application functions as it's supposed to do as code is added
 and changed. \term{Test-driven development} is a development technique
 where one writes an automated test for a non-existent feature or
-improvment before one actually implement the feature itself\dash{}development
+improvement before one actually implement the feature itself\dash{}development
 is literally driven by tests.
 % refer to test driven development by example, kent beck
 
-\term{Behaviour-driven development} is a response to the test-driven
+\term{Behavior-driven development} is a response to the test-driven
 development approach introduced by \citeauthor{north06} for shifting the focus
-from writing tests to writing specifications of behaviour
+from writing tests to writing specifications of behavior
 \citep{north06}. By writing specifications one is able to
 more clearly describe the intent of an application than when one
 are writing traditional tests.
 % write about sahir-whort from
 % http://blog.daveastels.com/files/BDD_Intro.pdf
 
-We are convinced of the benefits of behaviour-driven development based on
+We are convinced of the benefits of behavior-driven development based on
 earlier development projects and are therefore developing our
 prototype application with such a development process. Having specifications
 that can be automatically run to check how our application conforms to our
 expectations is very valuable. This is especially so when we're working
-with \urort{} as an external data source since we don't have controll over
+with \urort{} as an external data source since we don't have control over
 the stability of it's structure.
 
 \section{Architecture}
@@ -181,18 +181,18 @@ realizing projects that without such technology would
 never have come to existence. As he describe there is a sweet spot where such
 an approach really shines. He therefore created a framework for determining
 if a given project embodies the factors that would make this kind of an
-implementation a particularly suitable solution. What follows is a recitiation
+implementation a particularly suitable solution. What follows is a recitation
 of his selection factors and how our project adheres to these.
 
 \subsubsection{Do you have access to the source code of the web application?}
 
-When the source code of the target web site is available it would proably
+When the source code of the target web site is available it would probably
 be easier to just change that. The case is made for using Greasemonkey when
 the source code is not available. Since we don't have access to the internals
 of \urort{} we see this factor as favorable for Greasemonkey in our project.
 
 \subsubsection{If the application is under your control and source code is
-  available, is updating the application a risky endeavour?}
+  available, is updating the application a risky endeavor?}
 
 This factor does not apply to our implementation since we obviously did not
 create \urort{} ourselves. Had we done that we could have used
@@ -202,7 +202,7 @@ site in danger as it would be externalized from the original implementation.
 \subsubsection{How critical is the feature to be added?}
 
 If the web site is not functional or complete without the new feature
-it is advisable to defer from using Greasemonkey. The reson is the
+it is advisable to defer from using Greasemonkey. The reason is the
 difficulty of ensuring that all users have the extension installed
 and the newest version of the custom script. Since we will be able
 to ensure that our test users have the right extension and scripts
@@ -214,7 +214,7 @@ Greasemonkey a sound technical solution for our means regarding this factor.
 \subsubsection{Is Firefox available for the potential users, and does it
   work with the target application?}
 
-The Firefox web browser should be available to install on most plaforms
+The Firefox web browser should be available to install on most platforms
 and we can report that it works fine on the target web site.
 
 \subsubsection{To what degree are the target users computer literate?}
@@ -223,9 +223,9 @@ Installing a web browser, an extension for it, and finally a custom script
 can be a bit complicated for certain users. We have to expect the
 test users to be a selection of our general population and some could
 therefore have trouble with achieving such a setup. On this aspect
-a soultion that alters the original application would work better
+a solution that alters the original application would work better
 since users are not required to change their computing environment.
-We hope to partly solve this problem with providing clear instrucitons
+We hope to partly solve this problem with providing clear instructions
 for how users can configure their environments to support custom
 Greasemonkey scripts.
 
@@ -238,10 +238,10 @@ kept up-to-date by it's users. It's argued that such an approach works
 better for smaller populations and one should therefore keep users
 of custom Greasemonkey scripts to a minimum.
 
-Since we're not forseeing the use of our implementation outside user
-testing the application does not have to be keept up to date. In addition
+Since we're not foreseeing the use of our implementation outside user
+testing the application does not have to be kept up to date. In addition
 we're anticipating a fairly limited user base due to our test setting.
-Greasemonkey should therefore not put any hinderance in place for
+Greasemonkey should therefore not put any hindrance in place for
 our implementation in relation to this factor.
 
 \subsubsection{Is the application exposed to the public internet?}
@@ -250,13 +250,13 @@ This factor relates to the previous about keeping the user base limited.
 In addition to limiting the size of your user population it's also
 important to know them\dash{}know who your users are\dash{}so that
 one more easily can support them if need be. Since our application
-only will be available to test users we see no disatvantage to
+only will be available to test users we see no disadvantage to
 using Greasemonkey in this regard.
 
 \subsubsection{How often is the page structure in the web application
   changing?}
 
-Since implementations based arround Greasemonkey often is dependent on the
+Since implementations based around Greasemonkey often is dependent on the
 underlying web site and it's structure it's important that this remains
 stable while the implementation is in use. While we in our project
 will have a fairly small window in time of use we've been concerned
@@ -265,7 +265,7 @@ for our data collection implementation which relies very much on the structure
 of the \urort{} web site.
 
 We see to possible solutions for this problematic aspect of Greasemonkey
-implementations. Firsty communication between the developers of
+implementations. Firstly communication between the developers of
 \urort{} and us about upcoming changes would allow us to anticipate
 them and handle them gracefully when they arrive. Secondly one could
 introduce a meta structure in the web site by using agreed-upon
@@ -275,21 +275,21 @@ what \term{microformats}%
   Microformats are a set of simple and open data formats for better
   structuring of web content. All microformats adheres to the
   principles of solving a specific problem, starting as simply as
-  possible, beeing designed for humans first\dash{}mashines second,
+  possible, being designed for humans first\dash{}machines second,
   reusing elements from already established standards (and especially
-  usage of class names in \abbr{HTML} elements), beeing
+  usage of class names in \abbr{HTML} elements), being
   modular and embeddable, and encouraging decentralized development,
   content, and services \citep[\p{7}]{allsopp07}.
 }
 are trying to achieve.
-% disuss this further here or another place
+% discuss this further here or another place
 
 \subsubsection{Does the application manage or expose sensitive information?}
 
-Because of the architecure of Greasemonkey, scripts written for the extension
-can be vulnerable to attacks if the developer is not carefull. It's
+Because of the architecture of Greasemonkey, scripts written for the extension
+can be vulnerable to attacks if the developer is not careful. It's
 therefore not adviceable to use Greasemonkey for highly sensitive web sites.
-This is not a concern for our project as all the information handeled by our
+This is not a concern for our project as all the information handled by our
 application can be found publicly and be viewed by all on the \urort{}
 web site.
 
@@ -298,7 +298,7 @@ web site.
 
 Using Greasemonkey to enhance and alter existing web pages is not as straight
 forward as altering the source of the web page. Therefore massive changes to
-an existing web site is best handeled directly in the source code leaving
+an existing web site is best Handel-ed directly in the source code leaving
 Greasemonkey to be best when only smaller alterations and addition are needed.
 
 The changes we propose to introduce in the \urort{} web site is not earth
@@ -308,13 +308,13 @@ can be implemented without too much additional effort with Greasemonkey.
 \subsubsection{Does the target web application already have JavaScript code
   that mutates the page?}
 
-This factor tries to capture the fact that the behaviour implemented with
-custom Greasemonkey scripts are run before any additional behaviour
+This factor tries to capture the fact that the behavior implemented with
+custom Greasemonkey scripts are run before any additional behavior
 implemented in the web site itself. It's therefore hard to manipulate
 a web site that mutates over time.
 
 In our project we seem to be quite fortunate as we're only planning on adding
-behaviour to the \urort{} web site, not changing any existing behaviour.
+behavior to the \urort{} web site, not changing any existing behavior.
 Therefore we don't have to concern ourselves with some of the dynamically
 already present on \urort{}.
 
@@ -322,7 +322,7 @@ already present on \urort{}.
   different network domain than the web application?}
 
 Standard web pages can asynchronously retrieve information trough using
-JavaScript and the \code{XmlHttpRequest} object. To enforce a certain
+JavaScript and the \code{XMLHttpRequest} object. To enforce a certain
 level of security browsers does not allow such requests to retrieve
 information from other domains than what the request was sent from.
 This limitation is eliminated in Greasemonkey scripts as one can request
@@ -331,12 +331,12 @@ existing in the extension.
 
 This feature is vital for our project. As we'll see in the next section we're
 dependent on requesting information from a resource that we ourself have
-control over from the custom Greasemonkey script. This resource is hovever
-not hosted in the domain that \urort{} is operating witin. Without
+control over from the custom Greasemonkey script. This resource is however
+not hosted in the domain that \urort{} is operating within. Without
 cross-domain requests in Greasemonkey our implementation would be infeasible.
 
 Based on how our project positioned itself with regard to the important
-factors for the feasability of using Greasemonkey
+factors for the feasibility of using Greasemonkey
 according to \citet{laird07}, we have to say that we
 don't see any major objections for doing so.
 We believe the benefits of a prototype implementation
