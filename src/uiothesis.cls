@@ -574,7 +574,8 @@
 \newenvironment{fullquotation}[3][]{%
   \citet[#1]{#2} #3:
   \vspace{\baselineskip}
-  \itshape\noindent
+
+  \itshape
 }{%
   \vspace{\baselineskip}
 }
