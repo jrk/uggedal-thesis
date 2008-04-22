@@ -125,21 +125,27 @@ designs an the prototype is with such a focus nearly a means to an end.
 
 \subsection{Testing}
 
-Wilson Bilkovich argued strongly about the importance of testing in
-\work{The Rails Way} by
-\begin{fullquote}[\p{551}]{fernandez07}{}
-  Writing applications without tests makes you a bad person,
-  incapable of love.
-\end{fullquote}
-
-While we would not voice our support of testing applications as strongly,
-we have experienced benefits with using automated testing for verifying
-that our application functions as it's supposed to do as code is added
-and changed. \term{Test-driven development} is a development technique
+One can verify that the application one are bulding functions as it's supposed
+to do as code is added and changed by using automated tests.
+We have personally experienced benefits with using automated testing on
+earlier projects.
+\term{Test-driven development} is a development technique
 where one writes an automated test for a non-existent feature or
 improvement before one actually implement the feature itself\dash{}development
-is literally driven by tests.
-% refer to test driven development by example, kent beck
+is literally driven by tests. So the focus is not primarily on the test, but
+to better design software trough a test-first approach.
+\citet{janzen07} conduceted studies
+on both developers in companies and university students for finding out
+wheter a test-driven approach improved the quality of software design.
+Groups which wrote a test before the accompanying code were measured
+against groups which wrote their test after implementing the solution.
+They found that code size decreased when a test-first approach was
+used\dash{}both classes and methods were smaller and simpler. In addition
+test-first developers had better coverage of the implementation code in
+their tests \citep[\p{81}]{janzen07}. This could indicate that it's
+easier to choose not to implement tests after you have a piece
+of working code. The dicipline that test-driven development dictates
+makes it impossible not to write tests.
 
 \term{Behavior-driven development} is a response to the test-driven
 development approach introduced by \citeauthor{north06} for shifting the focus
