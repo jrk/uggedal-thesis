@@ -25,6 +25,11 @@ implementation details we describe in this chapter.
 
 \section{Design}
 
+When we're talking about design we mean how the application we're making is
+presented to users. For discussion of how the software is designed
+or architected internally, take a look at
+\sectionref{section:implementation.architecture}.
+
 Our philosophy when creating a navigational design have been
 similar to that practiced by
 \begin{fullquotation}[\chap{3}]{exupery67}{in aviation design}
@@ -53,6 +58,8 @@ This philosophy is closely related to minimalism, a movement where the
 infamous architect Mies van der Rohe popularized the concept of
 \q{less is more}\dash{}achieving the maximum effect with the minimum of
 means \citep{whitman69}.
+That is why we feel the application we're creating should provide users
+with only the neccessary information for affording navigational behavior.
 
 \citet{schwartz04} wrote a book called
 \work{The Paradox of Choice: Why More Is Less} in which he explains that
@@ -60,6 +67,19 @@ we in our modern society have an overabundance of choice. All these choices
 can produce phychological distress. As \citeauhor{schwartz04} explains this
 problem can be resolved by limiting the ammount of choices we are presented
 with.
+
+Our design could potentially introduce even more choices. We're
+introducing more information, and more navigational choices, into the
+\urort{} web site. A possible solution could be to remove some of the
+choices presented to the user if we felt the choices we're providing in
+regards to navigation were of higher importance than those provided by
+default. We decided against this since we want to test our navigational
+design in opposition to the navigational designs already provided. By
+eliminating some of the dafult navigation we would not be sure
+if potentially more satisfied users was the result of our removal of
+choices or the new choices we provided.
+
+
 
 % The design is in a way a recommendation system or could be made into one
 % based on how the activity is filtered.
@@ -166,6 +186,7 @@ with \urort{} as an external data source since we don't have control over
 the stability of it's structure.
 
 \section{Architecture}
+\label{section:implementation.architecture}
 
 Our implementation basically needs to do two things:
 
