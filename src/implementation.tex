@@ -414,7 +414,8 @@ providers. By separating this computationally heavy part of the application
 into the server-side they were able to offload the clients in a similar
 manner we intended when fetching data from \urort{}.
 
-\subsection{Persistence}
+\subsection{Caching}
+
 In the planning stages of our implementation and it's early development we
 decided to store all information retrieved from the \urort{} web site
 in a relational database. We did some study into selecting the best
@@ -455,14 +456,10 @@ our relational database, and made our data available in a structured manner
 trough our \abbr{ORM} layer. It was not critical if we lost some or the
 entirety of this data. We could just retrieve it again from our external
 source. And since the data had to be kept up to date by retrieving the data
-from our source within certain intervals we saw no need to make it available
+from our source within certain intervals, we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
 keeping a cache of what we had retrieved.
 
-
-\subsection{Caching}
-% write about the cache and what is done on a \term{cache miss}. Also give
-% reasons for \term{time to live}.
 As described we came to the realization that no persistent data was needed
 in our implementation.
 % maybe user preferences? could be stored as cookies
@@ -470,6 +467,9 @@ We therefore sat out to find the best cache solution for our needs as detailed
 in \sectionref{selection.stack.server.cache}.
 % write more about details of implementation, cache terms, our settings,
 % and custom cacheable object we implemented.
+
+% write about the cache and what is done on a \term{cache miss}. Also give
+% reasons for \term{time to live}.
 
 \subsection{Asynchronous Requests}
 
