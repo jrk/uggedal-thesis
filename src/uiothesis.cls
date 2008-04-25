@@ -281,30 +281,34 @@
 
 % Automatic aligned sidenote
 \DeclareRobustCommand{\sidenote}[2][0em]{%
-  \strictpagechecktrue
-  \ifodd\c@page
-    \oddsidenote[#1]{#2}
-  \else
-    \evensidenote[#1]{#2}
-  \fi
+  \strictpagechecktrue%
+  \ifodd\c@page%
+    \oddsidenote[#1]{#2}%
+  \else%
+    \evensidenote[#1]{#2}%
+  \fi%
 }%
 
 % Forced right or left aligned sidenote
 \DeclareRobustCommand{\oddsidenote}[2][0em]{%
   \footnotemark%
+  \ignorespaces%
   \marginpar{%
     \vspace*{#1}
     \RaggedRight \footnotesize
     \sidemark{\thefootnote}\ignorespaces#2
   }%
+  \unskip%
 }%
 \DeclareRobustCommand{\evensidenote}[2][0em]{%
   \footnotemark%
+  \ignorespaces%
   \marginpar{%
     \vspace*{#1}
     \RaggedLeft \footnotesize
     \sidemark{\thefootnote}\ignorespaces#2
   }%
+  \unskip%
 }%
 
 % Sidetable
