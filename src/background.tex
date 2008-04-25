@@ -594,7 +594,6 @@ had a list of pointers to other web pages they deemed interesting enough to go
 trough the trouble of creating such a listing. By doing this they created
 an opportunity for navigation based on social factors.
 
-% should this be in the analysis section?
 While pointer pages still is in existence it seems that the increasing
 use of blogs (see \tablepageref{blog.usage})
 have resulted in a new form for sharing interesting web pages,
@@ -607,16 +606,15 @@ An example of a blogroll can be seen in \figureref{scrsh.dailykos.blogroll}.
 
 A new phenomena appeared to the mainstream with the introduction of the
 \project{del.icio.us}
-%\sidenote{
-  % fill in here
-%}
+\sidenote{
+  Initially a system for organizing Joshua Scachter's personal bookmark
+  collection, del.icio.us was introduced to a wider audience in 2003
+  \citep[\p{223}]{livingston07}.
+  del.icio.us is available at \url{http://del.icio.us}. 
+}
 \term{social bookmarking} system. This web page made individual
 bookmark collections globally available, making it easy to discover what other
-people takes notice of.
-%cite, discuss further, lead in to next section.
-
-\todo{Include short history of social bookmarking.}
-
+people was taking notice of.
 
 \sidefigure{Blogroll}{%
   Blogroll for Daily Kos,
@@ -641,49 +639,47 @@ trough a bookmarking service, requires a conscious effort. One would believe
 that people only choose to do so for information they find interesting.
 
 \subsubsection{Item Annotation}
-% tagging
-% articles with tagging in context of social navigation
-% lot of more discussion of tagging and mostly related to organizing
-% principles and folksonomy
 
 In addition to being a modern form of pointer pages, social bookmarking
-introduced a new way to annotate items. By applying textual key words to
+with del.icio.us introduced a new way to annotate all kinds of
+items (photos, articles, wine, books, videos, music, and so on).
+By applying textual key words to
 bookmarks\dash{}and later other types of content\dash{}users were able to
 browse such collections in new ways. These key words have been popularized as
-\term{tags} and the act of applying them is called \term{tagging}. Tagging
-enables a user driven ontology%
-\sidenote[-9\onelineskip]{
-  An ontology has been defined as
-  \postquote[199]{gruber93}{%
-    a specification of a representational vocabulary for a shared
-    domain of discourse\dash{}definitions of classes, relations, functions,
-    and other objects}
-  \citeauthor{bernerslee01} gives a clearer description of an ontology as
-  \postquoteyear[p.40]{bernerslee01}{%
-    a document or file that formally defines
-    the relations among terms}
-}
-and this is often called an \term{folksonomy}.
-% cite cite cite cite
-Item annotation is often a collaborative process. Some web pages give
-suggestions for tags if the item you're annotating have been tagged by others
-previously. Users are then more inclined to use some or all of these tags than
+\term{tags} and the act of applying them is called \term{tagging}. Joshua
+Schachter, the creator of del.icio.us, hightlight tagging as it's most
+essential feature\dash{}the feature that set it apart from the competition
+\cite[\p{225}]{livingston07}.
+
+Tagging enables a user driven taxonomy (classification)
+which is often called an \term{folksonomy}\dash{}a combination of the words
+\emph{folk} and \emph{taxonomy}. A folksonomy is a stricktly bottom-up
+approach because of the lack of any predefined taxanomic structure. They
+therefore rely on \postquote[\p{31}]{marlow06}{%
+  shared and emergent social structures and behaviours, as well as related and
+  linguistic structures of the user community}
+Since we're mainly interested in the navigational possibilites tagging can
+give us we're leaving out a deeper discussion of the benefits and drawbacks
+of folksonomies. \citet{golder06} and \citet{marlow06} gives a datailed
+account of the tag usage and structure in respectively del.icio.us and
+Flickr.
+
+As we've described tagging is often a collaborative process. Some web pages
+for instance give suggestions for tags if the item you're annotating have
+been tagged by others previously. Based on our own observations it seems
+users are then more inclined to use some or all of these tags than
 to come up with their own. This makes sense if you're annotating a bookmark.
 You have your own representation of the bookmark given by the name you gave it
 and the tags you chose to apply. Since a bookmark is distinguished by a
 \abbr{URL} others can have other representations of the same resource. For
 other content items as photos in a photo sharing site it makes more sense to
 allow every user, not only the creator, to apply globally visible tags.
-% cite cite cite cite
-
-\todo{Citations needed.}
-
-\todo{Implementations and studies needs to be discussed.}
-
-% try to cite and include anecdotes from everything is miscellaneous
+\citet[\pp{34}{36}]{marlow06} gives a very detailed account of how tagging
+systems can differ in design and how such variations can result in
+folksonomies with different characteristics.
 
 We've seen that item annotation or tagging can be used to annotate items for
-describe the information they convey. As we'll see in
+describing the information they convey. As we'll see in
 \sectionref{background.social.navigation.applied.forms.recommendations}
 annotations can also be used for describing the quality, importance, or
 usefulness of an item and thereby potentially creating recommendations.
@@ -800,6 +796,9 @@ the impression
   annotation-based social navigation increases the chance of
   accessing a resource dramatically.
 \end{fullquote}
+
+% include discussion of tags in relation to recommendations (note in tagging
+% seciton)
 
 \subsubsection{Social Texture}
 % activity, usage, edit/read wear
