@@ -615,7 +615,7 @@
     \bigskip
 
     The body text is set 12/14.5pt on a 26pc measure with\\
-    Minion Pro designed by Robert Slimback.\\
+    Minion Pro designed by Robert Slimbach.\\
     This neohumanistic font was first issued by Adobe\\
     Systems in 1989 and have since been revised.\\
     Other fonts include Sans and Typewriter from\\
