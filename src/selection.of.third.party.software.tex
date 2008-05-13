@@ -898,3 +898,30 @@ status of your test suite as you move along.
 
 Since we were unable to utilize automated tests on the client side we had to
 resort to a debugger checking for correctness in our code while developing.
+There are currently two JavaScript debuggers for the Firefox browser:
+\project{Venkman}%
+\sidenote{
+  Located at \url{http://www.mozilla.org/projects/venkman/}.
+}
+and \project{Firebug}%
+\sidenote{
+  Available at \url{http://www.getfirebug.com}.
+}.
+The latter have a considerably less intrusive interface than the former and
+seems to be much more actively developed as of this writing. Firebug have the
+most advanced features with a better user interface. Our choice of a client
+side debugger was simple.
+
+On the server side we never saw the need for a debugger since we developed all
+our code in a behaviour-driven way enabeling us to both catch bugs and form
+solutions trough our specification suite. But as described in
+\sectionref{implementation.performance} we stumbled upon some major
+performance problems. For locating the bottlenecks in our
+application\dash{}the places that consumed the most time\dash{}we used
+a profiler called \project{ruby-prof}%
+\sidenote{
+  Available at \url{http://rubyforge.org/projects/ruby-prof}.
+}.
+This is the fastest profiler for Ruby and it can generate various forms of
+reports which enables a developer to understand the time related aspects of
+his code.

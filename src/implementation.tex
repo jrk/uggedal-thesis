@@ -558,5 +558,16 @@ Both our client-side and server-side programming languages are as we'll see in
 % have a version constant for easy fetching of required jQuery
 
 \section{Performance}
+\label{section:implementation.performance}
 % we did not design the application with performance in mind.
 % cite Donald Knuth Structured Programming with GO TO Statements
+%
+% Problems:
+% - fetching HTML and parse ~ 45s
+% - only parse ~ 14s
+%
+% Made prefetch trough downloading
+% May need to limit number of favorites to fetch based on time
+%
+% This is not premature optimization!
+%
