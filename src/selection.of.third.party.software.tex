@@ -589,7 +589,7 @@ automitically to \abbr{JSON} when a client requests this resource:
 Since our web framework builds on Rack we have several web servers to select
 from. The most prominent alternatives of Ruby servers are%
 \sidenote{
-  These serers can be found at respectively
+  These servers can be found at respectively
   \url{http://webrick.org},
   \url{http://fastcgi.com},
   \url{http://mongrel.rubyforge.org}.
@@ -834,3 +834,66 @@ learning curve the benefits the editor gives you are worth it.
     dread, what you're using now is almost certainly under powered, and you
     definitely haven't customized it enough.
 \end{fullquote}
+
+\subsubsection{Testing Suites}
+
+As described in \sectionref{implementation.process.testing} we're firm
+believers of using automated testing when developing applications.
+
+Greasemonkey user scripts inherit a strict security model where the
+\abbr{DOM} one is interacting with are a special copy of the browser's
+\abbr{DOM}. In the case of testing this is unfortunate since it's very
+complicated to get a testing library to properly run within this secure model.
+
+We initially tried to adapt the \project{Screw Unit}%
+\sidenote{
+  Available at \url{http://github.com/nkallen/screw-unit}.
+}
+JavaScript based behaviour-driven development library to the intricacies of
+Greasemonkey user scripts, but had to give up. We therefore had to develop
+without automated tests on the client side.
+Fortunately the most complicated logic of our application are on the server
+side and our client side development process did not get to hard despite the
+lack of a proper testing suite.
+
+On the server side we had better success with integrating a testing suite into
+our application. There are several options available when selecting amongst
+Ruby testing suites. We're ignoring traditional test-driven libraries as
+we're proponents of a behaviour-driven style
+(\sectionref{implementation.process.testing}). We looked at%
+\sidenote{
+  These behaviour libraries ca be found at respectively
+  \url{http://rspec.info},
+  \url{http://rubyspec.org},
+  \url{http://chneukirchen.org/repos/testspec}, and
+  \url{http://chneukirchen.org/repos/bacon}.
+}:
+
+\begin{items}
+  \iterm{RSpec} is the original behaviour-driven suite for Ruby. It's
+    therefore the most mature project and have the best integration with
+    other tools. It does seem to suffer from too much complexity in it's code
+    base. The following suties adresses this complexity problem.
+  \iterm{MSpec} have more features than RSpec in spite of having clearer
+    source code.
+  \iterm{test/spec} is an interface for writing specifications of behavior
+    on top of the original Ruby unit testing library and are therefore
+    compatible with tests written with it.
+  \iterm{Bacon} is the smallest of the suites when counting source code
+    but still implements the majority of the fatures of it's big brothers.
+    It's still a young project and have therefore not seen much usage.
+\end{items}
+
+Based on the tool support and code maturety we decided to use RSpec for our
+development. This allowed us to use \project{autotest}, a part of
+\project{ZenTest}%
+\sidenote{
+  Available at \url{http://www.zenspider.com/ZSS/Products/ZenTest/}.
+}
+which continously runs your test suite as you make changes to your source code
+files. This way you can keep your focus on the editor and only glance over the
+status of your test suite as you move along.
+
+\subsection{Debugger \& Profiler}
+
+
