@@ -918,7 +918,15 @@ solutions trough our specification suite. But as described in
 \sectionref{implementation.performance} we stumbled upon some major
 performance problems. For locating the bottlenecks in our
 application\dash{}the places that consumed the most time\dash{}we used
-a profiler called \project{ruby-prof}%
+a \term{profiler}%
+\sidenote{
+  A profiler is a tool used by developers for identifying the execution time
+  of various parts of a program and how often these
+  parts of the program are utilized. It's used when trying to improve the
+  performance of a segment of a given program and should be used in an
+  iterative way \citep[\p{125}]{graham82}.
+}
+called \project{ruby-prof}%
 \sidenote{
   Available at \url{http://rubyforge.org/projects/ruby-prof}.
 }.
