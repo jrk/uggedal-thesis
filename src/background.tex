@@ -1088,8 +1088,18 @@ navigation techniques.
 
 \subsubsection{Collaborative Filtering}
 \label{section:background.social.navigation.applied.forms.collaborative.filtering}
-% introduce earlier cited goldberg92 article and more recent work.
-% collaborative filtering is often used for recommendation systems
+
+\term{Collaborative filtering} \prequote[\p{175}]{resnick94}{%
+  help people make choices based on the opinions of other people}
+The origin of the concept comes from the \project{Information Tapestry}
+project where users could annotate electronic documents arriving in a
+continous stream\dash{}typically email messages \citep[\p{69}]{goldberg92}. By
+installing a pre-existing filter or creating one from scratch in a
+special query language users were able to filter out the essential documents
+based both on explicit feedback trough annotations and implicit feedback such
+as meta-data concerning the document \citep[\p{62}]{goldberg92}.
+
+
 % look at the benefits of implicit feedback in contrast to explicit feedback
 % with regard to recommendation systems as highlighted by claypool01.
 %
@@ -1097,7 +1107,9 @@ navigation techniques.
 %
 % serendipity
 
-\todo{Discuss the most important articles and implementations.}
+
+As we'll see next, collaborative filtering is often applied to generate
+recommendations for users.
 
 \subsubsection{Recommendation Systems}
 \label{section:background.social.navigation.applied.forms.recommendations}
