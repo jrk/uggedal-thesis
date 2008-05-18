@@ -439,6 +439,22 @@ it allows us to cache data globally\dash{}shared by all clients. This means
 that data collection is handled on the server-side, while data display
 obviously is handled on the client-side.
 
+Following the characterization of client-server systems given by
+\citeauthor{sinha92} our client is presenting a user interface
+by altering the structure of the \urort{} web page. The client sends queries
+to the server in the form of \abbr{HTTP}%
+\sidenote{
+  Hyper Text Transfer Protocol. The data transfer protocol for the Web.
+}
+formatted requests. Interestingly \abbr{HTTP} is also is the communication
+method in our system. Our server takes these queries in \abbr{HTTP} form
+and goes to the \urort{} web site to collect the data it needs. Based on the
+data the server finds at the external \urort{} web site the server does some
+computations on the data before a response is sendt
+with the \abbr{HTTP} communication method to the client. The client take this
+data (which is represented in a predefined format) and uses it to alter the
+user interface by introducing new information.
+
 \citet[\p{887}--888]{nishimoto06} implemented a system for re-finding places
 one have already visited on the Web. What's interesting about their system is
 that their architecture is strikingly similar to our own. They use a
@@ -498,7 +514,6 @@ keeping a cache of what we had retrieved.
 
 As described we came to the realization that no persistent data was needed
 in our implementation.
-% maybe user preferences? could be stored as cookies
 We therefore sat out to find the best cache solution for our needs as detailed
 in \sectionref{selection.stack.server.cache}.
 % write more about details of implementation, cache terms, our settings,
