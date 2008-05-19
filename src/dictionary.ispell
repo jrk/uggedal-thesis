@@ -2,12 +2,16 @@ Admin
 affordance
 agere
 aggregator
+aggregators
 alahmad
 allsopp
+andel
 anderson
 Andreas
 ansi
+API
 apis
+APIs
 applets
 architected
 armstrong
@@ -25,6 +29,7 @@ blogging
 blogroll
 blogrolls
 blogs
+boyd
 brin
 brusilovsky
 butterfield
@@ -54,6 +59,7 @@ Dogear
 dom
 dourish
 DSL
+dubinko
 ecma
 ECMAScript
 eich
@@ -73,10 +79,14 @@ findability
 firefox
 flanagan
 flickr
+floyd
 fogel
+fokker
 folksonomies
 folksonomy
 FoxPro
+FriendFeed
+Friendster
 garrett
 geo
 geotagged
@@ -96,6 +106,8 @@ greasespot
 gruber
 GUI
 hadlaw
+halvey
+hassan
 HCI
 hippel
 homonymous
@@ -115,6 +127,7 @@ internet
 interoperability
 intranets
 irb
+jacobsen
 janzen
 jarrett
 JavaScript
@@ -132,6 +145,7 @@ kelty
 kernighan
 KnowledgeSea
 knuth
+kolbitsch
 Kos
 kramer
 krippendorff
@@ -144,13 +158,12 @@ Libre
 licklider
 lin
 linskey
+listenings
 livingston
 malkin
 marchionini
 marlow
 marshall
-mash-up
-mash-ups
 mayhew
 mcconnell
 mcilroy
@@ -175,6 +188,7 @@ multiplayer
 murphy
 murugesan
 MVC
+MySpace
 namespacing
 navis
 netscape
@@ -192,7 +206,9 @@ org
 ORM
 osind
 Otlet
+PageRank
 palahniuk
+Performant
 photoset
 photosets
 PHP
@@ -207,8 +223,10 @@ prototypejs
 rayward
 replicable
 resig
+resnick
 RESTful
 riedl
+rivadeneira
 Rohe
 rosa
 rudd
@@ -223,7 +241,10 @@ serializer
 shadbolt
 silverman
 simpson
+sinha
+SixDegrees
 Smalltalk
+Socialthing
 sommerville
 SQL
 sripping
@@ -236,6 +257,7 @@ svensson
 synonymized
 tagcloud
 tagcluster
+TagCrowd
 TDD
 timeline
 tiobe
@@ -243,6 +265,7 @@ torvalds
 treese
 Uggedal
 UI
+unalphabetized
 unintrusive
 uploader
 URL
@@ -254,6 +277,7 @@ virtPresenter
 vitali
 walsh
 weare
+weinberger
 weiss
 wexelblat
 whiteside
