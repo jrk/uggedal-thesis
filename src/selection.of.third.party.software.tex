@@ -525,12 +525,9 @@ html = Hpricot(open('http://redflavor.com'))
 \end{lstlisting}
 \end{scode}
 
+\subsubsection{\abbr{JSON} Library}
 
-\subsubsection{\abbr{JSON} Web Framework}
-
-A web framework or rather \abbr{HTTP}
-framework is needed to make the
-collected data available for our client. Since we'll only be serving requests
+Since we'll mainly be serving requests
 for our JavaScript based client implementation we found it sound to transfer
 this data as \abbr{JSON}%
 \sidenote{
@@ -538,57 +535,84 @@ this data as \abbr{JSON}%
   \abbr{RFC} 4627 \citep{crockford06b}. Shortly put it's a lightweigh data
   interchange format based on the object literals of JavaScript.
 }.
-Luckily for us there exists a framework for Ruby for handeling such tasks
-called \project{Halcyon}%
+Luckily for us there exists a libary for encoding
+Ruby objects into \abbr{JSON} format
+simply called \project{json}%
 \sidenote{
-  Halcyon can be found at \url{halcyon.rubyforge.org}.
+  The Ruby \abbr{JSON} can be found at \url{http://json.rubyforge.org}.
 }.
-This framework makes the process of developing a web application for serving
-\abbr{JSON} requests quite easy. It builds on \project{Rack}%
+The next code listings show how simple objects can be encoded and the
+resulting \abbr{JSON} format.
+
+\begin{scode}{Ruby}{json.encoding}{%
+  Encoding to JSON}{%
+  Encoding a Ruby hash to JSON format}
+\begin{lstlisting}
+msg = {:interjection => 'hello',
+       :noun         => 'world',
+       :suffix       => '!'}
+
+msg.to_json
+\end{lstlisting}
+\end{scode}
+
+\begin{scode}{Java}{json.result}{%
+  Result of JSON Encoding}{%
+  The result of the JSON encoding of a Ruby hash}
+\begin{lstlisting}
+{"interjection": "hello",
+ "noun":         "world",
+ "suffix":       "!"}
+\end{lstlisting}
+\end{scode}
+
+\subsubsection{\abbr{HTTP} Framework}
+
+A web framework or rather \abbr{HTTP} framework is needed to make the
+generated activity data in \abbr{JSON} format available for our client.
+In addition we need to provide some traditional \abbr{HTML} pages and
+take action on input we receive from some of these.
+
+There is numerous frameworks for easing the creation of \abbr{HTTP}
+applications available for Ruby. The most popular%
+\sidenote{
+  A search for Ruby on Rails books on Amazon revealed 35 titles as of
+  20 May, 2008.
+}
+is \project{Ruby on Rails}%
+\sidenote{
+  Ruby on Rails has its home at \url{http://rubyonrails.org}.
+}.
+Other actively developed frameworks include
+\project{Merb},
+\project{Camping},
+\project{Sinatra}, and
+\project{Ramaze}.%
+\sidenote{
+  Available at
+  \url{http://merbivore.com},
+  \url{http://code.whytheluckystiff.net/camping},
+  \url{http://sinatrarb.com}, and
+  \url{http://ramaze.net} respectively.
+}
+These frameworks have a varying degree of complexity, but none of them
+is as simple as \project{Rack}%
 \sidenote{
   Rack is available at \url{rack.rubyforge.org}.
 },
-a web server interface that sits between a web framework and a web server. By
-using Rack we can easily swap between different web servers that support the
-protocoll mandated by Rack's interface layer. To demonstate the simplicity of
-this framework we'll show how a simple greeting application could be
-implemented:
+a web server interface that sits between a web framework and a web
+server or can be used as a very light weight web framework on its own.
+Since we our neeeds were a bit specialized we decided to use Rack for
+handeling \abbr{HTTP} requests. Because of its simplicity it's very
+flexible and allowed us to create exactly the \abbr{HTTP} interface
+we wanted. By using Rack we can also easily swap between different
+web servers that support the protocoll mandated by Rack's interface layer.
 
-\begin{scode}{Ruby}{halcyon}{%
-  Hello World with Halcyon}{%
-  A simple hello world application with Halcyon}
-\begin{lstlisting}
-class Hello < Halcyon::Server::Base
-  route {|r| r.match('/').to(:action => 'greet') }
-  
-  def greet
-    msg = {:interjection => 'hello',
-           :noun         => 'world',
-           :suffix       => '!'}
-    ok(msg)
-  end
-end
-\end{lstlisting}
-\end{scode}
+\subsubsection{\abbr{HTTP} Server}
 
-What is interesting is that the Ruby \code{msg} key/value hash is serialized
-automitically to \abbr{JSON} when a client requests this resource:
-
-\begin{scode}{Java}{halcyon.result}{%
-  Client Result with Halcyon}{%
-  The result of a client request to the Halcyon hello world application}
-\begin{lstlisting}
-{"status": 200,
- "body": {"interjection": "hello",
-          "noun":         "world",
-          "suffix":       "!"}}
-\end{lstlisting}
-\end{scode}
-
-\subsubsection{Web Server}
-
-Since our web framework builds on Rack we have several web servers to select
-from. The most prominent alternatives of Ruby servers are%
+Since our web framework builds on Rack we have several
+\abbr{HTTP} servers to select from. The most prominent alternatives
+of Ruby servers are%
 \sidenote{
   These servers can be found at respectively
   \url{http://webrick.org},
