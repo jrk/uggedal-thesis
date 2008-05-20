@@ -1129,6 +1129,10 @@ navigation techniques.
 
 \term{Collaborative filtering} \postquote[\p{175}]{resnick94}{%
   help people make choices based on the opinions of other people}
+These choices are often used for navigation. Since the collaborative process
+of creating opinions are of a social nature collaborative filters are a form
+of social navigation.
+
 The origin of the concept comes from the \project{Information Tapestry}
 project where users could annotate electronic documents arriving in a
 continuous stream\dash{}typically email messages \citep[\p{69}]{goldberg92}. By
@@ -1138,6 +1142,7 @@ based both on explicit feedback trough annotations and implicit feedback such
 as meta-data concerning the document \citep[\p{62}]{goldberg92}.
 
 \citet{resnick94} expanded on the ideas from the Tapestry project and made
+\project{GroupLens},
 a system for collaboratively filtering Usenet postings. What was novel with
 their approach at the time was that they could
 \postquote[185]{resnick94}{%
@@ -1146,6 +1151,20 @@ their approach at the time was that they could
   opinions of the reader and evaluator}
 This made the filter more personalized and should prove to give more
 satisfying results.
+
+Tapestry and GroupLens lacks a direct connection
+between the advice giver and the navigator. Using the language of
+\citet{dieberger97} they are both passive collaborative filtering systems.
+\citet{maltz95} noticed how passive filtering systems required a
+critical mass of users to be useful. They therefore created an active
+collaborative filtering system.
+\begin{fullquote}{waltz95}{%
+  found what circumstances these two types of systems are a best fit for}
+    In \q{passive} collaborative filtering the system works better the higher
+    the convergence of votes on the same set of documents. In contrast, the
+    benefit of \q{active} collaborative filtering increases with the
+    divergence of documents that are found.
+\end{fullquote}
 
 As we'll see next, collaborative filtering is often applied to generate
 recommendations for users.
