@@ -964,18 +964,18 @@ We initially tried to adapt the \project{Screw Unit}%
 }
 JavaScript based behaviour-driven development library to the intricacies of
 Greasemonkey user scripts, but had to give up. We therefore had to develop
-without automated tests on the client side.
+without automated tests on the client-side.
 Fortunately the most complicated logic of our application are on the server
-side and our client side development process did not get to hard despite the
+side and our client-side development process did not get to hard despite the
 lack of a proper testing suite.
 
-On the server side we had better success with integrating a testing suite into
+On the server-side we had better success with integrating a testing suite into
 our application. There are several options available when selecting amongst
 Ruby testing suites. We're ignoring traditional test-driven libraries as
 we're proponents of a behaviour-driven style
 (\sectionref{implementation.process.testing}). We looked at%
 \sidenote{
-  These behaviour libraries ca be found at respectively
+  These behaviour libraries can be found at respectively
   \url{http://rspec.info},
   \url{http://rubyspec.org},
   \url{http://chneukirchen.org/repos/testspec}, and
@@ -1007,9 +1007,9 @@ which continously runs your test suite as you make changes to your source code
 files. This way you can keep your focus on the editor and only glance over the
 status of your test suite as you move along.
 
-\subsection{Debugger \& Profiler}
+\subsection{Debugger \oldand Profiler}
 
-Since we were unable to utilize automated tests on the client side we had to
+Since we were unable to utilize automated tests on the client-side we had to
 resort to a debugger checking for correctness in our code while developing.
 There are currently two JavaScript debuggers for the Firefox browser:
 \project{Venkman}%
@@ -1025,7 +1025,7 @@ seems to be much more actively developed as of this writing. Firebug have the
 most advanced features with a better user interface. Our choice of a client
 side debugger was simple.
 
-On the server side we never saw the need for a debugger since we developed all
+On the server-side we never saw the need for a debugger since we developed all
 our code in a behaviour-driven way enabeling us to both catch bugs and form
 solutions trough our specification suite. But as described in
 \sectionref{implementation.performance} we stumbled upon some major
