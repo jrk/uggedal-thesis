@@ -147,10 +147,15 @@ the \project{Safari} browser can handle user script with the
 \sidenote[-\onelineskip]{
   Available at \url{http://8-p.info/greasekit}.
 }
-plug-in. We have not tested such support for ourselves since we decided to
-focus all our efforts on one platform and thereby not be subjected to
-cross-browser differences\dash{}both in potential bugs and programmatic
-interfaces.
+plug-in. Our prototype user script would not work in the Opera browser since
+it does not allow a \code{XMLHttpRequest} for another domain than what the
+user script is currently running in. As described in
+\sectionref{implementation.architecture,extending.different.domain}
+this is an essential feature for our implementation. GreaseKit allows these
+kinds of requests to take place, but we have not tested such support
+extensively. We decided to focus all our efforts on one platform and thereby
+not be subjected to cross-browser differences\dash{}both in potential bugs
+and programmatic interfaces.
 
 \subsubsection{Programming Language}
 \label{section:selection.stack.client.language}
