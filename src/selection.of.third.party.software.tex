@@ -711,6 +711,21 @@ to persist our activity data since it was changing as time went by. We did
 however want to cache this data for a given time so that users would get
 berable request times when using our prototype implementation.
 
+We did not test various cache solutions but instead went with a proven
+cache solution called \project{Memcached}%
+\sidenote{
+  Available at \url{http://www.danga.com/memcached/}.
+}.
+Memcached was developed at \project{LiveJournal}%
+\sidenote{
+  LiveJournal is a place where people can keep a blog or journal with
+  some social network features baked in. As of May 20, 2008 LiveJournal
+  had over 15 million registered users \citep{livejournal08}. LiveJournal is
+  available at \url{http://livejournal.com}.
+}
+to handle caching of data for their large user base. Memcached is used by many
+large web sites and Facebook is currently the largest user of the open source
+caching solution \citep{facebook08b}.
 
 % memcached with memcache-client
 % List other alternatives. memcached is a memory cache.
