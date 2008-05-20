@@ -738,6 +738,8 @@ With all the pieces in place of our third party software puzzle
 we present a high level view of the architecture, from the client to the
 server, in
 \figureref{fig.prototype.architecture}.
+\tableref{third.party.software.versions} lists the versions we used of the
+various third party software.
 
 \begin{figure}
   \begin{whole}
@@ -749,6 +751,68 @@ server, in
     \label{figure:fig.prototype.architecture}
   \end{whole}
 \end{figure}
+
+\begin{table}
+  \caption{Third Party Software Versions}
+  \label{table:third.party.software.versions}
+
+  \begin{tabular}{ll}
+
+    Software & Name & Version \\
+    \midrule
+
+    Web browser &
+    Firefox &
+    User dependant (tested on 2.0.0.14 and 3.0 RC1) \\
+
+    Client-side programming language &
+    JavaScript &
+    Browser dependant (tested on 1.7 and 1.8) \\
+
+    User script extension &
+    Greasemonkey &
+    User dependant (tested on 0.7.20080121.0) \\
+
+    JavaScript library &
+    jQuery &
+    1.2.4 \\
+
+    \midrule
+
+    Server-side programming language &
+    Ruby &
+    1.8.6 \\
+
+    \abbr{HTML} scraping library &
+    Hpricot &
+    0.6 (with buffer overflow patch) \\
+
+    \abbr{HTTP} fetching library &
+    open-uri &
+    1.8.6 (included with Ruby) \\
+
+    \abbr{JSON} library &
+    json &
+    1.1.2 \\
+
+    \abbr{HTTP} framework &
+    Rack &
+    0.3.0 \\
+
+    \abbr{HTTP} server &
+    Mongrel &
+    1.1.4 \\
+
+    Cache server &
+    Memcached &
+    1.2.2 \\
+
+    Cache library &
+    memcache-client &
+    1.5.0 \\
+
+  \end{tabular}
+\end{table}
 
 
 \section{Development Tools}
