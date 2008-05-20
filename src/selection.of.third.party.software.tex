@@ -725,10 +725,12 @@ Memcached was developed at \project{LiveJournal}%
 }
 to handle caching of data for their large user base. Memcached is used by many
 large web sites and Facebook is currently the largest user of the open source
-caching solution \citep{facebook08b}.
-
-% memcached with memcache-client
-% List other alternatives. memcached is a memory cache.
+caching solution \citep{facebook08b}. Memcached is very performant since it
+stores all its cached items in memory. To interact with the Memcached server
+we used a Ruby library called \project{memcache-client}%
+\sidenote{
+  Available at \url{http://seattlerb.rubyforge.org/memcache-client/}.
+}.
 
 \subsection{Overview of Client \oldand Server Components}
 
