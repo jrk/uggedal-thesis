@@ -55,11 +55,11 @@ The developer should be able to treat these components as \term{black boxes}%
   In the field of electronics black boxes are used to describe electronic
   circuits with a fixed set of terminals where one is deliberately ignoring
   the internals of the circuit. Only the external properties of the circuit
-  given by the electronic properties of it's terminals are emphasized
+  given by the electronic properties of its terminals are emphasized
   \citep[\p{171}]{wilson79}. Paralleling with computer science we can think of
   a component, module, object, or routine (electronic circuit) as being a
-  black box when we're only concerned by it's input and output characteristics
-  trough it's interface (terminals).
+  black box when we're only concerned with its input and output
+  characteristics trough its interface (terminals).
 }.
 
 After object-oriented programming became the most popular
@@ -122,7 +122,7 @@ existing web page using the \term{\abbr{DOM}}%
   structure of nested tags (with text and attributes) in \abbr{HTML}
   documents \citep[pp.~307--310]{flanagan06}.
 }.
-When a user have such a script for a specific web page installed it's
+When a user have such a script for a specific web page installed its
 instructions will be executed on the next visit to the given site, enabling
 all kinds of modifications to the \abbr{DOM}.
 Some have predicted that Greasemonkey could enable users to
@@ -183,14 +183,14 @@ standard for enabling behavior on the Web and was standardized as
 
 Because of this we had no say in what programming language to use on the
 client-side. That is not to say that JavaScript is a poor programming
-language. Contradictory to it's name, JavaScript bears few similarities to the
+language. Contradictory to its name, JavaScript bears few similarities to the
 Java language.%
 \sidenote{
   The name was more of a marketing decision when Netscape teamed up
   with Sun
   \citep[p.~2]{flanagan06}.
 }
-Despite it's origins as a scripting language JavaScript is now considered
+Despite its origins as a scripting language JavaScript is now considered
 a full-featured modern programming language
 \citedouble{p.~2}{flanagan06}{p.~3}{resig06} including object-orientation.
 
@@ -344,8 +344,8 @@ $("p em").addClass("highlight").append("!");
 \end{scode}
 
 Based on the minimal file size jQuery provided (only outbested by MooTools)
-and it's clear and unique syntax we decided on selecting it as the JavaScript
-library for our implementation. It seems others have take jQuery and it's
+and its clear and unique syntax we decided on selecting it as the JavaScript
+library for our implementation. It seems others have take jQuery and its
 virtues to hart as many large corporations like Google, Intel, Dell, and
 \abbr{BBC} have used it in their public facing offerings.%
 \sidenote[-4\onelineskip]{
@@ -377,7 +377,7 @@ with those we knew from before. Of those \project{Ruby}%
 \sidenote[-6\onelineskip]{
   Common Lisp, the prevalent Lisp dialect today, is a standard \citep{ansi96}
   and has many implementations.
-  A gateway to this language and it's many implementations can be found
+  A gateway to this language and its many implementations can be found
   at \url{http://common-lisp.net}.
 }
 were the ones with language features that fitted our development process.
@@ -431,7 +431,7 @@ dynamic language \citep{martin08} compared to statically compiled languages%
 }.
 
 As it turns out, the most important criteria for choosing our implementation
-language was it's library support.
+language was its library support.
 
 \begin{fullquote}{guo06}{shares this viewpoint:}
   The programming environment (development/target platforms, intended
@@ -451,7 +451,7 @@ handle such problems with regular expressions, this becomes tedious after a
 while. We therefore prefer a special purpose library.
 
 The major deciding factor when we selected the implementation language was
-the availability of such a library and it's usefulness. We've already
+the availability of such a library and its usefulness. We've already
 revealed Ruby as our implementation language and are therefore killing the
 suspense. Our data extraction library of choice is called \project{Hpricot}%
 \sidenote{
@@ -477,7 +477,7 @@ the Ruby and Python options.
 To get a feel for the difference between Hpricot and Beautiful Soup we tried
 them out on some trivial examples. Under you'll see the listings for one
 of these examples. We are trying to find an \code{em} element with a class
-of \code{citation}, which have a \code{p} element as it's parent,
+of \code{citation}, which have a \code{p} element as its parent,
 in a \abbr{HTML} document contained in the \code{html} object:
 
 \begin{scode}{Python}{parsing.beautiful.soup}{%
@@ -607,12 +607,12 @@ from. The most prominent alternatives of Ruby servers are%
   \iterm{FastCGI} was the de facto way of running Ruby web applications
     for production systems before Mongrel, the following alternative,
     was released. It's basically an improvment over the well known
-    \abbr{CGI} model. Contrasted to it's ancestor the processes
+    \abbr{CGI} model. Contrasted to its ancestor the processes
     of FastCGI are persistent and are reused when handeling requests
     \citep{openmarket96}.
   \iterm{Mongrel} was introduced as a faster alternative to Webrick.
     One of the distinguishing factors of the library is that it
-    handles each request in it's own thread\dash{}enabeling it to
+    handles each request in its own thread\dash{}enabeling it to
     handle many concurrent requests. The project is now very mature
     and can be concidered as the most stable Ruby web server.
   \iterm{Evented Mongrel} is a fork of Mongrel which uses
@@ -626,7 +626,7 @@ from. The most prominent alternatives of Ruby servers are%
     convenience functions for easily starting, stopping, and managing
     a wide array of Thin servers.
   \iterm{Ebb} is the newest kid on the block and are proving to be
-    faster than it's predecessors. It's entrirely written in C
+    faster than its predecessors. It's entrirely written in C
     and uses C libraries in contrast to Mongrel and the Mongrel forks
     which are only partly written in C with Ruby libraries.
     It supports both sequential and threaded processing of requests.
@@ -640,7 +640,7 @@ with decent performance. This eliminated Ebb in spite of its promising
 performance characteristics. Webrick and FastCGI is fairly outdated and leaves
 something to be desired in the performance department. Thin seems to have
 taken over the space Evented Mongrel used to occupy in the Ruby server world
-because of it's ease of use and improved performance.
+because of its ease of use and improved performance.
 
 This leaves us with two choices: Thin and Mongrel. The most distinguishing
 feature between them is that Thin processes requests sequentially and Mongrel
@@ -650,7 +650,7 @@ In general a concurrent model wins when you have varying response times.
 If for instance one request takes several seconds to process all other
 requests to you application have to wait until the first request have
 finished processing when one are using a sequential model. For a concurrent
-model the first request can be processed in it's own thread while new requests
+model the first request can be processed in its own thread while new requests
 can be accepted and processed in their own threads.
 
 Why then not use a concurrent model all the time? The drawback with a
@@ -712,7 +712,7 @@ our first criterion for selecting development tools is freedom.
 
 We've found it indispensable to use \term{version control} when writing code
 and even used it when authoring this thesis. We'll not spend time to discuss
-the merits of version control since we feel it's benefits are major and
+the merits of version control since we feel its benefits are major and
 using one induces almost zero overhead in your working process. Sometimes we
 feel that the use of version control can guide you when conducting complex
 tasks.
@@ -724,7 +724,7 @@ in open source circles was
 \sidenote[-8\onelineskip]{
   Available at \url{http://subversion.tigris.org}.
 }\dash{}a \term{centralized version control system} meaning that one central
-server holds the version controlled code repository and it's history.%
+server holds the version controlled code repository and its history.%
 \sidenote[-7\onelineskip]{
   Developers on the client-side have working copies and need to contact the
   centralized server to get a hold of historical data and create new history.
@@ -873,7 +873,7 @@ we're proponents of a behaviour-driven style
 \begin{items}
   \iterm{RSpec} is the original behaviour-driven suite for Ruby. It's
     therefore the most mature project and have the best integration with
-    other tools. It does seem to suffer from too much complexity in it's code
+    other tools. It does seem to suffer from too much complexity in its code
     base. The following suties adresses this complexity problem.
   \iterm{MSpec} have more features than RSpec in spite of having clearer
     and more understandable source code \citep{klishin08}.
@@ -881,7 +881,7 @@ we're proponents of a behaviour-driven style
     on top of the original Ruby unit testing library and are therefore
     compatible with tests written with it.
   \iterm{Bacon} is the smallest of the suites when counting source code
-    but still implements the majority of the fatures of it's big brothers.
+    but still implements the majority of the fatures of its big brothers.
     It's still a young project and have therefore not seen much usage.
 \end{items}
 

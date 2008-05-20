@@ -153,10 +153,10 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
 \subsection{Prototyping}
 
 A \term{prototype} is an early version of an application that are used for
-finding out more about the problem at hand and it's possible solutions
+finding out more about the problem at hand and its possible solutions
 \citep[\p{409}]{sommerville06}.
 The software developed for our research on social navigation fits these
-characteristics. It's not supposed to be used after it's behavior is
+characteristics. It's not supposed to be used after its behavior is
 evaluated. For that it's to inefficient and relies on specific web browser
 environments and extensions. This does not mean that the prototype can't have
 impact on how \urort{} evolves in the future. If our evaluation favors our
@@ -239,7 +239,7 @@ prototype application with such a development process. Having specifications
 that can be automatically run to check how our application conforms to our
 expectations is very valuable. This is especially so when we're working
 with \urort{} as an external data source since we don't have control over
-the stability of it's structure.
+the stability of its structure.
 
 \section{Architecture}
 \label{section:implementation.architecture}
@@ -318,7 +318,7 @@ Greasemonkey scripts.
 This factor is based around the fact that server applications can be more
 easily updated since they seldom require intervention by the user. It's
 much harder to ensure that client applications like Greasemonkey are
-kept up-to-date by it's users. It's argued that such an approach works
+kept up-to-date by its users. It's argued that such an approach works
 better for smaller populations and one should therefore keep users
 of custom Greasemonkey scripts to a minimum.
 
@@ -341,7 +341,7 @@ using Greasemonkey in this regard.
   changing?}
 
 Since implementations based around Greasemonkey often is dependent on the
-underlying web site and it's structure it's important that this remains
+underlying web site and its structure it's important that this remains
 stable while the implementation is in use. While we in our project
 will have a fairly small window in time of use we've been concerned
 that changes could break our implementation. This is especially true
@@ -500,7 +500,7 @@ manner we intended when fetching data from \urort{}.
 
 \subsection{Caching}
 
-In the planning stages of our implementation and it's early development we
+In the planning stages of our implementation and its early development we
 decided to store all information retrieved from the \urort{} web site
 in a relational database. We did some study into selecting the best
 \abbr{ORM}%
@@ -561,7 +561,7 @@ the client-side of our prototype asynchronous%
 \sidenote{
   While it's possible to use synchronous requests with \code{XMLHttpRequest}
   it's strongly discouraged since the entire web browser will be locked
-  while it's waiting for a response for it's request \citep{crockford06a}.
+  while it's waiting for a response for its request \citep{crockford06a}.
 }.
 This means that requests handled by the \code{XMLHttpRequest} object
 are independent of other requests the browser is making\dash{}they
