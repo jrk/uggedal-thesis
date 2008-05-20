@@ -503,6 +503,30 @@ jQuery. Hpricot was in fact initially based on jQuery's selector syntax
 \citep{why06}. This means that we can use the same syntax for selectors on the
 server and client-side\emph{}a cognitive advantage.
 
+When we started developing our prototype application we came over what in
+some way can be seen as a bug of Hpricot. We feel the fault lies
+with the server-side plattform \urort{} uses. Simply put, Microsoft's
+\project{ASP.NET} web application framework uses a hidden \abbr{HTML}
+input element to maintain the state of \abbr{HTML} forms between
+stateless \abbr{HTTP} requests. This hidden input element can be quite large%
+\sidenote{
+  On the \urort{} web site
+  (\url{http://www11.nrk.no/urort/Artist/dividizzlDVD})
+  the hidden input element used for maintaining state weighted in at 122kB!
+}
+in size since it contains a serialized version of the state of the current
+page's \abbr{HTML} forms. Such large single \abbr{HTML} elements have been
+described by Microsoft itself as a problem \citep{mitchell04}.
+Hpricot sets aside a buffer of 16kB for storing each \abbr{HTML} element.
+When Hpricot encounters an element with the size we're seeing on \urort{}
+it simply chokes.
+
+Since Hpricot is open source software someone had thankfully come across
+the same problem and provided a patch to dynamically increase the
+buffer if an enormous \abbr{HTML} element was encountered. All we had to do
+for properly using Hpricot on \urort{} was to use a version patched with this
+change instead of using the standard vanilla version.
+
 \subsubsection{Data Fetching Library}
 
 Since we've selected Ruby as our development language of choice we used
