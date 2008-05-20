@@ -1151,7 +1151,15 @@ their approach at the time was that they could
   evaluation, based on the degree of correlation between past
   opinions of the reader and evaluator}
 This made the filter more personalized and should prove to give more
-satisfying results.
+satisfying results. Such an approach gives a conceptual model where
+\begin{inparaenum}[(i)]
+  \item the user enters ratings which constitutes a profile
+    for that individual,
+  \item the collaborative filtering system finds
+    the individuals with similar profiles\dash{}neighbors,
+  \item the ratings of the user's neighbors are aggregated
+    to form recommendations \citep[\p{243}]{herlocker00}.
+\end{inparaenum}
 
 During further studies of the GroupLens system \citet[\p{84}]{konstan97}
 noticed some users' lack of incentive to rate content. Their solutions
