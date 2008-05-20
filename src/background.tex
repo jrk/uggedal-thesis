@@ -683,6 +683,7 @@ navigator and advice provider. \citeauthor{svensson03} on the other hand
 describes the nature of the communication between the two parties.
 
 \subsubsection{Explicit \oldand Implicit Advice}
+\label{section:social.navigation.fundamental.categorization.explicit.implicit}
 
 Related to passive or indirect social navigation is the notion
 of \term{explicit feedback} and \term{implicit feedback}.
@@ -1138,8 +1139,8 @@ project where users could annotate electronic documents arriving in a
 continuous stream\dash{}typically email messages \citep[\p{69}]{goldberg92}. By
 installing a pre-existing filter or creating one from scratch in a
 special query language users were able to filter out the essential documents
-based both on explicit feedback trough annotations and implicit feedback such
-as meta-data concerning the document \citep[\p{62}]{goldberg92}.
+based both on explicit feedback trough annotations and
+meta-data concerning the document \citep[\p{62}]{goldberg92}.
 
 \citet{resnick94} expanded on the ideas from the Tapestry project and made
 \project{GroupLens},
@@ -1151,6 +1152,17 @@ their approach at the time was that they could
   opinions of the reader and evaluator}
 This made the filter more personalized and should prove to give more
 satisfying results.
+
+During further studies of the GroupLens system \citet[\p{84}]{konstan97}
+noticed some users' lack of incentive to rate content. Their solutions
+was to introduce implicit ratings in addition to the existing explicit ratings
+system. Implicit and explicit ratings reflect how the feedback is given by the
+advice provider as we've seen in
+\sectionref{social.navigation.fundamental.categorization.explicit.implicit}.
+The implicit ratings were collected by monitoring wheter a user read
+an item, and for how long he kept reading it. Their initial studies showed
+positive results for implicit ratings in that they were nearly as accurate as
+explicit ratings.
 
 Tapestry and GroupLens lacks a direct connection
 between the advice giver and the navigator. Using the language of
@@ -1166,14 +1178,28 @@ collaborative filtering system.
     divergence of documents that are found.
 \end{fullquote}
 
-As we'll see next, collaborative filtering is often applied to generate
-recommendations for users.
+As we've seen, collaborative filtering is applied to generate
+recommendations for users that can give navigational possiblities.
 
 \subsubsection{Recommendation Systems}
 \label{section:background.social.navigation.applied.forms.recommendations}
 
-So called \term{recommender systems} are often based on collaborative
-filtering principles.
+A \term{recommendation system} is
+
+What is then the difference between a collaborative
+filtering system and a recommendation system?
+Recommender systems are often based on collaborative
+filtering principles. They then take advantage of the verdicts of users
+that in some way are deemed to be similar to  yourself.
+Another approach is to rely on the nature of items that are recommended
+instead of other people's perception of them. Based on your previous usage
+of items similar items can then be recommended\dash{}a asocial process.
+This means that recommender
+systems is a broader concept than collaborative filtering.
+Since we're concerned with socialy constructed navigation possibilities we're
+not going to discuss item-based recommender systems in this thesis.
+
+
 %%
 %% RECOMMENDER SYSTEM
 %%
