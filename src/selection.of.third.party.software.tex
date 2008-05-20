@@ -705,6 +705,13 @@ response time for average timed requests compared to a sequential model.
 
 \subsubsection{Cache Library}
 \label{section:selection.stack.server.cache}
+
+As detailed in \sectionref{implementation.architecture.caching} we had no need
+to persist our activity data since it was changing as time went by. We did
+however want to cache this data for a given time so that users would get
+berable request times when using our prototype implementation.
+
+
 % memcached with memcache-client
 % List other alternatives. memcached is a memory cache.
 

@@ -499,6 +499,7 @@ into the server-side they were able to offload the clients in a similar
 manner we intended when fetching data from \urort{}.
 
 \subsection{Caching}
+\label{section:implementation.architecture.caching}
 
 In the planning stages of our implementation and its early development we
 decided to store all information retrieved from the \urort{} web site
@@ -526,7 +527,7 @@ and interaction to this database was done with a clear and explicative
   and increased productivity within the limited domain compared to
   using a general-purpose programming language \citep[\p{317}]{mernik05}.
 },
-eliminating the need for constructing complex \abbr{SQL}.%
+eliminating the need for constructing complex \abbr{SQL}%
 \sidenote{
   \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
   query language, now the \latin{de facto} language for interacting
@@ -544,15 +545,20 @@ from our source within certain intervals, we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
 keeping a cache of what we had retrieved.
 
-As described we came to the realization that no persistent data was needed
-in our implementation.
+As described we came to the realization that no persistent data
+about activities was needed in our implementation.
 We therefore sat out to find the best cache solution for our needs as detailed
 in \sectionref{selection.stack.server.cache}.
+
 % write more about details of implementation, cache terms, our settings,
 % and custom cacheable object we implemented.
 
 % write about the cache and what is done on a \term{cache miss}. Also give
 % reasons for \term{time to live}.
+
+\subsection{Background Processes}
+
+With our cache architecture in place it became apparent that 
 
 \subsection{Asynchronous Requests}
 
