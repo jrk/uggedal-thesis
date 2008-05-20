@@ -1208,20 +1208,42 @@ A \term{recommendation system} is
 
 What is then the difference between a collaborative
 filtering system and a recommendation system?
-Recommender systems can be based on collaborative filtering principles.
-In such a case the verdicts of users that in some way are deemed to be similar
-to  yourself are used for recommendation.
-Another approach is to rely on the nature of items that are recommended
-instead of other people's perception of them. One are relying on content.
-Based on your previous usage of items similar items can then be
-recommended\dash{}an asocial process.
-This means that recommender systems is a broader concept than collaborative
-filtering. Collaborative filtering \postquote[\p{241}]{herlocker00}{%
-  are based on human and not machine analysis of content}
-Recommender systems can be based on either one or both
-\citep[\p{241}]{herlocker00}.
+Recommender systems is a broader concept than collaborative
+filtering. There are two ways a recommender system can generate
+recommendations for its users:
+
+\begin{enumerate}
+  \item Using collaborative filtering
+    the verdicts of users that in some way are deemed to have similar
+    taste to yourself are used for recommendation\dash{}a social process.
+  \item Using a content-based approach where one is relying on the nature of
+    potential items instead of other people's perception of them.
+    Based on your previous usage or reaction to items, similar items can then
+    be recommended\dash{}an asocial process.
+\end{enumerate}
+
+The destincion between a content-based and collaborative approach lies in
+the way collaborative filtering \postquote[\p{241}]{herlocker00}{%
+  are based on human and not machine analysis of content} To put it another
+way the similarity of users are measured instead of the similarity of content.
+
+Recommender systems can be based on either one or both of these two approaches
+\citep[\p{241}]{herlocker00}. \citet[\p{70}]{balabanovic97} argues that a
+hyprid approach to recommendation is superior to an puerly content or
+collaborative solution since it
+\begin{inparaenum}[(i)]
+  \item enables one to use content-based recommendation for items
+    not yet recommended by other individuals,
+  \item enables one to use content-based recommendation when there are
+    no other individuals with the same taste,
+  \item when collaborative recommendations are present those can be
+    used in favor of more imprecise content-based techniques, and
+  \item collaborative recommendations can be generated even though users
+    have not rated the same items by infering such ratings trough content
+    similarity.
+\end{inparaenum}
 Since we're concerned with socialy constructed navigation possibilities we're
-not going to discuss item-based recommender systems in this thesis.
+not going to discuss content-based systems further in this thesis.
 
 
 
