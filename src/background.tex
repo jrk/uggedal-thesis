@@ -759,7 +759,15 @@ A new phenomena appeared to the mainstream with the introduction of the
 }
 \term{social bookmarking} system. This web page made individual
 bookmark collections globally available, making it easy to discover what other
-people was taking notice of.
+people was taking notice of. Interestingly \citet{keller97} created a system
+in the early days of the web with almost the same features as social
+bookmarking systems of today. This system, \project{WebTagger}, allowed
+individuals to store bookmarks that later could be retrieved by other people.
+The architecture of the system was based on a web proxy, which enabeled
+controls for storing the location of a given web page to be present within the
+web page itself. Since the system was proxy-based only users having enabeled
+the proxy server in their browsers could take advantage of the shared
+bookmarks.
 
 \sidefigure{Blogroll}{%
   Blogroll for Daily Kos,
@@ -808,6 +816,23 @@ using traditional folder or hierarchical categorization of items like
 bookmarks. In such a system an item can only go in one folder. With
 tags items can live in several categories at once
 \citep[\p{93}]{weinberger07}.
+
+The WebTagger system by
+\begin{fullquote}[\p{1109}]{keller97}{%
+  we described earlier had a novel approach to bookmark categorization}
+    The system provides a simple means of organizing and sharing bookmarks
+    using a structure-neutral categorization scheme, rather than a
+    hierarchical filing scheme. The neutrality of this bookmarking scheme
+    allows users to concentrate on tagging URLs with the most appropriate
+    categories to facilitate subsequent retrieval, rather than forcing users
+    to select a single best location within a rigid hierarchical structure.
+\end{fullquote}
+
+This description of the categorization scheme used in WebTagger very much
+resemble tagging as found in del.icio.us. \citeauthor{keller97} even describes
+the act of categorizing in this way as \emph{tagging}. While Joshua Schachter
+may never have heard of WebTagger, it's evident that tagging was first used in
+the WebTagger system\dash{}the first social bookmarking service.
 
 Tagging enables a user driven taxonomy (classification)
 which is often called an \term{folksonomy}\dash{}a combination of the words
