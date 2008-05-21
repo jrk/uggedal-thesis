@@ -260,7 +260,7 @@ out to implement our system on top of already established web pages as
 described in \sectionref{building.on.top.of.the.web}.
 
 \citet{laird07} makes a case for using the means of such a browser
-extension\dash{}Greasemonkey\dash{} and custom scripts for
+extension\dash{}Greasemonkey\dash{}and custom scripts for
 realizing projects that without such technology would
 never have come to existence. As he describe there is a sweet spot where such
 an approach really shines. He therefore created a framework for determining
@@ -429,6 +429,17 @@ don't see any major objections for doing so.
 We believe the benefits of a prototype implementation
 based on Greasemonkey outweighs the disadvantages with such a technical
 solution.
+
+Another solution would be to create a web proxy that altered pages specific to
+\urort{}. \citet[\p{1109}]{keller97} took this approach when developing
+a collaborative bookmarking service. As the authors explain a proxy-based
+solution ensures universal access across browsers and plattforms requiring no
+installation of additional browser extensions or plugins. The drawbacks to
+such and approach for our prototype is quite clear. A user having enabeled
+our hypothetical web proxy would have to take a round trip to our server for
+every web page he or she visited, regardless of whether it was \urort{}
+related. This would introduce sustantial loads on our servers and users would
+probably notice reduced page load times when browsing the Web.
 
 \subsection{Client-Server Model}
 
