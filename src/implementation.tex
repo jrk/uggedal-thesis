@@ -141,11 +141,70 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
   \end{whole}
 \end{figure}
 
-% aggregation of several users on facebook
-%
-% The design is in a way a recommender system or could be made into one
-% based on how the activity is filtered.
-%
+\subsubsection{Relevant Activities}
+
+The approach seen at Facebook for letting users know what's fresh and relevant
+for yourself trough an activity feed seemed a good fit for \urort{}. But
+\urort{} does not have the concept of friends as seen in social network sites.
+\urort{} exists for people to freely share their music and let others find
+music they like\dash{}and not on making new friends or keeping in touch with
+old friends. How do we then find recent activities which potentially could be
+interesting for our users when we don't have any frinds to consult?
+
+We tried to answer this question by using a feature on \urort{} that allows
+any user to \emph{favorize} an artist. If a user conducts such an action he or
+she becomes a \emph{fan} of that artist. We don't know why people signify
+artists as their favorites on \urort{}, but the main reason may be that
+they simply like the music the artist is publishing.
+Another reason could be that people know the artist personally and therefore
+add them as a favorite\dash{}not dependent on whether they like their music or
+not.
+
+But regardless of the motives for adding an artist as a favorite it requires
+a concious effort from the user. We're therefore led to believe that the list
+of artists a user have favorized are more important than other artists on
+\urort{}. Our design is therefore based on the activities of a person's
+favorite artists. Initially we toyed with making a friend like concept on
+\urort{} by saying that people which share one or more favorite artists with
+you are in some way related to yourself. We had to trow away this idea because
+of technical problems with getting such a solution to scale.
+
+\subsubsection{Activity Types}
+
+There were many activities taking place associated with an artist
+which we could potentially use in our activity feed. We decided to select
+those which had information about when the activity occured and was
+technically easy%
+\sidenote{
+  Easy as in only requireing access to the \urort{} web pages.
+}
+to retrieve. Those that matched our criteria was:
+
+\begin{items}
+  \iterm{Songs} beeing published by the artist.
+  \iterm{Song reviews} beeing written by users.
+  \iterm{Concerts} beeing performed by the artist.
+  \iterm{Blog posts} beein written by the artist.
+\end{items}
+
+As you can see three of these activities are conducted by the artist himself
+while reviews are conducted by other users.
+
+\subsubsection{Activity Filtering}
+
+There is quite bit of activity information based on our four categories for
+a typical artist. When a user have several artists as favorites the ammount of
+activity information gets large. We therefore had to filter out some
+activities and only showing what we thought would be most relevant.
+
+Firstly we're only concerned with historical information in our activity list
+so future concert events are filtered out. Secondly we're showing the most
+recent activities believing that fresh content is more important than aged
+content.
+%%
+%% complete
+%%
+
 % no new data. making existing data more readily available.
 
 \section{Installation}
