@@ -184,7 +184,7 @@ to retrieve. Those that matched our criteria was:
   \iterm{Songs} beeing published by the artist.
   \iterm{Song reviews} beeing written by users.
   \iterm{Concerts} beeing performed by the artist.
-  \iterm{Blog posts} beein written by the artist.
+  \iterm{Blog posts} beeing written by the artist.
 \end{items}
 
 As you can see three of these activities are conducted by the artist himself
@@ -200,20 +200,61 @@ activities and only showing what we thought would be most relevant.
 Firstly we're only concerned with historical information in our activity list.
 Future concert events are therefore filtered out. Secondly we're showing the
 most recent activities believing that fresh content is more important than
-aged content.
+aged content. As activities are sorted chronologically in our feed we simply
+cut off all activities after a preset number of the most recent activities are
+displayed. The version of our prototype which was tested by real world users
+showed only the ten most recent activities.
 
 Facebook is not showing the complete picture of friend activity in their news
 feed as it's believed that up to 80\% of all recent activities are filtered
 out \citep{mccrea08}.
 Facebooks approach to only showing a selection of recent activity is
 probably driven by technical scalability problems, and not a desire to only
-present a selection of recent activity of friends.
+present a selection of recent activity of friends. In our activity feed we
+give users a complete picture of all our types of activities within our
+cut-off point.
+The complete design of our activity feed for \urort{} can be seen in
+\figureref{scrsh.urort.activity.feed}.
 
-%%
-%% complete
-%%
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{scrsh_urort_activity_feed}
+  \caption[\urort{} Activity Feed]{
+    Activity feed for experiment users on \urort{},
+    retrieved Jun 2, 2008, from
+    \url{http://www11.nrk.no/urort/default.aspx}.
+  }
+  \label{figure:scrsh.urort.activity.feed}
+\end{figure}
 
-% no new data. making existing data more readily available.
+\subsection{Favorite List}
+
+As described in
+\sectionref{methodology.user.testing}
+we decided to used a control group in our user testing. The navigational
+design we presented them with did not include an activity feed. In stead they
+simply were presented with a list of their favorites so that they manually had
+to keep up with what recent activity their favorite artists were conducting.
+The design of the control group implementation can be seen in
+\figureref{scrsh.urort.favorite.list}.
+
+To give both our control and experiment group the same navigation
+possibilities\dash{}excluding the activity feed\dash{}we decided to show a
+list of the favorites without recent activity for our experiment group. If all
+their favorites had activities present in the feed no such list was displayed.
+\figureref{scrsh.urort.activity.feed} shows the listing of one such artist
+without recent activity.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{scrsh_urort_favorite_list}
+  \caption[\urort{} Favorite List]{
+    Favorite list for control users on \urort{},
+    retrieved Jun 2, 2008, from
+    \url{http://www11.nrk.no/urort/default.aspx}.
+  }
+  \label{figure:scrsh.urort.favorite.list}
+\end{figure}
 
 \section{Installation}
 
