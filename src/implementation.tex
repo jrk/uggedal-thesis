@@ -228,6 +228,7 @@ The complete design of our activity feed for \urort{} can be seen in
 \end{figure}
 
 \subsection{Favorite List}
+\label{section:implementation.design.favorite.list}
 
 As described in
 \sectionref{methodology.user.testing}
@@ -672,30 +673,55 @@ entirety of this data. We could just retrieve it again from our external
 source. And since the data had to be kept up to date by retrieving the data
 from our source within certain intervals, we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
-keeping a cache of what we had retrieved.
+keeping a \term{cache}%
+\sidenote{
+  According to \prequote{wikipedia08cache}{a cache is}[%
+    a temporary storage area where frequently accessed data can be stored for
+    rapid access}
+}
+of what we had retrieved.
 
 As described we came to the realization that no persistent data
 about activities was needed in our implementation.
 We therefore sat out to find the best cache solution for our needs as detailed
 in \sectionref{selection.stack.server.cache}.
 
-% write more about details of implementation, cache terms, our settings,
-% and custom cacheable object we implemented.
+We only cache one type of data in our implementation:
+a chronologically pre-ordered list of all activities for a given artist.
+Let us explain how this works
+when user X requests his list of recent favorite activities. Our system
+first determines that user X have artist A and artist B as
+favorites. It then consults the cache and asks if it can get a list of
+activities for artist A. The cache have a list of activites for artist A and
+promptly returns it to its caller. Our system then tries to do the same for
+artist B, but this time there is no list of activites for that artist in the
+cache. We just had a \term{cache miss}, and are therefore forced to retrieve
+information about artist B's activities from the \urort{} web site and
+calculate a new list which are stored in the cache with a certain
+\term{time to live}. The next time a request for artist B's list of activities
+are handeled the cache should now be able to return that list if the request
+were made within the time to live interval.
 
-% write about the cache and what is done on a \term{cache miss}. Also give
-% reasons for \term{time to live}.
+In our system we set a time to live of 12 hours. This means that activity
+lists stored in the cache are retrievable within 12 hours.
+
+\subsection{Background Processes}
+
+With our cache architecture in place it became apparent that it was too
+expensive time wise for users to retrieve the activities of all their
+favorites on multiple a cache misses.
 
 \subsection{Persistence}
 
+As detailed in
+\sectionref{implementation.design.favorite.list}
+we used designed two versions of our prototype: one delivering an activity
+feed and another only listing favorites.
 % respondents: half should receive bogus client. record their email
 % and type of prototype they received
 
 % store slug of every person which makes a request so that the
 % cache can be warmed-up at certain intervals
-
-\subsection{Background Processes}
-
-With our cache architecture in place it became apparent that 
 
 \subsection{Asynchronous Requests}
 
