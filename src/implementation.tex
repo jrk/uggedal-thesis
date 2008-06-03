@@ -770,7 +770,7 @@ problem\dash{}bringing greater interactivity to the user. Another solution
 that can be combined is to move some processing into the client with
 JavaScript \citep[\p{9}]{jazayeri07}
 
-\subsection{Modularization}
+\subsection{Code Structuring}
 
 Both our client-side and server-side programming languages are as we'll see in
 \sectionref{selection.stack.client.language} and
@@ -787,6 +787,19 @@ Both our client-side and server-side programming languages are as we'll see in
   abstraction, classes, encapsulation, inheritance, object, message passing,
   methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
 }.
+Since our client software was pretty dense in code size (see
+\sectionref{implementation.source.code}) and only had to handle a small set of
+operations we did not use object oriented
+features as classes and objects to structure our code. Instead we used
+functions as a partitioning scheme when implementing on the client side.
+Our client side software was contained in two files\dash{}one file for each
+of our two versions.
+
+On the server side however we had to write more code and our code had to
+handle quite a large set of operations. We therefore implemented our server
+side software with the use of modules, classes, objects, and methods to better
+handle the complexity and disparity of our solution.
+
 
 % ruby modules, classes, separate files and directories
 % maybe MVC: reenskaug79
@@ -823,3 +836,12 @@ Both our client-side and server-side programming languages are as we'll see in
 %
 % This is not premature optimization!
 %
+
+\section{Source Code}
+\label{section:implementation.source.code}
+
+We'll wrap up the discussion of our implementation with showing some
+statistics related to our source code.
+
+% cloc stats in table
+% spec/code ratio
