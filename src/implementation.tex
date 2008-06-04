@@ -806,9 +806,42 @@ As
   semantic level in which one can be absolutely precise.
 \end{fullquote}
 
+To make the handeling of our source code easier we used a hierarchy of
+directories and files that resembeled our module and class constructs. One
+file and possible directories was used for each module and class:
 
-% ruby modules, classes, separate files and directories
-% maybe MVC: reenskaug79
+\begin{scode}{sh}{prototype.server.file.hierarchy}{%
+  Prototype Server File Hierarchy}{%
+  Hierarchy of the server prototype software}
+\begin{lstlisting}
+% find . | sed -e 's/[^\/]*\//|--/g' -e 's/-- |/    |/g'
+|--rort
+|--|--external
+|--|--|--blog.rb
+|--|--|--concert.rb
+|--|--|--fetchable.rb
+|--|--|--artist.rb
+|--|--queue.rb
+|--|--cache.rb
+|--|--background.rb
+|--|--core_ext.rb
+|--|--persistence.rb
+|--|--external.rb
+|--|--parsers.rb
+|--|--models.rb
+|--|--http
+|--|--|--download.rb
+|--|--|--api.rb
+|--|--models
+|--|--|--user.rb
+|--|--|--person.rb
+|--|--|--respondent.rb
+|--|--|--artist.rb
+|--|--rack.rb
+|--|--http.rb
+|--rort.rb
+\end{lstlisting}
+\end{scode}
 
 % class diagram
 
