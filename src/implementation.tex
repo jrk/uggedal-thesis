@@ -719,6 +719,7 @@ second user recives a full-blown client version and the other users receives a
 control version.
 
 \subsection{Background Processes}
+\label{section:implementation.architecture.background.process}
 
 With our cache architecture in place it became apparent that it was too
 expensive time wise for users to retrieve the activities of all their
@@ -859,8 +860,19 @@ file and possible directories was used for each module and class:
 \subsection{Data Structure}
 
 We'll shortly summarize the data structure used in our persistent database. We
-only stored informations about respondents and
-\tableref{prototype.data.structure} gives details about what data we stored.
+only stored informations about respondents to our survey and following
+client download in a \code{respondents} table. We used a \code{id} column as
+an identifier for each stored respondent; an \code{email} column for
+identifying respondents in relation to their survey answers; a \code{group}
+column to distinguish between experiment and control respondents; a
+\code{slug} column to store the unique identifier a respondent have at
+the \urort{} web site so that we can warm up our cache (see
+\sectionref{mplementation.architecture.background.process}); a \code{requests}
+column to count the times the respondent requests data from our server; and a
+\code{created\_at} column to keep track of when a respondent first registered
+his email when downloading our client software.
+
+\tableref{prototype.data.structure} gives details about the data we stored.
 
 \begin{table}
   \begin{tabular}{lll}
