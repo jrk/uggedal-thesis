@@ -856,10 +856,52 @@ file and possible directories was used for each module and class:
   \end{whole}
 \end{figure}
 
-% class diagram
-
 \subsection{Data Structure}
-% the structure of our persistent data
+
+We'll shortly summarize the data structure used in our persistent database. We
+only stored informations about respondents and
+\tableref{prototype.data.structure} gives details about what data we stored.
+
+\begin{table}
+  \begin{tabular}{lll}
+
+    &
+    Type &
+    Constraints \\
+
+    \cmidrule(lr){2-2}
+    \cmidrule(lr){3-3}
+
+    \code{id} &
+    Integer &
+    Auto incremented primary key \\
+
+    \code{email} &
+    Text &
+    Unique, not empty \\
+
+    \code{group} &
+    Text &
+    Not empty \\
+
+    \code{slug} &
+    Text &
+    \\
+
+    \code{requests} &
+    Integer &
+    Initial default of zero \\
+
+    \code{created\_at} &
+    Timestamp &
+    \\
+
+
+  \end{tabular}
+  \caption[Prototype Data Structure]{%
+    Prototype persistent data structure, by field name}
+  \label{table:prototype.data,structure}
+\end{table}
 
 \section{Performance}
 \label{section:implementation.performance}
