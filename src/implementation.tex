@@ -838,22 +838,45 @@ statistics related to our source code.
 
 \begin{table}
   \centering
-  \caption{Prototype Source Code Statistics}
+  \caption[Prototype Source Code Statistics]{%
+    Prototype source code statistics, by type}
   \label{table:prototype.source.code.stats}
 
-  \begin{tabular}{lll}
+  \begin{tabular}{lrrrr}
 
-    Type & Lines of Code \\
-    \midrule
+    &
+    &
+    \multicolumn{3}{c}{Number of lines of} \\
 
-    Client &
-    NNN \\
+    &
+    \multicolumn{1}{c}{Files} &
+    \multicolumn{1}{c}{code} &
+    \multicolumn{1}{c}{comment} &
+    \multicolumn{1}{c}{blank} \\
 
-    Server &
-    NNNN \\
+    \cmidrule(lr){2-2}
+    \cmidrule(lr){3-5}
+
+    Client implementation &
+    2 &
+    373 &
+    42 &
+    87 \\
+
+    Server implementation &
+    21 &
+    850 &
+    9 &
+    189 \\
+
+    Server specification &
+    16 &
+    714 &
+    0 &
+    179 \\
 
   \end{tabular}
 \end{table}
 
-
-% spec/code ratio
+By dividing our number of lines of specification code with implementation code
+we get a ratio of 84\% between specification/implementation.
