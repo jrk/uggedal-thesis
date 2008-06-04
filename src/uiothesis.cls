@@ -312,7 +312,7 @@
 }%
 
 % Sidetable
-\newcommand{\sidetable}[2]{%
+\newcommand{\sidetable}[3][]{%
   \marginpar{%
     \strictpagechecktrue
     \ifodd\c@page
@@ -326,8 +326,8 @@
                             singlelinecheck=false}
       \RaggedLeft
     \fi
-    \footnotesize #2
-    \captionof{table}{#1}
+    \footnotesize #3
+    \captionof{table}[#1]{#2}
   }
 }
 
