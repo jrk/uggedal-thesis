@@ -765,10 +765,11 @@ the increased complexity (and thereby size) of todays web pages have created
 problems in perceived responsiveness for users due to network latency. He
 thinks asynchronous request of small content items solves this
 problem\dash{}bringing greater interactivity to the user. Another solution
-that can be combined is to move some processing into the client with
+that can be used is to move some processing into the client with
 JavaScript \citep[\p{9}]{jazayeri07}
 
 \subsection{Code Structuring}
+\label{section:implementation.architecture.code.structuring}
 
 \sidefigure{Prototype Server File Hierarchy}{%
   Hierarchy of the server prototype software.
@@ -776,7 +777,7 @@ JavaScript \citep[\p{9}]{jazayeri07}
   \sectionref{source.code.hierarchy}.
   \label{figure:prototype.server.file.hierarchy}
 }{%
-  \texttt{
+  \texttt{%
     |--rort\\
     |--|--external\\
     |--|--|--blog.rb\\
