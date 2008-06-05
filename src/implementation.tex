@@ -843,7 +843,7 @@ file and possible directories was used for each module and class:
 \end{scode}
 
 The code for producing this hierarchy listing can be found in
-\sectionref{source.code.javascript.comment.stripper}.
+\sectionref{source.code.hierarchy}.
 \begin{figure}
   \begin{whole}
     \centering
@@ -915,18 +915,58 @@ gives details about the data we stored.
 
 \section{Performance}
 \label{section:implementation.performance}
-% we did not design the application with performance in mind.
-% cite Donald Knuth Structured Programming with GO TO Statements
-%
+
+Initially we did not architect our application with performance in mind. We
+wanted to create a working prototype first and then try to increase it's
+performance if need be.
+
+It became apparent that creating an activity feed for a user with several
+favorites was very time consuming. We identified the major bottleneck to be
+the actual retrieval of information from the \urort{} web page. We could not
+do anything code and algorithm wise to remedy this problem. The only solution
+was to increase the bandwith allowed on our internet connection.
+As can be seen in
+\tableref{retrieval.time.and.speed}
+our retrieval times decreased as we moved to a production server with
+better internet connectivity. Note that the speedup is not relative to
+the transfer speed as there is overhead in establishing a connection
+to the servers at \urort{}.
+
+\begin{table}
+  \begin{tabular}{lrr}
+
+    &
+    \multicolumn{1}{c}{Speed} &
+    \multicolumn{1}{c}{Time} \\
+
+    &
+    \multicolumn{1}{c}{(MB/s)} &
+    \multicolumn{1}{c}{(s)} \\
+
+    \cmidrule(lr){2-2}
+    \cmidrule(lr){3-3}
+
+    Development system &
+    0.4 &
+    4.0 \\
+
+    Production system &
+    10.2 &
+    2.8 \\
+
+  \end{tabular}
+  \caption[Retrieval Time and Speed]{%
+    Retrieval time and speed of a typical artist profile page (423kB in size),
+    by system}
+  \label{table:retrieval.time.and.speed}
+\end{table}
+
+The next bottlenech we encountered was the actual parsing of the retrieved web
+pages from \urort{}.
+
 % Problems:
 % - fetching HTML and parse ~ 45s
 % - only parse ~ 14s
-%
-% Made prefetch trough downloading
-% May need to limit number of favorites to fetch based on time
-%
-% This is not premature optimization!
-%
 
 \section{Source Code}
 \label{section:implementation.source.code}
