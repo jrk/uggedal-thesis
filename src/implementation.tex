@@ -814,7 +814,6 @@ file and possible directories was used for each module and class:
   Prototype Server File Hierarchy}{%
   Hierarchy of the server prototype software}
 \begin{lstlisting}
-% find . | sed -e 's/[^\/]*\//|--/g' -e 's/-- |/    |/g'
 |--rort
 |--|--external
 |--|--|--blog.rb
@@ -843,6 +842,8 @@ file and possible directories was used for each module and class:
 \end{lstlisting}
 \end{scode}
 
+The code for producing this hierarchy listing can be found in
+\sectionref{source.code.javascript.comment.stripper}.
 \begin{figure}
   \begin{whole}
     \centering
