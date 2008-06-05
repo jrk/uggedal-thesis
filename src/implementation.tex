@@ -770,6 +770,41 @@ JavaScript \citep[\p{9}]{jazayeri07}
 
 \subsection{Code Structuring}
 
+\sidefigure{Prototype Server File Hierarchy}{%
+  Hierarchy of the server prototype software.
+  The code for producing this hierarchy listing can be found in
+  \sectionref{source.code.hierarchy}.
+  \label{figure:prototype.server.file.hierarchy}
+}{%
+  \texttt{
+    |--rort\\
+    |--|--external\\
+    |--|--|--blog.rb\\
+    |--|--|--concert.rb\\
+    |--|--|--fetchable.rb\\
+    |--|--|--artist.rb\\
+    |--|--queue.rb\\
+    |--|--cache.rb\\
+    |--|--background.rb\\
+    |--|--core\_ext.rb\\
+    |--|--persistence.rb\\
+    |--|--external.rb\\
+    |--|--parsers.rb\\
+    |--|--models.rb\\
+    |--|--http\\
+    |--|--|--download.rb\\
+    |--|--|--api.rb\\
+    |--|--models\\
+    |--|--|--user.rb\\
+    |--|--|--person.rb\\
+    |--|--|--respondent.rb\\
+    |--|--|--artist.rb\\
+    |--|--rack.rb\\
+    |--|--http.rb\\
+    |--rort.rb
+  }
+}
+
 Both our client-side and server-side programming languages are as we'll see in
 \sectionref{selection.stack.client.language} and
 \sectionref{selection.stack.server.language} \term{object-oriented}%
@@ -808,42 +843,9 @@ As
 
 To make the handeling of our source code easier we used a hierarchy of
 directories and files that resembeled our module and class constructs. One
-file and possible directories was used for each module and class:
+file and possible directories was used for each module and class
+as can be seen in \figureref{prototype.server.file.hierarchy}.
 
-\begin{scode}{sh}{prototype.server.file.hierarchy}{%
-  Prototype Server File Hierarchy}{%
-  Hierarchy of the server prototype software}
-\begin{lstlisting}
-|--rort
-|--|--external
-|--|--|--blog.rb
-|--|--|--concert.rb
-|--|--|--fetchable.rb
-|--|--|--artist.rb
-|--|--queue.rb
-|--|--cache.rb
-|--|--background.rb
-|--|--core_ext.rb
-|--|--persistence.rb
-|--|--external.rb
-|--|--parsers.rb
-|--|--models.rb
-|--|--http
-|--|--|--download.rb
-|--|--|--api.rb
-|--|--models
-|--|--|--user.rb
-|--|--|--person.rb
-|--|--|--respondent.rb
-|--|--|--artist.rb
-|--|--rack.rb
-|--|--http.rb
-|--rort.rb
-\end{lstlisting}
-\end{scode}
-
-The code for producing this hierarchy listing can be found in
-\sectionref{source.code.hierarchy}.
 \begin{figure}
   \begin{whole}
     \centering
