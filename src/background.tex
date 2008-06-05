@@ -1531,6 +1531,17 @@ Such an approach would hopefully result in a transparent experience for our
 end users as long as they have taken the necessary steps to set up the browser
 extension and our script.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{scrsh_hoodwinkd_obfuscation}
+  \caption[Hoodwink.d Obfuscation]{
+    Obfuscation of Hoodwink.d's home page,
+    retrieved March 6, 2008, from
+    \url{http://hoodwinkd.hobix.com}.
+  }
+  \label{figure:scrsh.hoodwinkd.obfuscation}
+\end{figure}
+
 The idea of creating additional features for a web site in these manners
 came from the author's involvement in an underground community based around
 the Ruby programming language. \project{Hoodwink.d}%
@@ -1579,17 +1590,6 @@ and thereby filtering out so called \term{newbies}
 (newcomers and beginners).
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.9\textwidth]{scrsh_hoodwinkd_obfuscation}
-  \caption[Hoodwink.d Obfuscation]{
-    Obfuscation of Hoodwink.d's home page,
-    retrieved March 6, 2008, from
-    \url{http://hoodwinkd.hobix.com}.
-  }
-  \label{figure:scrsh.hoodwinkd.obfuscation}
-\end{figure}
-
-\begin{figure}
   \begin{whole}
     \centering
     \includegraphics[width=0.9\wholewidth]{scrsh_hoodwinkd_comment_source}
@@ -1602,19 +1602,23 @@ and thereby filtering out so called \term{newbies}
   \end{whole}
 \end{figure}
 
-\sidefigure[Hoodwink.d Recent Comments]{%
-  Recent comments on Hoodwink.d,
-  retrieved March 7, 2008, from
-  \url{http://hoodwink.d/onslaught}.
-  \label{figure:scrsh.hoodwinkd.onslaught.recent}
-}{%
-  \includegraphics[width=0.9\marginparwidth]{scrsh_hoodwinkd_onslaught_recent}
+\newcommand{\sideFigHoodwinkd}{%
+  \sidefigure[Hoodwink.d Recent Comments]{%
+    Recent comments on Hoodwink.d,
+    retrieved March 7, 2008, from
+    \url{http://hoodwink.d/onslaught}.
+    \label{figure:scrsh.hoodwinkd.onslaught.recent}
+  }{%
+    \includegraphics[width=0.9\marginparwidth]{scrsh_hoodwinkd_onslaught_recent}
+  }
 }
 
 Now we finally get to the really interesting part of Hoodwink.d: the features
 it enables on top of the Web. One can create a comment visible only to the
 community's members on any web page that is supported. This support is not
-dependant on the creator of the web site, but the users of Hoodwink.d needs to
+dependant on the creator of the web site, but the users of Hoodwink.d
+\sideFigHoodwinkd
+needs to
 record some information of the web site (where the comments should be placed)
 to make it supported. \figureref{scrsh.hoodwinkd.comment.source} shows an
 example of how these comments are displayed on the repository browser for
