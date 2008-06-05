@@ -51,7 +51,7 @@ enabling mass-production of software was to offer components\dash{}families
 of program routines that can be used for any given job. These components
 should be created in a way so that they can fit together as building blocks.
 The developer should be able to treat these components as \term{black boxes}%
-\evensidenote[-3\onelineskip]{
+\sidenote{
   In the field of electronics black boxes are used to describe electronic
   circuits with a fixed set of terminals where one is deliberately ignoring
   the internals of the circuit. Only the external properties of the circuit
@@ -96,7 +96,7 @@ after all. The web browser have to be explicitly chosen
 to be one that readily supports scripting existing
 web pages\dash{}a term often called \term{user scripting}.
 The \project{Firefox}%
-\sidenote[-3\onelineskip]{
+\sidenote{
   Available at \url{http://www.mozilla.com/en-US/firefox}.
 }
 web browser was the first browser providing a
@@ -138,13 +138,13 @@ Although we've settled on the Firefox and Greasemonkey platform there is a
 certain possibility that our implementation could work in other browsers
 providing user scripting. The \project{Opera} browser provides user scripting
 without any plugins%
-\sidenote[-\onelineskip]{
+\sidenote{
   For more information see
   \url{http://www.opera.com/support/tutorials/userjs/examples}.
 },
 the \project{Safari} browser can handle user script with the
 \project{GreaseKit}%
-\sidenote[-\onelineskip]{
+\sidenote{
   Available at \url{http://8-p.info/greasekit}.
 }
 plug-in. Our prototype user script would not work in the Opera browser since
@@ -164,7 +164,7 @@ introduced by \project{Netscape} in their 2.0 version of the web browser
 with the same name. \project{JavaScript} was first intended to be a
 lightweight scripting language for gluing together \abbr{HTML} and applets
 written in the \project{Java} programming language \citep{netscape95}.%
-\oddsidenote{
+\sidenote{
   Sun Microsystems, the creators of Java, had negotiated with
   Netscape about including it in their second major web browser release.
   The development of JavaScript, then called Mocha, was already
@@ -311,7 +311,7 @@ that choosing a JavaScript library can have major impact on how easily
 implemented and understood your code will be. Four of the five libraries
 have support for selector syntax based on
 that found in \abbr{CSS}%
-\evensidenote{
+\sidenote{
   Cascading Style Sheets. A stylesheet language for describing the
   presentation of for instance \abbr{HTML} documents.
 }.
@@ -350,7 +350,7 @@ and its clear and unique syntax we decided on selecting it as the JavaScript
 library for our implementation. It seems others have take jQuery and its
 virtues to hart as many large corporations like Google, Intel, Dell, and
 \abbr{BBC} have used it in their public facing offerings.%
-\sidenote[-4\onelineskip]{
+\sidenote{
   For a complete list see \url{http://docs.jquery.com/Sites_Using_jQuery}.
 }
 
@@ -378,15 +378,15 @@ important than computational efficiency (a language's native performance).
 is how little code you need for solving a given problem.
 Since we didn't have time to invest in learning a new language we had to do
 with those we knew from before. Of those \project{Ruby}%
-\sidenote[-12\onelineskip]{
+\sidenote{
   Ruby recedes at \url{http://ruby-lang.org}.
 },
 \project{Python}%
-\sidenote[-9\onelineskip]{
+\sidenote{
   The home of Python is \url{http://python.org}.
 }, and
 \project{Common Lisp}%
-\sidenote[-6\onelineskip]{
+\sidenote{
   Common Lisp, the prevalent Lisp dialect today, is a standard \citep{ansi96}
   and has many implementations.
   A gateway to this language and its many implementations can be found
@@ -432,7 +432,7 @@ and been able to adopt new paradigms in programming as they've appered.
 Even though we walue programming efficiency over computational performance,
 it should be noted that Common Lisp have been described as the only performant
 dynamic language \citep{martin08} compared to statically compiled languages%
-\evensidenote{
+\sidenote{
   In \work{The Computer Language Benchmarks Game} several programming
   languages are pitched against each other in several tests to determine
   their computational performance. As of this writing (April 2, 2008)
@@ -909,18 +909,18 @@ There are however several different forms of version control system one can
 use. One of the most used version control implementations the last years
 in open source circles was
 \project{Subversion}%
-\sidenote[-8\onelineskip]{
+\sidenote{
   Available at \url{http://subversion.tigris.org}.
 }\dash{}a \term{centralized version control system} meaning that one central
 server holds the version controlled code repository and its history.%
-\sidenote[-7\onelineskip]{
+\sidenote{
   Developers on the client-side have working copies and need to contact the
   centralized server to get a hold of historical data and create new history.
 }
 Recently \term{decentralized version control systems} have become more popular
 amongst developers. A decentralized model means that every developer can have
 their own repository consisting of all history.%
-\sidenote[-5\onelineskip]{
+\sidenote{
   You can for instance be without internet connectivity and still commit
   changes, revert to previous versions, and handle all other tasks your
   version control system supports.
@@ -930,7 +930,7 @@ repositories. This enables a much better model for collaboration.
 We favor this last model of version control and so have projects
 like \project{Linux}, \project{X}, \project{Mozilla},
 and \project{OpenSolaris}.%
-\sidenote[-3\onelineskip]{
+\sidenote{
   \citeauthor{torvalds07}, author of the Linux kernel,
   have described Subversion and centralized version control
   as fundamentally flawed since it's supposed to be a
@@ -960,7 +960,7 @@ A developer's main tool for authoring software is his editor. Sometimes the
 language of implementation warrants a specialized editor with aids for
 handling cumbersome tasks specific to that language. Such an editor is often
 called an \abbr{IDE}%
-\sidenote[-7\onelineskip]{
+\sidenote{
   A good example of an \abbr{IDE} (integrated development environment
   for short) is \project{Eclipse} (available at \url{http://eclipse.org}).
   It was first used for Java development but since extended with
@@ -971,7 +971,7 @@ and are used most often for languages like Java and C\#.
 large collections of source code, refactoring code, debugging code, and
 interacting with revision control systems in addition to normal editor usage.
 Development environments found in Lisp%
-\sidenote[-4\onelineskip]{
+\sidenote{
   \prequote[\p{69}]{sandewall78}{%
     describes the nature and benefits of the Lisp environment as}{%
       The `residential' design of programing systems, whereby all facilities
@@ -986,7 +986,6 @@ and Smalltalk%
     Smalltalk is designed so that every component in the system that is
     accessible to the user can be presented in a meaningful way for
     observation and manipulation}
-
 }
 are surpassing \abbr{IDE} types in integration and interactiveness even though
 they preceded them.
