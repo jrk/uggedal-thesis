@@ -116,6 +116,16 @@ navigational aid. A so called \term{tag cloud} is used to visualize the
 popularity (and thereby importance) of the individual tags. The larger the
 tag title, the more frequent the tag has been applied to photographs.
 
+\begin{figure}
+  \begin{whole}
+    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcloud}
+    \caption[Flickr Tag Cloud]{%
+       Tag Cloud,
+       retrieved November 1, 2007, from \url{http://flickr.com/explore}.}
+    \label{figure:scrsh.flickr.tagcloud}
+  \end{whole}
+\end{figure}
+
 Tag clustering was released in the fall of 2005 \citep{butterfield05} as a way
 to easier see the relationships between separate tags. For any given tag a
 cluster of three related tags is generated and displayed to users when they
@@ -123,6 +133,17 @@ are browsing as seen in
 \figureref{scrsh.flickr.photo.detail}.
 Flickr algorithmically generates these listings based on what tags users tend
 to use together for labeling a photo.
+
+\begin{figure}
+  \begin{whole}
+    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcluster}
+    \caption[Flickr Tag Cluster]{%
+       Tag Cluster,
+       retrieved November 19, 2007, from
+       \url{http://flickr.com/photos/tags/navigation/clusters/}.}
+    \label{figure:scrsh.flickr.tagcluster}
+  \end{whole}
+\end{figure}
 
 Tagging is a very flexible approach only hindered by users' imagination. In
 the early days of Flickr there was no support for geographical data. Users
@@ -142,40 +163,25 @@ generate geographical coordinate tags%
 \subsection{Geographical Data}
 
 In late August 2006 Flickr introduced geotagging abilities
-\citep{butterfield06} by integrating mapping aspects from Yahoo! Maps%
+\citep{butterfield06a} by integrating mapping aspects from Yahoo! Maps%
 \sidenote{
   Available at \url{http://maps.yahoo.com}.
 }
 Users could now place their photos on a
-map to signify where they were captured.
+map to signify where they were captured without resorting to clever hacks of
+the standard tagging system.
 % Finish description.
 % Take screen shot.
 % Write about the new places feature.
 % Write and cite when proper geo data was incorporated.
 
 \subsection{Interestingness}
-% Cite collaborative filtering. Introduced in same blog post as clustering.
 
-\begin{figure}
-  \begin{whole}
-    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcloud}
-    \caption[Flickr Tag Cloud]{%
-       Tag Cloud,
-       retrieved November 1, 2007, from \url{http://flickr.com/explore}.}
-    \label{figure:scrsh.flickr.tagcloud}
-  \end{whole}
-\end{figure}
+The concept of \term{interestingness} was introduced by Flickr during
+the same time as tag clustering was unveiled \citep{butterfield05}.
 
-\begin{figure}
-  \begin{whole}
-    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcluster}
-    \caption[Flickr Tag Cluster]{%
-       Tag Cluster,
-       retrieved November 19, 2007, from
-       \url{http://flickr.com/photos/tags/navigation/clusters/}.}
-    \label{figure:scrsh.flickr.tagcluster}
-  \end{whole}
-\end{figure}
+As of this writing a pattent on interestingness is pending
+\citep{butterfield06b}.
 
 \section{Facebook}
 \label{section:analysis.facebook}
