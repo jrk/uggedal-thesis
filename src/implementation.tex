@@ -961,12 +961,22 @@ to the servers at \urort{}.
   \label{table:retrieval.time.and.speed}
 \end{table}
 
-The next bottlenech we encountered was the actual parsing of the retrieved web
-pages from \urort{}.
+The next bottlenech we became aware of is related to the cost of retrieving
+web pages from \urort{}. We did some carefull conting of the number of
+retrieval attemts to \urort{} and were able to minimize these to a
+considerably lower number.
 
-% Problems:
-% - fetching HTML and parse ~ 45s
-% - only parse ~ 14s
+The last bottlenech we encountered was the actual parsing of the retrieved web
+pages from \urort{}. We were able to implement some minor optimizations, but
+did not see any major improvments.
+
+But the major performance gains were seen when we introduced a fast cache
+solution and a system for periodically warming this cache up,
+as described in
+\sectionref{implementation.architecture.caching} and
+\sectionref{implementation.architecture.background.process}.
+With these two pieces in place we felt we could present users with bearable
+response times.
 
 \section{Source Code}
 \label{section:implementation.source.code}
