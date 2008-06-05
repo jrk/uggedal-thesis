@@ -201,7 +201,9 @@
 
 \newcommand{\marginelement}[2][0]{%
   \marginnote{%
-    \ifodd\c@page%
+    \strictpagechecktrue
+    \checkoddpage
+    \ifoddpage%
       \RaggedRight\footnotesize%
     \else%
       \RaggedLeft\footnotesize%
@@ -223,7 +225,9 @@
 % Sidetable (have to use marginpar since tabular doesn't work with marginnote)
 \newcommand{\sidetable}[3][]{%
   \marginpar{%
-    \ifodd\c@page
+    \strictpagechecktrue
+    \checkoddpage
+    \ifoddpage%
       \captionsetup[table]{font={footnotesize,sf},%
                            justification=RaggedRight,%
                            singlelinecheck=false}
@@ -242,7 +246,9 @@
 % Sidefigure
 \newcommand{\sidefigure}[3][]{%
   \marginelement{%
-    \ifodd\c@page
+    \strictpagechecktrue
+    \checkoddpage
+    \ifoddpage%
       \captionsetup[figure]{font={footnotesize,sf},%
                             justification=RaggedRight,%
                             singlelinecheck=false}
