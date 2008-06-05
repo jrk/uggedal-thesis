@@ -356,6 +356,18 @@ virtues to hart as many large corporations like Google, Intel, Dell, and
 
 \subsection{Server Side}
 
+\subsubsection{Platform}
+
+Based on the following survey of server side software we needed an
+\abbr{UNIX}-based operating sytem as the plattform of our server. The
+particular operating system was pre-selected for us as \abbr{SINTEF} already
+had a server we could use. This system was running \project{Debian}%
+\sidenote{
+  Freely available at \url{http://debian.org}.
+}
+\abbr{GNU}/Linux\dash{}a perfect fit for the rest of our server side
+software stack.
+
 \subsubsection{Programming Language}
 \label{section:selection.stack.server.language}
 
@@ -756,17 +768,30 @@ we used a Ruby library called \project{memcache-client}%
   Available at \url{http://seattlerb.rubyforge.org/memcache-client/}.
 }.
 
-\subsubsection{Database Access Library}
-
-% sequel.rubyforge.org
-
 \subsubsection{Database}
 
-% sqlite3
+Since we were going to only use a single database table
+(see \sectionref{implementation.architecture.code.structuring})
+and did not need any special features, we could
+basically have used all freely avaiable relational database systems. We
+selected \project{Sqlite}%
+\sidenote{
+  Available at \url{http://sqlite.org}.
+}
+as it have a much smaller footprint than it's
+competitors. This is mainly due to it's limited featureset. Another usefull
+characteristic of Sqlite is it's storage format. Sqlite simply writes to a
+normal disk file that can be backed up and handeled with normal
+file system tools.
 
-\subsubsection{Monitoring}
-
-% god. monitoring, process, memory, email notification, daemonization
+For accessing the database we had a choice between several libraries that
+makes interaction with the database easier and abstracted based on database
+software.
+We selected the library we found had the most flexible and lightweight
+\abbr{ORM} capability: \project{Sequel}%
+\sidenote{
+  Sequel have a home at \url{http://sequel.rubyforge.org}.
+}.
 
 \subsection{Overview of Client \oldand Server Components}
 
@@ -813,9 +838,13 @@ various third party software.
       jQuery &
       1.2.4 \\
 
+      Server-side plattform &
+      Debian \abbr{GNU}/Linux &
+      4.0 \\
+
       Server-side language &
       Ruby &
-      1.8.6 \\
+      1.8.5 \\
 
       \abbr{HTML} scraping library &
       Hpricot &
@@ -823,7 +852,7 @@ various third party software.
 
       \abbr{HTTP} fetching library &
       open-uri &
-      1.8.6 (included with Ruby) \\
+      1.8.5 (included with Ruby) \\
 
       \abbr{JSON} library &
       json &
@@ -839,11 +868,19 @@ various third party software.
 
       Cache server &
       Memcached &
-      1.2.2 \\
+      1.1.12 \\
 
-      Cache library &
+      Cache access library &
       memcache-client &
       1.5.0 \\
+
+      Database server &
+      Sqlite &
+      3.3.8 \\
+
+      Database access library &
+      Sequel &
+      1.5.1 \\
 
     \end{tabular}
     \caption[Third Party Software Versions]{%
