@@ -38,9 +38,9 @@ we're finding navigation links that are social of
 nature. Four thumbnails functions as sample of the most recently uploaded
 photos by other members of the community. One can either navigate straight to
 a detailed page for each particular photo by clicking on the respective
-thumbnail (Id 6, p.~\pageref{table:flickr.content.inventory.6})
+thumbnail \flickrref{6}
 or the profile of the uploader by clicking on their user
-name (Id 7, p.~\pageref{table:flickr.content.inventory.7}). Such thumbnails
+name \flickrref{7}. Such thumbnails
 with minimal meta data (the uploader) are prevalent all over Flickr. Of the
 120 pages we collected in our content inventory 26 of them contained
 thumbnails. Most of these thumbnails
@@ -178,10 +178,24 @@ the standard tagging system.
 \subsection{Interestingness}
 
 The concept of \term{interestingness} was introduced by Flickr during
-the same time as tag clustering was unveiled \citep{butterfield05}.
+the same time tag clustering was unveiled \citep{butterfield05}.
 
-% http://blogs.photopreneur.com/what-it-takes-to-get-your-photo-on-the-flickr-explore-page
+Interestingness is a rating of how interesting a photograph is based on
+how many views the photograph has, how many users have favorized the
+photograph, and how many comments a photograph have. Fovirization have the
+highest weight, comments medium weight, and views the least weight
+in the algoritm that generates the interestingness rating \citep{dean08}.
+Users are not aware of the score of a particular photograph's interestingness,
+but the highest rated photographs are available trough the \q{Explore} part of
+Flickr
+(\flickropenref{5.3}
+\flickropenref{5.4}).
 
+The interestingness system is a great example of passive and indirect social
+navigation. Based on the behaviour of other users the more interesting photos
+are made more visible in Flickr's interface. The use of interestingness seem
+to have worked well for Flickr as users are trying hard to make their photos
+receive higher interestingness scores.
 As of this writing a pattent on interestingness is pending
 \citep{butterfield06b}.
 
