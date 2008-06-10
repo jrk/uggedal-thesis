@@ -411,13 +411,13 @@
   (p.~\pageref{appendix:#1})%
 }
 \newcommand\flickrref[1]{%
-  (Id #1, p.~\pageref{table:flickr.content.inventory.#1})
+  (\identifier{} #1, p.~\pageref{table:flickr.content.inventory.#1})
 }
 \newcommand\flickropenref[1]{%
-  Id #1, p.~\pageref{table:flickr.content.inventory.#1}
+  \identifier{} #1, p.~\pageref{table:flickr.content.inventory.#1}
 }
 \newcommand\facebookref[1]{%
-  (Id #1, p.~\pageref{table:facebook.content.inventory.#1})
+  (\identifier{} #1, p.~\pageref{table:facebook.content.inventory.#1})
 }
 
 
@@ -463,6 +463,9 @@
 
 % old style &
 \newcommand{\oldand}{\textsw{\& }}
+
+% ID
+\newcommand{\identifier}{\abbr{ID}}
 
 
 %%
