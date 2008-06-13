@@ -557,6 +557,12 @@
     figures spanning both the textblock and\\
     fore-edge margin was inspired by \work{Beautiful\\
     Evidence} by \citet{tufte06}.\\
+
+    \bigskip
+
+    The colors used in diagrams were inspired by\\
+    the \work{Summer Fields} color scheme found at\\
+    \url{http://www.colourlovers.com/palette/399372}\\
   \end{adjustwidth*}
   
   \vfil
