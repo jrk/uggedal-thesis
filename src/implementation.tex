@@ -44,11 +44,14 @@ similar to that practiced by
   when a body has been stripped down to its nakedness.
 \end{fullquotation}
 
-This philosophy is closely related to minimalism, a movement where the
-infamous architect Mies van der Rohe popularized the concept of
-\q{less is more}\dash{}achieving the maximum effect with the minimum of
-means \citep{whitman69}.
-That is why we feel the application we're creating should provide users
+This philosophy is closely related to minimalism%
+\sidenote{
+  Minimalism is a movement where the
+  infamous architect Mies van der Rohe popularized the concept of
+  \q{less is more}\dash{}achieving the maximum effect with the minimum of
+  means \citep{whitman69}.
+}.
+That is why we feel the prototype we're creating should provide users
 with only the necessary information for affording navigational behavior.
 
 \citet{schwartz04} wrote a book called
@@ -67,7 +70,7 @@ default. We decided against this since we want to test our navigational
 design in opposition to the navigational designs already provided. By
 eliminating some of the default navigation we would not be sure
 if potentially more satisfied users was the result of our removal of
-choices or the new choices we provided.
+choices or the new choices we provided or a combination.
 
 \subsection{Activity Feed for \urort{}}
 \label{section:implementation.design.activity.feed}
@@ -622,7 +625,7 @@ it allows us to cache data globally\dash{}shared by all clients. This means
 that data collection is handled on the server-side, while data display
 obviously is handled on the client-side.
 
-Following the characterization of client-server systems given by
+Following the characterization of client-server systems provided by
 \citeauthor{sinha92} our client is presenting a user interface
 by altering the structure of the \urort{} web page. The client sends queries
 to the server in the form of \abbr{HTTP}%
@@ -656,7 +659,7 @@ In the planning stages of our implementation and its early development we
 decided to store all information retrieved from the \urort{} web site
 in a relational database. We did some study into selecting the best
 \abbr{ORM}%
-\sidenote{
+\sidenote[-9]{
   \abbr{ORM}, an acronym for object-relational mapping, is
   \postquote[\p{889}]{linskey07}{%
     the technique of converting records in a relational database into
@@ -678,7 +681,7 @@ and interaction to this database was done with a clear and explicative
   using a general-purpose programming language \citep[\p{317}]{mernik05}.
 },
 eliminating the need for constructing complex \abbr{SQL}%
-\sidenote{
+\sidenote[10]{
   \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
   query language, now the \latin{de facto} language for interacting
   with relational databases, invented by 
@@ -694,7 +697,7 @@ source. And since the data had to be kept up to date by retrieving the data
 from our source within certain intervals, we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
 keeping a \term{cache}%
-\sidenote{
+\sidenote[7]{
   According to \prequote{wikipedia08cache}{a cache is}{%
     a temporary storage area where frequently accessed data can be stored for
     rapid access}
@@ -774,8 +777,9 @@ price to pay for reduced latency.
 In the traditional style of \abbr{AJAX} applications we request information on
 the client-side of our prototype asynchronous%
 \sidenote{
-  While it's possible to use synchronous requests with \code{XMLHttpRequest}
-  it's strongly discouraged since the entire web browser will be locked
+  While it's possible to create synchronous requests with the
+  \code{XMLHttpRequest} object
+  it's discouraged since the entire web browser will be locked
   while it's waiting for a response for its request \citep{crockford06a}.
 }.
 This means that requests handled by the \code{XMLHttpRequest} object
@@ -794,6 +798,30 @@ JavaScript \citep[\p{9}]{jazayeri07}
 \subsection{Code Structuring}
 \label{section:implementation.architecture.code.structuring}
 
+Both the client-side and server-side programming languages we used
+are as we'll see in
+\sectionref{selection.stack.client.language} and
+\sectionref{selection.stack.server.language} \term{object-oriented}%
+\sidenote[-10]{
+  The term object-orientation was coined by \citet{kay03} sometime in 1967.
+  The motivations leading to object-oriented programming were mainly
+  to find \q{%
+    a better module scheme for complex systems involving hiding of details}
+  and finding \postquote[p{514}]{kay96}{%
+    a more flexible version of assignment, and then try to
+    eliminate it altogether}
+  The essence of object-orientation lies in the fundamental concepts of
+  abstraction, classes, encapsulation, inheritance, object, message passing,
+  methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
+}.
+Since our client software was pretty dense in code size (see
+\sectionref{implementation.source.code} for details) and only had to handle
+a small set of operations we did not use object oriented
+features as classes and objects to structure our code. Instead we used
+functions as a partitioning scheme when implementing on the client side.
+Our client side software was contained in two files\dash{}one file for each
+of our two versions.
+
 \sidefigure[Prototype Server File Hierarchy]{%
   Hierarchy of the server prototype software.
   The code for producing this hierarchy listing can be found in
@@ -801,6 +829,7 @@ JavaScript \citep[\p{9}]{jazayeri07}
   \label{figure:prototype.server.file.hierarchy}
 }{%
   \texttt{%
+    \\
     |--rort\\
     |--|--external\\
     |--|--|--blog.rb\\
@@ -829,29 +858,6 @@ JavaScript \citep[\p{9}]{jazayeri07}
   }
 }
 
-Both our client-side and server-side programming languages are as we'll see in
-\sectionref{selection.stack.client.language} and
-\sectionref{selection.stack.server.language} \term{object-oriented}%
-\sidenote{
-  The term object-orientation was coined by \citet{kay03} sometime in 1967.
-  The motivations leading to object-oriented programming were mainly
-  to find \q{%
-    a better module scheme for complex systems involving hiding of details}
-  and finding \postquote[p{514}]{kay96}{%
-    a more flexible version of assignment, and then try to
-    eliminate it altogether}
-  The essence of object-orientation lies in the fundamental concepts of
-  abstraction, classes, encapsulation, inheritance, object, message passing,
-  methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
-}.
-Since our client software was pretty dense in code size (see
-\sectionref{implementation.source.code} for details) and only had to handle
-a small set of operations we did not use object oriented
-features as classes and objects to structure our code. Instead we used
-functions as a partitioning scheme when implementing on the client side.
-Our client side software was contained in two files\dash{}one file for each
-of our two versions.
-
 On the server side however we had to write more code and our code had to
 handle quite a large set of operations. We therefore implemented our server
 side software with the use of modules, classes, objects, and methods.
@@ -865,12 +871,7 @@ As
   semantic level in which one can be absolutely precise.
 \end{fullquote}
 
-To make the handeling of our source code easier we used a hierarchy of
-directories and files that resembeled our module and class constructs. One
-file and possible directories was used for each module and class
-as can be seen in \figureref{prototype.server.file.hierarchy}.
-
-\begin{figure}[h]
+\begin{figure}
   \begin{whole}
     \centering
     \includegraphics{fig_prototype_class_diagram}
@@ -881,9 +882,14 @@ as can be seen in \figureref{prototype.server.file.hierarchy}.
   \end{whole}
 \end{figure}
 
+To make the handeling of our source code easier we used a hierarchy of
+directories and files that resembeled our module and class constructs. One
+file and possible directories was used for each module and class
+as can be seen in \figureref{prototype.server.file.hierarchy}.
+
 \subsection{Data Structure}
 
-We'll shortly summarize the data structure used in our persistent database. We
+We'll shortly summarize the data structure used in our database. We
 only stored informations about respondents to our survey and following
 client download in a \code{respondents} table. We used a \code{id} column as
 an identifier for each stored respondent; an \code{email} column for
@@ -958,7 +964,11 @@ better internet connectivity. Note that the speedup is not relative to
 the transfer speed as there is overhead in establishing a connection
 to the servers at \urort{}.
 
-\begin{table}
+\sidetable[Retrieval Time and Speed]{%
+  Retrieval time and speed of a typical artist profile page (423kB in size),
+  by system
+  \label{table:retrieval.time.and.speed}}{%
+
   \begin{tabular}{lrr}
 
     &
@@ -972,20 +982,16 @@ to the servers at \urort{}.
     \cmidrule(lr){2-2}
     \cmidrule(lr){3-3}
 
-    Development system &
+    Development &
     0.4 &
     4.0 \\
 
-    Production system &
+    Production &
     10.2 &
     2.8 \\
 
   \end{tabular}
-  \caption[Retrieval Time and Speed]{%
-    Retrieval time and speed of a typical artist profile page (423kB in size),
-    by system}
-  \label{table:retrieval.time.and.speed}
-\end{table}
+}
 
 The next bottlenech we became aware of is related to the cost of retrieving
 web pages from \urort{}. We did some carefull conting of the number of
@@ -1008,9 +1014,9 @@ response times.
 \label{section:implementation.source.code}
 
 We'll wrap up the discussion of our implementation with showing some
-statistics related to our source code.
+statistics related to our source code:
 
-\begin{table}
+\begin{table}[h]
   \begin{tabular}{lrrrr}
 
     &
