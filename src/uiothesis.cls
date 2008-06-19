@@ -9,6 +9,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
 \LoadClass{memoir}
+\RequirePackage{memhfixc}
 
 
 %%
@@ -61,6 +62,7 @@
 %% Line breaking
 %%
 
+\RequirePackage[protrusion=true,expansion=false,final=true]{microtype}
 \RequirePackage{ragged2e}
 
 
@@ -338,23 +340,10 @@
 
 
 %%
-%% PDF and PS specifics
-%%
-
-\RequirePackage{ifpdf}
-\ifpdf
-  \RequirePackage[pdftex,plainpages=false]{hyperref}
-  \RequirePackage[protrusion=true,expansion=false,final=true]{microtype}
-\else
-  \RequirePackage[ps2pdf]{hyperref}
-  \RequirePackage{breakurl}
-\fi
-\RequirePackage{memhfixc}
-
-
-%%
 %% Hyperlinks
 %%
+
+\RequirePackage[pdftex,plainpages=false]{hyperref}
 
 \urlstyle{sf}
 
