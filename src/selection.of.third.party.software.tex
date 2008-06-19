@@ -523,7 +523,7 @@ Hpricot sets aside a buffer of 16kB for storing each \abbr{HTML} element.
 When Hpricot encounters an element with the size we're seeing on \urort{}
 it simply chokes.
 
-Since Hpricot is open source software someone had thankfully come across
+Since Hpricot is open source software someone had thankfully experienced
 the same problem and provided a patch to dynamically increase the
 buffer if an enormous \abbr{HTML} element was encountered. All we had to do
 for properly using Hpricot on \urort{} was to use a version patched with this
@@ -624,7 +624,7 @@ Other actively developed frameworks include
 These frameworks have a varying degree of complexity, but none of them
 is as simple as \project{Rack}%
 \sidenote[6]{
-  Rack is available at \url{rack.rubyforge.org}.
+  Rack is available at \url{http://rack.rubyforge.org}.
 },
 a web server interface that sits between a web framework and a web
 server or can be used as a very light weight web framework on its own.
@@ -666,7 +666,7 @@ of Ruby servers are%
     handle many concurrent requests. The project is now very mature
     and can be concidered as the most stable Ruby web server.
   \iterm{Evented Mongrel} is a fork of Mongrel which uses
-    an event loop in the way of the Reactor pattern
+    an event loop using the Reactor pattern
     \citep[\p{529}]{schmidt95}
     instead of using threading to handle multiple concurrent requests.
     The requests are therefore handeled sequentially.
@@ -750,13 +750,14 @@ Memcached was developed at \project{LiveJournal}%
   available at \url{http://livejournal.com}.
 }
 to handle caching of data for their large user base. Memcached is used by many
-large web sites and Facebook is currently the largest user of the open source
+large web sites and Facebook is currently the largest user of the
 caching solution \citep{facebook08b}. Memcached is very performant since it
 stores all its cached items in memory. To interact with the Memcached server
-we used a Ruby library called \project{memcache-client}%
+we used the \project{memcache-client}%
 \sidenote{
   Available at \url{http://seattlerb.rubyforge.org/memcache-client/}.
-}.
+}
+Ruby library.
 
 \subsubsection{Database}
 
@@ -1027,7 +1028,7 @@ We initially tried to adapt the \project{Screw Unit}%
 \sidenote{
   Available at \url{http://github.com/nkallen/screw-unit}.
 }
-JavaScript based behaviour-driven development library to the intricacies of
+JavaScript behaviour-driven development library to the intricacies of
 Greasemonkey user scripts, but had to give up. We therefore had to develop
 without automated tests on the client-side.
 Fortunately the most complicated logic of our application are on the server
@@ -1083,7 +1084,7 @@ There are currently two JavaScript debuggers for the Firefox browser:
 }
 and \project{Firebug}%
 \sidenote[2]{
-  Available at \url{http://www.getfirebug.com}.
+  Firebug has its home at \url{http://www.getfirebug.com}.
 }.
 The latter have a considerably less intrusive interface than the former and
 seems to be much more actively developed as of this writing. Firebug have the
