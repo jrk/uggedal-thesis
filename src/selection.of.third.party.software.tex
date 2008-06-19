@@ -207,7 +207,7 @@ but the most interesting ones seems to be
 \project{MooTools},
 \project{MochiKit}, and
 \project{jQuery}.%
-\sidenote{
+\sidenote[-2]{
   Available, in respective order, at
   \url{http://www.prototypejs.org},
   \url{http://developer.yahoo.com/yui},
@@ -368,15 +368,15 @@ important than computational efficiency (a language's native performance).
 is how little code you need for solving a given problem.
 Since we didn't have time to invest in learning a new language we had to do
 with those we knew from before. Of those \project{Ruby}%
-\sidenote{
-  Ruby recedes at \url{http://ruby-lang.org}.
+\sidenote[-7]{
+  Ruby home at \url{http://ruby-lang.org}.
 },
 \project{Python}%
-\sidenote{
-  The home of Python is \url{http://python.org}.
+\sidenote[-5]{
+  Python home at \url{http://python.org}.
 }, and
 \project{Common Lisp}%
-\sidenote{
+\sidenote[-3]{
   Common Lisp, the prevalent Lisp dialect today, is a standard \citep{ansi96}
   and has many implementations.
   A gateway to this language and its many implementations can be found
@@ -388,7 +388,7 @@ Lisp is most functional of nature  while Python and Ruby are more
 inclined towards object-orientation.
 
 They are all \term{latent typed}%
-\sidenote{
+\sidenote[1]{
   Latent typing ``is a style of typing that does not require (or perhaps even
   offer) explicit type declarations''\citep{wikipedia08latent}.
 }
@@ -396,7 +396,7 @@ and have quite expressive syntax. This makes for concise source code.
 \citet{yegge07} argues that the worst thing that can happens to a code base is
 size which often is the result of code bloat. In addition, both Ruby, Python,
 and Common Lisp are \term{interpreted} languages%
-\sidenote{
+\sidenote[1]{
   This is only partly true since Common Lisp implementations incrementally
   compile code and extensions or new implementations for Python and Ruby
   implements just-in-time compilers. In both cases the developer
@@ -422,7 +422,7 @@ and been able to adopt new paradigms in programming as they've appered.
 Even though we walue programming efficiency over computational performance,
 it should be noted that Common Lisp have been described as the only performant
 dynamic language \citep{martin08} compared to statically compiled languages%
-\sidenote{
+\sidenote[-8]{
   In \work{The Computer Language Benchmarks Game} several programming
   languages are pitched against each other in several tests to determine
   their computational performance. As of this writing (April 2, 2008)
@@ -456,7 +456,7 @@ The major deciding factor when we selected the implementation language was
 the availability of such a library and its usefulness. We've already
 revealed Ruby as our implementation language and are therefore killing the
 suspense. Our data extraction library of choice is called \project{Hpricot}%
-\sidenote{
+\sidenote[-4]{
   Hpricot can be obtained from \url{http://code.whytheluckystiff.net/hpricot}.
   A curious note: Hpricot is written by the same person who created
   Hoodwink.d\dash{}our inspiration for a transparent prototype implementation.
@@ -556,7 +556,7 @@ html = Hpricot(open('http://redflavor.com'))
 Since we'll mainly be serving requests
 for our JavaScript based client implementation we found it sound to transfer
 this data as \abbr{JSON}%
-\sidenote{
+\sidenote[-1]{
   \abbr{JSON}, short for JavaScript Object Notation, is specified in
   \abbr{RFC} 4627 \citep{crockford06b}. Shortly put it's a lightweigh data
   interchange format based on the object literals of JavaScript.
@@ -564,7 +564,7 @@ this data as \abbr{JSON}%
 Luckily for us there exists a libary for encoding
 Ruby objects into \abbr{JSON} format
 simply called \project{json}%
-\sidenote{
+\sidenote[3]{
   The Ruby \abbr{JSON} can be found at \url{http://json.rubyforge.org}.
 }.
 The next code listings show how simple objects can be encoded and the
@@ -601,12 +601,12 @@ take action on input we receive from some of these.
 
 There is numerous frameworks for easing the creation of \abbr{HTTP}
 applications available for Ruby. The most popular%
-\sidenote{
+\sidenote[-1]{
   A search for Ruby on Rails books on Amazon revealed 35 titles as of
   20 May, 2008.
 }
 is \project{Ruby on Rails}%
-\sidenote{
+\sidenote[2]{
   Ruby on Rails has its home at \url{http://rubyonrails.org}.
 }.
 Other actively developed frameworks include
@@ -614,7 +614,7 @@ Other actively developed frameworks include
 \project{Camping},
 \project{Sinatra}, and
 \project{Ramaze}.%
-\sidenote{
+\sidenote[2]{
   Available at
   \url{http://merbivore.com},
   \url{http://code.whytheluckystiff.net/camping},
@@ -623,7 +623,7 @@ Other actively developed frameworks include
 }
 These frameworks have a varying degree of complexity, but none of them
 is as simple as \project{Rack}%
-\sidenote{
+\sidenote[6]{
   Rack is available at \url{rack.rubyforge.org}.
 },
 a web server interface that sits between a web framework and a web
@@ -715,7 +715,7 @@ for general purpose applications. He goes on to say that the treshold
 for wether one should use a sequential server is response times that
 are no longer than 2--3 seconds. Seeing as our application could very
 well fall outside this treshold for some requests%
-\sidenote{
+\sidenote[-5]{
   When the data the user is requesting can not be found in the cache
   we have to retrieve the data from \urort{} and perform calculations
   on it. This can be quite time consuming and could very well exceed
@@ -739,11 +739,11 @@ berable request times when using our prototype implementation.
 
 We did not test various cache solutions but instead went with a proven
 cache solution called \project{Memcached}%
-\sidenote{
+\sidenote[-3]{
   Available at \url{http://www.danga.com/memcached/}.
 }.
 Memcached was developed at \project{LiveJournal}%
-\sidenote{
+\sidenote[-2]{
   LiveJournal is a place where people can keep a blog or journal with
   some social network features baked in. As of May 20, 2008 LiveJournal
   had over 15 million registered users \citep{livejournal08}. LiveJournal is
@@ -765,7 +765,7 @@ Since we were going to only use a single database table
 and did not need any special features, we could
 basically have used all freely avaiable relational database systems. We
 selected \project{Sqlite}%
-\sidenote{
+\sidenote[-1]{
   Available at \url{http://sqlite.org}.
 }
 as it have a much smaller footprint than it's
@@ -899,18 +899,18 @@ There are however several different forms of version control system one can
 use. One of the most used version control implementations the last years
 in open source circles was
 \project{Subversion}%
-\sidenote{
+\sidenote[-8]{
   Available at \url{http://subversion.tigris.org}.
 }\dash{}a \term{centralized version control system} meaning that one central
 server holds the version controlled code repository and its history.%
-\sidenote{
+\sidenote[-8]{
   Developers on the client-side have working copies and need to contact the
   centralized server to get a hold of historical data and create new history.
 }
 Recently \term{decentralized version control systems} have become more popular
 amongst developers. A decentralized model means that every developer can have
 their own repository consisting of all history.%
-\sidenote{
+\sidenote[-6]{
   You can for instance be without internet connectivity and still commit
   changes, revert to previous versions, and handle all other tasks your
   version control system supports.
@@ -920,7 +920,7 @@ repositories. This enables a much better model for collaboration.
 We favor this last model of version control and so have projects
 like \project{Linux}, \project{X}, \project{Mozilla},
 and \project{OpenSolaris}.%
-\sidenote{
+\sidenote[-3]{
   \citeauthor{torvalds07}, author of the Linux kernel,
   have described Subversion and centralized version control
   as fundamentally flawed since it's supposed to be a
@@ -931,11 +931,11 @@ and \project{OpenSolaris}.%
 Based on criteria of performance and current adoption there are in our view
 only two interesting decentralized version control systems:
 \project{Git}%
-\sidenote{
+\sidenote[1]{
   Available at \url{http://git.or.cz}.
 }
 and \project{Mercurial}%
-\sidenote{
+\sidenote[3]{
   Available at \url{http://www.selenic.com/mercurial}.
 }. Both are unique in that they don't track meta-data, they just track
 content and meta-data are thereby inferred from the content.
@@ -950,7 +950,7 @@ A developer's main tool for authoring software is his editor. Sometimes the
 language of implementation warrants a specialized editor with aids for
 handling cumbersome tasks specific to that language. Such an editor is often
 called an \abbr{IDE}%
-\sidenote{
+\sidenote[-3]{
   A good example of an \abbr{IDE} (integrated development environment
   for short) is \project{Eclipse} (available at \url{http://eclipse.org}).
   It was first used for Java development but since extended with
@@ -961,7 +961,7 @@ and are used most often for languages like Java and C\#.
 large collections of source code, refactoring code, debugging code, and
 interacting with revision control systems in addition to normal editor usage.
 Development environments found in Lisp%
-\sidenote{
+\sidenote[1]{
   \prequote[\p{69}]{sandewall78}{%
     describes the nature and benefits of the Lisp environment as}{%
       The `residential' design of programing systems, whereby all facilities
@@ -970,7 +970,7 @@ Development environments found in Lisp%
       possibilities for user convenience}
 }
 and Smalltalk%
-\sidenote{
+\sidenote[9]{
   Similar to Lisp's programming environment
   \postquote[\p{viii}]{goldberg83}{%
     Smalltalk is designed so that every component in the system that is
@@ -992,7 +992,7 @@ development.
 
 The interactive experience provided by Lisp and Smalltalk implementations are
 sadly missing%
-\sidenote{
+\sidenote[5]{
   Ruby has an interactive interpreter similar to those found in Lisp and
   Smalltalk environments called \executable{irb}. It's not integrated into an
   overall programming environment and therefore is mostly used for testing out
@@ -1082,7 +1082,7 @@ There are currently two JavaScript debuggers for the Firefox browser:
   Located at \url{http://www.mozilla.org/projects/venkman/}.
 }
 and \project{Firebug}%
-\sidenote{
+\sidenote[2]{
   Available at \url{http://www.getfirebug.com}.
 }.
 The latter have a considerably less intrusive interface than the former and
@@ -1105,7 +1105,7 @@ a \term{profiler}%
   iterative way \citep[\p{125}]{graham82}.
 }
 called \project{ruby-prof}%
-\sidenote{
+\sidenote[9]{
   Available at \url{http://rubyforge.org/projects/ruby-prof}.
 }.
 This is the fastest profiler for Ruby and it can generate various forms of
