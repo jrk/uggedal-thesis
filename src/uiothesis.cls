@@ -202,7 +202,7 @@
 %%
 
 \RequirePackage{longtable}
-\RequirePackage{lscape}
+\RequirePackage{pdflscape}
 
 
 %%
