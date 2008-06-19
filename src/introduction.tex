@@ -31,8 +31,7 @@ have grown significantly between two surveys conducted in 2005 and 2007,
 roughly 18 months apart.
 More than one third of people using blogs surveyed in 2007 contributes
 actively by writing blog articles or commenting on blog posts as can be seen
-in \tablepageref{blog.usage}
-\citep[ch.~1, \p{6}]{rosa07}.
+in \tablepageref{blog.usage} \citep[ch.~1, \p{6}]{rosa07}.
 It has been argued that web citizens'
 familiarity with blogging laid the groundwork for the explosion we are seeing
 in user participation in web communities
@@ -67,12 +66,13 @@ evolutionary instead of revolutionary \citep[\p{45}]{yakovlev07}.
 exploratory innovations as he notes that most technological changes are
 incremental%
 \sidenote[-5]{
-  \prequote{knuth07}{writes about incremental innovation:}{%
-    I firmly believe that computer science advances by thousands of people
-    solving small problems, which go together and create a massive edifice.
-    Every year that goes by, hardly anything is done that appears to be a
-    milestone worthy of mass attention; yet after five or ten years pass,
-    the whole field has changed significantly}
+  \prequote{knuth07}{%
+    also belives innovation in computer science is incremental:}{%
+      I firmly believe that computer science advances by thousands of people
+      solving small problems, which go together and create a massive edifice.
+      Every year that goes by, hardly anything is done that appears to be a
+      milestone worthy of mass attention; yet after five or ten years pass,
+      the whole field has changed significantly}
 }.
 \begin{fullquote}[\p{18}]{weiss05}{have seen this trend}
   When we consider a hot, buzz-worthy Web site of the new Internet evolution
@@ -87,8 +87,9 @@ User generated content and the notion of \term{collective intelligence}%
 }
 is driving the innovation we're seeing in this incrementally new version of
 the web. But basically what we're experiencing today with the World Wide Web
-and social/collaborative software systems was envisioned by \citet{bush45}
-and \citet{licklider68}.
+and social/collaborative software systems was envisioned by
+\citet{licklider68} and
+\citet{bush45}.
 
 \section{Focus}
 
@@ -111,25 +112,28 @@ which such types of navigation on the Web.
 On the Web we're using hyperlinks \citep[\p{90}]{nelson65} to provide users
 with navigational choices. We're only focusing on the use of such hyperlinks
 within web browsers and not navigation support in auxiliary tools as email
-clients, instant messaging clients, and so on. While focusing on the browser,
-we target our research only on what happens inside various web pages. This
+clients, instant messaging clients, and so on. Our focus is further refined by
+targeting our research  only on what happens inside various web pages. This
 means that other navigation forms supported by the browser itself or third
-party extensions or plugins is outside of our scope as detailed in
+party extensions or plugins is outside of our scope, as detailed in
 \sectionref{background.navigation.navigation.on.the.web}.
 
 While we're aware that search is an important part of peoples every day
 navigational behavior we've introduced additional confinements and decided to
-only concentrate on browsing behavior as detailed in
-\sectionref{background.navigation.navigation.on.the.web}.
+only concentrate on browsing behavior (see
+\sectionref{background.navigation.navigation.on.the.web} for details).
 
 When studying various web pages it became apparent that some use of
 social navigation mechanisms implies pretty large privacy concerns. By mining
 users' previous actions specific user profiles can be generated. One can then
 represent very sensitive characteristics of individuals such as sexual
-orientation, political status, religious beliefs, and so on.
+orientation, political status, and religious beliefs.
 We feel this subject area of social navigation in relation to privacy warrants
 a master thesis on its own. Discussion of privacy concerns have therefore
-been excluded from our research.
+been excluded from our research so that we can look more closely at the
+navigational characteristics of social navigation.
+
+\section{Motivation}
 
 \sidetable[Social Navigation in Academia]{%
            Social navigation in academia, by content
@@ -146,8 +150,6 @@ been excluded from our research.
   \end{tabular}
 }
 
-\section{Motivation}
-
 Social navigation are as we'll see in
 \sectionref{background.social.navigation}
 a well defined term within the academic community.
@@ -155,7 +157,7 @@ During our literature review we collected to the best of our abilities all
 academic articles where social navigation was discussed. Our approach was to
 use keyword search and citation search in the databases listed in
 \tablepageref{literature.databases}.%
-\sidenote{
+\sidenote[2]{
   For more in depth coverage of our literature collection method,
   see \sectionref{literature.search}.
 }
@@ -169,7 +171,7 @@ discussing the same problems and systems. In such circumstances the collection
 of two or more similar articles was counted as one.
 
 Our current area of Web 2.0 in relation to navigational problems have in our
-view therefore little coverage in academia.
+view based on literature findings little coverage in academia.
 \prequote{beer07}{notes that}{%
  \,`internet time' now runs at at a clock speed several orders
  of magnitude faster than that of academic research}
@@ -186,24 +188,28 @@ It appears that methods for establishing incentives for user participation
 is the focal point of web architecture design today. Even though such
 approaches can result in sound and interesting navigation it's our impression
 that a focus on solving users' navigational problems is more beneficial for
-the usability of a web site.
+the usability of a web site. We try to take such an approach when we design a
+navigational prototype (see \sectionref{implementation.design} for details).
 
 \section{Objective}
 
-By collecting examples of good navigational implementations in the wild,
-analyzing them, and categorize them we hope to offer a more structured
-view of the field of social navigation today.
-%
-% not entirely true anymore
-%
+By collecting examples of good navigational implementations in the wild
+and analyzing them we hope to give a clearer
+view of the field of social navigation in our modern web.
 As we are unaware of any established technique for
 conducting such a study on real world navigation systems we create our own
 method as we go\dash{}fine tuning it as we learn from our experiences.
 
-We try to improve an existing web site by using some of the techniques
-established in our initial research of how social navigation is leveraged
-in real world applications. More specifically we are prototyping possible
-navigational improvements for the Norwegian Broadcasting Corporation's joint
+Using the knowledge we gained from collecting social navigation examples
+from real world web sites we try to improve an existing web site by
+implementing a navigational prototype. The navigational technique we
+decided on implementing is a so called \tarm{activity feed}. See
+\sectionref{analysis.facebook.news.feed} and
+\sectionref{implementation.design.activity.feed}
+for more information about this particular navigational technique.
+
+The candidate for implementing
+navigational improvements was the Norwegian Broadcasting Corporation's joint
 \abbr{TV}, radio, and internet project \project{\urort{}}\dash{}a site where
 artists upload their demos and get valuable playtime on radio and \abbr{TV} if
 their products are judged to be of sufficient quality. Our focus is on the
@@ -213,13 +219,12 @@ projects web community%
 }
 where users can interact in a social manner, listen to other people's songs,
 and upload their own creations.
-
 We decided to build our application in an transparent manner on top of the
 web site \urort{} offered. The rationale for such a decision can be found in
 \sectionref{building.on.top.of.the.web}.
 
 With our technical solution in place we were able to test how it performed in
-practice by conducting \val{some sort of user observation} (to be decided).
+practice by conducting qualitative surveys of real world users.
 
 This leads to the research question we had in mind while conducting
 the tasks described above:
@@ -249,13 +254,13 @@ Contributions from our research on social navigation is threefold:
 
 \begin{enum}
   \item Informing navigational design by giving a structured overview of
-    various social navigational schemes in use today.
+    various social navigational schemes used in academia and the real world.
   \item Exemplifying transparent prototyping methods by sharing experiences
     with creating an unobtrusive shell of navigational designs on top of an
     existing web site.
-  \item Applicability of social navigation by discussing findings from
-    a study of real world usage of our implementation of a social navigation
-    design.
+  \item Applicability of a particular social navigation technique
+    by discussing findings from a study of real world usage of our
+    implementation of a social navigation design.
 \end{enum}
 
 \section{Outline}
