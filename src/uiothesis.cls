@@ -9,6 +9,12 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
 \LoadClass{memoir}
+
+
+%%
+%% Fixes
+%%
+
 \RequirePackage{memhfixc}
 \RequirePackage{etex} % increase register size
 
