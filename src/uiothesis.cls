@@ -29,6 +29,7 @@
 %%
 
 \RequirePackage[T1]{fontenc}
+\RequirePackage[utf8x]{inputenc}
 \RequirePackage{lmodern}
 \RequirePackage{MinionPro}
 \renewcommand{\scdefault}{ssc}
@@ -57,12 +58,26 @@
 
 
 %%
+%% Line breaking
+%%
+
+\RequirePackage{ragged2e}
+
+
+%%
 %% Colors
 %%
 
 \RequirePackage{color}
 \definecolor{chapnum}{gray}{0.55}
 \definecolor{ornament}{gray}{0.85}
+
+
+%%
+%% Graphics
+%%
+
+\RequirePackage{graphicx}
 
 
 %%
@@ -161,6 +176,8 @@
 % Definitions in lists
 \newcommand{\iterm}[1]{\item \term{#1}}
 
+% In-paragraph lists
+\usepackage{paralist}
 
 %%
 %% Captions
@@ -181,20 +198,18 @@
 
 
 %%
-%% Fixes to marginpar
+%% Tables
 %%
 
-\RequirePackage{mparhack}
-
-% maybe use marginnote. it's not automatically shifted, but does not leave
-% orphans:
-% http://groups.google.com/group/comp.text.tex/browse_thread/thread/5b77b935563e06c8/dc67daa7990bbcf9
-\RequirePackage{marginnote}
+\RequirePackage{longtable}
+\RequirePackage{lscape}
 
 
 %%
 %% Side notes/tables/figures
 %%
+
+\RequirePackage{marginnote}
 
 % The mark on the sidenote
 \newcommand{\sidemark}[1]{#1.{\:}}
@@ -222,6 +237,7 @@
   \unskip%
 }%
 
+\RequirePackage{mparhack}
 % Sidetable (have to use marginpar since tabular doesn't work with marginnote)
 \newcommand{\sidetable}[3][]{%
   \marginpar{%
@@ -471,6 +487,8 @@
 %%
 %% Quotations and citations
 %%
+
+\RequirePackage{natbib}
 
 % Paragraph/page reference
 \newcommand{\para}[1]{paragraph~#1}
