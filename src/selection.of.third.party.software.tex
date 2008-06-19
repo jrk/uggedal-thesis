@@ -40,7 +40,7 @@ is a property to strive for when conducting such research.
 
 \section{Prototype Software Stack}
 
-Based on the design and architectural decisions made in 
+Based on the architectural decisions made in 
 \chapterref{implementation} we'll now go on to make more fine-grained choices
 of what specific third party software components to utilize in our prototype
 application. We've decided to harness some of the seemingly best freely
@@ -51,7 +51,7 @@ enabling mass-production of software was to offer components\dash{}families
 of program routines that can be used for any given job. These components
 should be created in a way so that they can fit together as building blocks.
 The developer should be able to treat these components as \term{black boxes}%
-\sidenote{
+\sidenote[-2]{
   In the field of electronics black boxes are used to describe electronic
   circuits with a fixed set of terminals where one is deliberately ignoring
   the internals of the circuit. Only the external properties of the circuit
@@ -64,7 +64,7 @@ The developer should be able to treat these components as \term{black boxes}%
 
 After object-oriented programming became the most popular
 programming paradigm%
-\sidenote{
+\sidenote[10]{
   According to \abbr{TIOBE}'s list of of
   how popular different programming languages are (based on the number of
   engineers using them, courses given for them, and third party vendors
@@ -96,14 +96,14 @@ after all. The web browser have to be explicitly chosen
 to be one that readily supports scripting existing
 web pages\dash{}a term often called \term{user scripting}.
 The \project{Firefox}%
-\sidenote{
+\sidenote[3]{
   Available at \url{http://www.mozilla.com/en-US/firefox}.
 }
 web browser was the first browser providing a
 plug-in for handling such scripting of web pages and seems to have the most
 mature implementation in our view. Since Firefox also is the
 most adopted%
-\sidenote{
+\sidenote[3]{
   According to \citet{onestat08} Firefox was the second most used web browser
   only surpassed by \project{Internet Explorer}.
 }
@@ -111,13 +111,13 @@ cross-platform open source web browser the platform choice was quite easy.
 
 Firefox provide user scripting trough the means of the
 \project{Greasemonkey}%
-\sidenote{
+\sidenote[3]{
   Available at \url{http://greasespot.net}.
 }
 browser extension. Essentially all it provides is the ability for a user to
 install a script which can manipulate the behavior and properties of an
 existing web page using the \term{\abbr{DOM}}%
-\sidenote{
+\sidenote[3]{
   The \abbr{DOM} is a three of objects representing the hierarchical
   structure of nested tags (with text and attributes) in \abbr{HTML}
   documents \citep[pp.~307--310]{flanagan06}.
@@ -138,7 +138,7 @@ Although we've settled on the Firefox and Greasemonkey platform there is a
 certain possibility that our implementation could work in other browsers
 providing user scripting. The \project{Opera} browser provides user scripting
 without any plugins%
-\sidenote{
+\sidenote[-3]{
   For more information see
   \url{http://www.opera.com/support/tutorials/userjs/examples}.
 },
@@ -164,7 +164,7 @@ introduced by \project{Netscape} in their 2.0 version of the web browser
 with the same name. \project{JavaScript} was first intended to be a
 lightweight scripting language for gluing together \abbr{HTML} and applets
 written in the \project{Java} programming language \citep{netscape95}.%
-\sidenote{
+\sidenote[-12]{
   Sun Microsystems, the creators of Java, had negotiated with
   Netscape about including it in their second major web browser release.
   The development of JavaScript, then called Mocha, was already
