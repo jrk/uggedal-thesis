@@ -10,6 +10,7 @@
 \ProcessOptions
 \LoadClass{memoir}
 \RequirePackage{memhfixc}
+\RequirePackage{etex} % increase register size
 
 
 %%
@@ -593,7 +594,6 @@
 
 % Titlepage
 \RequirePackage{wallpaper}
-\RequirePackage{etex} % increase registers because of the wallpaper package
 \renewcommand{\maketitle}{%
   \begin{titlingpage}
     \ThisLLCornerWallPaper{0.6}{uiosealbg}
