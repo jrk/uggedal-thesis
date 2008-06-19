@@ -54,23 +54,23 @@ for search:
 \end{items}
 
 \begin{table}
-  \begin{tabular}{rl}
+  \begin{tabular}{ll}
 
-    & Type \\
+    Type & \\
 
-    \cmidrule(lr){2-2}
+    \cmidrule(lr){1-1}
 
-    \abbr{ACM} Digital Library &
-    Full-text \\
+    Full-text &
+    \abbr{ACM} Digital Library \\
 
-    The Collection of Computer Science Bibliographies &
-    Bibliography \\
+    Bibliography &
+    The Collection of Computer Science Bibliographies \\
 
-    Inspec Online &
-    Reference \\
+    Reference &
+    Inspec Online \\
 
-    \abbr{HCI} Bibliography &
-    Bibliography \\
+    Bibliography &
+    \abbr{HCI} Bibliography \\
 
   \end{tabular}
 
@@ -191,12 +191,13 @@ More specifically, we're either using a strategy of \term{browsing} or
 \end{fullquote}
 Serendipity\dash{}\openpostquote[\p{631}]{andel94}{%
   the art of making an unsought finding}%
-\dash{}makes browsing a sometimes effective navigation method.
+\dash{}makes browsing sometimes effective as a navigation method.
 Search as a navigation method does not rely on serendipity as much as browsing
 since you have a clearer idea about what you're navigating towards.
 
-Today we often use search engines\dash{}either local to a web page or
-global\dash{}when navigating the Web with a search oriented mind set.
+Today we often use search engines\dash{}either local to a particular web page
+or global for all web pages\dash{}when
+navigating the Web with a search oriented mind set.
 \citet[\pp{53}{54}]{freyne07} distinguishes between browsing as navigating
 with hyperlinks and searching as using a search engine. We've taken this
 distinction and decided, as stated earlier, to only focus on navigation
@@ -261,10 +262,10 @@ the more general characteristics, both social and technical,
 of the Social Web.
 
 \subsubsection{Improved Interaction}
-The most important
-technological change related to interactiveness since the Web's early days was
-arguably when \citet{garrett05} introduced \abbr{AJAX}%
-\sidenote[-5]{
+One can argue that the most important
+technological change related to interactiveness since the Web's infancy was
+when \citet{garrett05} introduced \abbr{AJAX}%
+\sidenote[-9]{
   \abbr{AJAX} is an acronym for Asynchronous JavaScript and \abbr{XML}
   and was introduced as a term in 2005 \citep{garrett05}. It captures how
   modern applications on the Web uses JavaScript for retrieving data
@@ -321,15 +322,13 @@ citizens of the Web is.
 
 The first site that adhered to \citeauthor{boyd07}'s definition was
 \project{SixDegrees} which saw the day of light in 1997%
-\sidenote[-18]{
+\sidenote[-19]{
   SixDegrees closed their operations in 2000. It's founder believes it was
   simply ahead of its time \citep{boyd07}.
 }
 There had been web sites that implemented
 parts of this definition of social network sites, but SixDegrees was the
-first to include all necessary characteristics. While it won't reveal
-all its features, \figureref{scrsh.sixdegrees.welcome} shows an early
-version of SixDegrees.
+first to include all necessary characteristics.
 
 The three most influential social network sites have been Friendster%
 \sidenote[-19]{
@@ -370,22 +369,11 @@ Facebook seems to be the hot social network today%
 }
 attracting users from many walks of life.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.9\textwidth]{scrsh_sixdegrees_welcome}
-  \caption[SixDegrees Welcome Page]{
-    SixDegrees as it appeared in May 1998, one year after its
-    inception. Retrieved May 14, 2008, from
-    \url{http://web.archive.org/web/19980521124353/http://sixdegrees.com/}.
-  }
-  \label{figure:scrsh.sixdegrees.welcome}
-\end{figure}
-
 \subsubsection{Mash-ups}
 Openness enables exchange of information between
 different parties so that new services on the Web easily can be created.
 This phenomenon, a \term{mash-up}%
-\sidenote[-4]{
+\sidenote{
   The term mash-up is taken from the similar activity finding place within the
   music scene where artists combine the music from one song with the
   \latin{a capella} from another song \citep{wikipedia08mashup}.
@@ -394,8 +382,8 @@ occurs when information and/or functionality from separate web sites and
 services are brought together in a complementary way
 \citep[\p{36}]{murugesan07}.
 
-Mash-ups is often created by utilizing one or more web \abbr{API}s%
-\sidenote{
+Mash-ups is most often created by utilizing one or more web \abbr{API}s%
+\sidenote[3]{
   \abbr{API} is short for Application Programming Interface,
   \postquote[\p{2}]{jacobsen91}{%
     A set of calling conventions defining how a service is
@@ -436,12 +424,12 @@ together \citep{mitcenter08}. The result is a lower barrier to entry for
 taking part in a collaborative process where a shared intelligence emerges.
 
 Collective intelligence is closely related to
-\term{wisdom of crowds}, a phenomena that describes the amount of information
-contained in a group's collective verdict.
+\term{wisdom of crowds}\dash{}a phenomena that describes the amount of
+information contained in a group's collective verdict.
 In many situations the crowd is able to hold a complete picture of the world
 in their collective brains \citep[\p{11}]{surowiecki04}. The larger the
 crowd, the more accurate their answers will be%
-\sidenote{
+\sidenote[-5]{
   Take for example the Google search engine which we've now grown accustomed
   to use in our daily search because of the accuracy of the results it
   provides. The underlying principle of Google's search algorithm called
@@ -712,6 +700,18 @@ sharing. Web browsers handles \abbr{URL}s embedded as hyperlinks transparently
 so we're not going to elaborate on matters of \abbr{URL} handling in
 auxiliary systems here.
 
+\sidefigure[Blogroll]{%
+  Blogroll for Daily Kos,
+  retrieved December 5, 2007, from
+  \url{http://www.dailykos.com/}.
+  Daily Kos is one of the most popular American collaborative
+  political blogs where people provide news and opinion from a
+  liberal point of view.
+  \label{figure:scrsh.dailykos.blogroll}
+}{%
+  \includegraphics[width=0.9\marginparwidth]{scrsh_dailykos_blogroll}
+}
+
 Both \cite{dourish94} and \cite{dieberger97} observed social navigation
 activity on the
 Web when hyperlinks were shared on web pages. Creators of these pages often
@@ -731,7 +731,7 @@ An example of a blogroll can be seen in \figureref{scrsh.dailykos.blogroll}.
 
 A new phenomena appeared to the mainstream with the introduction of the
 \project{del.icio.us}
-\sidenote[-1]{
+\sidenote[10]{
   Initially a system for organizing Joshua Schachter's personal bookmark
   collection, del.icio.us was introduced to a wider audience in 2003
   \citep[\p{223}]{livingston07}.
@@ -748,18 +748,6 @@ controls for storing the location of a given web page to be present within the
 web page itself. Since the system was proxy-based only users having enabled
 the proxy server in their browsers could take advantage of the shared
 bookmarks.
-
-\sidefigure[Blogroll]{%
-  Blogroll for Daily Kos,
-  retrieved December 5, 2007, from
-  \url{http://www.dailykos.com/}.
-  Daily Kos is one of the most popular American collaborative
-  political blogs where people provide news and opinion from a
-  liberal point of view.
-  \label{figure:scrsh.dailykos.blogroll}
-}{%
-  \includegraphics[width=0.9\marginparwidth]{scrsh_dailykos_blogroll}
-}
 
 As \citet[\p{806}]{dieberger97} argues the Web's growth, even at its modest
 size of 1997 compared to its staggering size over 10 years later, have
@@ -826,7 +814,7 @@ give us we're leaving out a deeper discussion of the benefits and drawbacks
 of folksonomies. \citet{golder06} and \citet{marlow06} gives a detailed
 account of the tag usage and structure in respectively del.icio.us and
 \project{Flickr}%
-\sidenote{%
+\sidenote[-1]{%
   Flickr is a social image sharing web site available at
   \url{http://flickr.com}. We dig deeper into Flickr when
   we analyze its social navigation capabilities in
@@ -869,8 +857,8 @@ one's personal email messages it makes sense to keep such behavior private.
 
 As we've seen folksonomies can be separated by their level of tag sharing
 (private systems, fully open systems, and systems with user control over
-what gets shared) and tag scope (are tags applied to an item globally
-or do they belong to separate users).
+what gets shared) and tag scope (tags applied to an item globally
+or belonging to separate users).
 \citet[\pp{34}{36}]{marlow06} gives a very detailed account of how tagging
 systems can differ in design and how such variations can result in
 folksonomies with different characteristics.
@@ -883,7 +871,7 @@ hopefully easier find the items or resources they are searching.
 
 The seemingly most used way to display tags for navigation is by generating
 a so called \term{tag cloud}%
-\sidenote{
+\sidenote[-3]{
   According to \citet{wikipedia08tagcloud} the first usage of tag clouds
   was on Flickr for showing tags applied to photos. The idea of such
   visualization seem to have come from \citet{flanagan03} in his display
@@ -936,8 +924,9 @@ how well the users got an impression of the tag cloud.
 fast information is found. In addition they noticed that unalphabetized
 tag clouds were inferior to alphabetized tag clouds when finding information.
 
-\citet[\p{18}]{sinclair08} conducted a study into whether tag clouds provided
-value to people seeking information trough a folksonomy. They presented users
+\citet[\p{18}]{sinclair08} studied whether tag clouds provided
+value for individuals seeking information trough a folksonomy.
+They presented users
 with an interface where half of the screen real estate contained a traditional
 search box and the other half contained a tag cloud. The search box functioned
 as one would expect by accepting normal queries. When one of the tags in the
@@ -985,7 +974,7 @@ it was found that of all bookmarks clicked, 74\% was of other user's
 bookmarks, a degree the authors interpret as evidence of a high degree of
 social navigation within the social bookmarking system.
 
-\citet[\p{1}]{fokker06} argues that collaborative tagging is ideal
+\citet[\p{1}]{fokker06} argues that social tagging is ideal
 when you have objects where one can not easily perform keyword search on the
 information it contains. If these objects are composed of video content tags
 can serve as an augmenter for performing keyword based searches as one could
@@ -1124,16 +1113,14 @@ implicit. \figureref{scrsh.trailfire.trail} shows one web page in a trail
 created on Trailfire.
 
 \begin{figure}
-  \begin{whole}
-    \centering
-    \includegraphics[width=0.9\wholewidth]{scrsh_trailfire_trail}
-    \caption[Trailfire Trail]{
-      Browsing a trail in Trailfire,
-      retrieved May 22, 2008, from
-      \url{http://trailfire.com/rowanrook/marks/161194}.
-    }
-    \label{figure:scrsh.trailfire.trail}
-  \end{whole}
+  \centering
+  \includegraphics[width=0.9\textwidth]{scrsh_trailfire_trail}
+  \caption[Trailfire Trail]{
+    Browsing a trail in Trailfire,
+    retrieved May 22, 2008, from
+    \url{http://trailfire.com/Marje/marks/37759}.
+  }
+  \label{figure:scrsh.trailfire.trail}
 \end{figure}
 
 \subsubsection{Populated Space}
@@ -1170,8 +1157,8 @@ special query language users were able to filter out the essential documents
 based both on explicit feedback trough annotations and
 meta-data concerning the document \citep[\p{62}]{goldberg92}.
 
-\citet{resnick94} expanded on the ideas from the Tapestry project and made
-\project{GroupLens},
+\citet{resnick94} expanded on the ideas put forth in the Tapestry project
+and created \project{GroupLens},
 a system for collaboratively filtering Usenet postings. What was novel with
 their approach at the time was that they could
 \postquote[185]{resnick94}{%
@@ -1221,9 +1208,9 @@ collaborative filtering system.
 
 \citet[\pp{242}{243}]{herlocker00} gives compelling reasons for explaining
 how the collaborative filtering process works to users of these kinds of
-systems. Usage studies showed that such explanations increased acceptance of
+systems. Usage studies showed such explanations increased acceptance of
 collaborative filtering systems. Whether explanations improved actual
-filtering performance was not made certain\dash{}even though
+filtering performance was not certain\dash{}even though
 the authors had a strong belief in this being true
 \citep[\p{250}]{herlocker00}.
 
@@ -1259,8 +1246,8 @@ recommendations for its users:
     be recommended\dash{}an asocial process.
 \end{enum}
 
-The distinction between a content-based and collaborative approach lies in
-the way collaborative filtering \postquote[\p{241}]{herlocker00}{%
+The distinction between a content-based and collaborative filtering approach
+lies in the way collaborative filtering \postquote[\p{241}]{herlocker00}{%
   are based on human and not machine analysis of content} To put it another
 way the similarity of users are measured instead of the similarity of content.
 Because of this distinction collaborative filtering systems
@@ -1268,7 +1255,7 @@ and content-based systems have been called \term{user-based} and
 \term{item-based} recommendation systems respectively
 \citep[\p{156}]{greco04}.
 
-Recommender systems can be based on either one or both of these two approaches
+Recommender systems can be based on either one or both of these approaches
 \citep[\p{241}]{herlocker00}. \citet[\p{70}]{balabanovic97} argues that a
 hybrid approach to recommendation is superior to an purely content or
 collaborative solution since it
