@@ -43,6 +43,7 @@
 \renewcommand{\scdefault}{ssc}
 \newfont{\chapnum}{eurb10 scaled 8000}
 \newcommand{\lowercaps}[1]{\textsc{\MakeLowercase{#1}}}
+\newcommand{\uppercaps}[1]{\textsc{\MakeUppercase{#1}}}
 
 % Creates an fourier ornament. Args: fontsize, lineheight, char
 \RequirePackage{fourier-orns}
@@ -106,13 +107,13 @@
   }%
   \renewcommand{\afterchapternum}{}
   \renewcommand{\printchaptertitle}[1]{%
-    \raggedright\huge\lowercaps{##1}
+    \raggedright\LARGE\uppercaps{##1}
   }%
 }
 
 % Section style
-\setsecheadstyle{\raggedright\Large}
-\setsubsecheadstyle{\raggedright\large}
+\setsecheadstyle{\raggedright\Large\scshape\MakeLowercase}
+\setsubsecheadstyle{\raggedright\large\itshape}
 \setsubsubsecheadstyle{\raggedright\itshape}
 
 
@@ -610,11 +611,11 @@
     \begin{centered}
         \null\vspace{8pc}
 
-        {\Huge\textsc{{SOCIAL NAVIGATION}}} \\
+        {\Huge\uppercaps{Social Navigation}} \\
         \vspace{2pc}
         {\Huge\textit{{on the}}} \\
         \vspace{2pc}
-        {\Huge\textsc{{SOCIAL WEB}}} \\
+        {\Huge\uppercaps{Social Web}} \\
 
         \vspace{4pc}
         {\Large\aldineleft} \\
