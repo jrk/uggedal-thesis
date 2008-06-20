@@ -194,14 +194,14 @@
 %%
 
 \RequirePackage{caption}
-\captionsetup[figure]{font={footnotesize,sf},%
+\captionsetup[figure]{font={footnotesize,rm},%
                       justification=RaggedRight,%
                       singlelinecheck=false}
-\captionsetup[table]{font={footnotesize,sf},%
+\captionsetup[table]{font={footnotesize,rm},%
                      justification=RaggedRight,%
                      singlelinecheck=false,%
                      position=bottom}
-\captionsetup[sourcecode]{font={footnotesize,sf},%
+\captionsetup[sourcecode]{font={footnotesize,rm},%
                           justification=RaggedRight,%
                           singlelinecheck=false,%
                           position=bottom}
