@@ -135,7 +135,7 @@
 %%
 
 % Table of Contents
-\maxtocdepth{section}
+\maxtocdepth{chapter}
 
 \renewcommand{\cftchapterfont}{\normalsize}
 \renewcommand{\cftchapterpagefont}{\normalsize}
