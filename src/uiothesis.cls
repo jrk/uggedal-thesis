@@ -610,11 +610,11 @@
     \begin{centered}
         \null\vspace{8pc}
 
-        {\Huge\textrm{{SOCIAL NAVIGATION}}} \\
+        {\Huge\textsc{{SOCIAL NAVIGATION}}} \\
         \vspace{2pc}
         {\Huge\textit{{on the}}} \\
         \vspace{2pc}
-        {\Huge\textrm{{SOCIAL WEB}}} \\
+        {\Huge\textsc{{SOCIAL WEB}}} \\
 
         \vspace{4pc}
         {\Large\aldineleft} \\
