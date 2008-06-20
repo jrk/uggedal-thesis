@@ -85,7 +85,7 @@ in our prototype system. We'll first survey system components utilized
 on the client-side and then those selected for the server-side implementation.
 
 
-\subsection{Client-Side}
+\subsection{Client-side}
 
 \subsubsection{Platform}
 \label{section:selection.stack.client.platform}
@@ -157,7 +157,7 @@ GreaseKit removed the possibility for such kinds of requests to take place.
 We're therefore left with Greasemonkey for Firefox as our only deployment
 platform.
 
-\subsubsection{Programming Language}
+\subsubsection{Programming language}
 \label{section:selection.stack.client.language}
 
 The ability to programmatically alter behavior inside web browsers was first
@@ -195,7 +195,7 @@ Despite its origins as a scripting language JavaScript is now considered
 a full-featured modern programming language
 \citedouble{p.~2}{flanagan06}{p.~3}{resig06} including object-orientation.
 
-\subsubsection{Convenience Library}
+\subsubsection{Convenience library}
 
 We decided to use a JavaScript library to make interactions with the
 \abbr{DOM} simpler.
@@ -345,7 +345,7 @@ virtues to hart as many large corporations like Google, Intel, Dell, and
   For a complete list see \url{http://docs.jquery.com/Sites_Using_jQuery}.
 }
 
-\subsection{Server Side}
+\subsection{Server side}
 
 \subsubsection{Platform}
 
@@ -359,7 +359,7 @@ had a server we could use. This system was running \project{Debian}%
 \abbr{GNU}/Linux\dash{}a perfect fit for the rest of our server side
 software stack.
 
-\subsubsection{Programming Language}
+\subsubsection{Programming language}
 \label{section:selection.stack.server.language}
 
 When doing prototype work it's important that the programming language one
@@ -446,7 +446,7 @@ In the next section we discuss our options
 of such libraries or frameworks. Based on our findings there we landed on
 Ruby as the language of our server-side implementation.
 
-\subsubsection{Data Extraction Library}
+\subsubsection{Data extraction library}
 
 The core library we need is one that handles data extraction from existing
 web pages, so called \abbr{HTML} \term{scraping}. While it's possible to
@@ -530,7 +530,7 @@ buffer if an enormous \abbr{HTML} element was encountered. All we had to do
 for properly using Hpricot on \urort{} was to use a version patched with this
 change instead of using the standard vanilla version.
 
-\subsubsection{Data Fetching Library}
+\subsubsection{Data fetching library}
 
 Since we've selected Ruby as our development language of choice we used
 \executable{open-uri}, part of the standard Ruby library, for fetching
@@ -552,7 +552,7 @@ html = Hpricot(open('http://redflavor.com'))
 \end{lstlisting}
 \end{scode}
 
-\subsubsection{\abbr{JSON} Library}
+\subsubsection{\abbr{JSON} library}
 
 Since we'll mainly be serving requests
 for our JavaScript based client implementation we found it sound to transfer
@@ -593,7 +593,7 @@ msg.to_json
 \end{lstlisting}
 \end{scode}
 
-\subsubsection{\abbr{HTTP} Framework}
+\subsubsection{\abbr{HTTP} framework}
 
 A web framework or rather \abbr{HTTP} framework is needed to make the
 generated activity data in \abbr{JSON} format available for our client.
@@ -635,7 +635,7 @@ flexible and allowed us to create exactly the \abbr{HTTP} interface
 we wanted. By using Rack we can also easily swap between different
 web servers that support the protocoll mandated by Rack's interface layer.
 
-\subsubsection{\abbr{HTTP} Server}
+\subsubsection{\abbr{HTTP} server}
 
 Since our web framework builds on Rack we have several
 \abbr{HTTP} servers to select from. The most prominent alternatives
@@ -730,7 +730,7 @@ overly long to process. In addition we believe the overhead of using a
 concurrent model with threading would not introduce to much delay in
 response time for average timed requests compared to a sequential model.
 
-\subsubsection{Cache Library}
+\subsubsection{Cache library}
 \label{section:selection.stack.server.cache}
 
 As detailed in \sectionref{implementation.architecture.caching} we had no need
@@ -785,7 +785,7 @@ We selected the library we found had the most flexible and lightweight
   Sequel have a home at \url{http://sequel.rubyforge.org}.
 }.
 
-\subsection{Overview of Client \oldand Server Components}
+\subsection{Overview of client \oldand server components}
 
 With all the pieces in place of our third party software puzzle
 we present a high level view of the architecture, from the client to the
@@ -887,7 +887,7 @@ various third party software.
 As with the implementation platforms, languages, and third party libraries
 our first criterion for selecting development tools is freedom.
 
-\subsection{Version Control}
+\subsection{Version control}
 
 We've found it indispensable to use \term{version control} when writing code
 and even used it when authoring this thesis. We'll not spend time to discuss
@@ -1014,7 +1014,7 @@ learning curve the benefits the editor gives you are worth it.
     definitely haven't customized it enough.
 \end{fullquote}
 
-\subsection{Testing Suites}
+\subsection{Testing suites}
 
 As described in \sectionref{implementation.process.testing} we're firm
 believers of using automated testing when developing applications.
@@ -1073,7 +1073,7 @@ which continously runs your test suite as you make changes to your source code
 files. This way you can keep your focus on the editor and only glance over the
 status of your test suite as you move along.
 
-\subsection{Debugger \oldand Profiler}
+\subsection{Debugger \oldand profiler}
 
 Since we were unable to utilize automated tests on the client-side we had to
 resort to a debugger checking for correctness in our code while developing.

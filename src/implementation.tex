@@ -72,7 +72,7 @@ eliminating some of the default navigation we would not be sure
 if potentially more satisfied users was the result of our removal of
 choices or the new choices we provided or a combination.
 
-\subsection{Activity Feed for \urort{}}
+\subsection{Activity feed for \urort{}}
 \label{section:implementation.design.activity.feed}
 
 According to \prequote[\p{193}]{dubinko07}{}{%
@@ -165,7 +165,7 @@ Based on both our own observations and other's of the precieved
 usefullness of activity feeds we decided use such a navigational design in our
 prototype implementation for \urort{}.
 
-\subsubsection{Relevant Activities}
+\subsubsection{Relevant activities}
 
 The approach seen at Facebook for letting users know what's fresh and relevant
 for yourself trough an activity feed seemed a good fit for \urort{}. But
@@ -193,7 +193,7 @@ favorite artists. Initially we toyed with making a friend like concept on
 you are in some way related to yourself. We had to trow away this idea because
 of technical problems with getting such a solution to scale.
 
-\subsubsection{Activity Types}
+\subsubsection{Activity types}
 
 There were many activities taking place associated with an artist
 which we could potentially use in our activity feed. We decided to select
@@ -214,7 +214,7 @@ to retrieve. Those that matched our criteria was:
 As you can see three of these activities are conducted by the artist himself
 while reviews are conducted by other users.
 
-\subsubsection{Activity Filtering}
+\subsubsection{Activity filtering}
 
 There is quite bit of activity information based on our four categories for
 a typical artist. When a user have several artists as favorites the ammount of
@@ -250,7 +250,7 @@ The complete design of our activity feed for \urort{} can be seen in
   \label{figure:scrsh.urort.activity.feed}
 \end{figure}
 
-\subsection{Favorite List}
+\subsection{Favorite list}
 \label{section:implementation.design.favorite.list}
 
 As described in
@@ -391,7 +391,7 @@ Our implementation basically needs to do two things:
     a way that we hope will enhance navigation.
 \end{enum}
 
-\subsection{Extending an Established Web Site}
+\subsection{Extending an established web site}
 
 As we've described earlier in this chapter we're creating a prototype
 application. Inspired by solutions in the Hoodwink.d community we set
@@ -579,7 +579,7 @@ every web page he or she visited, regardless of whether it was \urort{}
 related. This would introduce substantial loads on our servers and users would
 probably notice reduced page load times when browsing the Web.
 
-\subsection{Client-Server Model}
+\subsection{Client-server model}
 
 A client-server model is an architecture where one is separating a system into
 two logical parts:
@@ -737,7 +737,7 @@ determine what software the next user should be provided with. This way every
 second user recives a full-blown client version and the other users receives a
 control version.
 
-\subsection{Background Processes}
+\subsection{Background processes}
 \label{section:implementation.architecture.background.process}
 
 With our cache architecture in place it became apparent that it was too
@@ -768,7 +768,7 @@ background processing of this user's favorites is complete he will get a full
 picture of the activities of all his artist. We think this is an acceptable
 price to pay for reduced latency.
 
-\subsection{Asynchronous Requests}
+\subsection{Asynchronous requests}
 
 In the traditional style of \abbr{AJAX} applications we request information on
 the client-side of our prototype asynchronous%
@@ -792,7 +792,7 @@ problem\dash{}bringing greater interactivity to the user. Another solution
 that can be used is to move some processing into the client with
 JavaScript \citep[\p{9}]{jazayeri07}
 
-\subsection{Code Structuring}
+\subsection{Code structuring}
 \label{section:implementation.architecture.code.structuring}
 
 Both the client-side and server-side programming languages we used
@@ -883,7 +883,7 @@ directories and files that resembeled our module and class constructs. One
 file and possible directories was used for each module and class
 as can be seen in \figureref{prototype.server.file.hierarchy}.
 
-\subsection{Data Structure}
+\subsection{Data structure}
 
 We'll shortly summarize the data structure used in our database. We
 only stored informations about respondents to our survey and following
