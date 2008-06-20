@@ -604,23 +604,43 @@
   \begin{titlingpage}
     \ThisLLCornerWallPaper{0.6}{uiosealbg}
     \begin{centered}
-        \null\vspace{10pc}
-        {\Huge\textrm{{\@title}}} \\
-        \vspace{1pc}
-        {\Large\textsw{{\@subtitle}}} \\
-        \vspace{15pc}
+        \null\vspace{8pc}
+
+        {\Huge\textrm{{SOCIAL NAVIGATION}}} \\
+        \vspace{2pc}
+        {\Huge\textit{{on the}}} \\
+        \vspace{2pc}
+        {\Huge\textrm{{SOCIAL WEB}}} \\
+
+        \vspace{4pc}
+        {\Large\aldineleft} \\
+        \vspace{4pc}
+
+        {\Large\textit{{
+          Unintrusive Prototyping of \\
+          \vspace{1pc}
+          Activity Feeds in Established Spaces}}} \\
+
+        \vspace{5pc}
+
         {\large\@author} \\
-        \vspace{1pc}
-        {\normalsize\aldineleft} \\
-        \vspace{1pc}
+
+        \vspace{2pc}
+
+        {\large August 2008} \\
+
+        \vspace{5pc}
+
+        \textit{
         Submitted in partial fulfillment of the requirements \\
         for the degree of Master of Science \\
         \vspace{1pc}
-        \@date \\
+        to the \\
         \vspace{1pc}
         Department of Informatics \\
         Faculty of Mathematics and Natural Sciences \\
         University of Oslo \\
+        }
         \vfill
         \@scm
     \end{centered}
