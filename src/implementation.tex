@@ -1,14 +1,35 @@
 \chapter{Implementation}
 \label{chapter:implementation}
 
+During our research on social navigation we came in contact with
+\abbr{SINTEF}%
+\sidenote[5]{
+  \abbr{SINTEF}\dash{}headquartered in Norway\dash{}is
+  the largest independent research organisation in Scandinavia.
+}
+and their \abbr{RECORD} research project%
+\sidenote[9]{
+  \abbr{RECORD} is a research project which
+  \postquote{record08}{%
+    aims to provide knowledge and methodologies to improve development of
+    online community products and services}
+}.
+One of the partners of this project is \abbr{NRK}%
+\sidenote[14]{
+  The Norwegian Broadcasting Corporation.
+}
+with their \urort{} web site. After some coordination meetings with the
+\abbr{RECORD} project it became clear that \urort{} would be an excellent
+candidate for trying out social navigation techniques.
+
 As we've seen in 
 \sectionref{building.on.top.of.the.web}
 it's possible to build applications on top of existing web sites by creating
 transparent prototype implementations. This chapter starts with an account of
-what kind of navigation system we wanted to build, goes on to describe why we
-decided on such navigational designs, and concludes with an explanation of the
-deeper technical decisions we had to make. The following chapter,
-\chapterref{selection.of.third.party.software},
+what kind of navigation system we wanted to build for \urort{}, goes on to
+describe why we decided on such navigational designs, and concludes with an
+explanation of the deeper technical decisions we had to make. The following
+chapter, \chapterref{selection.of.third.party.software},
 describes what kind of third party software we used for realizing the
 implementation details we describe in this chapter.
 
@@ -772,7 +793,7 @@ price to pay for reduced latency.
 
 In the traditional style of \abbr{AJAX} applications we request information on
 the client-side of our prototype asynchronous%
-\sidenote{
+\sidenote[-3]{
   While it's possible to create synchronous requests with the
   \code{XMLHttpRequest} object
   it's discouraged. With such requests the entire web browser
