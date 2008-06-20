@@ -384,6 +384,10 @@
 \newfixedcaption{\fdiagcaption}{sourcecode}
 \newlistentry{sourcecode}{sc}{0}
 
+% List of Source Code Style
+\renewcommand{\cftsourcecodeleader}{ }
+\renewcommand{\cftsourcecodeafterpnum}{\cftparfillskip}
+
 
 %%
 %% Reference shorthands.
