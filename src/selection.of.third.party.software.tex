@@ -97,22 +97,23 @@ to be one that readily supports scripting existing
 web pages\dash{}a term often called \term{user scripting}.
 The \project{Firefox}%
 \sidenote[3]{
-  Available at \url{http://www.mozilla.com/en-US/firefox}.
+  Firefox is available at \url{http://www.mozilla.com/en-US/firefox}.
 }
 web browser was the first browser providing a
 plug-in for handling such scripting of web pages and seems to have the most
 mature implementation in our view. Since Firefox also is the
 most adopted%
 \sidenote[3]{
-  According to \citet{onestat08} Firefox was the second most used web browser
-  only surpassed by \project{Internet Explorer}.
+  Firefox was the second most used web browser in Ferbruary 2008
+  only surpassed by Microsoft's Internet Explorer
+  \citep{onestat08}.
 }
 cross-platform open source web browser the platform choice was quite easy.
 
 Firefox provide user scripting trough the means of the
 \project{Greasemonkey}%
 \sidenote[3]{
-  Available at \url{http://greasespot.net}.
+  Greasemonkey is available at \url{http://www.greasespot.net}.
 }
 browser extension. Essentially all it provides is the ability for a user to
 install a script which can manipulate the behavior and properties of an
@@ -145,7 +146,7 @@ without any plugins%
 the \project{Safari} browser can handle user script with the
 \project{GreaseKit}%
 \sidenote{
-  Available at \url{http://8-p.info/greasekit}.
+  GreaseKit for Safari is located at \url{http://8-p.info/greasekit}.
 }
 plug-in. Our prototype user script would not work in the Opera browser since
 it does not allow a \code{XMLHttpRequest} for another domain than what the
@@ -302,8 +303,8 @@ implemented and understood your code will be. Four of the five libraries
 have support for selector syntax based on
 that found in \abbr{CSS}%
 \sidenote{
-  Cascading Style Sheets. A stylesheet language for describing the
-  presentation of for instance \abbr{HTML} documents.
+  \abbr{CSS} is short for Cascading Style Sheets\dash{}a stylesheet language
+  most commonly used for describing the presentation of \abbr{HTML} documents.
 }.
 This is what makes the MochiKit example the most complex one, requiring the
 developer to do two queries into the \abbr{DOM} and construct two
@@ -353,7 +354,7 @@ Based on the following survey of server side software we needed an
 particular operating system was pre-selected for us as \abbr{SINTEF} already
 had a server we could use. This system was running \project{Debian}%
 \sidenote{
-  Freely available at \url{http://debian.org}.
+  Debian \abbr{GNU}/Linux is freely available at \url{http://debian.org}.
 }
 \abbr{GNU}/Linux\dash{}a perfect fit for the rest of our server side
 software stack.
@@ -369,11 +370,11 @@ is how little code you need for solving a given problem.
 Since we didn't have time to invest in learning a new language we had to do
 with those we knew from before. Of those \project{Ruby}%
 \sidenote[-7]{
-  Ruby home at \url{http://ruby-lang.org}.
+  The Ruby language is available at \url{http://ruby-lang.org}.
 },
 \project{Python}%
 \sidenote[-5]{
-  Python home at \url{http://python.org}.
+  The Python language can be found at \url{http://python.org}.
 }, and
 \project{Common Lisp}%
 \sidenote[-3]{
@@ -423,13 +424,13 @@ Even though we walue programming efficiency over computational performance,
 it should be noted that Common Lisp have been described as the only performant
 dynamic language \citep{martin08} compared to statically compiled languages%
 \sidenote[-8]{
-  In \work{The Computer Language Benchmarks Game} several programming
+  In \work{The Computer Language Benchmarks Game}
+  (see \url{http://shootout.alioth.debian.org})
+  several programming
   languages are pitched against each other in several tests to determine
   their computational performance. As of this writing (April 2, 2008)
   Common Lisp is 1.8 times slower than the fastest language: C++. Python
   and Ruby are respectively 18 and 56 times slower than the leader.
-  Updated results can be found at
-  \url{http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&lang=all}.
 }.
 
 As it turns out, the most important criteria for choosing our implementation

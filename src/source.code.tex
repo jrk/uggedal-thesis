@@ -15,11 +15,13 @@ compare different JavaScript libraries:
 
 js_files = Dir['*.js']
 
-pattern = /^[\s\t]?(\/\*|\*|\/\/)/
+ignore_pattern = /^[\s\t]?(\/\*|\*|\/\/)/
 
-js_files.each do |f|
-  File.open("#{f}.str", 'w') do |str_f| 
-    str_f.puts File.readlines(f).reject { |l| l =~ pattern }
+js_files.each do |file|
+  File.open("#{file}.stripped", 'w') do |stripped| 
+    stripped.puts File.readlines(file).reject do |line|
+      line =~ pattern
+    end
   end
 end
 \end{lstlisting}

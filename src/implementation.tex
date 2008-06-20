@@ -630,7 +630,8 @@ Following the characterization of client-server systems provided by
 by altering the structure of the \urort{} web page. The client sends queries
 to the server in the form of \abbr{HTTP}%
 \sidenote{
-  Hyper Text Transfer Protocol. The data transfer protocol for the Web.
+  Short for Hyper Text Transfer Protocol\dash{}the
+  protocol used for transfering data on the Web.
 }
 formatted requests. Interestingly \abbr{HTTP} is also is the communication
 method in our system. Our server takes these queries in \abbr{HTTP} form
@@ -779,8 +780,9 @@ the client-side of our prototype asynchronous%
 \sidenote{
   While it's possible to create synchronous requests with the
   \code{XMLHttpRequest} object
-  it's discouraged since the entire web browser will be locked
-  while it's waiting for a response for its request \citep{crockford06a}.
+  it's discouraged. With such requests the entire web browser
+  will be locked while it's waiting for a response for its request
+  \citep{crockford06a}.
 }.
 This means that requests handled by the \code{XMLHttpRequest} object
 are independent of other requests the browser is making\dash{}they
