@@ -70,7 +70,7 @@ programming paradigm%
   engineers using them, courses given for them, and third party vendors
   endorsing them) 65.463 percent of language use were object oriented
   \citep{tiobe08}.
-  The languages counted towards object orientation were: Java, PHP,
+  The languages counted towards object orientation were: Java, \abbr{PHP},
   C++, Perl, Python, C\#, Ruby, Delphi, JavaScript, D, FoxPro, Ada, and
   ColdFusion.
 }
@@ -248,7 +248,7 @@ all \code{em} elements with an descendant \code{p} element:
 
 \begin{scode}{Java}{dom.manipulation.prototype}{%
   \abbr{DOM} Manipulation with Prototype}{%
-  DOM manipulation in JavaScript with the Prototype library}
+  \abbr{DOM} manipulation in JavaScript with the Prototype library}
 \begin{lstlisting}
 getElementsBySelector("p em").each(function(em) {
   em.addClassName("highlight");
@@ -258,7 +258,7 @@ getElementsBySelector("p em").each(function(em) {
 
 \begin{scode}{Java}{dom.manipulation.yui}{%
   \abbr{DOM} Manipulation with Yahoo! \abbr{UI} Library}{%
-  DOM manipulation in JavaScript with the Yahoo! UI library}
+  \abbr{DOM} manipulation in JavaScript with the Yahoo! \abbr{UI} library}
 \begin{lstlisting}
 var em = YAHOO.util.Selector.query("p em"); 
 YAHOO.util.Dom.setClass(em, "highlight);
@@ -267,7 +267,7 @@ YAHOO.util.Dom.setClass(em, "highlight);
 
 \begin{scode}{Java}{dom.manipulation.mootools}{%
   \abbr{DOM} Manipulation with MooTools}{%
-  DOM manipulation in JavaScript with the MooTools library}
+  \abbr{DOM} manipulation in JavaScript with the MooTools library}
 \begin{lstlisting}
 $$("p em").each(function(em){
   em.addClass("highlight");
@@ -277,7 +277,7 @@ $$("p em").each(function(em){
 
 \begin{scode}{Java}{dom.manipulation.mochikit}{%
   \abbr{DOM} Manipulation with MochiKit}{%
-  DOM manipulation in JavaScript with the MochiKit library}
+  \abbr{DOM} manipulation in JavaScript with the MochiKit library}
 \begin{lstlisting}
 var p = getElementsByTagAndClassName("p");
 for (i = 0; i < p.length; i++) {
@@ -291,7 +291,7 @@ for (i = 0; i < p.length; i++) {
 
 \begin{scode}{Java}{dom.manipulation.jquery}{%
   \abbr{DOM} Manipulation with jQuery}{%
-  DOM manipulation in JavaScript with the jQuery library}
+  \abbr{DOM} manipulation in JavaScript with the jQuery library}
 \begin{lstlisting}
 $("p em").addClass("highlight");
 \end{lstlisting}
@@ -485,7 +485,7 @@ in a \abbr{HTML} document contained in the \code{html} object:
 
 \begin{scode}{Python}{parsing.beautiful.soup}{%
   Parsing with Beautiful Soup}{%
-  HTML parsing in Python with Beautiful Soup}
+  \abbr{HTML} parsing in Python with Beautiful Soup}
 \begin{lstlisting}
 html('p').content.findNextSiblings('em', 'citation')
 \end{lstlisting}
@@ -493,7 +493,7 @@ html('p').content.findNextSiblings('em', 'citation')
 
 \begin{scode}{Ruby}{parsing.hpricot}{%
   Parsing with Hpricot}{%
-  HTML parsing in Ruby with Hpricot}
+  \abbr{HTML} parsing in Ruby with Hpricot}
 \begin{lstlisting}
   html/'p > em.someclass'
 \end{lstlisting}
@@ -539,7 +539,7 @@ documents over \abbr{HTTP}.
 
 \begin{scode}{Ruby}{fetching.openuri.parsing.hpricot}{%
   Fetching and Parsing with Hpricot and open-uri}{%
-  Fetching a HTML document with \executable{open-uri}
+  Fetching a \abbr{HTML} document with \executable{open-uri}
   and parsing it with Hpricot to find the first and
   last name of a hCard Microformat}
 \begin{lstlisting}
@@ -573,7 +573,7 @@ resulting \abbr{JSON} format.
 
 \begin{scode}{Ruby}{json.encoding}{%
   Encoding to \abbr{JSON}}{%
-  Encoding a Ruby hash to JSON format}
+  Encoding a Ruby hash to \abbr{JSON} format}
 \begin{lstlisting}
 msg = {:interjection => 'hello',
        :noun         => 'world',
@@ -585,7 +585,7 @@ msg.to_json
 
 \begin{scode}{Java}{json.result}{%
   Result of \abbr{JSON} Encoding}{%
-  The result of the JSON encoding of a Ruby hash}
+  The result of the \abbr{JSON} encoding of a Ruby hash}
 \begin{lstlisting}
 {"interjection": "hello",
  "noun":         "world",
@@ -815,7 +815,7 @@ various third party software.
 
       Web browser &
       Firefox &
-      User dependant (tested on 2.0.0.14 and 3.0 RC1) \\
+      User dependant (tested on 2.0.0.14 and 3.0 \abbr{RC}1) \\
 
       Client-side language &
       JavaScript &
