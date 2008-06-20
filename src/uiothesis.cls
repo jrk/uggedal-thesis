@@ -337,7 +337,7 @@
   \renewcommand{\@codelabel}{#2}
   \renewcommand{\@codeshortcaption}{#3}
   \renewcommand{\@codeverbosecaption}{#4}
-  \begin{sourcecode}[!h]
+  \begin{sourcecode}[!ht]
     \lstset{language=#1}
 }{%
     \caption[\@codeshortcaption]{\@codeverbosecaption}
