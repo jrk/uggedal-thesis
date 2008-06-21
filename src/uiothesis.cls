@@ -353,6 +353,10 @@
 
 \RequirePackage[pdftex,plainpages=false,pagebackref]{hyperref}
 
+% break also on hyphens inside the \url command
+\def\UrlBreaks{\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]%
+  \do\)\do\,\do\?\do\'\do+\do\=\do\#\do-} % \do- is new!
+
 \urlstyle{sf}
 
 \hypersetup{%
