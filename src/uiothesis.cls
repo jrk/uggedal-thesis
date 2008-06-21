@@ -351,7 +351,7 @@
 %% Hyperlinks
 %%
 
-\RequirePackage[pdftex,plainpages=false]{hyperref}
+\RequirePackage[pdftex,plainpages=false,pagebackref]{hyperref}
 
 \urlstyle{sf}
 
@@ -359,6 +359,17 @@
   colorlinks=false,
   breaklinks,
   pdfborder=0 0 0,
+}
+
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1 %
+    No citations.%
+  \or
+    Cited on p.~#2.%
+  \else
+    Cited on pp.~#2.%
+  \fi
 }
 
 
