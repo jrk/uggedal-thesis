@@ -92,15 +92,15 @@ by looking at scholarly research where social navigation is used
 consciously as a concept. By this we mean the research where either social
 navigation is defined, redefined or problems relating to the concept is
 discussed with a basis in such definitions.
-After our main survey of social navigation in general terms we'll look at
-the various forms of social navigation that researchers have implemented
+We'll give an overview of social navigation and its concepts before diving in
+to the various forms of social navigation that researchers have implemented
 or proposed. In this latter section of applications of social navigation we'll
 also include related examples from the real world where appropriate.
 
 \section{Navigation}
 Navigation was traditionally associated with controlling a vessel at sea to
 a given destination.%
-\sidenote{
+\sidenote[-1]{
   \emph{Navigate} is in fact derived from the two Latin words \emph{navis}
   meaning \val{ship} and \emph{agere} meaning \val{to drive}
   \citep[\p{756}]{anderson97}.
@@ -116,7 +116,7 @@ computer systems navigation is essentially a metaphor of our usage of the
 word in our physical world. Trough computer systems we present users with a
 conceptual space in which they can navigate \citep[\p{189}]{whiteside85}.
 Today we normally present such a space as a \abbr{GUI}%
-\sidenote{
+\sidenote[-2]{
   \abbr{GUI} is short for graphical user interface. Our notion of a
   \abbr{GUI} was pioneered by \citet{sutherland63} and his
   \project{Sketchpad} system.
@@ -145,7 +145,7 @@ before the Web was invented as
 \citet{jones96} studied the navigational support provided by the Web's first
 browsers:
 \begin{inparaenum}[(i)]
-  \item loading of page by entering its location,
+  \item loading of a page by entering its location,
   \item loading a bookmarked page,
   \item loading a page by using a hyperlink on the current page,
   \item recall previously visited pages with forward and backward buttons,
@@ -153,7 +153,7 @@ browsers:
   \item reloading the current page.
 \end{inparaenum}
 While modern web browsers support more forms of navigation%
-\sidenote[-6]{
+\sidenote[-4]{
   These early browsers' history lists were not remembered between sessions. In
   addition we're seeing browsers as \project{Flock} (available at
   \url{http://flock.com}) with new methods of navigation integrated and also
@@ -163,13 +163,17 @@ While modern web browsers support more forms of navigation%
 than the earliest applications we're not concerned with those here.
 We're only interested in the navigation which are conducted within the main
 browser window (where web pages are rendered) enabled by following hyperlinks.
+We can therefore define navigation on the Web for our purposes as:
 
-Therefore we can define navigation on the Web for our purposes as the
-behavior of clicking on a hyperlink in a web page. Following hyperlinks is
+\begin{quote}
+  the behavior of clicking on a hyperlink in a web page.
+\end{quote}
+
+Following hyperlinks is
 today the most used navigation method on the Web \citep[\p{10}]{weinreich08}.
 \begin{fullquote}{garrett02}{%
-  describes what the thought process of the navigator under
-  such circumstances look like}
+  gives us a description of the physiology of such navigation which
+  illuminates the thought process of the navigator}
     A typical user, faced with a typical, freshly loaded Web page\dash{}her
     eyes bouncing around the page\dash{}takes in all the options available.
     Maybe she scrubs the pointer over a few navigation elements. Then,
@@ -189,15 +193,16 @@ More specifically, we're either using a strategy of \term{browsing} or
 \end{fullquote}
 Serendipity\dash{}\openpostquote[\p{631}]{andel94}{%
   the art of making an unsought finding}%
-\dash{}makes browsing sometimes effective as a navigation method.
+\dash{}is what makes browsing effective as a navigation method in some
+situations.
 Search as a navigation method does not rely on serendipity as much as browsing
 since you have a clearer idea about what you're navigating towards.
 
 Today we often use search engines\dash{}either local to a particular web page
 or global for all web pages\dash{}when
 navigating the Web with a search oriented mind set.
-\citet[\pp{53}{54}]{freyne07} distinguishes between browsing as navigating
-with hyperlinks and searching as using a search engine. We've taken this
+\citet[\pp{53}{54}]{freyne07} distinguishes between browsing by navigating
+with hyperlinks and searching by using a search engine. We've taken this
 distinction and decided, as stated earlier, to only focus on navigation
 trough hyperlink usage. We'll therefore not look at search with search engines
 as a form of navigation in our thesis.
@@ -214,10 +219,10 @@ it's defined as:
 
 Discussion about explicit social matters is left for scholars of the social
 sciences. We've therefore briefly introduced the term and are more concerned
-with situations where it's related to computer systems, and most importantly:
+with situations where it relates to computer systems, and most importantly:
 the Web.
 
-\subsection{The social Web}
+\subsection{The Social Web}
 \label{section:background.sociality.the.social.web}
 
 Sociality has become an integral part of our modern age version of the Web.
@@ -248,11 +253,13 @@ Web which have been popular in the recent years
 \citedouble{\paras{2.10}{2.24}}{beer07}{\pp{35}{37}}{murugesan07}
 But Web 2.0 is not a class of systems \citep[\p{28}]{millard06} even though
 these examples often live up to the aspirations of interaction, community,
-and openness embodied in Web 2.0. We're sympathetic with the view of defining
+and openness embodied in Web 2.0.
+
+We're sympathetic with the view of defining
 Web 2.0 more by the attitude it has for enabling user participation for all
-people \citep[\p{101}]{lin07}. The Web is becoming democratized
-\citep{graham05}. This is a problem with both social and
-technical factors. Certain technology had to be in place for building
+people \citep[\p{101}]{lin07} as the Web is becoming democratized
+\citep{graham05}. This shift is concerned with both social and
+technical factors as certain technology had to be in place for building
 products that adheres to the principles of Web 2.0. We do however think it's
 beneficial to use some examples of systems when describing Web 2.0 as a term.
 We'll now look at several of these examples of Web 2.0 systems and
@@ -263,7 +270,7 @@ of the Social Web.
 One can argue that the most important
 technological change related to interactiveness since the Web's infancy was
 when \citet{garrett05} introduced \abbr{AJAX}%
-\sidenote[-9]{
+\sidenote[-6]{
   \abbr{AJAX} is an acronym for Asynchronous JavaScript and \abbr{XML}
   and was introduced as a term in 2005 \citep{garrett05}. It captures how
   modern applications on the Web uses JavaScript for retrieving data
@@ -289,7 +296,13 @@ such technologies saw such widespread use that a new term was warranted.
 One possible reason for the lack of early developer uptake of this new
 technology could be the disparate field of browser implementations.
 Different browsers have variations in their interfaces for interacting with
-web documents trough JavaScript. It's quite hard to implement an application
+web documents trough JavaScript%
+\sidenote{
+  For more about JavaScript, a programming language often used to implement
+  behaviour in web browsers, see
+  \sectionref{selection.stack.client.language}.
+}
+. It's quite hard to implement an application
 when one have to write your code to handle several differences in browsers.
 The JavaScript web platform have been described as
 \postquote{crockford07}{%
@@ -320,7 +333,7 @@ citizens of the Web is.
 
 The first site that adhered to \citeauthor{boyd07}'s definition was
 \project{SixDegrees} which saw the day of light in 1997%
-\sidenote[-19]{
+\sidenote[-20]{
   SixDegrees closed their operations in 2000. It's founder believes it was
   simply ahead of its time \citep{boyd07}.
 }
