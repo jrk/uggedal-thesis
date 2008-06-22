@@ -254,12 +254,12 @@
     \strictpagechecktrue
     \checkoddpage
     \ifoddpage%
-      \captionsetup[table]{font={footnotesize,sf},%
+      \captionsetup[table]{font={footnotesize,rm},%
                            justification=RaggedRight,%
                            singlelinecheck=false}
       \RaggedRight\footnotesize%
     \else
-      \captionsetup[table]{font={footnotesize,sf},%
+      \captionsetup[table]{font={footnotesize,rm},%
                            justification=RaggedLeft,%
                            singlelinecheck=false}
       \RaggedLeft\footnotesize%
@@ -275,11 +275,11 @@
     \strictpagechecktrue
     \checkoddpage
     \ifoddpage%
-      \captionsetup[figure]{font={footnotesize,sf},%
+      \captionsetup[figure]{font={footnotesize,rm},%
                             justification=RaggedRight,%
                             singlelinecheck=false}
     \else
-      \captionsetup[figure]{font={footnotesize,sf},%
+      \captionsetup[figure]{font={footnotesize,rm},%
                             justification=RaggedLeft,%
                             singlelinecheck=false}
     \fi
