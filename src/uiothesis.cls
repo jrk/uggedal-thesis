@@ -70,7 +70,7 @@
 %% Line breaking
 %%
 
-\RequirePackage[final=true,step=1]{microtype}
+\RequirePackage[final=true]{microtype}
 \RequirePackage{ragged2e}
 
 
