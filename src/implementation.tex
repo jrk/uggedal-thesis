@@ -5,7 +5,7 @@ During our research on social navigation we came in contact with
 \abbr{SINTEF}%
 \sidenote[5]{
   \abbr{SINTEF}\dash{}headquartered in Norway\dash{}is
-  the largest independent research organisation in Scandinavia.
+  the largest independent research organization in Scandinavia.
 }
 and their \abbr{RECORD} research project%
 \sidenote[9]{
@@ -258,8 +258,8 @@ our friends by using its news feed as described in
 \sectionref{analysis.facebook.news.feed}. 
 
 When the news feed was introduced on Facebook in September 2006 users
-immediately respondended negatively since they felt their privacy was
-compromized. Even though all data available trough the news feed had
+immediately responded negatively since they felt their privacy was
+compromised. Even though all data available trough the news feed had
 previously been available to the same users, the aggregated and efficient
 display of this information led to concerns \citet[\pp{13}{14}]{boyd08}. 
 Interestingly these negative first reactions seemed to vanish as
@@ -309,8 +309,8 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
   \end{whole}
 \end{figure}
 
-Based on both our own observations and other's of the precieved
-usefullness of activity feeds we decided use such a navigational design in our
+Based on both our own observations and other's of the perceived
+usefulness of activity feeds we decided use such a navigational design in our
 prototype implementation for \urort{}.
 
 \subsubsection{Relevant activities}
@@ -321,10 +321,10 @@ for yourself trough an activity feed seemed a good fit for \urort{}. But
 \urort{} exists for people to freely share their music and let others find
 music they like\dash{}and not on making new friends or keeping in touch with
 old friends. How do we then find recent activities which potentially could be
-interesting for our users when we don't have any frinds to consult?
+interesting for our users when we don't have any friends to consult?
 
 We tried to answer this question by using a feature on \urort{} that allows
-any user to \emph{favorize} an artist. If a user conducts such an action he or
+any user to \emph{favor} an artist. If a user conducts such an action he or
 she becomes a \emph{fan} of that artist. We don't know why people signify
 artists as their favorites on \urort{}, but the main reason may be that
 they simply like the music the artist is publishing.
@@ -333,30 +333,30 @@ add them as a favorite\dash{}not dependent on whether they like their music or
 not.
 
 But regardless of the motives for adding an artist as a favorite it requires
-a concious effort from the user. We're therefore led to believe that the list
-of artists a user have favorized are more important than other artists on
+a conscious effort from the user. We're therefore led to believe that the list
+of artists a user have favored are more important than other artists on
 \urort{}. Our design is therefore based on the activities of a person's
 favorite artists. Initially we toyed with making a friend like concept on
 \urort{} by saying that people which share one or more favorite artists with
-you are in some way related to yourself. We had to trow away this idea because
+you are in some way related to yourself. We had to throw away this idea because
 of technical problems with getting such a solution to scale.
 
 \subsubsection{Activity types}
 
 There were many activities taking place associated with an artist
 which we could potentially use in our activity feed. We decided to select
-those which had information about when the activity occured and was
+those which had information about when the activity occurred and was
 technically easy%
 \sidenote{
-  Easy as in only requireing access to the \urort{} web pages.
+  Easy as in only requiring access to the \urort{} web pages.
 }
 to retrieve. Those that matched our criteria was:
 
 \begin{items}
-  \iterm{Songs} beeing published by the artist.
-  \iterm{Song reviews} beeing written by users.
-  \iterm{Concerts} beeing performed by the artist.
-  \iterm{Blog posts} beeing written by the artist.
+  \iterm{Songs} being published by the artist.
+  \iterm{Song reviews} being written by users.
+  \iterm{Concerts} being performed by the artist.
+  \iterm{Blog posts} being written by the artist.
 \end{items}
 
 As you can see three of these activities are conducted by the artist himself
@@ -365,7 +365,7 @@ while reviews are conducted by other users.
 \subsubsection{Activity filtering}
 
 There is quite bit of activity information based on our four categories for
-a typical artist. When a user have several artists as favorites the ammount of
+a typical artist. When a user have several artists as favorites the amount of
 activity information gets large. We therefore had to filter out some
 activities and only showing what we thought would be most relevant.
 
@@ -380,7 +380,7 @@ showed only the ten most recent activities.
 Facebook is not showing the complete picture of friend activity in their news
 feed as it's believed that up to 80\% of all recent activities are filtered
 out \citep{elliott08}.
-Facebooks approach to only showing a selection of recent activity is
+Facebook's approach to only showing a selection of recent activity is
 probably driven by technical scalability problems, and not a desire to only
 present a selection of recent activity of friends. In our activity feed we
 give users a complete picture of all our types of activities within our
@@ -432,7 +432,7 @@ without recent activity.
 We did our best to make the installation process of our prototype easy
 for end-users. This is important for getting as many people using our
 prototype as possible.
-Descriptive, stepwise instructions with screenshots for the installation of
+Descriptive, stepwise instructions with screen captures for the installation of
 the components of our client software was provided.
 
 \section{Process}
@@ -774,7 +774,7 @@ by altering the structure of the \urort{} web page. The client sends queries
 to the server in the form of \abbr{HTTP}%
 \sidenote{
   Short for Hyper Text Transfer Protocol\dash{}the
-  protocol used for transfering data on the Web.
+  protocol used for transferring data on the Web.
 }
 formatted requests. Interestingly \abbr{HTTP} is also is the communication
 method in our system. Our server takes these queries in \abbr{HTTP} form
@@ -859,14 +859,14 @@ Let us explain how this works
 when user X requests his list of recent favorite activities. Our system
 first determines that user X have artist A and artist B as
 favorites. It then consults the cache and asks if it can get a list of
-activities for artist A. The cache have a list of activites for artist A and
+activities for artist A. The cache have a list of activities for artist A and
 promptly returns it to its caller. Our system then tries to do the same for
-artist B, but this time there is no list of activites for that artist in the
+artist B, but this time there is no list of activities for that artist in the
 cache. We just had a \term{cache miss}, and are therefore forced to retrieve
 information about artist B's activities from the \urort{} web site and
 calculate a new list which are stored in the cache with a certain
 \term{time to live}. The next time a request for artist B's list of activities
-are handeled the cache should now be able to return that list if the request
+are handled the cache should now be able to return that list if the request
 were made within the time to live interval.
 
 In our system we set a time to live of 12 hours. This means that activity
@@ -877,12 +877,12 @@ lists stored in the cache are retrievable within 12 hours.
 As detailed in
 \sectionref{implementation.design.favorite.list}
 we designed two versions of our prototype: one delivering an activity
-feed and another only listing favorites. This intoduced the need to deliver
+feed and another only listing favorites. This introduced the need to deliver
 two versions of the client software, one for our main experiment group and one
 for our control group. To handle this we had to introduce persistence in our
 application to know what kind of client software the last user received to
 determine what software the next user should be provided with. This way every
-second user recives a full-blown client version and the other users receives a
+second user receives a full-blown client version and the other users receives a
 control version.
 
 \subsection{Background processes}
@@ -890,7 +890,7 @@ control version.
 
 With our cache architecture in place it became apparent that it was too
 expensive time wise for users to retrieve the activities of all their
-favorites when multiple cache misses occured. We therefore decided to
+favorites when multiple cache misses occurred. We therefore decided to
 \q{warm up} the cache by running several background processes that populated
 our cache with fresh data from the \urort{} web site several times a day.
 
@@ -902,7 +902,7 @@ After testing the system casually we found a need for shortening the response
 times in the event we received a request from a user with our full-blown
 client software where no relevant activity lists
 was present in cache. Initially we retrieved information from the \urort{} web
-site for all artists that the requestor had favorized. Under this scheme a
+site for all artists that the requester had favored. Under this scheme a
 user with several favorites could expect response times to be several minutes
 in length. We therefore decided to deliver only the activities of the user's
 first favorite if non of the activity lists of his favorites was present in
@@ -1026,8 +1026,8 @@ As
   \end{whole}
 \end{figure}
 
-To make the handeling of our source code easier we used a hierarchy of
-directories and files that resembeled our module and class constructs. One
+To make the handling of our source code easier we used a hierarchy of
+directories and files that resembled our module and class constructs. One
 file and possible directories was used for each module and class
 as can be seen in \figureref{prototype.server.file.hierarchy}.
 
@@ -1079,7 +1079,7 @@ gives details about the data we stored.
     Initial default of zero \\
 
     \code{created\_at} &
-    Timestamp &
+    Time stamp &
     \\
 
 
@@ -1100,7 +1100,7 @@ It became apparent that creating an activity feed for a user with several
 favorites was very time consuming. We identified the major bottleneck to be
 the actual retrieval of information from the \urort{} web page. We could not
 do anything code and algorithm wise to remedy this problem. The only solution
-was to increase the bandwith allowed on our internet connection.
+was to increase the bandwidth allowed on our internet connection.
 As can be seen in
 \tableref{retrieval.time.and.speed}
 our retrieval times decreased as we moved to a production server with
@@ -1137,14 +1137,14 @@ to the servers at \urort{}.
   \end{tabular}
 }
 
-The next bottlenech we became aware of is related to the cost of retrieving
-web pages from \urort{}. We did some carefull conting of the number of
-retrieval attemts to \urort{} and were able to minimize these to a
+The next bottleneck we became aware of is related to the cost of retrieving
+web pages from \urort{}. We did some careful counting of the number of
+retrieval attempts to \urort{} and were able to minimize these to a
 considerably lower number.
 
-The last bottlenech we encountered was the actual parsing of the retrieved web
+The last bottleneck we encountered was the actual parsing of the retrieved web
 pages from \urort{}. We were able to implement some minor optimizations, but
-did not see any major improvments.
+did not see any major improvements.
 
 But the major performance gains were seen when we introduced a fast cache
 solution and a system for periodically warming this cache up,
