@@ -602,7 +602,7 @@
     \bigskip
 
     The guidelines found in \work{The Visual Display of\\
-    Quantitative Information by \citet{tufte01} were\\
+    Quantitative Information} by \citet{tufte01} were\\
     followed when creating diagrams.\\
     Colors used in diagrams and figures were inspired\\
     by the \work{Summer Fields} color scheme found at\\
