@@ -508,9 +508,9 @@
 
 % Paragraph/page reference
 \newcommand{\para}[1]{paragraph~#1}
-\newcommand{\paras}[2]{paragraphs~#1--2}
+\newcommand{\paras}[2]{paragraphs~#1--#2}
 \newcommand{\p}[1]{p.~#1}
-\newcommand{\pp}[2]{pp.~#1--2}
+\newcommand{\pp}[2]{pp.~#1--#2}
 \newcommand{\chap}[1]{chapter~#1}
 \newcommand{\chaps}[2]{chapters~#1--#2}
 \newcommand{\vol}[1]{vol.~#1}
