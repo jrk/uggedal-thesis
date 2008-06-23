@@ -585,9 +585,15 @@
     This thesis was written in American English as\\ 
     dictated in \work{The Elements of Style}\\
     by \citet{strunk00}.\\
+
+    \bigskip
+
     Typographical decisions were based on the\\
     recommendations given in \work{The Elements of\\
     Typographic Style} by \citet{bringhurst04}.\\
+
+    \bigskip
+
     The use of sidenotes instead of footnotes and\\
     figures spanning both the textblock and\\
     fore-edge margin was inspired by \work{Beautiful\\
@@ -595,8 +601,11 @@
 
     \bigskip
 
-    The colors used in diagrams were inspired by\\
-    the \work{Summer Fields} color scheme found at\\
+    The guidelines found in \work{The Visual Display of\\
+    Quantitative Information by \citet{tufte01} were\\
+    followed when creating diagrams.\\
+    Colors used in diagrams and figures were inspired\\
+    by the \work{Summer Fields} color scheme found at\\
     \url{http://www.colourlovers.com/palette/399372}\\
   \end{adjustwidth*}
   
