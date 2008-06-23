@@ -7,13 +7,13 @@ During our research on social navigation we came in contact with
   \abbr{SINTEF}\dash{}headquartered in Norway\dash{}is
   the largest independent research organization in Scandinavia.
 }
-and their \abbr{RECORD} research project%
+and their \abbr{RECORD} research project.%
 \sidenote[9]{
   \abbr{RECORD} is a research project which
   \postquote{record08}{%
     aims to provide knowledge and methodologies to improve development of
     online community products and services}
-}.
+}
 One of the partners of this project is \abbr{NRK}%
 \sidenote[14]{
   The Norwegian Broadcasting Corporation.
@@ -72,18 +72,18 @@ extension and our script.
 
 The idea of creating additional features for a web site in these manners
 came from the author's involvement in an underground community based around
-the Ruby programming language. \project{Hoodwink.d}%
+the Ruby programming language. \project{Hoodwink.d},%
 \sidenote[-1]{
   Hoodwink.d's starting point for new users can be seen
   at \url{http://hoodwinkd.hobix.com}.
-},
+}
 as it's called, is a service that lets members post comments on all kinds of
 web sites. These comments are then only visible to the members of the
 community.
 Hoodwink.d is underground in the sense that it's quite hard to get in to
 the community. It's members rarely talk about Hoodwink.d publicly, baring
 similarities to the underground fight club in a novel by \citet{palahniuk96}
-aptly named \work{Fight Club}%
+aptly named \work{Fight Club}.%
 \sidenote[-4]{
   The first two rules of this underground club in the novel of
   \citet[\pp{48}{50}]{palahniuk96}
@@ -92,7 +92,7 @@ aptly named \work{Fight Club}%
     \item You don't talk about fight club.
     \item You don't talk about fight club.
   \end{inparaenum}
-}.
+}
 The home page of Hoodwink.d mimics the community's dedication to secrecy
 by obfuscating its information as can be seen in
 \figureref{scrsh.hoodwinkd.obfuscation}.
@@ -192,13 +192,13 @@ similar to that practiced by
   when a body has been stripped down to its nakedness.
 \end{fullquotation}
 
-This philosophy is closely related to minimalism%
+This philosophy is closely related to minimalism.%
 \sidenote{
   Minimalism is a movement where the
   infamous architect Mies van der Rohe popularized the concept of
   \q{less is more}\dash{}achieving the maximum effect with the minimum of
   means \citep{whitman69}.
-}.
+}
 That is why we feel the prototype we're creating should provide users
 with only the necessary information for affording navigational behavior.
 
@@ -753,12 +753,12 @@ essential part of client-server computing and enables one to focus on one
 aspect of a problem as one does when adhering to the concept of
 \term{separation of concerns} \citep[\p{61}]{dijkstra82}.
 A client-server model also enables one to scale both horizontally and
-vertically%
+vertically,%
 \sidenote{
   To scale horizontally entails adding more servers to a client-server
   architecture. When one increases the resources of a single server
   one is scaling vertically.
-},
+}
 an impossible feat with monolithic systems \citep[\pp{7}{8}]{lewandowski98}.
 
 We therefore decided to use a client-server architecture so that we could
@@ -816,21 +816,21 @@ in a relational database. We did some study into selecting the best
 for connecting our application to the underlying database. We had this nice
 model where the underlying relational database engine was abstracted away
 and interaction to this database was done with a clear and explicative
-\abbr{DSL}%
+\abbr{DSL},%
 \sidenote{
   \abbr{DSL} or domain-specific languages are programming languages shaped
   for a specific domain. By doing so one can offer more expressiveness in a
   limited application domain. This results in better usability
   and increased productivity within the limited domain compared to
   using a general-purpose programming language \citep[\p{317}]{mernik05}.
-},
-eliminating the need for constructing complex \abbr{SQL}%
+}
+eliminating the need for constructing complex \abbr{SQL}.%
 \sidenote[10]{
   \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
   query language, now the \latin{de facto} language for interacting
   with relational databases, invented by 
   \citet[\p{250}]{chamberlin74}.
-}.
+}
 
 Then we had a sudden realization when coding on the part of our application
 that retrieved information from the external \urort{} web site, pushed it into
@@ -882,8 +882,8 @@ two versions of the client software, one for our main experiment group and one
 for our control group. To handle this we had to introduce persistence in our
 application to know what kind of client software the last user received to
 determine what software the next user should be provided with. This way every
-second user receives a full-blown client version and the other users receives a
-control version.
+second user receives a full-blown client version and the other users receives
+a control version.
 
 \subsection{Background processes}
 \label{section:implementation.architecture.background.process}
@@ -919,14 +919,14 @@ price to pay for reduced latency.
 \subsection{Asynchronous requests}
 
 In the traditional style of \abbr{AJAX} applications we request information on
-the client-side of our prototype asynchronous%
+the client-side of our prototype asynchronous.%
 \sidenote[-3]{
   While it's possible to create synchronous requests with the
   \code{XMLHttpRequest} object
   it's discouraged. With such requests the entire web browser
   will be locked while it's waiting for a response for its request
   \citep{crockford06a}.
-}.
+}
 This means that requests handled by the \code{XMLHttpRequest} object
 are independent of other requests the browser is making\dash{}they
 are non-blocking. This enables developers to create web pages where additional
@@ -946,7 +946,7 @@ JavaScript \citep[\p{9}]{jazayeri07}
 Both the client-side and server-side programming languages we used
 are as we'll see in
 \sectionref{selection.stack.client.language} and
-\sectionref{selection.stack.server.language} \term{object-oriented}%
+\sectionref{selection.stack.server.language} \term{object-oriented}.%
 \sidenote[-10]{
   The term object-orientation was coined by \citet{kay03} sometime in 1967.
   The motivations leading to object-oriented programming were mainly
@@ -958,7 +958,7 @@ are as we'll see in
   The essence of object-orientation lies in the fundamental concepts of
   abstraction, classes, encapsulation, inheritance, object, message passing,
   methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
-}.
+}
 Since our client software was pretty dense in code size (see
 \sectionref{implementation.source.code} for details) and only had to handle
 a small set of operations we did not use object oriented

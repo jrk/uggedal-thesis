@@ -50,7 +50,7 @@ for the software industry to become industrialized. His proposed technique for
 enabling mass-production of software was to offer components\dash{}families
 of program routines that can be used for any given job. These components
 should be created in a way so that they can fit together as building blocks.
-The developer should be able to treat these components as \term{black boxes}%
+The developer should be able to treat these components as \term{black boxes}.%
 \sidenote[-2]{
   In the field of electronics black boxes are used to describe electronic
   circuits with a fixed set of terminals where one is deliberately ignoring
@@ -60,7 +60,7 @@ The developer should be able to treat these components as \term{black boxes}%
   a component, module, object, or routine (electronic circuit) as being a
   black box when we're only concerned with its input and output
   characteristics trough its interface (terminals).
-}.
+}
 
 After object-oriented programming became the most popular
 programming paradigm%
@@ -117,12 +117,12 @@ Firefox provide user scripting trough the means of the
 }
 browser extension. Essentially all it provides is the ability for a user to
 install a script which can manipulate the behavior and properties of an
-existing web page using the \term{\abbr{DOM}}%
+existing web page using the \term{\abbr{DOM}}.%
 \sidenote[3]{
   The \abbr{DOM} is a three of objects representing the hierarchical
   structure of nested tags (with text and attributes) in \abbr{HTML}
   documents \citep[pp.~307--310]{flanagan06}.
-}.
+}
 When a user have such a script for a specific web page installed its
 instructions will be executed on the next visit to the given site, enabling
 all kinds of modifications to the \abbr{DOM}.
@@ -138,11 +138,11 @@ Greasemonkey can also be used for creating new navigational designs on the
 Although we've settled on the Firefox and Greasemonkey platform there is a
 certain possibility that our implementation could work in other browsers
 providing user scripting. The \project{Opera} browser provides user scripting
-without any plugins%
+without any plugins,%
 \sidenote[-3]{
   For more information see
   \url{http://www.opera.com/support/tutorials/userjs/examples}.
-},
+}
 the \project{Safari} browser can handle user script with the
 \project{GreaseKit}%
 \sidenote{
@@ -301,11 +301,11 @@ When we compare these rather trivial problem solutions it becomes apparent
 that choosing a JavaScript library can have major impact on how easily
 implemented and understood your code will be. Four of the five libraries
 have support for selector syntax based on
-that found in \abbr{CSS}%
+that found in \abbr{CSS}.%
 \sidenote{
   \abbr{CSS} is short for Cascading Style Sheets\dash{}a stylesheet language
   most commonly used for describing the presentation of \abbr{HTML} documents.
-}.
+}
 This is what makes the MochiKit example the most complex one, requiring the
 developer to do two queries into the \abbr{DOM} and construct two
 loop structures for iterating over the results.
@@ -368,15 +368,15 @@ important than computational efficiency (a language's native performance).
 \citet{mcanally08} argues that the true measure of a language's productivity
 is how little code you need for solving a given problem.
 Since we didn't have time to invest in learning a new language we had to do
-with those we knew from before. Of those \project{Ruby}%
+with those we knew from before. Of those \project{Ruby},%
 \sidenote[-7]{
   The Ruby language is available at \url{http://ruby-lang.org}.
-},
-\project{Python}%
+}
+\project{Python},%
 \sidenote[-5]{
   The Python language can be found at \url{http://python.org}.
-}, and
-\project{Common Lisp}%
+}
+and \project{Common Lisp}%
 \sidenote[-3]{
   Common Lisp, the prevalent Lisp dialect today, is a standard \citep{ansi96}
   and has many implementations.
@@ -396,14 +396,14 @@ They are all \term{latent typed}%
 and have quite expressive syntax. This makes for concise source code.
 \citet{yegge07} argues that the worst thing that can happens to a code base is
 size which often is the result of code bloat. In addition, both Ruby, Python,
-and Common Lisp are \term{interpreted} languages%
+and Common Lisp are \term{interpreted} languages.%
 \sidenote[1]{
   This is only partly true since Common Lisp implementations incrementally
   compile code and extensions or new implementations for Python and Ruby
   implements just-in-time compilers. In both cases the developer
   does not need to explicitly invoke a compile process before using
   a program, therefore resembling interpreted languages.
-}.
+}
 This means that the programmer don't have to go trough a compilation process
 before he can see the results of his labor. When prototyping rapidly it's
 quite convenient to make small changes and see the results instantanously.
@@ -422,7 +422,7 @@ it's survived for over 50 years \citep[p.~217]{mccarthy78}
 and been able to adopt new paradigms in programming as they've appered.
 Even though we walue programming efficiency over computational performance,
 it should be noted that Common Lisp have been described as the only performant
-dynamic language \citep{martin08} compared to statically compiled languages%
+dynamic language \citep{martin08} compared to statically compiled languages.%
 \sidenote[-8]{
   In \work{The Computer Language Benchmarks Game}
   (see \url{http://shootout.alioth.debian.org})
@@ -431,7 +431,7 @@ dynamic language \citep{martin08} compared to statically compiled languages%
   their computational performance. As of this writing (April 2, 2008)
   Common Lisp is 1.8 times slower than the fastest language: C++. Python
   and Ruby are respectively 18 and 56 times slower than the leader.
-}.
+}
 
 As it turns out, the most important criteria for choosing our implementation
 language was its library support.
@@ -556,18 +556,18 @@ html = Hpricot(open('http://redflavor.com'))
 
 Since we'll mainly be serving requests
 for our JavaScript based client implementation we found it sound to transfer
-this data as \abbr{JSON}%
+this data as \abbr{JSON}.%
 \sidenote[-1]{
   \abbr{JSON}, short for JavaScript Object Notation, is specified in
   \abbr{RFC} 4627 \citep{crockford06b}. Shortly put it's a lightweigh data
   interchange format based on the object literals of JavaScript.
-}.
+}
 Luckily for us there exists a libary for encoding
 Ruby objects into \abbr{JSON} format
-simply called \project{json}%
+simply called \project{json}.%
 \sidenote[3]{
   The Ruby \abbr{JSON} can be found at \url{http://json.rubyforge.org}.
-}.
+}
 The next code listings show how simple objects can be encoded and the
 resulting \abbr{JSON} format.
 
@@ -606,10 +606,10 @@ applications available for Ruby. The most popular%
   A search for Ruby on Rails books on Amazon revealed 35 titles as of
   20 May, 2008.
 }
-is \project{Ruby on Rails}%
+is \project{Ruby on Rails}.%
 \sidenote[2]{
   Ruby on Rails has its home at \url{http://rubyonrails.org}.
-}.
+}
 Other actively developed frameworks include
 \project{Merb},
 \project{Camping},
@@ -623,10 +623,10 @@ Other actively developed frameworks include
   \url{http://ramaze.net} respectively.
 }
 These frameworks have a varying degree of complexity, but none of them
-is as simple as \project{Rack}%
+is as simple as \project{Rack},%
 \sidenote[6]{
   Rack is available at \url{http://rack.rubyforge.org}.
-},
+}
 a web server interface that sits between a web framework and a web
 server or can be used as a very light weight web framework on its own.
 Since we our neeeds were a bit specialized we decided to use Rack for
@@ -739,10 +739,10 @@ however want to cache this data for a given time so that users would get
 berable request times when using our prototype implementation.
 
 We did not test various cache solutions but instead went with a proven
-cache solution called \project{Memcached}%
+cache solution called \project{Memcached}.%
 \sidenote[-3]{
   Available at \url{http://www.danga.com/memcached/}.
-}.
+}
 Memcached was developed at \project{LiveJournal}%
 \sidenote[-2]{
   LiveJournal is a place where people can keep a blog or journal with
@@ -780,10 +780,10 @@ For accessing the database we had a choice between several libraries that
 makes interaction with the database easier and abstracted based on database
 software.
 We selected the library we found had the most flexible and lightweight
-\abbr{ORM} capability: \project{Sequel}%
+\abbr{ORM} capability: \project{Sequel}.%
 \sidenote{
   Sequel have a home at \url{http://sequel.rubyforge.org}.
-}.
+}
 
 \subsection{Overview of client \oldand server components}
 
@@ -935,10 +935,11 @@ only two interesting decentralized version control systems:
 \sidenote[1]{
   Available at \url{http://git.or.cz}.
 }
-and \project{Mercurial}%
+and \project{Mercurial}.%
 \sidenote[3]{
   Available at \url{http://www.selenic.com/mercurial}.
-}. Both are unique in that they don't track meta-data, they just track
+}
+Both are unique in that they don't track meta-data, they just track
 content and meta-data are thereby inferred from the content.
 At a very high level view Mercurial have a better user interface and Git
 supports some advanced features the former don't have. We opted to used
@@ -1082,10 +1083,10 @@ There are currently two JavaScript debuggers for the Firefox browser:
 \sidenote{
   Located at \url{http://www.mozilla.org/projects/venkman/}.
 }
-and \project{Firebug}%
+and \project{Firebug}.%
 \sidenote[2]{
   Firebug has its home at \url{http://www.getfirebug.com}.
-}.
+}
 The latter have a considerably less intrusive interface than the former and
 seems to be much more actively developed as of this writing. Firebug have the
 most advanced features with a better user interface. Our choice of a client
@@ -1105,10 +1106,10 @@ a \term{profiler}%
   performance of a segment of a given program and should be used in an
   iterative way \citep[\p{125}]{graham82}.
 }
-called \project{ruby-prof}%
+called \project{ruby-prof}.%
 \sidenote[9]{
   Available at \url{http://rubyforge.org/projects/ruby-prof}.
-}.
+}
 This is the fastest profiler for Ruby and it can generate various forms of
 reports which enables a developer to understand the time related aspects of
 his code.
