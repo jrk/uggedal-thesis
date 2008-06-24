@@ -96,6 +96,8 @@ We'll give an overview of social navigation and its concepts before diving in
 to the various forms of social navigation that researchers have implemented
 or proposed. In this latter section of applications of social navigation we'll
 also include related examples from the real world where appropriate.
+Finally, at the end of this chapter we'll briefly see if social navigation
+is beneficial for navigation in web sites.
 
 \section{Navigation}
 Navigation was traditionally associated with controlling a vessel at sea to
@@ -1175,8 +1177,8 @@ of social navigation.
 The origin of the concept comes from the \project{Information Tapestry}
 project where users could annotate electronic documents arriving in a
 continuous stream\dash{}typically email messages \citep[\p{69}]{goldberg92}. By
-installing a pre-existing filter or creating one from scratch in a
-special query language users were able to filter out the essential documents
+installing a pre-existing filter, or creating one from scratch in a
+special query language, users were able to filter out the essential documents
 based both on explicit feedback trough annotations and
 meta-data concerning the document \citep[\p{62}]{goldberg92}.
 
@@ -1188,7 +1190,7 @@ their approach at the time was that they could
   automatically determine how much weight to place on each
   evaluation, based on the degree of correlation between past
   opinions of the reader and evaluator}
-This made the filter more personalized and should prove to give more
+This made the filter more personalized and would arguably give more
 satisfying results. Such an approach gives a conceptual model where
 \begin{inparaenum}[(i)]
   \item the user enters ratings which constitutes a profile
@@ -1212,7 +1214,7 @@ explicit ratings. \citet[\p{39}]{claypool01} validated the results
 \citeauthor{konstan97} experienced when they tested explicit and implicit
 ratings against each other. \citeauthor{claypool01} found implicit ratings
 to be somewhat less accurate than explicit ratings, but suggested implicit
-ratings could be used successfully since it won't introduce the additional
+ratings could be used successfully since they won't introduce the additional
 overhead explicit ratings embodies.
 
 Tapestry and GroupLens lacks a direct connection
@@ -1222,19 +1224,20 @@ between the advice giver and the navigator. Using the language of
 critical mass of users to be useful. They therefore created an active
 collaborative filtering system.
 \begin{fullquote}{maltz95}{%
-  found what circumstances these two types of systems are a best fit for}
+  found circumstances where one of the two types of collaborative filtering
+  systems offered better solutions}
     In \q{passive} collaborative filtering the system works better the higher
     the convergence of votes on the same set of documents. In contrast, the
     benefit of \q{active} collaborative filtering increases with the
     divergence of documents that are found.
 \end{fullquote}
 
-\citet[\pp{242}{243}]{herlocker00} gives compelling reasons for explaining
-how the collaborative filtering process works to users of these kinds of
-systems. Usage studies showed such explanations increased acceptance of
+\citet[\pp{242}{243}]{herlocker00} gives compelling reasons for explaining to
+users how the collaborative filtering process works. Usage experiments
+showed explanations' ability to increase the acceptance of advice given by
 collaborative filtering systems. Whether explanations improved actual
-filtering performance was not certain\dash{}even though
-the authors had a strong belief in this being true
+filtering performance was not certain\dash{}even though the authors
+strongly believed in this idea
 \citep[\p{250}]{herlocker00}.
 
 As we've seen, collaborative filtering is applied to generate
@@ -1261,8 +1264,9 @@ recommendations for its users:
 
 \begin{enum}
   \item Using collaborative filtering
-    the verdicts of users that in some way are deemed to have similar
-    taste to yourself are used for recommendation\dash{}a social process.
+    where the verdicts of other users, which in some way are deemed to have
+    similar taste as yourself, are used for recommendation\dash{}a social
+    process.
   \item Using a \term{content-based} approach where one is relying on the
     nature of potential items instead of other people's perception of them.
     Based on your previous usage or reaction to items, similar items can then
@@ -1273,7 +1277,7 @@ The distinction between a content-based and collaborative filtering approach
 lies in the way collaborative filtering \postquote[\p{241}]{herlocker00}{%
   are based on human and not machine analysis of content} To put it another
 way the similarity of users are measured instead of the similarity of content.
-Because of this distinction collaborative filtering systems
+Because of this distinction, collaborative filtering systems
 and content-based systems have been called \term{user-based} and
 \term{item-based} recommendation systems respectively
 \citep[\p{156}]{greco04}.
@@ -1296,13 +1300,15 @@ collaborative solution since it
 Since we're concerned with socially constructed navigation possibilities we're
 not going to discuss content-based systems further in this thesis.
 
+\subsubsection{Recommendation from tags}
+
 One of the two forms of social navigation found in
 \project{Knowledge Sea}\dash{}a digital educational
 library\dash{}is recommendations by item
 annotation \citep[\p{13}]{brusilovsky05}. Users can leave their emphatic marks
 on content and thereby specify its usefulness. Questionnaires showed that a
 fair majority of users was agreeable to the use of such recommendations
-\citeyearpar[\p{15}]{brusilovsky05} and log analysis strengthened
+\citeyearpar[\p{15}]{brusilovsky05}. Analysis  of server logs strengthened
 the impression
 \begin{fullquote}[\p{38}]{brusilovsky05}{had by showing that}
   Social navigation support and specifically
@@ -1310,20 +1316,21 @@ the impression
   accessing a resource dramatically.
 \end{fullquote}
 
-Advanced algorithms known in the field of collaborative filtering
+Advanced algorithms from the field of collaborative filtering
 and recommender systems have been used together with folksonomies
 consisting of collaborative tags
 \citep[\pp{112}{113}]{wu06}. Preliminary studies have shown positive
 results when harnessing such social knowledge with filtering algorithms
 as opposed to traditional folksonomy representation
-\citep[\p{114}]{wu06}. Such a folksonomy could hoverer interfere with an
+\citep[\p{114}]{wu06}.
+Using a folksonomy for this purpose can hoverer interfere with an
 existing recommender system. \citet[\p{190}]{sen06} found that the
 introduction of tagging and tag display in their established
-movie recommender system interfered with some of the users primary
-objective: finding interesting movies. Note that this dislike of a
-folksonomy was more likely to be present for users familiar with the old
-movie recommender system sans any folksonomy. New users having not
-witnessed the recommender system without any folksonomy seemed more
+movie recommender system interfered with some of the users' primary
+objective: finding interesting movies. Note that this dislike of
+folksonomies was more likely to be present for users familiar with the old
+movie recommender system sans a folksonomy. New users, having not
+witnessed the recommender system without a folksonomy, seemed more
 acceptant towards tagging.
 
 But recommender systems have not only been extensively used in research
@@ -1361,10 +1368,31 @@ highlight how important accuracy in recommender systems can be for a company's
 earnings. As of this writing no team has yet claimed the prize, but the front
 runners from \abbr{AT\&T} Labs Research currently have a 9.12\% improvement
 \citep{netflix08}. The secret to their recommender improvements was to employ
-a variety of collaborative filtering methods and content-based methods which
-seemed to complement each other \citep[\p{4}]{bell07}.
+a variety of collaborative filtering methods and content-based methods.
+A approach resulted in a situation where the different methods
+complemented each other \citep[\p{4}]{bell07}.
 
 \subsection{Social texture}
+
+We use \term{social texture} to describe socially constructed annotations or
+visualizations which may be used for navigation or in some form guide
+users in navigational choices.
+
+Social texture ties in with the forms of social navigation we've
+recently discussed. Tagging, for instance, is a social texture. Tag clouds are
+especially good examples of social texture.
+The interaction history systems we've discussed uses forms of visualizations
+in close proximity to hyperlinks to convey their degree of usage. This is also
+a form of social texture.
+
+The first forms of social texture used in computer systems (to our knowledge)
+occured when \citet{hill92} took advantage of
+\term{computational wear}\dash{}an analogy for the
+wear physical objects experience when beeing used. They modified a text
+editor to show both wear related to document edits and readings of documents.
+This wear was graphically visualized trough the editor's scroll bar.
+The concept of edit and read wear has since been used on the Web in for
+instance the Footprints system \citep{wexelblat99}.
 
 \begin{figure}
   \captionstyle{\raggedright}
@@ -1392,25 +1420,6 @@ seemed to complement each other \citep[\p{4}]{bell07}.
   \normalcaption
 \end{figure}
 
-We use \term{social texture} to describe socially constructed annotations or
-visualizations which may be used for navigation or in some form guide
-users in navigational choices.
-
-Social texture ties in with the forms of social navigation we've
-recently discussed. Tagging for instance is a social texture. Tag clouds are
-especially good examples of social texture.
-The interaction history systems we've discussed uses forms of visualizations
-in close proximity to hyperlinks to convey their degree of usage. This is also
-a form of social texture.
-
-The first forms of social texture used in computer systems to our knowledge is
-\citet{hill92}'s usage of \term{computational wear} which is an analogy for
-the wear physical objects experience when used. They modify a text editor to
-show both wear related to document edits and readings of documents. This wear
-is graphically visualized trough the editor's scroll bar.
-The concept of edit and read wear has since been used on the Web in for
-instance the Footprints system \citep{wexelblat99}.
-
 \citet{dieberger00a} modified \project{CoWeb}\dash{}a collaborative Web space
 modelled after Ward Cunningham's famous Wiki\dash{}to include interaction
 history visualization hoping to make it a more social space, enabling social
@@ -1419,28 +1428,20 @@ including a global list of such behavior and contextual cues about access
 next to internal hyperlinks.
 It was inferred by \citeauthor{dieberger00a} that markers of interaction
 history increased the overall activity on the web page during a user study.
-They also learned that it's important to both provide both global and
-contextual interaction history cues.
+They also learned that it's important to provide both global and
+contextual interaction history cues. Both
+contextual and global use of such social texture can be seen in
+\figureref{scrsh.coweb.contextual} and \figureref{scrsh.coweb.global}.
 
 \citet{xu06} modified a Wiki in even more elaborate ways
 with the aim of integrating several social navigational mechanisms.
 They used read-wear information for creating social
 texture in the Wiki both in-line pages, on a page level, and on a global
 level. \citeauthor{xu06} took the approach of displaying read-wear in real
-time, thus making the system a populated space. To make such an approach
-useful the Wiki needs a certain amount of users present at all times. If
-it's not frequently trafficked it would probably be better to represent
-historical read-wear as done in CoWeb \citep[\p{220}]{dieberger00a}. Both
-contextual and global use of such social texture can be seen in
-\figureref{scrsh.coweb.contextual} and \figureref{scrsh.coweb.global}.
-
-\project{virtPresenter} is a hypermedia based lecture viewer where read-wear
-have been used to visualize a groups' interaction with continuous content
-\citep{mertens06}. By following the traces other users have left current users
-can interpret what's the most sought after parts of a lecture. The
-visualization is implemented in ways similar to \citet{hill92} by showing
-graphs of usage in line with a timeline selector and can be seen in
-\figureref{scrsh.virtpresenter.timeline}.
+time, thus making the system look like a populated space. To make such an
+approach useful the Wiki needs a certain amount of users present at all times.
+If it's not frequently trafficked it would probably be better to represent
+historical read-wear as done in CoWeb \citep[\p{220}]{dieberger00a}.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{scrsh_virtpresenter_timeline}
@@ -1449,6 +1450,14 @@ graphs of usage in line with a timeline selector and can be seen in
   }
   \label{figure:scrsh.virtpresenter.timeline}
 \end{figure}
+
+\project{virtPresenter} is a hypermedia based lecture viewer where read-wear
+have been used to visualize a groups' interaction with continuous content
+\citep{mertens06}. By following the traces other users have left current users
+can interpret what's the most sought after parts of a lecture. The
+visualization is implemented in ways similar to \citet{hill92} by showing
+graphs of usage in line with a timeline selector and can be seen in
+\figureref{scrsh.virtpresenter.timeline}.
 
 We discussed KnowledgeSea regarding its use of recommendations in
 \sectionref{background.social.navigation.applied.forms.recommendations}.
@@ -1463,21 +1472,14 @@ questionnaire revealed that in excess of 70\%
 \citeyearpar[p.15]{brusilovsky05} of the users
 found such history based visualizations useful and appropriate.
 
-\citet{pu03} did studies into how they best could visualize research
-literature in their online database called \project{Citeseer}. They calculate
-the reputation of any given research article based on how many citations it
-have had since its publication. They found that the best way to convey this
-authority of an article was to use a variable font size, various color shades,
-and details (numerical representation of the number of citations)
-\citep[\p{5}]{pu03}. The alternatives to the favored solution was varying
-combinations of these ingredients in addition to visualizations of stars.
-In many ways this form of visualization resembles that
-used in tag clouds, minus the detailed information.
+\section{Is Social Navigation Beneficial?}
 
-\subsection{Usefulness}
-
-\citet{svensson05} performed a throughout evaluation of the Kalas system where
-they sough out to answer two questions related to social navigation:
+\citet{svensson05} performed a throughout evaluation of the \project{Kalas}%
+\sidenote{
+  A system for sharing cooking receipes.
+}
+system where they sough out to answer two questions related to social
+navigation:
 
 \begin{enum}
   \item Will social navigation enable users to navigate more efficiently?
@@ -1487,7 +1489,7 @@ they sough out to answer two questions related to social navigation:
 
 Server logs were statistically mined and more in depth qualitative interviews
 were conducted. The results showed that people tended to move to the most
-populated part of system and used recommendations for helping select which
+populated part of the system and used recommendations for helping select which
 items to navigate. \citeauthor{svensson05} also found that the subjects
 overall had a positive impression of the social features of the system. They
 seemed more interested in expressing themselves trough such features than
@@ -1501,7 +1503,7 @@ decreased the effectiveness of navigation in some instances of their
 simulations \citeyearpar[\p{365}]{riedl03}.
 Interestingly, it was discovered that social navigation was more
 beneficial in environments with high uncertainty%
-\sidenote{
+\sidenote[-4]{
   \prequote[\p{363}]{riedl03}{%
     says that the two sources of such uncertainty is}{%
       arising from the correctness of the information gained in any state,
