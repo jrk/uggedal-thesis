@@ -78,7 +78,7 @@
 %% Colors
 %%
 
-\RequirePackage{color}
+\RequirePackage{xcolor}
 \definecolor{chapnum}{gray}{0.55}
 \definecolor{ornament}{gray}{0.85}
 
@@ -95,7 +95,7 @@
 %%
 
 \RequirePackage{sparklines}
-\definecolor{sparkspikecolor}{rgb}{0.553,0.6,0,396} % aprox: #8D9965
+\definecolor{sparkspikecolor}{HTML}{8D9965}
 \setlength{\sparkspikewidth}{5pt}
 
 
