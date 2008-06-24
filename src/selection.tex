@@ -336,9 +336,26 @@ $("p em").addClass("highlight").append("!");
 \end{lstlisting}
 \end{scode}
 
-Based on the minimal file size jQuery provided (only outbested by MooTools)
-and its clear and unique syntax we decided on selecting it as the JavaScript
-library for our implementation. It seems others have take jQuery and its
+We decided to select jQuery as the JavaScript library for our implementation.
+Firstly jQuery have a very minimal file size compared to the largest library
+\begin{sparkline}{3}
+  %Name       Size Unit
+  %YUI        286  1
+  %jQuery     91   .32
+  \sparkspike .25  1
+  \sparkspike .75  .32
+\end{sparkline}
+we tested. It was only beaten in this regard by MooTools, and the difference
+\begin{sparkline}{3}
+  %Name       Size Unit
+  %jQuery     91   1
+  %MooTools   67   .74
+  \sparkspike .25  1
+  \sparkspike .75  .74
+\end{sparkline}
+was minor. Secondly its unique syntax makes for succinct and clear code
+which we value highly.
+It seems others have take jQuery and its
 virtues to hart as many large corporations like Google, Intel, Dell, and
 \abbr{BBC} have used it in their public facing offerings.%
 \sidenote{

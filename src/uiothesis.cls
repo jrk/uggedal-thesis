@@ -91,6 +91,15 @@
 
 
 %%
+%% Sparklines
+%%
+
+\RequirePackage{sparklines}
+\definecolor{sparkspikecolor}{rgb}{0.553,0.6,0,396} % aprox: #8D9965
+\setlength{\sparkspikewidth}{5pt}
+
+
+%%
 %% Division styles
 %%
 
