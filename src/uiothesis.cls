@@ -80,7 +80,8 @@
 
 \RequirePackage{xcolor}
 \definecolor{chapnum}{gray}{0.55}
-\definecolor{ornament}{gray}{0.85}
+\definecolor{largeornament}{gray}{0.85}
+\definecolor{smallornament}{gray}{0.65}
 
 
 %%
@@ -124,6 +125,15 @@
 \setsecheadstyle{\raggedright\Large\scshape\MakeLowercase}
 \setsubsecheadstyle{\raggedright\large\itshape}
 \setsubsubsecheadstyle{\raggedright\itshape}
+
+% Paragraph break
+\newcommand{\parabreak}{%
+  \fancybreak{%
+    \vspace{\baselineskip}
+    \color{smallornament}\Large\decofourleft
+    \vspace{\baselineskip}
+  }
+}
 
 
 %%
@@ -621,7 +631,7 @@
   \vfil
 
   \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    \color{ornament}\fourierOrnament{100}{120}{97}
+    \color{largeornament}\fourierOrnament{100}{120}{97}
   \end{adjustwidth*}
 
   \vfil
