@@ -1053,7 +1053,7 @@ semantic relation.
 
 The problem of browsing large scale tagging collections can be tackled by
 inferring a hierarchy%
-\sidenote[-7]{
+\sidenote[-8]{
   Once can tag object by several levels of abstraction. One can for instance
   tag a movie with \emph{movie} to identify what it is. Then one could use
   the tags \emph{comedy}, \emph{romanticcomedy}, and \emph{norwegian} for
@@ -1076,7 +1076,7 @@ usefulness of an item and thereby potentially creating recommendations.
 \subsection{Interaction history trails}
 \label{section:background.social.navigation.applied.forms.interaction.history}
 
-In a classic article \citet{wexelblat99} contrasts the digital world of
+In their classic article \citet{wexelblat99} contrasts the digital world of
 computers with our physical world with respect to the formers lack of history.
 In our traditional world we exploit such historical information traces
 \postquote[\p{270}]{wexelblat99}{%
@@ -1088,12 +1088,12 @@ of past users' historical traces left when they were working
 on solving problems similar to the current user's.
 A possible remedy for this problem on the Web is put forth in the authors'
 \project{Footprints} system\dash{}an navigational aid as an extension to
-normal web browsers, visualizing interaction history of past users enabling
-current users to navigate this history.
-
-This interaction history consists of several navigation trails which are
+normal web browsers. This navigational aid visualizes interaction history of
+past users, enabling current users to navigate this history.
+The interaction history consists of several navigation trails which are
 \postquote[\p{273}]{wexelblat99}{%
   coherent sequences of nodes followed by an individual}
+
 The idea of such trails of navigation far preceded \citeauthor{wexelblat99}
 as they were envisioned by \citet{bush45} when he proposed the infamous
 theoretical computer-like system named the \project{Memex}.%
@@ -1102,7 +1102,7 @@ theoretical computer-like system named the \project{Memex}.%
   mechanical system consisting of a set of controls hooked up
   to a microfilm reader and camera. It was
   theorized by \citeauthor{bush45} to be a system for handling
-  a persons entire collection of documents, books, and communication.
+  a person's entire collection of documents, books, and communication.
   It was
   important that a user would be able to access this information with great
   speed and flexibility. An integral part of enabling such efficient access
@@ -1116,7 +1116,9 @@ explicitly, inserts comments if needed, and gives it a name.
 \citeauthor{wexelblat99} on the other hand
 implemented a system where trails are automatically collected using a set of
 heuristics to identify browsing behavior representing a coherent navigation
-trail.
+trail. These characteristics makes Footprints a passive and indirect social
+navigation system.
+
 \citeauthor{bush45} wrote his essay before the invention of computer networks
 and he thinks of each Memex as a separate island. Sharing of trails is
 possible trough an exportation and following importation process, making it an
@@ -1126,27 +1128,30 @@ transparent to its users\dash{}multiplayer is forced.
 
 Controlled user studies by \citeauthor{wexelblat99} did partially falsify
 their pre-test hypothesis of Footprint's ability to let users find more
-relevant results during a specific browsing task and that this browsing
-would be more efficient. The group using the history-enriched system reported
-significant lower values of mean page count in their browsing task. No
-significantly difference in results returned was found between users of a
-plain web browser and users with a browser enhanced with Footprints. They also
-found that people experienced in the problem domain of the browsing task were
-to a larger degree able to take advantage of interaction history than novices.
-\citeauthor{wexelblat99} attributed this to experienced people's ability to
-have a clearer mental model of the information one was browsing.
+relevant results in a more efficient manner during a specific browsing task.
+Users of the history-enriched system reported significant lower values of mean
+page count in their browsing tasks. No significantl difference in the quality
+of the located information was found between users of a
+plain web browser and those with a browser enhanced with Footprints.
+They also found people experienced in the problem domain of the browsing task
+to a larger degree beeing able to take advantage of interaction history
+compared to novices.
+\citeauthor{wexelblat99} attributed this finding to experienced people's
+ability to have a clearer mental model of the information they was browsing.
 
 \project{Trailfire}%
 \sidenote{
   Available at \url{http://trailfire.com}.
 }
-is a modern incarnation of some of \citeauthor{bush45}'s ideas.
+is a modern incarnation of some of \citeauthor{bush45}'s Memex ideas.
 By installing a browser extension users can
 create trails of web pages which are automatically shared with other users.
 The difference between Trailfire and Footprints is that trail creation in the
 former system is an explicit task while the latter system make this process
 implicit. \figureref{scrsh.trailfire.trail} shows one web page in a trail
-created on Trailfire.
+created with Trailfire. Eeach page in the trail gets an information box with
+navigation controls for moving trough the trail, in addition to information
+about why this particular page was included in the trail.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{scrsh_trailfire_trail}
@@ -1157,23 +1162,6 @@ created on Trailfire.
   }
   \label{figure:scrsh.trailfire.trail}
 \end{figure}
-
-\subsection{Populated space}
-
-A \term{populated space} is
-\postquote[\p{41}]{dieberger00b}{%
-  an information space in which other people can be encountered}
-By providing online awareness users can see where other users are moving and
-spending time. In contrast to interaction history where such behavior is
-stored for later retrieval a populated space only shows what others are doing
-in real-time.
-
-\project{Kalas} \citep{svensson05}, a system for interacting with food
-recipes, uses the idea of populated space to enable user awareness. Kalas is
-also a recommendation system and is in our opinion one of the best studied
-social navigation systems. We'll therefore come back to
-\citeauthor{svensson05}'s evaluations of different social
-navigation techniques.
 
 \subsection{Collaborative filtering}
 \label{section:background.social.navigation.applied.forms.collaborative.filtering}
