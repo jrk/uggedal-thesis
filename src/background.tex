@@ -990,7 +990,7 @@ were navigating bookmarks they most frequently browsed bookmarks for a given
 user. But browsing by a tag was not much less frequent, supporting evidence of
 the usefulness of folksonomies for enabling social navigation. In addition
 it was found that of all bookmarks clicked, 74\% was of other user's
-bookmarks, an ammount
+bookmarks. Such a high
 \begin{sparkline}{3}
   %Name  Size  Unit
   %2005  100%  1 
@@ -998,32 +998,36 @@ bookmarks, an ammount
   \sparkspike .25  1
   \sparkspike .75  .74
 \end{sparkline}
-the authors interpret as evidence of a high degree of
-social navigation within the social bookmarking system.
+usage of other users' bookmarks was interpreted as a sign of high degrees of
+social navigation within the system.
 
 \subsubsection{Problems with tagging}
 
-\citet[\p{1}]{fokker06} argues that social tagging is ideal
-where you have objects that one can not easily perform keyword search on the
-information it contains. If these objects are composed of video content tags
-can serve as an augmenter for performing keyword based searches as one could
+\citet[\p{1}]{fokker06} argues that social tagging is ideal in situations
+where you have objects one can not easily perform keyword search on.
+If such objects for instance are composed of video content, tags
+can serve as an augmenter for performing keyword based searches as one can
 do in textual content. They leveraged tagging in this manner when creating a
 prototype of Wikipedia supporting video content\dash{}using tags as the
 principle navigation mechanism. By doing so \citet[\p{2}]{fokker06}
 saw the need for bootstrapping the availability of tags so that users would be
 more inclined to create their own tags. Their solution was to algorithmically
-create tags based on the contents of Wikipedia and hoped the existence of
-these tags would stimulate users to start tagging themselves.
+create tags based on the textual contents of Wikipedia and hoped the existence
+of these tags would stimulate users to start tagging themselves. Just as
+social network sites have problems satisfying users before a
+sufficient ammount enrol, folksonomies have initial pains when
+few annotations are available.
 
-Tagging have its shortcomings. Tags could be misspelled, tags with the same
-name are not always  homonymous, and tags with the same meaning does not
-always have the same name because of synonyms \citep[\p{59}]{aurnhammer06}. In
-addition \citet[\p{943}]{li07} argues that browsing tags by traditional
+Tagging have further shortcomings. Tags could be misspelled, tags with the
+same name are not always  homonymous, and tags with the same meaning does not
+always have the same name because of synonyms \citep[\p{59}]{aurnhammer06}.
+
+In addition \citet[\p{943}]{li07} argues that browsing tags by traditional
 methods with keyword search or tag clouds is inefficient when the set of tags
 are quite large. They implemented a system to mediate the synonymy and
 homonymy problems with tags in addition the the problems with browsing a large
-collection of tags. Their solution to tag ambiguity
-was to generate the semantic concept%
+collection of tags. Their solution for tag ambiguity
+was for generating the semantic concept%
 \sidenote[-4]{
   Generating the semantic concept of a tag means to derive its meaning in
   a broader sense. Say for instance that a user is browsing for
@@ -1033,26 +1037,27 @@ was to generate the semantic concept%
   associated with the concept of \emph{movie}.
 }
 of a tag and use that semantic meaning
-when the user is looking for resources through tag browsing
+when the user was looking for resources through tag browsing
 \citep[\p{946}]{li07}.
 As \citet[\p{95}]{weinberger07} argues this problem
 with tag ambiguity does not really matter when the collection of annotated
 items becomes sufficiently large. One would only be concerned with such
 matters if one need to find every possible item that is associated with a
 concept.
+
 \citet[\p{5}]{hassan06} applied the notion of the semantics of tags to
 generate what they consider to be a better solution for displaying tag clouds.
 Similar tags based on semantics are grouped together horizontally in what they
 call clusters. These clusters is then again sorted vertically based on their
 semantic relation.
 
-The problem of browsing large scale tagging collections is tackled by
+The problem of browsing large scale tagging collections can be tackled by
 inferring a hierarchy%
 \sidenote[-7]{
   Once can tag object by several levels of abstraction. One can for instance
   tag a movie with \emph{movie} to identify what it is. Then one could use
   the tags \emph{comedy}, \emph{romanticcomedy}, and \emph{norwegian} for
-  describing the object's features. One could computationally derive an
+  describing the object's features. One could computationally derive a
   hierarchy from the varying levels of abstraction in such tags saying
   that \emph{comedy} is the child of \emph{movie} and \emph{romanticcomedy}
   is the child of \emph{comedy}.
