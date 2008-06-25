@@ -220,7 +220,46 @@ There are other frameworks available that provide everything but the kitchen
 sink but we needed a lightweight or modular solution.
 
 \begin{figure}
-  \includegraphics{chart_javascript_size}
+  \begin{tikzpicture}
+
+    % Name      Size Value
+    % -----------------------
+    % YUI        286  4
+    % MochiKit   181  2.53146
+    % Prototype  122  1.70629
+    % jQuery      91  1.27272
+    % MooTools    67  0.93706
+    %
+    % y1         250  3.49650
+    % y2         150  2.09790
+    % y3          50  0.69930
+
+    \draw[ycomb,color=bar,line width=1.2cm]
+       plot coordinates{(1,4)
+                        (3,2.53146)
+                        (5,1.70629)
+                        (7,1.27272)
+                        (9,0.93706)};
+
+    \begin{footnotesize}
+      \foreach \y / \codelines in {0.69930/50,2.09790/150,3.49650/250}
+        \draw (0,\y) node[anchor=mid east] {\codelines};
+
+      \foreach \x / \library in {1/\abbr{YUI},
+                                 3/MochiKit,
+                                 5/Prototype,
+                                 7/jQuery,
+                                 9/MooTools}
+        \draw (\x, -0.4) node[anchor=base] {\library};
+
+      \begin{scope}[color=white,line width=1pt]
+        \draw (0,0.69930) -- (10,0.69930);
+        \draw (0,2.09790) -- (10,2.09790);
+        \draw (0,3.49650) -- (10,3.49650);
+      \end{scope}
+    \end{footnotesize}
+  \end{tikzpicture}
+
   \caption[JavaScript Library Comparison]{%
     Comparison of JavaScript library file size, in kB.
   }

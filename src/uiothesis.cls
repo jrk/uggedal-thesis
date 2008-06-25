@@ -79,10 +79,12 @@
 %%
 
 \RequirePackage{xcolor}
+
 \definecolor{chapnum}{gray}{0.55}
 \definecolor{largeornament}{gray}{0.85}
 \definecolor{smallornament}{gray}{0.65}
 
+\definecolor{bar}{HTML}{8D9965}
 
 %%
 %% Graphics
@@ -90,10 +92,7 @@
 
 \RequirePackage{graphicx}
 
-
-%%
-%% Sparklines
-%%
+\RequirePackage{tikz}
 
 \RequirePackage{sparklines}
 \definecolor{sparkspikecolor}{HTML}{8D9965}
