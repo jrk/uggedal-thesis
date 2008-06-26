@@ -86,6 +86,7 @@
 
 \definecolor{bar}{HTML}{8D9965}
 
+
 %%
 %% Graphics
 %%
@@ -97,6 +98,13 @@
 \RequirePackage{sparklines}
 \definecolor{sparkspikecolor}{HTML}{8D9965}
 \setlength{\sparkspikewidth}{5pt}
+
+
+%%
+%% Math
+%%
+
+\RequirePackage{amsmath}
 
 
 %%

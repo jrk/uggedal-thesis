@@ -1264,7 +1264,38 @@ that one does not infer similarities amongst users as in GroupLens.
   \label{figure:scrsh.reddit}
 \end{figure}
 
-\sourcecoderef{reddit.cf.algorithm}
+As Reddit recently became open source we were able to take a peek into its
+recommendation engine. We did this to dissect how collaborative filtering
+algorithms are used in real applications. The source code of this algorithm
+can be found in \sourcecoderef{reddit.cf.algorithm}. What follows is the
+algorithm in mathematical notation.
+
+Given $A$ as the time the entry was posted and
+$B$ as 7:46:43 a.m. December 8, 2005
+we have $t_s$ as their difference in seconds
+
+\begin{align}
+  t_s &= A - B \\
+  \intertext{and $x$ as the difference between the number of up votes as $U$
+             and the number of down votes as $D$}
+  x &= U - D \\
+  \intertext{where $y \in \{-1, 0, 1\}$}
+  y &= 
+  \begin{cases} 
+     1 & \text{if } x > 0 \\
+     0 & \text{if } x = 0 \\
+    -1 & \text{if } x < 0
+  \end{cases} \\
+  \intertext{and $z$ as the maximal value,
+             of the absolute value of $x$ and $1$}
+  z &= 
+  \begin{cases} 
+    |x| & \text{if } |x| \geq 1 \\
+    1   & \text{if } |x| < 1
+  \end{cases} \\
+  \intertext{we have the rating as a function $f(t_s, y, z)$}
+  f(t_s, y, z) &= \log_{10}{z} + \frac{yt}{45000}
+\end{align}
 
 \parabreak
 
