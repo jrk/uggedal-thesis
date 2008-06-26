@@ -1,5 +1,39 @@
 \chapter{Source Code}
 
+\section{Reddit Collaborative Filtering Algorithm}
+\label{section:source.code.reddit}
+
+Here is the source code of the algorithm that decides the score of a
+submission. We made syntactical changes to make the code's intent clearer.
+
+\begin{scode}{Python}{reddit.cf.algorithm}{%
+  Reddit Collaborative Filtering Algorithm}{%
+  The collaborative filtering algorihm used on Reddit}
+\begin{lstlisting}
+from datetime import datetime, timedelta
+from math import log
+
+def seconds_since_cutoff(date):
+    cutoff = datetime(2005, 12, 8, 7, 46, 43)
+    td = date - cutoff
+
+    seconds = td.days * 24 * 60 * 60
+    seconds += td.seconds
+    seconds += float(td.microseconds) / 1000000
+    return seconds
+
+def score(up_votes, down_votes, submitted_date):
+    score = up_votes - down_votes
+    order = log(max(abs(score), 1), 10)
+    sign = 1 if score > 0 else -1 if score < 0 else 0
+
+    age = seconds_since_cutoff(submitted_date)
+
+    return round(order + sign * age / 45000, 7)
+\end{lstlisting}
+\end{scode}
+
+
 \section{JavaScript Comment Stripper}
 \label{section:source.code.javascript.comment.stripper}
 
@@ -40,3 +74,5 @@ server side software:
 find . | sed -e 's/[^\/]*\//|--/g' -e 's/-- |/    |/g'
 \end{lstlisting}
 \end{scode}
+
+
