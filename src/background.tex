@@ -1242,14 +1242,14 @@ strongly believed in this idea
 \citep[\p{250}]{herlocker00}.
 
 Colaborative filtering is used on several modern web sites. One example is
-\abbr{Reddit}\dash{}a web site where people can submit links to everything
+\project{Reddit}\dash{}a web site where people can submit links to everything
 they find interesting. Users of the community then votes these submissions up
 or down (explicit advice) as one can see in \figureref{scrsh.reddit}.
 Submissions are then
 sorted based both on how many votes it have and how new it is. Users are not
 given personalized listings based on their voting history. Reddit is thus
 similar to Tapestry with regards to how the collaborative filtering works in
-that one does not infer similarities amongst users as in GroupLens.
+that one does not infer similarities amongst users (as in GroupLens).%
 
 \begin{figure}
   \includegraphics[width=0.95\textwidth]{scrsh_reddit}
@@ -1265,19 +1265,18 @@ that one does not infer similarities amongst users as in GroupLens.
 \end{figure}
 
 As Reddit recently became open source we were able to take a peek into its
-recommendation engine. We did this to dissect how collaborative filtering
-algorithms are used in real applications. The source code of this algorithm
-can be found in \sourcecoderef{reddit.cf.algorithm}. What follows is the
-algorithm in mathematical notation.
+colaborative filtering functionality. We did this to dissect how collaborative
+filtering algorithms are used for real applications. The source code of this
+algorithm can be found in \sourcecoderef{reddit.cf.algorithm}. What follows is
+the algorithm in mathematical notation.
 
-Given $A$ as the time the entry was posted and
-$B$ as 7:46:43 a.m. December 8, 2005
+Given the time the entry was posted $A$ and
+the time of 7:46:43 a.m. December 8, 2005 $B$,
 we have $t_s$ as their difference in seconds
-
-\begin{align}
+\begin{align*}
   t_s &= A - B \\
-  \intertext{and $x$ as the difference between the number of up votes as $U$
-             and the number of down votes as $D$}
+  \intertext{and $x$ as the difference between the number of up votes $U$
+             and the number of down votes $D$}
   x &= U - D \\
   \intertext{where $y \in \{-1, 0, 1\}$}
   y &= 
@@ -1294,8 +1293,13 @@ we have $t_s$ as their difference in seconds
     1   & \text{if } |x| < 1
   \end{cases} \\
   \intertext{we have the rating as a function $f(t_s, y, z)$}
-  f(t_s, y, z) &= \log_{10}{z} + \frac{yt}{45000}
-\end{align}
+  f(t_s, y, z) &= \log_{10}{z} + \frac{yt_s}{45000}
+\end{align*}
+
+The resulting rating is a real number which is used for numericaly sorting
+entries. This is neither a computationaly expensive algorithm nor a very
+comlicated algorithm. In spite of this we feel it delivers satisfying results
+(as daily users of Reddit).
 
 \parabreak
 
