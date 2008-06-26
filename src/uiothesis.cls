@@ -358,6 +358,7 @@
   \renewcommand{\@codeverbosecaption}{#4}
   \begin{sourcecode}[!ht]
     \lstset{language=#1}
+    \ttfamily
 }{%
     \caption[\@codeshortcaption]{\@codeverbosecaption}
     \label{sourcecode:\@codelabel}
