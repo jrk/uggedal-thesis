@@ -2,7 +2,8 @@
 \label{chapter:methodology}
 
 This chapter includes information on our methods for analysing modern web
-sites and for performing a user experiment.
+sites and for performing a user experiment on a prototypical social navigation
+implementation (see \chapterref{implementation} for details).
 
 \section{Content Analysis}
 
@@ -57,9 +58,9 @@ both our inventory and analysis process accordingly.
 
 \subsection{Inventory}
 
-A \term{content inventory} is a technique for collecting data from web sites
-in a structured manner. It's strength as a technique lies in its ability of
-truly informing about a web site's content \citep{wodtke02}. The process of
+\term{Content inventory} is a technique for collecting data from web sites
+in a structured manner. Its strength as a technique lies in its ability to
+truly inform us about a web site's content \citep{wodtke02}. The process of
 actually conducting a content inventory can be equally rewarding as the
 resulting documents \citep{veen02}.
 
@@ -76,7 +77,7 @@ loaded with enormous amounts of user generated content. An all-inclusive
 approach to content gathering would simply be impossible in such situations.
 As a remedy to this we've decided to ignore certain parts of web sites in our
 content inventories since the scope of our research is limited to navigational
-constructs and only those which have a social nature.
+constructs, and only those of a social nature.
 
 Our experience is that social navigation and more static navigation are
 intermixed all over web sites. Often one have to use non-social forms of
@@ -86,22 +87,22 @@ We did however eliminate the following parts of web sites under investigation:
 
 \begin{enum}
   \iterm{Administrative sections} where users can change their profiles or set
-    their preferences.
+    their preferences\dash{}a private and asocial endeavour.
   \iterm{Help pages} where \abbr{FAQ}s, guides, and instructions are presented
     in a static manner.
   \iterm{Legal information} including terms of service, privacy policies, and
     copyright notices.
   \iterm{Content generation} facilities like uploading, categorizing, and
-    editing photos, commenting, posting items, and so on%
+    editing photos, commenting, posting items, and so on.%
     \sidenote[-10]{
       While there is no question about the usefulness of such content for
       providing social navigation possibilities we've found few examples where
       social navigation is used in the content generation phases itself.
-      There is however a few exceptions and these will be discussed when
-      appropriate. % collaborative tagging for instance
-    }.
-  % to be extended when more sites are investigated
-  \iterm{Advertisements} from third party advertisers.
+      There is however a few exceptions, like applying tags (see
+      \sectionref{background.social.navigation.applied.forms.tagging.sharing}
+      for details).
+    }
+  \iterm{Advertisements} from third party providers.
 \end{enum}
 
 In addition to eliminating certain form of web pages we synthesized abstract
@@ -122,7 +123,7 @@ to represent the abstract notion of a profile page was representative. To
 exemplify, say that a profile page included a stream of the 10 most recent
 actions your friends had conducted. If the user of our collected profile page
 had zero friends we would lack the navigational opportunities such a stream
-could give us in our inventory. Therefore we used only pages which provided
+could give in our inventory. Therefore we used only pages which provided
 all possible forms of navigation as basis for abstraction.
 
 \subsubsection{Approach}
