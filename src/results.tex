@@ -1,2 +1,83 @@
 \chapter{Experiment Results}
 \label{chapter:results}
+
+\begin{table}[h]
+  \begin{tabular}{lrr}
+
+    &
+    \multicolumn{1}{c}{Individuals} &
+    \multicolumn{1}{c}{\% of respondents} \\
+
+    \cmidrule(lr){2-2}
+    \cmidrule(lr){3-3}
+
+    Respondents &
+    125 &
+    \\
+
+    Completed installation &
+    72 &
+    57.6 \\
+
+    Used application &
+    45 &
+    36.0 \\
+
+  \end{tabular}
+  \caption[Respondents Falloff]{%
+    Respondent falloff during installation and use of our prototype
+    application}
+  \label{table:respondents.falloff}
+\end{table}
+
+\section{Pre-Installation Questions}
+
+\subsection{Respondent Profiles}
+
+\begin{figure}[!ht]
+  \begin{tikzpicture}
+
+    % Name      Size   Percent  Value
+    % ------------------------------
+    % Total      124   100      4
+    % Male       114    91.9    3.67741
+    % Female     10      8.1    0.32258
+    %
+    % y1               100      4
+    % y2                75      3
+    % y3                50      2
+    % y4                25      1
+
+    \draw[ycomb,color=bar,line width=1.2cm]
+       plot coordinates{(1,3.67741)
+                        (3,0.32258)};
+
+    \begin{footnotesize}
+      \draw (1, 3.67741) node[anchor=south] {114};
+      \draw (3, 0.32258) node[anchor=south] {10};
+
+      \foreach \y / \lines in {4/100,3/75,2/50,1/25}
+        \draw (0,\y) node[anchor=mid east] {\lines\%};
+
+      \foreach \x / \library in {1/Male,
+                                 3/Female}
+        \draw (\x, -0.4) node[anchor=base] {\library};
+
+      \begin{scope}[color=white,line width=1pt]
+        \draw (0,1) -- (10,1);
+        \draw (0,2) -- (10,2);
+        \draw (0,3) -- (10,3);
+      \end{scope}
+    \end{footnotesize}
+  \end{tikzpicture}
+
+  \caption[Gender of Respondents]{%
+    The gender of respondents from a total of 124 responses.
+  }
+  \label{figure:chart.respondents.gender}
+\end{figure}
+
+
+\section{Post-Installation Questions}
+
+\section{Follow-Up Questions}
