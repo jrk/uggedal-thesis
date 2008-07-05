@@ -170,10 +170,12 @@
 % Table of Contents
 \maxtocdepth{chapter}
 
-\renewcommand{\cftpartfont}{\normalsize}
-\renewcommand{\cftpartpagefont}{\normalsize}
+\renewcommand{\cftpartfont}{\large}
 \renewcommand{\cftpartleader}{}
 \renewcommand{\cftpartafterpnum}{\cftparfillskip}
+\cftsetindents{part}{1.5em}{0em}
+\renewcommand{\partnumberline}[1]{}
+\cftpagenumbersoff{part}
 
 \renewcommand{\cftchapterfont}{\normalsize}
 \renewcommand{\cftchapterpagefont}{\normalsize}
