@@ -111,6 +111,12 @@
 %% Division styles
 %%
 
+% Part style
+\renewcommand{\partnamefont}{\raggedright\LARGE\scshape\MakeUppercase}
+\renewcommand{\partnumfont}{\LARGE\scshape\MakeUppercase}
+\renewcommand{\parttitlefont}{\raggedright\LARGE\scshape}
+\renewcommand{\printparttitle}[1]{\parttitlefont \MakeUppercase{#1}}
+
 % Chapter style
 \makechapterstyle{uio}{%
   \renewcommand{\printchaptername}{}
@@ -163,6 +169,11 @@
 
 % Table of Contents
 \maxtocdepth{chapter}
+
+\renewcommand{\cftpartfont}{\normalsize}
+\renewcommand{\cftpartpagefont}{\normalsize}
+\renewcommand{\cftpartleader}{}
+\renewcommand{\cftpartafterpnum}{\cftparfillskip}
 
 \renewcommand{\cftchapterfont}{\normalsize}
 \renewcommand{\cftchapterpagefont}{\normalsize}
