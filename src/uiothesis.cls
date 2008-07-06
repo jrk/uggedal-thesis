@@ -168,7 +168,7 @@
 %%
 
 % Table of Contents
-\maxtocdepth{chapter}
+\maxtocdepth{section}
 
 \renewcommand{\cftpartfont}{\large}
 \renewcommand{\cftpartleader}{}
