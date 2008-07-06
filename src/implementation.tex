@@ -70,6 +70,8 @@ our script.
   \label{figure:scrsh.hoodwinkd.obfuscation}
 \end{figure}
 
+\subsection{Inspiration}
+
 The idea of creating additional features for a web site in these manners
 came from the author's involvement in an underground community based around
 the Ruby programming language. \project{Hoodwink.d},%
@@ -131,23 +133,25 @@ and thereby filtering out \term{newbies}.
 Now we finally get to the really interesting part of Hoodwink.d: the features
 it enables on top of the Web. One can create a comment visible only to the
 community's members on any web page that is supported. This support is not
-dependant on the creator of the web site, but the users of Hoodwink.d needs to
+dependant on the creator of the web site. The users of Hoodwink.d needs to
 record some information of the web site (where the comments should be placed)
 to make it supported. \figureref{scrsh.hoodwinkd.comment.source} shows an
-example of how these comments are displayed on the repository browser for
-the Hoodwink.d source code itself. This page does not natively support
+example of how these comments are displayed on a web page.
+This page does not natively support
 comments. Using Hoodink.d for such means is a very cheap (time wise) option
-compared to implementing such features in the repository browser.
-They are perceived as being part of the web page itself, even though they
+compared to implementing commenting in the web site itself.
+They are perceived as being part of the web page, even though they
 are inserted right after the page is fully loaded.
 
 \section{Design}
 \label{section:implementation.design}
 
-When we're talking about design we mean how the application we're making is
+With design we mean how the application we're making is
 presented to users. For discussion of how the software is designed
 or architected internally, take a look at
 \sectionref{implementation.architecture}.
+
+\subsection{Philosophy}
 
 Our philosophy when creating a navigational design have been
 similar to that practiced by
