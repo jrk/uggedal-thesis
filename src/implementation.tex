@@ -26,8 +26,8 @@ As we'll see in the next section it's possible to build applications on top
 of existing web sites by creating transparent implementations.
 Following the background information on building applications
 on top of established web sites we give an account of
-what kind of navigation system we wanted to build for \urort{}, goes on to
-describe why we decided on such navigational designs, and concludes with an
+what kind of navigation system we wanted to build for \urort{}, go on to
+describe why we decided on such navigational designs, and conclude with an
 explanation of the deeper technical decisions we had to make.
 \appendixref{selection.of.third.party.software},
 describes what kind of third party software we used for realizing the
@@ -45,27 +45,27 @@ project demands a lot of upfront effort before any real development work can
 begin. This goes against the prototypical process we intended to use while
 experimenting with \urort{}.
 
-Even though we've had an ongoing dialog with the developers of \urort{} we
+Even though we've had an ongoing dialog with the developers of \urort{}, we
 decided to create our prototype as a layer on top of their site.
 By using an
 extension
-for the leading open source%
+for a leading open source%
 \sidenote{
   The \project{Firefox} web browser. Available at \url{http://firefox.com}.
 }
 web browser we were able to create a script which
-made changes and additions to the way \urort{}
+made changes to the way \urort{}
 were presented to users who were participating in our study.
 Such an approach would hopefully result in a transparent experience for our
-end users as long as they have taken the necessary steps to set up the browser
-extension and our script.
+end users as long as they had taken the necessary steps to set up 
+our script.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{scrsh_hoodwinkd_obfuscation}
   \caption[Hoodwink.d Obfuscation]{
     Obfuscation of Hoodwink.d's home page,
     retrieved March 6, 2008, from
-    \url{http://hoodwinkd.hobix.com}.
+    \url{http://hoodwinkd.hobix.com}
   }
   \label{figure:scrsh.hoodwinkd.obfuscation}
 \end{figure}
@@ -78,11 +78,11 @@ the Ruby programming language. \project{Hoodwink.d},%
   at \url{http://hoodwinkd.hobix.com}.
 }
 as it's called, is a service that lets members post comments on all kinds of
-web sites. These comments are then only visible to the members of the
+web sites. These comments are only visible to the members of the
 community.
 Hoodwink.d is underground in the sense that it's quite hard to get in to
 the community. It's members rarely talk about Hoodwink.d publicly, baring
-similarities to the underground fight club in a novel by \citet{palahniuk96}
+similarities to the underground club in a novel by \citet{palahniuk96}
 aptly named \work{Fight Club}.%
 \sidenote[-4]{
   The first two rules of fight club
@@ -104,8 +104,8 @@ When the information on the page is viewed without obfuscation%
 one have to be pretty technical savvy to decipher what the information 
 actually means. Simply put users have to change their hosts file
 so that it points to two imaginary domain names. Doing so they can point their
-browser to these domains and download a script (such scripts are discussed in
-\sectionref{selection.stack.client.platform})
+browser to these domains and download a script (see
+\sectionref{selection.stack.client.platform} for details)
 that enables the functionality
 of Hoodwink.d.%
 \sidenote{
@@ -114,8 +114,7 @@ of Hoodwink.d.%
 This approach creates a barrier to entry which only allows the most
 technically inclined to enter the community\dash{}allowing for a
 high level of technicality in the community's internal discussions
-and thereby filtering out so called \term{newbies}
-(newcomers and beginners).
+and thereby filtering out \term{newbies}.
 
 \begin{figure}
   \begin{whole}
@@ -129,23 +128,10 @@ and thereby filtering out so called \term{newbies}
   \end{whole}
 \end{figure}
 
-\newcommand{\sideFigHoodwinkd}{%
-  \sidefigure[Hoodwink.d Recent Comments]{%
-    Recent comments on Hoodwink.d,
-    retrieved March 7, 2008, from
-    \url{http://hoodwink.d/onslaught}.
-    \label{figure:scrsh.hoodwinkd.onslaught.recent}
-  }{%
-    \includegraphics[width=0.9\marginparwidth]{scrsh_hoodwinkd_onslaught_recent}
-  }
-}
-
 Now we finally get to the really interesting part of Hoodwink.d: the features
 it enables on top of the Web. One can create a comment visible only to the
 community's members on any web page that is supported. This support is not
-dependant on the creator of the web site, but the users of Hoodwink.d
-\sideFigHoodwinkd
-needs to
+dependant on the creator of the web site, but the users of Hoodwink.d needs to
 record some information of the web site (where the comments should be placed)
 to make it supported. \figureref{scrsh.hoodwinkd.comment.source} shows an
 example of how these comments are displayed on the repository browser for
@@ -154,11 +140,6 @@ comments. Using Hoodink.d for such means is a very cheap (time wise) option
 compared to implementing such features in the repository browser.
 They are perceived as being part of the web page itself, even though they
 are inserted right after the page is fully loaded.
-
-To tie together these comments a central portal lists
-the most recently placed comments (as can be seen in
-\figureref{scrsh.hoodwinkd.onslaught.recent}), the most actively commented web
-sites, the most recently new supported sites, and the most active users.
 
 \section{Design}
 \label{section:implementation.design}
