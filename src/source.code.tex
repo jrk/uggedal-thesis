@@ -52,8 +52,8 @@ js_files = Dir['*.js']
 ignore_pattern = /^[\s\t]?(\/\*|\*|\/\/)/
 
 js_files.each do |file|
-  File.open("#{file}.stripped", 'w') do |stripped| 
-    stripped.puts File.readlines(file).reject do |line|
+  File.open("#{file}.out", 'w') do |out| 
+    out.puts File.readlines(file).reject do |line|
       line =~ pattern
     end
   end
@@ -71,7 +71,7 @@ server side software:
   \abbr{UNIX} File and Directory Hierarchy}{%
   File and directory hierarcy with standard \abbr{UNIX} tools}
 \begin{lstlisting}
-find . | sed -e 's/[^\/]*\//|--/g' -e 's/-- |/    |/g'
+find . | sed -e 's/[^\/]*\//|--/g' -e 's/-- |/|/g'
 \end{lstlisting}
 \end{scode}
 
