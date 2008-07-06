@@ -689,7 +689,7 @@
         {\Large\textit{{
           Unintrusive Prototyping of \\
           \vspace{1pc}
-          Activity Feeds in Established Spaces}}} \\
+          Activity Streams in Established Spaces}}} \\
 
         \vspace{5pc}
 

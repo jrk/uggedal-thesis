@@ -220,8 +220,8 @@ eliminating some of the default navigation we would not be sure
 if potentially more satisfied users was the result of our removal of
 choices or the new choices we provided or a combination.
 
-\subsection{Activity feed for \urort{}}
-\label{section:implementation.design.activity.feed}
+\subsection{Activity stream for \urort{}}
+\label{section:implementation.design.activity.stream}
 
 According to \prequote[\p{193}]{dubinko07}{}{%
   There is enormous and growing interest in the consumption of up-to-the-
@@ -274,22 +274,22 @@ it was introduced. An ethnographic study conducted by
 including Facebook found the news feed to be one of the primary means of
 interacting with the web site.
 
-Such feeds of activity seem to have become popular also outside Facebook.
+Such streams of activity seem to have become popular also outside Facebook.
 \project{Socialthing!} and \project{FriendFeed} are two services that
-aggregates such feeds from several sources and provides an unified feed. Their
-distinguishing factor is that Socialthing! fetches activities for your
+aggregates such streams from several sources and provides an unified stream.
+Their distinguishing factor is that Socialthing! fetches activities for your
 existing friends on services as Facebook and Flickr. FriendFeed on the other
 hand only collect activities from the people you decide to follow on
-FriendFeed itself. In addition FriendFeed can display your personal feed
-as an aggregation of all supported services you're using. Both activity feed
+FriendFeed itself. In addition FriendFeed can display your personal stream
+as an aggregation of all supported services you're using. Both activity stream
 aggregators are shown in \figureref{scrsh.friendfeed.me} and
 \figureref{scrsh.socialthing}.
 
 \begin{figure}
   \begin{whole}
     \includegraphics[width=0.9\wholewidth]{scrsh_friendfeed_me}
-    \caption[FriendFeed Activity Feed]{
-      Activity feed for the author on FriendFeed,
+    \caption[FriendFeed Activity Stream]{
+      Activity stream for the author on FriendFeed,
       retrieved May 18, 2008, from
       \url{http://friendfeed.com/uggedal}.
     }
@@ -300,8 +300,8 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
 \begin{figure}
   \begin{whole}
     \includegraphics[width=0.9\wholewidth]{scrsh_socialthing}
-    \caption[Socialthing! Activity Feed]{
-      Activity feed for the author and his friends on Socialthing!,
+    \caption[Socialthing! Activity Stream]{
+      Activity stream for the author and his friends on Socialthing!,
       retrieved May 18, 2008, from
       \url{https://socialthing.com/}.
     }
@@ -310,13 +310,13 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
 \end{figure}
 
 Based on both our own observations and other's of the perceived
-usefulness of activity feeds we decided use such a navigational design in our
+usefulness of activity streams we decided use such a navigational design in our
 prototype implementation for \urort{}.
 
 \subsubsection{Relevant activities}
 
 The approach seen at Facebook for letting users know what's fresh and relevant
-for yourself trough an activity feed seemed a good fit for \urort{}. But
+for yourself trough an activity stream seemed a good fit for \urort{}. But
 \urort{} does not have the concept of friends as seen in social network sites.
 \urort{} exists for people to freely share their music and let others find
 music they like\dash{}and not on making new friends or keeping in touch with
@@ -344,7 +344,7 @@ of technical problems with getting such a solution to scale.
 \subsubsection{Activity types}
 
 There were many activities taking place associated with an artist
-which we could potentially use in our activity feed. We decided to select
+which we could potentially use in our activity stream. We decided to select
 those which had information about when the activity occurred and was
 technically easy%
 \sidenote{
@@ -382,16 +382,16 @@ feed as it's believed that up to 80\% of all recent activities are filtered
 out \citep{elliott08}.
 Facebook's approach to only showing a selection of recent activity is
 probably driven by technical scalability problems, and not a desire to only
-present a selection of recent activity of friends. In our activity feed we
+present a selection of recent activity of friends. In our activity stream we
 give users a complete picture of all our types of activities within our
 cut-off point.
-The complete design of our activity feed for \urort{} can be seen in
+The complete design of our activity stream for \urort{} can be seen in
 \figureref{scrsh.urort.activity.feed}.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{scrsh_urort_activity_feed}
-  \caption[\urort{} Activity Feed]{
-    Activity feed for experiment users on \urort{},
+  \caption[\urort{} Activity Stream]{
+    Activity stream for experiment users on \urort{},
     retrieved Jun 2, 2008, from
     \url{http://www11.nrk.no/urort/default.aspx}.
   }
@@ -404,14 +404,14 @@ The complete design of our activity feed for \urort{} can be seen in
 As described in
 \sectionref{methodology.user.experiment}
 we decided to used a control group in our user testing. The navigational
-design we presented them with did not include an activity feed. In stead they
+design we presented them with did not include an activity stream. In stead they
 simply were presented with a list of their favorites so that they manually had
 to keep up with what recent activity their favorite artists were conducting.
 The design of the control group implementation can be seen in
 \figureref{scrsh.urort.favorite.list}.
 
 To give both our control and experiment group the same navigation
-possibilities\dash{}excluding the activity feed\dash{}we decided to show a
+possibilities\dash{}excluding the activity stream\dash{}we decided to show a
 list of the favorites without recent activity for our experiment group. If all
 their favorites had activities present in the feed no such list was displayed.
 \figureref{scrsh.urort.activity.feed} shows the listing of one such artist
@@ -1096,7 +1096,7 @@ Initially we did not architect our application with performance in mind. We
 wanted to create a working prototype first and then try to increase it's
 performance if need be.
 
-It became apparent that creating an activity feed for a user with several
+It became apparent that creating an activity stream for a user with several
 favorites was very time consuming. We identified the major bottleneck to be
 the actual retrieval of information from the \urort{} web page. We could not
 do anything code and algorithm wise to remedy this problem. The only solution
