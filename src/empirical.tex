@@ -41,6 +41,7 @@ hypotheses. We'll dive in to the design of the experiment, how we collected
 the data, and how data was analyzed.
 
 \subsection{Experiment design}
+\label{section:empirical.methodology.experiment.design}
 
 \citet[\p{78}]{robson93} describes an experiment as a process where:
 
@@ -86,6 +87,17 @@ to measure the effect of the treatment.
 By using a before and after design we are also able to use pre-post
 differences as a basis for measuring the effect of treatment or no
 treatment.
+
+In our case the treatment is analogous with the prototype implementation with
+an activity stream for \urort{} as described in
+\sectionref{implementation.design.activity.stream}.
+The placebo on the other hand is the 
+prototype implementation with a favorite list as seen in
+\label{section:implementation.design.favorite.list}.
+The favorite list is an integrated part of the treatment implemementation
+meaning that the only difference between the two prototype versions are
+the activity stream\dash{}the independent variable we as experimenters are
+manipulating (by introducing the fature).
 
 \begin{figure}
   \includegraphics{fig_experiment_setup}
