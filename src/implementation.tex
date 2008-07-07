@@ -816,9 +816,9 @@ and interaction to this database was done with a clear and explicative
 }
 eliminating the need for constructing complex \abbr{SQL}.%
 \sidenote[10]{
-  \abbr{SQL}, (initially named \abbr{SEQUEL}) stands for structured
-  query language, now the \latin{de facto} language for interacting
-  with relational databases, invented by 
+  \abbr{SQL} (initially named \abbr{SEQUEL}) stands for structured
+  query language and is now the \latin{de facto} language for interacting
+  with relational databases. It was invented by 
   \citet[\p{250}]{chamberlin74}.
 }
 
@@ -846,18 +846,19 @@ in \sectionref{selection.stack.server.cache}.
 We only cache one type of data in our implementation:
 a chronologically pre-ordered list of all activities for a given artist.
 Let us explain how this works
-when user X requests his list of recent favorite activities. Our system
-first determines that user X have artist A and artist B as
+when user $X$ requests his list of recent favorite activities. Our system
+first determines that user $X$ have artist $A$ and artist $B$ as
 favorites. It then consults the cache and asks if it can get a list of
-activities for artist A. The cache have a list of activities for artist A and
-promptly returns it to its caller. Our system then tries to do the same for
-artist B, but this time there is no list of activities for that artist in the
-cache. We just had a \term{cache miss}, and are therefore forced to retrieve
-information about artist B's activities from the \urort{} web site and
-calculate a new list which are stored in the cache with a certain
-\term{time to live}. The next time a request for artist B's list of activities
-are handled the cache should now be able to return that list if the request
-were made within the time to live interval.
+activities for artist $A$. The cache have a list of activities for artist $A$
+and promptly returns it to its caller. Our system then tries to do the same
+for artist $B$, but this time there is no list of activities for that artist
+in the cache. This is a \term{cache miss}, and we are therefore forced to
+retrieve information about artist $B$'s activities from the \urort{} web site.
+From this information we calculate a new list which are stored in the cache
+with a certain
+\term{time to live}. The next time a request for artist $B$'s list of
+activities are handled the cache should now be able to return that list
+if the request were made within the time to live interval.
 
 In our system we set a time to live of 12 hours. This means that activity
 lists stored in the cache are retrievable within 12 hours.
@@ -884,8 +885,8 @@ favorites when multiple cache misses occurred. We therefore decided to
 \q{warm up} the cache by running several background processes that populated
 our cache with fresh data from the \urort{} web site several times a day.
 
-Since we had implemented persistence of the various test users of our system
-and their version of client software we simply used their unique user names
+Since we had implemented persistence for the various test users of our system
+and their version of client software, we simply used their unique user names
 on the \urort{} web site as input to our cache warm up processes.
 
 After testing the system casually we found a need for shortening the response
@@ -895,9 +896,9 @@ was present in cache. Initially we retrieved information from the \urort{} web
 site for all artists that the requester had favored. Under this scheme a
 user with several favorites could expect response times to be several minutes
 in length. We therefore decided to deliver only the activities of the user's
-first favorite if non of the activity lists of his favorites was present in
-cache. On doing so we registered the non returned artists and put them in to a
-similar background process as we used for our cache warm up. 
+first favorite if non of the activity lists of his or her favorites were
+present in cache. On doing so we registered the non returned artists and put
+them in to a similar background process as we used for our cache warm up. 
 
 This means that the first time a user makes a request to our application he
 or she will be presented with the activities of only his first favorite if no
@@ -924,8 +925,8 @@ data is requested after the page is loaded by a normal \abbr{HTTP} request.
 This is often coupled with the ability to detect user behavior, and contents
 are requested only when needed. \citet[pp.281--282]{stamey06} argues that
 the increased complexity (and thereby size) of todays web pages have created
-problems in perceived responsiveness for users due to network latency. He
-thinks asynchronous request of small content items solves this
+problems in perceived responsiveness for users due to network latency. They
+think asynchronous request of small content items solves this
 problem\dash{}bringing greater interactivity to the user. Another solution
 that can be used is to move some processing into the client with
 JavaScript \citep[\p{9}]{jazayeri07}
@@ -952,10 +953,10 @@ are as we'll see in
 Since our client software was pretty dense in code size (see
 \sectionref{implementation.source.code} for details) and only had to handle
 a small set of operations we did not use object oriented
-features as classes and objects to structure our code. Instead we used
+features as classes and objects to structure our client code. Instead we used
 functions as a partitioning scheme when implementing on the client side.
 Our client side software was contained in two files\dash{}one file for each
-of our two versions.
+of our two versions (control and full-featured).
 
 \sidefigure[Prototype Server File Hierarchy]{%
   Hierarchy of the server prototype software.
@@ -993,7 +994,7 @@ of our two versions.
   }
 }
 
-On the server side however we had to write more code and our code had to
+However, on the server side we had to write more code and our code had to
 handle quite a large set of operations. We therefore implemented our server
 side software with the use of modules, classes, objects, and methods.
 A figure of how the various classes and modules are related to each other
@@ -1024,8 +1025,8 @@ as can be seen in \figureref{prototype.server.file.hierarchy}.
 \subsection{Data structure}
 
 We'll shortly summarize the data structure used in our database. We
-only stored informations about respondents to our survey and following
-client download in a \code{respondents} table. We used a \code{id} column as
+stored informations about respondents to our survey
+in a \code{respondents} table. We used a \code{id} column as
 an identifier for each stored respondent; an \code{email} column for
 identifying respondents in relation to their survey answers; a \code{group}
 column to distinguish between experiment and control respondents; a
@@ -1036,7 +1037,7 @@ a \code{requests} column to count the times the respondent requests data from
 our server; and a \code{created\_at} column to keep track of when a respondent
 first registered his email when downloading our client software.
 \tableref{prototype.data,structure}
-gives details about the data we stored.
+gives further details about the data we stored.
 
 \begin{table}
   \begin{tabular}{lll}
@@ -1086,21 +1087,13 @@ Initially we did not architect our application with performance in mind. We
 wanted to create a working prototype first and then try to increase it's
 performance if need be.
 
-It became apparent that creating an activity stream for a user with several
-favorites was very time consuming. We identified the major bottleneck to be
-the actual retrieval of information from the \urort{} web page. We could not
-do anything code and algorithm wise to remedy this problem. The only solution
-was to increase the bandwidth allowed on our internet connection.
-As can be seen in
-\tableref{retrieval.time.and.speed}
-our retrieval times decreased as we moved to a production server with
-better internet connectivity. Note that the speedup is not relative to
-the transfer speed as there is overhead in establishing a connection
-to the servers at \urort{}.
-
 \sidetable[Retrieval Time and Speed]{%
   Retrieval time and speed of a typical artist profile page (423kB in size),
-  by system
+  by system.
+  Note that the speedup is not relative to
+  the transfer speed as there is overhead in establishing a connection
+  to the servers at \urort{}.
+
   \label{table:retrieval.time.and.speed}}{%
 
   \begin{tabular}{lrr}
@@ -1127,9 +1120,19 @@ to the servers at \urort{}.
   \end{tabular}
 }
 
-The next bottleneck we became aware of is related to the cost of retrieving
-web pages from \urort{}. We did some careful counting of the number of
-retrieval attempts to \urort{} and were able to minimize these to a
+It became apparent that creating an activity stream for a user with several
+favorites was very time consuming. We identified the major bottleneck to be
+the actual retrieval of information from the \urort{} web page. We could not
+do much code and algorithm wise to remedy this problem. The only solution
+was to increase the bandwidth allowed on our internet connection.
+As can be seen in
+\tableref{retrieval.time.and.speed}
+our retrieval times decreased as we moved to a production server with
+better internet connectivity.
+
+The next bottleneck we became aware of was also related to the cost of
+retrieving web pages from \urort{}. We did some careful counting of the number
+of retrieval attempts to \urort{} and were able to minimize these to a
 considerably lower number.
 
 The last bottleneck we encountered was the actual parsing of the retrieved web
@@ -1160,8 +1163,8 @@ statistics related to our source code:
     &
     \multicolumn{1}{c}{Files} &
     \multicolumn{1}{c}{code} &
-    \multicolumn{1}{c}{comment} &
-    \multicolumn{1}{c}{blank} \\
+    \multicolumn{1}{c}{comments} &
+    \multicolumn{1}{c}{blank lines} \\
 
     \cmidrule(lr){2-2}
     \cmidrule(lr){3-5}
@@ -1191,4 +1194,12 @@ statistics related to our source code:
 \end{table}
 
 By dividing our number of lines of specification code with implementation code
-we get a ratio of 84\% between specification/implementation.
+we get a ratio of 84:100
+\begin{sparkline}{3}
+  %Name  Size Unit
+  %Spec   84%  .84
+  %Code  100%  1
+  \sparkspike .75  .84
+  \sparkspike .25  1
+\end{sparkline}
+between specification/implementation on the server side.
