@@ -184,11 +184,11 @@ This philosophy is closely related to minimalism.%
   \q{less is more}\dash{}achieving the maximum effect with the minimum of
   means \citep{whitman69}.
 }
-That is why we feel the prototype we're creating should provide users
+We feel the prototype we're creating should provide users
 with only the necessary information for affording navigational behavior.
 
 \citet{schwartz04} wrote a book called
-\work{The Paradox of Choice: Why More Is Less} in which he explains that
+\work{The Paradox of Choice: Why More Is Less} where he explains that
 we in our modern society have an overabundance of choice. All these choices
 can produce psychological distress. As \citeauthor{schwartz04} explains this
 problem can be resolved by limiting the amount of choices we are presented
@@ -197,22 +197,22 @@ with.
 Our design could potentially introduce even more choices. We're
 introducing more information, and more navigational choices, into the
 \urort{} web site. A possible solution could be to remove some of the
-choices presented to the user if we felt the choices we're providing in
-regards to navigation were of higher importance than those provided by
-default. We decided against this since we want to test our navigational
+choices presented to the user if we felt the choices we're providing
+for navigation were of higher importance than those provided by
+default. We decided against this since we wanted to test our navigational
 design in opposition to the navigational designs already provided. By
 eliminating some of the default navigation we would not be sure
 if potentially more satisfied users was the result of our removal of
-choices or the new choices we provided or a combination.
+choices, the new choices we provided, or a combination.
 
 \subsection{Activity stream for \urort{}}
 \label{section:implementation.design.activity.stream}
 
 According to \prequote[\p{193}]{dubinko07}{}{%
-  There is enormous and growing interest in the consumption of up-to-the-
-  moment streams of newly published content of various forms: news articles,
-  posts on blogs or bulletin boards, and multimedia data such as images,
-  songs, or movie clips}
+  There is enormous and growing interest in the consumption of
+  up-to-the-moment streams of newly published content of various forms: news
+  articles, posts on blogs or bulletin boards, and multimedia data such as
+  images, songs, or movie clips}
 
 In the \urort{} web page there is currently not an easy way to discover what
 is new for the areas that you personally care about. The main page
@@ -223,7 +223,7 @@ selections and the most popular by listenings and downloads. Whether you're
 logged in to the web page by a registered user handle or browsing the page
 anonymously you're presented with the same information. Navigating onto your
 personal profile page yields the same results: no good pointers to fresh
-content.
+content which you are likely to care about.
 
 \begin{figure}
   \begin{whole}
@@ -231,33 +231,16 @@ content.
     \caption[\urort{} Main Page]{
       The main page of \urort{},
       retrieved May 8, 2008, from
-      \url{http://www11.nrk.no/urort/default.aspx}.
+      \url{http://www11.nrk.no/urort/default.aspx}
     }
     \label{figure:scrsh.urort.main.page}
   \end{whole}
 \end{figure}
 
-When we conducted our study of the Facebook social network site we came
+When we conducted our study of the Facebook social network site we became
 intrigued by how easy it was to keep updated on the latest developments for
 our friends by using its news feed as described in
 \sectionref{analysis.facebook.news.feed}. 
-
-When the news feed was introduced on Facebook in September 2006 users
-immediately responded negatively since they felt their privacy was
-compromised. Even though all data available trough the news feed had
-previously been available to the same users, the aggregated and efficient
-display of this information led to concerns \citet[\pp{13}{14}]{boyd08}. 
-Interestingly these negative first reactions seemed to vanish as
-\postquote[\p{19}]{boyd08}{%
-  Users quickly adjusted to the new architecture; they began taking actions
-  solely so that they could be broadcast across to Friends' News Feeds}
-\citet[\p{1031}]{joinson08} found that the news feed was indeed used by
-241 respondents to a usage survey conducted by the author. He feels these
-results indicate a greater acceptance of the news feed today compared to when
-it was introduced. An ethnographic study conducted by
-\citet[\p{3126}]{chapman08} of several social network sites
-including Facebook found the news feed to be one of the primary means of
-interacting with the web site.
 
 Such streams of activity seem to have become popular also outside Facebook.
 \project{Socialthing!} and \project{FriendFeed} are two services that
@@ -272,39 +255,53 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
 
 \begin{figure}
   \begin{whole}
-    \includegraphics[width=0.9\wholewidth]{scrsh_friendfeed_me}
-    \caption[FriendFeed Activity Stream]{
-      Activity stream for the author on FriendFeed,
-      retrieved May 18, 2008, from
-      \url{http://friendfeed.com/uggedal}.
-    }
-    \label{figure:scrsh.friendfeed.me}
-  \end{whole}
-\end{figure}
-
-\begin{figure}
-  \begin{whole}
-    \includegraphics[width=0.9\wholewidth]{scrsh_socialthing}
+    \includegraphics[width=0.95\wholewidth]{scrsh_socialthing}
     \caption[Socialthing! Activity Stream]{
       Activity stream for the author and his friends on Socialthing!,
       retrieved May 18, 2008, from
-      \url{https://socialthing.com/}.
+      \url{https://socialthing.com}
     }
     \label{figure:scrsh.socialthing}
   \end{whole}
 \end{figure}
 
-Based on both our own observations and other's of the perceived
-usefulness of activity streams we decided use such a navigational design in our
-prototype implementation for \urort{}.
+When the news feed was introduced on Facebook in September 2006 users
+immediately responded negatively since they felt their privacy was
+compromised. Even though all data available trough the news feed had
+previously been available to the same users, the aggregated and efficient
+display of this information led to concerns \citep[\pp{13}{14}]{boyd08}. 
+Interestingly these negative first reactions seemed to vanish as
+\postquote[\p{19}]{boyd08}{%
+  Users quickly adjusted to the new architecture; they began taking actions
+  solely so that they could be broadcast across to Friends' News Feeds}
+\citet[\p{1031}]{joinson08} found that the news feed was indeed used by
+241 respondents to a usage survey conducted by the author. He feels these
+results indicate a greater acceptance of the news feed today compared to when
+it was introduced. An ethnographic study conducted by
+\citet[\p{3126}]{chapman08} of several social network sites
+including Facebook found the news feed to be one of the primary means of
+interacting with the web site.
+
+\sidefigure[FriendFeed Activity Stream]{%
+  Activity stream for the author on FriendFeed,
+  retrieved May 18, 2008, from
+  \url{http://friendfeed.com/uggedal}
+  \label{figure:scrsh.friendfeed.me}
+}{%
+  \includegraphics[width=0.9\marginparwidth]{scrsh_friendfeed_me}
+}
+
+Based on both our own observations and other's of the perceived usefulness
+of activity streams, we decided on using such a navigational design in
+our prototype implementation for \urort{}.
 
 \subsubsection{Relevant activities}
 
 The approach seen at Facebook for letting users know what's fresh and relevant
-for yourself trough an activity stream seemed a good fit for \urort{}. But
+trough an activity stream seemed a good fit for \urort{}. But
 \urort{} does not have the concept of friends as seen in social network sites.
 \urort{} exists for people to freely share their music and let others find
-music they like\dash{}and not on making new friends or keeping in touch with
+music they like\dash{}and not making new friends or keeping in touch with
 old friends. How do we then find recent activities which potentially could be
 interesting for our users when we don't have any friends to consult?
 
@@ -323,14 +320,14 @@ of artists a user have favored are more important than other artists on
 \urort{}. Our design is therefore based on the activities of a person's
 favorite artists. Initially we toyed with making a friend like concept on
 \urort{} by saying that people which share one or more favorite artists with
-you are in some way related to yourself. We had to throw away this idea because
-of technical problems with getting such a solution to scale.
+you are in some way similar to yourself. We had to throw away this idea
+because of technical problems with getting such a solution to scale.
 
 \subsubsection{Activity types}
 
 There were many activities taking place associated with an artist
 which we could potentially use in our activity stream. We decided to select
-those which had information about when the activity occurred and was
+those which contained information about when the activity occurred and was
 technically easy%
 \sidenote{
   Easy as in only requiring access to the \urort{} web pages.
@@ -349,26 +346,29 @@ while reviews are conducted by other users.
 
 \subsubsection{Activity filtering}
 
-There is quite bit of activity information based on our four categories for
-a typical artist. When a user have several artists as favorites the amount of
-activity information gets large. We therefore had to filter out some
-activities and only showing what we thought would be most relevant.
+There was quite bit of activity information available based on our four
+categories for a typical artist. When a user had several artists as
+favorites the amount of activity information got large. We therefore had
+to filter out some activities and only show what we thought would be most
+relevant.
 
-Firstly we're only concerned with historical information in our activity list.
-Future concert events are therefore filtered out. Secondly we're showing the
-most recent activities believing that fresh content is more important than
-aged content. As activities are sorted chronologically in our feed we simply
-cut off all activities after a preset number of the most recent activities are
-displayed. The version of our prototype which was tested by real world users
-showed only the ten most recent activities.
+Firstly we were only concerned with historical information in our activity
+list. Future concert events were therefore filtered out. Secondly we were only
+showing
+the most recent activities believing that fresh content is more important than
+aged content. As activities were sorted chronologically in our feed we simply
+cut off all activities after a preset number of the most recent activities
+were displayed. The version of our prototype which was tested by real world
+users showed only the ten most recent activities.
 
-Facebook is not showing the complete picture of friend activity in their news
-feed as it's believed that up to 80\% of all recent activities are filtered
+In the case of Facebook,
+they are not showing the complete picture of friend activity in their news
+feed. It's believed that up to 80\% of all recent activities are filtered
 out \citep{elliott08}.
-Facebook's approach to only showing a selection of recent activity is
+Facebook's approach for only showing a selection of recent activity is
 probably driven by technical scalability problems, and not a desire to only
-present a selection of recent activity of friends. In our activity stream we
-give users a complete picture of all our types of activities within our
+present a selection of the recent activity of friends. In our activity stream
+we give users a complete picture of all our types of activities within our
 cut-off point.
 The complete design of our activity stream for \urort{} can be seen in
 \figureref{scrsh.urort.activity.feed}.
@@ -378,7 +378,7 @@ The complete design of our activity stream for \urort{} can be seen in
   \caption[\urort{} Activity Stream]{
     Activity stream for experiment users on \urort{},
     retrieved Jun 2, 2008, from
-    \url{http://www11.nrk.no/urort/default.aspx}.
+    \url{http://www11.nrk.no/urort/default.aspx}
   }
   \label{figure:scrsh.urort.activity.feed}
 \end{figure}
@@ -386,17 +386,17 @@ The complete design of our activity stream for \urort{} can be seen in
 \subsection{Favorite list}
 \label{section:implementation.design.favorite.list}
 
-As described in
+As we'll describe in
 \sectionref{empirical.methodology}
-we decided to used a control group in our user testing. The navigational
+we decided to used a control group in our experiment setting. The navigational
 design we presented them with did not include an activity stream. In stead
 they
-simply were presented with a list of their favorites so that they manually had
+were simply presented with a list of their favorites so that they manually had
 to keep up with what recent activity their favorite artists were conducting.
 The design of the control group implementation can be seen in
 \figureref{scrsh.urort.favorite.list}.
 
-To give both our control and experiment group the same navigation
+To give both our control and experiment group the same navigational
 possibilities\dash{}excluding the activity stream\dash{}we decided to show a
 list of the favorites without recent activity for our experiment group. If all
 their favorites had activities present in the feed no such list was displayed.
@@ -408,7 +408,7 @@ without recent activity.
   \caption[\urort{} Favorite List]{
     Favorite list for control users on \urort{},
     retrieved Jun 2, 2008, from
-    \url{http://www11.nrk.no/urort/default.aspx}.
+    \url{http://www11.nrk.no/urort/default.aspx}
   }
   \label{figure:scrsh.urort.favorite.list}
 \end{figure}
@@ -446,7 +446,7 @@ potential improvements in their web site design.
 \end{inparaenum}
 We're following his second example of prototype usage by making a prototype
 for what we believe to be a sound social navigation design. This is then
-evaluated. If time permitted (sadly one has limited time and resources
+evaluated. If time had permitted (sadly one has limited time and resources
 available during master thesis research) the results of such an evaluation
 could be input in a new design process and a new prototype system.
 
