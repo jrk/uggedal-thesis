@@ -2,9 +2,9 @@
 %%BoundingBox: 135 350 452 781 
 %%HiResBoundingBox: 135.59 350.3054 451.18005 780.46219 
 %%Creator: MetaPost 0.993
-%%CreationDate: 2008.07.07:1244
+%%CreationDate: 2008.07.07:1245
 %%Pages: 1
-%*Font: cmr12 11.95517 11.95517 28:c20000000088007c4fac
+%*Font: cmr12 11.95517 11.95517 28:c2ffc4000088007c4fac
 %*Font: cmmi12 11.95517 11.95517 6e:a2
 %*Font: cmr8 7.97011 7.97011 31:e
 %*Font: cmss12 11.95517 11.95517 2d:800000401000008137a
@@ -219,68 +219,104 @@ newpath 364.50285 514.19997 moveto
 446.206 514.1999 446.2086 514.2 446.20744 514.2 curveto
 364.5027 514.2 lineto
  closepath stroke
-219.67615 772.16 moveto
+202.77444 772.16 moveto
 (P) cmr12 11.95517 fshow
-227.31544 772.16 moveto
+210.41374 772.16 moveto
 (opulation) cmr12 11.95517 fshow
-279.34204 772.16 moveto
+262.44034 772.16 moveto
 (n) cmmi12 11.95517 fshow
-286.32965 770.3667 moveto
+269.42795 770.3667 moveto
 (1) cmr8 7.97011 fshow
-249.50911 636.09 moveto
-(n) cmmi12 11.95517 fshow
-256.4967 634.29669 moveto
-(2) cmr8 7.97011 fshow
-281.89635 576.57 moveto
+277.48114 772.16 moveto
+(=) cmr12 11.95517 fshow
+289.90654 772.16 moveto
+(789) cmr12 11.95517 fshow
+267.92114 576.57 moveto
 (Placeb) cmr12 11.95517 fshow
-316.19934 576.57 moveto
+302.22414 576.57 moveto
 (o) cmr12 11.95517 fshow
-325.95425 576.57 moveto
+311.97905 576.57 moveto
 (p) cmmi12 11.95517 fshow
-331.82945 574.7767 moveto
+317.85425 574.7767 moveto
 (1) cmr8 7.97011 fshow
+325.90735 576.57 moveto
+(=) cmr12 11.95517 fshow
+338.33284 576.57 moveto
+(36) cmr12 11.95517 fshow
 237.73538 706.96 moveto
 (Pretest) cmss12 11.95517 fshow
 235.20464 423.5 moveto
 (P) cmss12 11.95517 fshow
 242.32364 423.5 moveto
 (osttest) cmss12 11.95517 fshow
-278.40536 491.53 moveto
-(p) cmmi12 11.95517 fshow
-284.28047 489.7367 moveto
-(2) cmr8 7.97011 fshow
-222.5393 352.63 moveto
+208.5641 491.53 moveto
 (t) cmmi12 11.95517 fshow
-226.76651 350.8367 moveto
-(3) cmr8 7.97011 fshow
-278.40536 352.63 moveto
-(p) cmmi12 11.95517 fshow
-284.28047 350.8367 moveto
-(3) cmr8 7.97011 fshow
-222.5393 491.53 moveto
-(t) cmmi12 11.95517 fshow
-226.76651 489.7367 moveto
+212.7913 489.7367 moveto
 (2) cmr8 7.97011 fshow
+220.8444 491.53 moveto
+(=) cmr12 11.95517 fshow
+233.2699 491.53 moveto
+(25) cmr12 11.95517 fshow
 381.81007 528.38 moveto
 (F) cmss12 11.95517 fshow
 388.13347 528.38 moveto
 (ollo) cmss12 11.95517 fshow
 405.02138 528.38 moveto
 (w-up) cmss12 11.95517 fshow
-399.73912 457.51 moveto
+232.60739 636.09 moveto
 (n) cmmi12 11.95517 fshow
-406.72672 455.71669 moveto
+239.59499 634.29669 moveto
+(2) cmr8 7.97011 fshow
+247.64809 636.09 moveto
+(=) cmr12 11.95517 fshow
+260.0736 636.09 moveto
+(123) cmr12 11.95517 fshow
+264.4301 491.53 moveto
+(p) cmmi12 11.95517 fshow
+270.3052 489.7367 moveto
+(2) cmr8 7.97011 fshow
+278.3584 491.53 moveto
+(=) cmr12 11.95517 fshow
+290.7839 491.53 moveto
+(20) cmr12 11.95517 fshow
+385.7639 457.51 moveto
+(n) cmmi12 11.95517 fshow
+392.7515 455.71669 moveto
 (3) cmr8 7.97011 fshow
-165.5847 576.57 moveto
-(T) cmr12 11.95517 fshow
-173.0635 576.57 moveto
-(reatmen) cmr12 11.95517 fshow
-214.3596 576.57 moveto
-(t) cmr12 11.95517 fshow
-222.8139 576.57 moveto
+400.8046 457.51 moveto
+(=) cmr12 11.95517 fshow
+413.2301 457.51 moveto
+(38) cmr12 11.95517 fshow
+208.5641 352.63 moveto
 (t) cmmi12 11.95517 fshow
-227.0411 574.7767 moveto
+212.7913 350.8367 moveto
+(3) cmr8 7.97011 fshow
+220.8444 352.63 moveto
+(=) cmr12 11.95517 fshow
+233.2699 352.63 moveto
+(14) cmr12 11.95517 fshow
+264.4301 352.63 moveto
+(p) cmmi12 11.95517 fshow
+270.3052 350.8367 moveto
+(3) cmr8 7.97011 fshow
+278.3584 352.63 moveto
+(=) cmr12 11.95517 fshow
+290.7839 352.63 moveto
+(11) cmr12 11.95517 fshow
+151.6095 576.57 moveto
+(T) cmr12 11.95517 fshow
+159.0883 576.57 moveto
+(reatmen) cmr12 11.95517 fshow
+200.3844 576.57 moveto
+(t) cmr12 11.95517 fshow
+208.8387 576.57 moveto
+(t) cmmi12 11.95517 fshow
+213.0659 574.7767 moveto
 (1) cmr8 7.97011 fshow
+221.119 576.57 moveto
+(=) cmr12 11.95517 fshow
+233.5445 576.57 moveto
+(35) cmr12 11.95517 fshow
 234.39586 604.91 moveto
 (\(rand.\)) cmr12 11.95517 fshow
 showpage
