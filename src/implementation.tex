@@ -458,14 +458,16 @@ fully operational and make the code we author comprehensible and
 valid. More precisely we're creating a \term{high-fidelity} prototype
 \cite[\p{78}]{rudd96} with a robust architecture.
 
-The reason to create a robust application is twofold. Firstly we're developing
+The reason for creating a robust application is twofold. Firstly we're
+developing
 the prototype as part of our master thesis and it's meant to show how
 proficient we are in both programming and designing applications. We
 imagine delivering a barely working and poorly constructed software package
 would not be beneficial for our examination results.
 Secondly the application could potentially see some stress under user testing
 depending how large the test population is. Having a crashing or
-non-functioning application during such testing could prove to be costly.
+non-functioning application during such testing could prove to be costly with
+regards to our experiment results.
 
 We're therefore creating a prototype to demonstrate our ability (or inability)
 to develop software. This is not our sole reason, and probably not the most
@@ -495,13 +497,13 @@ They found that code size decreased when a test-first approach was
 used\dash{}both classes and methods were smaller and simpler. In addition
 test-first developers had better coverage of the implementation code in
 their tests \citep[\p{81}]{janzen08}. This could indicate that it's
-easier to choose not to implement tests after you have a piece
+easier to opt out from testing after you have a piece
 of working code. The discipline that test-driven development dictates
 makes it impossible not to write tests.
 
 \term{Behavior-driven development} is a response to the test-driven
-development approach introduced by \citeauthor{north06} for shifting the focus
-from writing tests to writing specifications of behavior
+development approach. It was introduced by \citeauthor{north06} for shifting
+the focus from writing tests to writing specifications of behavior
 \citep{north06}. By writing specifications one is able to
 more clearly describe the intent of an application than when one
 are writing traditional tests.
@@ -529,8 +531,7 @@ Our implementation basically needs to do two things:
 
 As we've described earlier in this chapter we're creating a prototype
 application. Inspired by solutions in the Hoodwink.d community we set
-out to implement our system on top of already established web pages as
-described in \sectionref{implementation.building.on.top.of.the.web}.
+out to implement our system on top of already established web pages.
 
 \citet{laird07} makes a case for using the means of such a browser
 extension\dash{}Greasemonkey\dash{}and custom scripts for
@@ -573,6 +574,9 @@ Greasemonkey a sound technical solution for our means regarding this factor.
 
 The Firefox web browser should be available to install on most platforms
 and we can report that it works fine on the target web site.
+We cant expect all potential users to install Firefox on their
+computers. This limits the reach we have with a Greasemonkey based
+implementation.
 
 \subsubsection{To what degree are the target users computer literate?}
 
@@ -616,14 +620,12 @@ using Greasemonkey in this regard.
 Since implementations based around Greasemonkey often is dependent on the
 underlying web site and its structure it's important that this remains
 stable while the implementation is in use. While we in our project
-will have a fairly small window in time of use we've been concerned
-that changes could break our implementation. This is especially true
-for our data collection implementation which relies very much on the structure
-of the \urort{} web site.
+will have a fairly small time window of actual use we've been concerned
+that changes could break our implementation.
 
-We see to possible solutions for this problematic aspect of Greasemonkey
+We see two possible solutions for this problematic aspect of Greasemonkey
 implementations. Firstly communication between the developers of
-\urort{} and us about upcoming changes would allow us to anticipate
+\urort{} and ourself about upcoming changes would allow us to anticipate
 them and handle them gracefully when they arrive. Secondly one could
 introduce a meta structure in the web site by using agreed-upon
 class names of certain \abbr{HTML} elements in the style of
@@ -648,7 +650,7 @@ Because of the architecture of Greasemonkey, scripts written for the extension
 can be vulnerable to attacks if the developer is not careful. It's
 therefore not advisable to use Greasemonkey for highly sensitive web sites.
 This is not a concern for our project as all the information handled by our
-application can be found publicly and be viewed by all on the \urort{}
+application can be found publicly on the \urort{}
 web site.
 
 \subsubsection{Does the new feature require many changes to the existing web
@@ -657,7 +659,8 @@ web site.
 Using Greasemonkey to enhance and alter existing web pages is not as straight
 forward as altering the source of the web page. Therefore massive changes to
 an existing web site is best handled directly in the source code leaving
-Greasemonkey to be best when only smaller alterations and addition are needed.
+Greasemonkey to be the better alternative when only smaller alterations and
+addition are needed.
 
 The changes we propose to introduce in the \urort{} web site is not earth
 shattering in scope and size. We therefore believe and hope our implementation
@@ -673,7 +676,7 @@ a web site that mutates over time.
 
 In our project we seem to be quite fortunate as we're only planning on adding
 behavior to the \urort{} web site, not changing any existing behavior.
-Therefore we don't have to concern ourselves with some of the dynamically
+We therefore don't have to concern ourselves with some of the dynamically
 already present on \urort{}.
 
 \subsubsection{Does the feature require communication with a server in a
@@ -693,6 +696,8 @@ dependent on requesting information from a resource that we ourself have
 control over from the custom Greasemonkey script. This resource is however
 not hosted in the domain that \urort{} is operating within. Without
 cross-domain requests in Greasemonkey our implementation would be infeasible.
+
+\parabreak
 
 Based on how our project positioned itself with regard to the important
 factors for the feasibility of using Greasemonkey
@@ -729,23 +734,23 @@ communication method, performs computation on the the results of queries send
 by the server, and displays these trough the user interface
 \citep[\pp{78}{79}]{sinha92}. A server is characterized by providing a service
 to the client, responding to queries constructed by the client,
-hiding away its underlying technical system for the client
+and hiding away its underlying technical system for the client
 \citep[\p{79}]{sinha92}.
 
-The client and server thus have disparate responsibilities, the client is a
-consumer and the server is a producer \citep[\p{3}]{lewandowski98}.
+The client and server thus have disparate responsibilities\dash{}the client is
+a consumer and the server is a producer \citep[\p{3}]{lewandowski98}.
 This delegation is the
 essential part of client-server computing and enables one to focus on one
 aspect of a problem as one does when adhering to the concept of
 \term{separation of concerns} \citep[\p{61}]{dijkstra82}.
 A client-server model also enables one to scale both horizontally and
-vertically,%
+vertically%
 \sidenote{
   To scale horizontally entails adding more servers to a client-server
   architecture. When one increases the resources of a single server
   one is scaling vertically.
-}
-an impossible feat with monolithic systems \citep[\pp{7}{8}]{lewandowski98}.
+}\dash{}an
+impossible feat with monolithic systems \citep[\pp{7}{8}]{lewandowski98}.
 
 We therefore decided to use a client-server architecture so that we could
 offload some of the more computationally expensive operations off the client
@@ -762,8 +767,7 @@ to the server in the form of \abbr{HTTP}%
   Short for Hyper Text Transfer Protocol\dash{}the
   protocol used for transferring data on the Web.
 }
-formatted requests. Interestingly \abbr{HTTP} is also is the communication
-method in our system. Our server takes these queries in \abbr{HTTP} form
+formatted requests. Our server takes these queries in \abbr{HTTP} form
 and goes to the \urort{} web site to collect the data it needs. Based on the
 data the server finds at the external \urort{} web site the server does some
 computations on the data before a response is sent
@@ -774,13 +778,13 @@ user interface by introducing new information.
 \citet[\p{887}--888]{nishimoto06} implemented a system for re-finding places
 one have already visited on the Web. What's interesting about their system is
 that their architecture is strikingly similar to our own. They use a
-client-server model with a user-script enabled browser as their client. The
+client-server model with a Greasemonkey enabled browser as their client. The
 client facilitates the users as they're navigating by supplying additional
 information alongside existing web pages. One of the ingredients in helping
 users in their browsing is suppling information from third party content
 providers. By separating this computationally heavy part of the application
 into the server-side they were able to offload the clients in a similar
-manner we intended when fetching data from \urort{}.
+manner we intended to use when fetching data from \urort{}.
 
 \subsection{Caching}
 \label{section:implementation.architecture.caching}
