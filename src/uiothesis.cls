@@ -251,6 +251,7 @@
 %%
 
 \RequirePackage{longtable}
+\RequirePackage{multirow}
 \RequirePackage{pdflscape}
 
 

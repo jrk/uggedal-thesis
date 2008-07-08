@@ -232,7 +232,7 @@ reactions:
   \item Somewhat disagree
   \item Neither agree nor disagree
   \item Somewhat agree
-  \item Fully disagree
+  \item Fully agree
 \end{items}
 
 With the specific question:
@@ -271,7 +271,7 @@ was to be ranked on a 5-point Likert scale \citep{likert32}:
   \item Somewhat disagree
   \item Neither agree nor disagree
   \item Somewhat agree
-  \item Fully disagree
+  \item Fully agree
 \end{items}
 
 And the statements:
@@ -354,85 +354,128 @@ to base such analysis on and it would be hard to distinguish such outliers.
   \label{figure:fig.experiment.mortality}
 \end{figure}
 
-\begin{table}[h]
-  \begin{tabular}{lrr}
+\subsection{Favorite usage}
+
+\subsubsection{An activity stream will increase number of favorites}
+
+\begin{table}[!ht]
+  \begin{tabular}{lrrrrrrr}
 
     &
-    \multicolumn{1}{c}{Individuals} &
-    \multicolumn{1}{c}{\% of respondents} \\
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{1}{c}{$\bar{x}$} &
+    \multicolumn{1}{c}{$\sigma$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$p$} \\
 
-    \cmidrule(lr){2-2}
-    \cmidrule(lr){3-3}
+    \cmidrule(lr){2-5}
 
-    Respondents &
-    125 &
+    Experiement &
+    13 &
+    8 &
+    11.92 &
+    13.738 &
+    \multirow{2}{*}{68.5} &
+    \multirow{2}{*}{0.438}\\
+
+    Control &
+    11 &
+    8 &
+    13.64 &
+    13.063 &
+    &
     \\
 
-    Completed installation &
-    72 &
-    57.6 \\
-
-    Used application &
-    45 &
-    36.0 \\
-
   \end{tabular}
-  \caption[Respondents Falloff]{%
-    Respondent falloff during installation and use of our prototype
-    application}
-  \label{table:respondents.falloff}
+  \caption[Up-to-date on Favorites]{%
+    How many favorites do you have on \urort{}?
+  }
+  \label{table:favorite.usage.number}
 \end{table}
 
-\subsection{Pretest}
 
-\subsubsection{Respondent profiles}
+\subsection{Keeping up-to-date on activities}
 
-\begin{figure}[!ht]
-  \begin{tikzpicture}
+In the following results we have graded respondents answers with integers from
+1 to 5:
 
-    % Name      Size   Percent  Value
-    % ------------------------------
-    % Total      124   100      4
-    % Male       114    91.9    3.67741
-    % Female     10      8.1    0.32258
-    %
-    % y1               100      4
-    % y2                75      3
-    % y3                50      2
-    % y4                25      1
+\begin{items}
+  \item Fully disagree: 1
+  \item Somewhat disagree: 2
+  \item Neither agree nor disagree: 3
+  \item Somewhat agree: 4
+  \item Fully agree: 5
+\end{items}
 
-    \draw[ycomb,color=bar,line width=1.2cm]
-       plot coordinates{(1,3.67741)
-                        (3,0.32258)};
+\subsubsection{An activity stream will make it easier to keep up-to-date on
+  favorites' activities}
 
-    \begin{footnotesize}
-      \draw (1, 3.67741) node[anchor=south] {114};
-      \draw (3, 0.32258) node[anchor=south] {10};
+\begin{table}[!ht]
+  \begin{tabular}{lrrrrr}
 
-      \foreach \y / \lines in {4/100,3/75,2/50,1/25}
-        \draw (0,\y) node[anchor=mid east] {\lines\%};
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$p$} \\
 
-      \foreach \x / \library in {1/Male,
-                                 3/Female}
-        \draw (\x, -0.4) node[anchor=base] {\library};
+    \cmidrule(lr){2-5}
 
-      \begin{scope}[color=white,line width=1pt]
-        \draw (0,1) -- (10,1);
-        \draw (0,2) -- (10,2);
-        \draw (0,3) -- (10,3);
-      \end{scope}
-    \end{footnotesize}
-  \end{tikzpicture}
+    Experiement &
+    12 &
+    5 &
+    \multirow{2}{*}{45} &
+    \multirow{2}{*}{0.089}\\
 
-  \caption[Gender of Respondents]{%
-    The gender of respondents from a total of 124 responses.
+    Control &
+    11 &
+    4 &
+    &
+    \\
+
+  \end{tabular}
+  \caption[Up-to-date on Favorites]{%
+    It's easy to keep up-to-date on what my favorites are doing
+    on \urort{}.
   }
-  \label{figure:chart.respondents.gender}
-\end{figure}
+  \label{table:uptodate.favorites}
+\end{table}
 
-\subsection{Post-installation test}
+\subsubsection{An activity stream will make it easier to keep up-to-date on
+  favorites' songs}
 
-\subsection{Posttest}
+\begin{table}[!ht]
+  \begin{tabular}{lrrrrr}
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$p$} \\
+
+    \cmidrule(lr){2-5}
+
+    Experiement &
+    12 &
+    5 &
+    \multirow{2}{*}{59} &
+    \multirow{2}{*}{0.340}\\
+
+    Control &
+    11 &
+    4 &
+    &
+    \\
+
+  \end{tabular}
+  \caption[Up-to-date on Favorites' Songs]{%
+    It's easy to keep up-to-date on whether my favorites publishes
+    new songs on \urort{}.
+  }
+  \label{table:uptodate.songs}
+\end{table}
+
 
 \section{Discussion}
 
