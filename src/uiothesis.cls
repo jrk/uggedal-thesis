@@ -593,6 +593,7 @@
 
 \newcommand{\urort}{Ur\o{}rt}
 \newcommand{\siste}{\q{Siste fra dine Favoritter}}
+\newcommand{\latest}{\q{Latest from your Favorites}}
 
 
 %%
