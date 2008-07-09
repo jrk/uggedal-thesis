@@ -37,9 +37,23 @@ conduct experiments on established web sites:
 
 \section{Research Hypotheses}
 
-%%
-%% hypotheses listed here
-%%
+$A$ is the degree respondents can easily keep up-to-date with
+favorites' activities without an activity stream and $B$ is the degree
+respondents can easily keep-up-to-date with favorites' activites  with
+an activity stream.
+\begin{items}
+  \iterm{$H_0$:} $Med_A \geq Med_B$
+  \iterm{$H_A$:} $Med_A < Med_B$
+\end{items}
+
+$A$ is the degree respondents can easily keep up-to-date with
+favorites' new songs without an activity stream and $B$ is the degree
+respondents can easily keep-up-to-date with favorites' new songs with
+an activity stream.
+\begin{items}
+  \iterm{$H_0$:} $Med_A \geq Med_B$
+  \iterm{$H_A$:} $Med_A < Med_B$
+\end{items}
 
 \section{Method}
 \label{section:empirical.methodology}
@@ -381,6 +395,9 @@ to base such analysis on and it would be hard to distinguish such outliers.
 
 \section{Results}
 
+\figureref{fig.experiment.mortality} gives an overview how many respondents we
+had to our pretest, posttest, and follow-up questions.
+
 \begin{figure}
   \includegraphics{fig_experiment_mortality}
   \caption[Experiment Mortality Rate]{
@@ -417,6 +434,10 @@ In the following results we have graded respondents answers with integers from
 \subsubsection{An activity stream will make it easier to keep up-to-date on
   favorites' activities}
 
+Based on the statement: 
+It's easy to keep up-to-date on what my favorites are doing
+on \urort{}.
+
 \begin{table}[!ht]
   \begin{tabular}{rrrrrrrr}
 
@@ -446,15 +467,74 @@ In the following results we have graded respondents answers with integers from
     \\
 
   \end{tabular}
-  \caption[Up-to-date on Favorites]{%
-    It's easy to keep up-to-date on what my favorites are doing
-    on \urort{}.
+  \caption[Up-to-date on Favorites, Between Groups]{%
+    Up-to-date on favorites comparison between
+    experiment and control group for the posttest.
   }
-  \label{table:uptodate.favorites}
 \end{table}
 
+\begin{table}[!ht]
+  \begin{tabular}{rrrrrrrrr}
+
+    &
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$T$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$} \\
+
+    \cmidrule(lr){3-8}
+
+    \multirow{2}{*}{Experiment} &
+    Pre &
+    14 &
+    3 &
+    4 &
+    \multirow{2}{*}{10} &
+    \multirow{2}{*}{-1.513} &
+    \multirow{2}{*}{0.086}\\
+
+    &
+    Post &
+    12 &
+    5 &
+    4 &
+    &
+    \\
+
+    \cmidrule(lr){2-8}
+
+    \multirow{2}{*}{Control} &
+    Pre &
+    11 &
+    3 &
+    3 &
+    \multirow{2}{*}{16} &
+    \multirow{2}{*}{-0.787} &
+    \multirow{2}{*}{0.258}\\
+
+    &
+    Post &
+    11 &
+    4 &
+    3 &
+    &
+    \\
+
+  \end{tabular}
+  \caption[Up-to-date on Favorites, Within Groups]{%
+    Up-to-date on favorites comparison between
+    pretest and posttest within the experiment and control group.
+  }
+\end{table}
 \subsubsection{An activity stream will make it easier to keep up-to-date on
   favorites' songs}
+
+Based on the statement:
+It's easy to keep up-to-date on whether my favorites publishes
+new songs on \urort{}.
 
 \begin{table}[!ht]
   \begin{tabular}{rrrrrrrr}
@@ -485,9 +565,9 @@ In the following results we have graded respondents answers with integers from
     \\
 
   \end{tabular}
-  \caption[Up-to-date on Favorites' Songs]{%
-    It's easy to keep up-to-date on whether my favorites publishes
-    new songs on \urort{}.
+  \caption[Up-to-date on Favorites' Songs, Between Groups]{%
+    Up-to-date on favorites' songs comparison between
+    experiment and control group for the posttest.
   }
   \label{table:uptodate.songs}
 \end{table}
