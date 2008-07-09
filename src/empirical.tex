@@ -313,10 +313,52 @@ problems installing the Greasemonkey based prototype:
 
 \subsection{Data analysis}
 
-%%
-%% Mann Whitney U-test
-%% for independent variables
-%%
+We used two statistical tests for analysing the data we collected. Due to the
+limitations a master thesis inherits we did not analyse the shapes of the
+distribution for our data. We have therefore not made any assumptions about
+the probability distribution of our data. This makes
+\term{non-parametric} statistical tests a natural fit as they don't make any
+assumptions about the distribution of the variables to be tested
+\citep{wikipedia08nonparametric}.
+
+Most of our data are of an ordianal measurement\dash{}meaning that one can
+infer the ranking of variables, but not the distance between rankings.
+To represent the central tendency of our data we'll therefore use the median
+as the mean makes little sence for ordianal data
+\citep{wikipedia08levelofmeasurement}.
+Ordinal data is another characteristic where non-parametric tests
+are best suited \citep{wikipedia08nonparametric}. We therefore decided
+to use the two following non-parametric statistical test.
+
+\subsubsection{Mann-Whitney U-test}
+
+The Mann-Whiteney U-test is a non-parametric test for comparing two
+independent conditions and can be seen as the non-parametric alternative to
+the famous independent t-test \citep[\p{522}]{field05}.
+According to \citet[\chap{11a}]{lowry08} the assumptions of the
+Mann-Whitney U-test are:
+
+\begin{enum}
+  \item The two samples under test should be randomly and independently drawn.
+  \item The dependent variable should be intrinsically continuous.
+  \item The measures of the two samples should be atleast of an ordinal scale.
+\end{enum}
+
+\subsubsection{Wilcox signed-rank test}
+
+The Wilcox signed-rank test is a non-parametric test for comparing two
+related conditions and is an non-parametric alternative to the
+dependent t-test \citep[\p{534}]{field05}.
+The assumptions of the Wilcox signed-rank test are similar to those
+of the Mann-Whitney U-test \citep[\chap{12a}]{lowry08}:
+
+\begin{enum}
+  \item The paried values of $X_A$ and $X_B$
+    should be randomly and independently drawn.
+  \item The dependent variable should be intrinsically continuous.
+  \item The measures of the paried values $X_A$ and $X_B$
+    should be atleast of an ordinal scale.
+\end{enum}
 
 \subsubsection{Outliers}
 
