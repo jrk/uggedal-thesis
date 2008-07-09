@@ -397,8 +397,6 @@ the sample as it's hard to know the exact motivations of the respondents.
 In addition we don't have a particular large set of values for each respondent
 to base such analysis on and it would be hard to distinguish such outliers.
 
-\section{Results}
-
 \begin{figure}
   \includegraphics{fig_experiment_mortality}
   \caption[Experiment Mortality Rate]{
@@ -418,6 +416,8 @@ to base such analysis on and it would be hard to distinguish such outliers.
   }
   \label{figure:fig.experiment.mortality}
 \end{figure}
+
+\section{Results}
 
 \figureref{fig.experiment.mortality} gives an overview how many respondents we
 had to our pretest, posttest, and follow-up questions.
@@ -439,15 +439,17 @@ on \urort{}} we graded respondents answers as follows:
   \item Fully agree: 5
 \end{items}
 
-Our null hypohesis stated that we would not see any change in how easy
+Our $H_0$ stated that we would not see any change in how easy
 respondents felt it was to keep up-to-date on favorite's activities
-after introducing an activity steam. Our alternative hypothesis said that we
+after introducing an activity steam. Our $H_A$ said that we
 would indeed observe a change in how respondents rated this task.
-First we compare how easy responents feel it is to keep up-to-date on
-favorites' activities after they are given a treatment (an activity list)
-or a placebo:
+First we compared how easy responents feel it is to keep up-to-date on
+favorites' activities after they are given a treatment (an activity stream)
+or a placebo.
+See
+\tableref{uptodate.favorite.activities.between} for the results.
 
-\begin{table}[!h]
+\begin{table}
   \begin{tabular}{rrrrrrrr}
 
     &
@@ -480,6 +482,7 @@ or a placebo:
     Up-to-date on favorites' activities comparison between
     experiment and control group for the posttest.
   }
+  \label{table:uptodate.favorite.activities.between}
 \end{table}
 
 The results show that the median degree of acceptance to the statement
@@ -488,9 +491,11 @@ control respondents with a placebo. This difference is however
 not statistically significant.
 
 We also tested if there was a change in acceptance within the respondent
-groups from before they were given a treatment or placebo and after:
+groups from before they were given a treatment or placebo and after.
+The results can be seen in
+\tableref{uptodate.favorite.activities.within}.
 
-\begin{table}[!h]
+\begin{table}
   \begin{tabular}{rrrrrrrrr}
 
     &
@@ -545,6 +550,7 @@ groups from before they were given a treatment or placebo and after:
     Up-to-date on favorites' activities  comparison between
     pretest and posttest within the experiment and control group.
   }
+  \label{table:uptodate.favorite.activities.within}
 \end{table}
 
 The data shows that the median acceptance rate have rosen from the pretest to
@@ -553,6 +559,11 @@ the statemnent about how easy it is to keep up-to-date on favorites'
 activities have rosen more for the respondents having used an activity feed
 than those with a placebo. Neither of these increases of median values
 are statistically significant.
+
+While we observed increases in how easy respondents felt they could keep
+up-to-date with favorites' activities when an activity stream was used none of
+this data was statistically significant. Due to lack of evidence we can not
+reject $H_0$.
 
 \subsubsection{An activity stream will make it easier to keep up-to-date on
   favorites' songs}
