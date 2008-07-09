@@ -374,6 +374,10 @@ of the Mann-Whitney U-test \citep[\chap{12a}]{lowry08}:
     should be atleast of an ordinal scale.
 \end{enum}
 
+%%
+%% p < 0.05 considered significant
+%%
+
 \subsubsection{Outliers}
 
 We went trough the collected data looking for outliers
@@ -395,9 +399,6 @@ to base such analysis on and it would be hard to distinguish such outliers.
 
 \section{Results}
 
-\figureref{fig.experiment.mortality} gives an overview how many respondents we
-had to our pretest, posttest, and follow-up questions.
-
 \begin{figure}
   \includegraphics{fig_experiment_mortality}
   \caption[Experiment Mortality Rate]{
@@ -418,10 +419,17 @@ had to our pretest, posttest, and follow-up questions.
   \label{figure:fig.experiment.mortality}
 \end{figure}
 
+\figureref{fig.experiment.mortality} gives an overview how many respondents we
+had to our pretest, posttest, and follow-up questions.
+
 \subsection{Keeping up-to-date on activities}
 
-In the following results we have graded respondents answers with integers from
-1 to 5:
+\subsubsection{An activity stream will make it easier to keep up-to-date on
+  favorites' activities}
+
+Based on the statement
+\q{It's easy to keep up-to-date on what my favorites are doing
+on \urort{}} we graded respondents answers as follows: 
 
 \begin{items}
   \item Fully disagree: 1
@@ -431,14 +439,15 @@ In the following results we have graded respondents answers with integers from
   \item Fully agree: 5
 \end{items}
 
-\subsubsection{An activity stream will make it easier to keep up-to-date on
-  favorites' activities}
+Our null hypohesis stated that we would not see any change in how easy
+respondents felt it was to keep up-to-date on favorite's activities
+after introducing an activity steam. Our alternative hypothesis said that we
+would indeed observe a change in how respondents rated this task.
+First we compare how easy responents feel it is to keep up-to-date on
+favorites' activities after they are given a treatment (an activity list)
+or a placebo:
 
-Based on the statement: 
-It's easy to keep up-to-date on what my favorites are doing
-on \urort{}.
-
-\begin{table}[!ht]
+\begin{table}[!h]
   \begin{tabular}{rrrrrrrr}
 
     &
@@ -467,13 +476,21 @@ on \urort{}.
     \\
 
   \end{tabular}
-  \caption[Up-to-date on Favorites, Between Groups]{%
-    Up-to-date on favorites comparison between
+  \caption[Up-to-date on Favorites' Activities, Between Groups]{%
+    Up-to-date on favorites' activities comparison between
     experiment and control group for the posttest.
   }
 \end{table}
 
-\begin{table}[!ht]
+The results show that the median degree of acceptance to the statement
+is higher for experiment respondents having used an activity stream than
+control respondents with a placebo. This difference is however
+not statistically significant.
+
+We also tested if there was a change in acceptance within the respondent
+groups from before they were given a treatment or placebo and after:
+
+\begin{table}[!h]
   \begin{tabular}{rrrrrrrrr}
 
     &
@@ -524,20 +541,36 @@ on \urort{}.
     \\
 
   \end{tabular}
-  \caption[Up-to-date on Favorites, Within Groups]{%
-    Up-to-date on favorites comparison between
+  \caption[Up-to-date on Favorites' Activities, Within Groups]{%
+    Up-to-date on favorites' activities  comparison between
     pretest and posttest within the experiment and control group.
   }
 \end{table}
 
+The data shows that the median acceptance rate have rosen from the pretest to
+the posttest for both experiment and control respondents. The acceptance of
+the statemnent about how easy it is to keep up-to-date on favorites'
+activities have rosen more for the respondents having used an activity feed
+than those with a placebo. Neither of these increases of median values
+are statistically significant.
+
 \subsubsection{An activity stream will make it easier to keep up-to-date on
   favorites' songs}
 
-Based on the statement:
-It's easy to keep up-to-date on whether my favorites publishes
-new songs on \urort{}.
+Based on the statement
+\q{It's easy to keep up-to-date on whether my favorites publishes
+new songs on \urort{}}
+we graded respondents answers as follows:
 
-\begin{table}[!ht]
+\begin{items}
+  \item Fully disagree: 1
+  \item Somewhat disagree: 2
+  \item Neither agree nor disagree: 3
+  \item Somewhat agree: 4
+  \item Fully agree: 5
+\end{items}
+
+\begin{table}[!h]
   \begin{tabular}{rrrrrrrr}
 
     &
@@ -573,7 +606,7 @@ new songs on \urort{}.
   \label{table:uptodate.songs}
 \end{table}
 
-\begin{table}[!ht]
+\begin{table}[!h]
   \begin{tabular}{rrrrrrrrr}
 
     &
