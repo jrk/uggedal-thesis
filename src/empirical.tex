@@ -498,7 +498,7 @@ See
 
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrlrrrr}
+  \begin{tabular}{rrrclrrrr}
 
     &
     &
@@ -556,43 +556,44 @@ The results can be seen in
   \begin{tikzpicture}
     \draw (-1,1) -- (-1,1);
     \begin{scope}[color=red]
-      \draw (-1,0.75) -- (0,0.55);
-      \draw (-1,-0.3) -- (0,0.5);
+      \draw (-1,0.5) -- (0,0.025);
+      \draw (-1,-0.5) -- (0,-0.025);
     \end{scope}
-    \begin{scope}[color=green]
-      \draw (-1,0.25) -- (0,-0.4);
-      \draw (-1,-0.8) -- (0,-0.45);
-    \end{scope}
+    \draw (-1,-1) -- (-1,-1);
   \end{tikzpicture}}
 
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrrlrrrr}
+  \begin{tabular}{rrrrccclrrrr}
 
     &
     &
     &
     &
+    \multicolumn{2}{c}{Post} &
     \multicolumn{2}{c}{$Mdn_A$} \\
 
     &
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$-$ Pre} &
     \multicolumn{2}{c}{$- Mdn_B$} &
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
     \multicolumn{1}{c}{$p$} \\
 
-    \cmidrule(lr){3-10}
+    \cmidrule(lr){3-12}
 
     \multirow{2}{*}{Experiment ($A$)} &
     Pre &
     14 &
     3 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{2} &
     \multirow{4}{*}{\fourguides} &
-    \multirow{2}{*}{0} &
+    \multirow{4}{*}{1} &
     4 &
     \multirow{2}{*}{10} &
     \multirow{2}{*}{-1.513} &
@@ -604,14 +605,18 @@ The results can be seen in
     5 &
     &
     &
+    &
+    &
     4 \\
 
     \multirow{2}{*}{Control ($B$)} &
     Pre &
     11 &
     3 &
-    &
+    \multirow{2}{*}{\twoguides} &
     \multirow{2}{*}{1} &
+    &
+    &
     3 &
     \multirow{2}{*}{16} &
     \multirow{2}{*}{-0.787} &
@@ -621,6 +626,8 @@ The results can be seen in
     Post &
     11 &
     4 &
+    &
+    &
     &
     &
     3 \\
@@ -674,19 +681,19 @@ we graded respondents answers as follows:
 \end{items}
 
 The $H_0$ stated that we would not see any positive change in how easy
-respondents felt it was to keep up-to-date on favorites' recently published
-songs after introducing an activity steam. Our $H_A$ said that we
+respondents felt it was to keep up-to-date on favorites' specific activities
+after introducing an activity steam. Our $H_A$ said that we
 would indeed observe a change in how respondents rated this task.
 
 First we compared how easy responents felt it was to keep up-to-date on
-favorites' recently published songs after they are given a treatment
+favorites' specific activities after they are given a treatment
 or a placebo.
 See
 \tableref{uptodate.favorite.specific.activities.between} for the results.
 
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrlrrrrl}
+  \begin{tabular}{rrrclrrrrl}
 
     &
     &
@@ -791,6 +798,10 @@ See
   \end{whole}
 \end{table}
 
+%%
+%% Continue textual reporting from here
+%%
+
 The median response for how easy this task was is higher for
 experiment respondents compared to control respondents. The positive
 difference for those which used activity streams is not significant.
@@ -804,33 +815,36 @@ in group comparisons.
 
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrrlrrrrl}
+  \begin{tabular}{rrrrccclrrrrl}
 
     &
     &
     &
     &
+    \multicolumn{2}{c}{Post} &
     \multicolumn{2}{c}{$Mdn_A$} \\
 
     &
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$-$ Pre} &
     \multicolumn{2}{c}{$- Mdn_B$} &
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
     \multicolumn{1}{c}{$p$} \\
 
-    \cmidrule(lr){3-10}
+    \cmidrule(lr){3-12}
 
       \multirow{2}{*}{Experiment ($A$)} &
         Pre &
         14 &
         4 &
-
-        \multirow{4}{*}{\fourguides} &
+        \multirow{2}{*}{\twoguides} &
         \multirow{2}{*}{1} &
+        \multirow{4}{*}{\fourguides} &
+        \multirow{4}{*}{0} &
         4 &
         \multirow{2}{*}{8.0} &
         \multirow{2}{*}{-1.780} &
@@ -843,14 +857,18 @@ in group comparisons.
         5 &
         &
         &
+        &
+        &
         4 \\
 
       \multirow{2}{*}{Control ($B$)} &
         Pre &
         11 &
         3 &
-        &
+        \multirow{2}{*}{\twoguides} &
         \multirow{2}{*}{1} &
+        &
+        &
         3 &
         \multirow{2}{*}{4.0} &
         \multirow{2}{*}{-1.709} &
@@ -863,16 +881,20 @@ in group comparisons.
         4 &
         &
         &
+        &
+        &
         2 \\
 
-    \cmidrule(lr){2-10}
+    \cmidrule(lr){2-12}
 
       \multirow{2}{*}{Experiment ($A$)} &
         Pre &
         14 &
         3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{2} &
         \multirow{4}{*}{\fourguides} &
-        \multirow{2}{*}{0} &
+        \multirow{4}{*}{2} &
         3 &
         \multirow{2}{*}{9.5} &
         \multirow{2}{*}{-1.872} &
@@ -885,14 +907,18 @@ in group comparisons.
         5 &
         &
         &
+        &
+        &
         4 \\
 
       \multirow{2}{*}{Control ($B$)} &
         Pre &
         11 &
         3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{0} &
         &
-        \multirow{2}{*}{2} &
+        &
         3 &
         \multirow{2}{*}{13.0} &
         \multirow{2}{*}{-1.150} &
@@ -905,16 +931,20 @@ in group comparisons.
         3 &
         &
         &
+        &
+        &
         2 \\
 
-    \cmidrule(lr){2-10}
+    \cmidrule(lr){2-12}
 
       \multirow{2}{*}{Experiment ($A$)} &
         Pre &
         14 &
         3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{1} &
         \multirow{4}{*}{\fourguides} &
-        \multirow{2}{*}{0} &
+        \multirow{4}{*}{0} &
         3 &
         \multirow{2}{*}{7.5} &
         \multirow{2}{*}{-1.127} &
@@ -927,14 +957,18 @@ in group comparisons.
         4 &
         &
         &
+        &
+        &
         4 \\
 
       \multirow{2}{*}{Control ($B$)} &
         Pre &
         11 &
         3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{1} &
         &
-        \multirow{2}{*}{0} &
+        &
         3 &
         \multirow{2}{*}{5.5} &
         \multirow{2}{*}{-1.063} &
@@ -947,16 +981,20 @@ in group comparisons.
         4 &
         &
         &
+        &
+        &
         3 \\
 
-    \cmidrule(lr){2-10}
+    \cmidrule(lr){2-12}
 
       \multirow{2}{*}{Experiment ($A$)} &
         Pre &
         13 &
         3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{0} &
         \multirow{4}{*}{\fourguides} &
-        \multirow{2}{*}{-1} &
+        \multirow{4}{*}{1} &
         4 &
         \multirow{2}{*}{4.5} &
         \multirow{2}{*}{-1.298} &
@@ -969,14 +1007,18 @@ in group comparisons.
         3 &
         &
         &
+        &
+        &
         4 \\
 
       \multirow{2}{*}{Control ($B$)} &
         Pre &
         11 &
         4 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{-1} &
         &
-        \multirow{2}{*}{0} &
+        &
         3 &
         \multirow{2}{*}{9.5} &
         \multirow{2}{*}{-0.780} &
@@ -987,6 +1029,8 @@ in group comparisons.
         Post &
         11 &
         3 &
+        &
+        &
         &
         &
         3 \\
