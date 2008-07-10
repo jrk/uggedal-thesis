@@ -603,38 +603,41 @@ or a placebo.
 See
 \tableref{uptodate.favorite.specific.activities.between} for the results.
 
+\newcommand{\guides}{%
+  \begin{tikzpicture}
+    \draw (-1,1) -- (-1,1);
+    \begin{scope}[color=red]
+      \draw (-1,0.75) -- (0,0.5);
+      \draw (-1,0.2) -- (0,0.45);
+    \end{scope}
+  \end{tikzpicture}}
+
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrrrrrl}
+  \begin{tabular}{rrrrlrrrrl}
 
     &
     &
     &
-    &
-    \multicolumn{1}{c}{$Mdn_A$} &
-    &
-    &
-    &
-    \\
-
+    \multicolumn{2}{c}{$Mdn_A$} \\
 
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_B$} &
     \multicolumn{1}{c}{$Rng$} &
-    \multicolumn{1}{c}{$- Mdn_B$} &
     \multicolumn{1}{c}{$U$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} &
-    \\
+    \multicolumn{1}{c}{$p$} \\
 
-    \cmidrule(lr){2-8}
+    \cmidrule(lr){2-9}
 
     Experiment ($A$) &
     12 &
     5 &
-    4 &
+    \multirow{2}{*}{\guides} &
     \multirow{2}{*}{1,0} &
+    4 &
     \multirow{2}{*}{59} &
     \multirow{2}{*}{-0.479} &
     \multirow{2}{*}{0.340} &
@@ -643,19 +646,18 @@ See
     Control ($B$) &
     11 &
     4 &
-    2 &
     &
     &
-    &
-    \\
+    2 \\
 
-    \cmidrule(lr){2-8}
+    \cmidrule(lr){2-9}
 
     Experiment ($A$) &
     12 &
     4.5 &
-    4 &
+    \multirow{2}{*}{\guides} &
     \multirow{2}{*}{1.5} &
+    4 &
     \multirow{2}{*}{59} &
     \multirow{2}{*}{-0.460} &
     \multirow{2}{*}{0.289} &
@@ -664,19 +666,18 @@ See
     Control ($B$) &
     11 &
     3 &
-    2 &
     &
     &
-    &
-    \\
+    2 \\
 
-    \cmidrule(lr){2-8}
+    \cmidrule(lr){2-9}
 
     Experiment ($A$) &
     12 &
     3.5 &
-    4 &
+    \multirow{2}{*}{\guides} &
     \multirow{2}{*}{-0.5} &
+    4 &
     \multirow{2}{*}{66} &
     \multirow{2}{*}{0.000} &
     \multirow{2}{*}{0.517} &
@@ -685,19 +686,18 @@ See
     Control ($B$) &
     11 &
     4 &
-    3 &
     &
     &
-    &
-    \\
+    3 \\
 
-    \cmidrule(lr){2-8}
+    \cmidrule(lr){2-9}
 
     Experiment ($A$) &
     12 &
     3.5 &
-    4 &
+    \multirow{2}{*}{\guides} &
     \multirow{2}{*}{0.5} &
+    4 &
     \multirow{2}{*}{60} &
     \multirow{2}{*}{-0.385} &
     \multirow{2}{*}{0.372} &
@@ -706,11 +706,9 @@ See
     Control ($B$) &
     11 &
     3 &
-    3 &
     &
     &
-    &
-    \\
+    3 \\
 
   \end{tabular}
   \caption[Up-to-date on Favorites' Specific Activities, Between Groups]{%
@@ -732,7 +730,7 @@ See
 \tableref{uptodate.favorite.specific.activities.within} for the results of the
 in group comparisons.
 
-\newcommand{\guides}{%
+\renewcommand{\guides}{%
   \begin{tikzpicture}
     \draw (-1,1) -- (-1,1);
     \begin{scope}[color=red]
@@ -745,7 +743,6 @@ in group comparisons.
     \end{scope}
   \end{tikzpicture}}
 
-
 \begin{table}
   \begin{whole}
   \begin{tabular}{rrrrrlrrrrl}
@@ -754,12 +751,7 @@ in group comparisons.
     &
     &
     &
-    \multicolumn{2}{c}{$Mdn_A$} &
-    &
-    &
-    &
-    &
-    \\
+    \multicolumn{2}{c}{$Mdn_A$} \\
 
     &
     &
@@ -769,8 +761,7 @@ in group comparisons.
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} &
-    \\
+    \multicolumn{1}{c}{$p$} \\
 
     \cmidrule(lr){3-10}
 
