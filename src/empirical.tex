@@ -51,6 +51,14 @@ From this research question we also proposed more specific problem statements:
   up-to-date on reviews of favorites' songs on \urort{}?
 \end{quote}
 
+We were also conserned with how activity streams influenced the
+frequency of keeping up-to-date on activities:
+
+\begin{quote}
+  Does social navigation trough activity streams lead users to more often keep
+  up-to-date on favorites' activities in general on \urort{}?
+\end{quote}
+
 We also had a more technical research question relating to how one can
 conduct experiments on established web sites:
 
@@ -72,8 +80,8 @@ favorites' activities without an activity stream and $A$ is the degree
 respondents can easily keep-up-to-date with favorites' activites  with
 an activity stream.
 \begin{items}
-  \iterm{$H_0$:} $Med_B \geq Med_A$
-  \iterm{$H_A$:} $Med_B < Med_A$
+  \iterm{$H_0$:} $Mdn_{\sum{B}} \geq Mdn_{\sum{A}}$
+  \iterm{$H_A$:} $Mdn_{\sum{B}} < Mdn_{\sum{A}}$
 \end{items}
 
 From the main hypothesis on activities we have several more specific
@@ -86,8 +94,20 @@ without an activity stream and $A$ is the degree
 respondents can easily keep-up-to-date with favorites' specific
 activities with an activity stream.
 \begin{items}
-  \iterm{$H_0$:} $Med_B \geq Med_A$
-  \iterm{$H_A$:} $Med_B < Med_A$
+  \iterm{$H_0$:} $Mdn_{\sum{B}} \geq Mdn_{\sum{A}}$
+  \iterm{$H_A$:} $Mdn_{\sum{B}} < Mdn_{\sum{A}}$
+\end{items}
+
+Relating to the hypotheses about the degree respondents can keep
+up-to-date on activities we have a hypothesis concerning
+the frequency of keeping up-to-date.
+
+$B$ is the frequency respondents keep up-to-date on favorites' activities
+without an activity stream and $A$ is the frequency respondents keep
+up-to-date on favorites' activities with an activity stream.
+\begin{items}
+  \iterm{$H_0$:} $Mdn_{\sum{B}} \geq Mdn_{\sum{A}}$
+  \iterm{$H_A$:} $Mdn_{\sum{B}} < Mdn_{\sum{A}}$
 \end{items}
 
 \section{Method}
@@ -620,12 +640,12 @@ See
     &
     &
     &
-    \multicolumn{2}{c}{$Mdn_A$} \\
+    \multicolumn{2}{c}{$Mdn_{\sum{A}}$} \\
 
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
-    \multicolumn{2}{c}{$- Mdn_B$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{B}}$} &
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$U$} &
     \multicolumn{1}{c}{$Z$} &
@@ -688,14 +708,14 @@ The results can be seen in
     &
     &
     \multicolumn{2}{c}{Post} &
-    \multicolumn{2}{c}{$Mdn_A$} \\
+    \multicolumn{2}{c}{$Mdn_{\sum{A}}$} \\
 
     &
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
     \multicolumn{2}{c}{$-$ Pre} &
-    \multicolumn{2}{c}{$- Mdn_B$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{B}}$} &
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
@@ -817,12 +837,12 @@ See
     &
     &
     &
-    \multicolumn{2}{c}{$Mdn_A$} \\
+    \multicolumn{2}{c}{$Mdn_{\sum{A}}$} \\
 
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
-    \multicolumn{2}{c}{$- Mdn_B$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{B}}$} &
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$U$} &
     \multicolumn{1}{c}{$Z$} &
@@ -941,14 +961,14 @@ in group comparisons.
     &
     &
     \multicolumn{2}{c}{Post} &
-    \multicolumn{2}{c}{$Mdn_A$} \\
+    \multicolumn{2}{c}{$Mdn_{\sum{A}}$} \\
 
     &
     &
     \multicolumn{1}{c}{$N$} &
     \multicolumn{1}{c}{$Mdn$} &
     \multicolumn{2}{c}{$-$ Pre} &
-    \multicolumn{2}{c}{$- Mdn_B$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{B}}$} &
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
@@ -1212,6 +1232,15 @@ activity:
     of the median degree of how easy it was to keep up-to-date. 
     $H_0$ therefore stands unrejected for reviews.
 \end{items}
+
+\subsubsection{%
+  Does social navigation trough activity streams lead users to more often keep
+  up-to-date on favorites' activities in general on \urort{}?
+}
+
+
+
+
 
 \clearpage
 \clearpage
