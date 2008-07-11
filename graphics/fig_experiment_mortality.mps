@@ -1,11 +1,11 @@
 %!PS
-%%BoundingBox: 135 350 452 781 
-%%HiResBoundingBox: 135.59 350.3054 451.18005 780.46219 
+%%BoundingBox: 82 350 452 781 
+%%HiResBoundingBox: 82.82442 350.3054 451.18005 780.46219 
 %%Creator: MetaPost 0.993
-%%CreationDate: 2008.07.07:1245
+%%CreationDate: 2008.07.11:1114
 %%Pages: 1
-%*Font: cmr12 11.95517 11.95517 28:c2ffc4000088007c4fac
-%*Font: cmmi12 11.95517 11.95517 6e:a2
+%*Font: cmr12 11.95517 11.95517 25:985ff8800011000f89f58
+%*Font: cmmi12 11.95517 11.95517 3a:8000000000000a2
 %*Font: cmr8 7.97011 7.97011 31:e
 %*Font: cmss12 11.95517 11.95517 2d:800000401000008137a
 %%BeginProlog
@@ -172,6 +172,14 @@ newpath 405.35 502.8 moveto
 newpath 399.69 482.52 moveto
 405.35 474.96 lineto
 411.02 482.52 lineto stroke
+ 0.94 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 119.06 774.99 moveto
+119.06 355.46 lineto stroke
+ 0 0.94 dtransform truncate idtransform setlinewidth pop
+newpath 119.06 355.46 moveto
+124.72 355.46 lineto stroke
+newpath 119.06 774.99 moveto
+124.72 774.99 lineto stroke
  [3.63002 3.63002 ] 0 setdash
 newpath 368.5 559.56 moveto
 136.06 559.56 lineto stroke
@@ -219,6 +227,13 @@ newpath 364.50285 514.19997 moveto
 446.206 514.1999 446.2086 514.2 446.20744 514.2 curveto
 364.5027 514.2 lineto
  closepath stroke
+ 0 setlinejoin
+newpath 119.06 579.4 moveto
+124.72 579.4 lineto stroke
+newpath 119.06 641.76 moveto
+124.72 641.76 lineto stroke
+newpath 119.06 494.36 moveto
+124.72 494.36 lineto stroke
 202.77444 772.16 moveto
 (P) cmr12 11.95517 fshow
 210.41374 772.16 moveto
@@ -319,5 +334,29 @@ newpath 364.50285 514.19997 moveto
 (35) cmr12 11.95517 fshow
 234.39586 604.91 moveto
 (\(rand.\)) cmr12 11.95517 fshow
+82.82442 706.96 moveto
+(84) cmr12 11.95517 fshow
+94.53041 706.96 moveto
+(:) cmmi12 11.95517 fshow
+97.78201 706.96 moveto
+(4%) cmr12 11.95517 fshow
+82.82442 607.75 moveto
+(42) cmr12 11.95517 fshow
+94.53041 607.75 moveto
+(:) cmmi12 11.95517 fshow
+97.78201 607.75 moveto
+(2%) cmr12 11.95517 fshow
+82.82442 534.05 moveto
+(36) cmr12 11.95517 fshow
+94.53041 534.05 moveto
+(:) cmmi12 11.95517 fshow
+97.78201 534.05 moveto
+(6%) cmr12 11.95517 fshow
+82.82442 420.66 moveto
+(44) cmr12 11.95517 fshow
+94.53041 420.66 moveto
+(:) cmmi12 11.95517 fshow
+97.78201 420.66 moveto
+(4%) cmr12 11.95517 fshow
 showpage
 %%EOF
