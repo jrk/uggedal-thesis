@@ -516,14 +516,6 @@ all steps from a pretest ($N = 123$) to the posttest ($N = 14 + 11 = 25$)
 \end{sparkline}
 is quite high at 79.7\%.
 
-%%
-%% rewrite:
-%%
-In \tableref{respondent.profile.age} shows the mean age of both our experiment
-group, control group, and the respondents which never got a treatment or
-placebo. The differences between groups are unnoticeable and far from
-statistically significant.
-
 \newcommand{\threeguides}{%
   \begin{tikzpicture}
     \draw (-1,1) -- (-1,1);
@@ -540,10 +532,16 @@ statistically significant.
 
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrrrrrl}
+  \begin{tabular}{rrrrrrrrrrl}
+
+    &
+    &
+    \multicolumn{2}{c}{Gender (\%)} \\
 
     &
     \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{female} &
+    \multicolumn{1}{c}{male} &
     \multicolumn{1}{c}{$\overline{Age}$} &
     \multicolumn{1}{c}{$\sigma$} &
     &
@@ -551,10 +549,12 @@ statistically significant.
     \multicolumn{1}{c}{$Z$} &
     \multicolumn{1}{c}{$p$ (2-tailed)} \\
 
-    \cmidrule(lr){2-8}
+    \cmidrule(lr){2-10}
 
     $A$ &
     13 &
+    14.3 &
+    85.7 &
     26.23 &
     10.902 &
     \multirow{3}{*}{\threeguides} &
@@ -565,6 +565,8 @@ statistically significant.
 
     $B$ &
     11 &
+    --- &
+    100.0 &
     24.55 &
     7.917 &
     &
@@ -575,6 +577,8 @@ statistically significant.
 
     Rest &
     97 &
+    8.2 &
+    91.8 &
     26.81 &
     9.324 &
     &
@@ -584,14 +588,20 @@ statistically significant.
     $B$\dash{}Rest \\
 
   \end{tabular}
-  \caption[Respondents Age, Between Groups]{%
-    Respondents age. Comparison between
+  \caption[Respondents Gender and Age, Between Groups]{%
+    Respondents gender and age. Comparison of age between
     experiment group, control group, and those not given treatment
     or placebo.
   }
-  \label{table:respondents.profile.age}
+  \label{table:respondents.profile.gender.age}
   \end{whole}
 \end{table}
+
+\tableref{respondents.profile.gender.age} shows the gender distribution and
+mean age of both our experiment group, control group, and the respondents
+which never got a treatment or placebo. The age differences between groups are
+unnoticeable and far from statistically significant.
+The data shows that the majority of respondents were male.
 
 In addition to gather characteristics about age and gender we also
 investigated how frequent respondents used Firefox as their browser,
