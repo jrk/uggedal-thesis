@@ -505,10 +505,7 @@ the respondents of our pretest $n_2$. The non-achievement
 rates was more or less constant from pretest respondents $n_2$ to treatment
 $t_1$ and placebo $p_1$ obtention, to successful treatment $t_2$ and placebo
 $p_2$ installation, and finally to posttest respondents $t_3$ and $p_3$.
-
-In \tableref{respondent.profiles} we've summarized key characteristics
-of all respondents, the experiment group respondents, and the control group
-respondents. The non-achievement rate for going trough
+The non-achievement rate for going trough
 all steps from a pretest ($N = 123$) to the posttest ($N = 14 + 11 = 25$)
 \begin{sparkline}{3}
   %Name  Size Unit
@@ -517,98 +514,245 @@ all steps from a pretest ($N = 123$) to the posttest ($N = 14 + 11 = 25$)
   \sparkspike .25  1
   \sparkspike .75  .203
 \end{sparkline}
-is quite high at 79.7\%. The difference between the mean age and Firefox usage
-of the different groups is almost unnoticeable considering the low
-$N$ values. \urort{} usage is the characteristic where the groups differ most
-as the control group seems to be more experienced in this regard compared to
-all respondents and the experiment group.
+is quite high at 79.7\%.
+
+%%
+%% rewrite:
+%%
+In \tableref{respondent.profile.age} shows the mean age of both our experiment
+group, control group, and the respondents which never got a treatment or
+placebo. The differences between groups are unnoticeable and far from
+statistically significant.
+
+\newcommand{\threeguides}{%
+  \begin{tikzpicture}
+    \draw (-1,1) -- (-1,1);
+      \draw (-1,0.75) -- (-0.25,0.75);
+      \draw (-1,0.225) -- (-0.25,0.75);
+      \draw (-1,0.175) -- (-0.25,-0.35);
+      \draw (-1,-0.35) -- (-0.25,-0.35);
+    \begin{scope}[color=red]
+      \draw (-1,0.70) -- (-0.25,0.2);
+      \draw (-1,-0.30) -- (-0.25,0.2);
+    \end{scope}
+    \draw (-1,-1) -- (-1,-1);
+  \end{tikzpicture}}
 
 \begin{table}
   \begin{whole}
-  \begin{tabular}{rrrrrrrrrrr}
-
-    &
-    &
-    &
-    &
-    &
-    &
-    &
-    &
-    &
-    \multicolumn{2}{c}{Authenticated} \\
-
-    &
-    &
-    &
-    \multicolumn{2}{c}{Gender (\%)} &
-    \multicolumn{2}{c}{Uses Firefox (\%)} &
-    \multicolumn{2}{c}{Uses \urort{} (\%)} &
-    \multicolumn{2}{c}{on \urort{} (\%)} \\
+  \begin{tabular}{rrrrrrrrl}
 
     &
     \multicolumn{1}{c}{$N$} &
-    \multicolumn{1}{c}{$\overline{Age}$ ($\sigma$)} &
-    \multicolumn{1}{c}{male} &
-    \multicolumn{1}{c}{female} &
-    \multicolumn{1}{c}{often} &
-    \multicolumn{1}{c}{sporadic} &
-    \multicolumn{1}{c}{often} &
-    \multicolumn{1}{c}{sporadic} &
-    \multicolumn{1}{c}{often} &
-    \multicolumn{1}{c}{sporadic} \\
+    \multicolumn{1}{c}{$\overline{Age}$} &
+    \multicolumn{1}{c}{$\sigma$} &
+    &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (2-tailed)} \\
 
-    \cmidrule(lr){2-11}
-
-    All &
-    123 &
-    26.6 (9.3)&
-    91.0 &
-    8.1 &
-    86.2 &
-    13.8 &
-    63.4 &
-    36.6 &
-    47.2 &
-    52.8 \\
+    \cmidrule(lr){2-8}
 
     $A$ &
-    14 &
-    26.2 (10.9) &
-    85.7 &
-    14.3 &
-    85.7 &
-    14.3 &
-    57.1 &
-    42.9 &
-    64.3 &
-    35.7 \\
+    13 &
+    26.23 &
+    10.902 &
+    \multirow{3}{*}{\threeguides} &
+    68.5 &
+    -0.174 &
+    0.876 &
+    $A$\dash{}$B$ \\
 
     $B$ &
     11 &
-    24.6 (7.9) &
-    100.0 &
-    0.0 &
-    90.9 &
-    9.1 &
-    90.9 &
-    9.1 &
-    45.5 &
-    54.5 \\
+    24.55 &
+    7.917 &
+    &
+    580.0 &
+    -0.468 &
+    0.645 &
+    $A$\dash{}Rest \\
+
+    Rest &
+    97 &
+    26.81 &
+    9.324 &
+    &
+    475.0 &
+    -0.595 &
+    0.559 &
+    $B$\dash{}Rest \\
 
   \end{tabular}
-  \caption[Characteristics of Respondents]{%
-    Characteristics of respondents, by group. Often for Firefox use and
-    authenticated use of \urort{} is an aggregation of responses with
-    \q{always} and \q{regularly} while sporadic is an aggreagation of
-    \q{sometimes} and \q{seldom/never}. Similarly often usage of
-    \urort{} represents responses with \q{daily}, \q{several times a week},
-    and \q{weekly} while sporadic is an aggregation of
-    \q{monthly} and \q{seldom/never}.
+  \caption[Respondents Age, Between Groups]{%
+    Respondents age. Comparison between
+    experiment group, control group, and those not given treatment
+    or placebo.
   }
-  \label{table:respondent.profiles}
+  \label{table:respondents.profile.age}
   \end{whole}
 \end{table}
+
+In addition to gather characteristics about age and gender we also
+investigated how frequent respondents used Firefox as their browser,
+how often they used \urort{}, and how often they used \urort{} in an
+authenticated state.
+Based on the questions:
+\begin{items}
+  \item Do you use Firefox{}?
+  \item Do you sign-in (with user name and password) when using
+    \urort{}?
+\end{items}
+
+we graded respondents answers as follows:
+
+\begin{items}
+  \item Always: 5
+  \item Regularly: 4
+  \item Sometimes: 3
+  \item Seldom/never: 2
+\end{items}
+
+and based on the question:
+
+\begin{items}
+  \item How often do you use \urort{}?
+\end{items}
+
+we graded respondents answers as follows:
+
+\begin{items}
+  \item Daily: 5
+  \item Several times a week: 4
+  \item Weekly: 3
+  \item Monthly: 2
+  \item Seldom/never: 1
+\end{items}
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrrrrrll}
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{1}{c}{$Rng$} &
+    &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (2-tailed)} \\
+
+    \cmidrule(lr){2-8}
+
+    $A$ &
+    14 &
+    5 &
+    3 &
+    \multirow{3}{*}{\threeguides} &
+    70.5 &
+    -0.407 &
+    0.707 &
+    $A$\dash{}$B$ &
+    \multirow{3}{*}{Firefox usage} \\
+
+    $B$ &
+    11 &
+    5 &
+    2 &
+    &
+    668.0 &
+    -0.181 &
+    0.887 &
+    $A$\dash{}Rest \\
+
+    Rest &
+    98 &
+    5 &
+    3 &
+    &
+    508.5 &
+    -0.352 &
+    0.748 &
+    $B$\dash{}Rest \\
+
+    \cmidrule(lr){2-9}
+
+    $A$ &
+    14 &
+    3 &
+    4 &
+    \multirow{3}{*}{\threeguides} &
+    47.5 &
+    -1.757 &
+    0.085 &
+    $A$\dash{}$B$ &
+    \multirow{3}{*}{\urort{} usage} \\
+
+    $B$ &
+    11 &
+    4 &
+    2 &
+    &
+    653.5 &
+    -0.294 &
+    0.773 &
+    $A$\dash{}Rest \\
+
+    Rest &
+    98 &
+    3 &
+    4 &
+    &
+    353.5 &
+    -1.918 &
+    0.055 &
+    $B$\dash{}Rest \\
+
+    \cmidrule(lr){2-9}
+
+    $A$ &
+    14 &
+    4 &
+    3 &
+    \multirow{3}{*}{\threeguides} &
+    63.5 &
+    -0.774 &
+    0.462 &
+    $A$\dash{}$B$ &
+    \multirow{3}{*}{Authenticated usage} \\
+
+    $B$ &
+    11 &
+    3 &
+    3 &
+    &
+    572.5 &
+    -1.035 &
+    0.306 &
+    $A$\dash{}Rest \\
+
+    Rest &
+    98 &
+    3 &
+    3 &
+    &
+    527.5 &
+    -0.125 &
+    0.920 &
+    $B$\dash{}Rest \\
+
+  \end{tabular}
+  \caption[Respondents Firefox and \urort{} Usage, Between Groups]{%
+    Respondents Firefox and \urort{} usage. Comparison between
+    experiment group, control group, and those not given treatment
+    or placebo.
+  }
+  \label{table:respondents.profile.usage}
+  \end{whole}
+\end{table}
+
+
+
 \subsection{Keeping up-to-date on favorites' activities}
 
 \subsubsection{%
@@ -644,7 +788,7 @@ See
     \draw (-1,1) -- (-1,1);
     \begin{scope}[color=red]
       \draw (-1,0.75) -- (-0.25,0.5);
-      \draw (-1,0.2) -- (-0.25,0.45);
+      \draw (-1,0.2) -- (-0.25,0.5);
     \end{scope}
   \end{tikzpicture}}
 
@@ -664,7 +808,7 @@ See
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$U$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} \\
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
 
     \cmidrule(lr){2-9}
 
@@ -708,8 +852,8 @@ The results can be seen in
   \begin{tikzpicture}
     \draw (-1,1) -- (-1,1);
     \begin{scope}[color=red]
-      \draw (-1,0.5) -- (-0.25,0.025);
-      \draw (-1,-0.5) -- (-0.25,-0.025);
+      \draw (-1,0.5) -- (-0.25,0);
+      \draw (-1,-0.5) -- (-0.25,-0);
     \end{scope}
     \draw (-1,-1) -- (-1,-1);
   \end{tikzpicture}}
@@ -734,7 +878,7 @@ The results can be seen in
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} \\
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
 
     \cmidrule(lr){3-12}
 
@@ -861,7 +1005,7 @@ See
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$U$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} \\
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
 
     \cmidrule(lr){2-9}
 
@@ -987,7 +1131,7 @@ in group comparisons.
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} \\
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
 
     \cmidrule(lr){3-12}
 
@@ -1292,7 +1436,7 @@ displayed in \tableref{uptodate.favorite.activities.frequency.between}.
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$U$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} \\
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
 
     \cmidrule(lr){2-9}
 
@@ -1354,7 +1498,7 @@ The results can be seen in
     \multicolumn{1}{c}{$Rng$} &
     \multicolumn{1}{c}{$T$} &
     \multicolumn{1}{c}{$Z$} &
-    \multicolumn{1}{c}{$p$} \\
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
 
     \cmidrule(lr){3-12}
 
