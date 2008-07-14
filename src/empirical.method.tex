@@ -1,0 +1,370 @@
+\section{Method}
+\label{section:empirical.methodology}
+
+This section outlines the methodology we used for testing our research
+hypotheses. We'll dive in to the design of the experiment, how we collected
+the data, and how data was analyzed.
+
+\subsection{Experiment design}
+\label{section:empirical.methodology.experiment.design}
+
+\citet[\p{78}]{robson93} describes an experiment as a process where:
+
+
+\begin{items}
+  \item The experimenter assigns subjects to different conditions.
+  \item The experimenter manipulates one or more variables.
+    These variables are \term{independent variables}.
+  \item The experimenter measures the effect of the manipulation of
+    the independent variables on other variables. These other
+    variables are \term{dependent variables}.
+\end{items}
+
+We are conducting a real world experiment, meaning that our subjects
+are studied in their natural habitat\dash{}not in a laboratory.
+The advantages of a real world experiments are firstly that it's easier to
+generalize results to a wider real world population since one does not have
+an artificial setting as in laboratories. Secondly real world experiments are
+not as prone to gaming by its participants. Lastly it's easier to find willing
+subjects in the real world.
+
+Real world experiments have some shortcomings compared to laboratory
+experiments. Seemingly most important is the lack of control of various
+variables which could interfere with the independent variables.
+For more about the merits and disadvantages of real world experiments
+see \citet[\pp{80}{87}]{robson93}.
+
+More specifically we're using a two-group experiment design with a test before
+and after the independent variables are manipulated\dash{}a \term{treatment}.
+The two groups are:
+
+\begin{items}
+  \item A \term{experiment group}. This group are given a treatment by
+    manipulating an independent variable. We're distinguishing this
+    group with the letter $A$.
+  \item A \term{control group}. This group are not given a treatment but are
+    instead given a \term{placebo} which does not manipulate the independent
+    variable. We're distinguishing this group with the letter $B$.
+\end{items}
+
+Using two groups means that we can measure the difference between those that
+underwent treatment and those that were given a placebo. This gives us a way
+to measure the effect of the treatment.
+By using a before and after design we are also able to use pre-post
+differences as a basis for measuring the effect of treatment or no
+treatment.
+
+In our case the treatment is analogous with the prototype implementation with
+an activity stream for \urort{} as described in
+\sectionref{implementation.design.activity.stream}.
+The placebo on the other hand is the 
+prototype implementation with a favorite list as seen in
+\sectionref{implementation.design.favorite.list}.
+The favorite list is an integrated part of the treatment implementation
+meaning that the only difference between the two prototype versions are
+the activity stream\dash{}the independent variable we as experimenters are
+manipulating (by introducing the feature).
+
+Bearing in mind the details of our experiment design,
+\figureref{fig.experiment.setup} will give an overview of how the experiment
+process will be carried out. In addition to the pretest and posttest we
+conducted a follow-up survey of our respondents to gauge whether they managed
+to install our prototype implementation.
+
+\begin{figure}
+  \includegraphics{fig_experiment_setup}
+  \caption[Experiment Overview]{
+    Overview of the various parts of the experiment. The population $n_1$
+    are given a pretest. $n_2$ completes the pretest and $t_1$ are given
+    an treatment prototype while $p_1$ is given a placebo
+    prototype by randomization.
+    After one of the two types of prototypes are provided, respondents are
+    followed-up to check if they had problems installing the prototype
+    software. $n_3$ answers the follow-up questions.
+    $t_2$ successfully installed the treatment prototype and $p_2$
+    successfully installed the placebo prototype. Both $t_2$ and $p_2$ are
+    given a posttest.
+    $t_3$ of the treatment population $t_2$ and accordingly $p_3$ of the
+    placebo population $p_2$ completes the posttest.
+  }
+  \label{figure:fig.experiment.setup}
+\end{figure}
+
+\subsection{Subjects}
+
+The subjects were the 789 latest users of \urort{} which had
+signed in with their user name and password on the \urort{} page as of when
+the experiment was started.
+
+\subsection{Data collection}
+
+We collected all our data through questionnaires. An online survey system was
+used for creating a pretest, posttest, and follow-up questionnaire. The
+questionnaires can be found in their original language and wording in
+\appendixref{questionnaire}. What follows are translations to English
+of the most important questions and the response options.
+
+\subsubsection{Pretest questions}
+
+These questions were asked only in the pretest. Here we asked questions to
+get an impression of our pretest population:
+
+\begin{items}
+  \item Age{}?\dash{}a numerical value was expected.
+  \item Gender{}?\dash{}either male or female.
+  \item Firefox user{}?\dash{}selection between the following frequency of use
+    categories: always, regularly, sometimes, and seldom/never.
+  \item How often do you use \urort{}?\dash{}selection between the following
+    frequency categories: daily, several times a week, weekly, monthly,
+    and seldom/never.
+  \item Do you sign-in (with user name and password) when using
+    \urort{}?\dash{}selection between the following frequency
+    categories: always, regularly, sometimes, and seldom/never.
+\end{items}
+
+We did also ask an open-ended question to investigate if the respondents had
+any ideas about new features for \urort{} which would make it easier to
+be up-to-date on the latest developments of ones favorites:
+
+\begin{items}
+  \item Do you have any wishes for how \urort{} could make it easier to
+    keep up-to-date on favorites?
+\end{items}
+
+\subsubsection{Posttest questions}
+
+These questions were asked only in the posttest. First we asked specifically
+about usage of the prototype implementation.
+
+\begin{items}
+  \item How frequently have you used \latest{} when you are
+    signed-in on \urort{}?\dash{}selection between the following
+    frequency of use categories: have not used, only a few times, almost
+    every time, and every time.
+\end{items}
+
+Then we asked an open-ended question to investigate how \latest{} influenced
+usage of \urort{}:
+
+\begin{items}
+  \item How does \latest{} influence your usage of \urort{}?
+\end{items}
+
+Next we wanted to investigate the perceived usefulness and ease of use for
+our prototype implementation. This well tested approach for conveying
+technological acceptance was introduced by \citet{davis89}.
+Like \citet[\p{340}]{davis89} we used a 7-point scale as possible answers:
+
+\begin{items}
+  \item Extremely unlikely
+  \item Unlikely
+  \item Slight unlikely
+  \item Neutral
+  \item Slight likely
+  \item Likely
+  \item Extremely Likely
+\end{items}
+
+We shorted the statements of perceived usefulness down to four alternatives
+which we felt made sense for our implementation:
+
+\begin{items}
+  \item \latest{} would enable me to keep up-to-date on my favorites in an
+    efficient manner.
+  \item \latest{} would enable me to keep up-to-date on more favorites.
+  \item \latest{} would make it easier to keep up-to-date on favorites.
+  \item \latest{} would be useful for keeping up-to-date on favorites.
+\end{items}
+
+The statement for perceived ease of use was also shorted down to four
+alternatives:
+
+\begin{items}
+  \item It would be easy to learn to use \latest{}.
+  \item It would be easy to make \latest{} do what I want.
+  \item It would be easy to become skillful at using \latest{}.
+  \item \latest{} would be easy to use.
+\end{items}
+
+Lastly we wanted to investigate if respondents would like \latest{} to be a
+standard feature on \urort{}.
+We used a 5-point Likert scale \citep{likert32} to gauge respondents
+reactions:
+
+\begin{items}
+  \item Fully disagree
+  \item Somewhat disagree
+  \item Neither agree nor disagree
+  \item Somewhat agree
+  \item Fully agree
+\end{items}
+
+With the specific question:
+
+\begin{items}
+  \item Do you think \latest{} should be a standard feature of \urort{}?
+\end{items}
+
+\subsubsection{Pretest \oldand posttest questions}
+
+These questions were asked both in the pretest and posttest. First we asked
+questions to investigate the usage of favorites on \urort{} by our
+respondents:
+
+\begin{items}
+  \item How many favorites do you have on \urort{}?\dash{}a numerical value
+    of the amount of favorites the respondent had was expected.
+  \item What makes you add artist on \urort{} as favorites?\dash{}the
+    respondent could select one or more of preset reasons or provide their
+    own. The preset reasons were: the artist's \emph{music},
+    the artist's \emph{popularity}, \emph{friendship} with the artist,
+    and \emph{knowledge} of the artist.
+  \item How often do you update yourself on what your favorites on \urort{}
+    are doing?\dash{}the respondents could select between the following
+    frequency categories: daily, several times a week, weekly, monthly,
+    and seldom/never.
+\end{items}
+
+Then we asked the respondents to qualify several statements which investigated
+how easy it was for them to keep up-to-date on favorites.
+These statements
+was to be ranked on a 5-point Likert scale \citep{likert32}:
+
+\begin{items}
+  \item Fully disagree
+  \item Somewhat disagree
+  \item Neither agree nor disagree
+  \item Somewhat agree
+  \item Fully agree
+\end{items}
+
+And the statements:
+
+\begin{items}
+  \item It's easy to keep up-to-date on what my favorites are doing
+    on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites publishes
+    new songs on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites publishes
+    new blog posts on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites are
+    performing at concerts.
+  \item It's easy to keep up-to-date on the reactions other users at
+    \urort{} have towards my favorite artists' songs.
+\end{items}
+
+\subsubsection{Follow-up questions}
+
+We asked a small set of questions of how the installation process went. This
+was done to investigate how easy or hard installation of Greasemonkey based
+prototypes were:
+
+\begin{items}
+  \item Did you manage to install \latest{}?\dash{}the respondent had to
+  choose between these categories: yes\dash{}it was an easy and quick process,
+  yes\dash{}but I experienced small problems, yes\dash{}but I experienced
+  large problems, and no\dash{}I gave up.
+\end{items}
+
+An open ended question was asked to get more detail in case respondents had
+problems installing the Greasemonkey based prototype:
+
+
+\begin{items}
+  \item Please explain your problems with installing \latest{}, if you
+    experienced any.
+\end{items}
+
+\subsection{Data analysis}
+
+We used two statistical tests for analysing the data we collected. Due to the
+limitations a master thesis inherits we did not analyse the shapes of the
+distribution for our data. We have therefore not made any assumptions about
+the probability distribution of our data. This makes
+\term{non-parametric} statistical tests a natural fit as they don't make any
+assumptions about the distribution of the variables to be tested
+\citep{wikipedia08nonparametric}.
+
+Most of our data are of an ordianal measurement\dash{}meaning that one can
+infer the ranking of variables, but not the distance between rankings.
+To represent the central tendency of our data we'll therefore use the median
+as the mean makes little sence for ordianal data
+\citep{wikipedia08levelofmeasurement}.
+Ordinal data is another characteristic where non-parametric tests
+are best suited \citep{wikipedia08nonparametric}. We therefore decided
+to use the two following non-parametric statistical test.
+
+\subsubsection{Mann-Whitney U-test}
+
+The Mann-Whiteney U-test is a non-parametric test for comparing two
+independent conditions and can be seen as the non-parametric alternative to
+the famous independent t-test \citep[\p{522}]{field05}.
+According to \citet[\chap{11a}]{lowry08} the assumptions of the
+Mann-Whitney U-test are:
+
+\begin{enum}
+  \item The two samples under test should be randomly and independently drawn.
+  \item The dependent variable should be intrinsically continuous.
+  \item The measures of the two samples should be atleast of an ordinal scale.
+\end{enum}
+
+\subsubsection{Wilcoxon signed-rank test}
+
+The Wilcoxon signed-rank test is a non-parametric test for comparing two
+related conditions and is an non-parametric alternative to the
+dependent t-test \citep[\p{534}]{field05}.
+The assumptions of the Wilcoxon signed-rank test are similar to those
+of the Mann-Whitney U-test \citep[\chap{12a}]{lowry08}:
+
+\begin{enum}
+  \item The paried values of $X_A$ and $X_B$
+    should be randomly and independently drawn.
+  \item The dependent variable should be intrinsically continuous.
+  \item The measures of the paried values $X_A$ and $X_B$
+    should be atleast of an ordinal scale.
+\end{enum}
+
+%%
+%% p < 0.05 considered significant
+%%
+
+\subsubsection{Outliers}
+
+We went trough the collected data looking for outliers
+\dash{}\postquote{rowntree00}{%
+  extreme (high or low) values}
+We were only concerned with such numerical outliers for ratio values
+(age, number of favorites) where it would be meaningful to talk about means.
+For ordinal values we were not concerned with such outliers as we operated
+with medians for conveying the center of a distribution.
+If outliers were found, the value was simply deleted from the sample.
+
+Another form of outliers can be respondents which respond very
+monotonous\dash{}indicating that they just tick off questions without any
+thought. In such cases the respondents motivation is to complete the
+questionnaire as fast as possible. We did not eliminate such responses from
+the sample as it's hard to know the exact motivations of the respondents.
+In addition we don't have a particular large set of values for each respondent
+to base such analysis on and it would be hard to distinguish such outliers.
+
+\begin{figure}
+  \begin{whole}
+  \includegraphics{fig_experiment_mortality}
+  \caption[Experiment Non-Achievement Rates]{
+    Non-achievement rates for the various parts of the experiment.
+    The population $n_1$ of 789 \urort{} users were given a pretest and
+    a population $n_2$ of 123 completes the pretest.
+    By randomization a population $t_1$ of 35 were given a treatment while
+    a population $p_1$ of 36 were given a placebo.
+    The population $n_2$ were given a follow-up questionnaire for checking
+    how the installation of the prototypes went. $n_3$ completed the follow-up
+    questionnaire.
+    A population $t_2$ of 25 and a population $p_2$ of 20 managed to install
+    the treatment and placebo prototype respectively.
+    Of those a population $t_3$ of 14 from the treatment population $t_2$ and
+    a population $p_3$ of 11 from the placebo population $p_2$ completed
+    a posttest.
+  }
+  \label{figure:fig.experiment.mortality}
+  \end{whole}
+\end{figure}
