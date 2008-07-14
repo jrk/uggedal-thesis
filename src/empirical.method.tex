@@ -48,10 +48,16 @@ The two groups are:
 
 Using two groups means that we can measure the difference between those that
 underwent treatment and those that were given a placebo. This gives us a way
-to measure the effect of the treatment.
+to measure any difference induced by the actual treatment since we can detect
+possible \term{placebo effects} or \term{observer effects}.
+We will then be able to see if respondents are answering positively simply
+because they are given something new or they know that they are observed.
+
 By using a before and after design we are also able to use pre-post
 differences as a basis for measuring the effect of treatment or no
 treatment.
+
+
 
 In our case the treatment is analogous with the prototype implementation with
 an activity stream for \urort{} as described in
@@ -73,7 +79,7 @@ to install our prototype implementation.
 \begin{figure}
   \includegraphics{fig_experiment_setup}
   \caption[Experiment Overview]{
-    Overview of the various parts of the experiment. The population $n_1$
+    Overview of the various parts of the experiment. The sample $n_1$
     are given a pretest. $n_2$ completes the pretest and $t_1$ are given
     an treatment prototype while $p_1$ is given a placebo
     prototype by randomization.
@@ -83,8 +89,8 @@ to install our prototype implementation.
     $t_2$ successfully installed the treatment prototype and $p_2$
     successfully installed the placebo prototype. Both $t_2$ and $p_2$ are
     given a posttest.
-    $t_3$ of the treatment population $t_2$ and accordingly $p_3$ of the
-    placebo population $p_2$ completes the posttest.
+    $t_3$ of the treatment sample $t_2$ and accordingly $p_3$ of the
+    placebo sample $p_2$ completes the posttest.
   }
   \label{figure:fig.experiment.setup}
 \end{figure}
@@ -106,7 +112,7 @@ of the most important questions and the response options.
 \subsubsection{Pretest questions}
 
 These questions were asked only in the pretest. Here we asked questions to
-get an impression of our pretest population:
+get an impression of our pretest respondents:
 
 \begin{items}
   \item Age{}?\dash{}a numerical value was expected.
@@ -351,17 +357,17 @@ to base such analysis on and it would be hard to distinguish such outliers.
   \includegraphics{fig_experiment_mortality}
   \caption[Experiment Non-Achievement Rates]{
     Non-achievement rates for the various parts of the experiment.
-    The population $n_1$ of 789 \urort{} users were given a pretest and
-    a population $n_2$ of 123 completes the pretest.
-    By randomization a population $t_1$ of 35 were given a treatment while
-    a population $p_1$ of 36 were given a placebo.
-    The population $n_2$ were given a follow-up questionnaire for checking
+    The sample $n_1$ of 789 \urort{} users were given a pretest and
+    a sample $n_2$ of 123 completes the pretest.
+    By randomization a sample $t_1$ of 35 were given a treatment while
+    a sample $p_1$ of 36 were given a placebo.
+    The sample $n_2$ were given a follow-up questionnaire for checking
     how the installation of the prototypes went. $n_3$ completed the follow-up
     questionnaire.
-    A population $t_2$ of 25 and a population $p_2$ of 20 managed to install
+    A sample $t_2$ of 25 and a sample $p_2$ of 20 managed to install
     the treatment and placebo prototype respectively.
-    Of those a population $t_3$ of 14 from the treatment population $t_2$ and
-    a population $p_3$ of 11 from the placebo population $p_2$ completed
+    Of those a sample $t_3$ of 14 from the treatment sample $t_2$ and
+    a sample $p_3$ of 11 from the placebo sample $p_2$ completed
     a posttest.
   }
   \label{figure:fig.experiment.mortality}
