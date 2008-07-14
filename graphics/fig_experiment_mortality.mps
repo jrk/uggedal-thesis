@@ -1,11 +1,11 @@
 %!PS
 %%BoundingBox: 82 350 452 781 
-%%HiResBoundingBox: 82.82442 350.3054 451.18005 780.46219 
+%%HiResBoundingBox: 82.82442 350.8367 451.18005 780.46219 
 %%Creator: MetaPost 0.993
-%%CreationDate: 2008.07.11:1114
+%%CreationDate: 2008.07.14:1454
 %%Pages: 1
-%*Font: cmr12 11.95517 11.95517 25:985ff8800011000f89f58
-%*Font: cmmi12 11.95517 11.95517 3a:8000000000000a2
+%*Font: cmr12 11.95517 11.95517 25:985ff0800013000f81f5
+%*Font: cmmi12 11.95517 11.95517 3a:80500800000008
 %*Font: cmr8 7.97011 7.97011 31:e
 %*Font: cmss12 11.95517 11.95517 2d:800000401000008137a
 %%BeginProlog
@@ -234,29 +234,25 @@ newpath 119.06 641.76 moveto
 124.72 641.76 lineto stroke
 newpath 119.06 494.36 moveto
 124.72 494.36 lineto stroke
-202.77444 772.16 moveto
-(P) cmr12 11.95517 fshow
-210.41374 772.16 moveto
-(opulation) cmr12 11.95517 fshow
-262.44034 772.16 moveto
-(n) cmmi12 11.95517 fshow
-269.42795 770.3667 moveto
-(1) cmr8 7.97011 fshow
-277.48114 772.16 moveto
+212.67055 772.16 moveto
+(Sample) cmr12 11.95517 fshow
+253.64145 772.16 moveto
+(N) cmmi12 11.95517 fshow
+267.58495 772.16 moveto
 (=) cmr12 11.95517 fshow
-289.90654 772.16 moveto
-(789) cmr12 11.95517 fshow
-267.92114 576.57 moveto
+280.01045 772.16 moveto
+(171) cmr12 11.95517 fshow
+266.67119 576.57 moveto
 (Placeb) cmr12 11.95517 fshow
-302.22414 576.57 moveto
+300.97418 576.57 moveto
 (o) cmr12 11.95517 fshow
-311.97905 576.57 moveto
-(p) cmmi12 11.95517 fshow
-317.85425 574.7767 moveto
+310.7291 576.57 moveto
+(C) cmmi12 11.95517 fshow
+319.10419 574.7767 moveto
 (1) cmr8 7.97011 fshow
-325.90735 576.57 moveto
+327.15729 576.57 moveto
 (=) cmr12 11.95517 fshow
-338.33284 576.57 moveto
+339.5828 576.57 moveto
 (36) cmr12 11.95517 fshow
 237.73538 706.96 moveto
 (Pretest) cmss12 11.95517 fshow
@@ -264,13 +260,13 @@ newpath 119.06 494.36 moveto
 (P) cmss12 11.95517 fshow
 242.32364 423.5 moveto
 (osttest) cmss12 11.95517 fshow
-208.5641 491.53 moveto
-(t) cmmi12 11.95517 fshow
-212.7913 489.7367 moveto
+206.345 491.53 moveto
+(E) cmmi12 11.95517 fshow
+215.0103 489.7367 moveto
 (2) cmr8 7.97011 fshow
-220.8444 491.53 moveto
+223.0635 491.53 moveto
 (=) cmr12 11.95517 fshow
-233.2699 491.53 moveto
+235.489 491.53 moveto
 (25) cmr12 11.95517 fshow
 381.81007 528.38 moveto
 (F) cmss12 11.95517 fshow
@@ -281,56 +277,56 @@ newpath 119.06 494.36 moveto
 232.60739 636.09 moveto
 (n) cmmi12 11.95517 fshow
 239.59499 634.29669 moveto
-(2) cmr8 7.97011 fshow
+(1) cmr8 7.97011 fshow
 247.64809 636.09 moveto
 (=) cmr12 11.95517 fshow
 260.0736 636.09 moveto
 (123) cmr12 11.95517 fshow
-264.4301 491.53 moveto
-(p) cmmi12 11.95517 fshow
-270.3052 489.7367 moveto
+263.18016 491.53 moveto
+(C) cmmi12 11.95517 fshow
+271.55516 489.7367 moveto
 (2) cmr8 7.97011 fshow
-278.3584 491.53 moveto
+279.60837 491.53 moveto
 (=) cmr12 11.95517 fshow
-290.7839 491.53 moveto
+292.03386 491.53 moveto
 (20) cmr12 11.95517 fshow
 385.7639 457.51 moveto
 (n) cmmi12 11.95517 fshow
 392.7515 455.71669 moveto
-(3) cmr8 7.97011 fshow
+(2) cmr8 7.97011 fshow
 400.8046 457.51 moveto
 (=) cmr12 11.95517 fshow
 413.2301 457.51 moveto
 (38) cmr12 11.95517 fshow
-208.5641 352.63 moveto
-(t) cmmi12 11.95517 fshow
-212.7913 350.8367 moveto
+206.345 352.63 moveto
+(E) cmmi12 11.95517 fshow
+215.0103 350.8367 moveto
 (3) cmr8 7.97011 fshow
-220.8444 352.63 moveto
+223.0635 352.63 moveto
 (=) cmr12 11.95517 fshow
-233.2699 352.63 moveto
+235.489 352.63 moveto
 (14) cmr12 11.95517 fshow
-264.4301 352.63 moveto
-(p) cmmi12 11.95517 fshow
-270.3052 350.8367 moveto
+263.18016 352.63 moveto
+(C) cmmi12 11.95517 fshow
+271.55516 350.8367 moveto
 (3) cmr8 7.97011 fshow
-278.3584 352.63 moveto
+279.60837 352.63 moveto
 (=) cmr12 11.95517 fshow
-290.7839 352.63 moveto
+292.03386 352.63 moveto
 (11) cmr12 11.95517 fshow
-151.6095 576.57 moveto
+149.3904 576.57 moveto
 (T) cmr12 11.95517 fshow
-159.0883 576.57 moveto
+156.8692 576.57 moveto
 (reatmen) cmr12 11.95517 fshow
-200.3844 576.57 moveto
+198.1653 576.57 moveto
 (t) cmr12 11.95517 fshow
-208.8387 576.57 moveto
-(t) cmmi12 11.95517 fshow
-213.0659 574.7767 moveto
+206.6196 576.57 moveto
+(E) cmmi12 11.95517 fshow
+215.285 574.7767 moveto
 (1) cmr8 7.97011 fshow
-221.119 576.57 moveto
+223.33809 576.57 moveto
 (=) cmr12 11.95517 fshow
-233.5445 576.57 moveto
+235.7636 576.57 moveto
 (35) cmr12 11.95517 fshow
 234.39586 604.91 moveto
 (\(rand.\)) cmr12 11.95517 fshow

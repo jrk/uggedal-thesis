@@ -1,11 +1,11 @@
 %!PS
 %%BoundingBox: 135 350 452 781 
-%%HiResBoundingBox: 135.59 350.3054 451.18005 780.46219 
+%%HiResBoundingBox: 135.59 350.8367 451.18005 780.46219 
 %%Creator: MetaPost 0.993
-%%CreationDate: 2008.07.07:1244
+%%CreationDate: 2008.07.14:1454
 %%Pages: 1
-%*Font: cmr12 11.95517 11.95517 28:c20000000088007c4fac
-%*Font: cmmi12 11.95517 11.95517 6e:a2
+%*Font: cmr12 11.95517 11.95517 28:c20000000098007c0fa8
+%*Font: cmmi12 11.95517 11.95517 43:a0100000001
 %*Font: cmr8 7.97011 7.97011 31:e
 %*Font: cmss12 11.95517 11.95517 2d:800000401000008137a
 %%BeginProlog
@@ -219,25 +219,21 @@ newpath 364.50285 514.19997 moveto
 446.206 514.1999 446.2086 514.2 446.20744 514.2 curveto
 364.5027 514.2 lineto
  closepath stroke
-219.67615 772.16 moveto
-(P) cmr12 11.95517 fshow
-227.31544 772.16 moveto
-(opulation) cmr12 11.95517 fshow
-279.34204 772.16 moveto
-(n) cmmi12 11.95517 fshow
-286.32965 770.3667 moveto
-(1) cmr8 7.97011 fshow
+229.94763 772.16 moveto
+(Sample) cmr12 11.95517 fshow
+270.91853 772.16 moveto
+(N) cmmi12 11.95517 fshow
 249.50911 636.09 moveto
 (n) cmmi12 11.95517 fshow
 256.4967 634.29669 moveto
-(2) cmr8 7.97011 fshow
-281.89635 576.57 moveto
+(1) cmr8 7.97011 fshow
+280.64641 576.57 moveto
 (Placeb) cmr12 11.95517 fshow
-316.19934 576.57 moveto
+314.9494 576.57 moveto
 (o) cmr12 11.95517 fshow
-325.95425 576.57 moveto
-(p) cmmi12 11.95517 fshow
-331.82945 574.7767 moveto
+324.70432 576.57 moveto
+(C) cmmi12 11.95517 fshow
+333.0794 574.7767 moveto
 (1) cmr8 7.97011 fshow
 237.73538 706.96 moveto
 (Pretest) cmss12 11.95517 fshow
@@ -245,21 +241,21 @@ newpath 364.50285 514.19997 moveto
 (P) cmss12 11.95517 fshow
 242.32364 423.5 moveto
 (osttest) cmss12 11.95517 fshow
-278.40536 491.53 moveto
-(p) cmmi12 11.95517 fshow
-284.28047 489.7367 moveto
+277.15541 491.53 moveto
+(C) cmmi12 11.95517 fshow
+285.53041 489.7367 moveto
 (2) cmr8 7.97011 fshow
-222.5393 352.63 moveto
-(t) cmmi12 11.95517 fshow
-226.76651 350.8367 moveto
+220.32027 352.63 moveto
+(E) cmmi12 11.95517 fshow
+228.98557 350.8367 moveto
 (3) cmr8 7.97011 fshow
-278.40536 352.63 moveto
-(p) cmmi12 11.95517 fshow
-284.28047 350.8367 moveto
+277.15541 352.63 moveto
+(C) cmmi12 11.95517 fshow
+285.53041 350.8367 moveto
 (3) cmr8 7.97011 fshow
-222.5393 491.53 moveto
-(t) cmmi12 11.95517 fshow
-226.76651 489.7367 moveto
+220.32027 491.53 moveto
+(E) cmmi12 11.95517 fshow
+228.98557 489.7367 moveto
 (2) cmr8 7.97011 fshow
 381.81007 528.38 moveto
 (F) cmss12 11.95517 fshow
@@ -270,16 +266,16 @@ newpath 364.50285 514.19997 moveto
 399.73912 457.51 moveto
 (n) cmmi12 11.95517 fshow
 406.72672 455.71669 moveto
-(3) cmr8 7.97011 fshow
-165.5847 576.57 moveto
+(2) cmr8 7.97011 fshow
+163.3656 576.57 moveto
 (T) cmr12 11.95517 fshow
-173.0635 576.57 moveto
+170.8444 576.57 moveto
 (reatmen) cmr12 11.95517 fshow
-214.3596 576.57 moveto
+212.1405 576.57 moveto
 (t) cmr12 11.95517 fshow
-222.8139 576.57 moveto
-(t) cmmi12 11.95517 fshow
-227.0411 574.7767 moveto
+220.5948 576.57 moveto
+(E) cmmi12 11.95517 fshow
+229.26021 574.7767 moveto
 (1) cmr8 7.97011 fshow
 234.39586 604.91 moveto
 (\(rand.\)) cmr12 11.95517 fshow
