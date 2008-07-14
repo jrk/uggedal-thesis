@@ -292,21 +292,22 @@ problems installing the Greasemonkey based prototype:
 
 \subsection{Data analysis}
 
-We used two statistical tests for analysing the data we collected. Due to the
-limitations a master thesis inherits we did not analyse the shapes of the
-distribution for our data. We have therefore not made any assumptions about
-the probability distribution of our data. This makes
+We used two statistical tests for analysing the data we collected.
+Since our sample sizes were farily small we could not make any claims
+about the forms of the distribution for the \urort{} population
+from where our samples was drawn.
+This makes
 \term{non-parametric} statistical tests a natural fit as they don't make any
 assumptions about the distribution of the variables to be tested
-\citep{wikipedia08nonparametric}.
+\citep[\p{34}]{siegel88}.
 
 Most of our data are of an ordianal measurement\dash{}meaning that one can
 infer the ranking of variables, but not the distance between rankings.
 To represent the central tendency of our data we'll therefore use the median
 as the mean makes little sence for ordianal data
-\citep{wikipedia08levelofmeasurement}.
+\citep[\p{27}]{siegel88}.
 Ordinal data is another characteristic where non-parametric tests
-are best suited \citep{wikipedia08nonparametric}. We therefore decided
+are best suited \citep[\p{35}]{siegel88}. We therefore decided
 to use the two following non-parametric statistical test.
 
 \subsubsection{Mann-Whitney U-test}
@@ -314,6 +315,10 @@ to use the two following non-parametric statistical test.
 The Mann-Whiteney U-test is a non-parametric test for comparing two
 independent conditions and can be seen as the non-parametric alternative to
 the famous independent t-test \citep[\p{522}]{field05}.
+More formally the Mann-Whiteney U-test can
+\postquote[\p{128}]{siegel88}{%
+  be used to test whether two independent groups have been drawn from
+  the same population}
 According to \citet[\chap{11a}]{lowry08} the assumptions of the
 Mann-Whitney U-test are:
 
