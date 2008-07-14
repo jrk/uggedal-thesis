@@ -254,6 +254,39 @@
 \RequirePackage{pdflscape}
 \RequirePackage{multirow}
 
+\newcommand{\twoguides}{%
+  \begin{tikzpicture}
+    \draw (-1,1) -- (-1,1);
+    \begin{scope}[color=red]
+      \draw (-1,0.75) -- (-0.25,0.5);
+      \draw (-1,0.2) -- (-0.25,0.5);
+    \end{scope}
+  \end{tikzpicture}}
+
+\newcommand{\threeguides}{%
+  \begin{tikzpicture}
+    \draw (-1,1) -- (-1,1);
+      \draw (-1,0.75) -- (-0.25,0.75);
+      \draw (-1,0.225) -- (-0.25,0.75);
+      \draw (-1,0.175) -- (-0.25,-0.35);
+      \draw (-1,-0.35) -- (-0.25,-0.35);
+    \begin{scope}[color=red]
+      \draw (-1,0.70) -- (-0.25,0.2);
+      \draw (-1,-0.30) -- (-0.25,0.2);
+    \end{scope}
+    \draw (-1,-1) -- (-1,-1);
+  \end{tikzpicture}}
+
+\newcommand{\fourguides}{%
+  \begin{tikzpicture}
+    \draw (-1,1) -- (-1,1);
+    \begin{scope}[color=red]
+      \draw (-1,0.5) -- (-0.25,0);
+      \draw (-1,-0.5) -- (-0.25,-0);
+    \end{scope}
+    \draw (-1,-1) -- (-1,-1);
+  \end{tikzpicture}}
+
 
 %%
 %% Side notes/tables/figures
