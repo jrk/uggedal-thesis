@@ -636,7 +636,7 @@ them and handle them gracefully when they arrive. Secondly one could
 introduce a meta structure in the web site by using agreed-upon
 class names of certain \abbr{HTML} elements in the style of
 what \term{microformats}%
-\sidenote{
+\sidenote[-15]{
   Microformats are a set of simple and open data formats for better
   structuring of web content. All microformats adheres to the
   principles of solving a specific problem, starting as simply as
@@ -751,7 +751,7 @@ aspect of a problem as one does when adhering to the concept of
 \term{separation of concerns} \citep[\p{61}]{dijkstra82}.
 A client-server model also enables one to scale both horizontally and
 vertically%
-\sidenote{
+\sidenote[-1]{
   To scale horizontally entails adding more servers to a client-server
   architecture. When one increases the resources of a single server
   one is scaling vertically.
@@ -799,7 +799,7 @@ In the planning stages of our implementation and its early development we
 decided to store all information retrieved from the \urort{} web site
 in a relational database. We did some study into selecting the best
 \abbr{ORM}%
-\sidenote[-9]{
+\sidenote[-21]{
   \abbr{ORM}, an acronym for object-relational mapping, is
   \postquote[\p{889}]{linskey07}{%
     the technique of converting records in a relational database into
@@ -813,7 +813,7 @@ for connecting our application to the underlying database. We had this nice
 model where the underlying relational database engine was abstracted away
 and interaction to this database was done with a clear and explicative
 \abbr{DSL},%
-\sidenote{
+\sidenote[-8]{
   \abbr{DSL} or domain-specific languages are programming languages shaped
   for a specific domain. By doing so one can offer more expressiveness in a
   limited application domain. This results in better usability
@@ -821,7 +821,7 @@ and interaction to this database was done with a clear and explicative
   using a general-purpose programming language \citep[\p{317}]{mernik05}.
 }
 eliminating the need for constructing complex \abbr{SQL}.%
-\sidenote[10]{
+\sidenote{
   \abbr{SQL} (initially named \abbr{SEQUEL}) stands for structured
   query language and is now the \latin{de facto} language for interacting
   with relational databases. It was invented by 
@@ -837,7 +837,7 @@ source. And since the data had to be kept up to date by retrieving the data
 from our source within certain intervals, we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
 keeping a \term{cache}%
-\sidenote[7]{
+\sidenote[-3]{
   According to \prequote{wikipedia08cache}{a cache is}{%
     a temporary storage area where frequently accessed data can be stored for
     rapid access}
@@ -964,6 +964,34 @@ functions as a partitioning scheme when implementing on the client side.
 Our client side software was contained in two files\dash{}one file for each
 of our two versions (control and full-featured).
 
+However, on the server side we had to write more code and our code had to
+handle quite a large set of operations. We therefore implemented our server
+side software with the use of modules, classes, objects, and methods.
+A figure of how the various classes and modules are related to each other
+can be found in \figureref{fig.prototype.class.diagram}.
+The abstractions those constructs gave us, made it easier to
+precisely handle the complexity and disparity of our solution. 
+As
+\begin{fullquote}[\p{864}]{dijkstra72}{puts it}
+  the purpose of abstracting is not to be vague, but to create a new
+  semantic level in which one can be absolutely precise.
+\end{fullquote}
+
+\begin{figure}
+  \begin{whole}
+    \includegraphics{fig_prototype_class_diagram}
+    \caption[Prototype Class Diagram]{
+      Diagram of classes and modules in the prototype server software.
+    }
+    \label{figure:fig.prototype.class.diagram}
+  \end{whole}
+\end{figure}
+
+To make the handling of our source code easier we used a hierarchy of
+directories and files that resembled our module and class constructs. One
+file and possible directories was used for each module and class
+as can be seen in \figureref{prototype.server.file.hierarchy}.
+
 \sidefigure[Prototype Server File Hierarchy]{%
   Hierarchy of the server prototype software.
   The code for producing this hierarchy listing can be found in
@@ -999,34 +1027,6 @@ of our two versions (control and full-featured).
     |--rort.rb
   }}
 }
-
-However, on the server side we had to write more code and our code had to
-handle quite a large set of operations. We therefore implemented our server
-side software with the use of modules, classes, objects, and methods.
-A figure of how the various classes and modules are related to each other
-can be found in \figureref{fig.prototype.class.diagram}.
-The abstractions those constructs gave us, made it easier to
-precisely handle the complexity and disparity of our solution. 
-As
-\begin{fullquote}[\p{864}]{dijkstra72}{puts it}
-  the purpose of abstracting is not to be vague, but to create a new
-  semantic level in which one can be absolutely precise.
-\end{fullquote}
-
-\begin{figure}
-  \begin{whole}
-    \includegraphics{fig_prototype_class_diagram}
-    \caption[Prototype Class Diagram]{
-      Diagram of classes and modules in the prototype server software.
-    }
-    \label{figure:fig.prototype.class.diagram}
-  \end{whole}
-\end{figure}
-
-To make the handling of our source code easier we used a hierarchy of
-directories and files that resembled our module and class constructs. One
-file and possible directories was used for each module and class
-as can be seen in \figureref{prototype.server.file.hierarchy}.
 
 \subsection{Data structure}
 
@@ -1093,6 +1093,25 @@ Initially we did not architect our application with performance in mind. We
 wanted to create a working prototype first and then try to increase it's
 performance if need be.
 
+It became apparent that creating an activity stream for a user with several
+favorites was very time consuming. We identified the major bottleneck to be
+the actual retrieval of information from the \urort{} web page. We could not
+do much code and algorithm wise to remedy this problem. The only solution
+was to increase the bandwidth allowed on our internet connection.
+As can be seen in
+\tableref{retrieval.time.and.speed}
+our retrieval times decreased as we moved to a production server with
+better internet connectivity.
+
+The next bottleneck we became aware of was also related to the cost of
+retrieving web pages from \urort{}. We did some careful counting of the number
+of retrieval attempts to \urort{} and were able to minimize these to a
+considerably lower number.
+
+The last bottleneck we encountered was the actual parsing of the retrieved web
+pages from \urort{}. We were able to implement some minor optimizations, but
+did not see any major improvements.
+
 \sidetable[Retrieval Time and Speed]{%
   Retrieval time and speed of a typical artist profile page (423kB in size),
   by system.
@@ -1124,25 +1143,6 @@ performance if need be.
 
   \end{tabular}
 }
-
-It became apparent that creating an activity stream for a user with several
-favorites was very time consuming. We identified the major bottleneck to be
-the actual retrieval of information from the \urort{} web page. We could not
-do much code and algorithm wise to remedy this problem. The only solution
-was to increase the bandwidth allowed on our internet connection.
-As can be seen in
-\tableref{retrieval.time.and.speed}
-our retrieval times decreased as we moved to a production server with
-better internet connectivity.
-
-The next bottleneck we became aware of was also related to the cost of
-retrieving web pages from \urort{}. We did some careful counting of the number
-of retrieval attempts to \urort{} and were able to minimize these to a
-considerably lower number.
-
-The last bottleneck we encountered was the actual parsing of the retrieved web
-pages from \urort{}. We were able to implement some minor optimizations, but
-did not see any major improvements.
 
 But the major performance gains were seen when we introduced a fast cache
 solution and a system for periodically warming this cache up,

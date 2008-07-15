@@ -397,7 +397,7 @@ which we value highly.
 It seems others have take jQuery and its
 virtues to hart as many large corporations like Google, Intel, Dell, and
 \abbr{BBC} have used it in their public facing offerings.%
-\sidenote{
+\sidenote[-2]{
   For a complete list see \url{http://docs.jquery.com/Sites_Using_jQuery}.
 }
 
@@ -479,7 +479,7 @@ and been able to adopt new paradigms in programming as they've appered.
 Even though we walue programming efficiency over computational performance,
 it should be noted that Common Lisp have been described as the only performant
 dynamic language \citep{martin08} compared to statically compiled languages.%
-\sidenote[-8]{
+\sidenote[-9]{
   In \work{The Computer Language Benchmarks Game}
   (see \url{http://shootout.alioth.debian.org})
   several programming
@@ -772,7 +772,7 @@ for general purpose applications. He goes on to say that the treshold
 for wether one should use a sequential server is response times that
 are no longer than 2--3 seconds. Seeing as our application could very
 well fall outside this treshold for some requests%
-\sidenote[-5]{
+\sidenote{
   When the data the user is requesting can not be found in the cache
   we have to retrieve the data from \urort{} and perform calculations
   on it. This can be quite time consuming and could very well exceed
@@ -956,18 +956,18 @@ There are however several different forms of version control system one can
 use. One of the most used version control implementations the last years
 in open source circles was
 \project{Subversion}%
-\sidenote[-8]{
+\sidenote[-12]{
   Available at \url{http://subversion.tigris.org}.
 }\dash{}a \term{centralized version control system} meaning that one central
 server holds the version controlled code repository and its history.%
-\sidenote[-8]{
+\sidenote[-12]{
   Developers on the client-side have working copies and need to contact the
   centralized server to get a hold of historical data and create new history.
 }
 Recently \term{decentralized version control systems} have become more popular
 amongst developers. A decentralized model means that every developer can have
 their own repository consisting of all history.%
-\sidenote[-6]{
+\sidenote[-10]{
   You can for instance be without internet connectivity and still commit
   changes, revert to previous versions, and handle all other tasks your
   version control system supports.
@@ -977,7 +977,7 @@ repositories. This enables a much better model for collaboration.
 We favor this last model of version control and so have projects
 like \project{Linux}, \project{X}, \project{Mozilla},
 and \project{OpenSolaris}.%
-\sidenote[-3]{
+\sidenote[-7]{
   \citeauthor{torvalds07}, author of the Linux kernel,
   have described Subversion and centralized version control
   as fundamentally flawed since it's supposed to be a
@@ -988,11 +988,11 @@ and \project{OpenSolaris}.%
 Based on criteria of performance and current adoption there are in our view
 only two interesting decentralized version control systems:
 \project{Git}%
-\sidenote[1]{
+\sidenote[-3]{
   Available at \url{http://git.or.cz}.
 }
 and \project{Mercurial}.%
-\sidenote[3]{
+\sidenote[-1]{
   Available at \url{http://www.selenic.com/mercurial}.
 }
 Both are unique in that they don't track meta-data, they just track
@@ -1028,7 +1028,7 @@ Development environments found in Lisp%
       possibilities for user convenience}
 }
 and Smalltalk%
-\sidenote[9]{
+\sidenote[10]{
   Similar to Lisp's programming environment
   \postquote[\p{viii}]{goldberg83}{%
     Smalltalk is designed so that every component in the system that is
@@ -1155,7 +1155,7 @@ solutions trough our specification suite. But as described in
 performance problems. For locating the bottlenecks in our
 application\dash{}the places that consumed the most time\dash{}we used
 a \term{profiler}%
-\sidenote{
+\sidenote[-3]{
   A profiler is a tool used by developers for identifying the execution time
   of various parts of a program or how often these parts of the program are
   utilized \citep[\p{120}]{graham82}. It's used when trying to improve the
@@ -1163,7 +1163,7 @@ a \term{profiler}%
   iterative way \citep[\p{125}]{graham82}.
 }
 called \project{ruby-prof}.%
-\sidenote[9]{
+\sidenote[6]{
   Available at \url{http://rubyforge.org/projects/ruby-prof}.
 }
 This is the fastest profiler for Ruby and it can generate various forms of
