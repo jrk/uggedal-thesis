@@ -39,7 +39,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8x]{inputenc}
 \RequirePackage{lmodern}
-\RequirePackage[mathlf]{MinionPro}
+\RequirePackage{MinionPro}
 \renewcommand{\scdefault}{ssc}
 \newfont{\chapnum}{eurb10 scaled 8000}
 \newcommand{\lowercaps}[1]{\textsc{\MakeLowercase{#1}}}
