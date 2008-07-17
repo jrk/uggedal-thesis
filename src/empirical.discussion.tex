@@ -399,13 +399,52 @@ During our development of a prototype application with Greasemonkey for
 enhancing an established web page we got a feel for its pros and cons from a
 development perspective.
 
+
+\subsubsection{Unintrusive for the established implementation}
+
+Prototyping with Greasemonkey is unintrusive for both the creators
+of a web site and its users.  One are only manipulating
+pages on an already existing web site when having explicitly installed
+Greasemonkey and an accompanying user-script. This means that one can
+conduct experiments by altering a web site without contacting its authors
+nor having to inform the web site's existing users. One are in other words
+only altering content on the client side\dash{}in the browser. Normal users
+are presented with the web site as served by its the web server.
+
+We had contact with the creators of \urort{} relating to our prototype
+implementation. But the prototype could just aswell be implemented without
+having contact with the creators.%
+\sidenote{
+  We benefited from such contact mainly since we were able to easier
+  getting hold of experiment participants.
+}
+
 \subsubsection{Requires no access to the established implementation}
+
+The creators of \urort{} benefited from a Greasemonkey approach since they
+could keep going on with their work without worrying about potential breakage
+caused by our prototype. Since we did not access their implementation we could
+not make any harm on the product that was delivered to non-experiment users.
 
 \subsubsection{Requires little knowledge of the established implementation}
 
-\subsubsection{Requires more work than altering the established
+If we had been permitted access to the \urort{} implementation we imagine
+there would be a large upfront investment in learning how the \urort{}
+architecture worked before we could start conducting any implementation work.
+With a Greasemonkey approach there was some learning which had to be completed
+before we could dive in to implementation work, but we believe this to be less
+than what would be required to change the \urort{} implementation.
+
+\subsubsection{Could require more work than altering the established
   implementation}
 
+In our work with creating a navigational prototype we had to investigate how
+\urort{} worked in its outward facing interface. This was a somewhat
+convoluted experience.
+% go on to say that if one knows the established implementation well,
+% it's probably easier to change that.
+
+% elaborate
 \subsubsection{Fragile when the established implementation is changed}
 % Only happened once during a two month span on \urort{}. What was scary
 % thought was that the changes made the user script on the client side
