@@ -678,7 +678,7 @@
 
     The guidelines found in \work{The Visual Display of\\
     Quantitative Information} by \citet{tufte01} were\\
-    followed when creating diagrams.\\
+    followed when creating diagrams and tables.\\
     Colors used in diagrams and figures were inspired\\
     by the \work{Summer Fields} color scheme found at\\
     \url{http://www.colourlovers.com/palette/399372}\\
