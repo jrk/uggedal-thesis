@@ -452,11 +452,38 @@ If one knows the underlying implementation of an established web site it's
 probably easier to change that directly.
 
 \subsubsection{Fragile when the established implementation is changed}
-% Only happened once during a two month span on \urort{}. What was scary
-% thought was that the changes made the user script on the client side
-% obsolete. If this had happened under production usage when the user scripts
-% was pushed to the clients we would be in a world of trouble. Changes on the
-% server side platform can be handled more transparently.
+
+A Greasemonkey based prototype have to hook in to the structure of the
+established web site one are prototyping. If this underlying structure changes
+the prototype can cease to function properly. The ammount of harm such a
+change imposes depends on what parts of a client-server Greasemonkey prototype
+it hits:
+
+\begin{items}
+  \iterm{Server side:} If changes to the established web page breaks
+    functionality on the server side, the prototype would be unusable
+    while the changes are compensated for in the server side implementation.
+    The experiment would probably not be jeopardized if
+    one are able to sort out such problems in a timely manner.
+  \iterm{Client side:} If changes to the underlying web site hinder the client
+    side Greasemonkey user-script to hook in to the web site and change its
+    contents, one could be in a world of pain. Regardless of how easy the
+    breakage can be fixed, one would need to publish a new user-script version
+    and get experiment users to install this. Needless to say, this could
+    have major ramifications on how well the experiment goes.
+\end{items}
+
+When we were developing our prototype, before the experiment was conducted,
+the developers of \urort{} imposed a change which made our client side
+user-script malfunction. The fix was easy and no harm were done since the
+user-script had not been deployed to experiment participants.
+
+We did not experience any changes which imposed bugs in our server side
+prototype component. Nevertheless we were aware of the possibility of such
+changes and tried to keep updated of how our prototype functioned at all
+times. Since we used automated testing in our development (see
+\sectionref{implementation.process.testing} for details) we could verify
+our server side implementation at all times.
 
 \subsubsection{Less performant than the established implementation}
 
