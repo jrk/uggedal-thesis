@@ -284,7 +284,7 @@ artists as favorites could possibly lead to more favoring.
 When we conducted the experiment of our prototype with real world users
 we got valuable feedback on how well such a technical solution works.
 Since Greasemonkey enabled client with a dedicated server backend is (to our
-knowledge) a new way of experimenting with social navigation we did not
+knowledge) a new way of experimenting with social navigation, we did not
 make any hypotheses about the failure or success of the solution.
 We consider this early work on such prototypes where a few lessons
 were learnt.
@@ -296,7 +296,7 @@ As descibed in
 implementations for all major browsers. Greasemonkey for Firefox is the only
 implementation that supports sending requests to other domains than the domain
 a user-script is running under. This means that if one have to use a server
-backend to handle the heavy lifting (as we did) one are limited to
+backend to handle the heavy lifting (as we did), one are limited to
 using Firefox as a browser plattform.%
 \sidenote{
   Unless one have the opportunity to run the server software under the domain
@@ -320,25 +320,26 @@ account the limited outreach Firefox have when deciding on a Greasemonkey
 based prototype.
 
 We specifically asked for users of Firefox when we contancted
-789 potential respondents. 171 responded to our request while 123 completed
+789 potential respondents. 171 responded to our request, while 123 completed
 our pretest survey.%
 \sidenote[7]{
   See
   \figurepageref{fig.experiment.mortality}
   for details.
 }
-Those who completed the pretest survey reported a median usage frequency as
+Those who completed the pretest survey reported a median usage frequency of
+Firefox as
 \q{always}.%
 \sidenote[8]{
   See
   \tablepageref{respondents.profile.usage}
   for details.
 }
-This means that from 789 people 171 (22\%) bothered to take our survey and was
-likely a Firefox user.
+This means that from 789 people, 171 (22\%) bothered to take our survey and
+was likely a Firefox user.
 This means that either almost 100\% of all potential respondents with a
 Firefox web browser decided to answer our survey (highly unlikely) or Firefox
-usage for our sample of \urort{} users are above the norm for Norway.
+usage for our sample of \urort{} users were above the norm for Norway.
 
 \subsubsection{Difficulties with installing Greasemonkey and user-scripts}
 
@@ -349,7 +350,7 @@ Installing our prototype software consisted of two steps:
   \item Installing our protoype user-script for Greasemonkey.
 \end{enum}
 
-The first step in the installation process consists of
+The first step in the installation process consisted of
 \begin{inparaenum}[(i)]
   \item navigating to the Greasemonkey installation page,
   \item clicking an installation button on the page,
@@ -357,10 +358,13 @@ The first step in the installation process consists of
     dialog, and
   \item restarting the Firefox browser.
 \end{inparaenum}
-The last step in the installation process consists of
+The second step in the installation process consisted of
 \begin{inparaenum}[(i)]
-  \item filling out an email address so we can associate answers
-    to the pretest with the group the respondent is randomly distributed to,
+  \item filling out an email address,%
+    \sidenote{
+      We needed the respondents' email addresses for associating answers to
+      the pretest with the group each respondent was randomly distributed to
+    }
   \item pressing an install hyperlink on the user-script installation page,
     and
   \item clicking on an installation button in a user-script installation
@@ -377,7 +381,7 @@ Our non-accomplish rates%
   for details.
 }
 shows that of the 71 ($E_1 + C_1$) respondents which bothered trying
-installing the prototype only 45 ($E_2 + C_2$) managed to do so. This equates
+installing the prototype, only 45 ($E_2 + C_2$) managed to do so. This equates
 to a drop off rate of 36.6\%.
 
 If we look at our follow-up questionnaire responses%
@@ -393,16 +397,15 @@ These are quite high rates of unsuccessfull
 installations and one should keep this in mind when one designs an
 experiment where respondents have to install Gresemonkey and user-scripts
 themselves. To solve this problem one could design an experiment where
-participants were invited to a lab where all software were pre-installed. A
+participants were invited to a lab (where all software were pre-installed). A
 lab study have its shortcomings too, as we've described in
 \sectionref{empirical.methodology.experiment.design}.
 
 \parabreak
 
 During our development of a prototype application with Greasemonkey for
-enhancing an established web page we got a feel for its pros and cons from a
-development perspective.
-
+enhancing an established web page we also got a feel for its pros and cons
+from a development perspective.
 
 \subsubsection{Unintrusive for the established implementation}
 
@@ -410,20 +413,18 @@ Prototyping with Greasemonkey is unintrusive for both the creators
 of a web site and its users.  One are only manipulating
 pages on an already existing web site when having explicitly installed
 Greasemonkey and an accompanying user-script. This means that one can
-conduct experiments by altering a web site without contacting its authors
+conduct experiments by altering a web site without contacting its authors,
 nor having to inform the web site's existing users. One are in other words
 only altering content on the client side\dash{}in the browser. Normal users
 are presented with the web site as served by its the web server.
 
-We had contact with the creators of \urort{} relating to our prototype
-implementation. But the prototype could just aswell be implemented without
-having contact with the creators.%
+We had contact with the creators of \urort{} during our prototype
+implementation phase. But the prototype could just aswell be implemented
+without having contact with the creators.%
 \sidenote{
-  We benefited from such contact mainly since we were able to easier
-  getting hold of experiment participants.
+  Easy access to experiment participants was the main benefit we had with
+  keeping in contact with the creators of \urort{}.
 }
-
-\subsubsection{Requires no access to the established implementation}
 
 The creators of \urort{} benefited from a Greasemonkey approach since they
 could keep going on with their work without worrying about potential breakage
@@ -435,20 +436,21 @@ not make any harm on the product that was delivered to non-experiment users.
 If we had been permitted access to the \urort{} implementation we imagine
 there would be a large upfront investment in learning how the \urort{}
 architecture worked before we could start conducting any implementation work.
-With a Greasemonkey approach there was some learning which had to be completed
-before we could dive in to implementation work, but we believe this to be less
-than what would be required to change the \urort{} implementation.
+With a Greasemonkey approach, there was some learning which had to be
+completed before we could dive in to implementation work, but we believe this
+to be less than what would be required to change the \urort{} implementation.
 
 \subsubsection{Could require more work than altering the established
   implementation}
 
 In our work with creating a navigational prototype we had to investigate how
-\urort{} worked in its outward facing interface. This was a somewhat
+\urort{} worked trough its outward facing interface. This was a somewhat
 convoluted experience.
-% go on to say that if one knows the established implementation well,
-% it's probably easier to change that.
+We believe it would be much easier to change the \urort{} implementation
+directly had we been well acquainted with its inner workings.
+If one knows the underlying implementation of an established web site it's
+probably easier to change that directly.
 
-% elaborate
 \subsubsection{Fragile when the established implementation is changed}
 % Only happened once during a two month span on \urort{}. What was scary
 % thought was that the changes made the user script on the client side
