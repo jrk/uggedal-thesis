@@ -76,7 +76,7 @@ meaning can be found in
 When starting the content inventory of Flickr it became apparent that the
 architects had chosen to use a \abbr{REST}ful
 approach for their \abbr{URL} scheme.%
-\sidenote{
+\sidenote[-2]{
   A system that adheres to the principles of \abbr{REST}
   (Representational State Transfer)
   \citep[\p{76}]{fielding00} are sometimes called
@@ -109,13 +109,6 @@ our inventory phase, but decided not to display them in this thesis.
   Id & Page Title & Link Name & Link Location \\
   \midrule
   \endhead
-
-  % Footer except for last page
-  \multicolumn{4}{l}{{\emph{Continued on the next page}\ldots}} \\
-  \endfoot
-
-  % Last page footer
-  \endlastfoot
 
   % Data
 
@@ -860,9 +853,26 @@ the 14th of May 2008. We're also using variables for our Facebook inventory
 and their representations can be found in
 \tableref{facebook.variable.list}.
 
-\begin{table}
-  \begin{whole}
-     \begin{tabular}{lp{20pc}l}
+Note that we've described the users of Facebook as people. At Flickr one can
+have an online, almost anonymous, nickname. On Facebook on the other hand one
+have to provide a real name%
+\sidenote[-5]{
+  From the Facebook help pages:
+  \postquote{facebook08a}{%
+    Facebook disallows certain names and words in names that tend to be
+    associated with fake accounts (e.g. Paris Hilton)}
+}
+and the account have to represent an existing individual.%
+\sidenote[-1]{
+  From the Facebook help pages:
+  \postquote{facebook08a}{%
+    using the name of a group or organization is not permitted, as
+    Facebook accounts are for individual use only}
+}
+
+\begin{table}[!b]
+  \begin{footnotesize}
+    \begin{tabular}{lp{18pc}l}
 
       Variable & Description \\
       \midrule
@@ -963,29 +973,11 @@ and their representations can be found in
       A variable number of fans of a fan page. \\
 
     \end{tabular}
-    \caption[Variable Listing for Facebook]{%
-             Variables used in Facebook inventory}
-    \label{table:facebook.variable.list}
-  \end{whole}
+  \end{footnotesize}
+  \caption[Variable Listing for Facebook]{%
+           Variables used in Facebook inventory}
+  \label{table:facebook.variable.list}
 \end{table}
-
-Note that we've described the users of Facebook as people. At Flickr one can
-have an online, almost anonymous, nickname. On Facebook on the other hand one
-have to provide a real name%
-\sidenote[-5]{
-  From the Facebook help pages:
-  \postquote{facebook08a}{%
-    Facebook disallows certain names and words in names that tend to be
-    associated with fake accounts (e.g. Paris Hilton)}
-}
-and the account have to represent an existing individual.%
-\sidenote[-1]{
-  From the Facebook help pages:
-  \postquote{facebook08a}{%
-    using the name of a group or organization is not permitted, as
-    Facebook accounts are for individual use only}
-}
-
 
 % Long multi-page table
 \begin{landscape}
@@ -1004,13 +996,6 @@ and the account have to represent an existing individual.%
   Id & Page Title & Link Name & Link Location \\
   \midrule
   \endhead
-
-  % Footer except for last page
-  \multicolumn{4}{l}{{\emph{Continued on the next page}\ldots}} \\
-  \endfoot
-
-  % Last page footer
-  \endlastfoot
 
   % Data
 
