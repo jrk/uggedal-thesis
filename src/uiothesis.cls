@@ -86,6 +86,8 @@
 
 \definecolor{bar}{HTML}{8D9965}
 
+\definecolor{urlcolor}{rgb}{0.24,0.35,0.5}
+
 
 %%
 %% Graphics
@@ -434,7 +436,11 @@
 \urlstyle{sf}
 
 \hypersetup{%
-  colorlinks=false,
+  colorlinks=true,
+  linkcolor=black,
+  anchorcolor=black,
+  citecolor=black,
+  urlcolor=urlcolor,
   breaklinks,
   pdfborder=0 0 0,
 }
