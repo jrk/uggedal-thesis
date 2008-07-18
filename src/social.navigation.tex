@@ -1,33 +1,6 @@
 \chapter{Introducing Social Navigation}
 \label{chapter:social.navigation}
 
-% 1. how the literature was collected (describe it pragmatically)
-%
-% 2. literature review (summary, analysis, and comparisons)
-%
-%   A literature review should answer:
-%
-%     * What do we already know about the topic?
-%     * What do you have to say critically about what is already known?
-%     * Has anyone else done anything exactly the same?
-%     * Has anyone else done anything that is related?
-%     * Where does your work fit in with what is done before?
-%     * Why is your research worth doing in the light of what has
-%       already been done?
-%
-%   A literature review should be a dialogic rather than a mere
-%   replication of other peoples writing. Should not be a laundry
-%   list of previous studies.
-%
-%   Be focused and critical. Include an incisive critique that will help your
-%   peers see the world differently.
-%
-% 3. paragraph or two about my subject related to popular literature
-%    (search Amazon or Library of Congress and say something like: there
-%    were X books about this subject, the first was published in 2001
-%    but the majority of books were published the last two years, and
-%    maybe show a graph)
-
 After we've descried how we collected our secondary literature for which we've
 based this chapter we'll briefly discuss navigation and sociality, both in
 general terms and relating to the web. Then we'll concentrate on these two
@@ -1243,10 +1216,6 @@ filtering performance was not certain\dash{}even though the authors
 strongly believed in this idea
 \citep[\p{250}]{herlocker00}.
 
-%%
-%% Need read-trough from this point to the next marker.
-%%
-
 Collaborative filtering is used on several modern web sites. One example is
 \project{Reddit}\dash{}a web site where people can submit links to everything
 they find interesting. Users of the community then votes these submissions up
@@ -1255,7 +1224,7 @@ Submissions are then
 sorted based both on how many votes it have and how new it is. Users are not
 given personalized listings based on their voting history. Reddit is thus
 similar to Tapestry with regards to how the collaborative filtering works in
-that one does not infer similarities amongst users (as in GroupLens).%
+that similarities amongst users is not infered (as in GroupLens).
 
 \begin{figure}
   \includegraphics[width=0.95\textwidth]{scrsh_reddit}
@@ -1270,46 +1239,48 @@ that one does not infer similarities amongst users (as in GroupLens).%
   \label{figure:scrsh.reddit}
 \end{figure}
 
-As Reddit recently became open source we were able to take a peek into its
-collaborative filtering functionality. We did this to dissect how collaborative
-filtering algorithms are used for real applications. The source code of this
-algorithm can be found in \sourcecoderef{reddit.cf.algorithm}. What follows is
-the algorithm in mathematical notation.
+As Reddit recently became open source%
+\sidenote{
+  The source code of Reddit can be found at
+  \url{http://code.reddit.com}.
+}
+we were able to take a peek into its
+collaborative filtering functionality. We did this to dissect how
+collaborative filtering algorithms are used in real applications. The source
+code of this algorithm can be found in
+\sourcecodepageref{reddit.cf.algorithm}.
+What follows is the algorithm used on Reddit in mathematical notation.
 
-Given the time the entry was posted $A$ and
-the time of 7:46:43 a.m. December 8, 2005 $B$,
+Given the time the entry was posted $t_{posted}$ and
+the time of 7:46:43 a.m. December 8, 2005 $t_{cutoff}$,
 we have $t_s$ as their difference in seconds
 \begin{align*}
-  t_s &= A - B \\
-  \intertext{and $x$ as the difference between the number of up votes $U$
-             and the number of down votes $D$}
-  x &= U - D \\
-  \intertext{where $y \in \{-1, 0, 1\}$}
-  y &= 
+  t_s &= t_{posted} - t_{cutoff} \\
+  \intertext{and $v_{sum}$ as the difference between the number of up votes
+             $v_{up}$ and the number of down votes $v_{down}$}
+  v_{sum} &= v_{up} - v_{down} \\
+  \intertext{where the sign $s \in \{-1, 0, 1\}$}
+  s &= 
   \begin{cases} 
-     1 & \text{if } x > 0 \\
-     0 & \text{if } x = 0 \\
-    -1 & \text{if } x < 0
+     1 & \text{if } v_{sum} > 0 \\
+     0 & \text{if } v_{sum} = 0 \\
+    -1 & \text{if } v_{sum} < 0
   \end{cases} \\
-  \intertext{and $z$ as the maximal value,
-             of the absolute value of $x$ and $1$}
-  z &= 
+  \intertext{and $v_{max}$ as the maximal value,
+             of the absolute value of $v_{sum}$ and $1$}
+  v_{max} &= 
   \begin{cases} 
-    |x| & \text{if } |x| \geq 1 \\
-    1   & \text{if } |x| < 1
+    |v_{sum}| & \text{if } |v_{sum}| \geq 1 \\
+    1   & \text{if } |v_{sum}| < 1
   \end{cases} \\
-  \intertext{we have the rating as a function $f(t_s, y, z)$}
-  f(t_s, y, z) &= \log_{10}{z} + \frac{yt_s}{45000}
+  \intertext{we have the rating as a function $f(t_s, s, v_{max})$}
+  f(t_s, s, v_{max}) &= \log_{10}{v_{max}} + \frac{st_s}{45000}
 \end{align*}
 
 The resulting rating is a real number which is used for numerically sorting
 entries. This is neither a computationally expensive algorithm nor a very
 complicated algorithm. In spite of this we feel it delivers satisfying results
 (as daily users of Reddit).
-
-%%
-%% End of read-trough.
-%%
 
 \parabreak
 
