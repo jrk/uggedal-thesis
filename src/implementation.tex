@@ -912,7 +912,7 @@ price to pay for reduced latency.
 
 In the traditional style of \abbr{AJAX} applications we request information on
 the client-side of our prototype asynchronous.%
-\sidenote[-7]{
+\sidenote{
   While it's possible to create synchronous requests with the
   \code{XMLHttpRequest} object
   it's discouraged. With such requests the entire web browser
@@ -944,6 +944,44 @@ JavaScript \citep[\p{9}]{jazayeri07}
     \label{figure:fig.prototype.class.diagram}
   \end{whole}
 \end{figure}
+
+Both the client-side and server-side programming languages we used
+are as we'll see in
+\sectionref{selection.stack.client.language} and
+\sectionref{selection.stack.server.language} \term{object-oriented}.%
+\sidenote{
+  The term object-orientation was coined by \citet{kay03} sometime in 1967.
+  The motivations leading to object-oriented programming were mainly
+  to find \q{%
+    a better module scheme for complex systems involving hiding of details}
+  and finding \postquote[p{514}]{kay96}{%
+    a more flexible version of assignment, and then try to
+    eliminate it altogether}
+  The essence of object-orientation lies in the fundamental concepts of
+  abstraction, classes, encapsulation, inheritance, object, message passing,
+  methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
+}
+
+Since our client software was pretty dense in code size (see
+\sectionref{implementation.source.code} for details) and only had to handle
+a small set of operations we did not use object oriented
+features as classes and objects to structure our client code. Instead we used
+functions as a partitioning scheme when implementing on the client side.
+Our client side software was contained in two files\dash{}one file for each
+of our two versions (control and full-featured).
+
+However, on the server side we had to write more code and our code had to
+handle quite a large set of operations. We therefore implemented our server
+side software with the use of modules, classes, objects, and methods.
+A figure of how the various classes and modules are related to each other
+can be found in \figureref{fig.prototype.class.diagram}.
+The abstractions those constructs gave us, made it easier to
+precisely handle the complexity and disparity of our solution. 
+As
+\begin{fullquote}[\p{864}]{dijkstra72}{puts it}
+  the purpose of abstracting is not to be vague, but to create a new
+  semantic level in which one can be absolutely precise.
+\end{fullquote}
 
 \sidefigure[Prototype Server File Hierarchy]{%
   Hierarchy of the server prototype software.
@@ -980,44 +1018,6 @@ JavaScript \citep[\p{9}]{jazayeri07}
     |--rort.rb
   }}
 }
-Both the client-side and server-side programming languages we used
-are as we'll see in
-\sectionref{selection.stack.client.language} and
-\sectionref{selection.stack.server.language} \term{object-oriented}.%
-\sidenote[-18]{
-  The term object-orientation was coined by \citet{kay03} sometime in 1967.
-  The motivations leading to object-oriented programming were mainly
-  to find \q{%
-    a better module scheme for complex systems involving hiding of details}
-  and finding \postquote[p{514}]{kay96}{%
-    a more flexible version of assignment, and then try to
-    eliminate it altogether}
-  The essence of object-orientation lies in the fundamental concepts of
-  abstraction, classes, encapsulation, inheritance, object, message passing,
-  methods, and polymorphism \citep[\pp{124}{126}]{armstrong06}.
-}
-
-Since our client software was pretty dense in code size (see
-\sectionref{implementation.source.code} for details) and only had to handle
-a small set of operations we did not use object oriented
-features as classes and objects to structure our client code. Instead we used
-functions as a partitioning scheme when implementing on the client side.
-Our client side software was contained in two files\dash{}one file for each
-of our two versions (control and full-featured).
-
-However, on the server side we had to write more code and our code had to
-handle quite a large set of operations. We therefore implemented our server
-side software with the use of modules, classes, objects, and methods.
-A figure of how the various classes and modules are related to each other
-can be found in \figureref{fig.prototype.class.diagram}.
-The abstractions those constructs gave us, made it easier to
-precisely handle the complexity and disparity of our solution. 
-As
-\begin{fullquote}[\p{864}]{dijkstra72}{puts it}
-  the purpose of abstracting is not to be vague, but to create a new
-  semantic level in which one can be absolutely precise.
-\end{fullquote}
-
 To make the handling of our source code easier we used a hierarchy of
 directories and files that resembled our module and class constructs. One
 file and possible directories was used for each module and class
