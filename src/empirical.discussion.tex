@@ -454,8 +454,8 @@ probably easier to change that directly.
 \subsubsection{Fragile when the established implementation is changed}
 
 A Greasemonkey based prototype have to hook in to the structure of the
-established web site one are prototyping. If this underlying structure changes
-the prototype can cease to function properly. The ammount of harm such a
+established web site one are prototyping. The prototype can cease to function
+properly if this underlying structure changes. The ammount of harm such a
 change imposes depends on what parts of a client-server Greasemonkey prototype
 it hits:
 
@@ -467,7 +467,7 @@ it hits:
     one are able to sort out such problems in a timely manner.
   \iterm{Client side:} If changes to the underlying web site hinder the client
     side Greasemonkey user-script to hook in to the web site and change its
-    contents, one could be in a world of pain. Regardless of how easy the
+    contents, one could be in a world of pain. Regardless of how easily the
     breakage can be fixed, one would need to publish a new user-script version
     and get experiment users to install this. Needless to say, this could
     have major ramifications on how well the experiment goes.
@@ -479,13 +479,11 @@ user-script malfunction. The fix was easy and no harm were done since the
 user-script had not been deployed to experiment participants.
 
 We did not experience any changes which imposed bugs in our server side
-prototype component. Nevertheless we were aware of the possibility of such
-changes and tried to keep updated of how our prototype functioned at all
+prototype component. Nevertheless, we were aware of the possibility of such
+changes and tried to keep updated on how our prototype functioned at all
 times. Since we used automated testing in our development (see
 \sectionref{implementation.process.testing} for details) we could verify
 our server side implementation at all times.
-
-\subsubsection{Less performant than the established implementation}
 
 \section{Generalizability and Validity}
 
