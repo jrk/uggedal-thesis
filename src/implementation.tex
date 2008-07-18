@@ -267,7 +267,7 @@ aggregators are shown in \figureref{scrsh.friendfeed.me} and
 
 When the news feed was introduced on Facebook in September 2006 users
 immediately responded negatively since they felt their privacy was
-compromised. Even though all data available trough the news feed had
+compromised. Even though all data available through the news feed had
 previously been available to the same users, the aggregated and efficient
 display of this information led to concerns \citep[\pp{13}{14}]{boyd08}. 
 Interestingly these negative first reactions seemed to vanish as
@@ -298,7 +298,7 @@ our prototype implementation for \urort{}.
 \subsubsection{Relevant activities}
 
 The approach seen at Facebook for letting users know what's fresh and relevant
-trough an activity stream seemed a good fit for \urort{}. But
+through an activity stream seemed a good fit for \urort{}. But
 \urort{} does not have the concept of friends as seen in social network sites.
 \urort{} exists for people to freely share their music and let others find
 music they like\dash{}and not making new friends or keeping in touch with
@@ -488,7 +488,7 @@ earlier projects.
 where one writes an automated test for a non-existent feature or
 improvement before one actually implement the feature itself\dash{}development
 is literally driven by tests. So the focus is not primarily on the test, but
-to better design software trough a test-first approach.
+to better design software through a test-first approach.
 \citet{janzen08} conducted studies
 on both developers in companies and university students for finding out
 whether a test-driven approach improved the quality of software design.
@@ -684,12 +684,12 @@ already present on \urort{}.
   different network domain than the web application?}
 \label{section:implementation.architecture,extending.different.domain}
 
-Standard web pages can asynchronously retrieve information trough using
+Standard web pages can asynchronously retrieve information through using
 JavaScript and the \code{XMLHttpRequest} object. To enforce a certain
 level of security browsers does not allow such requests to retrieve
 information from other domains than what the request was sent from.
 This limitation is eliminated in Greasemonkey scripts as one can request
-information from other domains trough a similar asynchronous request object
+information from other domains through a similar asynchronous request object
 existing in the extension.
 
 This feature is vital for our project. As we'll see in the next section we're
@@ -730,9 +730,9 @@ The client is a \openpostquote[\p{11}]{malkin96}{%
 and the server is a \postquote[\p{49}]{malkin96}{%
   provider of resources}
 More specifically a client presents the user interface, uses a predefined
-language for querying the server, communicates these queries trough a given
+language for querying the server, communicates these queries through a given
 communication method, performs computation on the the results of queries send
-by the server, and displays these trough the user interface
+by the server, and displays these through the user interface
 \citep[\pp{78}{79}]{sinha92}. A server is characterized by providing a service
 to the client, responding to queries constructed by the client,
 and hiding away its underlying technical system for the client
@@ -826,7 +826,7 @@ eliminating the need for constructing complex \abbr{SQL}.%
 Then we had a sudden realization when coding on the part of our application
 that retrieved information from the external \urort{} web site, pushed it into
 our relational database, and made our data available in a structured manner
-trough our \abbr{ORM} layer. It was not critical if we lost some or the
+through our \abbr{ORM} layer. It was not critical if we lost some or the
 entirety of this data. We could just retrieve it again from our external
 source. And since the data had to be kept up to date by retrieving the data
 from our source within certain intervals, we saw no need to make it available
