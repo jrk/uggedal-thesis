@@ -247,6 +247,16 @@
                           singlelinecheck=false,%
                           position=bottom}
 
+\newcommand{\reducecaption}[1]{%
+  \strictpagechecktrue
+  \checkoddpage
+  \ifoddpage%
+    \captionsetup{margin={0pc,#1pc}}
+  \else%
+    \captionsetup{margin={#1pc,0pc}}
+  \fi%
+}
+
 
 %%
 %% Tables
