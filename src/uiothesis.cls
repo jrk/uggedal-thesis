@@ -390,6 +390,13 @@
   \centering
   \strictpagechecktrue
   \begin{adjustwidth*}{0em}{-\wholemargin}
+  \strictpagechecktrue
+  \checkoddpage
+  \ifoddpage%
+    \RaggedRight%
+  \else%
+    \RaggedLeft%
+  \fi%
 }{%
   \end{adjustwidth*}
 }
