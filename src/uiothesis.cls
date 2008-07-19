@@ -393,9 +393,9 @@
   \strictpagechecktrue
   \checkoddpage
   \ifoddpage%
-    \RaggedRight%
+    \raggedright
   \else%
-    \RaggedLeft%
+    \raggedleft
   \fi%
 }{%
   \end{adjustwidth*}
