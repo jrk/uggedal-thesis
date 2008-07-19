@@ -579,6 +579,27 @@
 % ID
 \newcommand{\identifier}{\abbr{ID}}
 
+% Reseaerch problem
+\newcommand{\rp}[2][]{%
+  \toks@{#1}%
+  \edef\reserved@a{\the\toks@}%
+  \ifx\reserved@a\@empty%
+    #2
+  \else%
+    \abbr{RP#1}: #2
+  \fi%
+}
+
+% Reseaerch hypotheses
+\newcommand{\rh}[2][]{%
+  \toks@{#1}%
+  \edef\reserved@a{\the\toks@}%
+  \ifx\reserved@a\@empty%
+    #2
+  \else%
+    \abbr{H#1}: #2
+  \fi%
+}
 
 %%
 %% Quotations and citations
