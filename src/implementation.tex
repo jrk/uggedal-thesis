@@ -242,9 +242,21 @@ intrigued by how easy it was to keep updated on the latest developments for
 our friends by using its news feed as described in
 \sectionref{analysis.facebook.news.feed}. 
 
+\newcommand{\placefriendfeed}{%
+  \sidefigure[FriendFeed Activity Stream]{%
+    Activity stream for the author on FriendFeed,
+    retrieved May 18, 2008, from
+    \url{http://friendfeed.com/uggedal}
+    \label{figure:scrsh.friendfeed.me}
+  }{%
+    \includegraphics[width=0.9\marginparwidth]{scrsh_friendfeed_me}
+  }
+}
+
 Such streams of activity seem to have become popular also outside Facebook.
 \project{Socialthing!} and \project{FriendFeed} are two services that
 aggregates such streams from several sources and provides an unified stream.
+\placefriendfeed%
 Their distinguishing factor is that Socialthing! fetches activities for your
 existing friends on services as Facebook and Flickr. FriendFeed on the other
 hand only collect activities from the people you decide to follow on
@@ -281,15 +293,6 @@ it was introduced. An ethnographic study conducted by
 \citet[\p{3126}]{chapman08} of several social network sites
 including Facebook found the news feed to be one of the primary means of
 interacting with the web site.
-
-\sidefigure[FriendFeed Activity Stream]{%
-  Activity stream for the author on FriendFeed,
-  retrieved May 18, 2008, from
-  \url{http://friendfeed.com/uggedal}
-  \label{figure:scrsh.friendfeed.me}
-}{%
-  \includegraphics[width=0.9\marginparwidth]{scrsh_friendfeed_me}
-}
 
 Based on both our own observations and other's of the perceived usefulness
 of activity streams, we decided on using such a navigational design in
@@ -631,7 +634,7 @@ them and handle them gracefully when they arrive. Secondly one could
 introduce a meta structure in the web site by using agreed-upon
 class names of certain \abbr{HTML} elements in the style of
 what \term{microformats}%
-\sidenote[-15]{
+\sidenote{
   Microformats are a set of simple and open data formats for better
   structuring of web content. All microformats adheres to the
   principles of solving a specific problem, starting as simply as
@@ -794,7 +797,7 @@ In the planning stages of our implementation and its early development we
 decided to store all information retrieved from the \urort{} web site
 in a relational database. We did some study into selecting the best
 \abbr{ORM}%
-\sidenote[-15]{
+\sidenote[-2]{
   \abbr{ORM}, an acronym for object-relational mapping, is
   \postquote[\p{889}]{linskey07}{%
     the technique of converting records in a relational database into
@@ -808,7 +811,7 @@ for connecting our application to the underlying database. We had this nice
 model where the underlying relational database engine was abstracted away
 and interaction to this database was done with a clear and explicative
 \abbr{DSL},%
-\sidenote[-6]{
+\sidenote[7]{
   \abbr{DSL} or domain-specific languages are programming languages shaped
   for a specific domain. By doing so one can offer more expressiveness in a
   limited application domain. This results in better usability
@@ -816,7 +819,7 @@ and interaction to this database was done with a clear and explicative
   using a general-purpose programming language \citep[\p{317}]{mernik05}.
 }
 eliminating the need for constructing complex \abbr{SQL}.%
-\sidenote[2]{
+\sidenote[17]{
   \abbr{SQL} (initially named \abbr{SEQUEL}) stands for structured
   query language and is now the \latin{de facto} language for interacting
   with relational databases. It was invented by 
@@ -832,7 +835,7 @@ source. And since the data had to be kept up to date by retrieving the data
 from our source within certain intervals, we saw no need to make it available
 in a relational database. We were not trying to persist data, but rather
 keeping a \term{cache}%
-\sidenote[-1]{
+\sidenote[14]{
   According to \prequote{wikipedia08cache}{a cache is}{%
     a temporary storage area where frequently accessed data can be stored for
     rapid access}
@@ -949,7 +952,7 @@ Both the client-side and server-side programming languages we used
 are as we'll see in
 \sectionref{selection.stack.client.language} and
 \sectionref{selection.stack.server.language} \term{object-oriented}.%
-\sidenote{
+\sidenote[-9]{
   The term object-orientation was coined by \citet{kay03} sometime in 1967.
   The motivations leading to object-oriented programming were mainly
   to find \q{%
@@ -970,9 +973,48 @@ functions as a partitioning scheme when implementing on the client side.
 Our client side software was contained in two files\dash{}one file for each
 of our two versions (control and full-featured).
 
+\newcommand{\placefilehierarchy}{%
+  \sidefigure[Prototype Server File Hierarchy]{%
+    Hierarchy of the server prototype software.
+    The code for producing this hierarchy listing can be found in
+    \sectionref{source.code.hierarchy}.
+    \label{figure:prototype.server.file.hierarchy}
+  }{%
+    \RaggedRight{\texttt{%
+      \\
+      |--rort\\
+      |--|--external\\
+      |--|--|--blog.rb\\
+      |--|--|--concert.rb\\
+      |--|--|--fetchable.rb\\
+      |--|--|--artist.rb\\
+      |--|--queue.rb\\
+      |--|--cache.rb\\
+      |--|--background.rb\\
+      |--|--core\_ext.rb\\
+      |--|--persistence.rb\\
+      |--|--external.rb\\
+      |--|--parsers.rb\\
+      |--|--models.rb\\
+      |--|--http\\
+      |--|--|--download.rb\\
+      |--|--|--api.rb\\
+      |--|--models\\
+      |--|--|--user.rb\\
+      |--|--|--person.rb\\
+      |--|--|--respondent.rb\\
+      |--|--|--artist.rb\\
+      |--|--rack.rb\\
+      |--|--http.rb\\
+      |--rort.rb
+    }}
+  }
+}
+
 However, on the server side we had to write more code and our code had to
 handle quite a large set of operations. We therefore implemented our server
 side software with the use of modules, classes, objects, and methods.
+\placefilehierarchy%
 A figure of how the various classes and modules are related to each other
 can be found in \figureref{fig.prototype.class.diagram}.
 The abstractions those constructs gave us, made it easier to
@@ -983,41 +1025,6 @@ As
   semantic level in which one can be absolutely precise.
 \end{fullquote}
 
-\sidefigure[Prototype Server File Hierarchy]{%
-  Hierarchy of the server prototype software.
-  The code for producing this hierarchy listing can be found in
-  \sectionref{source.code.hierarchy}.
-  \label{figure:prototype.server.file.hierarchy}
-}{%
-  \RaggedRight{\texttt{%
-    \\
-    |--rort\\
-    |--|--external\\
-    |--|--|--blog.rb\\
-    |--|--|--concert.rb\\
-    |--|--|--fetchable.rb\\
-    |--|--|--artist.rb\\
-    |--|--queue.rb\\
-    |--|--cache.rb\\
-    |--|--background.rb\\
-    |--|--core\_ext.rb\\
-    |--|--persistence.rb\\
-    |--|--external.rb\\
-    |--|--parsers.rb\\
-    |--|--models.rb\\
-    |--|--http\\
-    |--|--|--download.rb\\
-    |--|--|--api.rb\\
-    |--|--models\\
-    |--|--|--user.rb\\
-    |--|--|--person.rb\\
-    |--|--|--respondent.rb\\
-    |--|--|--artist.rb\\
-    |--|--rack.rb\\
-    |--|--http.rb\\
-    |--rort.rb
-  }}
-}
 To make the handling of our source code easier we used a hierarchy of
 directories and files that resembled our module and class constructs. One
 file and possible directories was used for each module and class

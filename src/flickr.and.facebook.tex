@@ -342,13 +342,15 @@ increasing you chances of finding what you want. Camera make information could
 also be useful when looking at the quality of pictures taken with certain
 cameras before purchasing one yourself.
 
-\sidefigure[Flickr Photo Meta-data]{%
-  Photo meta-data on Flickr,
-  retrieved October 28, 2007, from
-  \url{http://flickr.com/photos/benbengraves/187609810/}
-  \label{figure:scrsh.flickr.photo.detail.metadata}
-}{%
-  \includegraphics[width=0.9\marginparwidth]{scrsh_flickr_photo_metadata}
+\newcommand{\placeflickrmetadata}{%
+  \sidefigure[Flickr Photo Meta-data]{%
+    Photo meta-data on Flickr,
+    retrieved October 28, 2007, from
+    \url{http://flickr.com/photos/benbengraves/187609810/}
+    \label{figure:scrsh.flickr.photo.detail.metadata}
+  }{%
+    \includegraphics[width=0.9\marginparwidth]{scrsh_flickr_photo_metadata}
+  }
 }
 
 \subsubsection{Folksonomy}
@@ -358,6 +360,7 @@ for Flickr, and indeed what makes Flickr a folksonomy, is its tagging
 abilities. Caterina Fake, co-founder of Flickr, explains its importance as
 \postquote[\p{261}]{livingston07}{%
   Tagging really revolutionized the way the product behaved}
+\placeflickrmetadata%
 All registered user can label anyone's photos by applying such short
 descriptive tags. This collaborative process lay the ground work for other
 user's ability to easily browse photos by topic\dash{}a form of indirect and
@@ -404,7 +407,7 @@ latitude of the place where they were taken.
 By using the same technology we're using in our prototype
 application (see \sectionref{selection.stack.client.platform} for details)
 they were able to integrate Google Maps%
-\sidenote{
+\sidenote[-3]{
   Google Maps, an online interactive geographical map of the world ,can be
   found at \url{http://maps.google.com}.
 } in Flickr, enabling user's to place their photos on a map and automatically
