@@ -65,6 +65,8 @@
 \clubpenalty = 10000
 \widowpenalty = 10000
 
+% Add or remove lines from facing pages
+\RequirePackage{addlines}
 
 %%
 %% Line breaking
