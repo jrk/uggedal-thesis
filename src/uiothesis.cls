@@ -62,8 +62,8 @@
 \checkandfixthelayout
 
 % No orphans
-\clubpenalty = 10000
-\widowpenalty = 10000
+\clubpenalty = 300
+\widowpenalty = 300
 
 % Add or remove lines from facing pages
 \RequirePackage{addlines}
