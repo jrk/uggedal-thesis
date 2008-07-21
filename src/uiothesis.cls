@@ -288,17 +288,15 @@
       \draw (-1,0.70) -- (-0.25,0.2);
       \draw (-1,-0.30) -- (-0.25,0.2);
     \end{scope}
-    \draw (-1,-1) -- (-1,-1);
   \end{tikzpicture}}
 
 \newcommand{\fourguides}{%
   \begin{tikzpicture}
-    \draw (-1,1) -- (-1,1);
+    \draw (-1,0.7) -- (-1,0.7);
     \begin{scope}[color=red]
       \draw (-1,0.5) -- (-0.25,0);
       \draw (-1,-0.5) -- (-0.25,-0);
     \end{scope}
-    \draw (-1,-1) -- (-1,-1);
   \end{tikzpicture}}
 
 
