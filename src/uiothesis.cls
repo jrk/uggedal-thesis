@@ -691,12 +691,6 @@
 
     \bigskip
 
-    This thesis was written in American English as\\ 
-    dictated in \work{The Elements of Style}\\
-    by \citet{strunk00}.\\
-
-    \bigskip
-
     Typographical decisions were based on the\\
     recommendations given in \work{The Elements of\\
     Typographic Style} by \citet{bringhurst04}.\\
