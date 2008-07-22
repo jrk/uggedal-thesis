@@ -166,6 +166,9 @@
 \makeevenfoot{plain}{\thepage}{}{}
 \makeoddfoot{plain}{}{}{\thepage}
 
+% Empty part page style
+\aliaspagestyle{part}{empty}
+
 
 %%
 %% Lists
