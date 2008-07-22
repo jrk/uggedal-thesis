@@ -759,7 +759,7 @@
         \vspace{4pc}
 
         {\Large\textit{{
-          Unintrusive Prototyping of \\
+          Unobtrusive Prototyping of \\
           \vspace{1pc}
           Activity Streams in Established Spaces}}} \\
 
