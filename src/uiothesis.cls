@@ -82,6 +82,8 @@
 
 \RequirePackage{xcolor}
 
+\definecolor{title}{cmyk}{0, 0.87, 0.68, 0.32}
+
 \definecolor{chapnum}{gray}{0.6}
 
 \definecolor{largeornament}{gray}{0.85}
@@ -747,11 +749,11 @@
     \begin{centered}
         \null\vspace{8pc}
 
-        {\Huge\uppercaps{Social Navigation}} \\
+        {\Huge\color{title}\uppercaps{Social Navigation}} \\
         \vspace{2pc}
         {\Huge\textit{{on the}}} \\
         \vspace{2pc}
-        {\Huge\uppercaps{Social Web}} \\
+        {\Huge\color{title}\uppercaps{Social Web}} \\
 
         \vspace{4pc}
         {\Large\aldineleft} \\
