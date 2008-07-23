@@ -326,14 +326,26 @@ with both implicit and explicit transfer of advice.
 
 \subsubsection{Meta-data}
 
+\newcommand{\placeflickrmetadata}{%
+  \sidefigure[Flickr Photo Meta-data]{%
+    Photo meta-data on Flickr,
+    retrieved October 28, 2007, from
+    \url{http://flickr.com/photos/benbengraves/187609810/}
+    \label{figure:scrsh.flickr.photo.detail.metadata}
+  }{%
+    \includegraphics[width=0.9\marginparwidth]{scrsh_flickr_photo_metadata}
+  }
+}
+
 We arrive on a photo detail page \flickrref{1.1} as in
+\placeflickrmetadata%
 \figurepageref{scrsh.flickr.photo.detail}
 if we utilize one of these thumbnails for navigation. In addition to comments
 on the photo we find meta-data as in 
 \figureref{scrsh.flickr.photo.detail.metadata}.
 Meta-data include the date the photo was taken, the manufacturer and the model
 of the camera that was used which are all so called \term{Exif}%
-\sidenote{%
+\sidenote[9]{%
   Short for Exchangeable Image File\dash{}a specification for an image
   file format used in digital cameras.
 }
@@ -347,21 +359,19 @@ increasing you chances of finding what you want. Camera make information could
 also be useful when looking at the quality of pictures taken with certain
 cameras before purchasing one yourself.
 
-\newcommand{\placeflickrmetadata}{%
-  \sidefigure[Flickr Photo Meta-data]{%
-    Photo meta-data on Flickr,
-    retrieved October 28, 2007, from
-    \url{http://flickr.com/photos/benbengraves/187609810/}
-    \label{figure:scrsh.flickr.photo.detail.metadata}
-  }{%
-    \includegraphics[width=0.9\marginparwidth]{scrsh_flickr_photo_metadata}
-  }
-}
+\begin{figure}
+  \begin{whole}
+    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcloud}
+    \caption[Flickr Tag Cloud]{%
+       Tag cloud on Flickr,
+       retrieved November 1, 2007, from \url{http://flickr.com/explore}}
+    \label{figure:scrsh.flickr.tagcloud}
+  \end{whole}
+\end{figure}
 
 \subsubsection{Folksonomy}
 
 Of most importance
-\placeflickrmetadata%
 for Flickr, and indeed what makes Flickr a folksonomy, is its tagging
 abilities. Caterina Fake, co-founder of Flickr, explains its importance as
 \postquote[\p{261}]{livingston07}{%
@@ -375,16 +385,6 @@ exemplifies how the user generated data through tagging \flickrref{5}
 can be used as a navigational aid. A tag cloud is used to visualize the
 popularity (and thereby importance) of the individual tags. The larger the
 tag title, the more frequent the tag has been applied to photographs.
-
-\begin{figure}
-  \begin{whole}
-    \includegraphics[width=\wholewidth]{scrsh_flickr_tagcloud}
-    \caption[Flickr Tag Cloud]{%
-       Tag cloud on Flickr,
-       retrieved November 1, 2007, from \url{http://flickr.com/explore}}
-    \label{figure:scrsh.flickr.tagcloud}
-  \end{whole}
-\end{figure}
 
 \term{Tag clustering} was released in the fall of 2005 \citep{butterfield05}
 as a way to easier see the relationships between separate tags. For any given
