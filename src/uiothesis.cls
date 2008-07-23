@@ -88,6 +88,7 @@
 \definecolor{smallornament}{gray}{0.65}
 
 \definecolor{bar}{HTML}{8D9965}
+\definecolor{sparkspikecolor}{HTML}{8D9965}
 
 \definecolor{urlcolor}{rgb}{.6,0,0}
 
@@ -101,7 +102,6 @@
 \RequirePackage{tikz}
 
 \RequirePackage{sparklines}
-\definecolor{sparkspikecolor}{HTML}{8D9965}
 \setlength{\sparkspikewidth}{5pt}
 
 
