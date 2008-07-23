@@ -41,7 +41,7 @@
 \RequirePackage{lmodern}
 \RequirePackage{MinionPro}
 \renewcommand{\scdefault}{ssc}
-\newfont{\chapnum}{eurb10 scaled 8000}
+\newfont{\chapnum}{eurb10 scaled 10000}
 \newcommand{\lowercaps}[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand{\uppercaps}[1]{\textsc{\MakeUppercase{#1}}}
 
