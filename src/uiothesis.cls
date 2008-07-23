@@ -122,8 +122,8 @@
 
 % Part style
 \renewcommand{\partnamefont}{\raggedright\LARGE\scshape\MakeUppercase}
-\renewcommand{\partnumfont}{\LARGE\scshape\MakeUppercase}
-\renewcommand{\parttitlefont}{\raggedright\LARGE\scshape}
+\renewcommand{\partnumfont}{\color{partnum}\LARGE\scshape\MakeUppercase}
+\renewcommand{\parttitlefont}{\color{black}\raggedright\LARGE\scshape}
 \renewcommand{\printparttitle}[1]{\parttitlefont \MakeUppercase{#1}}
 
 % Chapter style
