@@ -82,7 +82,8 @@
 
 \RequirePackage{xcolor}
 
-\definecolor{chapnum}{gray}{0.55}
+\definecolor{chapnum}{gray}{0.6}
+
 \definecolor{largeornament}{gray}{0.85}
 \definecolor{smallornament}{gray}{0.65}
 
