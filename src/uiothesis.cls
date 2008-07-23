@@ -90,7 +90,7 @@
 \definecolor{bar}{HTML}{8D9965}
 
 \definecolor{urlcolor}{rgb}{.6,0,0}
-\definecolor{pagenumber}{rgb}{.6,0,0}
+\definecolor{tocnumber}{rgb}{.6,0,0}
 
 
 %%
@@ -188,7 +188,7 @@
 
 \renewcommand{\cftchapterfont}{\normalsize}
 \renewcommand{\cftchapterpagefont}{\normalsize}
-\renewcommand{\cftchapterpresnum}{\hspace*{-1.5em}}
+\renewcommand{\cftchapterpresnum}{\hspace*{-1.5em}\color{tocnumber}}
 \cftsetindents{chapter}{1.5em}{0em}
 \renewcommand{\cftchapterleader}{}
 \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
