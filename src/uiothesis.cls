@@ -89,7 +89,7 @@
 
 \definecolor{bar}{HTML}{8D9965}
 
-\definecolor{urlcolor}{rgb}{0.24,0.35,0.5}
+\definecolor{urlcolor}{rgb}{.6,0,0}
 
 
 %%
