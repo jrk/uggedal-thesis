@@ -493,7 +493,7 @@ FUNCTION {format.isbn}
   duplicate$ empty$ 'skip$
     {
       new.block
-      "ISBN " swap$ *
+      "\abbr{ISBN} " swap$ *
     }
   if$
 }
