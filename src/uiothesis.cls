@@ -82,17 +82,18 @@
 
 \RequirePackage{xcolor}
 
-\definecolor{title}{cmyk}{0, 0.87, 0.68, 0.32}
+\definecolor{red}{HTML}{AD1737}
+\definecolor{brown}{HTML}{990000}
+\definecolor{bar}{HTML}{8D9965}
 
 \definecolor{chapnum}{gray}{0.6}
-
 \definecolor{largeornament}{gray}{0.85}
 \definecolor{smallornament}{gray}{0.65}
 
-\definecolor{bar}{HTML}{8D9965}
-
-\definecolor{urlcolor}{rgb}{.6,0,0}
-\definecolor{tocnumber}{rgb}{.6,0,0}
+\colorlet{title}{red}
+\colorlet{partnum}{red}
+\colorlet{urlcolor}{brown}
+\colorlet{tocchapnum}{brown}
 
 
 %%
@@ -190,7 +191,7 @@
 
 \renewcommand{\cftchapterfont}{\normalsize}
 \renewcommand{\cftchapterpagefont}{\normalsize}
-\renewcommand{\cftchapterpresnum}{\hspace*{-1.5em}\color{tocnumber}}
+\renewcommand{\cftchapterpresnum}{\hspace*{-1.5em}\color{tocchapnum}}
 \cftsetindents{chapter}{1.5em}{0em}
 \renewcommand{\cftchapterleader}{}
 \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
