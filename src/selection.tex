@@ -771,10 +771,11 @@ only have fairly short response times you can take advantage of a
 sequential model where the time to process a response will be lower compared
 to a scenario where one have to create a new thread for each request.
 
-\citet{zygmuntowicz08} recommends using Mongrel, the concurrent server,
+\citet{zygmuntowicz08} recommends using Mongrel, the concurrent Ruby
+web server,
 for general purpose applications. He goes on to say that the treshold
 for wether one should use a sequential server is response times that
-are no longer than 2--3 seconds. Seeing as our application could very
+are no longer than two too three seconds. Seeing as our application could very
 well fall outside this treshold for some requests%
 \sidenote{
   When the data the user is requesting can not be found in the cache
@@ -785,9 +786,9 @@ well fall outside this treshold for some requests%
 }
 we followed the recommendations from \citeauthor{zygmuntowicz08} an opted
 to use Mongrel as our Ruby web server. By doing so we're on the safe side
-and can deliver simultaneous requests even if one of the requests are taking
+as we can deliver simultaneous requests even if one of the requests are taking
 overly long to process. In addition we believe the overhead of using a
-concurrent model with threading would not introduce to much delay in
+concurrent model with threading would not introduce to much overhead in
 response time for average timed requests compared to a sequential model.
 
 \subsubsection{Cache library}
