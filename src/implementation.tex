@@ -788,7 +788,7 @@ about activities was needed in our implementation.
 We therefore sat out to find the best cache solution for our needs as detailed
 in \sectionref{selection.stack.server.cache}.
 
-We only cache one type of data in our implementation:
+We only cached one type of data in our implementation:
 a chronologically pre-ordered list of all activities for a given artist.
 Let us explain how this works
 when user $X$ requests his list of recent favorite activities. Our system
@@ -805,8 +805,8 @@ with a certain
 activities are handled the cache should now be able to return that list
 if the request were made within the time to live interval.
 
-In our system we set a time to live of 12 hours. This means that activity
-lists stored in the cache are retrievable within 12 hours.
+In our system we set a time to live of 12 hours. This meant that activity
+lists stored in the cache were retrievable within 12 hours.
 
 \subsection{Persistence}
 
