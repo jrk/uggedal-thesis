@@ -22,8 +22,8 @@ with their \urort{} web site. After some coordination meetings with the
 \abbr{RECORD} project it became clear that \urort{} would be an excellent
 candidate for trying out social navigation techniques.
 
-As we'll see in the next section it's possible to build applications on top
-of existing web sites by creating transparent implementations.
+As we'll see in the next section, it's possible to build applications on top
+of existing web sites by creating unobtrusive implementations.
 Following the background information on building applications
 on top of established web sites we give an account of
 what kind of navigation system we wanted to build for \urort{}, go on to
@@ -38,7 +38,7 @@ implementation details we describe in this chapter.
 
 Going in and making changes to an existing web site can be both an
 daunting and time consuming task. First one have to establish a trustworthy
-relationship with the creators of such a site so that they are certain
+relationship with the creators of such a site so they can be certain
 you're not introducing bugs in their production software. Secondly, grasping
 the code base, third party libraries, and development tools of such a software
 project demands a lot of upfront effort before any real development work can
@@ -57,7 +57,7 @@ web browser we were able to create a script which
 made changes to the way \urort{}
 were presented to users who were participating in our study.
 Such an approach would hopefully result in a transparent experience for our
-end users as long as they had taken the necessary steps to set up 
+end users, as long as they had taken the necessary steps to set up 
 our script.
 
 \begin{figure}
@@ -72,14 +72,14 @@ our script.
 
 \subsection{Inspiration}
 
-The idea of creating additional features for a web site in these manners
+The idea of creating additional features for a web site in this manner
 came from the author's involvement in an underground community based around
-the Ruby programming language. \project{Hoodwink.d},%
+the Ruby programming language. \project{Hoodwink.d}%
 \sidenote[-1]{
   Hoodwink.d's starting point for new users can be seen
   at \url{http://hoodwinkd.hobix.com}.
 }
-as it's called, is a service that lets members post comments on all kinds of
+is a service that lets members post comments on all kinds of
 web sites. These comments are only visible to the members of the
 community.
 Hoodwink.d is underground in the sense that it's quite hard to get in to
@@ -104,7 +104,7 @@ When the information on the page is viewed without obfuscation%
   or viewing the page's source.
 }
 one have to be pretty technical savvy to decipher what the information 
-actually means. Simply put users have to change their hosts file
+actually means. Simply put, users have to change their hosts file
 so that it points to two imaginary domain names. Doing so they can point their
 browser to these domains and download a script (see
 \sectionref{selection.stack.client.platform} for details)
@@ -133,7 +133,7 @@ and thereby filtering out \term{newbies}.
 Now we finally get to the really interesting part of Hoodwink.d: the features
 it enables on top of the Web. One can create a comment visible only to the
 community's members on any web page that is supported. This support is not
-dependant on the creator of the web site. The users of Hoodwink.d needs to
+dependant on the creator of the web site. The users of Hoodwink.d need to
 record some information of the web site (where the comments should be placed)
 to make it supported. \figureref{scrsh.hoodwinkd.comment.source} shows an
 example of how these comments are displayed on a web page.
