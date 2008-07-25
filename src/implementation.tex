@@ -843,15 +843,15 @@ site for all artists that the requester had favored. Under this scheme a
 user with several favorites could expect response times to be several minutes
 in length. We therefore decided to deliver only the activities of the user's
 first favorite if non of the activity lists of his or her favorites were
-present in cache. On doing so we registered the non returned artists and put
+present in cache. When doing so we registered the non returned artists and put
 them in to a similar background process as we used for our cache warm up. 
 
-This means that the first time a user makes a request to our application he
-or she will be presented with the activities of only his first favorite if no
-other users previously requesting the system have similar favorites. After the
-background processing of this user's favorites is complete he will get a full
-picture of the activities of all his artist. We think this is an acceptable
-price to pay for reduced latency.
+This meant that the first time a user made a request to our application he
+or she would be presented with the activities of only his first favorite if no
+other users previously requesting the system had similar favorites. After the
+background processing of this user's favorites was complete he or she
+would get a full picture of the activities of all his or herartists.
+We think this is an acceptable price to pay for reduced latency.
 
 \subsection{Asynchronous requests}
 
