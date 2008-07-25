@@ -22,6 +22,8 @@ with their \urort{} web site. After some coordination meetings with the
 \abbr{RECORD} project it became clear that \urort{} would be an excellent
 candidate for trying out social navigation techniques.
 
+\enlargethispage{-2\baselineskip}
+
 As we'll see in the next section, it's possible to build applications on top
 of existing web sites by creating unobtrusive implementations.
 Following the background information on building applications
@@ -60,16 +62,6 @@ Such an approach would hopefully result in a transparent experience for our
 end users, as long as they had taken the necessary steps to set up 
 our script.
 
-\begin{figure}
-  \includegraphics[width=\textwidth]{scrsh_hoodwinkd_obfuscation}
-  \caption[Hoodwink.d Obfuscation]{
-    Obfuscation of Hoodwink.d's home page,
-    retrieved March 6, 2008, from
-    \url{http://hoodwinkd.hobix.com}
-  }
-  \label{figure:scrsh.hoodwinkd.obfuscation}
-\end{figure}
-
 \subsection{Inspiration}
 
 The idea of creating additional features for a web site in this manner
@@ -82,55 +74,18 @@ the Ruby programming language. \project{Hoodwink.d}%
 is a service that lets members post comments on all kinds of
 web sites. These comments are only visible to the members of the
 community.
-Hoodwink.d is underground in the sense that it's quite hard to get in to
-the community. It's members rarely talk about Hoodwink.d publicly, baring
-similarities to the underground club in a novel by \citet{palahniuk96}
-aptly named \work{Fight Club}.%
-\sidenote[-4]{
-  The first two rules of fight club
-  clearly describes the attitude members have towards outsiders:
-  \begin{inparaenum}[(i)]
-    \item you don't talk about fight club,
-    \item you don't talk about fight club
-  \end{inparaenum}
-  \citep[\pp{48}{50}]{palahniuk96}.
-}
-The home page of Hoodwink.d mimics the community's dedication to secrecy
-by obfuscating its information as can be seen in
-\figureref{scrsh.hoodwinkd.obfuscation}.
-When the information on the page is viewed without obfuscation%
-\sidenote{
-  The obfuscation can be removed either by turning off \abbr{CSS} support
-  or viewing the page's source.
-}
-one have to be pretty technical savvy to decipher what the information 
-actually means. Simply put, users have to change their hosts file
-so that it points to two imaginary domain names. Doing so they can point their
-browser to these domains and download a script (see
-\sectionref{selection.stack.client.platform} for details)
-that enables the functionality
-of Hoodwink.d.%
-\sidenote{
-  Oh no, we just broke the first and second rule of \work{Fight Club}!
-}
-This approach creates a barrier to entry which only allows the most
-technically inclined to enter the community\dash{}allowing for a
-high level of technicality in the community's internal discussions
-and thereby filtering out \term{newbies}.
 
 \begin{figure}
-  \begin{whole}
-    \includegraphics[width=\wholewidth]{scrsh_hoodwinkd_comment_source}
-    \caption[Hoodwink.d Comments]{
-      Comments on the repository browser of Hoodwink.d's source code,
-      retrieved March 7, 2008, from
-      \url{http://code.whytheluckystiff.net/hoodwinkd}
-    }
-    \label{figure:scrsh.hoodwinkd.comment.source}
-  \end{whole}
+  \includegraphics[width=\textwidth]{scrsh_hoodwinkd_comment_source}
+  \caption[Hoodwink.d Comments]{
+    Comments on the repository browser of Hoodwink.d's source code,
+    retrieved March 7, 2008, from
+    \url{http://code.whytheluckystiff.net/hoodwinkd}
+  }
+  \label{figure:scrsh.hoodwinkd.comment.source}
 \end{figure}
 
-Now we finally get to the really interesting part of Hoodwink.d: the features
+The really interesting part of Hoodwink.d is the features
 it enables on top of the Web. One can create a comment visible only to the
 community's members on any web page that is supported. This support is not
 dependant on the creator of the web site. The users of Hoodwink.d need to
