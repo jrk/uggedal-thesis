@@ -741,12 +741,10 @@
 
 % Titlepage
 \RequirePackage{pdfpages}
-\RequirePackage{wallpaper}
 \renewcommand{\maketitle}{%
   \includepdf[pages={1,{}}]{uiofrontpage}
 
   \begin{titlingpage}
-    \ThisLLCornerWallPaper{0.6}{uiosealbg}
     \begin{centered}
         \null\vspace{8pc}
 
